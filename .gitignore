@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Docker and docker-compose related
+/logs/**/*
+!/logs/.keep
