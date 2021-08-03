@@ -9,8 +9,8 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
-from aims import oai 
-from copydir import copydir
+from dlme_airflow.harvester.aims import oai 
+from dlme_airflow.harvester.copydir import copydir
 
 # def print_world():
 #     print('HELLO WORLD')

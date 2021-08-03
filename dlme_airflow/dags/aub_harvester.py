@@ -8,7 +8,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
-from aub import harvest
+from dlme_airflow.harvester.aub import harvest
 
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization

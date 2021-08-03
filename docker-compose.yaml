@@ -54,6 +54,7 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # do not load example DAGs
+    AIRFLOW__CORE__DAGS_FOLDER: '/opt/dlme_airflow/dags'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
