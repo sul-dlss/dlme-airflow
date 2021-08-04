@@ -9,17 +9,19 @@ def test_copydir(monkeypatch, tmp_path):
     @param tmp_path -- pytest fixture
     """
 
+    secs_since_epoch = 1628113477.966395
+
     def copytree(src, dst):
-        dst = tmp_path / "1628113477.966395"
+        dst = tmp_path / str(secs_since_epoch)
         dst.touch()
         return dst
 
     def time():
-        return 1628113477.966395
+        return secs_since_epoch
 
     monkeypatch.setattr("time.time", time)
 
     monkeypatch.setattr("shutil.copytree", copytree)
 
     copydir(provider="aims")
-    assert (tmp_path / "1628113477.966395").exists()
+    assert (tmp_path / str(secs_since_epoch)).exists()
