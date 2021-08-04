@@ -57,6 +57,7 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_FOLDER: '/opt/dlme_airflow/dags'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
   volumes:
     - ./logs:/opt/airflow/logs
     # - ./dags:/opt/airflow/dags

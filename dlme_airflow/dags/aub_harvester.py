@@ -8,9 +8,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
-import sys
-sys.path.append('/opt/dlme_airflow/')
-
 from harvester.aub import harvest
 
 # These args will get passed on to each operator
