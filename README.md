@@ -51,5 +51,9 @@ directory. To run the linter on a single file, run `flake8 dlme_airflow/path/to/
 To assist in passing the linter, use the [Black][BLK] opinionated code formatter
 by running `black dlme_airflow/path/to/file.py`.
 
+### Running Tests
+To run the entire test suite from the root directory, `PYTHONPATH=dlme_airflow pytest`.
+You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/path/to/test.py`.
+
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
