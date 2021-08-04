@@ -1,11 +1,9 @@
 from datetime import timedelta
-from textwrap import dedent
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
 # Operators; we need this to operate!
-from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
@@ -53,7 +51,9 @@ with DAG(
     t1 = PythonOperator(task_id="aims_harvest", python_callable=oai)
 
     t2 = PythonOperator(
-        task_id="aims_copy", python_callable=copydir, op_kwargs={"provider": "aims"}
+        task_id="aims_copy",
+        python_callable=copydir,
+        op_kwargs={"provider": "aims"}
     )
 
 t1 >> t2

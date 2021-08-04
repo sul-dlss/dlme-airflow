@@ -2,7 +2,6 @@
 import os
 import logging
 from sickle import Sickle
-from sickle.iterator import OAIResponseIterator
 
 
 def harvest():
