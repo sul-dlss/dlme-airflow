@@ -31,6 +31,6 @@ then stop and restart all of the docker compose resources.
 
 open your browser to `http://localhost:8080`
 
-## Enable the DAGs you wish to run locallay
+## Enable the DAGs you wish to run locally
 
-## Run inidividual DAGs
+## Run individual DAGs
