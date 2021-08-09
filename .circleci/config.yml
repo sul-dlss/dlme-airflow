@@ -3,10 +3,18 @@ version: 2.1
 orbs:
   python: circleci/python@1.4.0
 
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: suldlss/dlme-airflow
+    docker:
+      - image: circleci/buildpack-deps:stretch
+
 workflows:
   test:
     jobs:
       - lint_and_test
+      - publish_to_dockerhub
 
 jobs:
   lint_and_test:
@@ -29,3 +37,19 @@ jobs:
       - run:
           name: Run tests
           command: PYTHONPATH=dlme_airflow pytest
+
+  publish_to_dockerhub:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker Image
+          command: |
+             docker build . -t $IMAGE_NAME:latest
+
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push $IMAGE_NAME:latest
