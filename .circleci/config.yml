@@ -14,7 +14,10 @@ workflows:
   test:
     jobs:
       - lint_and_test
-      - publish_to_dockerhub
+      - publish_to_dockerhub:
+          filters:
+            branches:
+              only: main
 
 jobs:
   lint_and_test:
