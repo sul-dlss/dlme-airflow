@@ -72,7 +72,8 @@ with DAG(
     """.format(branch=git_branch, metadata_directory=metadata_directory)
     sensor_dir_exists = BashSensor(task_id='dlme_metadata_changes',
                                    bash_command=sensor_dir_exists_cmd,
-                                   poke_interval=60,)
+                                   poke_interval=60,
+                                   timeout=60*50)
 
     """ Validates if the git folder is empty or not """
     validate_git_folder = BranchPythonOperator(task_id='validate_metadata_folder',
