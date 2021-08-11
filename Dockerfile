@@ -5,3 +5,4 @@ RUN apt-get -y update && apt-get -y install git
 USER airflow
 
 COPY --chown=airflow:root ./dlme_airflow /opt/dlme_airflow
+COPY --chown=airflow:root catalog.yaml /opt/airflow/catalog.yaml

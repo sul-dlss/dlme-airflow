@@ -6,7 +6,7 @@ sources:
     driver: csv
     metadata:
       current:
-        - "{{ CATALOG_DIR }}/../dlme-metadata/american-numismatic-society/data/american-numismatic-society.csv"
+        - "{{ CATALOG_DIR }}../dlme-metadata/american-numismatic-society/data/american-numismatic-society.csv"
     args:
       csv_kwargs:
         blocksize: null
