@@ -1,5 +1,5 @@
 import logging, os
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
@@ -43,9 +43,10 @@ with DAG(
     '01_clone_dlme_metadata',
     default_args      = default_args,
     description       = 'Clone and verify dlme-metadata in the container',
-    schedule_interval = '* * * * *',
-    start_date        = days_ago(0),
+    schedule_interval = '@hourly',
+    start_date        = datetime(2021, 8, 10),
     tags              = ['metadata'],
+    catchup           = False,
 ) as dag:
     sensor_dir_exists_cmd = """
     # Check if the folder exists
