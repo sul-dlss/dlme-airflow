@@ -1,4 +1,5 @@
-import logging, os
+import logging
+import os
 from datetime import datetime, timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
@@ -10,7 +11,6 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.email import EmailOperator
 from airflow.operators.python_operator import BranchPythonOperator
-from airflow.utils.dates import days_ago
 from airflow.models import Variable
 
 # These args will get passed on to each operator
@@ -31,22 +31,24 @@ metadata_directory = os.environ['AIRFLOW_HOME']+"/metadata/"
 git_branch = Variable.get("git_branch", default_var='main')
 git_repo = Variable.get("git_repo_metadata")
 
+
 def validate_metadata_folder(**kwargs):
- logging.info("validate_git_dags_folder STARTED")
- if not os.path.exists(metadata_directory):
-   os.makedirs(metadata_directory)
- if len(os.listdir(metadata_directory)) == 0:
-   return 'clone_metadata'
- return 'pull_metadata'
+    logging.info("validate_git_dags_folder STARTED")
+    if not os.path.exists(metadata_directory):
+        os.makedirs(metadata_directory)
+    if len(os.listdir(metadata_directory)) == 0:
+        return 'clone_metadata'
+    return 'pull_metadata'
+
 
 with DAG(
     '01_clone_dlme_metadata',
-    default_args      = default_args,
-    description       = 'Clone and verify dlme-metadata in the container',
-    schedule_interval = '@hourly',
-    start_date        = datetime(2021, 8, 10),
-    tags              = ['metadata'],
-    catchup           = False,
+    default_args=default_args,
+    description='Clone and verify dlme-metadata in the container',
+    schedule_interval='@hourly',
+    start_date=datetime(2021, 8, 10),
+    tags=['metadata'],
+    catchup=False,
 ) as dag:
     sensor_dir_exists_cmd = """
     # Check if the folder exists
@@ -67,11 +69,14 @@ with DAG(
         echo "Everything is updated with branch {branch}"
         exit 1
     fi
-    """.format(branch = git_branch, metadata_directory = metadata_directory)
-    sensor_dir_exists = BashSensor(task_id='dlme_metadata_changes', bash_command=sensor_dir_exists_cmd, poke_interval= 60,)
+    """.format(branch=git_branch, metadata_directory=metadata_directory)
+    sensor_dir_exists = BashSensor(task_id='dlme_metadata_changes',
+                                   bash_command=sensor_dir_exists_cmd,
+                                   poke_interval=60,)
 
     """ Validates if the git folder is empty or not """
-    validate_git_folder = BranchPythonOperator(task_id='validate_metadata_folder', python_callable=validate_metadata_folder)
+    validate_git_folder = BranchPythonOperator(task_id='validate_metadata_folder',
+                                               python_callable=validate_metadata_folder)
 
     """ If the git folder is empty, clone the repo """
     bash_command_clone = "git clone --depth 1 --single-branch --branch {} {} {}".format(git_branch, git_repo, metadata_directory)
