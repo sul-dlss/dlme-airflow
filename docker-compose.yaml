@@ -56,6 +56,9 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # do not load example DAGs
     AIRFLOW__CORE__DAGS_FOLDER: '/opt/dlme_airflow/dags'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
+    AIRFLOW_VAR_GIT_BRANCH: 'main'
+    AIRFLOW_VAR_GIT_REPO_METADATA: 'https://github.com/sul-dlss/dlme-metadata.git'
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
   volumes:
