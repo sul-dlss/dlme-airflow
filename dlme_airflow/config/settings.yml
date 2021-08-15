@@ -1,0 +1,39 @@
+oai:
+  aub:
+    url: https://libraries.aub.edu.lb/xtf/oai
+    metadata_prefix: oai_dc
+    sets:
+      - postcards
+  auc:
+    url: http://cdm15795.contentdm.oclc.org/oai/oai.php
+    metadata_prefix: oai_dc
+    sets:
+      - p15795coll1
+  csic:
+    url: https://eu.alma.exlibrisgroup.com/view/oai/34CSIC_INST/request?
+    metadata_prefix: marc21
+    sets:
+      - manuscripta
+  harvard:
+    url: https://api.lib.harvard.edu/oai/
+    metadata_prefix: mods
+    sets:
+      - ihp
+  manchester:
+    url: https://luna.manchester.ac.uk/luna/servlet/oai
+    metadata_prefix: oai_dc
+    sets:
+      - Manchester~18~18
+      - ManchesterDev~95~2
+      - Manchester~10~10
+      - ManchesterDev~93~3
+  ssm:
+    url: http://cdm21044.contentdm.oclc.org/oai/oai.php
+    metadata_prefix: oai_dc
+    sets:
+      - abidindino
+  ttu:
+    url: https://swco-ir.tdl.org/oai/request?
+    metadata_prefix: oai_dc
+    sets:
+      - com_10605_355119

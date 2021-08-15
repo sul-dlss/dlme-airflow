@@ -131,3 +131,5 @@ dmypy.json
 # Docker and docker-compose related
 /logs/**/*
 !/logs/.keep
+
+/dlme_airflow/working/**/*
