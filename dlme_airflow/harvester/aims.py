@@ -10,8 +10,7 @@ from io import BytesIO
 
 def oai():
     parser = etree.XMLParser(ns_clean=True, load_dtd=False)
-    xml = requests.get(
-        "https://feed.podbean.com/themaghribpodcast/feed.xml").content
+    xml = requests.get("https://feed.podbean.com/themaghribpodcast/feed.xml").content
     tree = etree.parse(BytesIO(xml), parser)
     directory = "/opt/airflow/output/aims/data/"
     os.makedirs(os.path.dirname(directory), exist_ok=True)
