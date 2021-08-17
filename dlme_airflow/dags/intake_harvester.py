@@ -1,10 +1,9 @@
 from airflow import DAG
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from harvester.csv import csv_harvester
 
 from airflow.operators.python import PythonOperator
-from airflow.utils.dates import days_ago
 
 
 default_args = {
@@ -23,8 +22,9 @@ with DAG(
     default_args=default_args,
     description="Intake Harvester DAG",
     schedule_interval=timedelta(days=1),
-    start_date=days_ago(2),
+    start_date=datetime(2021, 8, 17),
     tags=["csv"],
+    catchup=False
 ) as dag:
     t1 = PythonOperator(
         task_id="csv_harvester",
