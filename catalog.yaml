@@ -11,16 +11,46 @@ sources:
       csv_kwargs:
         blocksize: null
         dtype:
-          Artist: object
+          URI: object
+          Title: object
+          RecordId: object
+          Coin Type URI: object
           From Date: float64
-          Maker: object
-          Manufacture: object
-          Reference: object
+          To Date: float64
+          Artist: object
           SubjectEvent: object
           SubjectIssuer: object
           SubjectPerson: object
           SubjectPlace: object
-          To Date: float64
+          Authority: object
+          Coin Type: object
+          Degree: float64
+          Deity: object
+          Denomination: object
+          Department: object
+          Dynasty: object
+          Engraver: float64
+          Maker: object
+          Manufacture: object
+          Material: object
+          Mint: object
+          Object Type: object
+          Portrait: object
+          Reference: object
+          Region: object
+          Script: object
+          State: object
+          Obverse Legend: object
+          Obverse Type: object
+          Date on Object: float64
+          Ah: float64
+          Axis: float64
+          Diameter: float64
+          Weight: float64
+          Thumbnail_obv: object
+          Thumbnail_rev: object
+          Date Record Modified: object
+
       urlpath:
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1'
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001'
@@ -35,32 +65,77 @@ sources:
     driver: csv
     metadata:
       current:
-        - "penn/egyptian-museum/data/egyptian-20181028-cleaned.csv"
+        - "{{ CATALOG_DIR }}../dlme-metadata/penn/egyptian-museum/data/egyptian-20181028-cleaned.csv"
     args:
       urlpath:
         - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
         - 'http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip'
       csv_kwargs:
         dtype:
-          creator: object
-          culture_area: object
+          emuIRN: int64
+          curatorial_section: object
+          object_number: object
+          object_name: object
+          native_name: object
+          culture: object
+          provenience: object
+          material: object
+          period: object
+          date_made: object
           date_made_early: object
           date_made_late: object
-          native_name: object
+          accession_credit_line: object
+          creator: object
+          description: object
+          manufacture_locationlocus: float64
+          culture_area: object
+          technique: object
+          iconography: object
+          measurement_height: float64
+          measurement_length: float64
+          measurement_width: float64
+          measurement_outside_diameter: float64
+          measurement_tickness: float64
+          measurement_unit: object
+          other_numbers: object
+          url: object
+
   yale_babylonian:
     description: 'Yale Babylonian Collection'
     driver: csv
     metadata:
       current:
-        - yale/babylonian/data/yale-babylonian.csv
+        - "{{ CATALOG_DIR }}../dlme-metadata/yale/babylonian/data/yale-babylonian.csv"
     args:
       csv_kwargs:
         blocksize: null
         dtype:
+          id: int64
+          occurrence_id: object
+          last_modified: object
+          callnumber: object
+          title: object
+          scientificname: object
+          collector: float64
+          collecting_date: float64
+          latitude: float64
+          longitude: float64
           datum: object
+          geographic_continent: object
+          geographic_country: object
+          geographic_stateprovince: object
           geographic_county: object
           geographic_municipality: object
-          scientificname: object
+          geographic_locality: float64
+          common_name: float64
+          type: object
+          format: object
+          era: object
+          geographic_culture: object
+          identified_by: object
+          identification_references: float64
+          previous_identifications: float64
+          associated_references: float64
       urlpath:
         - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=1&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
         - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=2&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
