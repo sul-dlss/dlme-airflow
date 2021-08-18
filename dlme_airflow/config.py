@@ -6,7 +6,7 @@ import yaml
 def Settings(key):
     # settings_cache = settings
     # if not settings_cache:
-    with open("config/settings.yml", "r") as ymlfile:
+    with open("/opt/dlme_airflow/config/settings.yml", "r") as ymlfile:
         return yaml.load(ymlfile)[key]
 
     # return settings[key]
