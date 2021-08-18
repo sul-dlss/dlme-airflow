@@ -60,6 +60,18 @@ sources:
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001'
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001'
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001'
+  auc_iiif:
+    args:
+      path: catalogs/auc_iiif.yaml
+    description: "American University in Cairo IIIf Collections"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  bodleian:
+    args:
+      path: catalogs/bodleian.yaml
+    description: "Bodleian Libraries, University of Oxford"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   penn_egyptian_museum:
     description: "University of Pennsylvania Egyptian Museum"
     driver: csv
