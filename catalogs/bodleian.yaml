@@ -1,0 +1,32 @@
+metadata:
+  version: 1
+sources:
+  exploring_egypt:
+    description: "Exploring Egypt in the 19th Century"
+    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    args:
+      collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/exploring-egypt
+      dtype:
+        description: object
+        rendering: object
+        thumbnail: object
+        homepage: object
+        title: object
+        shelfmark: object
+        author: object
+        language: object
+        date-statement: object
+        extent: object
+        subject: object
+        other-identifier: object
+        record-created: object
+        holding-institution: object
+    metadata:
+      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/exploring-egypt/data/"
+      fields:
+        description:
+          path: "description"
+        rendering:
+          path: "rendering..@id"
+        thumbnail:
+          path: "thumbnail..@id"
