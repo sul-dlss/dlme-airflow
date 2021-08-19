@@ -15,7 +15,7 @@ from airflow.operators.python_operator import BranchPythonOperator
 from airflow.models import Variable
 
 from harvester.oai import oai_harvester
-from harvester.utils.metadata import validate_metadata_folder
+from harvester.utils.metadata import compare_metadata, validate_metadata_folder
 
 default_args = {
     "owner": "airflow",
@@ -72,13 +72,13 @@ with DAG(
 
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     finished_pulling = DummyOperator(task_id='finished_pulling', dag=dag, trigger_rule='none_failed')
-    
+
     aub_oai_harvest = oai_harvester(provider)
 
     """ Compares source metadata and newly harvested metadata """
-    compare_metadata = BranchPythonOperator(task_id='compare_metadata',
-                                               python_callable=validate_metadata_folder,
-                                               op_kwargs={"provider": provider})
+    compare_metadata_task = BranchPythonOperator(task_id='compare_metadata',
+                                                 python_callable=compare_metadata,
+                                                 op_kwargs={"provider": provider})
 
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     nothing_to_do = DummyOperator(task_id='equal', dag=dag)
@@ -131,6 +131,6 @@ with DAG(
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     done = DummyOperator(task_id='monthly_aub_harvest_complete', dag=dag, trigger_rule='none_failed')
 
-validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> aub_oai_harvest >> compare_metadata >> [nothing_to_do, copy_metadata]
+validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> aub_oai_harvest >> compare_metadata_task >> [nothing_to_do, copy_metadata]
 copy_metadata >> commit_metadata >> trigger_transform >> notify_data_manager >> done
 nothing_to_do >> done

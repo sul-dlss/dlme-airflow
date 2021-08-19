@@ -133,3 +133,5 @@ dmypy.json
 !/logs/.keep
 
 /dlme_airflow/working/**/*
+/working/*
+/metadata/*
