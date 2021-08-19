@@ -40,7 +40,7 @@ default_args = {
     # 'trigger_rule': 'all_success'
 }
 
-provider = 'aub'
+provider = 'csic'
 home_directory = os.environ['AIRFLOW_HOME']
 metadata_directory = os.environ['AIRFLOW_HOME']+"/metadata/"
 working_directory = os.environ['AIRFLOW_HOME']+"/working/"
@@ -48,9 +48,9 @@ git_branch = Variable.get("git_branch", default_var='main')
 git_repo = Variable.get("git_repo_metadata")
 
 with DAG(
-    "02_aub_oai_harvester",
+    f"oai_{provider}_harvester",
     default_args=default_args,
-    description="AUB OAI Harvester DAG",
+    description=f"{provider.upper()} OAI Harvester DAG",
     schedule_interval='@monthly',
     start_date=datetime(2021, 8, 18),
     tags=["example"],
@@ -73,7 +73,7 @@ with DAG(
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     finished_pulling = DummyOperator(task_id='finished_pulling', dag=dag, trigger_rule='none_failed')
 
-    aub_oai_harvest = oai_harvester(provider)
+    oai_harvest = oai_harvester(provider)
 
     """ Compares source metadata and newly harvested metadata """
     compare_metadata_task = BranchPythonOperator(task_id='compare_metadata',
@@ -129,8 +129,8 @@ with DAG(
     )
 
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
-    done = DummyOperator(task_id='monthly_aub_harvest_complete', dag=dag, trigger_rule='none_failed')
+    done = DummyOperator(task_id=f"monthly_{provider}_harvest_complete", dag=dag, trigger_rule='none_failed')
 
-validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> aub_oai_harvest >> compare_metadata_task >> [nothing_to_do, copy_metadata]
+validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> oai_harvest >> compare_metadata_task >> [nothing_to_do, copy_metadata]
 copy_metadata >> commit_metadata >> trigger_transform >> notify_data_manager >> done
 nothing_to_do >> done

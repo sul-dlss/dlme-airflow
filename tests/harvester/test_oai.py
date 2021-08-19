@@ -4,6 +4,7 @@ import requests
 
 from harvester.oai import harvest
 
+
 class MockOAIListRecordsResponse:
     @staticmethod
     def raw():
@@ -24,12 +25,6 @@ def mock_response(monkeypatch):
 
 @pytest.fixture
 def oai_test_list_records():
-    metadata = {
-        "fields": {
-            "context": {"path": "@context", "optional": True},
-            "iiif_format": {"path": "sequences..format"},
-        }
-    }
     return harvest(provider='aub')
 
 
