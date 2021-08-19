@@ -46,6 +46,8 @@ metadata_directory = os.environ['AIRFLOW_HOME']+"/metadata/"
 working_directory = os.environ['AIRFLOW_HOME']+"/working/"
 git_branch = Variable.get("git_branch", default_var='main')
 git_repo = Variable.get("git_repo_metadata")
+dlme_transform_sg = Variable.get("dlme_transform_sg")
+dlme_transform_subnet = Variable.get("dlme_transform_subnet")
 
 with DAG(
     f"oai_{provider}_harvester",
@@ -113,8 +115,8 @@ with DAG(
         },
         network_configuration={
             "awsvpcConfiguration": {
-                "securityGroups": [os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")],
-                "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
+                "securityGroups": [os.environ.get("SECURITY_GROUP_ID", dlme_transform_sg)],
+                "subnets": [os.environ.get("SUBNET_ID", dlme_transform_subnet)],
             },
         },
         # awslogs_group="/ecs/hello-world",
