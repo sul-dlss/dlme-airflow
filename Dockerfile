@@ -6,3 +6,4 @@ USER airflow
 
 COPY --chown=airflow:root ./dlme_airflow /opt/dlme_airflow
 COPY --chown=airflow:root catalog.yaml /opt/airflow/catalog.yaml
+COPY --chown=airflow:root ./catalogs /opt/airflow/catalogs

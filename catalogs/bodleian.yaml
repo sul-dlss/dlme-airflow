@@ -3,7 +3,7 @@ metadata:
 sources:
   arabic:
     description: "Items of Arabic origin"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/arabic-origin
       dtype:
@@ -44,7 +44,7 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/arabic/data/"
+      current_directory: "/opt/airflow/metadata/bodleian/arabic/data/"
       fields:
         description:
           path: "description"
@@ -54,7 +54,7 @@ sources:
           path: "thumbnail..@id"
   exploring_egypt:
     description: "Exploring Egypt in the 19th Century"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/exploring-egypt
       dtype:
@@ -73,7 +73,7 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/exploring-egypt/data/"
+      current_directory: "/opt/airflow/metadata/bodleian/exploring-egypt/data/"
       fields:
         description:
           path: "description"
@@ -83,7 +83,7 @@ sources:
           path: "thumbnail..@id"
   hebrew:
     description: "Items of Hebrew origin"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/hebrew-origin
       dtype:
@@ -131,7 +131,7 @@ sources:
         acknowledgements: object
         digitization-sponsor: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/hebrew/data/"
+      current_directory: "/opt/airflow/metadata/bodleian/hebrew/data/"
       fields:
         description:
           path: "description"
@@ -141,7 +141,7 @@ sources:
           path: "thumbnail..@id"
   persian:
     description: "Items of Persian origin"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/persian-origin
       dtype:
@@ -179,7 +179,7 @@ sources:
         related-items: object
         editors: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/persian/data/"
+      current_directory: "/opt/airflow/metadata/bodleian/persian/data/"
       fields:
         description:
           path: "description"
@@ -189,7 +189,7 @@ sources:
           path: "thumbnail..@id"
   turkish:
     description: "Items of Turkish origin"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/turkish-origin
       dtype:
@@ -222,7 +222,7 @@ sources:
         provenance: object
         contents: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/bodleian/turkish/data/"
+      current_directory: "/opt/airflow/metadata/bodleian/turkish/data/"
       fields:
         description:
           path: "description"

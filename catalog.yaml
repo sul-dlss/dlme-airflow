@@ -5,8 +5,7 @@ sources:
     description: "American Numismatic Society"
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/american-numismatic-society/data/american-numismatic-society.csv"
+      current_directory: "/opt/airflow/metadata/american-numismatic-society/data/"
     args:
       csv_kwargs:
         blocksize: null
@@ -76,8 +75,7 @@ sources:
     description: "University of Pennsylvania Egyptian Museum"
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/penn/egyptian-museum/data/egyptian-20181028-cleaned.csv"
+      current_directory: "/opt/airflow/metadata/penn/egyptian-museum/data/"
     args:
       urlpath:
         - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
@@ -116,8 +114,7 @@ sources:
     description: 'Yale Babylonian Collection'
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/yale/babylonian/data/yale-babylonian.csv"
+      current_directory: "/opt/airflow/metadata/yale/babylonian/data/"
     args:
       csv_kwargs:
         blocksize: null

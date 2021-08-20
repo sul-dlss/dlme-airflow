@@ -3,9 +3,9 @@ metadata:
 sources:
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/al-musawwar/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/al-musawwar/data/"
       fields:
         context:
           path: '@context'
@@ -48,7 +48,7 @@ sources:
         repository: object
   alexandria_bombardment:
     description: "Alexandria Bombardment of 1882 Photograph Album"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: "https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll9/manifest.json"
       dtype:
@@ -78,7 +78,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/alexandria-bombardment/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/alexandria-bombardment/data/"
       fields:
         context:
           path: '@context'
@@ -100,7 +100,7 @@ sources:
           optional: true
   bint_al_nil:
     description: "Bint al-Nil Journal"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll19/manifest.json
       dtype:
@@ -125,7 +125,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/bint-al-nil/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/bint-al-nil/data/"
       fields:
         context:
           path: '@context'
@@ -147,7 +147,7 @@ sources:
           optional: true
   campus_photos:
     description: "Art in the Greek Campus"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll32/manifest.json
       dtype:
@@ -175,7 +175,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/campus-photos/data/"
+      current_directory: "/opt/airflow/metadata/auc/campus-photos/data/"
       fields:
         context:
           path: '@context'
@@ -197,7 +197,7 @@ sources:
           optional: true
   coptic:
     description: "Iryan Moftah Coptic Language and Religion Manuscripts"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll4/manifest.json
       dtype:
@@ -229,7 +229,7 @@ sources:
         repository: object
         location: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/coptic/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/coptic/data/"
       fields:
         context:
           path: '@context'
@@ -251,7 +251,7 @@ sources:
           optional: true
   fathy:
     description: "Hassan Fathy Architectural Archives"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll13/manifest.json
       dtype:
@@ -275,7 +275,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/fathy/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/fathy/data/"
       fields:
         context:
           path: '@context'
@@ -297,7 +297,7 @@ sources:
           optional: true
   hopkins:
     description: "Nicholas S. Hopkins Rural Egypt Photographs"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll12/manifest.json
       dtype:
@@ -320,7 +320,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/hopkins/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/hopkins/data/"
       fields:
         context:
           path: '@context'
@@ -342,7 +342,7 @@ sources:
           optional: true
   islamic_aa:
     description: "Islamic Art & Architecture Slides"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll30/manifest.json
       dtype:
@@ -368,7 +368,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/islamic-aa/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/islamic-aa/data/"
       fields:
         context:
           path: '@context'
@@ -390,7 +390,7 @@ sources:
           optional: true
   maps:
     description: "Historic Maps Digital Collection"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll6/manifest.json
       dtype:
@@ -418,7 +418,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/maps/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/maps/data/"
       fields:
         context:
           path: '@context'
@@ -440,7 +440,7 @@ sources:
           optional: true
   maritz:
     description: "Philip Maritz Collection of Émile Béchard's Photographs of Egypt"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll16/manifest.json
       dtype:
@@ -468,7 +468,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/maritz/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/maritz/data"
       fields:
         context:
           path: '@context'
@@ -490,7 +490,7 @@ sources:
           optional: true
   napoleonic_egypt:
     description: "Napoleonic Egypt"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll2/manifest.json
       dtype:
@@ -517,7 +517,7 @@ sources:
         format: object
         type: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/napoleonic-egypt/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/napoleonic-egypt/data"
       fields:
         context:
           path: '@context'
@@ -539,7 +539,7 @@ sources:
           optional: true
   parker:
     description: "Richard B. Parker Nile Watercraft Photographs"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll31/manifest.json
       dtype:
@@ -563,7 +563,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/parker/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/parker/data"
       fields:
         context:
           path: '@context'
@@ -585,7 +585,7 @@ sources:
           optional: true
   postcards:
     description: "Egyptian Postcard Collection"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll21/manifest.json
       dtype:
@@ -609,7 +609,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/postcards/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/postcards/data"
       fields:
         context:
           path: '@context'
@@ -631,7 +631,7 @@ sources:
           optional: true
   qurna:
     description: "Qurna Hillside Oral History Project"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll24/manifest.json
       dtype:
@@ -655,7 +655,7 @@ sources:
         identifier: object
         publisher: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/qurna/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/qurna/data"
       fields:
         context:
           path: '@context'
@@ -680,7 +680,7 @@ sources:
           optional: true
   rare_books:
     description: "Selections from the Rare Books and Special Collections Library"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll11/manifest.json
       dtype:
@@ -705,7 +705,7 @@ sources:
         description: object
         extent: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/rare-books/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/rare-books/data"
       fields:
         context:
           path: '@context'
@@ -727,7 +727,7 @@ sources:
           optional: true
   sphinx:
     description: "The Sphinx"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/sphinx/p1.json
       dtype:
@@ -750,7 +750,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/sphinx/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/sphinx/data"
       fields:
         context:
           path: '@context'
@@ -772,7 +772,7 @@ sources:
           optional: true
   taxiphote_slides:
     description: "Taxiphote Slides"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll15/manifest.json
       dtype:
@@ -800,7 +800,7 @@ sources:
         name: object
         creator: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/taxiphote-slides/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/taxiphote-slides/data"
       fields:
         context:
           path: '@context'
@@ -822,7 +822,7 @@ sources:
           optional: true
   underwood:
     description: ""
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll8/manifest.json
       dtype:
@@ -854,7 +854,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/underwood/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/underwood/data/"
       fields:
         context:
           path: '@context'
@@ -876,7 +876,7 @@ sources:
           optional: true
   university_on_the_square:
     description: "University on the Square, Documenting Egypt's 21st Century Revolution"
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll7/manifest.json
       dtype:
@@ -914,7 +914,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/university-on-the-square/data/"
+      current_directory: "/opt/airflow/metadata/auc/iiif/university-on-the-square/data/"
       fields:
         context:
           path: '@context'
@@ -936,7 +936,7 @@ sources:
           optional: true
   wassef:
     description: ""
-    driver: dlme_airflow.drivers.iiif_json.IIIfJsonSource
+    driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll5/manifest.json
       dtype:
@@ -962,7 +962,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      current_directory: "{{ CATALOG_DIR }}../dlme-metadata/auc/iiif/wassef/data"
+      current_directory: "/opt/airflow/metadata/auc/iiif/wassef/data"
       fields:
         context:
           path: '@context'
