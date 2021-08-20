@@ -31,6 +31,7 @@ def get_existing_df(driver: str, existing_dir: pathlib.Path) -> pd.DataFrame:
     return pd.concat(raw_data)
 
 
+
 def data_source_harvester(provider: str):
     """Intake source harvester, takes a provider (for nested catalog use the catalog
     name.source, i.e. bodleian.arabic), generates a Pandas DataFrame, runs
@@ -42,7 +43,8 @@ def data_source_harvester(provider: str):
     source = getattr(catalog, provider)  # Raises Attribute error for missing provider
     source_df = source.read()
     existing_directory = pathlib.Path(source.metadata.get("current_directory"))
-    driver = source._entry._driver
+    pd_read_func = driver_reads.get(source._entry._driver)
+
     existing_df = get_existing_df(driver, existing_directory)
     if len(existing_df) < 1:
         logging.error(f"Empty existing dataframe for {existing_directory}")
