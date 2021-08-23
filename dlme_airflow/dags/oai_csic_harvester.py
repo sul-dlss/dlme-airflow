@@ -84,6 +84,7 @@ with DAG(
 
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     nothing_to_do = DummyOperator(task_id='equal', dag=dag)
+    not_equal = DummyOperator(task_id='not_equal', dag=dag)
 
     """ If the harvest has new metdata """
     bash_copy_data_command = f"cp -R {working_directory}/{provider} {metadata_directory}/{provider}"
@@ -133,6 +134,6 @@ with DAG(
     """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
     done = DummyOperator(task_id=f"monthly_{provider}_harvest_complete", dag=dag, trigger_rule='none_failed')
 
-validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> oai_harvest >> compare_metadata_task >> [nothing_to_do, copy_metadata]
-copy_metadata >> commit_metadata >> trigger_transform >> notify_data_manager >> done
+validate_git_folder >> [git_clone, git_pull] >> finished_pulling >> oai_harvest >> compare_metadata_task >> [nothing_to_do, not_equal]
+not_equal >> copy_metadata >> commit_metadata >> trigger_transform >> notify_data_manager >> done
 nothing_to_do >> done

@@ -59,6 +59,8 @@ x-airflow-common:
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
     AIRFLOW_VAR_GIT_BRANCH: 'main'
     AIRFLOW_VAR_GIT_REPO_METADATA: 'https://github.com/sul-dlss/dlme-metadata.git'
+    AIRFLOW_VAR_DLME_TRANSFORM_SG: "sg-999"
+    AIRFLOW_VAR_DLME_TRANSFORM_SUBNET: "subnet-999"
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
   volumes:
