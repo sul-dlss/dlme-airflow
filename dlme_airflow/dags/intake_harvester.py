@@ -1,10 +1,15 @@
+import intake
 from airflow import DAG
 from datetime import datetime, timedelta
 
-from harvester.csv import csv_harvester
+from harvester.source_harvester import data_source_harvester
 
+from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 
+from drivers.iiif_json import IIIfJsonSource
+
+intake.source.register_driver("iiif_json", IIIfJsonSource)
 
 default_args = {
     "owner": "airflow",
@@ -23,14 +28,15 @@ with DAG(
     description="Intake Harvester DAG",
     schedule_interval=timedelta(days=1),
     start_date=datetime(2021, 8, 17),
-    tags=["csv"],
-    catchup=False
+    tags=["csv", "json"],
+    catchup=False,
 ) as dag:
-    t1 = PythonOperator(
-        task_id="csv_harvester",
-        python_callable=csv_harvester,
+    t1 = BashOperator(task_id="make_working_dir", bash_command="mkdir -p /opt/airflow/working")
+    t2 = PythonOperator(
+        task_id="intake_harvester",
+        python_callable=data_source_harvester,
         op_kwargs={"provider": "{{ dag_run.conf['provider'] }}"},
     )
 
 
-t1
+t1 >> t2

@@ -5,8 +5,7 @@ sources:
     description: "American Numismatic Society"
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/american-numismatic-society/data/american-numismatic-society.csv"
+      current_directory: "/opt/airflow/metadata/american-numismatic-society/data/"
     args:
       csv_kwargs:
         blocksize: null
@@ -60,12 +59,23 @@ sources:
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001'
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001'
         - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001'
+  auc_iiif:
+    args:
+      path: catalogs/auc_iiif.yaml
+    description: "American University in Cairo IIIf Collections"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  bodleian:
+    args:
+      path: catalogs/bodleian.yaml
+    description: "Bodleian Libraries, University of Oxford"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   penn_egyptian_museum:
     description: "University of Pennsylvania Egyptian Museum"
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/penn/egyptian-museum/data/egyptian-20181028-cleaned.csv"
+      current_directory: "/opt/airflow/metadata/penn/egyptian-museum/data/"
     args:
       urlpath:
         - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
@@ -104,8 +114,7 @@ sources:
     description: 'Yale Babylonian Collection'
     driver: csv
     metadata:
-      current:
-        - "{{ CATALOG_DIR }}../dlme-metadata/yale/babylonian/data/yale-babylonian.csv"
+      current_directory: "/opt/airflow/metadata/yale/babylonian/data/"
     args:
       csv_kwargs:
         blocksize: null
