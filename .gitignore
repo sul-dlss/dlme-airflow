@@ -131,3 +131,7 @@ dmypy.json
 # Docker and docker-compose related
 /logs/**/*
 !/logs/.keep
+/working/**/*
+/metadata/**/*
+metadata
+/ssh

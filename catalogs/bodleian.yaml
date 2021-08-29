@@ -44,189 +44,204 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/arabic/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/arabic/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/arabic"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
           path: "rendering..@id"
         thumbnail:
           path: "thumbnail..@id"
-  exploring_egypt:
-    description: "Exploring Egypt in the 19th Century"
-    driver: iiif_json
-    args:
-      collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/exploring-egypt
-      dtype:
-        description: object
-        rendering: object
-        thumbnail: object
-        homepage: object
-        title: object
-        shelfmark: object
-        author: object
-        language: object
-        date-statement: object
-        extent: object
-        subject: object
-        other-identifier: object
-        record-created: object
-        holding-institution: object
-    metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/exploring-egypt/data/"
-      fields:
-        description:
-          path: "description"
-        rendering:
-          path: "rendering..@id"
-        thumbnail:
-          path: "thumbnail..@id"
-  hebrew:
-    description: "Items of Hebrew origin"
-    driver: iiif_json
-    args:
-      collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/hebrew-origin
-      dtype:
-        description: object
-        rendering: object
-        thumbnail: object
-        homepage: object
-        title: object
-        shelfmark: object
-        printer: object
-        language: object
-        date-statement: object
-        place-of-origin: object
-        collection: object
-        digitization-project: object
-        record-created: object
-        holding-institution: object
-        catalogue-identifier: object
-        author: object
-        translator: object
-        catalogue-description: object
-        scribe: object
-        slide-roll-title: object
-        provenance: object
-        materials: object
-        hand: object
-        editors: object
-        commentators: object
-        former-owner: object
-        other-titles: object
-        contents-note: object
-        layout: object
-        extent: object
-        dimensions: object
-        binding: object
-        record-origin: object
-        additional-information-sources: object
-        related-items: object
-        decoration: object
-        compiler: object
-        digitization-note: object
-        contents: object
-        author-of-introduction: object
-        other-identifier: object
-        acknowledgements: object
-        digitization-sponsor: object
-    metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/hebrew/data/"
-      fields:
-        description:
-          path: "description"
-        rendering:
-          path: "rendering..@id"
-        thumbnail:
-          path: "thumbnail..@id"
-  persian:
-    description: "Items of Persian origin"
-    driver: iiif_json
-    args:
-      collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/persian-origin
-      dtype:
-        description: object
-        rendering: object
-        thumbnail: object
-        homepage: object
-        title: object
-        shelfmark: object
-        author: object
-        language: object
-        place-of-origin: object
-        record-created: object
-        holding-institution: object
-        catalogue-description: object
-        other-titles: object
-        scribe: object
-        date-statement: object
-        hand: object
-        extent: object
-        dimensions: object
-        decoration: object
-        record-origin: object
-        collection: object
-        catalogue-identifier: object
-        former-owner: object
-        materials: object
-        contents: object
-        contributor: object
-        binding: object
-        provenance: object
-        digitization-sponsor: object
-        illustrator: object
-        contents-note: object
-        related-items: object
-        editors: object
-    metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/persian/data/"
-      fields:
-        description:
-          path: "description"
-        rendering:
-          path: "rendering..@id"
-        thumbnail:
-          path: "thumbnail..@id"
-  turkish:
-    description: "Items of Turkish origin"
-    driver: iiif_json
-    args:
-      collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/turkish-origin
-      dtype:
-        description: object
-        rendering: object
-        thumbnail: object
-        homepage: object
-        catalogue-description: object
-        title: object
-        other-titles: object
-        shelfmark: object
-        author: object
-        scribe: object
-        language: object
-        date-statement: object
-        place-of-origin: object
-        hand: object
-        extent: object
-        record-origin: object
-        collection: object
-        catalogue-identifier: object
-        record-created: object
-        holding-institution: object
-        digitization-sponsor: object
-        materials: object
-        dimensions: object
-        decoration: object
-        related-items: object
-        binding: object
-        provenance: object
-        contents: object
-    metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/turkish/data/"
-      fields:
-        description:
-          path: "description"
-        rendering:
-          path: "rendering..@id"
-        thumbnail:
-          path: "thumbnail..@id"
+  # exploring_egypt:
+  #   description: "Exploring Egypt in the 19th Century"
+  #   driver: iiif_json
+  #   args:
+  #     collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/exploring-egypt
+  #     dtype:
+  #       description: object
+  #       rendering: object
+  #       thumbnail: object
+  #       homepage: object
+  #       title: object
+  #       shelfmark: object
+  #       author: object
+  #       language: object
+  #       date-statement: object
+  #       extent: object
+  #       subject: object
+  #       other-identifier: object
+  #       record-created: object
+  #       holding-institution: object
+  #   metadata:
+  #     current_metadata: "/opt/airflow/metadata/bodleian/exploring-egypt/data.csv"
+  #     working_directory: "/opt/airflow/working/bodleian/exploring-egypt"
+  #     fields:
+  #       id:
+  #         path: "@id"
+  #       description:
+  #         path: "description"
+  #       rendering:
+  #         path: "rendering..@id"
+  #       thumbnail:
+  #         path: "thumbnail..@id"
+  # hebrew:
+  #   description: "Items of Hebrew origin"
+  #   driver: iiif_json
+  #   args:
+  #     collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/hebrew-origin
+  #     dtype:
+  #       description: object
+  #       rendering: object
+  #       thumbnail: object
+  #       homepage: object
+  #       title: object
+  #       shelfmark: object
+  #       printer: object
+  #       language: object
+  #       date-statement: object
+  #       place-of-origin: object
+  #       collection: object
+  #       digitization-project: object
+  #       record-created: object
+  #       holding-institution: object
+  #       catalogue-identifier: object
+  #       author: object
+  #       translator: object
+  #       catalogue-description: object
+  #       scribe: object
+  #       slide-roll-title: object
+  #       provenance: object
+  #       materials: object
+  #       hand: object
+  #       editors: object
+  #       commentators: object
+  #       former-owner: object
+  #       other-titles: object
+  #       contents-note: object
+  #       layout: object
+  #       extent: object
+  #       dimensions: object
+  #       binding: object
+  #       record-origin: object
+  #       additional-information-sources: object
+  #       related-items: object
+  #       decoration: object
+  #       compiler: object
+  #       digitization-note: object
+  #       contents: object
+  #       author-of-introduction: object
+  #       other-identifier: object
+  #       acknowledgements: object
+  #       digitization-sponsor: object
+  #   metadata:
+  #     current_metadata: "/opt/airflow/metadata/bodleian/hebrew/data.csv"
+  #     working_directory: "/opt/airflow/working/bodleian/hebrew"
+  #     fields:
+  #       id:
+  #         path: "@id"
+  #       description:
+  #         path: "description"
+  #       rendering:
+  #         path: "rendering..@id"
+  #       thumbnail:
+  #         path: "thumbnail..@id"
+  # persian:
+  #   description: "Items of Persian origin"
+  #   driver: iiif_json
+  #   args:
+  #     collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/persian-origin
+  #     dtype:
+  #       description: object
+  #       rendering: object
+  #       thumbnail: object
+  #       homepage: object
+  #       title: object
+  #       shelfmark: object
+  #       author: object
+  #       language: object
+  #       place-of-origin: object
+  #       record-created: object
+  #       holding-institution: object
+  #       catalogue-description: object
+  #       other-titles: object
+  #       scribe: object
+  #       date-statement: object
+  #       hand: object
+  #       extent: object
+  #       dimensions: object
+  #       decoration: object
+  #       record-origin: object
+  #       collection: object
+  #       catalogue-identifier: object
+  #       former-owner: object
+  #       materials: object
+  #       contents: object
+  #       contributor: object
+  #       binding: object
+  #       provenance: object
+  #       digitization-sponsor: object
+  #       illustrator: object
+  #       contents-note: object
+  #       related-items: object
+  #       editors: object
+  #   metadata:
+  #     current_metadata: "/opt/airflow/metadata/bodleian/persian/data.csv"
+  #     working_directory: "/opt/airflow/working/bodleian/persian"
+  #     fields:
+  #       id:
+  #         path: "@id"
+  #       description:
+  #         path: "description"
+  #       rendering:
+  #         path: "rendering..@id"
+  #       thumbnail:
+  #         path: "thumbnail..@id"
+  # turkish:
+  #   description: "Items of Turkish origin"
+  #   driver: iiif_json
+  #   args:
+  #     collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/turkish-origin
+  #     dtype:
+  #       description: object
+  #       rendering: object
+  #       thumbnail: object
+  #       homepage: object
+  #       catalogue-description: object
+  #       title: object
+  #       other-titles: object
+  #       shelfmark: object
+  #       author: object
+  #       scribe: object
+  #       language: object
+  #       date-statement: object
+  #       place-of-origin: object
+  #       hand: object
+  #       extent: object
+  #       record-origin: object
+  #       collection: object
+  #       catalogue-identifier: object
+  #       record-created: object
+  #       holding-institution: object
+  #       digitization-sponsor: object
+  #       materials: object
+  #       dimensions: object
+  #       decoration: object
+  #       related-items: object
+  #       binding: object
+  #       provenance: object
+  #       contents: object
+  #   metadata:
+  #     current_metadata: "/opt/airflow/metadata/bodleian/turkish/data.csv"
+  #     working_directory: "/opt/airflow/working/bodleian/turkish"
+  #     fields:
+  #       id:
+  #         path: "@id"
+  #       description:
+  #         path: "description"
+  #       rendering:
+  #         path: "rendering..@id"
+  #       thumbnail:
+  #         path: "thumbnail..@id"
