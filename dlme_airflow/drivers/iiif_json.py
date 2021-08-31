@@ -8,7 +8,8 @@ import pandas as pd
 class IIIfJsonSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "iiif_json"
-    version = "0.0.1"
+    version = "0.0.2"
+    partition_access = True
 
     def __init__(self, collection_url, dtype=None, metadata=None):
         super(IIIfJsonSource, self).__init__(metadata=metadata)
@@ -22,7 +23,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
         for manifest in collection_result.json().get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
-    def _open_manifest(self, manifest_url):
+    def _open_manifest(self, manifest_url: str):
         manifest_result = requests.get(manifest_url)
         manifest_detail = manifest_result.json()
         record = self._construct_fields(manifest_detail)
@@ -30,7 +31,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
         record.update(self._from_metadata(manifest_detail.get("metadata", [])))
         return record
 
-    def _construct_fields(self, manifest):
+    def _construct_fields(self, manifest: dict) -> dict:
         output = {}
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
@@ -45,15 +46,29 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 output[name] = result[0]  # Use first value
         return output
 
-    def _from_metadata(self, metadata):
+    def _from_metadata(self, metadata) -> dict:
         output = {}
         for row in metadata:
-            name = row.get('label').replace(" ", "-").lower().replace("(", "").replace(")", "")
+            name = (
+                row.get("label")
+                .replace(" ", "-")
+                .lower()
+                .replace("(", "")
+                .replace(")", "")
+            )
             if name in output:
-                output[name].append(row.get('value'))
+                output[name].append(row.get("value"))
             else:
-                output[name] = [row.get('value')]
+                output[name] = [row.get("value")]
         return output
+
+    def _get_partition(self, i) -> pd.DataFrame:
+        result = self._open_manifest(self._manifest_urls[i])
+        return pd.DataFrame(
+            [
+                result,
+            ]
+        )
 
     def _get_schema(self):
         for name, info in self.metadata.get("fields", {}).items():
@@ -69,4 +84,4 @@ class IIIfJsonSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.DataFrame([self._open_manifest(url) for url in self._manifest_urls])
+        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
