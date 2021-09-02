@@ -1,6 +1,7 @@
 import logging
 import pathlib
 import time
+import os
 
 import intake
 import pandas as pd
@@ -8,7 +9,10 @@ import pandas as pd
 
 from harvester.validations import check_equality
 
-catalog = intake.open_catalog("catalog.yaml")
+
+def catalog():
+    catalog_file = os.getenv("CATALOG_SOURCE", "catalogs/catalog.yaml")
+    return intake.open_catalog(catalog_file)
 
 
 def get_existing_df(driver: str, existing_dir: pathlib.Path) -> pd.DataFrame:
@@ -39,7 +43,7 @@ def data_source_harvester(provider: str):
     @param -- provider
     """
     logging.info(f"Starting harvest of {provider}")
-    source = getattr(catalog, provider)  # Raises Attribute error for missing provider
+    source = getattr(catalog(), provider)  # Raises Attribute error for missing provider
     source_df = source.read()
     existing_directory = pathlib.Path(source.metadata.get("current_directory"))
     existing_df = get_existing_df(source._entry._driver, existing_directory)
