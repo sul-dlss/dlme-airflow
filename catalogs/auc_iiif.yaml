@@ -5,7 +5,7 @@ sources:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/al-musawwar/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/al-musawwar/data.csv"
       fields:
         context:
           path: '@context'
@@ -78,7 +78,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/alexandria-bombardment/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/alexandria-bombardment/data.csv"
       fields:
         context:
           path: '@context'
@@ -125,7 +125,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/bint-al-nil/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/bint-al-nil/data.csv"
       fields:
         context:
           path: '@context'
@@ -175,7 +175,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/campus-photos/data/"
+      current_metadata: "/opt/airflow/metadata/auc/campus-photos/data.csv"
       fields:
         context:
           path: '@context'
@@ -229,7 +229,7 @@ sources:
         repository: object
         location: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/coptic/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/coptic/data.csv"
       fields:
         context:
           path: '@context'
@@ -275,7 +275,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/fathy/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/fathy/data.csv"
       fields:
         context:
           path: '@context'
@@ -320,7 +320,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/hopkins/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/hopkins/data.csv"
       fields:
         context:
           path: '@context'
@@ -368,7 +368,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/islamic-aa/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/islamic-aa/data.csv"
       fields:
         context:
           path: '@context'
@@ -418,7 +418,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/maps/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/maps/data.csv"
       fields:
         context:
           path: '@context'
@@ -468,7 +468,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/maritz/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/maritz/data.csv"
       fields:
         context:
           path: '@context'
@@ -517,7 +517,7 @@ sources:
         format: object
         type: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/napoleonic-egypt/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/napoleonic-egypt/data.csv"
       fields:
         context:
           path: '@context'
@@ -563,7 +563,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/parker/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/parker/data.csv"
       fields:
         context:
           path: '@context'
@@ -609,7 +609,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/postcards/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/postcards/data.csv"
       fields:
         context:
           path: '@context'
@@ -655,7 +655,7 @@ sources:
         identifier: object
         publisher: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/qurna/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/qurna/data.csv"
       fields:
         context:
           path: '@context'
@@ -705,7 +705,7 @@ sources:
         description: object
         extent: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/rare-books/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/rare-books/data.csv"
       fields:
         context:
           path: '@context'
@@ -750,7 +750,7 @@ sources:
         type: object
         repository: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/sphinx/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/sphinx/data.csv"
       fields:
         context:
           path: '@context'
@@ -800,7 +800,7 @@ sources:
         name: object
         creator: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/taxiphote-slides/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/taxiphote-slides/data.csv"
       fields:
         context:
           path: '@context'
@@ -854,7 +854,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/underwood/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/underwood/data.csv"
       fields:
         context:
           path: '@context'
@@ -914,7 +914,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/university-on-the-square/data/"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/university-on-the-square/data.csv"
       fields:
         context:
           path: '@context'
@@ -962,7 +962,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      current_directory: "/opt/airflow/metadata/auc/iiif/wassef/data"
+      current_metadata: "/opt/airflow/metadata/auc/iiif/wassef/data.csv"
       fields:
         context:
           path: '@context'

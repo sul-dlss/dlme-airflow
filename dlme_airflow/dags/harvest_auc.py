@@ -1,4 +1,6 @@
 import intake
+import logging
+import os
 from datetime import datetime, timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
@@ -30,25 +32,24 @@ default_args = {
     'catchup': False,
 }
 
-provider = 'bodleian'
+provider = 'auc_iiif'
 
 with DAG(
     f'harvest.{provider}',
     default_args=default_args,
     description=f'IIIF harvester for the {provider} collection(s)',
-    schedule_interval='@once',
+    schedule_interval='@yearly',
     start_date=datetime(2021, 8, 26),
-    tags=['metadata', 'iiif', provider],
+    tags=['metadata', 'iiif'],
     catchup=False
 ) as dag:
 
     validate_dlme_metadata = build_validate_metadata_taskgroup(dag=dag)
 
-    harvester = build_iiif_harvester_taskgroup(provider, dag)
+    bodleian_harvester = build_iiif_harvester_taskgroup(provider, dag)
 
-    # A dummy operator is required as a transition point between task groups
     harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
     collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
     
-    validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes
+    validate_dlme_metadata >> bodleian_harvester >> harvest_complete >> collect_metadata_changes
