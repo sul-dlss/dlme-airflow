@@ -46,7 +46,6 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 output[name] = result[0]  # Use first value
         return output
 
-    # TODO: Discuss if this output shoould be an array (line 63) or a string
     def _from_metadata(self, metadata) -> dict:
         output = {}
         for row in metadata:
@@ -57,7 +56,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 .replace("(", "")
                 .replace(")", "")
             )
-            output[name] = row.get("value")
+            output[name] = row.get("value")  # this will assign the last value found to output[name]
             # if name in output:
             #     output[name].append(row.get("value"))
             # else:
@@ -72,7 +71,6 @@ class IIIfJsonSource(intake.source.base.DataSource):
             ]
         )
 
-    # TODO: Ask/Investigate (with jnelson) what the purpose of dtyle=self.dtype
     def _get_schema(self):
         for name, info in self.metadata.get("fields", {}).items():
             self._path_expressions[name] = jsonpath_ng.parse(info.get("path"))

@@ -26,7 +26,7 @@ def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGr
     source = catalog_for_provider(provider)
 
     try:
-        collections = iter(list(source))
+        collections = list(source).__iter__()
     except TypeError:
         collections = [source]
 
