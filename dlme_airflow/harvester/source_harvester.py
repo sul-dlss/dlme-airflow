@@ -6,6 +6,9 @@ PROVIDER = 'provider'
 
 
 def provider_key(**kwargs):
+    if PROVIDER not in kwargs:
+        return None
+
     if COLLECTION not in kwargs:
         return kwargs[PROVIDER]
 
