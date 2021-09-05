@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.dummy import DummyOperator
 from airflow.models import Variable
 
 # Our stuff

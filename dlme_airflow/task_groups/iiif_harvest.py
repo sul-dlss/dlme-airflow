@@ -2,7 +2,7 @@
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from utils.catalog import catalog_for_provider

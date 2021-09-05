@@ -5,14 +5,14 @@ from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.operators.bash import BashOperator
-from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.python_operator import BranchPythonOperator
+from airflow.operators.dummy import DummyOperator
+from airflow.operators.python import BranchPythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
 
 
-home_directory = os.environ['AIRFLOW_HOME']
-metadata_directory = os.environ['AIRFLOW_HOME']+"/metadata/"
+home_directory = os.getenv('AIRFLOW_HOME', '/opt/airflow')
+metadata_directory = f"{home_directory}/metadata/"
 git_branch = Variable.get("git_branch", default_var='intake')
 git_repo = Variable.get("git_repo_metadata")
 

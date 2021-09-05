@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.contrib.operators.ecs_operator import ECSOperator
+from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.models import Variable
 
 # These args will get passed on to each operator

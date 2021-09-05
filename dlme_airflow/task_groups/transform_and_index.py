@@ -4,7 +4,7 @@ import os
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.contrib.operators.ecs_operator import ECSOperator
+from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
 
 
