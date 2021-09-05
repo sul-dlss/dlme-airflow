@@ -20,6 +20,9 @@ def data_source_harvester(**kwargs):
     @param -- provider
     """
 
+    if PROVIDER not in kwargs:
+        raise ValueError('Missing provider argument.')
+
     source_provider = provider_key(**kwargs)
 
     source = catalog_for_provider(source_provider)

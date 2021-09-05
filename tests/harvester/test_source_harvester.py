@@ -21,3 +21,7 @@ def test_source_harvester():
 def test_provider_not_found():
     with pytest.raises(AttributeError, match=r"bad_provider"):
         data_source_harvester(provider="bad_provider")
+
+def test_missing_provider():
+    with pytest.raises(ValueError, match=r"Missing provider argument."):
+        data_source_harvester()
