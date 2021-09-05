@@ -2,9 +2,6 @@ import os
 import pandas as pd
 
 
-from harvester.validations import check_equality
-
-
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.
 def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
@@ -20,6 +17,8 @@ def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
             return read_func(data_file_path)
 
 
+# TODO: An Error is thrown on line 22 if working_directory is not found in
+#       the metadata. Need to handle this error.
 def dataframe_to_file(dataframe):
     working_directory = dataframe.metadata.get("working_directory")
     os.makedirs(working_directory, exist_ok=True)

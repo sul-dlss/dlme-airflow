@@ -1,4 +1,3 @@
-import logging
 import os
 from datetime import datetime, timedelta
 
@@ -7,11 +6,6 @@ from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.contrib.operators.ecs_operator import ECSOperator
-from airflow.contrib.sensors.bash_sensor import BashSensor
-from airflow.operators.bash import BashOperator
-from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.email import EmailOperator
-from airflow.operators.python_operator import BranchPythonOperator
 from airflow.models import Variable
 
 # These args will get passed on to each operator
@@ -26,20 +20,6 @@ default_args = {
     'retry_delay': timedelta(seconds=60),
     'catchup': False,
 }
-
-# home_directory = os.environ['AIRFLOW_HOME']
-# metadata_directory = os.environ['AIRFLOW_HOME']+"/metadata/"
-# git_branch = Variable.get("git_branch", default_var='main')
-# git_repo = Variable.get("git_repo_metadata")
-
-
-# def validate_metadata_folder(**kwargs):
-#     logging.info("validate_git_dags_folder STARTED")
-#     if not os.path.exists(metadata_directory):
-#         os.makedirs(metadata_directory)
-#     if len(os.listdir(metadata_directory)) == 0:
-#         return 'clone_metadata'
-#     return 'pull_metadata'
 
 
 with DAG(
@@ -71,6 +51,4 @@ with DAG(
                 "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
             },
         },
-        # awslogs_group="/ecs/hello-world",
-        # awslogs_stream_prefix="prefix_b/hello-world-container",  # prefix with container name
     )

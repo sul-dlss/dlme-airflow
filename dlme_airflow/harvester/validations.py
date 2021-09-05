@@ -12,5 +12,3 @@ def check_equality(harvested_df: pd.DataFrame, saved_df: pd.DataFrame):
     """
     if not saved_df.equals(harvested_df):
         logging.error("harvested dataframe does not equal saved dataframe")
-
-# look at saved_df.compare

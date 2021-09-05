@@ -50,5 +50,5 @@ with DAG(
     harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
     collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
-    
+
     validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes

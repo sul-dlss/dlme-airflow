@@ -23,7 +23,7 @@ default_args = {
 with DAG(
     'maintenance.clone_dlme_metadata',
     default_args=default_args,
-    description=f'Clone DLME-metadata into containers',
+    description='Clone DLME-metadata into containers',
     schedule_interval='@yearly',
     start_date=datetime(2021, 8, 26),
     tags=['metadata'],

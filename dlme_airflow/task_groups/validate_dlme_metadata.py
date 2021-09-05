@@ -21,6 +21,7 @@ task_group_prefix = 'validate_metadata'
 git_user_email = 'aaron.collier@stanford.edu'
 git_user_name = 'Aaron Collier'
 
+
 def validate_metadata_folder(**kwargs):
     if not os.path.exists(metadata_directory):
         return f"{task_group_prefix}.clone_metadata"
@@ -29,6 +30,7 @@ def validate_metadata_folder(**kwargs):
         return f"{task_group_prefix}.clone_metadata"
 
     return f"{task_group_prefix}.pull_metadata"
+
 
 def build_validate_metadata_taskgroup(dag: DAG) -> TaskGroup:
     validate_metadata_taskgroup = TaskGroup(group_id=task_group_prefix)
@@ -39,7 +41,7 @@ def build_validate_metadata_taskgroup(dag: DAG) -> TaskGroup:
         bash_command=bash_command_configure,
         task_group=validate_metadata_taskgroup,
         dag=dag)
-    
+
     """ Validates if the git folder is empty or not """
     validate_git_folder = BranchPythonOperator(
         task_id=f"{task_group_prefix}_folder",

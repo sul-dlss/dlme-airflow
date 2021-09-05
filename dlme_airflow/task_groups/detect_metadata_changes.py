@@ -8,6 +8,7 @@ from airflow.utils.task_group import TaskGroup
 from utils.catalog import catalog_for_provider
 from tasks.check_equality import check_equity
 
+
 def build_detect_changes_task(provider, task_group: TaskGroup, dag: DAG):
     compare_dataframes = PythonOperator(
         task_id=f"{provider}_compare_dataframes",
@@ -26,12 +27,12 @@ def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGr
 
     try:
         collections = iter(list(source))
-    except:
+    except TypeError:
         collections = [source]
 
     for collection in collections:
         task_array.append(build_detect_changes_task(f"{provider}.{collection}", task_group, dag))
-    
+
     return task_array
 
 
