@@ -1,5 +1,5 @@
 import intake
-import jsonpath_ng
+import logging
 import pandas as pd
 from sickle import Sickle
 from lxml import etree
@@ -11,61 +11,69 @@ class OAIXmlSource(intake.source.base.DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, dtype=None, metadata=None):
+    def __init__(self, collection_url, set, dtype=None, metadata=None):
         super(OAIXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
-        self.dtype = dtype
+        self.set = set
         self._collection = Sickle(self.collection_url)
+        self._path_expressions = self._get_path_expressions()
         self._records = []
-        self._path_expressions = {}
-
 
     def _open_set(self):
-        set = self.metadata.get("name")
-        oai_records = self._collection.ListRecords(metadataPrefix='oai_dc', set=set, ignore_deleted=True) # requests.get(manifest_url)
+        oai_records = self._collection.ListRecords(metadataPrefix='oai_dc', set=self.set, ignore_deleted=True)
         for oai_record in oai_records:
-            xtree = etree.parse(oai_record)
-            # xroot = xtree.getroot()
-            record = self._contruct_fields(xtree)
+            xtree = etree.fromstring(oai_record.raw)
+            record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
             self._records.append(record)
 
-
     def _construct_fields(self, manifest: etree) -> dict:
         output = {}
-        for name, info in self.metadata.get("fields").items():
-            expression = self._path_expressions.get(name)
-            # result = [match.value for match in expression.find(manifest)]
-            # if len(result) < 1:
-            #     if info.get("optional") is True:
-            #         # Skip and continue
-            #         continue
-            #     else:
-            #         logging.warn(f"{manifest.get('@id')} missing {name}")
-            # else:
-            #     output[name] = result[0]  # Use first value
+        for field in self._path_expressions:
+            path = self._path_expressions[field]['path']
+            namespace = self._path_expressions[field]['namespace']
+            optional = self._path_expressions[field]['optional']
+            result = manifest.xpath(path, namespaces=namespace)
+            if len(result) < 1:
+                if optional is True:
+                    # Skip and continue
+                    continue
+                else:
+                    logging.warn(f"Manifest missing {field}")
+            else:
+                output[field] = result[0].text.strip()  # Use first value
         return output
 
+    def uri2label(self, value: str, nsmap: dict):
+        for key in list(nsmap.keys()):
+            if nsmap[key] in value:
+                return value.replace(nsmap[key], "").replace("{}", "")
 
     # TODO: Discuss if this output shoould be an array (line 63) or a string
     def _from_metadata(self, manifest: etree) -> dict:
         output = {}
-        for node in manifest.xpath("//record/metadata/oai:dc"):
-            output[node.tag] = node.text.strip()
+        NS = {'oai_dc': "http://www.openarchives.org/OAI/2.0/oai_dc/"}
+        oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
+        for metadata in oai_block.getchildren():
+            tag = self.uri2label(metadata.tag, metadata.nsmap)
+            output[tag] = metadata.text.strip()
 
         return output
 
-
     def _get_partition(self, i) -> pd.DataFrame:
-        self._open_set()
         return pd.DataFrame(self._records)
 
+    def _get_path_expressions(self):
+        paths = {}
+        for name, info in self.metadata.get("fields", {}).items():
+            paths[name] = info
+
+        return paths
 
     # TODO: Ask/Investigate (with jnelson) what the purpose of dtyle=self.dtype
     def _get_schema(self):
-        for name, info in self.metadata.get("fields", {}).items():
-            self._path_expressions[name] = jsonpath_ng.parse(info.get("path"))
-        self._open_records()
+        self._open_set()
+
         return intake.source.base.Schema(
             datashape=None,
             dtype=self.dtype,
@@ -73,7 +81,6 @@ class OAIXmlSource(intake.source.base.DataSource):
             npartitions=len(self._records),
             extra_metadata={},
         )
-
 
     def read(self):
         self._load_metadata()

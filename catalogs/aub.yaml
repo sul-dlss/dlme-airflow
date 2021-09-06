@@ -1,0 +1,73 @@
+metadata:
+  version: 1
+sources:
+  aco:
+    driver: oai_xml
+    args:
+      collection_url: https://libraries.aub.edu.lb/xtf/oai
+      set: "aco"
+    metadata:
+      current_metadata: "/opt/airflow/metadata/aub/aco/data.csv"
+      working_directory: "/opt/airflow/working/aub/aco"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
+  aladab:
+    driver: oai_xml
+    args:
+      collection_url: https://libraries.aub.edu.lb/xtf/oai
+      set: "aladab"
+    metadata:
+      current_metadata: "/opt/airflow/metadata/aub/aladab/data.csv"
+      working_directory: "/opt/airflow/working/aub/aladab"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
+  postcards:
+    driver: oai_xml
+    args:
+      collection_url: https://libraries.aub.edu.lb/xtf/oai
+      set: "postcards"
+    metadata:
+      current_metadata: "/opt/airflow/metadata/aub/postcards/data.csv"
+      working_directory: "/opt/airflow/working/aub/postcards"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
+  posters:
+    driver: oai_xml
+    args:
+      collection_url: https://libraries.aub.edu.lb/xtf/oai
+      set: "posters"
+    metadata:
+      current_metadata: "/opt/airflow/metadata/aub/posters/data.csv"
+      working_directory: "/opt/airflow/working/aub/posters"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
+  travelbooks:
+    driver: oai_xml
+    args:
+      collection_url: https://libraries.aub.edu.lb/xtf/oai
+      set: "travelbooks"
+    metadata:
+      current_metadata: "/opt/airflow/metadata/aub/travelbooks/data.csv"
+      working_directory: "/opt/airflow/working/aub/travelbooks"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
