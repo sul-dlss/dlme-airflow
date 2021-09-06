@@ -28,10 +28,8 @@ def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGr
     try:
         collections = list(source).__iter__()
     except TypeError:
-        collections = [source]
+        return build_detect_changes_task(f"{provider}", task_group, dag)
 
-    for collection in collections:
-        task_array.append(build_detect_changes_task(f"{provider}.{collection}", task_group, dag))
 
     return task_array
 

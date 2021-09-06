@@ -24,11 +24,10 @@ def harvester_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     source = catalog_for_provider(provider)
     try:
         collections = iter(list(source))
+        for collection in collections:
+            task_array.append(build_havester_task(f"{provider}.{collection}", task_group, dag))
     except TypeError:
-        collections = [source]
-
-    for collection in collections:
-        task_array.append(build_havester_task(f"{provider}.{collection}", task_group, dag))
+        return build_havester_task(f"{provider}", task_group, dag)
 
     return task_array
 

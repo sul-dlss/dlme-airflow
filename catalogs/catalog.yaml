@@ -7,64 +7,65 @@ sources:
     description: "American University of Beirut"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  # ans:
-  #   description: "American Numismatic Society"
-  #   driver: csv
-  #   metadata:
-  #     current_directory: "/opt/airflow/metadata/american-numismatic-society/data/"
-  #   args:
-  #     csv_kwargs:
-  #       blocksize: null
-  #       dtype:
-  #         URI: object
-  #         Title: object
-  #         RecordId: object
-  #         Coin Type URI: object
-  #         From Date: float64
-  #         To Date: float64
-  #         Artist: object
-  #         SubjectEvent: object
-  #         SubjectIssuer: object
-  #         SubjectPerson: object
-  #         SubjectPlace: object
-  #         Authority: object
-  #         Coin Type: object
-  #         Degree: float64
-  #         Deity: object
-  #         Denomination: object
-  #         Department: object
-  #         Dynasty: object
-  #         Engraver: float64
-  #         Maker: object
-  #         Manufacture: object
-  #         Material: object
-  #         Mint: object
-  #         Object Type: object
-  #         Portrait: object
-  #         Reference: object
-  #         Region: object
-  #         Script: object
-  #         State: object
-  #         Obverse Legend: object
-  #         Obverse Type: object
-  #         Date on Object: float64
-  #         Ah: float64
-  #         Axis: float64
-  #         Diameter: float64
-  #         Weight: float64
-  #         Thumbnail_obv: object
-  #         Thumbnail_rev: object
-  #         Date Record Modified: object
+  ans:
+    description: "American Numismatic Society"
+    driver: csv
+    metadata:
+      current_metadata: "/opt/airflow/metadata/american-numismatic-society/data.csv"
+      working_directory: "/opt/airflow/working/american-numismatic-society/data.csv"
+    args:
+      csv_kwargs:
+        blocksize: null
+        dtype:
+          URI: object
+          Title: object
+          RecordId: object
+          Coin Type URI: object
+          From Date: float64
+          To Date: float64
+          Artist: object
+          SubjectEvent: object
+          SubjectIssuer: object
+          SubjectPerson: object
+          SubjectPlace: object
+          Authority: object
+          Coin Type: object
+          Degree: float64
+          Deity: object
+          Denomination: object
+          Department: object
+          Dynasty: object
+          Engraver: float64
+          Maker: object
+          Manufacture: object
+          Material: object
+          Mint: object
+          Object Type: object
+          Portrait: object
+          Reference: object
+          Region: object
+          Script: object
+          State: object
+          Obverse Legend: object
+          Obverse Type: object
+          Date on Object: float64
+          Ah: float64
+          Axis: float64
+          Diameter: float64
+          Weight: float64
+          Thumbnail_obv: object
+          Thumbnail_rev: object
+          Date Record Modified: object
 
-  #     urlpath:
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=2001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=3001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=4001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001'
-  #       - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001'
+      urlpath:
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=2001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=3001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=4001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001'
+        - 'http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001'
   auc_iiif:
     args:
       path: /opt/catalogs/auc_iiif.yaml
@@ -77,97 +78,98 @@ sources:
     description: "Bodleian Libraries, University of Oxford"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  # penn_egyptian_museum:
-  #   description: "University of Pennsylvania Egyptian Museum"
-  #   driver: csv
-  #   metadata:
-  #     current_directory: "/opt/airflow/metadata/penn/egyptian-museum/data/"
-  #   args:
-  #     urlpath:
-  #       - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
-  #       - 'http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip'
-  #     csv_kwargs:
-  #       dtype:
-  #         emuIRN: int64
-  #         curatorial_section: object
-  #         object_number: object
-  #         object_name: object
-  #         native_name: object
-  #         culture: object
-  #         provenience: object
-  #         material: object
-  #         period: object
-  #         date_made: object
-  #         date_made_early: object
-  #         date_made_late: object
-  #         accession_credit_line: object
-  #         creator: object
-  #         description: object
-  #         manufacture_locationlocus: float64
-  #         culture_area: object
-  #         technique: object
-  #         iconography: object
-  #         measurement_height: float64
-  #         measurement_length: float64
-  #         measurement_width: float64
-  #         measurement_outside_diameter: float64
-  #         measurement_tickness: float64
-  #         measurement_unit: object
-  #         other_numbers: object
-  #         url: object
-
-  # yale_babylonian:
-  #   description: 'Yale Babylonian Collection'
-  #   driver: csv
-  #   metadata:
-  #     current_directory: "/opt/airflow/metadata/yale/babylonian/data/"
-  #   args:
-  #     csv_kwargs:
-  #       blocksize: null
-  #       dtype:
-  #         id: int64
-  #         occurrence_id: object
-  #         last_modified: object
-  #         callnumber: object
-  #         title: object
-  #         scientificname: object
-  #         collector: float64
-  #         collecting_date: float64
-  #         latitude: float64
-  #         longitude: float64
-  #         datum: object
-  #         geographic_continent: object
-  #         geographic_country: object
-  #         geographic_stateprovince: object
-  #         geographic_county: object
-  #         geographic_municipality: object
-  #         geographic_locality: float64
-  #         common_name: float64
-  #         type: object
-  #         format: object
-  #         era: object
-  #         geographic_culture: object
-  #         identified_by: object
-  #         identification_references: float64
-  #         previous_identifications: float64
-  #         associated_references: float64
-  #     urlpath:
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=1&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=2&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=3&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=4&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=5&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=6&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=7&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=8&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=9&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=10&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=11&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=12&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=13&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=14&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=15&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=16&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=17&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=18&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
-  #       - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=19&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+  penn_egyptian_museum:
+    description: "University of Pennsylvania Egyptian Museum"
+    driver: csv
+    metadata:
+      current_metadata: "/opt/airflow/metadata/penn/egyptian-museum/data.csv"
+      working_directory: "/opt/airflow/working/penn/egyptian-museum/data.csv"
+    args:
+      urlpath:
+        - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
+        - 'http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip'
+      csv_kwargs:
+        dtype:
+          emuIRN: int64
+          curatorial_section: object
+          object_number: object
+          object_name: object
+          native_name: object
+          culture: object
+          provenience: object
+          material: object
+          period: object
+          date_made: object
+          date_made_early: object
+          date_made_late: object
+          accession_credit_line: object
+          creator: object
+          description: object
+          manufacture_locationlocus: float64
+          culture_area: object
+          technique: object
+          iconography: object
+          measurement_height: float64
+          measurement_length: float64
+          measurement_width: float64
+          measurement_outside_diameter: float64
+          measurement_tickness: float64
+          measurement_unit: object
+          other_numbers: object
+          url: object
+  yale_babylonian:
+    description: 'Yale Babylonian Collection'
+    driver: csv
+    metadata:
+      current_metadata: "/opt/airflow/metadata/yale/babylonian/data.csv"
+      working_directory: "/opt/airflow/working/yale/babylonian/data.csv"
+    args:
+      csv_kwargs:
+        blocksize: null
+        dtype:
+          id: int64
+          occurrence_id: object
+          last_modified: object
+          callnumber: object
+          title: object
+          scientificname: object
+          collector: float64
+          collecting_date: float64
+          latitude: float64
+          longitude: float64
+          datum: object
+          geographic_continent: object
+          geographic_country: object
+          geographic_stateprovince: object
+          geographic_county: object
+          geographic_municipality: object
+          geographic_locality: float64
+          common_name: float64
+          type: object
+          format: object
+          era: object
+          geographic_culture: object
+          identified_by: object
+          identification_references: float64
+          previous_identifications: float64
+          associated_references: float64
+      urlpath:
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=1&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=2&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=3&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=4&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=5&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=6&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=7&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=8&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=9&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=10&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=11&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=12&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=13&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=14&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=15&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=16&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=17&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=18&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
+        - 'https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=19&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv'
