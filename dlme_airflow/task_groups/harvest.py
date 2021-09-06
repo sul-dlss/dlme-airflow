@@ -9,7 +9,7 @@ from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
 
 
-def build_iiif_havester_task(provider, task_group: TaskGroup, dag: DAG):
+def build_havester_task(provider, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
         task_id=f"{provider}_intake_harvester",
         task_group=task_group,
@@ -28,12 +28,12 @@ def harvester_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         collections = [source]
 
     for collection in collections:
-        task_array.append(build_iiif_havester_task(f"{provider}.{collection}", task_group, dag))
+        task_array.append(build_havester_task(f"{provider}.{collection}", task_group, dag))
 
     return task_array
 
 
-def build_iiif_harvester_taskgroup(provider, dag: DAG) -> TaskGroup:
-    iiif_harvester_taskgroup = TaskGroup(group_id="iiif_harvester")
+def build_harvester_taskgroup(provider, dag: DAG) -> TaskGroup:
+    iiif_harvester_taskgroup = TaskGroup(group_id="metadata_harvester")
 
     return harvester_tasks(provider, iiif_harvester_taskgroup, dag)
