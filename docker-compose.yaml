@@ -57,16 +57,17 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_FOLDER: '/opt/dlme_airflow/dags'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
-    AIRFLOW_VAR_GIT_BRANCH: 'main'
+    AIRFLOW_VAR_GIT_BRANCH: 'intake'
     AIRFLOW_VAR_GIT_REPO_METADATA: 'https://github.com/sul-dlss/dlme-metadata.git'
-    CATALOG_SOURCE: '/opt/catalogs/catalogs.yml'
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle intake aiohttp jsonpath_ng' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    CATALOG_SOURCE: '/opt/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
     - ./dlme_airflow:/opt/dlme_airflow
     - ./catalogs:/opt/catalogs
+    - ./metadata:/opt/airflow/metadata
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
   depends_on:
     redis:

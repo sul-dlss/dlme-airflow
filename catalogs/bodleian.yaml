@@ -44,8 +44,11 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/arabic/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/arabic/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/arabic"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
@@ -73,8 +76,11 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/exploring-egypt/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/exploring-egypt/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/exploring-egypt"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
@@ -131,8 +137,11 @@ sources:
         acknowledgements: object
         digitization-sponsor: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/hebrew/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/hebrew/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/hebrew"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
@@ -179,8 +188,11 @@ sources:
         related-items: object
         editors: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/persian/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/persian/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/persian"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
@@ -222,8 +234,11 @@ sources:
         provenance: object
         contents: object
     metadata:
-      current_directory: "/opt/airflow/metadata/bodleian/turkish/data/"
+      current_metadata: "/opt/airflow/metadata/bodleian/turkish/data.csv"
+      working_directory: "/opt/airflow/working/bodleian/turkish"
       fields:
+        id:
+          path: "@id"
         description:
           path: "description"
         rendering:
