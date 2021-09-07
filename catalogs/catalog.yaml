@@ -1,6 +1,12 @@
 metadata:
   version: 1
 sources:
+  aub:
+    args:
+      path: /opt/catalogs/aub.yaml
+    description: "American University of Beirut"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   ans:
     description: "American Numismatic Society"
     driver: csv
