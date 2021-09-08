@@ -1,12 +1,8 @@
 import intake
 import logging
-from datetime import datetime, timedelta
-
-# The DAG object; we'll need this to instantiate a DAG
-from airflow import DAG
+from datetime import timedelta
 
 # Operators and utils required from airflow
-from airflow.operators.dummy import DummyOperator
 from airflow.models import Variable
 
 from drivers.iiif_json import IIIfJsonSource

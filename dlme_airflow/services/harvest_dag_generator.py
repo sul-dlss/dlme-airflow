@@ -1,4 +1,3 @@
-import logging
 from datetime import datetime, timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
@@ -25,6 +24,7 @@ default_args = {
     'retry_delay': timedelta(seconds=60),
     'catchup': False,
 }
+
 
 def create_dag(provider, default_args):
     dag = DAG(
