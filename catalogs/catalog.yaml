@@ -11,7 +11,8 @@ sources:
     description: "American Numismatic Society"
     driver: csv
     metadata:
-      current_directory: "/opt/airflow/metadata/american-numismatic-society/data/"
+      current_metadata: "/opt/airflow/metadata/american-numismatic-society/data.csv"
+      working_directory: "/opt/airflow/working/american-numismatic-society/data.csv"
     args:
       csv_kwargs:
         blocksize: null
@@ -81,7 +82,8 @@ sources:
     description: "University of Pennsylvania Egyptian Museum"
     driver: csv
     metadata:
-      current_directory: "/opt/airflow/metadata/penn/egyptian-museum/data/"
+      current_metadata: "/opt/airflow/metadata/penn/egyptian-museum/data.csv"
+      working_directory: "/opt/airflow/working/penn/egyptian-museum/data.csv"
     args:
       urlpath:
         - 'http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip'
@@ -115,12 +117,12 @@ sources:
           measurement_unit: object
           other_numbers: object
           url: object
-
   yale_babylonian:
     description: 'Yale Babylonian Collection'
     driver: csv
     metadata:
-      current_directory: "/opt/airflow/metadata/yale/babylonian/data/"
+      current_metadata: "/opt/airflow/metadata/yale/babylonian/data.csv"
+      working_directory: "/opt/airflow/working/yale/babylonian/data.csv"
     args:
       csv_kwargs:
         blocksize: null
