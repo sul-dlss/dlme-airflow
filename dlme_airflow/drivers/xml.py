@@ -1,6 +1,5 @@
 import intake
 import logging
-from intake.utils import encode_datetime
 import pandas as pd
 import requests
 from lxml import etree
@@ -42,7 +41,7 @@ class XmlSource(intake.source.base.DataSource):
                 try:
                     output[field] = self.sanitize_value(result[0].text)  # Use first value
                 except AttributeError:
-                    output[field] = self.sanitize_value(result[0]) # if getting text fails, we may be pulling an attribute. 
+                    output[field] = self.sanitize_value(result[0])  # if getting text fails, we may be pulling an attribute.
         return output
 
     def sanitize_value(self, value):
