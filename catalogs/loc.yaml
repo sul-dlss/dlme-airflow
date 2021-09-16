@@ -1,0 +1,303 @@
+metadata:
+  version: 1
+sources:
+  abdul_hamid_ii_books:
+    description: "Abdul Hamid II Books"
+    driver: iiif_json
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/abdul-hamid-ii-books/data.csv"
+      working_directory: "/opt/airflow/working/loc/abdul-hamid-ii-books"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  abdul_hamid_ii_photos:
+    description: "Abdul Hamid II Photographs"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/abdul-hamid-ii/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        location: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        photographer: object
+        repository: object
+        name: object
+        subject-tgm: object
+        original-identifier: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/abdul-hamid-ii-photos/data.csv"
+      working_directory: "/opt/airflow/working/loc/abdul-hamid-ii-photos"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  el_taher:
+    description: "Eltaher Collection"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/eltaher-collection/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        description-arabic: object
+        creator: object
+        date: object
+        description-english: object
+        format: object
+        genre-aat: object
+        language: object
+        publisher: object
+        rights: object
+        source: object
+        subject: object
+        title-english: object
+        title-arabic: object
+        type: object
+        repository: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/el-taher/data.csv"
+      working_directory: "/opt/airflow/working/loc/el-taher"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  greek_and_armenian_patriarchates:
+    description: "Manuscripts from the Greek and Armenian Patriarchates"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/greek-and-armenian-patriarchates-of-jerusalem/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        buildings: object
+        coverage: object
+        creator: object
+        collection: object
+        date: object
+        description: object
+        format: object
+        getty-aat: object
+        identifier: object
+        license: object
+        physical-box-number: object
+        rights: object
+        source: object
+        subject: object
+        subseries: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/greek-and-armenian-patriarchates/data.csv"
+      working_directory: "/opt/airflow/working/loc/greek-and-armenian-patriarchates"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  persian:
+    description: "Persian Manuscripts"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        alternative-title: object
+        author: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        name: object
+        patron: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        scribe: object
+        repository: object
+        location: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/persian/data.csv"
+      working_directory: "/opt/airflow/working/loc/persian/coptic"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  st_catherines_monastery:
+    description: "Manuscripts from Saint Catherine's Monastery"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/manuscripts-in-st-catherines-monastery-mount-sinai/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        collection: object
+        location-in-english: object
+        date-created: object
+        creator: object
+        access-rights: object
+        license: object
+        source: object
+        site: object
+        subject: object
+        title-in-english: object
+        title-in-arabic: object
+        repository: object
+        location-in-arabic: object
+        original-identifier: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/loc/st-catherines-monastery/data.csv"
+      working_directory: "/opt/airflow/working/loc/st-catherines-monastery"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true

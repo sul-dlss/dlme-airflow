@@ -1,0 +1,201 @@
+metadata:
+  version: 1
+sources:
+  abidindino_iiif:
+    description: "Abadin Dino IIIf Records"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/abidindino/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/ssm/iiif/abidindino/data.csv"
+      working_directory: "/opt/airflow/working/ssm/iiif/abidindino"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  emirgan:
+    description: "Emirgan"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/emirgan/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        location: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        photographer: object
+        repository: object
+        name: object
+        subject-tgm: object
+        original-identifier: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/auc/iiif/emirgan/data.csv"
+      working_directory: "/opt/airflow/working/auc/iiif/emirgan"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  kitap_vehat:
+    description: "Kitap Vehat"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/Kitapvehat/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        description-arabic: object
+        creator: object
+        date: object
+        description-english: object
+        format: object
+        genre-aat: object
+        language: object
+        publisher: object
+        rights: object
+        source: object
+        subject: object
+        title-english: object
+        title-arabic: object
+        type: object
+        repository: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/ssm/iiif/kitap-vehat/data.csv"
+      working_directory: "/opt/airflow/working/ssm/iiif/kitap-vehat"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  resim_klksyn:
+    description: "Turkish Painting: Ottoman Reformation to the Republic"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/ResimKlksyn/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        buildings: object
+        coverage: object
+        creator: object
+        collection: object
+        date: object
+        description: object
+        format: object
+        getty-aat: object
+        identifier: object
+        license: object
+        physical-box-number: object
+        rights: object
+        source: object
+        subject: object
+        subseries: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      current_metadata: "/opt/airflow/metadata/ssm/iiif/resim-klksyn/data.csv"
+      working_directory: "/opt/airflow/working/ssm/iiif/resim-klksyn"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
