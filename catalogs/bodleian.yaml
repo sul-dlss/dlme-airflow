@@ -2,7 +2,7 @@ metadata:
   version: 1
 sources:
   arabic:
-    description: "Items of Arabic origin"
+    description: Items of Arabic origin
     driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/arabic-origin
@@ -44,19 +44,19 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/bodleian/arabic/data.csv"
-      working_directory: "/opt/airflow/working/bodleian/arabic"
+      current_metadata: /opt/airflow/metadata/bodleian/arabic/data.csv
+      working_directory: /opt/airflow/working/bodleian/arabic
       fields:
         id:
-          path: "@id"
+          path: @id
         description:
-          path: "description"
+          path: description
         rendering:
-          path: "rendering..@id"
+          path: rendering..@id
         thumbnail:
-          path: "thumbnail..@id"
+          path: thumbnail..@id
   exploring_egypt:
-    description: "Exploring Egypt in the 19th Century"
+    description: Exploring Egypt in the 19th Century
     driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/exploring-egypt
@@ -76,19 +76,19 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/bodleian/exploring-egypt/data.csv"
-      working_directory: "/opt/airflow/working/bodleian/exploring-egypt"
+      current_metadata: /opt/airflow/metadata/bodleian/exploring-egypt/data.csv
+      working_directory: /opt/airflow/working/bodleian/exploring-egypt
       fields:
         id:
-          path: "@id"
+          path: @id
         description:
-          path: "description"
+          path: description
         rendering:
-          path: "rendering..@id"
+          path: rendering..@id
         thumbnail:
-          path: "thumbnail..@id"
+          path: thumbnail..@id
   hebrew:
-    description: "Items of Hebrew origin"
+    description: Items of Hebrew origin
     driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/hebrew-origin
@@ -137,19 +137,19 @@ sources:
         acknowledgements: object
         digitization-sponsor: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/bodleian/hebrew/data.csv"
-      working_directory: "/opt/airflow/working/bodleian/hebrew"
+      current_metadata: /opt/airflow/metadata/bodleian/hebrew/data.csv
+      working_directory: /opt/airflow/working/bodleian/hebrew
       fields:
         id:
-          path: "@id"
+          path: @id
         description:
-          path: "description"
+          path: description
         rendering:
-          path: "rendering..@id"
+          path: rendering..@id
         thumbnail:
-          path: "thumbnail..@id"
+          path: thumbnail..@id
   persian:
-    description: "Items of Persian origin"
+    description: Items of Persian origin
     driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/persian-origin
@@ -188,19 +188,19 @@ sources:
         related-items: object
         editors: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/bodleian/persian/data.csv"
-      working_directory: "/opt/airflow/working/bodleian/persian"
+      current_metadata: /opt/airflow/metadata/bodleian/persian/data.csv
+      working_directory: /opt/airflow/working/bodleian/persian
       fields:
         id:
-          path: "@id"
+          path: @id
         description:
-          path: "description"
+          path: description
         rendering:
-          path: "rendering..@id"
+          path: rendering..@id
         thumbnail:
-          path: "thumbnail..@id"
+          path: thumbnail..@id
   turkish:
-    description: "Items of Turkish origin"
+    description: Items of Turkish origin
     driver: iiif_json
     args:
       collection_url: https://iiif.bodleian.ox.ac.uk/iiif/collection/turkish-origin
@@ -234,14 +234,14 @@ sources:
         provenance: object
         contents: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/bodleian/turkish/data.csv"
-      working_directory: "/opt/airflow/working/bodleian/turkish"
+      current_metadata: /opt/airflow/metadata/bodleian/turkish/data.csv
+      working_directory: /opt/airflow/working/bodleian/turkish
       fields:
         id:
-          path: "@id"
+          path: @id
         description:
-          path: "description"
+          path: description
         rendering:
-          path: "rendering..@id"
+          path: rendering..@id
         thumbnail:
-          path: "thumbnail..@id"
+          path: thumbnail..@id

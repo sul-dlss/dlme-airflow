@@ -2,7 +2,7 @@ metadata:
   version: 1
 sources:
   princeton_movie_config:
-    description: "Princeton Movie Posters"
+    description: Princeton Movie Posters
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/2ce536fa-8c6e-4f1d-b411-29a28fe188d5/manifest
@@ -26,29 +26,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/princeton/movie-posters/data.csv"
-      working_directory: "/opt/airflow/working/princeton/movie-posters"
+      current_metadata: /opt/airflow/metadata/princeton/movie-posters/data.csv
+      working_directory: /opt/airflow/working/princeton/movie-posters
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   princeton_mss_config:
-    description: "Princeton Manuscripts"
+    description: Princeton Manuscripts
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
@@ -79,29 +79,29 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/princeton/mss/data.csv"
-      working_directory: "/opt/airflow/working/princeton/mss"
+      current_metadata: /opt/airflow/metadata/princeton/mss/data.csv
+      working_directory: /opt/airflow/working/princeton/mss
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   princeton_ymdi_config:
-    description: "Princeton Yemeni Manuscripts"
+    description: Princeton Yemeni Manuscripts
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/eff75507-11bf-486b-b422-8fe29638b060/manifest
@@ -132,24 +132,24 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/princeton/ymdi/data.csv"
-      working_directory: "/opt/airflow/working/princeton/ymdis"
+      current_metadata: /opt/airflow/metadata/princeton/ymdi/data.csv
+      working_directory: /opt/airflow/working/princeton/ymdis
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true

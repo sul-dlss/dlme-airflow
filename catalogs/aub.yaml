@@ -5,69 +5,69 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
-      set: "aco"
+      set: aco
     metadata:
-      current_metadata: "/opt/airflow/metadata/aub/aco/data.csv"
-      working_directory: "/opt/airflow/working/aub/aco"
+      current_metadata: /opt/airflow/metadata/aub/aco/data.csv
+      working_directory: /opt/airflow/working/aub/aco
       fields:
         id:
-          path: "//header:identifier"
+          path: //header:identifier
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
+            header: http://www.openarchives.org/OAI/2.0/
           optional: True
   aladab:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
-      set: "aladab"
+      set: aladab
     metadata:
-      current_metadata: "/opt/airflow/metadata/aub/aladab/data.csv"
-      working_directory: "/opt/airflow/working/aub/aladab"
+      current_metadata: /opt/airflow/metadata/aub/aladab/data.csv
+      working_directory: /opt/airflow/working/aub/aladab
       fields:
         id:
-          path: "//header:identifier"
+          path: //header:identifier
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
+            header: http://www.openarchives.org/OAI/2.0/
           optional: True
   postcards:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
-      set: "postcards"
+      set: postcards
     metadata:
-      current_metadata: "/opt/airflow/metadata/aub/postcards/data.csv"
-      working_directory: "/opt/airflow/working/aub/postcards"
+      current_metadata: /opt/airflow/metadata/aub/postcards/data.csv
+      working_directory: /opt/airflow/working/aub/postcards
       fields:
         id:
-          path: "//header:identifier"
+          path: //header:identifier
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
+            header: http://www.openarchives.org/OAI/2.0/
           optional: True
   posters:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
-      set: "posters"
+      set: posters
     metadata:
-      current_metadata: "/opt/airflow/metadata/aub/posters/data.csv"
-      working_directory: "/opt/airflow/working/aub/posters"
+      current_metadata: /opt/airflow/metadata/aub/posters/data.csv
+      working_directory: /opt/airflow/working/aub/posters
       fields:
         id:
-          path: "//header:identifier"
+          path: //header:identifier
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
+            header: http://www.openarchives.org/OAI/2.0/
           optional: True
   travelbooks:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
-      set: "travelbooks"
+      set: travelbooks
     metadata:
-      current_metadata: "/opt/airflow/metadata/aub/travelbooks/data.csv"
-      working_directory: "/opt/airflow/working/aub/travelbooks"
+      current_metadata: /opt/airflow/metadata/aub/travelbooks/data.csv
+      working_directory: /opt/airflow/working/aub/travelbooks
       fields:
         id:
-          path: "//header:identifier"
+          path: //header:identifier
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
+            header: http://www.openarchives.org/OAI/2.0/
           optional: True

@@ -2,29 +2,29 @@ metadata:
   version: 1
 sources:
   al_musawwar:
-    description: "Al-Musawwar Magazine Collection"
+    description: Al-Musawwar Magazine Collection
     driver: iiif_json
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/al-musawwar/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/al-musawwar"
+      current_metadata: /opt/airflow/metadata/auc/iiif/al-musawwar/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/al-musawwar
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll29/manifest.json
@@ -48,10 +48,10 @@ sources:
         type: object
         repository: object
   alexandria_bombardment:
-    description: "Alexandria Bombardment of 1882 Photograph Album"
+    description: Alexandria Bombardment of 1882 Photograph Album
     driver: iiif_json
     args:
-      collection_url: "https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll9/manifest.json"
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll9/manifest.json
       dtype:
         context: object
         id: object
@@ -79,29 +79,29 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/alexandria-bombardment/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/alexandria-bombardment"
+      current_metadata: /opt/airflow/metadata/auc/iiif/alexandria-bombardment/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/alexandria-bombardment
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   bint_al_nil:
-    description: "Bint al-Nil Journal"
+    description: Bint al-Nil Journal
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll19/manifest.json
@@ -127,29 +127,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/bint-al-nil/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/bint-al-nil"
+      current_metadata: /opt/airflow/metadata/auc/iiif/bint-al-nil/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/bint-al-nil
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   campus_photos:
-    description: "Art in the Greek Campus"
+    description: Art in the Greek Campus
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll32/manifest.json
@@ -178,29 +178,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/campus-photos/data.csv"
-      working_directory: "/opt/airflow/working/auc/campus-photos"
+      current_metadata: /opt/airflow/metadata/auc/campus-photos/data.csv
+      working_directory: /opt/airflow/working/auc/campus-photos
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   coptic:
-    description: "Iryan Moftah Coptic Language and Religion Manuscripts"
+    description: Iryan Moftah Coptic Language and Religion Manuscripts
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll4/manifest.json
@@ -233,29 +233,29 @@ sources:
         repository: object
         location: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/coptic/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/coptic"
+      current_metadata: /opt/airflow/metadata/auc/iiif/coptic/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/coptic
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   fathy:
-    description: "Hassan Fathy Architectural Archives"
+    description: Hassan Fathy Architectural Archives
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll13/manifest.json
@@ -280,29 +280,29 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/fathy/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/fathy"
+      current_metadata: /opt/airflow/metadata/auc/iiif/fathy/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/fathy
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   hopkins:
-    description: "Nicholas S. Hopkins Rural Egypt Photographs"
+    description: Nicholas S. Hopkins Rural Egypt Photographs
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll12/manifest.json
@@ -326,29 +326,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/hopkins/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/hopkins"
+      current_metadata: /opt/airflow/metadata/auc/iiif/hopkins/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/hopkins
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   islamic_aa:
-    description: "Islamic Art & Architecture Slides"
+    description: Islamic Art & Architecture Slides
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll30/manifest.json
@@ -375,29 +375,29 @@ sources:
         identifier: object
         description: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/islamic-aa/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/islamic-aa"
+      current_metadata: /opt/airflow/metadata/auc/iiif/islamic-aa/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/islamic-aa
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   maps:
-    description: "Historic Maps Digital Collection"
+    description: Historic Maps Digital Collection
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll6/manifest.json
@@ -426,29 +426,29 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/maps/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/maps"
+      current_metadata: /opt/airflow/metadata/auc/iiif/maps/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/maps
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   maritz:
-    description: "Philip Maritz Collection of Émile Béchard's Photographs of Egypt"
+    description: Philip Maritz Collection of Émile Béchards Photographs of Egypt
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll16/manifest.json
@@ -477,29 +477,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/maritz/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/maritz"
+      current_metadata: /opt/airflow/metadata/auc/iiif/maritz/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/maritz
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   napoleonic_egypt:
-    description: "Napoleonic Egypt"
+    description: Napoleonic Egypt
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll2/manifest.json
@@ -527,29 +527,29 @@ sources:
         format: object
         type: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/napoleonic-egypt/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/napoleonic-egypt"
+      current_metadata: /opt/airflow/metadata/auc/iiif/napoleonic-egypt/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/napoleonic-egypt
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   parker:
-    description: "Richard B. Parker Nile Watercraft Photographs"
+    description: Richard B. Parker Nile Watercraft Photographs
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll31/manifest.json
@@ -574,29 +574,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/parker/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/parker"
+      current_metadata: /opt/airflow/metadata/auc/iiif/parker/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/parker
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   postcards:
-    description: "Egyptian Postcard Collection"
+    description: Egyptian Postcard Collection
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll21/manifest.json
@@ -621,29 +621,29 @@ sources:
         repository: object
         publisher: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/postcards/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/postcards"
+      current_metadata: /opt/airflow/metadata/auc/iiif/postcards/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/postcards
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   qurna:
-    description: "Qurna Hillside Oral History Project"
+    description: Qurna Hillside Oral History Project
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll24/manifest.json
@@ -668,32 +668,32 @@ sources:
         identifier: object
         publisher: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/qurna/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/qurna"
+      current_metadata: /opt/airflow/metadata/auc/iiif/qurna/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/qurna
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
           optional: true
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
           optional: true
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
           optional: true
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   rare_books:
-    description: "Selections from the Rare Books and Special Collections Library"
+    description: Selections from the Rare Books and Special Collections Library
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll11/manifest.json
@@ -719,29 +719,29 @@ sources:
         description: object
         extent: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/rare-books/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/rare-books"
+      current_metadata: /opt/airflow/metadata/auc/iiif/rare-books/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/rare-books
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   sphinx:
-    description: "The Sphinx"
+    description: The Sphinx
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/sphinx/p1.json
@@ -765,29 +765,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/sphinx/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/sphinx"
+      current_metadata: /opt/airflow/metadata/auc/iiif/sphinx/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/sphinx
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   taxiphote_slides:
-    description: "Taxiphote Slides"
+    description: Taxiphote Slides
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll15/manifest.json
@@ -816,29 +816,29 @@ sources:
         name: object
         creator: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/taxiphote-slides/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/taxiphote-slides"
+      current_metadata: /opt/airflow/metadata/auc/iiif/taxiphote-slides/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/taxiphote-slides
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   underwood:
-    description: ""
+    description:
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll8/manifest.json
@@ -871,29 +871,29 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/underwood/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/underwood"
+      current_metadata: /opt/airflow/metadata/auc/iiif/underwood/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/underwood
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   university_on_the_square:
-    description: "University on the Square, Documenting Egypt's 21st Century Revolution"
+    description: University on the Square, Documenting Egypts 21st Century Revolution
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll7/manifest.json
@@ -932,29 +932,29 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/university-on-the-square/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/university-on-the-square"
+      current_metadata: /opt/airflow/metadata/auc/iiif/university-on-the-square/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/university-on-the-square
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   wassef:
-    description: ""
+    description:
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll5/manifest.json
@@ -981,24 +981,24 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/wassef/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/wassef"
+      current_metadata: /opt/airflow/metadata/auc/iiif/wassef/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/wassef
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true

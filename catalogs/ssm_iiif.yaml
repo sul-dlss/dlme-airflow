@@ -2,7 +2,7 @@ metadata:
   version: 1
 sources:
   abidindino_iiif:
-    description: "Abadin Dino IIIf Records"
+    description: Abadin Dino IIIf Records
     driver: iiif_json
     args:
       collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/abidindino/manifest.json
@@ -26,29 +26,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/ssm/iiif/abidindino/data.csv"
-      working_directory: "/opt/airflow/working/ssm/iiif/abidindino"
+      current_metadata: /opt/airflow/metadata/ssm/iiif/abidindino/data.csv
+      working_directory: /opt/airflow/working/ssm/iiif/abidindino
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   emirgan:
-    description: "Emirgan"
+    description: Emirgan
     driver: iiif_json
     args:
       collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/emirgan/manifest.json
@@ -79,29 +79,29 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/emirgan/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/emirgan"
+      current_metadata: /opt/airflow/metadata/auc/iiif/emirgan/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/emirgan
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   kitap_vehat:
-    description: "Kitap Vehat"
+    description: Kitap Vehat
     driver: iiif_json
     args:
       collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/Kitapvehat/manifest.json
@@ -127,29 +127,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/ssm/iiif/kitap-vehat/data.csv"
-      working_directory: "/opt/airflow/working/ssm/iiif/kitap-vehat"
+      current_metadata: /opt/airflow/metadata/ssm/iiif/kitap-vehat/data.csv
+      working_directory: /opt/airflow/working/ssm/iiif/kitap-vehat
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   resim_klksyn:
-    description: "Turkish Painting: Ottoman Reformation to the Republic"
+    description: Turkish Painting: Ottoman Reformation to the Republic
     driver: iiif_json
     args:
       collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/ResimKlksyn/manifest.json
@@ -178,24 +178,24 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/ssm/iiif/resim-klksyn/data.csv"
-      working_directory: "/opt/airflow/working/ssm/iiif/resim-klksyn"
+      current_metadata: /opt/airflow/metadata/ssm/iiif/resim-klksyn/data.csv
+      working_directory: /opt/airflow/working/ssm/iiif/resim-klksyn
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true

@@ -2,30 +2,8 @@ metadata:
   version: 1
 sources:
   abdul_hamid_ii_books:
-    description: "Abdul Hamid II Books"
+    description: Abdul Hamid II Books
     driver: iiif_json
-    metadata:
-      current_metadata: "/opt/airflow/metadata/loc/abdul-hamid-ii-books/data.csv"
-      working_directory: "/opt/airflow/working/loc/abdul-hamid-ii-books"
-      fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: 'description'
-          optional: true
-        id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: 'sequences..format'
-        profile:
-          path: 'sequences..profile'
-        resource:
-          path: 'sequences..resource.@id'
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
       dtype:
@@ -47,8 +25,30 @@ sources:
         title: object
         type: object
         repository: object
+    metadata:
+      current_metadata: /opt/airflow/metadata/loc/abdul-hamid-ii-books/data.csv
+      working_directory: /opt/airflow/working/loc/abdul-hamid-ii-books
+      fields:
+        context:
+          path: @context
+          optional: true
+        description_top:
+          path: description
+          optional: true
+        id:
+          path: @id
+          optional: true
+        iiif_format:
+          path: sequences..format
+        profile:
+          path: sequences..profile
+        resource:
+          path: sequences..resource.@id
+        thumbnail:
+          path: thumbnail..@id
+          optional: true
   abdul_hamid_ii_photos:
-    description: "Abdul Hamid II Photographs"
+    description: Abdul Hamid II Photographs
     driver: iiif_json
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii/?c=100&fo=json
@@ -79,29 +79,29 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/loc/abdul-hamid-ii-photos/data.csv"
-      working_directory: "/opt/airflow/working/loc/abdul-hamid-ii-photos"
+      current_metadata: /opt/airflow/metadata/loc/abdul-hamid-ii-photos/data.csv
+      working_directory: /opt/airflow/working/loc/abdul-hamid-ii-photos
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   el_taher:
-    description: "Eltaher Collection"
+    description: Eltaher Collection
     driver: iiif_json
     args:
       collection_url: https://www.loc.gov/collections/eltaher-collection/?c=100&fo=json
@@ -127,29 +127,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/loc/el-taher/data.csv"
-      working_directory: "/opt/airflow/working/loc/el-taher"
+      current_metadata: /opt/airflow/metadata/loc/el-taher/data.csv
+      working_directory: /opt/airflow/working/loc/el-taher
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   greek_and_armenian_patriarchates:
-    description: "Manuscripts from the Greek and Armenian Patriarchates"
+    description: Manuscripts from the Greek and Armenian Patriarchates
     driver: iiif_json
     args:
       collection_url: https://www.loc.gov/collections/greek-and-armenian-patriarchates-of-jerusalem/?c=100&fo=json
@@ -178,29 +178,29 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/loc/greek-and-armenian-patriarchates/data.csv"
-      working_directory: "/opt/airflow/working/loc/greek-and-armenian-patriarchates"
+      current_metadata: /opt/airflow/metadata/loc/greek-and-armenian-patriarchates/data.csv
+      working_directory: /opt/airflow/working/loc/greek-and-armenian-patriarchates
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   persian:
-    description: "Persian Manuscripts"
+    description: Persian Manuscripts
     driver: iiif_json
     args:
       collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
@@ -233,29 +233,29 @@ sources:
         repository: object
         location: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/loc/persian/data.csv"
-      working_directory: "/opt/airflow/working/loc/persian/coptic"
+      current_metadata: /opt/airflow/metadata/loc/persian/data.csv
+      working_directory: /opt/airflow/working/loc/persian/coptic
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
   st_catherines_monastery:
-    description: "Manuscripts from Saint Catherine's Monastery"
+    description: Manuscripts from Saint Catherines Monastery
     driver: iiif_json
     args:
       collection_url: https://www.loc.gov/collections/manuscripts-in-st-catherines-monastery-mount-sinai/?c=100&fo=json
@@ -280,24 +280,24 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/loc/st-catherines-monastery/data.csv"
-      working_directory: "/opt/airflow/working/loc/st-catherines-monastery"
+      current_metadata: /opt/airflow/metadata/loc/st-catherines-monastery/data.csv
+      working_directory: /opt/airflow/working/loc/st-catherines-monastery
       fields:
         context:
-          path: '@context'
+          path: @context
           optional: true
         description_top:
-          path: 'description'
+          path: description
           optional: true
         id:
-          path: '@id'
+          path: @id
           optional: true
         iiif_format:
-          path: 'sequences..format'
+          path: sequences..format
         profile:
-          path: 'sequences..profile'
+          path: sequences..profile
         resource:
-          path: 'sequences..resource.@id'
+          path: sequences..resource.@id
         thumbnail:
-          path: 'thumbnail..@id'
+          path: thumbnail..@id
           optional: true
