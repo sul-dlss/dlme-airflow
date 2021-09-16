@@ -9,13 +9,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/al-musawwar
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -83,13 +83,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/alexandria-bombardment
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -131,13 +131,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/bint-al-nil
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -182,13 +182,13 @@ sources:
       working_directory: /opt/airflow/working/auc/campus-photos
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -237,13 +237,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/coptic
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -284,13 +284,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/fathy
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -330,13 +330,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/hopkins
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -379,13 +379,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/islamic-aa
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -430,13 +430,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/maps
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -481,13 +481,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/maritz
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -531,13 +531,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/napoleonic-egypt
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -578,13 +578,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/parker
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -625,13 +625,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/postcards
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -672,13 +672,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/qurna
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -723,13 +723,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/rare-books
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -769,13 +769,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/sphinx
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -820,13 +820,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/taxiphote-slides
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -838,7 +838,7 @@ sources:
           path: thumbnail..@id
           optional: true
   underwood:
-    description:
+    description: Underwood and Underwood Egypt Stereoviews
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll8/manifest.json
@@ -875,13 +875,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/underwood
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -936,13 +936,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/university-on-the-square
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -954,7 +954,7 @@ sources:
           path: thumbnail..@id
           optional: true
   wassef:
-    description:
+    description: Ramses Wissa Wassef Architectural Drawings
     driver: iiif_json
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll5/manifest.json
@@ -985,13 +985,13 @@ sources:
       working_directory: /opt/airflow/working/auc/iiif/wassef
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format

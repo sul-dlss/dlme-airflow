@@ -48,7 +48,7 @@ sources:
       working_directory: /opt/airflow/working/bodleian/arabic
       fields:
         id:
-          path: @id
+          path: '@id'
         description:
           path: description
         rendering:
@@ -80,7 +80,7 @@ sources:
       working_directory: /opt/airflow/working/bodleian/exploring-egypt
       fields:
         id:
-          path: @id
+          path: '@id'
         description:
           path: description
         rendering:
@@ -141,7 +141,7 @@ sources:
       working_directory: /opt/airflow/working/bodleian/hebrew
       fields:
         id:
-          path: @id
+          path: '@id'
         description:
           path: description
         rendering:
@@ -192,7 +192,7 @@ sources:
       working_directory: /opt/airflow/working/bodleian/persian
       fields:
         id:
-          path: @id
+          path: '@id'
         description:
           path: description
         rendering:
@@ -238,7 +238,7 @@ sources:
       working_directory: /opt/airflow/working/bodleian/turkish
       fields:
         id:
-          path: @id
+          path: '@id'
         description:
           path: description
         rendering:

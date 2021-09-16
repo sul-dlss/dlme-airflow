@@ -30,13 +30,13 @@ sources:
       working_directory: /opt/airflow/working/princeton/movie-posters
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -83,13 +83,13 @@ sources:
       working_directory: /opt/airflow/working/princeton/mss
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
@@ -136,13 +136,13 @@ sources:
       working_directory: /opt/airflow/working/princeton/ymdis
       fields:
         context:
-          path: @context
+          path: '@context'
           optional: true
         description_top:
           path: description
           optional: true
         id:
-          path: @id
+          path: '@id'
           optional: true
         iiif_format:
           path: sequences..format
