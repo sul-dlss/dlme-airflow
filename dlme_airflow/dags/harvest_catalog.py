@@ -8,7 +8,6 @@ from airflow.models import Variable
 from drivers.iiif_json import IIIfJsonSource
 from drivers.feed import FeedSource
 from drivers.oai_xml import OAIXmlSource
-from drivers.xml import XmlSource
 from utils.catalog import fetch_catalog
 from services.harvest_dag_generator import create_dag
 

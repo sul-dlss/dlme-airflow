@@ -1,6 +1,5 @@
 import logging
 import intake
-import requests
 import json
 import jsonpath_ng
 import feedparser
@@ -25,7 +24,7 @@ class FeedSource(intake.source.base.DataSource):
         for post in feed.entries:
             entry = self._construct_fields(json.dumps(post))
             entries.append(entry)
-        
+
         self._records.append(entries)
 
     def _construct_fields(self, manifest: dict) -> dict:

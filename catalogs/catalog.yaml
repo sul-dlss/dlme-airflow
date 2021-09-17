@@ -133,6 +133,32 @@ sources:
     description: Penn Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  shahre-farang:
+    description: 'Shahre Farang'
+    driver: feed
+    metadata:
+      fields:
+        id:
+          path: .id
+        title:
+          path: .title
+        author:
+          path: .author
+        published:
+          path: .published
+        description:
+          path: .summary
+        subject:
+          path: .tags
+        shown_at:
+          path: .link
+        preview:
+          path: .media_content[0].url
+    args:
+      collection_urls:
+        - http://shahrefarang.com/feed/
+        - http://shahrefarang.com/en/feed/
+        - http://shahrefarang.com/ar/feed/
   yale_babylonian:
     description: Yale Babylonian Collection
     driver: csv
