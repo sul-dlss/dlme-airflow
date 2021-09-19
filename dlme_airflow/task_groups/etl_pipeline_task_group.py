@@ -10,20 +10,10 @@ from airflow.operators.dummy import DummyOperator
 
 from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
-
-
-def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
-    task_id = f"extract" if collection is None else f"extract.{collection}"
-
-    logging.info(f"Building harvester task with id {task_id} for {provider}.{collection}")
-    return PythonOperator(
-        task_id=task_id,
-        task_group=task_group,
-        dag=dag,
-        python_callable=data_source_harvester,
-        op_kwargs={"provider": f"{provider}.{collection}"}
-    )
-
+from tasks.extract import extract
+from tasks.compare import compare
+from tasks.transform import transform
+from tasks.load import load
 
 # def etl_pipeline_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
 def etl_pipeline(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
@@ -35,13 +25,17 @@ def etl_pipeline(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
             logging.info(f"Building task group for {provider}.{collection}")
             with TaskGroup(group_id=collection) as collection_tg:
                 logging.info(f"Building tasks for task_group {provider}.{collection}")
-                extract = build_havester_task(provider, collection, collection_tg, dag)
+                provider_collection = f"{provider}.{collection}"
+                extract_task = extract(provider_collection, collection_tg, dag)
+                compare_task = compare(provider_collection, collection_tg, dag)
+                transform_task = transform(provider_collection, collection_tg, dag)
+                load_task = load(provider_collection, collection_tg, dag)
 
-                extract
+                extract_task >> compare_task >> transform_task >> load_task
                 task_group_array.append(collection_tg)
         
     except TypeError:
-        return build_havester_task(provider, None, task_group, dag)
+        return extract(provider, task_group, dag)
 
     return task_group_array
 
