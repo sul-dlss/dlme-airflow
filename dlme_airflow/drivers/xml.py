@@ -3,6 +3,8 @@ import logging
 import pandas as pd
 import requests
 from lxml import etree
+from lxml.html import document_fromstring
+from lxml.html.clean import Cleaner
 
 
 class XmlSource(intake.source.base.DataSource):
@@ -39,7 +41,9 @@ class XmlSource(intake.source.base.DataSource):
                     logging.warn(f"Manifest missing {field}")
             else:
                 try:
-                    output[field] = self.sanitize_value(result[0].text)  # Use first value
+                    field_doc = document_fromstring(result[0].text)
+                    cleaner = Cleaner(remove_unknown_tags=False, page_structure=True)
+                    output[field] = self.sanitize_value(cleaner.clean_html(field_doc).text_content())  # Use first value
                 except AttributeError:
                     output[field] = self.sanitize_value(result[0])  # if getting text fails, we may be pulling an attribute.
         return output
