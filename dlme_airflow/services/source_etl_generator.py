@@ -10,6 +10,7 @@ from airflow.models import Variable
 # Our stuff
 from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
 from task_groups.harvest import build_harvester_taskgroup
+from task_groups.etl_pipeline_task_group import build_etl_pipeline_taskgroup
 from task_groups.detect_metadata_changes import build_detect_metadata_changes_taskgroup
 
 # These args will get passed on to each operator
@@ -37,7 +38,7 @@ def create_dag(provider, default_args):
     with dag:
         validate_dlme_metadata = build_validate_metadata_taskgroup(dag=dag)
 
-        harvester = build_harvester_taskgroup(provider, dag)
+        harvester = build_etl_pipeline_taskgroup(provider, dag)
 
         # A dummy operator is required as a transition point between task groups
         harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
