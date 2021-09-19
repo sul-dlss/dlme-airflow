@@ -21,14 +21,13 @@ def etl_pipeline(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     try:
         collections = iter(list(source))
         for collection in collections:
-            logging.info(f"Building task group for {provider}.{collection}")
+            collection_catalog = catalog_for_provider(f"{provider}.{collection}")
             with TaskGroup(group_id=collection) as collection_tg:
-                logging.info(f"Building tasks for task_group {provider}.{collection}")
                 provider_collection = f"{provider}.{collection}"
                 extract_task = extract(provider_collection, collection_tg, dag)
-                compare_task = compare(provider_collection, collection_tg, dag)
-                complete = DummyOperator(task_id='complete')
-                transform_task = transform(provider_collection, collection_tg, dag)
+                compare_task = compare(provider, collection, collection_tg, dag)
+                complete = DummyOperator(task_id='complete', task_group=collection_tg)
+                transform_task = transform(provider, collection, collection_catalog.metadata.get("data_path"), collection_tg, dag) 
                 load_task = load(provider_collection, collection_tg, dag)
                 etl_complete = DummyOperator(task_id='etl_complete')
 

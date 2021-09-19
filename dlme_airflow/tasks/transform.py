@@ -8,9 +8,10 @@ from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
 
 
-def transform(provider, task_group: TaskGroup, dag: DAG) -> ECSOperator:
+def transform(provider, collection, data_path, task_group: TaskGroup, dag: DAG) -> ECSOperator:
+    task_id = f"{provider}.etl.pipeline.{collection}.transform"
     return ECSOperator(
-        task_id="transform",
+        task_id=task_id,
         aws_conn_id="aws_ecs",
         cluster="dlme-dev",
         task_definition="dlme-transform",
@@ -22,7 +23,7 @@ def transform(provider, task_group: TaskGroup, dag: DAG) -> ECSOperator:
                     'environment': [
                         {
                             'name': 'DATA_PATH',
-                            'value': provider
+                            'value': data_path
                         },
                     ],
                 },

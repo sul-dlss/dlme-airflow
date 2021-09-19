@@ -7,13 +7,13 @@ from airflow.utils.task_group import TaskGroup
 
 from tasks.check_equality import check_equity
 
-def compare(provider, task_group: TaskGroup, dag: DAG):
+def compare(provider, collection, task_group: TaskGroup, dag: DAG):
     compare_dataframes = BranchPythonOperator(
         task_id="compare",
         task_group=task_group,
         dag=dag,
         python_callable=check_equity,
-        op_kwargs={"provider": provider}
+        op_kwargs={"provider": provider, "collection": collection}
     )
 
     return compare_dataframes

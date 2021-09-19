@@ -20,7 +20,7 @@ def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
 def dataframe_to_file(dataframe):
-    working_directory = dataframe.metadata.get("working_directory")
+    working_directory = f"/opt/airflow/working/{dataframe.metadata.get('data_path')}"
     os.makedirs(working_directory, exist_ok=True)
 
     source_df = dataframe.read()
