@@ -9,9 +9,8 @@ from airflow.utils.task_group import TaskGroup
 
 
 def transform(provider, collection, data_path, task_group: TaskGroup, dag: DAG) -> ECSOperator:
-    task_id = f"{provider}.etl.pipeline.{collection}.transform"
     return ECSOperator(
-        task_id=task_id,
+        task_id="transform",
         aws_conn_id="aws_ecs",
         cluster="dlme-dev",
         task_definition="dlme-transform",

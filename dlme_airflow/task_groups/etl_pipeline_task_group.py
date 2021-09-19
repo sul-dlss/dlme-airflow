@@ -28,7 +28,7 @@ def etl_pipeline(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
                 compare_task = compare(provider, collection, collection_tg, dag)
                 complete = DummyOperator(task_id='complete', task_group=collection_tg)
                 transform_task = transform(provider, collection, collection_catalog.metadata.get("data_path"), collection_tg, dag) 
-                load_task = load(provider_collection, collection_tg, dag)
+                load_task = load(provider, collection, collection_tg, dag)
                 etl_complete = DummyOperator(task_id='etl_complete')
 
                 extract_task >> compare_task

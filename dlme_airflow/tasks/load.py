@@ -8,9 +8,11 @@ from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
 
 
-def load(provider, task_group: TaskGroup, dag: DAG) -> ECSOperator:
+def load(provider, collection, task_group: TaskGroup, dag: DAG) -> ECSOperator:
+    file_id = f"{provider}" if collection is None else f"{provider}-{collection}"
+
     return ECSOperator(
-        task_id="index",
+        task_id="load",
         aws_conn_id="aws_ecs",
         cluster="dlme-dev",
         task_definition="dlme-index-from-s3",
@@ -21,7 +23,7 @@ def load(provider, task_group: TaskGroup, dag: DAG) -> ECSOperator:
                     'name': 'dlme-index-from-s3',
                     'environment': [{
                         'name': 'S3_FETCH_URL',
-                        'value': f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output-{provider}.ndjson"
+                        'value': f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output-{file_id}.ndjson"
                     }]
                 },
             ],
