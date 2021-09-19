@@ -9,13 +9,15 @@ from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
 
 
-def build_havester_task(provider, task_group: TaskGroup, dag: DAG):
+def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
+    task_id = f"extract" if collection is None else f"extract.{collection}"
+
     return PythonOperator(
-        task_id=f"{provider}_intake_harvester",
+        task_id=task_id,
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs={"provider": f"{provider}"}
+        op_kwargs={"provider": f"{provider}.{collection}"}
     )
 
 
@@ -25,14 +27,14 @@ def harvester_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     try:
         collections = iter(list(source))
         for collection in collections:
-            task_array.append(build_havester_task(f"{provider}.{collection}", task_group, dag))
+            task_array.append(build_havester_task(provider, collection, task_group, dag))
     except TypeError:
-        return build_havester_task(f"{provider}", task_group, dag)
+        return build_havester_task(provider, None, task_group, dag)
 
     return task_array
 
 
 def build_harvester_taskgroup(provider, dag: DAG) -> TaskGroup:
-    iiif_harvester_taskgroup = TaskGroup(group_id="metadata_harvester")
+    iiif_harvester_taskgroup = TaskGroup(group_id=f"{provider}.etl.pipeline")
 
     return harvester_tasks(provider, iiif_harvester_taskgroup, dag)

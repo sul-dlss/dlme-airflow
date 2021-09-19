@@ -8,7 +8,7 @@ from airflow.models import Variable
 from drivers.iiif_json import IIIfJsonSource
 from drivers.oai_xml import OAIXmlSource
 from utils.catalog import fetch_catalog
-from services.harvest_dag_generator import create_dag
+from services.source_etl_generator import create_dag
 
 intake.source.register_driver("iiif_json", IIIfJsonSource)
 intake.source.register_driver("oai_xml", OAIXmlSource)
