@@ -8,7 +8,7 @@ from airflow.models import Variable
 from drivers.iiif_json import IIIfJsonSource
 from drivers.oai_xml import OAIXmlSource
 from utils.catalog import fetch_catalog
-from services.source_etl_generator import create_dag
+from services.source_etl_generator import dag_for_provider
 
 intake.source.register_driver("iiif_json", IIIfJsonSource)
 intake.source.register_driver("oai_xml", OAIXmlSource)
@@ -35,4 +35,4 @@ except TypeError:
 
 for provider in collections:
     logging.info(f"Creating DAG for {provider}")
-    globals()[provider] = create_dag(provider, default_args)
+    globals()[provider] = dag_for_provider(provider, default_args)

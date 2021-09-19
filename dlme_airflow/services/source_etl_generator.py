@@ -27,7 +27,7 @@ default_args = {
 }
 
 
-def create_dag(provider, default_args):
+def dag_for_provider(provider, default_args):
     dag = DAG(
         provider,
         default_args=default_args,
@@ -38,13 +38,13 @@ def create_dag(provider, default_args):
     with dag:
         validate_dlme_metadata = build_validate_metadata_taskgroup(dag=dag)
 
-        harvester = build_etl_pipeline_taskgroup(provider, dag)
+        etl_pipeline = build_etl_pipeline_taskgroup(provider, dag)
 
         # A dummy operator is required as a transition point between task groups
         harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
-        collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
+        # collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
 
-        validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes
+        validate_dlme_metadata >> etl_pipeline >> harvest_complete # >> collect_metadata_changes
 
     return dag

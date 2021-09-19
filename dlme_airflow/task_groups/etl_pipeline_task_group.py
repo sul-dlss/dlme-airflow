@@ -44,10 +44,7 @@ def build_etl_pipeline_taskgroup(provider, dag: DAG) -> TaskGroup:
     with TaskGroup(
         group_id=f"{provider}.etl.pipeline"
     ) as etl_pipeline_taskgroup:
-        entry = DummyOperator(task_id='begin')
         etl_pipelines = etl_pipeline(provider, etl_pipeline_taskgroup, dag)
-        exit = DummyOperator(task_id="complete")
-
-        entry >> etl_pipelines >> exit
+        etl_pipelines
     
     return etl_pipeline_taskgroup
