@@ -9,4 +9,7 @@ def check_equity(provider):
     working_df = dataframe_from_file('csv', working_csv)
     current_df = dataframe_from_file('csv', source.metadata.get("current_metadata"))
 
-    return current_df.equals(working_df)  # We are returning the result of this check to auto-store in a xcom variable
+    if current_df.equals(working_df):
+        return 'complete'
+    
+    return 'transform'

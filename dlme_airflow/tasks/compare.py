@@ -2,13 +2,13 @@
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.operators.python import PythonOperator
+from airflow.operators.python import BranchPythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from tasks.check_equality import check_equity
 
 def compare(provider, task_group: TaskGroup, dag: DAG):
-    compare_dataframes = PythonOperator(
+    compare_dataframes = BranchPythonOperator(
         task_id="compare",
         task_group=task_group,
         dag=dag,

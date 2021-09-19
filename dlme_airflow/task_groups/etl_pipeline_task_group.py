@@ -9,7 +9,6 @@ from airflow.utils.task_group import TaskGroup
 from airflow.operators.dummy import DummyOperator
 
 from utils.catalog import catalog_for_provider
-from harvester.source_harvester import data_source_harvester
 from tasks.extract import extract
 from tasks.compare import compare
 from tasks.transform import transform
@@ -28,10 +27,16 @@ def etl_pipeline(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
                 provider_collection = f"{provider}.{collection}"
                 extract_task = extract(provider_collection, collection_tg, dag)
                 compare_task = compare(provider_collection, collection_tg, dag)
+                complete = DummyOperator(task_id='complete')
                 transform_task = transform(provider_collection, collection_tg, dag)
                 load_task = load(provider_collection, collection_tg, dag)
+                etl_complete = DummyOperator(task_id='etl_complete')
 
-                extract_task >> compare_task >> transform_task >> load_task
+                extract_task >> compare_task
+                compare_task >> [complete, transform_task]
+                transform_task >> load_task >> etl_complete
+                complete >> etl_complete
+
                 task_group_array.append(collection_tg)
         
     except TypeError:
