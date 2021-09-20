@@ -1,5 +1,6 @@
 import intake
 import os
+from intake.catalog.exceptions import ValidationError
 
 
 def catalog_file():
@@ -7,7 +8,12 @@ def catalog_file():
 
 
 def fetch_catalog():
-    return intake.open_catalog(catalog_file())
+    try:
+        catalog = intake.open_catalog(catalog_file())
+    except ValidationError:
+        return []
+    
+    return catalog
 
 
 def catalog_for_provider(provider):
