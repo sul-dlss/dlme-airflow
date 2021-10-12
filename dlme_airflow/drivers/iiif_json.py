@@ -1,3 +1,4 @@
+import logging
 import intake
 import requests
 import json
