@@ -1,6 +1,6 @@
-import logging
 import intake
 import requests
+import json
 import jsonpath_ng
 import pandas as pd
 
@@ -20,7 +20,8 @@ class IIIfJsonSource(intake.source.base.DataSource):
 
     def _open_collection(self):
         collection_result = requests.get(self.collection_url)
-        for manifest in collection_result.json().get("manifests", []):
+        # for manifest in collection_result.json().get("manifests", []):
+        for manifest in json.loads(collection_result.text).get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
     def _open_manifest(self, manifest_url: str):

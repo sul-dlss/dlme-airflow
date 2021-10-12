@@ -5,7 +5,7 @@ import pandas as pd
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.
 def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
-    """"Returns existing DLME metadata as a Panda dataframe based on the
+    """Returns existing DLME metadata as a Panda dataframe based on the
     type of driver.
 
     @param -- driver The registered DataSource name
@@ -20,6 +20,10 @@ def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
 def dataframe_to_file(dataframe):
+    """Writes dataframe to file in working directory.
+
+    @param -- dataframe The custom object returned by the driver
+    """
     working_directory = dataframe.metadata.get("working_directory")
     os.makedirs(working_directory, exist_ok=True)
 
