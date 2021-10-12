@@ -11,7 +11,7 @@ sources:
     description: American Numismatic Society
     driver: csv
     metadata:
-      current_metadata: /opt/airflow/metadata/american-numismatic-society/data.csv
+      current_metadata: /opt/airflow/metadata/american-numismatic-society/data/american-numismatic-society.csv
       working_directory: /opt/airflow/working/american-numismatic-society
     args:
       csv_kwargs:

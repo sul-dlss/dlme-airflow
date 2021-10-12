@@ -5,7 +5,7 @@ sources:
     description: Abadin Dino IIIf Records
     driver: iiif_json
     args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/abidindino/manifest.json
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/abidindino/p1.json
       dtype:
         context: object
         id: object
