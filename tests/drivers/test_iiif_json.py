@@ -14,12 +14,13 @@ class MockIIIFCollectionResponse:
             ]
         }
 
-def text():
-    return {
-        "manifests": [
-            {"@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
-        ]
-    }
+    @staticmethod
+    def text():
+        return {
+            "manifests": [
+                {"@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
+            ]
+        }
 
 
 class MockIIIFManifestResponse:
