@@ -32,6 +32,7 @@ class MockIIIFManifestResponse:
                 {"canvases": [{"images": [{"resource": {"format": "image/jpeg"}}]}]}
             ],
         }
+        
     @staticmethod
     def text():
         return {
