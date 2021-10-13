@@ -14,27 +14,17 @@ class MockIIIFCollectionResponse:
             ]
         }
 
+def text():
+    return {
+        "manifests": [
+            {"@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
+        ]
+    }
+
 
 class MockIIIFManifestResponse:
     @staticmethod
     def json():
-        return {
-            "@context": "http://iiif.io/api/presentation/2/context.json",
-            "@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json",
-            "metadata": [
-                {
-                    "label": "Source",
-                    "value": "Rare Books and Special Collections Library",
-                },
-                {"label": "Title (main)", "value": "A great title of the Middle East"},
-            ],
-            "sequences": [
-                {"canvases": [{"images": [{"resource": {"format": "image/jpeg"}}]}]}
-            ],
-        }
-
-    @staticmethod
-    def text():
         return {
             "@context": "http://iiif.io/api/presentation/2/context.json",
             "@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json",
