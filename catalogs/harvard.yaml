@@ -1,0 +1,31 @@
+metadata:
+  version: 1
+sources:
+  ihp:
+    driver: oai_xml
+    args:
+      collection_url: https://api.lib.harvard.edu/oai/
+      set: ihp
+    metadata:
+      current_metadata: /opt/airflow/metadata/harvard/islamic-heritage-project/data.csv
+      working_directory: /opt/airflow/working/harvard/islamic-heritage-project
+      fields:
+        id:
+          path: //header:identifier
+          namespace:
+            header: http://www.openarchives.org/OAI/2.0/
+          optional: True
+  scw:
+    driver: oai_xml
+    args:
+      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*
+      set:
+    metadata:
+      current_metadata: /opt/airflow/metadata/harvard/scw/data.csv
+      working_directory: /opt/airflow/working/harvard/scw
+      fields:
+        id:
+          path: //header:identifier
+          namespace:
+            header: http://www.openarchives.org/OAI/2.0/
+          optional: True

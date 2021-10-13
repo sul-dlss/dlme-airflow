@@ -1,11 +1,11 @@
 metadata:
   version: 1
 sources:
-  abidindino_iiif:
-    description: Abadin Dino IIIf Records
+  genizah:
+    description: Cairo Genizah Records
     driver: iiif_json
     args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/abidindino/p1.json
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/genizah
       dtype:
         context: object
         id: object
@@ -26,8 +26,8 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: /opt/airflow/metadata/sakip-sabanci/abidindino-iiif/data/data.csv
-      working_directory: /opt/airflow/working/sakip-sabanci/iiif/abidindino
+      current_metadata: /opt/airflow/metadata/cambridge/genizah/data/data.csv
+      working_directory: /opt/airflow/working/cambridge/genizah
       fields:
         context:
           path: '@context'
@@ -47,11 +47,11 @@ sources:
         thumbnail:
           path: thumbnail..@id
           optional: true
-  emirgan:
-    description: Emirgan
+  hebrew:
+    description: Hebrew Records
     driver: iiif_json
     args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/emirgan/manifest.json
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/hebrew
       dtype:
         context: object
         id: object
@@ -79,8 +79,8 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: /opt/airflow/metadata/sakip-sabanci/emirgan/data/data.csv
-      working_directory: /opt/airflow/working/sakip-sabanci/iiif/emirgan
+      current_metadata: /opt/airflow/metadata/cambridge/hebrew/data/data.csv
+      working_directory: /opt/airflow/working/cambridge/hebrew
       fields:
         context:
           path: '@context'
@@ -100,11 +100,11 @@ sources:
         thumbnail:
           path: thumbnail..@id
           optional: true
-  kitap_vehat:
-    description: Kitap Vehat
+  islamic:
+    description: Islamic Records
     driver: iiif_json
     args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/Kitapvehat/manifest.json
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/islamic
       dtype:
         context: object
         id: object
@@ -127,59 +127,8 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: /opt/airflow/metadata/sakip-sabanci/kitap-vehat/data/data.csv
-      working_directory: /opt/airflow/working/sakip-sabanci/iiif/kitap-vehat
-      fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: description
-          optional: true
-        id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: sequences..format
-        profile:
-          path: sequences..profile
-        resource:
-          path: sequences..resource.@id
-        thumbnail:
-          path: thumbnail..@id
-          optional: true
-  resim_klksyn:
-    description: Turkish Painting (Ottoman Reformation to the Republic)
-    driver: iiif_json
-    args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/ResimKlksyn/manifest.json
-      dtype:
-        context: object
-        id: object
-        iiif_format: object
-        profile: object
-        resource: object
-        buildings: object
-        coverage: object
-        creator: object
-        collection: object
-        date: object
-        description: object
-        format: object
-        getty-aat: object
-        identifier: object
-        license: object
-        physical-box-number: object
-        rights: object
-        source: object
-        subject: object
-        subseries: object
-        title: object
-        type: object
-        repository: object
-    metadata:
-      current_metadata: /opt/airflow/metadata/sakip-sabanci/resim-klksyn/data/data.csv
-      working_directory: /opt/airflow/working/sakip-sabanci/iiif/resim-klksyn
+      current_metadata: /opt/airflow/metadata/cambridge/islamic/data/data.csv
+      working_directory: /opt/airflow/working/cambridge/islamic
       fields:
         context:
           path: '@context'

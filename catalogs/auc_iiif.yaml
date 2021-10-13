@@ -396,6 +396,57 @@ sources:
         thumbnail:
           path: thumbnail..@id
           optional: true
+  kraus_meyerhof:
+    description: Kraus Meyerhof Offprints
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll1/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        creator: object
+        date: object
+        description: object
+        digital-collection: object
+        identifier: object
+        language: object
+        license: object
+        publisher: object
+        rights: object
+        scale: object
+        source: object
+        subject: object
+        title: object
+        genre-aat: object
+        type: object
+        repository: object
+        coverage-spatial: object
+        format: object
+    metadata:
+      current_metadata: /opt/airflow/metadata/auc/iiif/kraus-meyerhof/data.csv
+      working_directory: /opt/airflow/working/auc/iiif/kraus-meyerhof
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: description
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: sequences..format
+        profile:
+          path: sequences..profile
+        resource:
+          path: sequences..resource.@id
+        thumbnail:
+          path: thumbnail..@id
+          optional: true
   maps:
     description: Historic Maps Digital Collection
     driver: iiif_json

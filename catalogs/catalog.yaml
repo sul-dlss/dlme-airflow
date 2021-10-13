@@ -1,12 +1,6 @@
 metadata:
   version: 1
 sources:
-  aub:
-    args:
-      path: /opt/catalogs/aub.yaml
-    description: American University of Beirut
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
   ans:
     description: American Numismatic Society
     driver: csv
@@ -65,6 +59,12 @@ sources:
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001
+  aub:
+    args:
+      path: /opt/catalogs/aub.yaml
+    description: American University of Beirut
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   auc_iiif:
     args:
       path: /opt/catalogs/auc_iiif.yaml
@@ -83,10 +83,28 @@ sources:
     description: Bodleian Libraries, University of Oxford
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  cambridge:
+    args:
+      path: /opt/catalogs/cambridge.yaml
+    description: Cambridge University Collections
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  harvard:
+    args:
+      path: /opt/catalogs/harvard.yaml
+    description: Harvard University Collections
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   loc:
     args:
       path: /opt/catalogs/loc.yaml
     description: Library of Congress
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  manchester:
+    args:
+      path: /opt/catalogs/manchester.yaml
+    description: University of Manchester Collections
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   met:
@@ -97,51 +115,33 @@ sources:
       working_directory: /opt/airflow/working/met
     args:
       collection_url:
-  penn_egyptian_museum:
-    description: University of Pennsylvania Egyptian Museum
-    driver: csv
-    metadata:
-      current_metadata: /opt/airflow/metadata/penn/egyptian-museum/data.csv
-      working_directory: /opt/airflow/working/penn/egyptian-museum/data.csv
+  penn_museum:
     args:
-      urlpath:
-        - http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip
-        - http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip
-      csv_kwargs:
-        dtype:
-          emuIRN: int64
-          curatorial_section: object
-          object_number: object
-          object_name: object
-          native_name: object
-          culture: object
-          provenience: object
-          material: object
-          period: object
-          date_made: object
-          date_made_early: object
-          date_made_late: object
-          accession_credit_line: object
-          creator: object
-          description: object
-          manufacture_locationlocus: float64
-          culture_area: object
-          technique: object
-          iconography: object
-          measurement_height: float64
-          measurement_length: float64
-          measurement_width: float64
-          measurement_outside_diameter: float64
-          measurement_tickness: float64
-          measurement_unit: object
-          other_numbers: object
-          url: object
+      path: /opt/catalogs/penn_museum.yaml
+    description: Penn Museum
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   princeton:
     args:
       path: /opt/catalogs/princeton.yaml
     description: Princeton University
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  qnl:
+    description: Qatar Digital Library records
+    driver: oai_xml
+    metadata:
+      current_metadata: /opt/airflow/metadata/qnl/british-library/data.csv
+      working_directory: /opt/airflow/working/qnl/british-library
+      fields:
+        id:
+          path: /oai:record/oai:header/oai:identifier
+          namespace:
+            header: http://www.openarchives.org/OAI/2.0/
+          optional: True
+    args:
+      collection_url: https://api.qdl.qa/api/oaipmh
+      set:
   ssm_iiif:
     args:
       path: /opt/catalogs/ssm_iiif.yaml

@@ -1,0 +1,17 @@
+metadata:
+  version: 1
+sources:
+  nashriyah:
+    driver: oai_xml
+    args:
+      collection_url: https://luna.manchester.ac.uk/luna/servlet/oai
+      set: Manchester~18~18
+    metadata:
+      current_metadata: /opt/airflow/metadata/manchester/nashriyah/data.csv
+      working_directory: /opt/airflow/working/manchester/nashriyah
+      fields:
+        id:
+          path: //header:identifier
+          namespace:
+            header: http://www.openarchives.org/OAI/2.0/
+          optional: True

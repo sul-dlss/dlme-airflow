@@ -1,20 +1,6 @@
 metadata:
   version: 1
 sources:
-  kraus_meyerhof:
-    driver: oai_xml
-    args:
-      collection_url: http://cdm15795.contentdm.oclc.org/oai
-      set: p15795coll1
-    metadata:
-      current_metadata: /opt/airflow/metadata/auc/kraus-meyerhof/data.csv
-      working_directory: /opt/airflow/working/auc/kraus-meyerhof
-      fields:
-        id:
-          path: //header:identifier
-          namespace:
-            header: http://www.openarchives.org/OAI/2.0/
-          optional: True
   auc_historical_videos:
     driver: oai_xml
     args:
