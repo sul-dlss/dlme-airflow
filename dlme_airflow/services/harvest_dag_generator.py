@@ -12,6 +12,8 @@ from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
 from task_groups.harvest import build_harvester_taskgroup
 from task_groups.detect_metadata_changes import build_detect_metadata_changes_taskgroup
 
+from utils.driver_tag import fetch_driver
+
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
 default_args = {
@@ -25,13 +27,13 @@ default_args = {
     'catchup': False,
 }
 
-
 def create_dag(provider, default_args):
     dag = DAG(
         provider,
         default_args=default_args,
         schedule_interval='@once',
-        start_date=datetime(2021, 9, 6)
+        start_date=datetime(2021, 9, 6),
+        tags=fetch_driver(provider)
     )
 
     with dag:
