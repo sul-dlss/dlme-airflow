@@ -1,5 +1,6 @@
 import yaml
 
+
 def fetch_driver(provider):
     '''Returns a unique list of drivers from the catalog files.
 
