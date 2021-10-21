@@ -4,6 +4,9 @@ sources:
   aims:
     description: "AIMS"
     driver: xml
+    suppress:
+      agg_is_shown_at: True
+      agg_preview: False
     metadata:
       current_metadata: "/opt/airflow/metadata/aims"
       working_directory: "/opt/airflow/working/aims/data.csv"
@@ -170,7 +173,7 @@ sources:
     metadata:
       current_metadata: "/opt/airflow/metadata/yale/babylonian/data.csv"
       working_directory: "/opt/airflow/working/yale/babylonian/data.csv"
-    post_harvest: "remove_non_relevant_records.py"
+    post_harvest: "/opt/airflow/utils/yale_babylon_remove_non_relevant_records.py"
     args:
       csv_kwargs:
         blocksize: null

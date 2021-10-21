@@ -6,15 +6,14 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from utils.catalog import catalog_for_provider
-from utils.remove_non_relevant_records import remove_yale_non_relevant
-from tasks.post_harvest import post_harvest_t
+from tasks.fetch_post_harvest import trigger_post_harvest
 
 def build_post_havest_task(provider, task_group: TaskGroup, dag: DAG):
     post_harvest = PythonOperator(
         task_id=f"{provider}_post_harvest",
         task_group=task_group,
         dag=dag,
-        python_callable=post_harvest,
+        python_callable=trigger_post_harvest,
         op_kwargs={"provider": f"{provider}"}
     )
 
