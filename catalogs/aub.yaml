@@ -6,6 +6,7 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       set: "aco"
+      metadata_prefix: "oai_dc"
     metadata:
       current_metadata: "/opt/airflow/metadata/aub/aco/data.csv"
       working_directory: "/opt/airflow/working/aub/aco"
@@ -20,6 +21,7 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       set: "aladab"
+      metadata_prefix: "oai_dc"
     metadata:
       current_metadata: "/opt/airflow/metadata/aub/aladab/data.csv"
       working_directory: "/opt/airflow/working/aub/aladab"
@@ -34,6 +36,7 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       set: "postcards"
+      metadata_prefix: "oai_dc"
     metadata:
       current_metadata: "/opt/airflow/metadata/aub/postcards/data.csv"
       working_directory: "/opt/airflow/working/aub/postcards"
@@ -48,6 +51,7 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       set: "posters"
+      metadata_prefix: "oai_dc"
     metadata:
       current_metadata: "/opt/airflow/metadata/aub/posters/data.csv"
       working_directory: "/opt/airflow/working/aub/posters"
@@ -62,6 +66,7 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       set: "travelbooks"
+      metadata_prefix: "oai_dc"
     metadata:
       current_metadata: "/opt/airflow/metadata/aub/travelbooks/data.csv"
       working_directory: "/opt/airflow/working/aub/travelbooks"

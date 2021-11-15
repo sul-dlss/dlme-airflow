@@ -11,16 +11,17 @@ class OAIXmlSource(intake.source.base.DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, set, dtype=None, metadata=None):
+    def __init__(self, collection_url, set, metadata_prefix, dtype=None, metadata=None):
         super(OAIXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.set = set
+        self.metadata_prefix = metadata_prefix
         self._collection = Sickle(self.collection_url)
         self._path_expressions = self._get_path_expressions()
         self._records = []
 
     def _open_set(self):
-        oai_records = self._collection.ListRecords(metadataPrefix='oai_dc', set=self.set, ignore_deleted=True)
+        oai_records = self._collection.ListRecords(metadataPrefix=self.metadata_prefix, set=self.set, ignore_deleted=True)
         for oai_record in oai_records:
             xtree = etree.fromstring(oai_record.raw)
             record = self._construct_fields(xtree)
