@@ -23,6 +23,7 @@ class OAIXmlSource(intake.source.base.DataSource):
     def _open_set(self):
         oai_records = self._collection.ListRecords(metadataPrefix=self.metadata_prefix, set=self.set, ignore_deleted=True)
         for oai_record in oai_records:
+            breakpoint()
             xtree = etree.fromstring(oai_record.raw)
             record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
@@ -53,9 +54,16 @@ class OAIXmlSource(intake.source.base.DataSource):
     # TODO: Discuss if this output shoould be an array (line 63) or a string
     def _from_metadata(self, manifest: etree) -> dict:
         output = {}
-        NS = {'oai_dc': "http://www.openarchives.org/OAI/2.0/oai_dc/"}
-        oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
+        # NS = {'oai_dc': "http://www.openarchives.org/OAI/2.0/oai_dc/"}
+        NS = {}
+        namespaces = self.metadata.get("metadata_namespace")
+        metadata_path = self.metadata.get("metadata_path")
+        for key in namespaces:
+            NS[key] = namespaces[key]
+        # oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
+        oai_block = manifest.xpath(metadata_path, namespaces=NS)[0]  # we want the first result
         for metadata in oai_block.getchildren():
+            logging.info(f"_from_metadata: {metadata}")
             tag = self.uri2label(metadata.tag, metadata.nsmap)
             output[tag] = metadata.text.strip()
 

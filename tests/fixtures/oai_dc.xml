@@ -1,0 +1,26 @@
+<record xmlns="http://www.openarchives.org/OAI/2.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header>
+    <identifier>05qftzxr</identifier>
+    <datestamp>1900-01-01</datestamp>
+  </header>
+  <metadata>
+    <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+      <dc:description>https://libraries.aub.edu.lb/xtf/data/aco/LeBAU_b12535928/thumb.jpg</dc:description>
+      <dc:type>text</dc:type>
+      <dc:date>1900</dc:date>
+      <dc:creator>الجنبيهي، محمد، مؤلف</dc:creator>
+      <dc:publisher>بولاق، مصر : المطبعة الأميرية، 1318 هـ.، [1900؟ م.]</dc:publisher>
+      <dc:identifier>05qftzxr</dc:identifier>
+      <dc:title>إئتلاف المعاني و المباني بمجاراة الطغرائي وأبي فراس الحمداني</dc:title>
+      <dc:title>للمفتقر الى رحموت رب العالمين الجنبيهي</dc:title>
+      <dc:description>31 صفحة ؛ 18 سم</dc:description>
+      <dc:description>"بالقسم الأدبي"</dc:description>
+      <dc:description>Part of the Arabic Collections Online (ACO) project, contributed by American University of Beirut's Jafet Memorial Library</dc:description>
+      <dc:description>Electronic reproduction</dc:description>
+      <dc:language>ara</dc:language>
+      <dc:identifier>http://purl.org/aub/ul/do/LeBAU_b12535928?src=oai</dc:identifier>
+    </oai_dc:dc>
+  </metadata>
+</record>

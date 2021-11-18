@@ -133,6 +133,25 @@ sources:
     description: Penn Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  harvard-ihp:
+    description: Harvard Islamic Heritage Project
+    driver: oai_xml
+    args:
+      collection_url: https://api.lib.harvard.edu/oai/
+      set: "ihp"
+      metadata_prefix: "mods"
+    metadata:
+      current_metadata: /opt/airflow/metadata/harvard/islamic-heritage-project/data/data.csv
+      working_directory: /opt/airflow/working/harvard/islamic-heritage-project
+      metadata_namespace:
+        mods: "http://www.loc.gov/mods/v3"
+      metadata_path: "//mods:mods"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
   yale_babylonian:
     description: Yale Babylonian Collection
     driver: csv

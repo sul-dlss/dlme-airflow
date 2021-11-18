@@ -1,0 +1,179 @@
+<record xmlns="http://www.openarchives.org/OAI/2.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <header>
+                <identifier>990019984110203941</identifier>
+                <datestamp>20090602</datestamp>
+        </header>
+        <metadata>
+                <mods:mods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xmlns:mods="http://www.loc.gov/mods/v3"
+                        xmlns:sets="http://hul.harvard.edu/ois/xml/ns/sets"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:marc="http://www.loc.gov/MARC21/slim"
+                        xmlns:HarvardDRS="http://hul.harvard.edu/ois/xml/ns/HarvardDRS"
+                        xmlns:librarycloud="http://hul.harvard.edu/ois/xml/ns/librarycloud" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd" version="3.6">
+                        <mods:titleInfo altRepGroup="03">
+                                <mods:title>Kitāb Samīr al-layālī</mods:title>
+                        </mods:titleInfo>
+                        <mods:titleInfo type="uniform" altRepGroup="02">
+                                <mods:title>Samīr al-layālī</mods:title>
+                        </mods:titleInfo>
+                        <mods:name type="personal" altRepGroup="01">
+                                <mods:namePart>Sukkarī, Muḥammad Amīn Ṣūfī.</mods:namePart>
+                                <mods:role>
+                                        <mods:roleTerm type="text">creator</mods:roleTerm>
+                                </mods:role>
+                        </mods:name>
+                        <mods:typeOfResource>text</mods:typeOfResource>
+                        <mods:genre authority="marcgt">handbook</mods:genre>
+                        <mods:originInfo altRepGroup="04">
+                                <mods:place>
+                                        <mods:placeTerm authority="marccountry" type="code">le</mods:placeTerm>
+                                        <mods:placeTerm authority="marccountry" type="text">Lebanon</mods:placeTerm>
+                                </mods:place>
+                                <mods:place>
+                                        <mods:placeTerm type="text">Ṭarābulus al-Shām</mods:placeTerm>
+                                </mods:place>
+                                <mods:publisher>Maṭbaʻat al-Balāghah</mods:publisher>
+                                <mods:dateIssued>1317 [1899 or 1900]</mods:dateIssued>
+                                <mods:dateIssued encoding="marc">1899</mods:dateIssued>
+                                <mods:issuance>monographic</mods:issuance>
+                        </mods:originInfo>
+                        <mods:originInfo altRepGroup="04">
+                                <mods:place>
+                                        <mods:placeTerm type="text">طرابلس الشام :</mods:placeTerm>
+                                </mods:place>
+                                <mods:publisher>مطبعة البلاغة،</mods:publisher>
+                                <mods:dateIssued>1317 [1899 or 1900]</mods:dateIssued>
+                        </mods:originInfo>
+                        <mods:language>
+                                <mods:languageTerm authority="iso639-2b" type="code">ara</mods:languageTerm>
+                                <mods:languageTerm authority="iso639-2b" type="text">Arabic</mods:languageTerm>
+                        </mods:language>
+                        <mods:physicalDescription>
+                                <mods:form authority="marcform">print</mods:form>
+                                <mods:extent>1, 262 p. ; 23 cm.</mods:extent>
+                        </mods:physicalDescription>
+                        <mods:note altRepGroup="00" type="statement of responsibility">li-Muḥammad Amīn Ṣūfī al-Sukkarī.</mods:note>
+                        <mods:note>With (in pocket) 7 p. descriptive advertisement for 2nd ed. of 1327 AH [1909 AD].</mods:note>
+                        <mods:subject>
+                                <mods:geographicCode authority="marcgac">a-tu---</mods:geographicCode>
+                                <mods:geographicCode authority="marcgac">aw-----</mods:geographicCode>
+                        </mods:subject>
+                        <mods:subject authority="lcsh">
+                                <mods:topic>Handbooks, vade-mecums, etc</mods:topic>
+                        </mods:subject>
+                        <mods:subject authority="lcsh">
+                                <mods:geographic>Middle East</mods:geographic>
+                                <mods:topic>Description and travel</mods:topic>
+                        </mods:subject>
+                        <mods:subject authority="lcsh">
+                                <mods:geographic>Turkey</mods:geographic>
+                                <mods:topic>Description and travel</mods:topic>
+                        </mods:subject>
+                        <mods:subject>
+                                <mods:hierarchicalGeographic>
+                                        <mods:country>Lebanon</mods:country>
+                                        <mods:city>Tripoli</mods:city>
+                                </mods:hierarchicalGeographic>
+                        </mods:subject>
+                        <mods:relatedItem type="series">
+                                <mods:titleInfo>
+                                        <mods:title>Open Collections Program at Harvard University</mods:title>
+                                        <mods:partName>Islamic Heritage Project</mods:partName>
+                                </mods:titleInfo>
+                        </mods:relatedItem>
+                        <mods:name type="personal" altRepGroup="01">
+                                <mods:namePart>سكري، محمد أمين صوفي.</mods:namePart>
+                        </mods:name>
+                        <mods:titleInfo type="uniform" altRepGroup="02">
+                                <mods:title>سمير الليالي</mods:title>
+                        </mods:titleInfo>
+                        <mods:titleInfo altRepGroup="03">
+                                <mods:title>كتاب سمير الليالي</mods:title>
+                        </mods:titleInfo>
+                        <mods:note altRepGroup="00" type="statement of responsibility">لمحمد أمين صوفي السكري.</mods:note>
+                        <mods:identifier type="oclc">9240348</mods:identifier>
+                        <mods:relatedItem otherType="HOLLIS record">
+                                <mods:location>
+                                        <mods:url>https://id.lib.harvard.edu/alma/990019984110203941/catalog</mods:url>
+                                </mods:location>
+                        </mods:relatedItem>
+                        <mods:location>
+                                <mods:physicalLocation valueURI="http://id.loc.gov/rwo/agents/no2014094889" displayLabel="Harvard repository" type="repository">Widener Library, Harvard University</mods:physicalLocation>
+                                <mods:shelfLocator>DS43 .S84 1899x</mods:shelfLocator>
+                        </mods:location>
+                        <mods:location>
+                                <mods:url note="Provides access to page images of entire work" access="raw object">https://nrs.harvard.edu/urn-3:FHCL:2303067</mods:url>
+                                <mods:url access="preview">https://ids.lib.harvard.edu/ids/iiif/11404183/full/,150/0/default.jpg</mods:url>
+                                <mods:url displayLabel="Islamic Heritage Project" access="object in context">https://id.lib.harvard.edu/curiosity/islamic-heritage-project/40-990019984110203941</mods:url>
+                                <mods:url displayLabel="Harvard Digital Collections" access="object in context">https://id.lib.harvard.edu/digital_collections/990019984110203941</mods:url>
+                        </mods:location>
+                        <mods:extension>
+                                <HarvardDRS:DRSMetadata>
+                                        <HarvardDRS:inDRS>true</HarvardDRS:inDRS>
+                                        <HarvardDRS:drsObjectId>11404177</HarvardDRS:drsObjectId>
+                                        <HarvardDRS:accessFlag>P</HarvardDRS:accessFlag>
+                                        <HarvardDRS:contentModel>PDS DOCUMENT</HarvardDRS:contentModel>
+                                        <HarvardDRS:contentModelCode>CMID-4.0</HarvardDRS:contentModelCode>
+                                        <HarvardDRS:uriType>PDS</HarvardDRS:uriType>
+                                        <HarvardDRS:fileDeliveryURL>https://nrs.harvard.edu/urn-3:FHCL:2303067</HarvardDRS:fileDeliveryURL>
+                                        <HarvardDRS:ownerCode>FHCL.MED</HarvardDRS:ownerCode>
+                                        <HarvardDRS:ownerCodeDisplayName>Middle Eastern Division. Widener Library. Harvard College Library</HarvardDRS:ownerCodeDisplayName>
+                                        <HarvardDRS:metsLabel>Sukkarī, Muḥammad Amīn Ṣūfī. Kitāb Samīr al-layālī. Ṭarābulus al-Shām : Maṭbaʻat al-Balāghah, 1317 [1899 or 1900].    سكري، محمد أمين صوفي. كتاب سمير الليالي. طرابلس الشام : مطبعة البلاغة.    Widener Library, Harvard University, Cambridge, Mass.</HarvardDRS:metsLabel>
+                                        <HarvardDRS:lastModifiedDate>2017-11-18T01:56:43Z</HarvardDRS:lastModifiedDate>
+                                        <HarvardDRS:insertionDate>2008-11-20T18:44:41Z</HarvardDRS:insertionDate>
+                                        <HarvardDRS:ownerSuppliedName>001998411-METS</HarvardDRS:ownerSuppliedName>
+                                        <HarvardDRS:viewText>off</HarvardDRS:viewText>
+                                        <HarvardDRS:harvardMetadataLinks>
+                                                <HarvardDRS:harvardMetadataLink>
+                                                        <HarvardDRS:metadataIdentifier>http://id.lib.harvard.edu/aleph/001998411/catalog</HarvardDRS:metadataIdentifier>
+                                                        <HarvardDRS:metadataType>Local</HarvardDRS:metadataType>
+                                                        <HarvardDRS:displayLabel>Local</HarvardDRS:displayLabel>
+                                                </HarvardDRS:harvardMetadataLink>
+                                                <HarvardDRS:harvardMetadataLink>
+                                                        <HarvardDRS:metadataIdentifier>http://id.lib.harvard.edu/aleph/001998411/catalog</HarvardDRS:metadataIdentifier>
+                                                        <HarvardDRS:metadataType>Aleph</HarvardDRS:metadataType>
+                                                        <HarvardDRS:displayLabel>HOLLIS+</HarvardDRS:displayLabel>
+                                                </HarvardDRS:harvardMetadataLink>
+                                        </HarvardDRS:harvardMetadataLinks>
+                                </HarvardDRS:DRSMetadata>
+                        </mods:extension>
+                        <mods:extension>
+                                <librarycloud:librarycloud>
+                                        <librarycloud:availableTo>Everyone</librarycloud:availableTo>
+                                        <librarycloud:digitalFormats>
+                                                <librarycloud:digitalFormat>Books and documents</librarycloud:digitalFormat>
+                                        </librarycloud:digitalFormats>
+                                        <librarycloud:HarvardRepositories>
+                                                <librarycloud:HarvardRepository>Widener</librarycloud:HarvardRepository>
+                                        </librarycloud:HarvardRepositories>
+                                        <librarycloud:originalDocument>https://s3.amazonaws.com/harvard.librarycloud.marc/990019984110203941</librarycloud:originalDocument>
+                                        <librarycloud:priorrecordids>
+                                                <librarycloud:recordIdentifier source="MH:ALEPH">001998411</librarycloud:recordIdentifier>
+                                        </librarycloud:priorrecordids>
+                                        <librarycloud:processingDate>2021-01-23T21:06Z</librarycloud:processingDate>
+                                </librarycloud:librarycloud>
+                        </mods:extension>
+                        <mods:extension>
+                                <sets:sets>
+                                        <sets:set>
+                                                <sets:systemId>7</sets:systemId>
+                                                <sets:setName>Islamic Heritage Project</sets:setName>
+                                                <sets:setSpec>ihp</sets:setSpec>
+                                                <sets:baseUrl>https://id.lib.harvard.edu/curiosity/islamic-heritage-project/40-</sets:baseUrl>
+                                        </sets:set>
+                                </sets:sets>
+                        </mods:extension>
+                        <mods:recordInfo>
+                                <mods:descriptionStandard>aacr</mods:descriptionStandard>
+                                <mods:recordContentSource authority="marcorg">IUL</mods:recordContentSource>
+                                <mods:recordCreationDate encoding="marc">830221</mods:recordCreationDate>
+                                <mods:recordChangeDate encoding="iso8601">20090602</mods:recordChangeDate>
+                                <mods:recordIdentifier source="MH:ALMA">990019984110203941</mods:recordIdentifier>
+                                <mods:recordOrigin>Converted from MARCXML to MODS version 3.6 using MARC21slim2MODS3-6.xsl
+        (Revision 1.117 2017/02/14)</mods:recordOrigin>
+                        </mods:recordInfo>
+                </mods:mods>
+        </metadata>
+</record>
