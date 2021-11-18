@@ -6,15 +6,16 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from utils.catalog import catalog_for_provider
-from tasks.fetch_post_harvest import trigger_post_harvest
+from tasks.fetch_post_harvest import fetch_post_harvest
+
 
 def build_post_havest_task(provider, task_group: TaskGroup, dag: DAG):
-    post_harvest = PythonOperator(
+    return PythonOperator(
         task_id=f"{provider}_post_harvest",
         task_group=task_group,
         dag=dag,
-        python_callable=trigger_post_harvest,
-        op_kwargs={"provider": f"{provider}"}
+        python_callable=fetch_post_harvest,
+        op_kwargs={"provider": provider}
     )
 
 def post_harvest_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
