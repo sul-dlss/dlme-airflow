@@ -171,8 +171,8 @@ sources:
     description: 'Yale Babylonian Collection'
     driver: csv
     metadata:
-      current_metadata: "/opt/airflow/metadata/yale/babylonian/data.csv"
-      working_directory: "/opt/airflow/working/yale/babylonian/data.csv"
+      current_metadata: "/opt/airflow/metadata/yale/babylonian/data/data.csv"
+      working_directory: "/opt/airflow/working/yale/babylonian"
       post_harvest: "/opt/dlme_airflow/utils/yale_babylon_remove_non_relevant_records.py"
     args:
       csv_kwargs:
