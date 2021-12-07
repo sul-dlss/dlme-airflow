@@ -18,6 +18,7 @@ def build_post_havest_task(provider, task_group: TaskGroup, dag: DAG):
         op_kwargs={"provider": provider}
     )
 
+
 def post_harvest_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
     source = catalog_for_provider(provider)
@@ -30,6 +31,7 @@ def post_harvest_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         return build_post_havest_task(f"{provider}", task_group, dag)
 
     return task_array
+
 
 def build_post_havest_taskgroup(provider, dag: DAG) -> TaskGroup:
     post_harvest_taskgroup = TaskGroup(group_id="post_harvest")
