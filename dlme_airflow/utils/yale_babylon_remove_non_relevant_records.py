@@ -1,4 +1,4 @@
-#/bin/python
+# /bin/python
 import pandas as pd
 import yaml
 
@@ -20,8 +20,7 @@ NON_RELEVANT_COUNTRIES = ['Canada',
 # Fetch working directory path from catalog and read file into Pandas dataframe
 with open('../catalogs/catalog.yaml', 'r') as stream:
     catalog = yaml.safe_load(stream)
-    path = catalog['sources']['yale_babylonian']['metadata']\
-    ['working_directory']
+    path = catalog['sources']['yale_babylonian']['metadata']['working_directory']
 
 df = pd.read_csv(f"{path}/data.csv")
 
