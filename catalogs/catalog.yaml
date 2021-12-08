@@ -51,12 +51,6 @@ sources:
           optional: true
     args:
       collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
-  aub:
-    args:
-      path: /opt/catalogs/aub.yaml
-    description: "American University of Beirut"
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
   ans:
     description: American Numismatic Society
     driver: csv
