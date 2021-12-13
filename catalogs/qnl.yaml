@@ -1,0 +1,19 @@
+metadata:
+  version: 1
+sources:
+  qnl:
+    driver: oai_xml
+    args:
+      collection_url: https://api.qdl.qa/oaipmh
+      set: ""
+      metadata_prefix: "oai_dc"
+      default_namespace:
+        oai: 'http://www.openarchives.org/OAI/2.0/'
+        mods: 'http://www.loc.gov/mods/v3'
+    metadata:
+      current_metadata: "/opt/airflow/metadata/qnl/qnl/data.csv"
+      working_directory: "/opt/airflow/working/qnl/qnl"
+      fields:
+        id:
+          path: "/oai:record/oai:header/oai:identifier"
+          optional: False

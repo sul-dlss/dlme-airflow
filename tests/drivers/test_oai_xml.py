@@ -12,13 +12,15 @@ from drivers.oai_xml import OAIXmlSource
 @pytest.fixture
 def mock_oai_mods():
     with open("tests/fixtures/oai_mods.xml") as data:
-        return data
+        return data.read()
 
 
 @pytest.fixture
 def mock_oai_record(mock_oai_mods, monkeypatch):
     def mock_raw():
-        return mock_oai_mods
+        with open("tests/fixtures/oai_mods.xml") as data:
+            return data.read()
+        # return mock_oai_mods
     
     monkeypatch.setattr(OAIItem, "raw", mock_raw)
 
@@ -30,7 +32,8 @@ def mock_sickle_client(mock_oai_record, monkeypatch):
         set = kwargs["set"]
         ignore_deleted = kwargs["ignore_deleted"]
         breakpoint()
-        return mock_oai_record
+        # return [mock_oai_mods]
+        return [mock_oai_record]
     
     monkeypatch.setattr(Sickle, "ListRecords", mock_list_records)
     # monkeypatch.setattr(OAIItem, "raw", mock_oai_mods)
@@ -74,6 +77,10 @@ def test_OAIXmlSource_initial(oai_mock_source):
 
 def test_OAIXmlSource_open_set(oai_mock_source, mock_sickle_client):
     assert len(oai_mock_source._open_set()) == 1
+
+def test_OAIDCXmlSource_open_set(oai_mock_source, mock_sickle_client, mock_oai_record):
+    assert len(oai_mock_source._open_set()) == 1
+
 
 # def test_IIIfJsonSource_get_schema(iiif_test_source, mock_response):
 #     iiif_test_source._get_schema()

@@ -1,0 +1,107 @@
+metadata:
+  version: 1
+sources:
+  islamic-heritage-project:
+    driver: oai_xml
+    args:
+      collection_url: https://api.lib.harvard.edu/oai/
+      set: "ihp"
+      metadata_prefix: "mods"
+      default_namespace:
+        oai: 'http://www.openarchives.org/OAI/2.0/'
+        mods: 'http://www.loc.gov/mods/v3'
+    metadata:
+      current_metadata: /opt/airflow/metadata/harvard/islamic-heritage-project/data/data.csv
+      working_directory: /opt/airflow/working/harvard/islamic-heritage-project
+      fields:
+        id:
+          path: "/oai:record/oai:header/oai:identifier"
+          optional: False
+        title_en:
+          path: '//*/mods:titleInfo[@type="uniform"][1]/mods:title'
+          optional: True
+        title_ar:
+          path: '//*/mods:titleInfo[@type="uniform"][2]/mods:title'
+          optional: True
+        # title_alternative:
+        #   , extract_mods('//*/mods:titleInfo[@type="alternative"]/mods:title'), strip, arabic_script_lang_or_default('und-Arab', 'und-Latn')
+        contributor:
+          path: "//*/mods:name[1][mods:role/mods:roleTerm or text() = 'copyist']/mods:namePart" # , role: 'copyist.'), gsub('copyist.', 'copyist'), strip, arabic_script_lang_or_default('und-Arab', 'und-Latn')
+          optional: True
+        # contributor: 
+        #   path: '//*/mods:name[1][mods:role/mods:roleTerm/' # , role: 'scribe.'), gsub('scribe.', 'scribe'), strip, arabic_script_lang_or_default('und-Arab', 'und-Latn')
+        #   optional: True
+        creator:
+          path: "//*/mods:name[1][mods:role/mods:roleTerm or text() = 'creator']/mods:namePart" # , role: 'cre'), gsub('cre', 'creator'), strip, arabic_script_lang_or_default('und-Arab', 'und-Latn')
+          optional: True
+        # creator:
+        #   path: '//*/mods:name[1][mods:role/mods:roleTerm/' # , role: 'creator'), strip, arabic_script_lang_or_default('und-Arab', 'und-Latn')
+        #   optional: True
+        date_created:
+          path: '//*/mods:originInfo/mods:dateCreated' # ), prepend('Date Created: '), strip, lang('en')
+          optional: True
+        date_valid:
+          path: '//*/mods:originInfo/mods:dateValid' # ), prepend('Date Valid: '), strip, lang('en')
+          optional: True
+        date_issued:
+          path: '//*/mods:originInfo/mods:dateIssued[1]' # ), prepend('Date Issued: '), strip, lang('en')
+          optional: True
+        abstract:
+          path: '//*/mods:abstract' # ), lang('und-Latn')
+          optional: True
+        note:
+          path: '//*/mods:note' # ), lang('und-Latn')
+          optional: True
+        table_of_contents:
+          path: '//*/mods:tableOfContents' # ), prepend('Table of Contents: '), lang('und-Latn')
+          optional: True
+        edm_type:
+          path: '//*/mods:typeOfResource' # ), ihp_has_type, normalize_has_type, normalize_edm_type, lang('en')
+          optional: True
+        extent:
+          path: '//*/mods:physicalDescription/mods:extent' # ), lang('ar-Arab')
+          optional: True
+        has_type:
+          path: '//*/mods:typeOfResource[1]' # ), ihp_has_type, normalize_has_type, lang('en')
+          optional: True
+        # has_type:
+        #   path: '//*/mods:typeOfResource[1]' # ), ihp_has_type, normalize_has_type, translation_map('has_type_ar_from_en'), lang('ar-Arab')
+        #   optional: True
+        is_part_of:
+          path: '//*/mods:relatedItem[@type="series"]/mods:titleInfo' # ), gsub('UniversityIslamic', 'University Islamic'), lang('en')
+          optional: True
+        identifier:
+          path: '//*/mods:recordInfo/mods:recordIdentifier' # )
+          optional: True
+        language:
+          path: '//*/mods:language/mods:languageTerm[1]' # ), normalize_language, lang('en')
+          optional: True
+        # language:
+        #   path: '//*/mods:language/mods:languageTerm[1]' # ), normalize_language, translation_map('lang_ar_from_en'), lang('ar-Arab')
+        #   optional: True
+        provenance_first:
+          path: '//*/mods:name[1][mods:role/mods:roleTerm/' # , role: 'former owner.'), gsub('former owner.', 'former owner'), arabic_script_lang_or_default('und-Arab', 'und-Latn')
+          optional: True
+        provenance_second:
+          path: '//*/mods:name[2][mods:role/mods:roleTerm/' # , role: 'former owner.'), gsub('former owner.', 'former owner'), gsub('former owner', 'مالك سابق'), arabic_script_lang_or_default('und-Arab', 'und-Latn')
+          optional: True
+        publisher:
+          path: '//*/mods:originInfo/mods:publisher' # ), lang('en')
+          optional: True
+        # spatial:
+        #   path: ', xpath_multi_lingual_commas_with_prepend('//*/mods:originInfo/mods:place/mods:placeTerm', 'مكان الإنتاج: ', 'Place of Production: '), gsub(' :', ''), arabic_script_lang_or_default('und-Arab', 'en')
+        spatial:
+          path: '//*/mods:subject/mods:geographic' # ), lang('en')
+          optional: True
+        subject:
+          path: '//*/mods:subject/mods:topic' # ), lang('en')
+          optional: True
+        temporal:
+          path: '//*/mods:subject/mods:temporal' # ), lang('en')
+          optional: True
+        type_of_resource:
+          path: '//*/mods:typeOfResource' # ), lang('en')
+          optional: True
+        type_genre:
+          path: '//*/mods:genre' # ), lang('en')
+          optional: True

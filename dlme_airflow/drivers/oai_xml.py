@@ -11,29 +11,33 @@ class OAIXmlSource(intake.source.base.DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, set, metadata_prefix, dtype=None, metadata=None):
+    def __init__(self, collection_url, set, metadata_prefix, default_namespace=None, dtype=None, metadata=None):
         super(OAIXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.set = set
         self.metadata_prefix = metadata_prefix
+        self.namespace = default_namespace
         self._collection = Sickle(self.collection_url)
         self._path_expressions = self._get_path_expressions()
         self._records = []
+        logging.info(self.namespace)
 
     def _open_set(self):
         oai_records = self._collection.ListRecords(metadataPrefix=self.metadata_prefix, set=self.set, ignore_deleted=True)
         for oai_record in oai_records:
-            breakpoint()
+            logging.info(oai_record.raw)
             xtree = etree.fromstring(oai_record.raw)
             record = self._construct_fields(xtree)
-            record.update(self._from_metadata(xtree))
+            if self.metadata_prefix == 'oai_dc':
+                record.update(self._from_metadata(xtree))
             self._records.append(record)
 
     def _construct_fields(self, manifest: etree) -> dict:
         output = {}
         for field in self._path_expressions:
             path = self._path_expressions[field]['path']
-            namespace = self._path_expressions[field]['namespace']
+            logging.info(f"PATH = {path}")
+            namespace = self.namespace # self._path_expressions[field]['namespace']
             optional = self._path_expressions[field]['optional']
             result = manifest.xpath(path, namespaces=namespace)
             if len(result) < 1:
