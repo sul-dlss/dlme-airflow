@@ -19,9 +19,13 @@ def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
 
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
-def dataframe_to_file(dataframe):
-    working_directory = dataframe.metadata.get("working_directory")
+def dataframe_to_file(dataframe, provider):
+    root_dir = os.path.dirname(os.path.abspath('metadata'))
+    data_path = dataframe.metadata.get('data_path', provider)
+
+    working_csv = os.path.join(root_dir, 'working', data_path, 'data.csv')
+    working_directory = os.path.join(root_dir, 'working', data_path)
     os.makedirs(working_directory, exist_ok=True)
 
     source_df = dataframe.read()
-    source_df.to_csv(f"{working_directory}/data.csv", index=False)
+    source_df.to_csv(working_csv, index=False)

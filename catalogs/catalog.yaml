@@ -8,8 +8,6 @@ sources:
       agg_is_shown_at: True
       agg_preview: False
     metadata:
-      current_metadata: "/opt/airflow/metadata/aims"
-      working_directory: "/opt/airflow/working/aims/data.csv"
       record_selector:
         path: "//item"
         namespace:
