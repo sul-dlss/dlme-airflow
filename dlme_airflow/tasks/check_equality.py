@@ -1,4 +1,3 @@
-import logging
 import os
 from utils.dataframe import dataframe_from_file
 from utils.catalog import catalog_for_provider

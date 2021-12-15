@@ -1,6 +1,8 @@
 # /bin/python
+import os
 import pandas as pd
-import yaml
+
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 # Objects from these countries will be suppressed
 NON_RELEVANT_COUNTRIES = ['Canada',
@@ -18,13 +20,14 @@ NON_RELEVANT_COUNTRIES = ['Canada',
                           'USA']
 
 # Fetch working directory path from catalog and read file into Pandas dataframe
-with open('../catalogs/catalog.yaml', 'r') as stream:
-    catalog = yaml.safe_load(stream)
-    path = catalog['sources']['yale_babylonian']['metadata']['working_directory']
+catalog = catalog_for_provider('yale_babylonian')
+root_dir = os.path.dirname(os.path.abspath('metadata'))
+data_path = catalog.metadata.get('data_path', 'yale_babylonian')
+working_csv = os.path.join(root_dir, 'working', data_path, 'data.csv')
 
-df = pd.read_csv(f"{path}/data.csv")
+df = pd.read_csv(working_csv)
 
 # Filter out non relevant records and over write the csv
 df = df[~df['geographic_country'].isin(NON_RELEVANT_COUNTRIES)]
 
-df.to_csv(f"{path}/data.csv")
+df.to_csv(working_csv)
