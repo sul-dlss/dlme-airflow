@@ -1,14 +1,14 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.4.0
+  python: cimg/python:3.10.1
 
 executors:
   docker-publisher:
     environment:
       IMAGE_NAME: suldlss/dlme-airflow
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: cimg/base
 
 jobs:
   lint_and_test:
