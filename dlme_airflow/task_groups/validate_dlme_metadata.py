@@ -10,6 +10,7 @@ from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import BranchPythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
+from utils.catalog import catalog_for_provider
 
 # AWS Credentials
 dev_role_arn = os.getenv('DEV_ROLE_ARN')
@@ -41,7 +42,7 @@ def require_credentials(**kwargs):
     return f"{task_group_prefix}.sync_metadata"
 
 
-def build_validate_metadata_taskgroup(dag: DAG) -> TaskGroup:
+def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
     validate_metadata_taskgroup = TaskGroup(group_id=task_group_prefix)
 
     are_credentials_required = BranchPythonOperator(
@@ -56,7 +57,7 @@ def build_validate_metadata_taskgroup(dag: DAG) -> TaskGroup:
       export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
       export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
       export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-      aws s3 cp {s3_data} {metadata_directory} --recursive
+      aws s3 cp {s3_data}/{provider} {metadata_directory}/{provider} --recursive
     """
     aws_assume_role = BashOperator(
         task_id='assume_role',
@@ -65,7 +66,7 @@ def build_validate_metadata_taskgroup(dag: DAG) -> TaskGroup:
         dag=dag
     )
 
-    bash_sync_s3 = f"aws s3 cp {s3_data} {metadata_directory} --recursive"
+    bash_sync_s3 = f"aws s3 cp {s3_data}/{provider} {metadata_directory}/{provider} --recursive"
     sync_metadata = BashOperator(
         task_id='sync_metadata',
         bash_command=bash_sync_s3,

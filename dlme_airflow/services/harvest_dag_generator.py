@@ -39,7 +39,7 @@ def create_dag(provider, default_args):
     )
 
     with dag:
-        validate_dlme_metadata = build_validate_metadata_taskgroup(dag=dag)
+        validate_dlme_metadata = build_validate_metadata_taskgroup(provider, dag)
 
         harvester = build_harvester_taskgroup(provider, dag)
 
