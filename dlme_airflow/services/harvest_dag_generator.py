@@ -8,7 +8,7 @@ from airflow.operators.dummy import DummyOperator
 from airflow.models import Variable
 
 # Our stuff
-from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
+from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup, build_sync_metadata_taskgroup
 from task_groups.harvest import build_harvester_taskgroup
 from task_groups.post_harvest import build_post_havest_taskgroup
 from task_groups.detect_metadata_changes import build_detect_metadata_changes_taskgroup
@@ -52,11 +52,12 @@ def create_dag(provider, default_args):
         # A dummy operator is required as a transition point between task groups
         post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
 
+        sync_dlme_metadata = build_sync_metadata_taskgroup(provider, dag)
         # TODO
         # collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
 
         # validate_dlme_metadata >> harvester >> harvest_complete >> post_harvest >> post_harvest_complete >> collect_metadata_changes
         # validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes
-        validate_dlme_metadata >> harvester >> harvest_complete
+        validate_dlme_metadata >> harvester >> harvest_complete >> sync_dlme_metadata
 
     return dag
