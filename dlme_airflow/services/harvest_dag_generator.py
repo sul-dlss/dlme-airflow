@@ -46,13 +46,17 @@ def create_dag(provider, default_args):
         # A dummy operator is required as a transition point between task groups
         harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
-        post_harvest = build_post_havest_taskgroup(provider, dag)
+        # TODO
+        # post_harvest = build_post_havest_taskgroup(provider, dag)
 
         # A dummy operator is required as a transition point between task groups
         post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
 
-        collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
+        # TODO
+        # collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
 
-        validate_dlme_metadata >> harvester >> harvest_complete >> post_harvest >> post_harvest_complete >> collect_metadata_changes
+        # validate_dlme_metadata >> harvester >> harvest_complete >> post_harvest >> post_harvest_complete >> collect_metadata_changes
+        # validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes
+        validate_dlme_metadata >> harvester >> harvest_complete
 
     return dag
