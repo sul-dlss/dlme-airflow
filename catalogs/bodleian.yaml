@@ -44,6 +44,7 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
+      data_path: bodleian/arabic
       fields:
         id:
           path: "@id"
@@ -74,6 +75,7 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
+      data_path: bodleian/exploring-egypt
       fields:
         id:
           path: "@id"
@@ -133,6 +135,7 @@ sources:
         acknowledgements: object
         digitization-sponsor: object
     metadata:
+      data_path: bodleian/hebrew
       fields:
         id:
           path: "@id"
@@ -182,6 +185,7 @@ sources:
         related-items: object
         editors: object
     metadata:
+      data_path: bodleian/persian
       fields:
         id:
           path: "@id"
@@ -226,6 +230,7 @@ sources:
         provenance: object
         contents: object
     metadata:
+      data_path: bodleian/turkish
       fields:
         id:
           path: "@id"

@@ -90,6 +90,7 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
 
 
 def build_sync_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
+    logging.info(f"Sync for Provider: {provider}")
     sync_metadata_taskgroup = TaskGroup(group_id='sync_metadata')
 
     are_credentials_required = BranchPythonOperator(
