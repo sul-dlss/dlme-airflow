@@ -12,8 +12,8 @@ from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
 from task_groups.harvest import build_harvester_taskgroup
 from task_groups.post_harvest import build_post_havest_taskgroup
 from task_groups.detect_metadata_changes import build_detect_metadata_changes_taskgroup
-from task_groups.transform import build_transform_taskgroup
-from task_groups.index import build_index_taskgroup
+from task_groups.transform import build_transform_task
+from task_groups.index import build_index_task
 
 from utils.driver_tag import fetch_driver
 
@@ -59,8 +59,8 @@ def create_dag(provider, default_args):
         # TODO
         # collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
 
-        transform = build_transform_taskgroup(provider, dag)
-        index = build_index_taskgroup(provider, dag)
+        transform = build_transform_task(provider, dag)
+        index = build_index_task(provider, dag)
         # validate_dlme_metadata >> harvester >> harvest_complete >> post_harvest >> post_harvest_complete >> collect_metadata_changes
         # validate_dlme_metadata >> harvester >> harvest_complete >> collect_metadata_changes
         validate_dlme_metadata >> harvester >> harvest_complete >> sync_dlme_metadata >> transform >> transform_complete >> index
