@@ -1,0 +1,4 @@
+/metadata/**/*
+!/metadata/.keep
+/working/**/*
+!/working/.keep
