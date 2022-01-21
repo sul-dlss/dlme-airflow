@@ -8,8 +8,6 @@ sources:
       agg_is_shown_at: True
       agg_preview: False
     metadata:
-      current_metadata: "/opt/airflow/metadata/aims"
-      working_directory: "/opt/airflow/working/aims/data.csv"
       record_selector:
         path: "//item"
         namespace:
@@ -54,9 +52,7 @@ sources:
   ans:
     description: American Numismatic Society
     driver: csv
-    metadata:
-      current_metadata: /opt/airflow/metadata/american-numismatic-society/data/american-numismatic-society.csv
-      working_directory: /opt/airflow/working/american-numismatic-society
+    metadata: {}
     args:
       csv_kwargs:
         blocksize: null
@@ -115,7 +111,7 @@ sources:
     description: "American University of Beirut"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  auc_iiif:
+  auc:
     args:
       path: /opt/catalogs/auc_iiif.yaml
     description: "American University in Cairo IIIf Collections"
@@ -127,7 +123,7 @@ sources:
     description: "Bodleian Libraries, University of Oxford"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  penn_museum:
+  penn:
     args:
       path: /opt/catalogs/penn_museum.yaml
     description: Penn Museum
@@ -137,8 +133,7 @@ sources:
     description: Yale Babylonian Collection
     driver: csv
     metadata:
-      current_metadata: "/opt/airflow/metadata/yale/babylonian/data/data.csv"
-      working_directory: "/opt/airflow/working/yale/babylonian"
+      data_path: 'yale/babylonian'
       post_harvest: "/opt/dlme_airflow/utils/yale_babylon_remove_non_relevant_records.py"
     args:
       csv_kwargs:

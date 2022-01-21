@@ -35,4 +35,4 @@ def data_source_harvester(**kwargs):
         for collection in has_sources:
             data_source_harvester(provider=source_provider, collection=collection)
     except TypeError:
-        dataframe_to_file(source)
+        dataframe_to_file(source, source_provider)

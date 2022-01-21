@@ -5,8 +5,6 @@ sources:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/al-musawwar/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/al-musawwar"
       fields:
         context:
           path: '@context'
@@ -79,8 +77,6 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/alexandria-bombardment/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/alexandria-bombardment"
       fields:
         context:
           path: '@context'
@@ -127,8 +123,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/bint-al-nil/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/bint-al-nil"
       fields:
         context:
           path: '@context'
@@ -178,8 +172,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/campus-photos/data.csv"
-      working_directory: "/opt/airflow/working/auc/campus-photos"
       fields:
         context:
           path: '@context'
@@ -233,8 +225,6 @@ sources:
         repository: object
         location: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/coptic/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/coptic"
       fields:
         context:
           path: '@context'
@@ -280,8 +270,6 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/fathy/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/fathy"
       fields:
         context:
           path: '@context'
@@ -326,8 +314,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/hopkins/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/hopkins"
       fields:
         context:
           path: '@context'
@@ -375,8 +361,6 @@ sources:
         identifier: object
         description: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/islamic-aa/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/islamic-aa"
       fields:
         context:
           path: '@context'
@@ -426,8 +410,6 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/maps/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/maps"
       fields:
         context:
           path: '@context'
@@ -477,8 +459,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/maritz/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/maritz"
       fields:
         context:
           path: '@context'
@@ -527,8 +507,6 @@ sources:
         format: object
         type: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/napoleonic-egypt/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/napoleonic-egypt"
       fields:
         context:
           path: '@context'
@@ -574,8 +552,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/parker/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/parker"
       fields:
         context:
           path: '@context'
@@ -621,8 +597,6 @@ sources:
         repository: object
         publisher: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/postcards/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/postcards"
       fields:
         context:
           path: '@context'
@@ -668,8 +642,6 @@ sources:
         identifier: object
         publisher: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/qurna/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/qurna"
       fields:
         context:
           path: '@context'
@@ -719,8 +691,6 @@ sources:
         description: object
         extent: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/rare-books/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/rare-books"
       fields:
         context:
           path: '@context'
@@ -765,8 +735,6 @@ sources:
         type: object
         repository: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/sphinx/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/sphinx"
       fields:
         context:
           path: '@context'
@@ -816,8 +784,6 @@ sources:
         name: object
         creator: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/taxiphote-slides/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/taxiphote-slides"
       fields:
         context:
           path: '@context'
@@ -871,8 +837,6 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/underwood/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/underwood"
       fields:
         context:
           path: '@context'
@@ -932,8 +896,6 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/university-on-the-square/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/university-on-the-square"
       fields:
         context:
           path: '@context'
@@ -981,8 +943,6 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      current_metadata: "/opt/airflow/metadata/auc/iiif/wassef/data.csv"
-      working_directory: "/opt/airflow/working/auc/iiif/wassef"
       fields:
         context:
           path: '@context'
