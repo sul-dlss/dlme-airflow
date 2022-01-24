@@ -55,7 +55,7 @@ sources:
           path: "rendering..@id"
         thumbnail:
           path: "thumbnail..@id"
-  exploring_egypt:
+  exploring-egypt:
     description: "Exploring Egypt in the 19th Century"
     driver: iiif_json
     args:

@@ -89,47 +89,52 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
     return validate_metadata_taskgroup
 
 
-def build_sync_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
-    logging.info(f"Sync for Provider: {provider}")
-    sync_metadata_taskgroup = TaskGroup(group_id='sync_metadata')
+def build_sync_metadata_taskgroup(provider, collection, dag: DAG) -> TaskGroup:
+    if collection:
+        data_path = f"{provider}/{collection}"
+    else:
+        data_path = provider
 
-    are_credentials_required = BranchPythonOperator(
-        task_id='verify_aws_credentials',
-        task_group=sync_metadata_taskgroup,
-        python_callable=require_credentials,
-        op_kwargs={"task_group": 'sync_metadata'},
-        dag=dag
-    )
+    task_group_prefix = f"{provider.upper()}_ETL.{collection}_etl.sync_{collection}_metadata"
 
-    bash_assume_role = f"""
-      temp_role=$(aws sts assume-role --role-session-name \"DevelopersRole\" --role-arn {dev_role_arn}) && \
-      export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
-      export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
-      export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-      aws s3 sync {working_directory}/{provider} {s3_data}/{provider} --delete
-    """
-    aws_assume_role = BashOperator(
-        task_id='assume_role',
-        bash_command=bash_assume_role,
-        task_group=sync_metadata_taskgroup,
-        dag=dag
-    )
+    with TaskGroup(group_id=f"sync_{collection}_metadata") as sync_metadata_taskgroup:
+        are_credentials_required = BranchPythonOperator(
+            task_id='verify_aws_credentials',
+            task_group=sync_metadata_taskgroup,
+            python_callable=require_credentials,
+            op_kwargs={"task_group": task_group_prefix},
+            dag=dag
+        )
 
-    bash_sync_s3 = f"aws s3 sync {working_directory}/{provider} {s3_data}/{provider} --delete"
-    sync_metadata = BashOperator(
-        task_id='sync_metadata',
-        bash_command=bash_sync_s3,
-        task_group=sync_metadata_taskgroup,
-        dag=dag
-    )
+        bash_assume_role = f"""
+        temp_role=$(aws sts assume-role --role-session-name \"DevelopersRole\" --role-arn {dev_role_arn}) && \
+        export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
+        export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
+        export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
+        aws s3 sync {working_directory}/{data_path} {s3_data}/{data_path} --delete
+        """
+        aws_assume_role = BashOperator(
+            task_id='assume_role',
+            bash_command=bash_assume_role,
+            task_group=sync_metadata_taskgroup,
+            dag=dag
+        )
 
-    """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
-    finished_sync = DummyOperator(
-        task_id='finished_metadata_sync',
-        trigger_rule='none_failed',
-        task_group=sync_metadata_taskgroup,
-        dag=dag)
+        bash_sync_s3 = f"aws s3 sync {working_directory}/{data_path} {s3_data}/{data_path} --delete"
+        sync_metadata = BashOperator(
+            task_id='sync_metadata',
+            bash_command=bash_sync_s3,
+            task_group=sync_metadata_taskgroup,
+            dag=dag
+        )
 
-    are_credentials_required >> [aws_assume_role, sync_metadata] >> finished_sync
+        """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
+        finished_sync = DummyOperator(
+            task_id='finished_metadata_sync',
+            trigger_rule='none_failed',
+            task_group=sync_metadata_taskgroup,
+            dag=dag)
+
+        are_credentials_required >> [aws_assume_role, sync_metadata] >> finished_sync
 
     return sync_metadata_taskgroup
