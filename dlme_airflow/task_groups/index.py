@@ -9,9 +9,10 @@ from airflow.utils.task_group import TaskGroup
 from utils.catalog import catalog_for_provider
 
 
-def build_index_task(provider, dag: DAG) -> TaskGroup:
+def build_index_task(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     return ECSOperator(
         task_id=f"index_{provider}",
+        task_group=task_group,
         aws_conn_id="aws_conn",
         cluster="dlme-dev",
         task_definition="dlme-index-from-s3",
@@ -35,3 +36,23 @@ def build_index_task(provider, dag: DAG) -> TaskGroup:
         },
         dag=dag
     )
+
+def index_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
+    task_array = []
+    source = catalog_for_provider(provider)
+
+    try:
+        collections = iter(list(source))
+        for collection in collections:
+            coll_label = f"{provider}-{collection}"
+            task_array.append(build_index_task(coll_label, task_group, dag))
+    except:
+        return build_index_task(provider, task_group, dag)
+
+    return task_array
+
+
+def build_index_taskgroup(provider, dag: DAG) -> TaskGroup:
+    index_taskgroup = TaskGroup(group_id="index")
+
+    return index_tasks(provider,index_taskgroup, dag)

@@ -62,7 +62,7 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle intake aiohttp jsonpath_ng dominate Pillow validators' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     CATALOG_SOURCE: '/opt/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
-    AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+    AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY}"
     AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
     DEV_ROLE_ARN: "${DEV_ROLE_ARN}"
   volumes:
