@@ -6,11 +6,11 @@ from airflow.utils.task_group import TaskGroup
 from airflow.operators.dummy import DummyOperator
 
 from utils.catalog import catalog_for_provider
-from task_groups.harvest import build_havester_task
-from task_groups.transform import build_transform_task
+from tasks.harvest import build_havester_task
+from tasks.transform import build_transform_task
 from tasks.index import index_task
-from task_groups.harvest_report import build_harvest_report_task
-from task_groups.send_harvest_report import build_send_harvest_report_task
+from tasks.harvest_report import build_harvest_report_task
+from tasks.send_harvest_report import build_send_harvest_report_task
 from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
 
 

@@ -370,24 +370,3 @@ def build_harvest_report_task(provider, collection, task_group: TaskGroup, dag: 
             "collection": collection
         }
     )
-
-
-def harvest_report_tasks(provider, task_group: TaskGroup, dag: DAG):
-    task_array = []
-    source = catalog_for_provider(provider)
-
-    try:
-        collections = list(source).__iter__()
-        for collection in collections:
-            report_task = build_harvest_report_task(provider, collection, task_group, dag)
-            task_array.append(report_task)
-    except TypeError:
-        return build_harvest_report_task(f"{provider}", "", task_group, dag)
-
-    return task_array
-
-
-def build_harvest_report_taskgroup(provider, dag: DAG) -> TaskGroup:
-    harvest_report_taskgroup = TaskGroup(group_id="harvest_report")
-
-    return harvest_report_tasks(provider, harvest_report_taskgroup, dag)
