@@ -11,14 +11,16 @@ from harvester.source_harvester import data_source_harvester
 
 def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
     if collection:
-        provider_tag = f"{provider}.{collection}"
+        label = f"{provider}_{collection}"
+        args = {"provider": provider, "collection": collection}
     else:
-        provider_tag = provider
+        label = f"{provider}_{collection}"
+        args = {"provider": provider, "collection": None}
 
     return PythonOperator(
-        task_id=f"{provider_tag}_intake_harvester",
+        task_id=f"{label}_harvest",
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs={"provider": f"{provider_tag}"}
+        op_kwargs=args
     )
