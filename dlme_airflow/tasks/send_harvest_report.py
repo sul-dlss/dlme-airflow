@@ -11,9 +11,17 @@ from utils.catalog import catalog_for_provider
 
 def email_callback(**kwargs):
     provider_id = kwargs.get('provider')
-    collection_id = kwargs.get('collection')
-    subject = f"ETL Report for {provider_id}/{collection_id}"
-    report_file = f"/tmp/report_{provider_id}_{collection_id}_{date.today()}.html"
+    collection_id = kwargs.get('collection', None)
+
+    if collection_id:
+        data_path = f"{provider_id}/{collection_id}"
+        file_path = f"{provider_id}_{collection_id}"
+    else:
+        data_path = provider_id
+        file_path = provider_id
+
+    subject = f"ETL Report for {data_path}"
+    report_file = f"/tmp/report_{file_path}_{date.today()}.html"
 
     with open(report_file) as f:
         content = f.read()
@@ -27,15 +35,24 @@ def email_callback(**kwargs):
 
 
 def build_send_harvest_report_task(provider, collection, task_group: TaskGroup, dag: DAG):
+    if collection:
+        label = f"{provider}_{collection}"
+        args = {
+            "provider": provider,
+            "collection": collection
+        }
+    else:
+        label = provider
+        args = {
+            "provider": provider,
+        }
+
     return PythonOperator(
         task_id=f"{provider}_{collection}_harvest_send_report",
         dag=dag,
         task_group=task_group,
         python_callable=email_callback,
-        op_kwargs={
-            "provider": provider,
-            "collection": collection
-        },
+        op_kwargs=args,
         trigger_rule='none_failed'
     )
 

@@ -9,11 +9,16 @@ from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
 
 
-def build_havester_task(provider, task_group: TaskGroup, dag: DAG):
+def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
+    if collection:
+        provider_tag = f"{provider}.{collection}"
+    else:
+        provider_tag = provider
+
     return PythonOperator(
-        task_id=f"{provider}_intake_harvester",
+        task_id=f"{provider_tag}_intake_harvester",
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs={"provider": f"{provider}"}
+        op_kwargs={"provider": f"{provider_tag}"}
     )

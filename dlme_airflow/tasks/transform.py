@@ -10,8 +10,13 @@ from airflow.utils.task_group import TaskGroup
 from utils.catalog import catalog_for_provider
 
 
-def build_transform_task(coll_label, data_path, task_group: TaskGroup, dag: DAG):
-     return ECSOperator(
+def build_transform_task(provider, collection, data_path, task_group: TaskGroup, dag: DAG):
+    if collection:
+        coll_label = f"{provider}.{collection}"
+    else:
+        coll_label = provider
+
+    return ECSOperator(
         task_id=f"transform_{coll_label}",
         task_group=task_group,
         aws_conn_id="aws_conn",

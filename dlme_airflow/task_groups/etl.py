@@ -39,12 +39,12 @@ def build_collection_etl_taskgroup(provider, collection, task_group: TaskGroup, 
     with TaskGroup(
         group_id=f"{collection}_etl",
         dag=dag) as collection_etl_taskgroup:
-            harvest = build_havester_task(f"{provider}.{collection}", collection_etl_taskgroup, dag)  # Harvest
+            harvest = build_havester_task(provider, collection, collection_etl_taskgroup, dag)  # Harvest
             sync = build_sync_metadata_taskgroup(provider, collection, dag)
-            transform = build_transform_task(f"{provider}.{collection}", collection, collection_etl_taskgroup, dag)  # Transform
+            transform = build_transform_task(provider, collection, collection, collection_etl_taskgroup, dag)  # Transform
             load = index_task(provider, collection, collection_etl_taskgroup, dag)  # Load / Index
             report = build_harvest_report_task(provider, collection, collection_etl_taskgroup, dag)  # Report
-            send_report = build_send_harvest_report_task(f"{provider}.{collection}", collection, collection_etl_taskgroup, dag)  # Send Report
+            send_report = build_send_harvest_report_task(provider, collection, collection_etl_taskgroup, dag)  # Send Report
 
             harvest >> sync >> transform >> load >> report >> send_report
     
