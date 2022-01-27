@@ -41,7 +41,11 @@ class OAIXmlSource(intake.source.base.DataSource):
                 else:
                     logging.warn(f"Manifest missing {field}")
             else:
-                output[field] = result[0].text.strip()  # Use first value
+                if len(result) == 1:
+                    output[field] = result[0].text.strip()
+                else:
+                    for data in result:
+                        output[field].append(data.text.strip())
         return output
 
     def uri2label(self, value: str, nsmap: dict):
@@ -56,7 +60,10 @@ class OAIXmlSource(intake.source.base.DataSource):
         oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
         for metadata in oai_block.getchildren():
             tag = self.uri2label(metadata.tag, metadata.nsmap)
-            output[tag] = metadata.text.strip()
+            if tag in output:
+                output[tag].append(metadata.text.strip())
+            else:
+                output[tag] = [metadata.text.strip()]
 
         return output
 
