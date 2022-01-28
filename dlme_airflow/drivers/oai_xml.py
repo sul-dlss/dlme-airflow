@@ -44,6 +44,9 @@ class OAIXmlSource(intake.source.base.DataSource):
                 if len(result) == 1:
                     output[field] = result[0].text.strip()
                 else:
+                    if field not in output:
+                        output[field] = []
+
                     for data in result:
                         output[field].append(data.text.strip())
         return output
@@ -61,9 +64,12 @@ class OAIXmlSource(intake.source.base.DataSource):
         for metadata in oai_block.getchildren():
             tag = self.uri2label(metadata.tag, metadata.nsmap)
             if tag in output:
-                output[tag].append(metadata.text.strip())
+                if isinstance(output[tag], str):
+                    output[tag] = [output[tag], metadata.text.strip()]
+                else:
+                    output[tag].append(metadata.text.strip())
             else:
-                output[tag] = [metadata.text.strip()]
+                output[tag] = metadata.text.strip()
 
         return output
 
