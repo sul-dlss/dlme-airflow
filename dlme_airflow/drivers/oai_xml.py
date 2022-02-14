@@ -21,7 +21,8 @@ class OAIXmlSource(intake.source.base.DataSource):
 
     def _open_set(self):
         oai_records = self._collection.ListRecords(metadataPrefix='oai_dc', set=self.set, ignore_deleted=True)
-        for oai_record in oai_records:
+
+        for counter, oai_record in enumerate(oai_records, start=1):
             xtree = etree.fromstring(oai_record.raw)
             record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
@@ -97,4 +98,4 @@ class OAIXmlSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        return pd.concat(self.read_partition(i) for i in range(self.npartitions))

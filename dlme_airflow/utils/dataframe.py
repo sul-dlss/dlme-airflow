@@ -1,4 +1,5 @@
 import os
+import logging
 import pandas as pd
 
 
@@ -32,5 +33,5 @@ def dataframe_to_file(dataframe, provider, collection):
     working_directory = os.path.join(root_dir, 'working', data_path)
     os.makedirs(working_directory, exist_ok=True)
 
-    source_df = dataframe.read()
+    source_df = dataframe.read().drop_duplicates(subset=['id'], keep='first')
     source_df.to_csv(working_csv, index=False)
