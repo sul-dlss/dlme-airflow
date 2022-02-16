@@ -21,7 +21,8 @@ class OAIXmlSource(intake.source.base.DataSource):
 
     def _open_set(self):
         oai_records = self._collection.ListRecords(metadataPrefix='oai_dc', set=self.set, ignore_deleted=True)
-        for oai_record in oai_records:
+
+        for counter, oai_record in enumerate(oai_records, start=1):
             xtree = etree.fromstring(oai_record.raw)
             record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
@@ -41,7 +42,14 @@ class OAIXmlSource(intake.source.base.DataSource):
                 else:
                     logging.warn(f"Manifest missing {field}")
             else:
-                output[field] = result[0].text.strip()  # Use first value
+                if len(result) == 1:
+                    output[field] = result[0].text.strip()
+                else:
+                    if field not in output:
+                        output[field] = []
+
+                    for data in result:
+                        output[field].append(data.text.strip())
         return output
 
     def uri2label(self, value: str, nsmap: dict):
@@ -56,7 +64,13 @@ class OAIXmlSource(intake.source.base.DataSource):
         oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
         for metadata in oai_block.getchildren():
             tag = self.uri2label(metadata.tag, metadata.nsmap)
-            output[tag] = metadata.text.strip()
+            if tag in output:
+                if isinstance(output[tag], str):
+                    output[tag] = [output[tag], metadata.text.strip()]
+                else:
+                    output[tag].append(metadata.text.strip())
+            else:
+                output[tag] = metadata.text.strip()
 
         return output
 
@@ -84,4 +98,4 @@ class OAIXmlSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        return pd.concat(self.read_partition(i) for i in range(self.npartitions))

@@ -44,6 +44,8 @@ sources:
         catalogue-identifier: object
         contents: object
     metadata:
+      data_path: bodleian/arabic
+      config: bodleian_arabic_config
       fields:
         id:
           path: "@id"
@@ -53,7 +55,7 @@ sources:
           path: "rendering..@id"
         thumbnail:
           path: "thumbnail..@id"
-  exploring_egypt:
+  exploring-egypt:
     description: "Exploring Egypt in the 19th Century"
     driver: iiif_json
     args:
@@ -74,6 +76,8 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
+      data_path: bodleian/exploring-egypt
+      config: bodleian_egypt_config
       fields:
         id:
           path: "@id"
@@ -133,6 +137,8 @@ sources:
         acknowledgements: object
         digitization-sponsor: object
     metadata:
+      data_path: bodleian/hebrew
+      config: bodleian_hebrew_config
       fields:
         id:
           path: "@id"
@@ -182,6 +188,8 @@ sources:
         related-items: object
         editors: object
     metadata:
+      data_path: bodleian/persian
+      config: bodleian_persian_config
       fields:
         id:
           path: "@id"
@@ -226,6 +234,8 @@ sources:
         provenance: object
         contents: object
     metadata:
+      data_path: bodleian/turkish
+      config: bodleian_turkish_config
       fields:
         id:
           path: "@id"

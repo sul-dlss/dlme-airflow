@@ -1,3 +1,5 @@
+import logging
+
 from utils.dataframe import dataframe_to_file
 from utils.catalog import catalog_for_provider
 
@@ -29,10 +31,11 @@ def data_source_harvester(**kwargs):
     source_provider = provider_key(**kwargs)
 
     source = catalog_for_provider(source_provider)
+    logging.info(f"SOURCE_PROVIDER = {source_provider}")
 
     try:
         has_sources = iter(list(source))
         for collection in has_sources:
-            data_source_harvester(provider=source_provider, collection=collection)
+            data_source_harvester(provider=kwargs[PROVIDER], collection=collection)
     except TypeError:
-        dataframe_to_file(source, source_provider)
+        dataframe_to_file(source, kwargs[PROVIDER], kwargs.get(COLLECTION, None))

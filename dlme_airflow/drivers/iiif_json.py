@@ -43,7 +43,14 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 else:
                     logging.warn(f"{manifest.get('@id')} missing {name}")
             else:
-                output[name] = result[0]  # Use first value
+                if len(result) == 1
+                    output[name] = result[0].text.strip()
+                else:
+                    if name not in output:
+                        output[name] = []
+
+                    for data in result:
+                        output[name].append(data.text.strip())
         return output
 
     def _from_metadata(self, metadata) -> dict:
@@ -57,10 +64,10 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 .replace(")", "")
             )
             output[name] = row.get("value")  # this will assign the last value found to output[name]
-            # if name in output:
-            #     output[name].append(row.get("value"))
-            # else:
-            #     output[name] = [row.get("value")]
+            if name in output:
+                output[name].append(row.get("value"))
+            else:
+                output[name] = [row.get("value")]
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:

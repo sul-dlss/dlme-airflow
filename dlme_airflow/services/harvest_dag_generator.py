@@ -9,10 +9,7 @@ from airflow.models import Variable
 
 # Our stuff
 from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
-from task_groups.harvest import build_harvester_taskgroup
-from task_groups.post_harvest import build_post_havest_taskgroup
-from task_groups.detect_metadata_changes import build_detect_metadata_changes_taskgroup
-
+from task_groups.etl import build_provider_etl_taskgroup
 from utils.driver_tag import fetch_driver
 
 # These args will get passed on to each operator
@@ -39,20 +36,20 @@ def create_dag(provider, default_args):
     )
 
     with dag:
-        validate_dlme_metadata = build_validate_metadata_taskgroup(dag=dag)
-
-        harvester = build_harvester_taskgroup(provider, dag)
+        validate_dlme_metadata = build_validate_metadata_taskgroup(provider, dag)
 
         # A dummy operator is required as a transition point between task groups
+        harvest_begin = DummyOperator(task_id='harvest_begin', trigger_rule='none_failed', dag=dag)
         harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
-        post_harvest = build_post_havest_taskgroup(provider, dag)
+        # TODO
+        # post_harvest = build_post_havest_taskgroup(provider, dag)
 
-        # A dummy operator is required as a transition point between task groups
-        post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
+        # TODO: A dummy operator is required as a transition point between task groups
+        # post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
 
-        collect_metadata_changes = build_detect_metadata_changes_taskgroup(provider, dag)
+        etl = build_provider_etl_taskgroup(provider, dag)
 
-        validate_dlme_metadata >> harvester >> harvest_complete >> post_harvest >> post_harvest_complete >> collect_metadata_changes
+        validate_dlme_metadata >> harvest_begin >> etl >> harvest_complete
 
     return dag
