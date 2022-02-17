@@ -43,7 +43,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 else:
                     logging.warn(f"{manifest.get('@id')} missing {name}")
             else:
-                if len(result) == 1
+                if len(result) == 1:
                     output[name] = result[0].text.strip()
                 else:
                     if name not in output:

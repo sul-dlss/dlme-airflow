@@ -1,0 +1,17 @@
+metadata:
+  version: 1
+sources:
+  photographs:
+    driver: oai_xml
+    args:
+      collection_url: https://api.archives-ouvertes.fr/oai/hal
+      set: "type:IMG"
+    metadata:
+      data_path: ifpo/photographs
+      config: ifpo_config
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True

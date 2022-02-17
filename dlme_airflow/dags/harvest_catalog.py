@@ -6,14 +6,14 @@ from datetime import timedelta
 from airflow.models import Variable
 
 from drivers.iiif_json import IIIfJsonSource
-from drivers.feed import FeedSource
+# from drivers.feed import FeedSource
 from drivers.oai_xml import OAIXmlSource
 from utils.catalog import fetch_catalog
 from services.harvest_dag_generator import create_dag
 
 intake.source.register_driver("iiif_json", IIIfJsonSource)
 intake.source.register_driver("oai_xml", OAIXmlSource)
-intake.source.register_driver("feed", FeedSource)
+# intake.source.register_driver("feed", FeedSource)
 
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
