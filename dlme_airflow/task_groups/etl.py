@@ -16,7 +16,6 @@ from tasks.harvest_report import build_harvest_report_task
 from tasks.send_harvest_report import build_send_harvest_report_task
 from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
 
-
 def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
     source = catalog_for_provider(provider)
@@ -24,14 +23,9 @@ def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     try:
         collections = iter(list(source))
         for collection in collections:
-            post_harvest = collection.get('post_harvest', None)
-            logging.info(f'The collection is {collection}')
-            logging.info(f'post_harvest = {post_harvest}')
-            task_array.append(build_collection_etl_taskgroup(provider, collection, post_harvest, task_group, dag))
+            task_array.append(build_collection_etl_taskgroup(provider, collection, "/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py", task_group, dag))
     except TypeError:
-        post_harvest = source.get('post_harvest', None)
-        logging.info(f'post_harvest = {post_harvest}')
-        return build_collection_etl_taskgroup(provider, None, post_harvest, task_group, dag)
+        return build_collection_etl_taskgroup(provider, None, "/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py", task_group, dag)
 
     return task_array
 
