@@ -32,9 +32,12 @@ def data_source_harvester(**kwargs):
 
     source = catalog_for_provider(source_provider)
     logging.info(f"SOURCE_PROVIDER = {source_provider}")
+    logging.info(f"source = {source}")
 
     try:
+        logging.info('trying')
         has_sources = iter(list(source))
+        logging.info(f"source = {has_sources}")
         for collection in has_sources:
             data_source_harvester(provider=kwargs[PROVIDER], collection=collection)
     except TypeError:
