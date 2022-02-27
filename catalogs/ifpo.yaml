@@ -3,12 +3,12 @@ metadata:
 sources:
   photographs:
     driver: oai_xml
-    post_harvest: "/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py"
     args:
       collection_url: https://api.archives-ouvertes.fr/oai/hal
       set: "collection:IFPOIMAGES"
     metadata:
       data_path: ifpo/photographs
+      post_harvest: "add_thumbnail_urls"
       config: ifpo_config
       fields:
         id:

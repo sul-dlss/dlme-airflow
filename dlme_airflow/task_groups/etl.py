@@ -19,13 +19,15 @@ from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
 def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
     source = catalog_for_provider(provider)
+    post_harvest = "add_thumbnail_urls"  # source.metadata.get('post_harvest', None)
+    logging.info(f"POST HARVEST={post_harvest}")
     logging.info(f'The source is {source}')
     try:
         collections = iter(list(source))
         for collection in collections:
-            task_array.append(build_collection_etl_taskgroup(provider, collection, "/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py", task_group, dag))
+            task_array.append(build_collection_etl_taskgroup(provider, collection, post_harvest, task_group, dag))
     except TypeError:
-        return build_collection_etl_taskgroup(provider, None, "/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py", task_group, dag)
+        return build_collection_etl_taskgroup(provider, None, post_harvest, task_group, dag)
 
     return task_array
 
