@@ -11,19 +11,23 @@ def get_thumbnail_url(id):
     req = requests.get(url)
     return f"{req.url}/large"
 
-def add_thumbnail_urls():
+def add_thumbnail_urls(**kwargs):
     # Fetch working directory path from catalog and read file into Pandas dataframe
     catalog = catalog_for_provider('ifpo')
     root_dir = os.path.dirname(os.path.abspath('metadata'))
-    logging.info(f'Root directory path is {root_dir}.')
     data_path = catalog.metadata.get('data_path', 'ifpo/photographs')
-    logging.info(f'Data path is {root_dir}.')
     working_csv = os.path.join(root_dir, 'working', data_path, 'data.csv')
-
     df = pd.read_csv(working_csv)
 
-    # Build thumbnail url and use that to fetch larger image from redirect
-    df['thumbnail'] = ['test']
+    # A column can only be added to a data from of the same length, build an array
+    # for thumbnails that is the appropriate length
+    array_of_thumbnails = ['test'] * len(df.index)  # This is just an example with the value 'test'
+
+    ### DO YOUR THUMBANIL WORK HERE AGAINST THE DATAFRAME ###
+
+    # This assignment adds the array above to the dataframe with the header 'thumbnail'
+    df = df.assign(thumbnail=array_of_thumbnails) 
+
     logging.info('The idfo_get_thumbnail_urls file is running.')
     #df.apply(lambda row : get_thumbnail_url(row['id']), axis = 1)
 
