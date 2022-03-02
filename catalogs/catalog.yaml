@@ -2,109 +2,17 @@ metadata:
   version: 1
 sources:
   aims:
-    description: "AIMS"
-    driver: xml
-    suppress:
-      agg_is_shown_at: True
-      agg_preview: False
-    metadata:
-      record_selector:
-        path: "//item"
-        namespace:
-      fields:
-        id:
-          path: ".//guid"
-          namespace:
-          optional: false
-        title:
-          path: ".//title"
-          namespace:
-          optional: true
-        author:
-          path: ".//itunes:author"
-          namespace:
-            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
-          optional: true
-        pub_date:
-          path: ".//pubDate"
-          namespace:
-          optional: true
-        description:
-          path: ".//description"
-          namespace:
-          optional: true
-        extent:
-          path: ".//itunes:duration"
-          namespace:
-            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
-          optional: true
-        link:
-          path: ".//link"
-          namespace:
-          optional: true
-        thumbnail:
-          path: ".//media:content/@url"
-          namespace:
-            media: "http://search.yahoo.com/mrss/"
-          optional: true
     args:
-      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
-  ans:
-    description: American Numismatic Society
-    driver: csv
+      path: /opt/catalogs/aims.yaml
+    description: "American Institute for Maghrib Studies"
+    driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  ans:
     args:
-      csv_kwargs:
-        blocksize: null
-        dtype:
-          URI: object
-          Title: object
-          RecordId: object
-          Coin Type URI: object
-          From Date: float64
-          To Date: float64
-          Artist: object
-          SubjectEvent: object
-          SubjectIssuer: object
-          SubjectPerson: object
-          SubjectPlace: object
-          Authority: object
-          Coin Type: object
-          Degree: float64
-          Deity: object
-          Denomination: object
-          Department: object
-          Dynasty: object
-          Engraver: float64
-          Maker: object
-          Manufacture: object
-          Material: object
-          Mint: object
-          Object Type: object
-          Portrait: object
-          Reference: object
-          Region: object
-          Script: object
-          State: object
-          Obverse Legend: object
-          Obverse Type: object
-          Date on Object: float64
-          Ah: float64
-          Axis: float64
-          Diameter: float64
-          Weight: float64
-          Thumbnail_obv: object
-          Thumbnail_rev: object
-          Date Record Modified: object
-      urlpath:
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=2001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=3001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=4001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001
-        - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001
+      path: /opt/catalogs/ans.yaml
+    description: "American Numismatic Society"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   aub:
     args:
       path: /opt/catalogs/aub.yaml
@@ -121,6 +29,12 @@ sources:
     args:
       path: /opt/catalogs/bodleian.yaml
     description: "Bodleian Libraries, University of Oxford"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  manchester:
+    args:
+      path: /opt/catalogs/manchester.yaml
+    description: Manchester Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   penn:
@@ -155,6 +69,12 @@ sources:
         - http://shahrefarang.com/feed/
         - http://shahrefarang.com/en/feed/
         - http://shahrefarang.com/ar/feed/
+  texas_tech:
+    args:
+      path: /opt/catalogs/texas_tech.yaml
+    description: Texas Tech Uninversity
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   yale_babylonian:
     description: Yale Babylonian Collection
     driver: csv
