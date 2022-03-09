@@ -1,0 +1,53 @@
+metadata:
+  version: 1
+sources:
+  aims:
+    description: "American Institute for Maghrib Studies"
+    driver: xml
+    suppress:
+      agg_is_shown_at: True
+      agg_preview: False
+    metadata:
+      data_path: american-numismatic-society
+      config: bodleian_arabic_config
+      record_selector:
+        path: "//item"
+        namespace:
+      fields:
+        id:
+          path: ".//guid"
+          namespace:
+          optional: false
+        title:
+          path: ".//title"
+          namespace:
+          optional: true
+        author:
+          path: ".//itunes:author"
+          namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+          optional: true
+        pub_date:
+          path: ".//pubDate"
+          namespace:
+          optional: true
+        description:
+          path: ".//description"
+          namespace:
+          optional: true
+        extent:
+          path: ".//itunes:duration"
+          namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+          optional: true
+        link:
+          path: ".//link"
+          namespace:
+          optional: true
+        thumbnail:
+          path: ".//media:content/@url"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
+          optional: true
+    args:
+      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
