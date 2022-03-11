@@ -4,7 +4,13 @@ sources:
   penn_egyptian:
     description: University of Pennsylvania Egyptian Museum
     driver: csv
-    metadata: {}
+    metadata:
+      data_path: penn/egyptian-museum
+      config: penn_egyptian_config
+      fields:
+        id:
+          name_in_dataframe: "emuIRN"
+          path: "emuIRN"
     args:
       urlpath:
         - http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip
@@ -40,7 +46,13 @@ sources:
   penn_near_eastern:
     description: University of Pennsylvania Near Eastern Museum
     driver: csv
-    metadata: {}
+    metadata:
+      data_path: penn/near-eastern
+      config: penn_near_east_config
+      fields:
+        id:
+          name_in_dataframe: "emuIRN"
+          path: "emuIRN"
     args:
       urlpath:
         - http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip
