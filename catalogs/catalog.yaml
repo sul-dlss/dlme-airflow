@@ -2,57 +2,6 @@ metadata:
   version: 1
 sources:
   aims:
-    description: "AIMS"
-    driver: xml
-    suppress:
-      agg_is_shown_at: True
-      agg_preview: False
-    metadata:
-      record_selector:
-        path: "//item"
-        namespace:
-      fields:
-        id:
-          path: ".//guid"
-          namespace:
-          optional: false
-        title:
-          path: ".//title"
-          namespace:
-          optional: true
-        author:
-          path: ".//itunes:author"
-          namespace:
-            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
-          optional: true
-        pub_date:
-          path: ".//pubDate"
-          namespace:
-          optional: true
-        description:
-          path: ".//description"
-          namespace:
-          optional: true
-        extent:
-          path: ".//itunes:duration"
-          namespace:
-            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
-          optional: true
-        link:
-          path: ".//link"
-          namespace:
-          optional: true
-        thumbnail:
-          path: ".//media:content/@url"
-          namespace:
-            media: "http://search.yahoo.com/mrss/"
-          optional: true
-    args:
-      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
-  ans:
-    description: American Numismatic Society
-    driver: csv
-  aims:
     args:
       path: /opt/catalogs/aims.yaml
     description: "American Institute for Maghrib Studies"
@@ -94,6 +43,12 @@ sources:
     description: "Archives ouvertes de l'Institut français du Proche-Orient"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  loc:
+    args:
+      path: /opt/catalogs/loc.yaml
+    description: Library of Congress
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   manchester:
     args:
       path: /opt/catalogs/manchester.yaml
@@ -102,8 +57,8 @@ sources:
     metadata: {}
   penn:
     args:
-      path: /opt/catalogs/penn_museum.yaml
-    description: Penn Museum
+      path: /opt/catalogs/penn.yaml
+    description: University of Pennsylvania and Penn Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   shahre-farang:
@@ -138,59 +93,9 @@ sources:
     description: Texas Tech Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  yale_babylonian:
-    description: Yale Babylonian Collection
-    driver: csv
-    metadata:
-      data_path: 'yale/babylonian'
-      post_harvest: "/opt/dlme_airflow/utils/yale_babylon_remove_non_relevant_records.py"
+  yale:
     args:
-      csv_kwargs:
-        blocksize: null
-        dtype:
-          id: int64
-          occurrence_id: object
-          last_modified: object
-          callnumber: object
-          title: object
-          scientificname: object
-          collector: float64
-          collecting_date: float64
-          latitude: float64
-          longitude: float64
-          datum: object
-          geographic_continent: object
-          geographic_country: object
-          geographic_stateprovince: object
-          geographic_county: object
-          geographic_municipality: object
-          geographic_locality: float64
-          common_name: float64
-          type: object
-          format: object
-          era: object
-          geographic_culture: object
-          identified_by: object
-          identification_references: float64
-          previous_identifications: float64
-          associated_references: float64
-      urlpath:
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=1&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=2&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=3&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=4&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=5&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=6&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=7&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=8&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=9&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=10&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=11&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=12&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=13&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=14&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=15&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=16&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=17&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=18&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-        - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=19&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
+      path: /opt/catalogs/yale.yaml
+    description: Yale Collections
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
