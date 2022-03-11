@@ -82,6 +82,12 @@ sources:
     description: "Bodleian Libraries, University of Oxford"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  cambridge:
+    args:
+      path: /opt/catalogs/cambridge.yaml
+    description: Cambridge University
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   ifpo:
     args:
       path: /opt/catalogs/ifpo.yaml
