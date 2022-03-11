@@ -40,6 +40,13 @@ open your browser to `http://localhost:8080`
 In order to trigger `dlme-transform` or `dlme-index` while running Airflow locally via `docker compose` your
 `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `DEV_ROLE_ARN` must be set in your local environment.
 
+Add a `.env` file to the root directory of the project and add your AWS credentials:
+```
+AWS_ACCESS_KEY_ID={YOUR AWS_ACCESS_KEY_ID}
+AWS_SECRET_ACCESS_KEY={YOUR AWS_SECRET_ACCESS_KEY}
+DEV_ROLE_ARN={The DEV_ROLE_ARN}
+```
+
 ## Development
 ### Set-up
 Create a Python virtual environment by running `python3 -m venv {name-of-virtual-env}`

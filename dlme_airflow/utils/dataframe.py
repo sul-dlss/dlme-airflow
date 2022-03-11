@@ -2,7 +2,6 @@ import os
 import logging
 import pandas as pd
 
-
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.
 def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
@@ -33,5 +32,6 @@ def dataframe_to_file(dataframe, provider, collection):
     working_directory = os.path.join(root_dir, 'working', data_path)
     os.makedirs(working_directory, exist_ok=True)
 
-    source_df = dataframe.read().drop_duplicates(subset=['id'], keep='first')
+    unique_id = dataframe.metadata.get('fields').get('id').get('name_in_dataframe', 'id')
+    source_df = dataframe.read().drop_duplicates(subset=[unique_id], keep='first')
     source_df.to_csv(working_csv, index=False)

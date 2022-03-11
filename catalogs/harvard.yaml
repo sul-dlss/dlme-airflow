@@ -1,0 +1,15 @@
+metadata:
+  version: 1
+sources:
+  ihp:
+    driver: oai_xml
+    args:
+      collection_url: https://api.lib.harvard.edu/oai
+      set: "ihp"
+    metadata:
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True

@@ -1,0 +1,15 @@
+metadata:
+  version: 1
+sources:
+  nashriyah:
+    driver: oai_xml
+    args:
+      collection_url: https://luna.manchester.ac.uk/luna/servlet/oai
+      set: "Manchester~18~18"
+    metadata:
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
