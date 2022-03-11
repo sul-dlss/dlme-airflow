@@ -43,7 +43,9 @@ def create_dag(provider, default_args):
         harvest_complete = DummyOperator(task_id='harvest_complete', trigger_rule='none_failed', dag=dag)
 
         # TODO
+        # post_harvest_begin = DummyOperator(task_id='post_harvest_begin', trigger_rule='none_failed', dag=dag)
         # post_harvest = build_post_havest_taskgroup(provider, dag)
+        # post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
 
         # TODO: A dummy operator is required as a transition point between task groups
         # post_harvest_complete = DummyOperator(task_id='post_harvest_complete', trigger_rule='none_failed', dag=dag)
