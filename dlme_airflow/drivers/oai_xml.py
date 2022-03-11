@@ -24,6 +24,8 @@ class OAIXmlSource(intake.source.base.DataSource):
 
         for counter, oai_record in enumerate(oai_records, start=1):
             xtree = etree.fromstring(oai_record.raw)
+            if counter % 100 == 0:
+                logging.info(counter)
             record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
             self._records.append(record)
@@ -91,11 +93,11 @@ class OAIXmlSource(intake.source.base.DataSource):
         return intake.source.base.Schema(
             datashape=None,
             dtype=self.dtype,
-            shape=None,
-            npartitions=len(self._records),
+            shape=(None, 1),
+            npartitions=1,
             extra_metadata={},
         )
 
     def read(self):
         self._load_metadata()
-        return pd.concat(self.read_partition(i) for i in range(self.npartitions))
+        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
