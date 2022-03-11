@@ -1,0 +1,45 @@
+metadata:
+  version: 1
+sources:
+  genizah:
+    description: "Items from the Cairo Genizah collection"
+    driver: iiif_json
+    args:
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/genizah
+      dtype:
+    metadata:
+      data_path: cambridge/genizah
+      config: cambridge_genizah_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+  hebrew:
+    description: "Items of Hebrew origin"
+    driver: iiif_json
+    args:
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/hebrew
+      dtype:
+    metadata:
+      data_path: cambridge/hebrew
+      config: cambridge_hebrew_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+  islamic:
+    description: "Islamic manuscripts"
+    driver: iiif_json
+    args:
+      collection_url: https://cudl.lib.cam.ac.uk/iiif/collection/islamic
+      dtype:
+    metadata:
+      data_path: cambridge/islamic
+      config: cambridge_islamic_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
