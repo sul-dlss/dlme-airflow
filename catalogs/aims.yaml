@@ -4,12 +4,9 @@ sources:
   aims:
     description: "American Institute for Maghrib Studies"
     driver: xml
-    suppress:
-      agg_is_shown_at: True
-      agg_preview: False
     metadata:
-      data_path: american-numismatic-society
-      config: bodleian_arabic_config
+      data_path: aims/data
+      config: aims_config
       record_selector:
         path: "//item"
         namespace:
