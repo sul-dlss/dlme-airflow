@@ -9,11 +9,12 @@ from airflow.utils.task_group import TaskGroup
 
 from utils.catalog import catalog_for_provider
 from utils.ifpo_get_thumbnail_urls import add_thumbnail_urls  # The method name/include must match the value in metadata.post_harvest from the catalog
+from utils.yale_babylon_remove_non_relevant_records import remove_non_relevant 
 from harvester.source_post_harvester import data_source_post_harvester
 
 def run_post_harvest(**kwargs):
   post_harvest_func = globals()[kwargs["post_harvest"]]
-  
+
   post_harvest_func(**kwargs)  # This dynamically calls the function defined by metadata.post_harvest in the catalog
 
 
