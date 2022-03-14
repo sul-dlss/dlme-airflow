@@ -1,21 +1,16 @@
 #!/usr/bin/python
 import dominate
-from dominate.tags import *
-import io
+from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
 import json
 import logging
-from argparse import ArgumentParser
 from collections import Counter, defaultdict
 from datetime import date
-from PIL import Image
 import requests
 import validators
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.dummy import DummyOperator
 from airflow.utils.task_group import TaskGroup
-from airflow.utils.email import send_email
 
 from utils.catalog import catalog_for_provider
 
@@ -70,7 +65,7 @@ EXTRACT_MACROS = {
         "transforms": "The script of the title was programatically determined.",
     },
     "scw_has_type": {
-        "from_field": "/*/mods:genre or /*/mods:typeOfResource or /*/mods:subject/mods:topic or /*/mods:extension/cdwalite:indexingMaterialsTechSet/"
+        "from_field": "/*/mods:genre or /*/mods:typeOfResource or /*/mods:subject/mods:topic or /*/mods:extension/cdwalite:indexingMaterialsTechSet/"  # noqa: E501
         "cdwalite:termMaterialsTech",
         "transforms": "The output value was mapped to a value in a DLME controlled vocabulary.",
     },
@@ -102,7 +97,7 @@ def thumbnail_report(image_sizes_list):
         else:
             failed_rec += 1
 
-    return f"{round((passed_rec/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."
+    return f"{round((passed_rec/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."  # noqa: E501
 
 
 def image_size(response):
@@ -122,7 +117,7 @@ def image_size(response):
 def validate_url(url):
     """Checks if url has valid form."""
     if not validators.url(url):
-        raise f"Invalid url for {record['id']}: {url}"
+        raise f"Invalid url: {url}"
 
 
 # resolve urls
@@ -171,7 +166,7 @@ def main(**kwargs):  # input:, config:):
     # for storing resource information during iteration
     unresolvable_resources = []
     unresolvable_thumbnails = []
-    humbnail_image_sizes = []
+    thumbnail_image_sizes = []
 
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
@@ -224,7 +219,7 @@ def main(**kwargs):  # input:, config:):
                     unresolvable_resources.append(
                         f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_is_shown_at']['wr_id']}"
                     )
-            except:
+            except:  # noqa: E722
                 unresolvable_resources.append(
                     f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_is_shown_at']['wr_id']}"
                 )
@@ -238,7 +233,7 @@ def main(**kwargs):  # input:, config:):
                     unresolvable_thumbnails.append(
                         f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
                     )
-            except:
+            except:  # noqa: E722
                 unresolvable_thumbnails.append(
                     f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
                 )
@@ -321,7 +316,7 @@ def main(**kwargs):  # input:, config:):
                                 f"Average number of values: {round((sum(languages.values())/record_count), 2)}"
                             )
                             lang_list = ul()
-                            sub_field_list += li(f"Languages:")
+                            sub_field_list += li("Languages:")
                             sub_field_list += lang_list
                             for k, v in languages.items():
                                 lang_list += li(f"{k}: {v}")
@@ -378,7 +373,7 @@ def main(**kwargs):  # input:, config:):
                     u_list = ul()
                     u_list.add(
                         li(
-                            f"{counts['cho_dc_rights']['fields_covered']} of {len(records)} records had a clearly expressed copyright status for the cultural heritage object."
+                            f"{counts['cho_dc_rights']['fields_covered']} of {len(records)} records had a clearly expressed copyright status for the cultural heritage object."  # noqa: E501
                         )
                     )
                     if counts["agg_is_shown_at"]["wr_edm_rights"] > 0:
@@ -392,7 +387,7 @@ def main(**kwargs):  # input:, config:):
                     )
                     u_list.add(
                         li(
-                            f"{counts['agg_edm_rights']['fields_covered']} of {len(records)} records had clearly expressed aggregation rights."
+                            f"{counts['agg_edm_rights']['fields_covered']} of {len(records)} records had clearly expressed aggregation rights."  # noqa: E501
                         )
                     )
 
@@ -438,7 +433,7 @@ def main(**kwargs):  # input:, config:):
                                                 EXTRACT_MACROS.get(k).get("transforms")
                                             )
                                     # if no keys found in EXTRACT_MACROS
-                                    if from_field == None:
+                                    if from_field is None:
                                         if "literal(" in line:
                                             from_field = (
                                                 "Assigned literal value: '{}'".format(
