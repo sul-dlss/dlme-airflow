@@ -25,19 +25,23 @@ def index_task(provider, collection, task_group: TaskGroup, dag: DAG) -> TaskGro
         overrides={
             "containerOverrides": [
                 {
-                    'name': 'dlme-index-from-s3',
-                    'environment': [{
-                        'name': 'S3_FETCH_URL',
-                        'value': f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{data_path}.ndjson"
-                    }]
+                    "name": "dlme-index-from-s3",
+                    "environment": [
+                        {
+                            "name": "S3_FETCH_URL",
+                            "value": f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{data_path}.ndjson",
+                        }
+                    ],
                 },
             ],
         },
         network_configuration={
             "awsvpcConfiguration": {
-                "securityGroups": [os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")],
+                "securityGroups": [
+                    os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")
+                ],
                 "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
             },
         },
-        dag=dag
+        dag=dag,
     )

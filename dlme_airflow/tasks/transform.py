@@ -10,7 +10,9 @@ from airflow.utils.task_group import TaskGroup
 from utils.catalog import catalog_for_provider
 
 
-def build_transform_task(provider, collection, data_path, task_group: TaskGroup, dag: DAG):
+def build_transform_task(
+    provider, collection, data_path, task_group: TaskGroup, dag: DAG
+):
     if collection:
         coll_label = f"{provider}.{collection}"
     else:
@@ -26,21 +28,20 @@ def build_transform_task(provider, collection, data_path, task_group: TaskGroup,
         overrides={
             "containerOverrides": [
                 {
-                    'name': 'dlme-transform',
-                    'environment': [
-                        {
-                            'name': 'DATA_PATH',
-                            'value': data_path
-                        },
+                    "name": "dlme-transform",
+                    "environment": [
+                        {"name": "DATA_PATH", "value": data_path},
                     ],
                 },
             ],
         },
         network_configuration={
             "awsvpcConfiguration": {
-                "securityGroups": [os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")],
+                "securityGroups": [
+                    os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")
+                ],
                 "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
             },
         },
-        dag=dag
+        dag=dag,
     )

@@ -4,8 +4,8 @@ from utils.dataframe import dataframe_to_file
 from utils.catalog import catalog_for_provider
 from harvester.source_harvester import provider_key
 
-COLLECTION = 'collection'
-PROVIDER = 'provider'
+COLLECTION = "collection"
+PROVIDER = "provider"
 
 
 def data_source_post_harvester(**kwargs):
@@ -16,19 +16,22 @@ def data_source_post_harvester(**kwargs):
     @param -- provider
     """
 
-    logging.info('data_source_post_harvester function is executing.')
+    logging.info("data_source_post_harvester function is executing.")
 
     if PROVIDER not in kwargs:
-        raise ValueError('Missing provider argument.')
+        raise ValueError("Missing provider argument.")
 
     source_provider = provider_key(**kwargs)
-    logging.info('Build data_source_post_harvester task.')
+    logging.info("Build data_source_post_harvester task.")
 
     source = catalog_for_provider(source_provider)
     logging.info(f"SOURCE_PROVIDER = {source_provider}")
     logging.info(f"source = {source}")
-    data_source_post_harvester(provider=kwargs[PROVIDER], collection=kwargs.get(COLLECTION, None), post_harvest="/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py")
-
+    data_source_post_harvester(
+        provider=kwargs[PROVIDER],
+        collection=kwargs.get(COLLECTION, None),
+        post_harvest="/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py",
+    )
 
     # try:
     #     logging.info('trying')

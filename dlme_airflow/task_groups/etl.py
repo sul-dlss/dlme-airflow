@@ -16,13 +16,16 @@ from tasks.harvest_report import build_harvest_report_task
 from tasks.send_harvest_report import build_send_harvest_report_task
 from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
 
+
 def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
     source = catalog_for_provider(provider)
     try:
         collections = iter(list(source))
         for collection in collections:
-            task_array.append(build_collection_etl_taskgroup(provider, collection, task_group, dag))
+            task_array.append(
+                build_collection_etl_taskgroup(provider, collection, task_group, dag)
+            )
     except TypeError:
         return build_collection_etl_taskgroup(provider, None, task_group, dag)
 
@@ -31,38 +34,60 @@ def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
 
 def build_provider_etl_taskgroup(provider, dag: DAG) -> TaskGroup:
 
-    with TaskGroup(group_id=f"{provider.upper()}_ETL", dag=dag) as provider_etl_taskgroup:
-      etl_tasks(provider, provider_etl_taskgroup, dag)
+    with TaskGroup(
+        group_id=f"{provider.upper()}_ETL", dag=dag
+    ) as provider_etl_taskgroup:
+        etl_tasks(provider, provider_etl_taskgroup, dag)
 
     return provider_etl_taskgroup
 
 
-def build_collection_etl_taskgroup(provider, collection, task_group: TaskGroup, dag: DAG) -> TaskGroup:
+def build_collection_etl_taskgroup(
+    provider, collection, task_group: TaskGroup, dag: DAG
+) -> TaskGroup:
     catalog_key = provider
     if collection:
-       catalog_key = f"{catalog_key}.{collection}"
-    
+        catalog_key = f"{catalog_key}.{collection}"
+
     # Move fetching of post harvest from metadata into the task group
     source = catalog_for_provider(catalog_key)
-    post_harvest = source.metadata.get('post_harvest', None)
+    post_harvest = source.metadata.get("post_harvest", None)
 
     logging.info(f"POST HARVEST={post_harvest}")
-    with TaskGroup(
-        group_id=f"{collection}_etl",
-        dag=dag) as collection_etl_taskgroup:
-            harvest = build_havester_task(provider, collection, collection_etl_taskgroup, dag)  # Harvest
-            sync = build_sync_metadata_taskgroup(provider, collection, dag)
-            transform = build_transform_task(provider, collection, collection, collection_etl_taskgroup, dag)  # Transform
-            load = index_task(provider, collection, collection_etl_taskgroup, dag)  # Load / Index
-            report = build_harvest_report_task(provider, collection, collection_etl_taskgroup, dag)  # Report
-            send_report = build_send_harvest_report_task(provider, collection, collection_etl_taskgroup, dag)  # Send Report
+    with TaskGroup(group_id=f"{collection}_etl", dag=dag) as collection_etl_taskgroup:
+        harvest = build_havester_task(
+            provider, collection, collection_etl_taskgroup, dag
+        )  # Harvest
+        sync = build_sync_metadata_taskgroup(provider, collection, dag)
+        transform = build_transform_task(
+            provider, collection, collection, collection_etl_taskgroup, dag
+        )  # Transform
+        load = index_task(
+            provider, collection, collection_etl_taskgroup, dag
+        )  # Load / Index
+        report = build_harvest_report_task(
+            provider, collection, collection_etl_taskgroup, dag
+        )  # Report
+        send_report = build_send_harvest_report_task(
+            provider, collection, collection_etl_taskgroup, dag
+        )  # Send Report
 
-            # If we fetch a post_harvest key from the catalog, build the post_harvest_task and include it in the flow
-            if post_harvest:
-                post_harvest_task = build_post_havest_task(provider, collection, post_harvest, collection_etl_taskgroup, dag) # Post Harvest
-                harvest >> post_harvest_task >> sync >> transform >> load >> report >> send_report
-            else:
-                # Else do not build a post_harvest task for this provider/collection
-                harvest >> sync >> transform >> load >> report >> send_report
+        # If we fetch a post_harvest key from the catalog, build the post_harvest_task and include it in the flow
+        if post_harvest:
+            post_harvest_task = build_post_havest_task(
+                provider, collection, post_harvest, collection_etl_taskgroup, dag
+            )  # Post Harvest
+            (
+                harvest
+                >> post_harvest_task
+                >> sync
+                >> transform
+                >> load
+                >> report
+                >> send_report
+            )
+        else:
+            # Else do not build a post_harvest task for this provider/collection
+            harvest >> sync >> transform >> load >> report >> send_report
 
     return collection_etl_taskgroup

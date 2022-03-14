@@ -22,5 +22,5 @@ def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs=args
+        op_kwargs=args,
     )

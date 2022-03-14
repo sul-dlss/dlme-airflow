@@ -11,4 +11,6 @@ def fetch_catalog():
 
 
 def catalog_for_provider(provider):
-    return getattr(fetch_catalog(), provider)  # Raises Attribute error for missing provider
+    return getattr(
+        fetch_catalog(), provider
+    )  # Raises Attribute error for missing provider

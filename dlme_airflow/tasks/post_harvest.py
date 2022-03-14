@@ -8,20 +8,31 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from utils.catalog import catalog_for_provider
-from utils.ifpo_get_thumbnail_urls import add_thumbnail_urls  # The method name/include must match the value in metadata.post_harvest from the catalog
-from utils.yale_babylon_remove_non_relevant_records import remove_non_relevant 
+from utils.ifpo_get_thumbnail_urls import (
+    add_thumbnail_urls,
+)  # The method name/include must match the value in metadata.post_harvest from the catalog
+from utils.yale_babylon_remove_non_relevant_records import remove_non_relevant
 from harvester.source_post_harvester import data_source_post_harvester
 
+
 def run_post_harvest(**kwargs):
-  post_harvest_func = globals()[kwargs["post_harvest"]]
+    post_harvest_func = globals()[kwargs["post_harvest"]]
 
-  post_harvest_func(**kwargs)  # This dynamically calls the function defined by metadata.post_harvest in the catalog
+    post_harvest_func(
+        **kwargs
+    )  # This dynamically calls the function defined by metadata.post_harvest in the catalog
 
 
-def build_post_havest_task(provider, collection, post_harvest, task_group: TaskGroup, dag: DAG):
+def build_post_havest_task(
+    provider, collection, post_harvest, task_group: TaskGroup, dag: DAG
+):
     if collection:
         label = f"{provider}_{collection}"
-        args = {"provider": provider, "collection": collection, "post_harvest": post_harvest}
+        args = {
+            "provider": provider,
+            "collection": collection,
+            "post_harvest": post_harvest,
+        }
     else:
         label = f"{provider}"
         args = {"provider": provider, "collection": None, "post_harvest": post_harvest}
@@ -31,5 +42,5 @@ def build_post_havest_task(provider, collection, post_harvest, task_group: TaskG
         task_group=task_group,
         dag=dag,
         python_callable=run_post_harvest,
-        op_kwargs=args
+        op_kwargs=args,
     )

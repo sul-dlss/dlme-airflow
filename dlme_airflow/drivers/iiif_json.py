@@ -63,7 +63,9 @@ class IIIfJsonSource(intake.source.base.DataSource):
                 .replace("(", "")
                 .replace(")", "")
             )
-            output[name] = row.get("value")  # this will assign the last value found to output[name]
+            output[name] = row.get(
+                "value"
+            )  # this will assign the last value found to output[name]
             if name in output:
                 if type(name) == list:
                     output[name].append(row.get("value"))
