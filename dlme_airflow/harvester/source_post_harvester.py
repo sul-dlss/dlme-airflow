@@ -1,6 +1,5 @@
 import logging
 
-from utils.dataframe import dataframe_to_file
 from utils.catalog import catalog_for_provider
 from harvester.source_harvester import provider_key
 
@@ -32,15 +31,3 @@ def data_source_post_harvester(**kwargs):
         collection=kwargs.get(COLLECTION, None),
         post_harvest="/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py",
     )
-
-    # try:
-    #     logging.info('trying')
-    #     has_sources = iter(list(source))
-    #     logging.info(f"has_sources = {has_sources}")
-    #     for collection in has_sources:
-    #         logging.info(f'collection is {collecton}')
-    #         looging.info(f'post_harvest is {collection.get(post_harvest)}')
-    #         data_source_post_harvester(provider=kwargs[PROVIDER], collection=collection, post_harvest="/opt/dlme_airflow/utils/ifpo_get_thumbnail_urls.py")
-    # except TypeError:
-    #     logging.info(f"Iterating over collections and building data_source_post_harvester did not work.")
-    #     dataframe_to_file(source, kwargs[PROVIDER], kwargs.get(COLLECTION, None))

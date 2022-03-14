@@ -5,7 +5,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
 
 

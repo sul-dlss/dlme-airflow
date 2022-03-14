@@ -1,5 +1,7 @@
 # /bin/python
-import os, requests
+import logging
+import os
+import requests
 import pandas as pd
 
 from utils.catalog import catalog_for_provider
@@ -11,7 +13,7 @@ def get_thumbnail_url(id):
     try:
         req = requests.get(url)
         return f"{req.url}/large"
-    except:
+    except:  # noqa: E722
         logging.info(f"Unable to connect to: {url}")
 
 

@@ -1,5 +1,4 @@
 import os
-import logging
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
@@ -10,7 +9,6 @@ from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import BranchPythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
-from utils.catalog import catalog_for_provider
 
 # AWS Credentials
 dev_role_arn = os.getenv("DEV_ROLE_ARN")

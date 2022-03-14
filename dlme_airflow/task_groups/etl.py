@@ -5,7 +5,6 @@ import logging
 
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
-from airflow.operators.dummy import DummyOperator
 
 from utils.catalog import catalog_for_provider
 from tasks.harvest import build_havester_task

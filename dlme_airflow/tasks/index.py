@@ -6,7 +6,6 @@ from airflow import DAG
 # Operators and utils required from airflow
 from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
-from utils.catalog import catalog_for_provider
 
 
 def index_task(provider, collection, task_group: TaskGroup, dag: DAG) -> TaskGroup:

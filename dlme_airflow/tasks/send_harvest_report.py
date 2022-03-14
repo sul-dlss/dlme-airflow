@@ -36,10 +36,8 @@ def build_send_harvest_report_task(
     provider, collection, task_group: TaskGroup, dag: DAG
 ):
     if collection:
-        label = f"{provider}_{collection}"
         args = {"provider": provider, "collection": collection}
     else:
-        label = provider
         args = {
             "provider": provider,
         }

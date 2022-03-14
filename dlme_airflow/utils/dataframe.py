@@ -1,6 +1,6 @@
 import os
-import logging
 import pandas as pd
+
 
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.

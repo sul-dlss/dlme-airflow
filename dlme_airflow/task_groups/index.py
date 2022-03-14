@@ -51,7 +51,7 @@ def index_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         for collection in collections:
             coll_label = f"{provider}-{collection}"
             task_array.append(build_index_task(coll_label, task_group, dag))
-    except:
+    except:  # noqa: E722
         return build_index_task(provider, task_group, dag)
 
     return task_array
