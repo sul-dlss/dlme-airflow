@@ -3,8 +3,8 @@ import logging
 from utils.dataframe import dataframe_to_file
 from utils.catalog import catalog_for_provider
 
-COLLECTION = 'collection'
-PROVIDER = 'provider'
+COLLECTION = "collection"
+PROVIDER = "provider"
 
 
 def provider_key(**kwargs):
@@ -26,7 +26,7 @@ def data_source_harvester(**kwargs):
     """
 
     if PROVIDER not in kwargs:
-        raise ValueError('Missing provider argument.')
+        raise ValueError("Missing provider argument.")
 
     source_provider = provider_key(**kwargs)
 
@@ -35,7 +35,7 @@ def data_source_harvester(**kwargs):
     logging.info(f"source = {source}")
 
     try:
-        logging.info('trying')
+        logging.info("trying")
         has_sources = iter(list(source))
         logging.info(f"source = {has_sources}")
         for collection in has_sources:

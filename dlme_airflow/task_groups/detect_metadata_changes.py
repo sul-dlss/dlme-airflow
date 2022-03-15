@@ -15,7 +15,7 @@ def build_detect_changes_task(provider, task_group: TaskGroup, dag: DAG):
         task_group=task_group,
         dag=dag,
         python_callable=check_equity,
-        op_kwargs={"provider": provider}
+        op_kwargs={"provider": provider},
     )
 
     return compare_dataframes
@@ -28,7 +28,9 @@ def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGr
     try:
         collections = list(source).__iter__()
         for collection in collections:
-            task_array.append(build_detect_changes_task(f"{provider}.{collection}", task_group, dag))
+            task_array.append(
+                build_detect_changes_task(f"{provider}.{collection}", task_group, dag)
+            )
     except TypeError:
         return build_detect_changes_task(f"{provider}", task_group, dag)
 

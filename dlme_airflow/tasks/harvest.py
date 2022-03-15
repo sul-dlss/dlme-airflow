@@ -5,7 +5,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
 from harvester.source_harvester import data_source_harvester
 
 
@@ -22,5 +21,5 @@ def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs=args
+        op_kwargs=args,
     )

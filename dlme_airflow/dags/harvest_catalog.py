@@ -20,14 +20,14 @@ intake.source.register_driver("xml", XmlSource)
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
 default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'email': [Variable.get("data_manager_email")],
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 0,
-    'retry_delay': timedelta(seconds=60),
-    'catchup': False,
+    "owner": "airflow",
+    "depends_on_past": False,
+    "email": [Variable.get("data_manager_email")],
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 0,
+    "retry_delay": timedelta(seconds=60),
+    "catchup": False,
 }
 
 catalog = fetch_catalog()

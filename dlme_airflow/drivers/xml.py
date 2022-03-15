@@ -29,9 +29,9 @@ class XmlSource(intake.source.base.DataSource):
     def _construct_fields(self, manifest: etree) -> dict:
         output = {}
         for field in self._path_expressions:
-            path = self._path_expressions[field]['path']
-            namespace = self._path_expressions[field]['namespace']
-            optional = self._path_expressions[field]['optional']
+            path = self._path_expressions[field]["path"]
+            namespace = self._path_expressions[field]["namespace"]
+            optional = self._path_expressions[field]["optional"]
             result = manifest.xpath(path, namespaces=namespace)
             if len(result) < 1:
                 if optional is True:
@@ -43,13 +43,17 @@ class XmlSource(intake.source.base.DataSource):
                 try:
                     field_doc = document_fromstring(result[0].text)
                     cleaner = Cleaner(remove_unknown_tags=False, page_structure=True)
-                    output[field] = self.sanitize_value(cleaner.clean_html(field_doc).text_content())  # Use first value
+                    output[field] = self.sanitize_value(
+                        cleaner.clean_html(field_doc).text_content()
+                    )  # Use first value
                 except AttributeError:
-                    output[field] = self.sanitize_value(result[0])  # if getting text fails, we may be pulling an attribute.
+                    output[field] = self.sanitize_value(
+                        result[0]
+                    )  # if getting text fails, we may be pulling an attribute.
         return output
 
     def sanitize_value(self, value):
-        return value.strip().replace('\n', ' ').replace('\r', '')
+        return value.strip().replace("\n", " ").replace("\r", "")
 
     def _get_partition(self, i) -> pd.DataFrame:
         return pd.DataFrame(self._records)

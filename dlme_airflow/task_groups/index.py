@@ -20,22 +20,27 @@ def build_index_task(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         overrides={
             "containerOverrides": [
                 {
-                    'name': 'dlme-index-from-s3',
-                    'environment': [{
-                        'name': 'S3_FETCH_URL',
-                        'value': f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{provider}.ndjson"
-                    }]
+                    "name": "dlme-index-from-s3",
+                    "environment": [
+                        {
+                            "name": "S3_FETCH_URL",
+                            "value": f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{provider}.ndjson",
+                        }
+                    ],
                 },
             ],
         },
         network_configuration={
             "awsvpcConfiguration": {
-                "securityGroups": [os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")],
+                "securityGroups": [
+                    os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")
+                ],
                 "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
             },
         },
-        dag=dag
+        dag=dag,
     )
+
 
 def index_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
@@ -46,7 +51,7 @@ def index_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         for collection in collections:
             coll_label = f"{provider}-{collection}"
             task_array.append(build_index_task(coll_label, task_group, dag))
-    except:
+    except:  # noqa: E722
         return build_index_task(provider, task_group, dag)
 
     return task_array
@@ -55,4 +60,4 @@ def index_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
 def build_index_taskgroup(provider, dag: DAG) -> TaskGroup:
     index_taskgroup = TaskGroup(group_id="index")
 
-    return index_tasks(provider,index_taskgroup, dag)
+    return index_tasks(provider, index_taskgroup, dag)
