@@ -1,0 +1,84 @@
+metadata:
+  version: 1
+sources:
+  shahre_farang_ar:
+    description: 'Shahre Farang Arabic'
+    driver: xml
+    metadata:
+      data_path: shahre-farang/arabic
+      config: shahre_farang_arabic_config
+      fields:
+        id:
+          name_in_dataframe: id
+          path: .id
+        title:
+          path: .title
+        author:
+          path: .author
+        published:
+          path: .published
+        description:
+          path: .summary
+        subject:
+          path: .tags
+        shown_at:
+          path: .link
+        preview:
+          path: .media_content[0].url
+    args:
+      collection_urls:
+        - http://shahrefarang.com/ar/feed/
+  shahre_farang_fa:
+    description: 'Shahre Farang Persian'
+    driver: xml
+    metadata:
+      data_path: shahre-farang/persian
+      config: shahre_farang_persian_config
+      fields:
+        id:
+          name_in_dataframe: id
+          path: .id
+        title:
+          path: .title
+        author:
+          path: .author
+        published:
+          path: .published
+        description:
+          path: .summary
+        subject:
+          path: .tags
+        shown_at:
+          path: .link
+        preview:
+          path: .media_content[0].url
+    args:
+      collection_urls:
+        - http://shahrefarang.com/feed/
+  shahre_farang_en:
+    description: 'Shahre Farang English'
+    driver: xml
+    metadata:
+      data_path: shahre-farang/english
+      config: shahre_farang_english_config
+      fields:
+        id:
+          name_in_dataframe: id
+          path: .id
+        title:
+          path: .title
+        author:
+          path: .author
+        published:
+          path: .published
+        description:
+          path: .summary
+        subject:
+          path: .tags
+        shown_at:
+          path: .link
+        preview:
+          path: .media_content[0].url
+    args:
+      collection_urls:
+        - http://shahrefarang.com/en/feed/
