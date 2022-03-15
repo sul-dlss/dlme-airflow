@@ -65,7 +65,6 @@ class OAIXmlSource(intake.source.base.DataSource):
         NS = {'oai_dc': "http://www.openarchives.org/OAI/2.0/oai_dc/"}
         oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]  # we want the first result
         for metadata in oai_block.getchildren():
-            logging.info(f"metadata is type: {type(metadata)} and value: {metadata}")
             tag = self.uri2label(metadata.tag, metadata.nsmap)
             if tag in output:
                 if isinstance(output[tag], str):
