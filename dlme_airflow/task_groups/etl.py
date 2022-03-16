@@ -1,8 +1,6 @@
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
-import logging
-
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
 
@@ -52,7 +50,6 @@ def build_collection_etl_taskgroup(
     source = catalog_for_provider(catalog_key)
     post_harvest = source.metadata.get("post_harvest", None)
 
-    logging.info(f"POST HARVEST={post_harvest}")
     with TaskGroup(group_id=f"{collection}_etl", dag=dag) as collection_etl_taskgroup:
         harvest = build_havester_task(
             provider, collection, collection_etl_taskgroup, dag

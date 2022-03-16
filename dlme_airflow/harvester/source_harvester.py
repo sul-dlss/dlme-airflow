@@ -1,5 +1,3 @@
-import logging
-
 from dlme_airflow.utils.dataframe import dataframe_to_file
 from dlme_airflow.utils.catalog import catalog_for_provider
 
@@ -31,13 +29,9 @@ def data_source_harvester(**kwargs):
     source_provider = provider_key(**kwargs)
 
     source = catalog_for_provider(source_provider)
-    logging.info(f"SOURCE_PROVIDER = {source_provider}")
-    logging.info(f"source = {source}")
 
     try:
-        logging.info("trying")
         has_sources = iter(list(source))
-        logging.info(f"source = {has_sources}")
         for collection in has_sources:
             data_source_harvester(provider=kwargs[PROVIDER], collection=collection)
     except TypeError:
