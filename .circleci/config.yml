@@ -1,36 +1,61 @@
 version: 2.1
 
 orbs:
-  python: cimg/python:3.10.1
+  python: circleci/python@2.0.3
 
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: suldlss/dlme-airflow
+      IMAGE_NAME: ld4p/ils-middleware
     docker:
-      - image: cimg/base
+      - image: circleci/buildpack-deps:stretch
 
 jobs:
-  lint_and_test:
+  build:
     docker:
-      - image: apache/airflow:2.1.2-python3.8
-
+      - image: cimg/python:3.9
     steps:
       - checkout
-
-      # Install dependencies
       - python/install-packages:
-          pkg-manager: pip
+          pkg-manager: poetry
 
-      #  Run flake8 linter
+  linting:
+     executor: 
+       name: python/default
+       tag: "3.9"
+     steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
       - run:
-          name: Run linter
-          command: flake8
+          name: Lint with flake8
+          command: |
+             poetry run flake8
+      - run:
+          name: Lint with Black
+          command: |
+             poetry run black --diff --check .
 
-      # Run tests
-      - run:
-          name: Run tests
-          command: PYTHONPATH=dlme_airflow pytest
+  test:
+      executor: python/default
+      steps:
+        - checkout
+        - python/install-packages:
+            pkg-manager: poetry
+        - run:
+            name: Setup Code Climate test-reporter
+            command: |
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+        - run:
+            name: Run tests
+            command: |
+              poetry run pytest
+        - run:
+            name: Report test coverage results to CodeClimate
+            command: |
+              ./cc-test-reporter after-build --coverage-input-type 'coverage.py' --exit-code $?
 
   publish_to_dockerhub:
     executor: docker-publisher
@@ -74,9 +99,15 @@ jobs:
 workflows:
   version: 2
 
-  test:
+  build:
     jobs:
-      - lint_and_test
+      - build
+      - linting:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
       - publish_to_dockerhub:
           filters:
             branches:
