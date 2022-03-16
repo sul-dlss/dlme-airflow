@@ -66,8 +66,6 @@ x-airflow-common:
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
-    - ./dlme_airflow:/opt/dlme_airflow
-    - ./catalogs:/opt/catalogs
     - ./metadata:/opt/airflow/metadata
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
