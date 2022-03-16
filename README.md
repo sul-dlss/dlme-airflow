@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main.svg?style=svg)](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/maintainability)](https://codeclimate.com/github/sul-dlss/dlme-airflow/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/test_coverage)](https://codeclimate.com/github/sul-dlss/dlme-airflow/test_coverage)
+
 # dlme-airflow
 This is a new repository to capture the work related to the DLME ETL Pipeline and establish airflow
 
@@ -45,6 +49,27 @@ Add a `.env` file to the root directory of the project and add your AWS credenti
 AWS_ACCESS_KEY_ID={YOUR AWS_ACCESS_KEY_ID}
 AWS_SECRET_ACCESS_KEY={YOUR AWS_SECRET_ACCESS_KEY}
 DEV_ROLE_ARN={The DEV_ROLE_ARN}
+```
+
+# Fetching data for review from S3
+
+DLME-airlfow writes the metadata harvested from providers to S3. It is possible to fetch the written data in CSV format using the [aws cli](https://github.com/sul-dlss/terraform-aws/wiki/AWS-DLSS-Dev-Env-Setup).
+
+Note below that `metadata`, `metadata/bodleian`, and `metadata/bodleian/persian/data.csv` are the local paths to where the aws cli will copy the data. These paths will be created by the aws cli if they do not exist.
+
+Fetch all current metadata:
+```
+aws s3 cp s3://dlme-metadata-dev/metadata metadata --recursive --profile development
+```
+
+Fetch all current metadata for a provider:
+```
+aws s3 cp s3://dlme-metadata-dev/metadata/bodleian metadata/bodleian --recursive --profile development
+```
+
+Fetch an individual collection file:
+```
+aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bodleian/persian/data.csv --profile development
 ```
 
 ## Development
