@@ -1,15 +1,17 @@
 FROM apache/airflow:2.2.4-python3.9
 
+ENV POETRY_VERSION=1.1.13
+
 USER root
-RUN apt-get -y update && \
-    apt-get -y install \
-        git \
-        python3-dev \
-        python3-pip \
-        jq
+RUN apt-get -y update && apt-get -y install git jq
 USER airflow
 
 RUN pip --no-cache-dir install --upgrade awscli
+RUN pip install "poetry==$POETRY_VERSION"
 
-COPY --chown=airflow:root ./dlme_airflow /opt/dlme_airflow
-COPY --chown=airflow:root ./catalogs /opt/catalogs
+COPY --chown=airflow:root poetry.lock pyproject.toml /opt/airflow/
+COPY --chown=airflow:root ./dlme_airflow /opt/airflow/dlme_airflow
+COPY --chown=airflow:root ./catalogs /opt/airflow/catalogs
+
+RUN poetry build --format=wheel
+RUN pip install dist/*.whl
