@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from harvester.source_harvester import data_source_harvester, provider_key
+from dlme_airflow.harvester.source_harvester import data_source_harvester, provider_key
 
 
 @pytest.fixture

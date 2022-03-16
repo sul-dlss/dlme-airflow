@@ -17,6 +17,7 @@ apache-airflow = "^2.1.3"
 feedparser = "^6.0.2"
 validators = "^0.18.2"
 dominate = "^2.6.0"
+pandas = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
