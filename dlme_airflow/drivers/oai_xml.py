@@ -72,7 +72,7 @@ class OAIXmlSource(intake.source.base.DataSource):
             tag = self.uri2label(metadata.tag, metadata.nsmap)
             if tag in output:
                 if isinstance(output[tag], str):
-                    if metadata.text != None:
+                    if metadata.text is not None:
                         output[tag] = [output[tag], metadata.text.strip()]
                     else:
                         output[tag] = [output[tag]]

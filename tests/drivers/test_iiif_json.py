@@ -85,7 +85,7 @@ def test_test_IIIfJsonSource_df(iiif_test_source, mock_response):
                 "context": "http://iiif.io/api/presentation/2/context.json",
                 "iiif_format": "image/jpeg",
                 "source": ["Rare Books and Special Collections Library"],
-                "title-main":[ "A great title of the Middle East"],
+                "title-main": ["A great title of the Middle East"],
             }
         ]
     )

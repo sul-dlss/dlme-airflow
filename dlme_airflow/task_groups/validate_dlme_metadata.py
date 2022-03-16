@@ -7,7 +7,6 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import BranchPythonOperator
-from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
 
 # AWS Credentials
