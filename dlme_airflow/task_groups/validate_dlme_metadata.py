@@ -7,7 +7,6 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import BranchPythonOperator
-from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
 
 # AWS Credentials
@@ -16,8 +15,6 @@ dev_role_arn = os.getenv("DEV_ROLE_ARN")
 home_directory = os.getenv("AIRFLOW_HOME", "/opt/airflow")
 metadata_directory = f"{home_directory}/metadata/"
 working_directory = f"{home_directory}/working/"
-git_branch = Variable.get("git_branch", default_var="intake")
-git_repo = Variable.get("git_repo_metadata")
 s3_data = "s3://dlme-metadata-dev/metadata"
 
 # Task Configuration

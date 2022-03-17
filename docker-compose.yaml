@@ -54,24 +54,20 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # do not load example DAGs
-    AIRFLOW__CORE__DAGS_FOLDER: '/opt/dlme_airflow/dags'
+    AIRFLOW__CORE__DAGS_FOLDER: '/opt/airflow/dlme_airflow/dags'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
-    AIRFLOW_VAR_GIT_BRANCH: 'intake'
-    AIRFLOW_VAR_GIT_REPO_METADATA: 'https://github.com/sul-dlss/dlme-metadata.git'
-    _PIP_ADDITIONAL_REQUIREMENTS: 'lxml sickle intake aiohttp jsonpath_ng dominate Pillow validators feedparser' # ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    CATALOG_SOURCE: '/opt/catalogs/catalog.yaml'
-    PYTHONPATH: '$PYTHONPATH:/opt/dlme_airflow'
+    CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
+    PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
     AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY}"
     AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+    AWS_DEFAULT_REGION: 'us-west-2'
     DEV_ROLE_ARN: "${DEV_ROLE_ARN}"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
-    - ./dlme_airflow:/opt/dlme_airflow
-    - ./catalogs:/opt/catalogs
     - ./metadata:/opt/airflow/metadata
-  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
+  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
     redis:
       condition: service_healthy

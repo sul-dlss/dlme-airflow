@@ -1,7 +1,7 @@
 import logging
 import pandas as pd
 
-from harvester.validations import check_equality
+from dlme_airflow.harvester.validations import check_equality
 
 LOGGER = logging.getLogger(__name__)
 

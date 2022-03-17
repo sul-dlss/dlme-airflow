@@ -3,73 +3,73 @@ metadata:
 sources:
   aims:
     args:
-      path: /opt/catalogs/aims.yaml
+      path: /opt/airflow/catalogs/aims.yaml
     description: "American Institute for Maghrib Studies"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   ans:
     args:
-      path: /opt/catalogs/ans.yaml
+      path: /opt/airflow/catalogs/ans.yaml
     description: "American Numismatic Society"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   aub:
     args:
-      path: /opt/catalogs/aub.yaml
+      path: /opt/airflow/catalogs/aub.yaml
     description: "American University of Beirut"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   auc:
     args:
-      path: /opt/catalogs/auc.yaml
+      path: /opt/airflow/catalogs/auc.yaml
     description: "American University in Cairo IIIf Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   bodleian:
     args:
-      path: /opt/catalogs/bodleian.yaml
+      path: /opt/airflow/catalogs/bodleian.yaml
     description: "Bodleian Libraries, University of Oxford"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   cambridge:
     args:
-      path: /opt/catalogs/cambridge.yaml
+      path: /opt/airflow/catalogs/cambridge.yaml
     description: Cambridge University
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   ifpo:
     args:
-      path: /opt/catalogs/ifpo.yaml
+      path: /opt/airflow/catalogs/ifpo.yaml
     description: "Archives ouvertes de l'Institut français du Proche-Orient"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   manchester:
     args:
-      path: /opt/catalogs/manchester.yaml
+      path: /opt/airflow/catalogs/manchester.yaml
     description: Manchester Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   penn:
     args:
-      path: /opt/catalogs/penn.yaml
+      path: /opt/airflow/catalogs/penn.yaml
     description: University of Pennsylvania and Penn Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   shahre-farang:
     args:
-      path: /opt/catalogs/shahre_farang.yaml
+      path: /opt/airflow/catalogs/shahre_farang.yaml
     description: Shahre Farang
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   texas_tech:
     args:
-      path: /opt/catalogs/texas_tech.yaml
+      path: /opt/airflow/catalogs/texas_tech.yaml
     description: Texas Tech Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   yale:
     args:
-      path: /opt/catalogs/yale.yaml
+      path: /opt/airflow/catalogs/yale.yaml
     description: Yale Collections
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}

@@ -1,7 +1,7 @@
 import logging
 
-from utils.dataframe import dataframe_to_file
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.dataframe import dataframe_to_file
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 COLLECTION = "collection"
 PROVIDER = "provider"
