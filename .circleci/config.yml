@@ -6,7 +6,7 @@ orbs:
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: ld4p/ils-middleware
+      IMAGE_NAME: suldlss/dlme-airflow
     docker:
       - image: circleci/buildpack-deps:stretch
 
