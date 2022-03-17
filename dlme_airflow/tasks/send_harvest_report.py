@@ -1,6 +1,3 @@
-#!/usr/bin/python
-from datetime import date
-
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
@@ -9,22 +6,18 @@ from airflow.utils.email import send_email
 from utils.catalog import catalog_for_provider
 
 
-def email_callback(**kwargs):
+def email_callback(task_instance, task, **kwargs):
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection", None)
 
     if collection_id:
         data_path = f"{provider_id}/{collection_id}"
-        file_path = f"{provider_id}_{collection_id}"
     else:
         data_path = provider_id
-        file_path = provider_id
 
     subject = f"ETL Report for {data_path}"
-    report_file = f"/tmp/report_{file_path}_{date.today()}.html"
+    content = task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
 
-    with open(report_file) as f:
-        content = f.read()
     send_email(
         to=["amcollie@stanford.edu"],
         subject=subject,
