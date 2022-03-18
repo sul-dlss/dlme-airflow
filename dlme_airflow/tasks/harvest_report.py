@@ -463,11 +463,7 @@ def main(**kwargs):  # input:, config:):
                                         )
                                     )
 
-    report_file = f"/tmp/report_{provider_id}_{collection_id}_{date.today()}.html"
-    report = open(report_file, "a")
-    report.write(doc.render())
-
-    return report_file
+    return doc.render()
 
 
 def build_harvest_report_task(provider, collection, task_group: TaskGroup, dag: DAG):
