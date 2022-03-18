@@ -54,7 +54,7 @@ def build_collection_etl_taskgroup(
         harvest = build_havester_task(
             provider, collection, collection_etl_taskgroup, dag
         )  # Harvest
-        sync = build_sync_metadata_taskgroup(provider, collection, dag)
+        # sync = build_sync_metadata_taskgroup(provider, collection, dag)
         transform = build_transform_task(
             provider, collection, collection, collection_etl_taskgroup, dag
         )  # Transform
@@ -73,17 +73,9 @@ def build_collection_etl_taskgroup(
             post_harvest_task = build_post_havest_task(
                 provider, collection, post_harvest, collection_etl_taskgroup, dag
             )  # Post Harvest
-            (
-                harvest
-                >> post_harvest_task
-                >> sync
-                >> transform
-                >> load
-                >> report
-                >> send_report
-            )
+            (harvest >> post_harvest_task >> transform >> load >> report >> send_report)
         else:
             # Else do not build a post_harvest task for this provider/collection
-            harvest >> sync >> transform >> load >> report >> send_report
+            harvest >> transform >> load >> report >> send_report
 
     return collection_etl_taskgroup

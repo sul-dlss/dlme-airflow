@@ -67,6 +67,7 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
     - ./metadata:/opt/airflow/metadata
+    - ./dlme_airflow:/opt/airflow/dlme_airflow
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
     redis:
@@ -84,7 +85,7 @@ services:
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
+      test: [ "CMD", "pg_isready", "-U", "airflow" ]
       interval: 5s
       retries: 5
     restart: always
@@ -94,7 +95,7 @@ services:
     ports:
       - 6379:6379
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 5s
       timeout: 30s
       retries: 50
@@ -106,7 +107,13 @@ services:
     ports:
       - 8080:8080
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      test:
+        [
+          "CMD",
+          "curl",
+          "--fail",
+          "http://localhost:8080/health"
+        ]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -116,7 +123,11 @@ services:
     <<: *airflow-common
     command: scheduler
     healthcheck:
-      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      test:
+        [
+          "CMD-SHELL",
+          'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"'
+        ]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -150,7 +161,7 @@ services:
     ports:
       - 5555:5555
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
+      test: [ "CMD", "curl", "--fail", "http://localhost:5555/" ]
       interval: 10s
       timeout: 10s
       retries: 5
