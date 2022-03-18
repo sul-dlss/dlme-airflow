@@ -2,7 +2,6 @@
 import dominate
 from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
 import json
-import logging
 from collections import Counter, defaultdict
 from datetime import date
 import requests
@@ -171,8 +170,6 @@ def main(**kwargs):  # input:, config:):
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
 
-    logging.info(f"CATALOG = {provider_id}.{collection_id}")
-
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
     config_file = f"/tmp/{provider_id}_{collection_id}_config.rb"
@@ -192,7 +189,6 @@ def main(**kwargs):  # input:, config:):
 
         # get counts for fields, values, languages
         for count, record in enumerate(records, start=1):
-            logging.info(f"RECORD = {len(record)} - {record}")
             if len(record) <= 1:
                 continue
 
