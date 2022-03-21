@@ -2,6 +2,7 @@
 import dominate
 from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
 import json
+import logging
 from collections import Counter, defaultdict
 from datetime import date
 import requests
@@ -183,6 +184,7 @@ def main(**kwargs):  # input:, config:):
 
     with open(input_file, "r") as file:
         records = file.readlines()
+        logging.info(f"RECORDS FOR REPORT: {records}")
         provider = json.loads(records[0])["agg_data_provider"]["en"][0]
         collection = json.loads(records[0])["dlme_collection"]["en"][0]
         record_count = len(records)

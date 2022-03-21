@@ -56,7 +56,6 @@ def s3_resource_builder():
             aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY_ID"),
         )
         sts_client = boto3.client("sts")
-        # logging.info(f"DEV_ROLE_ARN = { os.getenv('DEV_ROLE_ARN')}")
         assumed_role_object = sts_client.assume_role(
             RoleArn=os.getenv("DEV_ROLE_ARN"), RoleSessionName="DevelopersRole"
         )
