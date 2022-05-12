@@ -9,7 +9,6 @@ sources:
       set: "collection:IFPOIMAGES"
     metadata:
       data_path: ifpo/photographs
-      post_harvest: "add_thumbnail_urls"
       config: ifpo_config
       fields:
         id:
