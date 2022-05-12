@@ -1,14 +1,14 @@
 metadata:
   version: 1
 sources:
-  ihp:
+  manuscripts:
     driver: oai_xml
     args:
-      collection_url: https://api.lib.harvard.edu/oai
-      set: "ihp"
+      collection_url: https://eu.alma.exlibrisgroup.com/view/oai/34CSIC_INST/request?
+      set: manuscripta
     metadata:
-      data_path: harvard/ihp
-      config: harvard_ihp_config
+      data_path: csic/manuscripts
+      config: csic_config
       fields:
         id:
           path: "//header:identifier"
