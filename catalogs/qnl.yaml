@@ -1,14 +1,13 @@
 metadata:
   version: 1
 sources:
-  ihp:
+  qnl:
     driver: oai_xml
     args:
       collection_url: https://api.lib.harvard.edu/oai
-      set: "ihp"
     metadata:
-      data_path: harvard/ihp
-      config: harvard_ihp_config
+      data_path: qnl/british_library
+      config: qnl_config
       fields:
         id:
           path: "//header:identifier"

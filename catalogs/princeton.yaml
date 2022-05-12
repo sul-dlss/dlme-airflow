@@ -1,0 +1,45 @@
+metadata:
+  version: 1
+sources:
+  manuscripts:
+    description: "Islamic Manuscripts"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
+      dtype:
+    metadata:
+      data_path: princeton/princeton_mss
+      config: princeton_mss_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+  movie_posters:
+    description: "Arabic Movie Posters"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/2ce536fa-8c6e-4f1d-b411-29a28fe188d5/manifest
+      dtype:
+    metadata:
+      data_path: princeton/movie_posters
+      config: princeton_movie_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+  ymdi:
+    description: "Yemen Collection"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/eff75507-11bf-486b-b422-8fe29638b060/manifest
+      dtype:
+    metadata:
+      data_path: princeton/princeton_ymdi
+      config: princeton_mss_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"

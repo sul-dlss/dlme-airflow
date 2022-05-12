@@ -1,0 +1,17 @@
+metadata:
+  version: 1
+sources:
+  rumsey_maps:
+    description: "Rumsey Maps"
+    driver: iiif_json
+    args:
+      collection_url:
+      dtype:
+    metadata:
+      data_path: stanford/rumsey_maps
+      config: stanford_config
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"

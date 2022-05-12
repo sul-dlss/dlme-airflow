@@ -37,10 +37,28 @@ sources:
     description: Cambridge University
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  csic:
+    args:
+      path: /opt/airflow/catalogs/csic.yaml
+    description: Digital Archive for the Study of pre-Islamic Arabian Inscriptions
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  dasi:
+    args:
+      path: /opt/airflow/catalogs/dasi.yaml
+    description: Digital Archive for the Study of pre-Islamic Arabian Inscriptions
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   ifpo:
     args:
       path: /opt/airflow/catalogs/ifpo.yaml
     description: "Archives ouvertes de l'Institut français du Proche-Orient"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  harvard:
+    args:
+      path: /opt/airflow/catalogs/harvard.yaml
+    description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   manchester:
@@ -55,16 +73,34 @@ sources:
     description: University of Pennsylvania and Penn Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  shahre-farang:
+  princeton:
     args:
-      path: /opt/airflow/catalogs/shahre_farang.yaml
-    description: Shahre Farang
+      path: /opt/airflow/catalogs/princeton.yaml
+    description: Princeton University
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  sakip_sabanci:
+    args:
+      path: /opt/airflow/catalogs/sakip_sabanci.yaml
+    description: Sakip Sabanci Museum
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  stanford:
+    args:
+      path: /opt/airflow/catalogs/stanford.yaml
+    description: Stanford University
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   texas_tech:
     args:
       path: /opt/airflow/catalogs/texas_tech.yaml
     description: Texas Tech Uninversity
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  qnl:
+    args:
+      path: /opt/airflow/catalogs/qnl.yaml
+    description: Qatar National Library
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   yale:
