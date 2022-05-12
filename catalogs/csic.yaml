@@ -5,6 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://eu.alma.exlibrisgroup.com/view/oai/34CSIC_INST/request?
+      metadata_prefix: marc21
       set: manuscripta
     metadata:
       data_path: csic/manuscripts

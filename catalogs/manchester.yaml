@@ -5,6 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://luna.manchester.ac.uk/luna/servlet/oai
+      metadata_prefix: oai_dc
       set: "Manchester~18~18"
     metadata:
       fields:
