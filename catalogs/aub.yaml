@@ -5,6 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
+      metadata_prefix: oai_dc
       set: "aco"
     metadata:
       fields:
@@ -17,6 +18,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
+      metadata_prefix: oai_dc
       set: "aladab"
     metadata:
       fields:
@@ -29,6 +31,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
+      metadata_prefix: oai_dc
       set: "postcards"
     metadata:
       fields:
@@ -41,6 +44,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
+      metadata_prefix: oai_dc
       set: "posters"
     metadata:
       fields:
@@ -53,6 +57,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
+      metadata_prefix: oai_dc
       set: "travelbooks"
     metadata:
       fields:

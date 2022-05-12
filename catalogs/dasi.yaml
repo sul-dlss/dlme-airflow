@@ -5,6 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: http://dasi.cnr.it/de/cgi-bin/dasi-oai-x.pl
+      metadata_prefix: oai_dc
       set: epi_set
     metadata:
       data_path: dasi/epigraphs
@@ -19,6 +20,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: http://dasi.cnr.it/de/cgi-bin/dasi-oai-x.pl
+      metadata_prefix: oai_dc
       set: obj_set
     metadata:
       data_path: dasi/objects

@@ -5,6 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://api.archives-ouvertes.fr/oai/hal
+      metadata_prefix: oai_dc
       set: "collection:IFPOIMAGES"
     metadata:
       data_path: ifpo/photographs
