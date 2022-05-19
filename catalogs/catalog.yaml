@@ -61,6 +61,12 @@ sources:
     description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  lau:
+    args:
+      path: /opt/airflow/catalogs/lau.yaml
+    description: "Lebanese American University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   manchester:
     args:
       path: /opt/airflow/catalogs/manchester.yaml
