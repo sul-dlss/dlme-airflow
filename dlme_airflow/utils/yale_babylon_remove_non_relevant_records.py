@@ -22,7 +22,7 @@ NON_RELEVANT_COUNTRIES = [
 ]
 
 
-def remove_non_relevant(**kwargs):
+def yale_remove_non_relevant(**kwargs):
     # Fetch working directory path from catalog and read file into Pandas dataframe
     catalog = catalog_for_provider("yale")
     root_dir = os.path.dirname(os.path.abspath("metadata"))
