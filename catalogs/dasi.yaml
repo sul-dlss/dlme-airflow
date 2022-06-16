@@ -9,24 +9,11 @@ sources:
       set: epi_set
     metadata:
       data_path: dasi/epigraphs
+      post_harvest: "dasi_add_thumbnail_urls"
       config: dasi_config
       fields:
         id:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
-        preview:
-          path: "//thumbnail"
-          namespace:
-            thumbnail: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
-        preview2:
-          path: "//thumbnail"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
-        preview3:
-          path: "//thumbnail"
-          namespace:
           optional: True

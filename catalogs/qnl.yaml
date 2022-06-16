@@ -1,10 +1,11 @@
 metadata:
   version: 1
 sources:
-  qnl:
+  british_library:
     driver: oai_xml
     args:
-      collection_url: https://api.lib.harvard.edu/oai
+      collection_url: https://api.qdl.qa/api/oaipmh
+      metadata_prefix: mods
     metadata:
       data_path: qnl/british_library
       config: qnl_config
