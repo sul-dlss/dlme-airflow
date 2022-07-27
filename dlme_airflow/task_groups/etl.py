@@ -54,7 +54,7 @@ def build_collection_etl_taskgroup(
         harvest = build_havester_task(
             provider, collection, collection_etl_taskgroup, dag
         )  # Harvest
-        sync = build_sync_metadata_taskgroup(provider, collection, dag)
+        sync = build_sync_metadata_taskgroup(source, provider, collection, dag)
         transform = build_transform_task(
             provider, collection, collection, collection_etl_taskgroup, dag
         )  # Transform
