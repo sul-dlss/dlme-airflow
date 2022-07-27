@@ -87,11 +87,13 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
     return validate_metadata_taskgroup
 
 
-def build_sync_metadata_taskgroup(provider, collection, dag: DAG) -> TaskGroup:
+def build_sync_metadata_taskgroup(catalog, provider, collection, dag: DAG) -> TaskGroup:
     if collection:
-        data_path = f"{provider}/{collection}"
+        default_data_path = f"{provider}/{collection}"
     else:
-        data_path = provider
+        default_data_path = provider
+
+    data_path = catalog.metadata.get("data_path", default_data_path)
 
     task_group_prefix = (
         f"{provider.upper()}_ETL.{collection}_etl.sync_{collection}_metadata"
