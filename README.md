@@ -42,7 +42,7 @@ open your browser to `http://localhost:8080`
 ### Allowing local Airflow to execute AWS resources
 
 In order to trigger `dlme-transform` or `dlme-index` while running Airflow locally via `docker compose` your
-`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `DEV_ROLE_ARN` must be set in your local environment.
+`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `DEV_ROLE_ARN` must be set in your local environment and a [configured aws connection](https://github.com/sul-dlss/dlme-airflow/wiki/Amazon-Web-Services-(AWS)-connection-configuration).
 
 Add a `.env` file to the root directory of the project and add your AWS credentials:
 ```
