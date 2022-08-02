@@ -8,13 +8,13 @@ from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
 
 
-def build_transform_task(
-    provider, collection, data_path, task_group: TaskGroup, dag: DAG
-):
+def build_transform_task(source, provider, collection, task_group: TaskGroup, dag: DAG):
     if collection:
         coll_label = f"{provider}.{collection}"
     else:
         coll_label = provider
+
+    data_path = source.metadata.get("data_path")
 
     return ECSOperator(
         task_id=f"transform_{coll_label}",
