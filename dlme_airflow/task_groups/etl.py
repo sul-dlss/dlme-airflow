@@ -56,13 +56,13 @@ def build_collection_etl_taskgroup(
         )  # Harvest
         sync = build_sync_metadata_taskgroup(source, provider, collection, dag)
         transform = build_transform_task(
-            provider, collection, collection, collection_etl_taskgroup, dag
+            source, provider, collection, collection_etl_taskgroup, dag
         )  # Transform
         load = index_task(
             provider, collection, collection_etl_taskgroup, dag
         )  # Load / Index
         report = build_harvest_report_task(
-            provider, collection, collection_etl_taskgroup, dag
+            source, provider, collection, collection_etl_taskgroup, dag
         )  # Report
         send_report = build_send_harvest_report_task(
             provider, collection, collection_etl_taskgroup, dag

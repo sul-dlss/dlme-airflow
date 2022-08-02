@@ -169,6 +169,9 @@ def main(**kwargs):  # input:, config:):
 
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
+    data_path = kwargs.get("data_path").replace(
+        "/", "-"
+    )  # penn/egyptian-museum => penn-egyptian-museum
 
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
@@ -176,7 +179,7 @@ def main(**kwargs):  # input:, config:):
     r = requests.get(config_url, allow_redirects=True)
     open(config_file, "wb").write(r.content)
 
-    input_url = f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{provider_id}-{collection_id}.ndjson"
+    input_url = f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{data_path}.ndjson"
     input_file = f"/tmp/output-{provider_id}-{collection_id}.njson"
     r = requests.get(input_url, allow_redirects=True)
     open(input_file, "wb").write(r.content)
@@ -184,7 +187,7 @@ def main(**kwargs):  # input:, config:):
     with open(input_file, "r") as file:
         records = file.readlines()
         provider = json.loads(records[0])["agg_data_provider"]["en"][0]
-        collection = json.loads(records[0])["dlme_collection"]["en"][0]
+        collection = json.loads(records[0])["agg_data_provider_collection"]["en"][0]
         record_count = len(records)
 
         # get counts for fields, values, languages
@@ -222,29 +225,32 @@ def main(**kwargs):  # input:, config:):
 
             # Resolve thumbnail url, get size for sample of images or all
             # depending on number of records in dataset
-            validate_url(record["agg_preview"]["wr_id"])  # will fail if invalid url
-            try:
-                thumbnail = requests.get(record["agg_preview"]["wr_id"], stream=True)
-                if not resolve_url(thumbnail):
+            if "agg_preview" in record.keys():
+                validate_url(record["agg_preview"]["wr_id"])  # will fail if invalid url
+                try:
+                    thumbnail = requests.get(
+                        record["agg_preview"]["wr_id"], stream=True
+                    )
+                    if not resolve_url(thumbnail):
+                        unresolvable_thumbnails.append(
+                            f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
+                        )
+                except:  # noqa: E722
                     unresolvable_thumbnails.append(
                         f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
                     )
-            except:  # noqa: E722
-                unresolvable_thumbnails.append(
-                    f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
-                )
 
-            if len(records) > 5000:
-                if count % 20 == 0:
+                if len(records) > 5000:
+                    if count % 20 == 0:
+                        thumbnail_image_sizes.append(image_size(thumbnail))
+                elif len(records) > 500:
+                    if count % 10 == 0:
+                        thumbnail_image_sizes.append(image_size(thumbnail))
+                if len(records) > 100:
+                    if count % 2 == 0:
+                        thumbnail_image_sizes.append(image_size(thumbnail))
+                else:
                     thumbnail_image_sizes.append(image_size(thumbnail))
-            elif len(records) > 500:
-                if count % 10 == 0:
-                    thumbnail_image_sizes.append(image_size(thumbnail))
-            if len(records) > 100:
-                if count % 2 == 0:
-                    thumbnail_image_sizes.append(image_size(thumbnail))
-            else:
-                thumbnail_image_sizes.append(image_size(thumbnail))
 
     doc = dominate.document(title="DLME Metadata Report")
 
@@ -462,11 +468,17 @@ def main(**kwargs):  # input:, config:):
     return doc.render()
 
 
-def build_harvest_report_task(provider, collection, task_group: TaskGroup, dag: DAG):
+def build_harvest_report_task(
+    source, provider, collection, task_group: TaskGroup, dag: DAG
+):
     return PythonOperator(
         task_id=f"{provider}_{collection}_harvest_report",
         dag=dag,
         task_group=task_group,
         python_callable=main,
-        op_kwargs={"provider": provider, "collection": collection},
+        op_kwargs={
+            "provider": provider,
+            "collection": collection,
+            "data_path": source.metadata.get("data_path"),
+        },
     )
