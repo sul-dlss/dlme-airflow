@@ -17,6 +17,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
         self.dtype = dtype
         self._manifest_urls = []
         self._path_expressions = {}
+        self.name = "iiif_json"
 
     def _open_collection(self):
         collection_result = requests.get(self.collection_url)
@@ -96,3 +97,6 @@ class IIIfJsonSource(intake.source.base.DataSource):
     def read(self):
         self._load_metadata()
         return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+
+    def driver_tag(self):
+        return f"{name} (Version: {version})"

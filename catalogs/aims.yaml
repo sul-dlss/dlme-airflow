@@ -5,7 +5,7 @@ sources:
     description: "American Institute for Maghrib Studies"
     driver: xml
     metadata:
-      data_path: aims/data
+      data_path: aims
       config: aims_config
       record_selector:
         path: "//item"

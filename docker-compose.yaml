@@ -65,6 +65,7 @@ x-airflow-common:
     DEV_ROLE_ARN: "${DEV_ROLE_ARN}"
     ECS_SECURITY_GROUP: "${ECS_SECURITY_GROUP}"
     ECS_SUBNET: "${ECS_SUBNET}"
+    S3_BUCKET: "s3://dlme-metadata-dev/metadata"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working

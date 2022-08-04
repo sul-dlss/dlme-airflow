@@ -19,23 +19,12 @@ def run_post_harvest(**kwargs):
 
 
 def build_post_havest_task(
-    provider, collection, post_harvest, task_group: TaskGroup, dag: DAG
+    collection, task_group: TaskGroup, dag: DAG
 ):
-    if collection:
-        label = f"{provider}_{collection}"
-        args = {
-            "provider": provider,
-            "collection": collection,
-            "post_harvest": post_harvest,
-        }
-    else:
-        label = f"{provider}"
-        args = {"provider": provider, "collection": None, "post_harvest": post_harvest}
-
     return PythonOperator(
-        task_id=f"{label}_post_harvest",
+        task_id=f"{collection.label()}_post_harvest",
         task_group=task_group,
         dag=dag,
         python_callable=run_post_harvest,
-        op_kwargs=args,
+        op_kwargs={"provider": collection.provider.name, "collection": collection.name, "post_harvest": collection.catalog.metadata.get("post_harvest")},
     )
