@@ -33,9 +33,9 @@ def build_index_task(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
         network_configuration={
             "awsvpcConfiguration": {
                 "securityGroups": [
-                    os.environ.get("SECURITY_GROUP_ID", "sg-00a3f19fea401ad4c")
+                    os.environ.get("SECURITY_GROUP_ID", os.getenv("ECS_SECURITY_GROUP"))
                 ],
-                "subnets": [os.environ.get("SUBNET_ID", "subnet-05a755dca83416be5")],
+                "subnets": [os.environ.get("SUBNET_ID", os.getenv("ECS_SUBNET"))],
             },
         },
         dag=dag,
