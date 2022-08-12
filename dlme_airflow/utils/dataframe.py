@@ -21,11 +21,6 @@ def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
 #       the metadata. Need to handle this error.
 def dataframe_to_file(collection):
     root_dir = os.path.dirname(os.path.abspath("metadata"))
-    # if collection:
-    #     default_data_path = f"{provider}/{collection}"
-    # else:
-    #     default_data_path = provider
-
     data_path = collection.catalog.metadata.get("data_path")
 
     working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
