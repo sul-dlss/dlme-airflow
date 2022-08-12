@@ -26,5 +26,9 @@ def build_post_havest_task(
         task_group=task_group,
         dag=dag,
         python_callable=run_post_harvest,
-        op_kwargs={"provider": collection.provider.name, "collection": collection.name, "post_harvest": collection.catalog.metadata.get("post_harvest")},
+        op_kwargs={
+            "provider": collection.provider.name,
+            "collection": collection.name,
+            "post_harvest": collection.catalog.metadata.get("post_harvest")
+        },
     )

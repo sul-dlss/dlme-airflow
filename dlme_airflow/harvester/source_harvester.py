@@ -1,5 +1,4 @@
 from dlme_airflow.utils.dataframe import dataframe_to_file
-from dlme_airflow.utils.catalog import catalog_for_provider
 
 COLLECTION = "collection"
 PROVIDER = "provider"
@@ -13,4 +12,6 @@ def data_source_harvester(**kwargs):
     @param -- provider
     """
 
-    dataframe_to_file(source, kwargs[COLLECTION].provider.name, kwargs[COLLECTION],name)
+    collection = kwargs.get("collection")
+    # dataframe_to_file(source, collection.provider.name, collection)
+    dataframe_to_file(collection)

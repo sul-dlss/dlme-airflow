@@ -1,11 +1,10 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.operators.dummy import DummyOperator
-from airflow.models import Variable
 
 # Our stuff
 from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup

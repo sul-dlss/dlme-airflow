@@ -4,7 +4,6 @@ from airflow import DAG
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
 from tasks.harvest import build_havester_task
 from tasks.post_harvest import build_post_havest_task
 from tasks.transform import build_transform_task

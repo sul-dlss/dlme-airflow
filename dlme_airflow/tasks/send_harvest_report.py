@@ -7,7 +7,7 @@ from utils.catalog import catalog_for_provider
 
 
 def email_callback(task_instance, task, **kwargs):
-    subject = f"ETL Report for {collection.data_path()}"
+    subject = f"ETL Report for {kwargs.get('collection').data_path()}"
     content = task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
 
     send_email(

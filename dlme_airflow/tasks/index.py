@@ -23,7 +23,7 @@ def index_task(collection, task_group: TaskGroup, dag: DAG) -> TaskGroup:
                     "environment": [
                         {
                             "name": "S3_FETCH_URL",
-                            "value": f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{collection.data_path()}.ndjson",
+                            "value": collection.intermidiate_representation_location(),
                         }
                     ],
                 },
