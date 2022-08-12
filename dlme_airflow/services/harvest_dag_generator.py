@@ -9,7 +9,6 @@ from airflow.operators.dummy import DummyOperator
 # Our stuff
 from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
 from task_groups.etl import build_provider_etl_taskgroup
-# from utils.driver_tag import fetch_driver
 
 
 def create_dag(provider, default_args):
@@ -18,7 +17,6 @@ def create_dag(provider, default_args):
         default_args=default_args,
         schedule_interval="@once",
         start_date=datetime(2021, 9, 6),
-        # tags=provider.tags(),  # fetch_driver(provider),
     )
 
     with dag:

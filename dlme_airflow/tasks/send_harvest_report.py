@@ -17,9 +17,7 @@ def email_callback(task_instance, task, **kwargs):
     )
 
 
-def build_send_harvest_report_task(
-    collection, task_group: TaskGroup, dag: DAG
-):
+def build_send_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
         task_id=f"{collection.label()}_harvest_send_report",
         dag=dag,

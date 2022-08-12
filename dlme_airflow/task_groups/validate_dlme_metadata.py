@@ -64,9 +64,7 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
         dag=dag,
     )
 
-    bash_sync_s3 = (
-        f"aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive"
-    )
+    bash_sync_s3 = f"aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive"
     sync_metadata = BashOperator(
         task_id="sync_metadata",
         bash_command=bash_sync_s3,
@@ -88,11 +86,11 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
 
 
 def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
-    task_group_prefix = (
-        f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.sync_{collection.name}_metadata"
-    )
+    task_group_prefix = f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.sync_{collection.name}_metadata"
 
-    with TaskGroup(group_id=f"sync_{collection.name}_metadata") as sync_metadata_taskgroup:
+    with TaskGroup(
+        group_id=f"sync_{collection.name}_metadata"
+    ) as sync_metadata_taskgroup:
         are_credentials_required = BranchPythonOperator(
             task_id="verify_aws_credentials",
             task_group=sync_metadata_taskgroup,

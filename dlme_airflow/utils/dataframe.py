@@ -33,7 +33,11 @@ def dataframe_to_file(collection):
     os.makedirs(working_directory, exist_ok=True)
 
     unique_id = (
-        collection.catalog.metadata.get("fields").get("id").get("name_in_dataframe", "id")
+        collection.catalog.metadata.get("fields")
+        .get("id")
+        .get("name_in_dataframe", "id")
     )
-    source_df = collection.catalog.read().drop_duplicates(subset=[unique_id], keep="first")
+    source_df = collection.catalog.read().drop_duplicates(
+        subset=[unique_id], keep="first"
+    )
     source_df.to_csv(working_csv, index=False)

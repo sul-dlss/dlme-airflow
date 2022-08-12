@@ -18,9 +18,7 @@ def run_post_harvest(**kwargs):
     )  # This dynamically calls the function defined by metadata.post_harvest in the catalog
 
 
-def build_post_havest_task(
-    collection, task_group: TaskGroup, dag: DAG
-):
+def build_post_havest_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
         task_id=f"{collection.label()}_post_harvest",
         task_group=task_group,
@@ -29,6 +27,6 @@ def build_post_havest_task(
         op_kwargs={
             "provider": collection.provider.name,
             "collection": collection.name,
-            "post_harvest": collection.catalog.metadata.get("post_harvest")
+            "post_harvest": collection.catalog.metadata.get("post_harvest"),
         },
     )

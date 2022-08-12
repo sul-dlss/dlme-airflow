@@ -38,7 +38,9 @@ def build_collection_etl_taskgroup(
 ) -> TaskGroup:
     post_harvest = collection.catalog.metadata.get("post_harvest", None)
 
-    with TaskGroup(group_id=f"{collection.name}_etl", dag=dag) as collection_etl_taskgroup:
+    with TaskGroup(
+        group_id=f"{collection.name}_etl", dag=dag
+    ) as collection_etl_taskgroup:
         harvest = build_havester_task(
             collection, collection_etl_taskgroup, dag
         )  # Harvest
@@ -46,9 +48,7 @@ def build_collection_etl_taskgroup(
         transform = build_transform_task(
             collection, collection_etl_taskgroup, dag
         )  # Transform
-        load = index_task(
-            collection, collection_etl_taskgroup, dag
-        )  # Load / Index
+        load = index_task(collection, collection_etl_taskgroup, dag)  # Load / Index
         report = build_harvest_report_task(
             collection, collection_etl_taskgroup, dag
         )  # Report
