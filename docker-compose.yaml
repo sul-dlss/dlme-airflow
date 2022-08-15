@@ -63,6 +63,8 @@ x-airflow-common:
     AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
     AWS_DEFAULT_REGION: 'us-west-2'
     DEV_ROLE_ARN: "${DEV_ROLE_ARN}"
+    ECS_SECURITY_GROUP: "${ECS_SECURITY_GROUP}"
+    ECS_SUBNET: "${ECS_SUBNET}"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
