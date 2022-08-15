@@ -8,16 +8,9 @@ from airflow.providers.amazon.aws.operators.ecs import ECSOperator
 from airflow.utils.task_group import TaskGroup
 
 
-def build_transform_task(source, provider, collection, task_group: TaskGroup, dag: DAG):
-    if collection:
-        coll_label = f"{provider}.{collection}"
-    else:
-        coll_label = provider
-
-    data_path = source.metadata.get("data_path")
-
+def build_transform_task(collection, task_group: TaskGroup, dag: DAG):
     return ECSOperator(
-        task_id=f"transform_{coll_label}",
+        task_id=f"transform_{collection.label()}",
         task_group=task_group,
         aws_conn_id="aws_conn",
         cluster="dlme-dev",
@@ -28,7 +21,7 @@ def build_transform_task(source, provider, collection, task_group: TaskGroup, da
                 {
                     "name": "dlme-transform",
                     "environment": [
-                        {"name": "DATA_PATH", "value": data_path},
+                        {"name": "DATA_PATH", "value": collection.data_path()},
                     ],
                 },
             ],

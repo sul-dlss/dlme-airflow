@@ -8,18 +8,11 @@ from airflow.utils.task_group import TaskGroup
 from harvester.source_harvester import data_source_harvester
 
 
-def build_havester_task(provider, collection, task_group: TaskGroup, dag: DAG):
-    if collection:
-        label = f"{provider}_{collection}"
-        args = {"provider": provider, "collection": collection}
-    else:
-        label = f"{provider}_{collection}"
-        args = {"provider": provider, "collection": None}
-
+def build_havester_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
-        task_id=f"{label}_harvest",
+        task_id=f"{collection.label()}_harvest",
         task_group=task_group,
         dag=dag,
         python_callable=data_source_harvester,
-        op_kwargs=args,
+        op_kwargs={"collection": collection},
     )

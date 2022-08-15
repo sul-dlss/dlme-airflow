@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: american-numismatic-society
 sources:
   ans:
     description: American Numismatic Society
@@ -7,46 +8,6 @@ sources:
     args:
       csv_kwargs:
         blocksize: null
-        dtype:
-          URI: object
-          Title: object
-          RecordId: object
-          Coin Type URI: object
-          From Date: float64
-          To Date: float64
-          Artist: object
-          SubjectEvent: object
-          SubjectIssuer: object
-          SubjectPerson: object
-          SubjectPlace: object
-          Authority: object
-          Coin Type: object
-          Degree: float64
-          Deity: object
-          Denomination: object
-          Department: object
-          Dynasty: object
-          Engraver: float64
-          Maker: object
-          Manufacture: object
-          Material: object
-          Mint: object
-          Object Type: object
-          Portrait: object
-          Reference: object
-          Region: object
-          Script: object
-          State: object
-          Obverse Legend: object
-          Obverse Type: object
-          Date on Object: float64
-          Ah: float64
-          Axis: float64
-          Diameter: float64
-          Weight: float64
-          Thumbnail_obv: object
-          Thumbnail_rev: object
-          Date Record Modified: object
       urlpath:
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001
@@ -56,10 +17,10 @@ sources:
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=5001
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001
-      metadata:
-        data_path: american-numismatic-society/islamic-coins
-        config: numismatic_csv_config
-        fields:
-          id:
-            name_in_dataframe: "RecordId"
-            path: "RecordId"
+    metadata:
+      data_path: american-numismatic-society/islamic-coins
+      config: numismatic_csv_config
+      fields:
+        id:
+          name_in_dataframe: "RecordId"
+          path: "RecordId"

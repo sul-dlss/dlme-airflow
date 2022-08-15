@@ -1,5 +1,6 @@
 import intake
 import logging
+
 from datetime import timedelta
 
 # Operators and utils required from airflow
@@ -11,6 +12,7 @@ from drivers.oai_xml import OAIXmlSource
 from drivers.xml import XmlSource
 from utils.catalog import fetch_catalog
 from services.harvest_dag_generator import create_dag
+from models.provider import Provider
 
 intake.source.register_driver("iiif_json", IIIfJsonSource)
 intake.source.register_driver("oai_xml", OAIXmlSource)
@@ -30,13 +32,7 @@ default_args = {
     "catchup": False,
 }
 
-catalog = fetch_catalog()
-
-try:
-    collections = iter(list(catalog))
-except TypeError:
-    collections = [catalog]
-
-for provider in collections:
-    logging.info(f"Creating DAG for {provider}")
-    globals()[provider] = create_dag(provider, default_args)
+for provider in iter(list(fetch_catalog())):
+    current_provider = Provider(provider)
+    logging.info(f"Creating DAG for {current_provider.name}")
+    globals()[provider] = create_dag(current_provider, default_args)

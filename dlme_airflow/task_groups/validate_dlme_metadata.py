@@ -15,7 +15,7 @@ dev_role_arn = os.getenv("DEV_ROLE_ARN")
 home_directory = os.getenv("AIRFLOW_HOME", "/opt/airflow")
 metadata_directory = f"{home_directory}/metadata/"
 working_directory = f"{home_directory}/working/"
-s3_data = "s3://dlme-metadata-dev/metadata"
+s3_data = os.getenv("S3_BUCKET")
 
 # Task Configuration
 task_group_prefix = "validate_metadata"
@@ -55,7 +55,7 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
       export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
       export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
       export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-      aws s3 cp {s3_data}/{provider} {metadata_directory}/{provider} --recursive
+      aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive
     """
     aws_assume_role = BashOperator(
         task_id="assume_role",
@@ -64,9 +64,7 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
         dag=dag,
     )
 
-    bash_sync_s3 = (
-        f"aws s3 cp {s3_data}/{provider} {metadata_directory}/{provider} --recursive"
-    )
+    bash_sync_s3 = f"aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive"
     sync_metadata = BashOperator(
         task_id="sync_metadata",
         bash_command=bash_sync_s3,
@@ -87,19 +85,12 @@ def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
     return validate_metadata_taskgroup
 
 
-def build_sync_metadata_taskgroup(catalog, provider, collection, dag: DAG) -> TaskGroup:
-    if collection:
-        default_data_path = f"{provider}/{collection}"
-    else:
-        default_data_path = provider
+def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
+    task_group_prefix = f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.sync_{collection.name}_metadata"
 
-    data_path = catalog.metadata.get("data_path", default_data_path)
-
-    task_group_prefix = (
-        f"{provider.upper()}_ETL.{collection}_etl.sync_{collection}_metadata"
-    )
-
-    with TaskGroup(group_id=f"sync_{collection}_metadata") as sync_metadata_taskgroup:
+    with TaskGroup(
+        group_id=f"sync_{collection.name}_metadata"
+    ) as sync_metadata_taskgroup:
         are_credentials_required = BranchPythonOperator(
             task_id="verify_aws_credentials",
             task_group=sync_metadata_taskgroup,
@@ -113,7 +104,7 @@ def build_sync_metadata_taskgroup(catalog, provider, collection, dag: DAG) -> Ta
         export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
         export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
         export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-        aws s3 sync {working_directory}/{data_path} {s3_data}/{data_path} --delete
+        aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/{collection.data_path()} --delete
         """
         aws_assume_role = BashOperator(
             task_id="assume_role",
@@ -122,7 +113,7 @@ def build_sync_metadata_taskgroup(catalog, provider, collection, dag: DAG) -> Ta
             dag=dag,
         )
 
-        bash_sync_s3 = f"aws s3 sync {working_directory}/{data_path} {s3_data}/{data_path} --delete"
+        bash_sync_s3 = f"aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/{collection.data_path()} --delete"
         sync_metadata = BashOperator(
             task_id="sync_metadata",
             bash_command=bash_sync_s3,

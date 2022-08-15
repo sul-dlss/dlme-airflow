@@ -1,18 +1,7 @@
 from dlme_airflow.utils.dataframe import dataframe_to_file
-from dlme_airflow.utils.catalog import catalog_for_provider
 
 COLLECTION = "collection"
 PROVIDER = "provider"
-
-
-def provider_key(**kwargs):
-    if PROVIDER not in kwargs:
-        return None
-
-    if COLLECTION not in kwargs:
-        return kwargs[PROVIDER]
-
-    return f"{kwargs[PROVIDER]}.{kwargs[COLLECTION]}"
 
 
 def data_source_harvester(**kwargs):
@@ -23,16 +12,6 @@ def data_source_harvester(**kwargs):
     @param -- provider
     """
 
-    if PROVIDER not in kwargs:
-        raise ValueError("Missing provider argument.")
-
-    source_provider = provider_key(**kwargs)
-
-    source = catalog_for_provider(source_provider)
-
-    try:
-        has_sources = iter(list(source))
-        for collection in has_sources:
-            data_source_harvester(provider=kwargs[PROVIDER], collection=collection)
-    except TypeError:
-        dataframe_to_file(source, kwargs[PROVIDER], kwargs.get(COLLECTION, None))
+    collection = kwargs.get("collection")
+    # dataframe_to_file(source, collection.provider.name, collection)
+    dataframe_to_file(collection)

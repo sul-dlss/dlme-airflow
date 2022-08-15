@@ -1,38 +1,22 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.operators.dummy import DummyOperator
-from airflow.models import Variable
 
 # Our stuff
 from task_groups.validate_dlme_metadata import build_validate_metadata_taskgroup
 from task_groups.etl import build_provider_etl_taskgroup
-from utils.driver_tag import fetch_driver
-
-# These args will get passed on to each operator
-# You can override them on a per-task basis during operator initialization
-default_args = {
-    "owner": "airflow",
-    "depends_on_past": False,
-    "email": [Variable.get("data_manager_email")],
-    "email_on_failure": False,
-    "email_on_retry": False,
-    "retries": 0,
-    "retry_delay": timedelta(seconds=60),
-    "catchup": False,
-}
 
 
 def create_dag(provider, default_args):
     dag = DAG(
-        provider,
+        provider.name,
         default_args=default_args,
         schedule_interval="@once",
         start_date=datetime(2021, 9, 6),
-        tags=fetch_driver(provider),
     )
 
     with dag:

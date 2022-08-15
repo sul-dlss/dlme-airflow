@@ -4,13 +4,13 @@ import requests
 import jsonpath_ng
 import pandas as pd
 
+container = "dataframe"
+name = "iiif_json"
+version = "0.0.2"
+partition_access = True
+
 
 class IIIfJsonSource(intake.source.base.DataSource):
-    container = "dataframe"
-    name = "iiif_json"
-    version = "0.0.2"
-    partition_access = True
-
     def __init__(self, collection_url, dtype=None, metadata=None):
         super(IIIfJsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url

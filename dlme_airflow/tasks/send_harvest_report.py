@@ -7,15 +7,7 @@ from utils.catalog import catalog_for_provider
 
 
 def email_callback(task_instance, task, **kwargs):
-    provider_id = kwargs.get("provider")
-    collection_id = kwargs.get("collection", None)
-
-    if collection_id:
-        data_path = f"{provider_id}/{collection_id}"
-    else:
-        data_path = provider_id
-
-    subject = f"ETL Report for {data_path}"
+    subject = f"ETL Report for {kwargs.get('collection').data_path()}"
     content = task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
 
     send_email(
@@ -25,22 +17,13 @@ def email_callback(task_instance, task, **kwargs):
     )
 
 
-def build_send_harvest_report_task(
-    provider, collection, task_group: TaskGroup, dag: DAG
-):
-    if collection:
-        args = {"provider": provider, "collection": collection}
-    else:
-        args = {
-            "provider": provider,
-        }
-
+def build_send_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
-        task_id=f"{provider}_{collection}_harvest_send_report",
+        task_id=f"{collection.label()}_harvest_send_report",
         dag=dag,
         task_group=task_group,
         python_callable=email_callback,
-        op_kwargs=args,
+        op_kwargs={"collection": collection},
         trigger_rule="none_failed",
     )
 

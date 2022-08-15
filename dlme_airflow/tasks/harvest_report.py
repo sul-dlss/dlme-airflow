@@ -468,17 +468,15 @@ def main(**kwargs):  # input:, config:):
     return doc.render()
 
 
-def build_harvest_report_task(
-    source, provider, collection, task_group: TaskGroup, dag: DAG
-):
+def build_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
-        task_id=f"{provider}_{collection}_harvest_report",
+        task_id=f"{collection.label()}_harvest_report",
         dag=dag,
         task_group=task_group,
         python_callable=main,
         op_kwargs={
-            "provider": provider,
-            "collection": collection,
-            "data_path": source.metadata.get("data_path"),
+            "provider": collection.provider.name,
+            "collection": collection.name,
+            "data_path": collection.data_path(),
         },
     )
