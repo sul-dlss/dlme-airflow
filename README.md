@@ -75,12 +75,28 @@ aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bod
 ```
 
 ## Development
-### Set-up
-Create a Python virtual environment by running `python3 -m venv {name-of-virtual-env}`
-and then activating (on Linux/OSX) by `source {name-of-virtual-env}/bin/activate`.
 
-From the root directory of this repository, install the dependencies by
-`pip install -r requirements.txt`.
+### Set-up
+
+Create a Python virtual environment for dlme-airflow by first installing the  [Poetry] dependency management and packaging tool:
+
+```
+pip3 install poetry
+```
+
+Then you can bootstrap your environment:
+
+```
+poetry shell
+```
+
+and install the dependencies:
+
+```
+poetry install
+```
+
+Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
 
 ### Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake9][FLK8]
@@ -131,6 +147,22 @@ yale_babylonian:
 
 ```
 
+#### IIIF Catalog
+For the collections with IIIF JSON format, we created a new `IIIFJsonSource`
+driver class that extends `intake.source.base.DataSource`. In catalogs sources
+that use this driver, set the driver value to *iiif_json*.
+
+Under the *args* section, the *collection_url* should be an URL to the JSON file
+that contains links to other manfest files under it's *manifests* field. The
+catalog *args* should also contain the *dtype* values for the data source.
+
+In the *metadata* section, the *current_directory* value is the same as the
+csv source above. In the *metadata/fields* section, the key is the name of the
+column in the resulting Pandas DataFrame with the *path* value containing the
+[JSON Path]() for extracting the value from the IIIF JSON. The *optional* value
+is set to **true** for optional values (if this value is set to **false** or
+not present, a logging error will result for values not found).
+
 ##### Example source entry:
 
 ```yaml
@@ -156,23 +188,6 @@ exploring_egypt:
 
 ```
 
-#### IIIF Catalog
-For the collections with IIIF JSON format, we created a new `IIIFJsonSource`
-driver class that extends `intake.source.base.DataSource`. In catalogs sources
-that use this driver, set the driver value to *iiif_json*.
-
-Under the *args* section, the *collection_url* should be an URL to the JSON file
-that contains links to other manfest files under it's *manifests* field. The
-catalog *args* should also contain the *dtype* values for the data source.
-
-In the *metadata* section, the *current_directory* value is the same as the
-csv source above. In the *metadata/fields* section, the key is the name of the
-column in the resulting Pandas DataFrame with the *path* value containing the
-[JSON Path]() for extracting the value from the IIIF JSON. The *optional* value
-is set to **true** for optional values (if this value is set to **false** or
-not present, a logging error will result for values not found).
-
-Exampel
-
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
+[Poetry]: https://python-poetry.org
