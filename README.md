@@ -53,6 +53,8 @@ ECS_SECURITY_GROUP={Get value from shared configs}
 ECS_SUBNET={Get value from shared configs}
 ```
 
+If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
+
 # Fetching data for review from S3
 
 DLME-airlfow writes the metadata harvested from providers to S3. It is possible to fetch the written data in CSV format using the [aws cli](https://github.com/sul-dlss/terraform-aws/wiki/AWS-DLSS-Dev-Env-Setup).
