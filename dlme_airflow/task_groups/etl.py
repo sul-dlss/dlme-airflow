@@ -1,3 +1,5 @@
+import os
+
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
@@ -41,37 +43,31 @@ def build_collection_etl_taskgroup(
     with TaskGroup(
         group_id=f"{collection.name}_etl", dag=dag
     ) as collection_etl_taskgroup:
-        harvest = build_havester_task(
-            collection, collection_etl_taskgroup, dag
-        )  # Harvest
+        harvest = build_havester_task(collection, collection_etl_taskgroup, dag)
         sync = build_sync_metadata_taskgroup(collection, dag)
-        transform = build_transform_task(
-            collection, collection_etl_taskgroup, dag
-        )  # Transform
-        load = index_task(collection, collection_etl_taskgroup, dag)  # Load / Index
-        report = build_harvest_report_task(
-            collection, collection_etl_taskgroup, dag
-        )  # Report
-        send_report = build_send_harvest_report_task(
-            collection, collection_etl_taskgroup, dag
-        )  # Send Report
+        transform = build_transform_task(collection, collection_etl_taskgroup, dag)
+        index = index_task(collection, collection_etl_taskgroup, dag)
 
-        # If we fetched a post_harvest key from the catalog, build the post_harvest_task and include it in the flow
+        # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
             post_harvest_task = build_post_havest_task(
                 collection, collection_etl_taskgroup, dag
-            )  # Post Harvest
-            (
-                harvest
-                >> post_harvest_task
-                >> sync
-                >> transform
-                >> load
-                >> report
-                >> send_report
             )
+            harvest >> post_harvest_task >> sync
         else:
-            # Else do not build a post_harvest task for this provider/collection
-            harvest >> sync >> transform >> load >> report >> send_report
+            harvest >> sync
+
+        # common tasks
+        sync >> transform >> index
+
+        # add report unless the environment says not to
+        if not os.getenv("SKIP_REPORT"):
+            report = build_harvest_report_task(
+                collection, collection_etl_taskgroup, dag
+            )
+            send_report = build_send_harvest_report_task(
+                collection, collection_etl_taskgroup, dag
+            )
+            index >> report >> send_report
 
     return collection_etl_taskgroup
