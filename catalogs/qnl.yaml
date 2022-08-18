@@ -5,7 +5,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://api.qdl.qa/api/oaipmh
-      metadata_prefix: mods
+      metadata_prefix: mods_no_ocr
       set:
     metadata:
       data_path: qnl/british_library
