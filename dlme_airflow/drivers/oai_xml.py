@@ -11,7 +11,7 @@ class OAIXmlSource(intake.source.base.DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, metadata_prefix, set, dtype=None, metadata=None):
+    def __init__(self, collection_url, metadata_prefix, set=None, dtype=None, metadata=None):
         super(OAIXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
