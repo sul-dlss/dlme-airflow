@@ -3,9 +3,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/test_coverage)](https://codeclimate.com/github/sul-dlss/dlme-airflow/test_coverage)
 
 # dlme-airflow
-This is a new repository to capture the work related to the DLME ETL Pipeline and establish airflow
 
-NOTE: This is a work-in-progress
+This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data in an Amazon S3 bucket where it is loaded by the [dlme] [Spotlight] application. 
 
 # Getting Started
 
@@ -193,3 +192,10 @@ exploring_egypt:
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [Poetry]: https://python-poetry.org
+[Apache Airflow]: https://airflow.apache.org/
+[Intake]: https://intake.readthedocs.io/
+[Digital Library of the Middle East]: https://dlmenetwork.org/library
+[dlme]: https://github.com/sul-dlss/dlme/
+[dlme-transform]: https://github.com/sul-dlss/dlme-transform
+[Spotlight]: https://github.com/projectblacklight/spotlight
+[ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
