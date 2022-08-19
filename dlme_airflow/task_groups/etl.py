@@ -6,7 +6,7 @@ from airflow import DAG
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
 
-from tasks.harvest import build_havester_task
+from tasks.harvest import build_harvester_task
 from tasks.post_harvest import build_post_havest_task
 from tasks.transform import build_transform_task
 from tasks.index import index_task
@@ -43,7 +43,7 @@ def build_collection_etl_taskgroup(
     with TaskGroup(
         group_id=f"{collection.name}_etl", dag=dag
     ) as collection_etl_taskgroup:
-        harvest = build_havester_task(collection, collection_etl_taskgroup, dag)
+        harvest = build_harvester_task(collection, collection_etl_taskgroup, dag)
         sync = build_sync_metadata_taskgroup(collection, dag)
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
         index = index_task(collection, collection_etl_taskgroup, dag)

@@ -8,7 +8,7 @@ from airflow.utils.task_group import TaskGroup
 from harvester.source_harvester import data_source_harvester
 
 
-def build_havester_task(collection, task_group: TaskGroup, dag: DAG):
+def build_harvester_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
         task_id=f"{collection.label()}_harvest",
         task_group=task_group,
