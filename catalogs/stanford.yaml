@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: stanford
 sources:
   rumsey_maps:
     description: "Rumsey Maps"
@@ -8,7 +9,7 @@ sources:
       collection_url:
       dtype:
     metadata:
-      data_path: stanford/rumsey_maps
+      data_path: stanford/rumsey-maps
       config: stanford_config
       fields:
         id:

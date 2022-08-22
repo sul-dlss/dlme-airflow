@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: harvard
 sources:
   ihp:
     driver: oai_xml
@@ -8,7 +9,7 @@ sources:
       metadata_prefix: oai_dc
       set: "ihp"
     metadata:
-      data_path: harvard/ihp
+      data_path: harvard/islamic-heritage-project
       config: harvard_ihp_config
       fields:
         id:

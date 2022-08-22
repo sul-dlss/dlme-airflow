@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: dasi
 sources:
   epigraphs:
     driver: oai_xml

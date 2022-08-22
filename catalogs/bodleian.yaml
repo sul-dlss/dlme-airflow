@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: bodleian
 sources:
   arabic:
     description: "Items of Arabic origin"

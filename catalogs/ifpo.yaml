@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: ifpo
 sources:
   photographs:
     driver: oai_xml
