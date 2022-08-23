@@ -4,17 +4,18 @@ import requests
 from typing import Optional
 from bs4 import BeautifulSoup
 
+
 def get_schema(url) -> Optional[dict]:
     "Extract schema.org metadata from a URL and return the parsed JSON."
     data = None
     resp = requests.get(url)
 
     # if we've got html
-    if 'html' in resp.headers.get('content-type', ''):
+    if "html" in resp.headers.get("content-type", ""):
 
         # parse the html
-        doc = BeautifulSoup(resp.content, 'html.parser')
-        
+        doc = BeautifulSoup(resp.content, "html.parser")
+
         # look for jsonld in a <script> element and return the first one
         jsonld = doc.select('script[type="application/ld+json"]', first=True)
 
