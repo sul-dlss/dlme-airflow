@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: manchester
 sources:
   nashriyah:
     driver: oai_xml
@@ -8,6 +9,7 @@ sources:
       metadata_prefix: oai_dc
       set: "Manchester~18~18"
     metadata:
+      data_path: manchester/nashriyah
       fields:
         id:
           path: "//header:identifier"

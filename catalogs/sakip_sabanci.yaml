@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: sakip-sabanci
 sources:
   abidindino:
     description: "ABİDİN DİNO ARCHIVE"
@@ -9,7 +10,7 @@ sources:
       metadata_prefix: oai_dc
       set: abidindino
     metadata:
-      data_path: sakip-sabanci/abidindino
+      data_path: sakip-sabanci/abidindino-xml
       config: ssm_iiif_config
       fields:
         id:

@@ -1,11 +1,12 @@
 metadata:
   version: 1
+  data_path: auc
 sources:
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/al_musawwar
+      data_path: auc/iiif/al_musawwar
       config: auc_iiif_config
       fields:
         context:
@@ -79,7 +80,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      data_path: auc/alexandria_bombardment
+      data_path: auc/iiif/alexandria-bombardment
       config: auc_iiif_config
       fields:
         context:
@@ -127,7 +128,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/bint_al_nil
+      data_path: auc/iiif/bint_al_nil
       config: auc_iiif_config
       fields:
         context:
@@ -178,7 +179,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/campus_photos
+      data_path: auc/iiif/campus-photos
       config: auc_iiif_config
       fields:
         context:
@@ -233,7 +234,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/coptic
+      data_path: auc/iiif/coptic
       config: auc_iiif_config
       fields:
         context:
@@ -262,7 +263,7 @@ sources:
       metadata_prefix: oai_dc
       set: p15795coll14
     metadata:
-      data_path: auc/creswell
+      data_path: auc/iiif/creswell
       config: auc_oai_config
       fields:
         id:
@@ -296,7 +297,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      data_path: auc/fathy
+      data_path: auc/iiif/fathy
       config: auc_iiif_config
       fields:
         context:
@@ -342,7 +343,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/hopkins
+      data_path: auc/iiif/hopkins
       config: auc_iiif_config
       fields:
         context:
@@ -391,7 +392,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/islamic_aa
+      data_path: auc/iiif/islamic-aa
       config: auc_iiif_config
       fields:
         context:
@@ -440,7 +441,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/kraus_meyerhof
+      data_path: auc/iiif/kraus_meyerhof
       config: auc_iiif_config
       fields:
         context:
@@ -491,7 +492,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      data_path: auc/maps
+      data_path: auc/iiif/maps
       config: auc_iiif_config
       fields:
         context:
@@ -542,7 +543,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/maritz
+      data_path: auc/iiif/maritz
       config: auc_iiif_config
       fields:
         context:
@@ -592,7 +593,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/napoleonic_egypt
+      data_path: auc/iiif/napoleonic-egypt
       config: auc_iiif_config
       fields:
         context:
@@ -639,7 +640,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/parker
+      data_path: auc/iiif/parker
       config: auc_iiif_config
       fields:
         context:
@@ -686,7 +687,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      data_path: auc/postcards
+      data_path: auc/iiif/postcards
       config: auc_iiif_config
       fields:
         context:
@@ -733,7 +734,7 @@ sources:
         identifier: object
         publisher: object
     metadata:
-      data_path: auc/qurna
+      data_path: auc/iiif/qurna
       config: auc_iiif_config
       fields:
         context:
@@ -784,7 +785,7 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/rare_books
+      data_path: auc/iiif/rare-books
       config: auc_iiif_config
       fields:
         context:
@@ -830,7 +831,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/sphinx
+      data_path: auc/iiif/sphinx
       config: auc_iiif_config
       fields:
         context:
@@ -881,7 +882,7 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/taxiphote_slides
+      data_path: auc/iiif/taxiphote-slides
       config: auc_iiif_config
       fields:
         context:
@@ -936,7 +937,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      data_path: auc/underwood
+      data_path: auc/iiif/underwood
       config: auc_iiif_config
       fields:
         context:
@@ -997,7 +998,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/university_on_the_square
+      data_path: auc/iiif/university-on-the-square
       config: auc_iiif_config
       fields:
         context:
@@ -1046,7 +1047,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      data_path: auc/wassef
+      data_path: auc/iiif/wassef
       config: auc_iiif_config
       fields:
         context:

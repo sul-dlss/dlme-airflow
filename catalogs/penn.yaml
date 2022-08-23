@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: penn
 sources:
   penn_egyptian:
     description: University of Pennsylvania Egyptian Museum

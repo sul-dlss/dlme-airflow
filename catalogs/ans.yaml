@@ -18,7 +18,7 @@ sources:
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=6001
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=7001
     metadata:
-      data_path: american-numismatic-society/islamic-coins
+      data_path: american-numismatic-society
       config: numismatic_csv_config
       fields:
         id:

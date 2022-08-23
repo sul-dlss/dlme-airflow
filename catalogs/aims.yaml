@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: aims
 sources:
   aims:
     description: "American Institute for Maghrib Studies"

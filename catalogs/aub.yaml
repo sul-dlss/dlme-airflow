@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: aub
 sources:
   aco:
     driver: oai_xml
@@ -8,6 +9,7 @@ sources:
       metadata_prefix: oai_dc
       set: "aco"
     metadata:
+      data_path: aub/aco
       fields:
         id:
           path: "//header:identifier"
@@ -21,6 +23,7 @@ sources:
       metadata_prefix: oai_dc
       set: "aladab"
     metadata:
+      data_path: aub/aladab
       fields:
         id:
           path: "//header:identifier"
@@ -34,6 +37,7 @@ sources:
       metadata_prefix: oai_dc
       set: "postcards"
     metadata:
+      data_path: aub/postcards
       fields:
         id:
           path: "//header:identifier"
@@ -47,6 +51,7 @@ sources:
       metadata_prefix: oai_dc
       set: "posters"
     metadata:
+      data_path: aub/posters
       fields:
         id:
           path: "//header:identifier"
@@ -60,6 +65,7 @@ sources:
       metadata_prefix: oai_dc
       set: "travelbooks"
     metadata:
+      data_path: aub/travelbooks
       fields:
         id:
           path: "//header:identifier"

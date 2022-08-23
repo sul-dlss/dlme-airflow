@@ -1,5 +1,6 @@
 metadata:
   version: 1
+  data_path: texas-tech
 sources:
   turkish_stories:
     driver: oai_xml
@@ -8,6 +9,7 @@ sources:
       metadata_prefix: oai_dc
       set: "com_10605_355119"
     metadata:
+      data_path: texas-tech
       fields:
         id:
           path: "//header:identifier"
