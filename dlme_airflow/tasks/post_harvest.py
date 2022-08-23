@@ -5,6 +5,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
+from utils.add_thumbnails import add_thumbnails
 from utils.yale_babylon_remove_non_relevant_records import remove_non_relevant
 
 # The method name/include must match the value in metadata.post_harvest from the catalog

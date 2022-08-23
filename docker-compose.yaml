@@ -72,6 +72,7 @@ x-airflow-common:
     - ./working:/opt/airflow/working
     - ./metadata:/opt/airflow/metadata
     - ./dlme_airflow:/opt/airflow/dlme_airflow
+    - ./catalogs:/opt/airflow/catalogs
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
     redis:
