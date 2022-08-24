@@ -53,7 +53,7 @@ jobs:
        - run:
            name: Run tests
            command: |
-              poetry run pytest
+              PYTHONPATH=dlme_airflow poetry run pytest
        - run:
            name: Report test coverage results to CodeClimate
            command: |
