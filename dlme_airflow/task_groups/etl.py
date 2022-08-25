@@ -8,7 +8,7 @@ from airflow import DAG
 from airflow.utils.task_group import TaskGroup
 
 from tasks.harvest import build_harvester_task
-from tasks.post_harvest import build_post_havest_task
+from tasks.post_harvest import build_post_harvest_task
 from tasks.transform import build_transform_task
 from tasks.index import index_task
 from tasks.harvest_report import build_harvest_report_task
@@ -52,7 +52,7 @@ def build_collection_etl_taskgroup(
         # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
             logging.info(f"adding post harvest task for {collection.label()}")
-            post_harvest_task = build_post_havest_task(
+            post_harvest_task = build_post_harvest_task(
                 collection, collection_etl_taskgroup, dag
             )
             harvest >> post_harvest_task >> sync
