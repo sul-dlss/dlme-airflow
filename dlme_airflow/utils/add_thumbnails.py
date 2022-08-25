@@ -6,6 +6,7 @@ import logging
 from typing import Optional
 from dlme_airflow.utils.schema import get_schema
 
+
 def add_thumbnails(**kwargs) -> None:
     """Add a thumbnail column based on the value in the url column"""
     coll = kwargs["collection"]
@@ -23,6 +24,7 @@ def add_thumbnails(**kwargs) -> None:
     df = pandas.read_csv(working_csv)
     df["thumbnail"] = df.url.apply(get_thumbnail)
     df.to_csv(working_csv)
+
 
 def get_thumbnail(url) -> Optional[str]:
     logging.info(f"getting thumbnail for {url}")
