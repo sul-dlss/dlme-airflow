@@ -9,7 +9,7 @@ from dlme_airflow.utils.schema import get_schema
 def add_thumbnails(**kwargs) -> None:
     """Add a thumbnail column based on the value in the url column"""
     coll = kwargs["collection"]
-    data_path = coll.catalog.metadata.get("data_path")
+    data_path = coll.data_path()
     if data_path is None:
         raise Exception(f"unable to find data_path for collection={coll}")
 
