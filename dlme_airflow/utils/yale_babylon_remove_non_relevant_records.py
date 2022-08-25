@@ -2,8 +2,6 @@
 import os
 import pandas as pd
 
-from utils.catalog import catalog_for_provider
-
 # Objects from these countries will be suppressed
 NON_RELEVANT_COUNTRIES = [
     "Canada",
@@ -23,10 +21,9 @@ NON_RELEVANT_COUNTRIES = [
 
 
 def remove_non_relevant(**kwargs):
-    # Fetch working directory path from catalog and read file into Pandas dataframe
-    catalog = catalog_for_provider("yale")
+    coll = kwargs["collection"]
     root_dir = os.path.dirname(os.path.abspath("metadata"))
-    data_path = catalog.metadata.get("data_path", "yale/babylon")
+    data_path = coll.data_path()
     working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
     df = pd.read_csv(working_csv)
     # Filter out non relevant records and over write the csv

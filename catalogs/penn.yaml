@@ -7,6 +7,7 @@ sources:
     driver: csv
     metadata:
       data_path: penn/egyptian-museum
+      post_harvest: add_thumbnails
       config: penn_egyptian_config
       fields:
         id:
@@ -44,11 +45,13 @@ sources:
           measurement_unit: object
           other_numbers: object
           url: object
+
   penn_near_eastern:
     description: University of Pennsylvania Near Eastern Museum
     driver: csv
     metadata:
       data_path: penn/near-eastern
+      post_harvest: add_thumbnails
       config: penn_near_east_config
       fields:
         id:

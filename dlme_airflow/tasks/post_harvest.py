@@ -5,6 +5,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
+from utils.add_thumbnails import add_thumbnails
 from utils.yale_babylon_remove_non_relevant_records import remove_non_relevant
 
 # The method name/include must match the value in metadata.post_harvest from the catalog
@@ -18,15 +19,14 @@ def run_post_harvest(**kwargs):
     )  # This dynamically calls the function defined by metadata.post_harvest in the catalog
 
 
-def build_post_havest_task(collection, task_group: TaskGroup, dag: DAG):
+def build_post_harvest_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
         task_id=f"{collection.label()}_post_harvest",
         task_group=task_group,
         dag=dag,
         python_callable=run_post_harvest,
         op_kwargs={
-            "provider": collection.provider.name,
-            "collection": collection.name,
+            "collection": collection,
             "post_harvest": collection.catalog.metadata.get("post_harvest"),
         },
     )

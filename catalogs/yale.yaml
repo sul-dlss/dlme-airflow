@@ -5,6 +5,14 @@ sources:
   babylonian:
     description: Yale babylonian
     driver: csv
+    metadata:
+      data_path: yale/babylonian
+      post_harvest: "remove_non_relevant"
+      config: yale_babylon_config
+      fields:
+        id:
+          name_in_dataframe: "id"
+          path: "id"
     args:
       csv_kwargs:
         blocksize: null
@@ -55,11 +63,4 @@ sources:
         - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=17&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
         - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=18&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
         - https://collections.peabody.yale.edu/search/Search/Results?join=AND&bool0%5B%5D=AND&lookfor0%5B%5D=BC&type0%5B%5D=AllFields&limit=100&page=19&filter%5B%5D=~collection%3A%22Anthropology%22&filter%5B%5D=resource%3A%22Resource+available+online%22&view=csv
-      metadata:
-        data_path: yale/babylonian
-        post_harvest: "remove_non_relevant"
-        config: yale_babylon_config
-        fields:
-          id:
-            name_in_dataframe: "id"
-            path: "id"
+
