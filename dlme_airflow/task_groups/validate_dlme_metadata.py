@@ -21,68 +21,12 @@ s3_data = os.getenv("S3_BUCKET")
 task_group_prefix = "validate_metadata"
 
 
-def validate_metadata_folder(**kwargs):
-    if not os.path.exists(metadata_directory):
-        return f"{task_group_prefix}.clone_metadata"
-
-    if len(os.listdir(metadata_directory)) == 0:
-        return f"{task_group_prefix}.clone_metadata"
-
-    return f"{task_group_prefix}.pull_metadata"
-
-
 def require_credentials(**kwargs):
     prefix = kwargs.get("task_group", task_group_prefix)
     if os.getenv("AWS_ACCESS_KEY_ID"):
         return f"{prefix}.assume_role"
 
     return f"{prefix}.sync_metadata"
-
-
-def build_validate_metadata_taskgroup(provider, dag: DAG) -> TaskGroup:
-    validate_metadata_taskgroup = TaskGroup(group_id=task_group_prefix)
-
-    are_credentials_required = BranchPythonOperator(
-        task_id="verify_aws_credentials",
-        task_group=validate_metadata_taskgroup,
-        python_callable=require_credentials,
-        op_kwargs={"task_group": "validate_metadata"},
-        dag=dag,
-    )
-
-    bash_assume_role = f"""
-      temp_role=$(aws sts assume-role --role-session-name \"DevelopersRole\" --role-arn {dev_role_arn}) && \
-      export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
-      export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
-      export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-      aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive
-    """
-    aws_assume_role = BashOperator(
-        task_id="assume_role",
-        bash_command=bash_assume_role,
-        task_group=validate_metadata_taskgroup,
-        dag=dag,
-    )
-
-    bash_sync_s3 = f"aws s3 cp {s3_data}/{provider.data_path()} {metadata_directory}/{provider.data_path()} --recursive"
-    sync_metadata = BashOperator(
-        task_id="sync_metadata",
-        bash_command=bash_sync_s3,
-        task_group=validate_metadata_taskgroup,
-        dag=dag,
-    )
-
-    """ Dummy operator (DO NOT DELETE, IT WOULD BREAK THE FLOW) """
-    finished_pulling = DummyOperator(
-        task_id="finished_pulling",
-        trigger_rule="none_failed",
-        task_group=validate_metadata_taskgroup,
-        dag=dag,
-    )
-
-    are_credentials_required >> [aws_assume_role, sync_metadata] >> finished_pulling
-
-    return validate_metadata_taskgroup
 
 
 def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
