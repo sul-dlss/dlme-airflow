@@ -22,7 +22,7 @@ sources:
   auc:
     args:
       path: /opt/airflow/catalogs/auc.yaml
-    description: "American University in Cairo IIIf Collections"
+    description: "American University in Cairo IIIF Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   bodleian:

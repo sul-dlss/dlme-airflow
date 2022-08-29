@@ -6,16 +6,16 @@ from datetime import timedelta
 # Operators and utils required from airflow
 from airflow.models import Variable
 
-from drivers.iiif_json import IIIfJsonSource
+from drivers.iiif_json import IiifJsonSource
 from drivers.feed import FeedSource
-from drivers.oai_xml import OAIXmlSource
+from drivers.oai_xml import OaiXmlSource
 from drivers.xml import XmlSource
 from utils.catalog import fetch_catalog
 from services.harvest_dag_generator import create_dag
 from models.provider import Provider
 
-intake.source.register_driver("iiif_json", IIIfJsonSource)
-intake.source.register_driver("oai_xml", OAIXmlSource)
+intake.source.register_driver("iiif_json", IiifJsonSource)
+intake.source.register_driver("oai_xml", OaiXmlSource)
 intake.source.register_driver("feed", FeedSource)
 intake.source.register_driver("xml", XmlSource)
 
