@@ -5,7 +5,7 @@ from sickle import Sickle
 from lxml import etree
 
 
-class OAIXmlSource(intake.source.base.DataSource):
+class OaiXmlSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "oai_xml"
     version = "0.0.1"
@@ -14,7 +14,7 @@ class OAIXmlSource(intake.source.base.DataSource):
     def __init__(
         self, collection_url, metadata_prefix, set=None, dtype=None, metadata=None
     ):
-        super(OAIXmlSource, self).__init__(metadata=metadata)
+        super(OaiXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
         self.set = set

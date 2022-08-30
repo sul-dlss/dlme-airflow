@@ -2,7 +2,7 @@ import pytest
 import requests
 import pandas as pd
 
-from dlme_airflow.drivers.iiif_json import IIIfJsonSource
+from dlme_airflow.drivers.iiif_json import IiifJsonSource
 
 
 class MockIIIFCollectionResponse:
@@ -54,16 +54,16 @@ def iiif_test_source():
             "iiif_format": {"path": "sequences..format"},
         }
     }
-    return IIIfJsonSource(
+    return IiifJsonSource(
         collection_url="http://iiif_collection.json", metadata=metadata
     )
 
 
-def test_IIIfJsonSource_initial(iiif_test_source, mock_response):
+def test_IiifJsonSource_initial(iiif_test_source, mock_response):
     assert len(iiif_test_source._manifest_urls) == 0
 
 
-def test_IIIfJsonSource_get_schema(iiif_test_source, mock_response):
+def test_IiifJsonSource_get_schema(iiif_test_source, mock_response):
     iiif_test_source._get_schema()
     assert (
         iiif_test_source._manifest_urls[0]
@@ -71,13 +71,13 @@ def test_IIIfJsonSource_get_schema(iiif_test_source, mock_response):
     )
 
 
-def test_IIIfJsonSource_read(iiif_test_source, mock_response):
+def test_IiifJsonSource_read(iiif_test_source, mock_response):
     iiif_df = iiif_test_source.read()
     test_columns = ["context", "iiif_format", "source", "title-main"]
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 
-def test_test_IIIfJsonSource_df(iiif_test_source, mock_response):
+def test_test_IiifJsonSource_df(iiif_test_source, mock_response):
     iiif_df = iiif_test_source.read()
     test_df = pd.DataFrame(
         [

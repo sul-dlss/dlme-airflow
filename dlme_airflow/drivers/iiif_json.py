@@ -10,9 +10,9 @@ version = "0.0.2"
 partition_access = True
 
 
-class IIIfJsonSource(intake.source.base.DataSource):
+class IiifJsonSource(intake.source.base.DataSource):
     def __init__(self, collection_url, dtype=None, metadata=None):
-        super(IIIfJsonSource, self).__init__(metadata=metadata)
+        super(IiifJsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
         self._manifest_urls = []
@@ -27,7 +27,7 @@ class IIIfJsonSource(intake.source.base.DataSource):
         manifest_result = requests.get(manifest_url)
         manifest_detail = manifest_result.json()
         record = self._construct_fields(manifest_detail)
-        # Handles metadata in IIIf manfest
+        # Handles metadata in IIIF manfest
         record.update(self._from_metadata(manifest_detail.get("metadata", [])))
         return record
 

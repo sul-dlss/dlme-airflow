@@ -149,7 +149,7 @@ yale_babylonian:
 ```
 
 #### IIIF Catalog
-For the collections with IIIF JSON format, we created a new `IIIFJsonSource`
+For the collections with IIIF JSON format, we created a new `IiifJsonSource`
 driver class that extends `intake.source.base.DataSource`. In catalogs sources
 that use this driver, set the driver value to *iiif_json*.
 
