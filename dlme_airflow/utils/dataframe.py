@@ -5,7 +5,7 @@ import pandas as pd
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.
 def dataframe_from_file(driver: str, data_file_path: str) -> pd.DataFrame:
-    """ "Returns existing DLME metadata as a Panda dataframe based on the
+    """Returns existing DLME metadata as a Pandas dataframe based on the
     type of driver.
 
     @param -- driver The registered DataSource name

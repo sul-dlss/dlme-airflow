@@ -10,6 +10,7 @@ from drivers.iiif_json import IIIfJsonSource
 from drivers.feed import FeedSource
 from drivers.oai_xml import OAIXmlSource
 from drivers.xml import XmlSource
+from drivers.sequential_csv import SequentialCsvSource
 from utils.catalog import fetch_catalog
 from services.harvest_dag_generator import create_dag
 from models.provider import Provider
@@ -18,6 +19,7 @@ intake.source.register_driver("iiif_json", IIIfJsonSource)
 intake.source.register_driver("oai_xml", OAIXmlSource)
 intake.source.register_driver("feed", FeedSource)
 intake.source.register_driver("xml", XmlSource)
+intake.source.register_driver("sequential_csv", SequentialCsvSource)
 
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
