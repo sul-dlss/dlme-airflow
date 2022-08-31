@@ -5,7 +5,8 @@ import os
 import pytest
 from botocore.response import StreamingBody
 from botocore.stub import Stubber
-from dlme_airflow.utils.dataframe import dataframe_from_file
+from dlme_airflow.utils.dataframe import dataframe_from_s3
+from mock import patch
 
 
 @pytest.fixture
@@ -33,8 +34,12 @@ def mock_boto3(monkeypatch):
     monkeypatch.setattr(boto3, "client", mock_client)
 
 
-def test_dataframe_from_file(mock_boto3):
-    os.environ["S3_BUCKET"] = "test-bucket"
-    df = dataframe_from_file("provider/collection")
-    assert df.shape == (2, 3)
-    assert not (df.to_numpy().flatten() - [1, 2, 3, 4, 5, 6]).all()
+def test_dataframe_from_s3(mock_boto3):
+    with patch("dlme_airflow.models.collection.Collection") as mock:
+        collection = mock.return_value
+        collection.data_path.return_value = "provider/collection"
+        os.environ["S3_BUCKET"] = "test-bucket"
+
+        df = dataframe_from_s3(collection)
+        assert df.shape == (2, 3)
+        assert not (df.to_numpy().flatten() - [1, 2, 3, 4, 5, 6]).all()

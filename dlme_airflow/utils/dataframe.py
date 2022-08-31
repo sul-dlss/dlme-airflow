@@ -1,22 +1,21 @@
 import os
 import pandas as pd
 import boto3
-from io import StringIO
 
 
 # TODO: If not files are found / dir is empty / etc, this raising an error.
 #       We should handle this error more cleanly.
-def dataframe_from_file(data_path: str) -> pd.DataFrame:
+def dataframe_from_s3(collection) -> pd.DataFrame:
     """Returns existing DLME metadata as a Pandas dataframe from S3
 
     @param -- data_path
     """
-
+    data_path = collection.data_path()
     s3 = boto3.client("s3")
     bucket = os.getenv("S3_BUCKET")
     key = f"{data_path}/data.csv"
     obj = s3.get_object(Bucket=bucket, Key=key)
-    return pd.read_csv(StringIO(obj["Body"].read().decode("utf-8")))
+    return pd.read_csv(obj["Body"])
 
 
 # TODO: An Error is thrown on line 22 if working_directory is not found in
@@ -30,9 +29,11 @@ def dataframe_to_file(collection):
     os.makedirs(working_directory, exist_ok=True)
 
     unique_id = (
-        collection.metadata().get("fields").get("id").get("name_in_dataframe", "id")
+        collection.catalog.metadata.get("fields")
+        .get("id")
+        .get("name_in_dataframe", "id")
     )
-    source_df = (
-        collection.catalog().read().drop_duplicates(subset=[unique_id], keep="first")
+    source_df = collection.catalog.read().drop_duplicates(
+        subset=[unique_id], keep="first"
     )
     source_df.to_csv(working_csv, index=False)

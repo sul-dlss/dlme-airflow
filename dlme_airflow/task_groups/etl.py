@@ -20,10 +20,8 @@ from dlme_airflow.task_groups.validate_dlme_metadata import (
 
 def etl_tasks(provider, dag: DAG) -> list[TaskGroup]:
     task_array = []
-    for collection in provider.collections():
-        task_array.append(
-            build_collection_etl_taskgroup(provider, collection, task_group, dag)
-        )
+    for collection in provider.collections:
+        task_array.append(build_collection_etl_taskgroup(collection, dag))
 
     return task_array
 
@@ -37,10 +35,8 @@ def build_provider_etl_taskgroup(provider, dag: DAG) -> TaskGroup:
     return provider_etl_taskgroup
 
 
-def build_collection_etl_taskgroup(
-    provider, collection, task_group: TaskGroup, dag: DAG
-) -> TaskGroup:
-    post_harvest = collection.metadata().get("post_harvest", None)
+def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
+    post_harvest = collection.catalog.metadata.get("post_harvest", None)
 
     with TaskGroup(
         group_id=f"{collection.name}_etl", dag=dag
