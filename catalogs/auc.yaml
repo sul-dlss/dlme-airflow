@@ -5,7 +5,7 @@ sources:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/al_musawwar
+      data_path: auc/iiif/al_musawwar
       config: auc_iiif_config
       fields:
         context:
@@ -79,7 +79,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      data_path: auc/alexandria_bombardment
+      data_path: auc/iiif/alexandria_bombardment
       config: auc_iiif_config
       fields:
         context:
@@ -127,7 +127,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/bint_al_nil
+      data_path: auc/iiif/bint_al_nil
       config: auc_iiif_config
       fields:
         context:
@@ -150,55 +150,20 @@ sources:
           optional: true
   campus_photos:
     description: "Art in the Greek Campus"
-    driver: iiif_json
+    driver: oai_xml
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll32/manifest.json
-      dtype:
-        context: object
-        id: object
-        iiif_format: object
-        profile: object
-        resource: object
-        buildings: object
-        coverage: object
-        creator: object
-        collection: object
-        date: object
-        description: object
-        format: object
-        getty-aat: object
-        identifier: object
-        license: object
-        physical-box-number: object
-        rights: object
-        source: object
-        subject: object
-        subseries: object
-        title: object
-        type: object
-        repository: object
+      collection_url: http://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll32
     metadata:
-      data_path: auc/campus_photos
-      config: auc_iiif_config
+      data_path: auc/oai/creswell
+      config: auc_oai_config
       fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: 'description'
-          optional: true
         id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: 'sequences..format'
-        profile:
-          path: 'sequences..profile'
-        resource:
-          path: 'sequences..resource.@id'
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
   coptic:
     description: "Iryan Moftah Coptic Language and Religion Manuscripts"
     driver: iiif_json
@@ -233,7 +198,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/coptic
+      data_path: auc/iiif/coptic
       config: auc_iiif_config
       fields:
         context:
@@ -262,7 +227,7 @@ sources:
       metadata_prefix: oai_dc
       set: p15795coll14
     metadata:
-      data_path: auc/creswell
+      data_path: auc/oai/creswell
       config: auc_oai_config
       fields:
         id:
@@ -296,7 +261,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      data_path: auc/fathy
+      data_path: auc/iiif/fathy
       config: auc_iiif_config
       fields:
         context:
@@ -342,7 +307,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/hopkins
+      data_path: auc/iiif/hopkins
       config: auc_iiif_config
       fields:
         context:
@@ -391,7 +356,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/islamic_aa
+      data_path: auc/iiif/islamic_aa
       config: auc_iiif_config
       fields:
         context:
@@ -440,7 +405,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/kraus_meyerhof
+      data_path: auc/iiif/kraus_meyerhof
       config: auc_iiif_config
       fields:
         context:
@@ -491,7 +456,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      data_path: auc/maps
+      data_path: auc/iiif/maps
       config: auc_iiif_config
       fields:
         context:
@@ -542,7 +507,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/maritz
+      data_path: auc/iiif/maritz
       config: auc_iiif_config
       fields:
         context:
@@ -592,7 +557,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/napoleonic_egypt
+      data_path: auc/iiif/napoleonic_egypt
       config: auc_iiif_config
       fields:
         context:
@@ -639,7 +604,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/parker
+      data_path: auc/iiif/parker
       config: auc_iiif_config
       fields:
         context:
@@ -686,7 +651,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      data_path: auc/postcards
+      data_path: auc/iiif/postcards
       config: auc_iiif_config
       fields:
         context:
@@ -709,54 +674,20 @@ sources:
           optional: true
   qurna:
     description: "Qurna Hillside Oral History Project"
-    driver: iiif_json
+    driver: oai_xml
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll24/manifest.json
-      dtype:
-        context: object
-        id: object
-        iiif_format: object
-        profile: object
-        resource: object
-        coverage: object
-        interviewee: object
-        date: object
-        description: object
-        language: object
-        medium: object
-        license: object
-        rights: object
-        source: object
-        title: object
-        repository: object
-        format: object
-        identifier: object
-        publisher: object
+      collection_url: http://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll34
     metadata:
-      data_path: auc/qurna
-      config: auc_iiif_config
+      data_path: auc/oai/qurna
+      config: auc_oai_config
       fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: 'description'
-          optional: true
         id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: 'sequences..format'
-          optional: true
-        profile:
-          path: 'sequences..profile'
-          optional: true
-        resource:
-          path: 'sequences..resource.@id'
-          optional: true
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
   rare_books:
     description: "Selections from the Rare Books and Special Collections Library"
     driver: iiif_json
@@ -784,7 +715,7 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/rare_books
+      data_path: auc/iiif/rare_books
       config: auc_iiif_config
       fields:
         context:
@@ -830,7 +761,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/sphinx
+      data_path: auc/iiif/sphinx
       config: auc_iiif_config
       fields:
         context:
@@ -881,7 +812,7 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/taxiphote_slides
+      data_path: auc/iiif/taxiphote_slides
       config: auc_iiif_config
       fields:
         context:
@@ -936,7 +867,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      data_path: auc/underwood
+      data_path: auc/iiif/underwood
       config: auc_iiif_config
       fields:
         context:
@@ -997,7 +928,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/university_on_the_square
+      data_path: auc/iiif/university_on_the_square
       config: auc_iiif_config
       fields:
         context:
@@ -1046,7 +977,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      data_path: auc/wassef
+      data_path: auc/iiif/wassef
       config: auc_iiif_config
       fields:
         context:
