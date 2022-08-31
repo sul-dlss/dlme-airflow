@@ -18,7 +18,7 @@ from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
 
 def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
     task_array = []
-    for collection in provider.collections:
+    for collection in provider.collections():
         task_array.append(
             build_collection_etl_taskgroup(provider, collection, task_group, dag)
         )
@@ -39,7 +39,7 @@ def build_provider_etl_taskgroup(provider, dag: DAG) -> TaskGroup:
 def build_collection_etl_taskgroup(
     provider, collection, task_group: TaskGroup, dag: DAG
 ) -> TaskGroup:
-    post_harvest = collection.catalog.metadata.get("post_harvest", None)
+    post_harvest = collection.metadata().get("post_harvest", None)
 
     with TaskGroup(
         group_id=f"{collection.name}_etl", dag=dag
