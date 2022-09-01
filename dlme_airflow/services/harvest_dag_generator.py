@@ -1,3 +1,5 @@
+import sys
+
 from datetime import datetime
 from datetime import timedelta
 import logging
@@ -84,11 +86,18 @@ def register_drivers():
     intake.source.register_driver("sequential_csv", SequentialCsvSource)
 
 
-def create_provider_dags():
+def create_provider_dags(module_name=None):
     for provider in iter(list(fetch_catalog())):
         current_provider = Provider(provider)
         logging.info(f"Creating DAG for {current_provider.name}")
-        globals()[provider] = create_dag(current_provider, default_dag_args())
-        _harvest_dags[provider] = globals()[provider]
+
+        dag = create_dag(current_provider, default_dag_args())
+        if module_name is None:
+            globals()[provider] = dag
+        else:
+            logging.info(f"setting {module_name}.{provider} to {dag}")
+            setattr(sys.modules[module_name], provider, dag)
+
+        _harvest_dags[provider] = dag
 
     logging.info(f"_harvest_dags={_harvest_dags}")
