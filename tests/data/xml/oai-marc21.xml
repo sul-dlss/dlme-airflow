@@ -1,0 +1,92 @@
+
+<?xml version="1.0" encoding="UTF-8"?><OAI-PMH xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd" xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <responseDate>2022-09-06T21:54:37Z</responseDate>
+  <request verb="ListRecords" metadataPrefix="marc21" set="manuscripta">https://csic.alma.exlibrisgroup.com/view/oai/34CSIC_INST/request</request>
+  <ListRecords>
+    <record>
+      <header>
+        <identifier>oai:alma.34CSIC_INST:990013504400204201</identifier>
+        <datestamp>2022-07-01T05:01:55Z</datestamp>
+        <setSpec>manuscripta</setSpec>
+        <setSpec>csic-bibliografico</setSpec>
+      </header>
+      <metadata>
+        <record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" >
+          <leader>08133ntm a2200889 i 4500</leader>
+          <controlfield tag="005">20220609123406.0</controlfield>
+          <controlfield tag="008">100809n                      000 0 ara d</controlfield>
+          <controlfield tag="001">990013504400204201</controlfield>
+          <datafield tag="035" ind1=" " ind2=" "><subfield code="a">CSIC001350440</subfield></datafield>
+          <datafield tag="035" ind1=" " ind2=" "><subfield code="a">(ES-MaCSI)001350440MAD01-Aleph</subfield></datafield>
+          <datafield tag="035" ind1=" " ind2=" "><subfield code="a">(OCoLC)1123863221</subfield></datafield>
+          <datafield tag="245" ind1="1" ind2="0"><subfield code="a">مجموعة مؤلفات تنجيمية وقصص‭</subfield><subfield code="h">[‭Manuscrito]</subfield></datafield>
+          <datafield tag="260" ind1=" " ind2=" "><subfield code=" ">[S. f.]</subfield></datafield>
+          <datafield tag="300" ind1=" " ind2=" "><subfield code="a">165 f. (164 f. están foliados y 1 sin foliar que corresponde al folio entre el 105 y el 106) ;</subfield><subfield code="c">20,5 x 15,5 cm (caja: 14,5 x 9,5 cm).</subfield></datafield>
+          <datafield tag="490" ind1="1" ind2=" "><subfield code="a">Manuscripta</subfield></datafield>
+          <datafield tag="546" ind1=" " ind2=" "><subfield code="a">Arabe</subfield><subfield code="b">Escritura magrebí</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Título transliterado: Maŷmūʽat muʼallafāt tanŷīmiyya wa-qiṣṣaṣ</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Título facticio</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Distribución: 1 col. La mayor parte de la obra tiene 15 líneas por página con la inserción de tablas numéricas de diferente formato</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Material: Papel</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Tinta: Negra y roja</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Características especiales: Texto sin vocalizar</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Ilustraciones: Los epígrafes al igual que algunas palabras del texto se marcan con tinta roja y un trazo mucho más alargado que el resto</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Tipo de cuaderno: 18 cuads.: 1 binión, 5 cuaterniones y 12 quiniones ; más 1 folio suelto</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Deterioros: Buen estado del texto en general. - Se ha descosido y algunos cuadernos estás sueltos. - En los folios centrales del volumen algunas manchas, galerías y degradaciones leves de tinta que no afectan al texto.</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">H en blanco: No</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">H dañadas, mutiladas, sueltas: 1 H suelta: folio 124</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">H faltan o añadidas: No</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Foliación: Sin foliación original. Foliación moderna a lápiz de color azul cuyo autor se desconoce.</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Reclamos: Reclamos en tinta negra en el margen inferior izquierdo de todos los folios verso.</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Sign. cuad.: No</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Pautado: Punta seca (casi inapreciable)</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Filigrana: Tres medias lunas una encima de otra y de tamaño decreciente. La palabra “Al Paradiso” en letras mayúsculas ahuecadas, donde “Al” aparece en una línea y “Paradiso” en otra debajo. Escudo cuyo interior ocupa una banda transversal decorada con una línea en zigzag. El escudo es rematado en su parte superior por una corona de cinco picos; mientras que en su parte inferior se leen dos letras en mayúsculas ahuecadas “A” y “R”. Filigrana parcial de lo que puede ser un escudo cuyo interior alberga letras “EG” y “GE” en mayúsculas. Contrafiligrana parcial en la que se lee una “R” en mayúscula ahuecada. Escudo cuyo interior alberga en dos líneas las letras “EG” y “GE” en mayúsculas.</subfield></datafield>
+          <datafield tag="563" ind1=" " ind2=" "><subfield code="a">Encuadernación: De la encuadernación sólo se conserva una tapa de cartón forrada por fuera con papel estampado en negro y verde y por dentro con papel cuadriculado. No se puede determinar si la tapa es la principal o la posterior.</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Signatura antigua: Signatura antigua: VOL. XX; A-5-20</subfield></datafield>
+          <datafield tag="500" ind1=" " ind2=" "><subfield code="a">Anotaciones: Escasas anotaciones marginales en todo el volumen, que corresponden a correcciones de algunas de las palabras del texto tachadas. Anotación en castellano en el margen inferior del folio 164v en tinta azul en la que se lee en tres líneas: “Mariano Gaspar Remiro Catedrático de la Universidad Central”. Antiguo sello de la Biblioteca de la Escuela de Estudios Árabes de Granada: “Biblioteca de la Casa del Chapiz”.</subfield></datafield>
+          <datafield tag="581" ind1=" " ind2=" "><subfield code="a">Descripción: Catálogo de la Exposición celebrada con motivo del cincuentenario: 1932-1982, Granada, 1982, 18. - Castillo Castillo, C., “Manuscritos arábigos que se conservan en la Escuela de Estudios Árabes de Granada”, Cuadernos de historia del Islam 11 (1984), 237.- Castillo Castillo, C., “El viaje de Bulūqiyā en un manuscrito de la Escuela de Estudios Árabes de Granada”, En: Tercera Primavera del Manuscrito Andalusí (2011), 107-114</subfield></datafield>
+          <datafield tag="541" ind1=" " ind2=" "><subfield code="a">Procedencia: M. Gaspar Remiro</subfield><subfield code="d">Ingreso: No consta</subfield></datafield>
+          <datafield tag="530" ind1=" " ind2=" "><subfield code="a">Otros soportes: No</subfield></datafield>
+          <datafield tag="581" ind1=" " ind2=" "><subfield code="a">Edición: No</subfield></datafield>
+          <datafield tag="510" ind1="4" ind2=" "><subfield code="a">Catálogo de la Exposición celebrada con motivo del cincuentenario: 1932-1982</subfield><subfield code="c">p. 18</subfield></datafield>
+          <datafield tag="510" ind1="4" ind2=" "><subfield code="a">Manuscritos arábigos que se conservan en la Escuela de Estudios Árabes de Granada</subfield><subfield code="c">p. 237</subfield></datafield>
+          <datafield tag="510" ind1="4" ind2=" "><subfield code="a">Castillo Castillo, C., “El viaje de Bulūqiyā en un manuscrito de la Escuela de Estudios Árabes de Granada”, En: Tercera Primavera del Manuscrito Andalusí (2011), 107-114</subfield></datafield>
+          <datafield tag="520" ind1="2" ind2=" "><subfield code="a">Contenido: Šarḥ mawālīd al-riŷāl (1r-19r) [s. f.] [Incompleto y acéfalo]. - Maŷmūʽat aḥādīṯ (19v-21r) [s. f.]. - Šarḥ mawālīd al-nisāʼ (21r-58v) [s. f.]. - Qiṣṣat Bulūqiyà (59r-75r) [s. f.]. - Qiṣṣat al-ŷāriya Tawaddud (75v-100r) [s. f.]. - Qiṣṣat al-ŷāriya Afrīqsūn (100v-115v) [s. f.] [Incompleto y ápodo]. - Qiṣṣat ahl al-kahf (116r-138v) [s. f.]. - Asmāʼ al-ašhur al-ḥurum (139r-148r) [s. f.]. - Qaṣīda (148v-161r) [s. f.]</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Astrología árabe</subfield><subfield code="v">Manuscritos.</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Escatología islámica</subfield><subfield code="v">Manuscritos.</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Leyendas islámicas</subfield><subfield code="v">Manuscritos.</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Calendarios</subfield><subfield code="v">Manuscritos.</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Poesía árabe</subfield><subfield code="v">Manuscritos.</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="650" ind1=" " ind2="7"><subfield code="a">Cuentos árabes</subfield><subfield code="v">Manuscritos</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="630" ind1="0" ind2="7"><subfield code="a">Corán</subfield><subfield code="v">Manuscritos</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="630" ind1="0" ind2="7"><subfield code="a">Siete durmientes de Éfeso</subfield><subfield code="v">Manuscritos</subfield><subfield code="2">CSICAU</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">مجموعة أحاديث</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Maŷmūʽat aḥādīṯ</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">شرح مواليد الرجال</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Šarḥ mawālīd al-riŷāl</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">شرح مواليد النساء</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Šarḥ mawālīd al-nisāʼ</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">قصة بلوقيى</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Qiṣṣat Bulūqiyà</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">قصة الجارية تودد</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Qiṣṣat al-ŷāriya Tawaddud</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">قصة الجارية افريقسون</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Qiṣṣat al-ŷāriya Afrīqsūn</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">قصة أهل الكهف</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Qiṣṣat ahl al-kahf</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">أسماء الاشهر الحرم</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Asmāʼ al-ašhur al-ḥurum</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">قصيدة</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Qaṣīda</subfield></datafield>
+          <datafield tag="700" ind1="1" ind2=" "><subfield code="a">Ḍaḥḥāk b. Muzāḥim al-</subfield><subfield code="d">(m. 723 ó 4).</subfield></datafield>
+          <datafield tag="740" ind1="0" ind2=" "><subfield code="a">Maŷmūʽat muʼallafāt tanŷīmiyya wa-qiṣṣaṣ</subfield></datafield>
+          <datafield tag="830" ind1=" " ind2="0"><subfield code="a">Manuscripta</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">http://aleph.csic.es/imagenes/mad01/0006_PMSC/P_001350440_784169_V00.pdf</subfield><subfield code="z">Descargar Pdf completo (31M)</subfield><subfield code="m">CSIC</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">http://aleph.csic.es/imagenes/mad01/0006_PMSC/html/001350440.html</subfield><subfield code="z">Ver texto completo en Bookreader</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">http://simurg.csic.es/view/302096</subfield><subfield code="z">Acceso a la versión digitalizada en Simurg</subfield></datafield>
+          <datafield tag="040" ind1=" " ind2=" "><subfield code="a">ES-MaCSI</subfield><subfield code="b">spa</subfield></datafield>
+        </record>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>

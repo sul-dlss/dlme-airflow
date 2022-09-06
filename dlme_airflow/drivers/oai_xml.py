@@ -78,6 +78,9 @@ class OaiXmlSource(intake.source.base.DataSource):
             oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]
         elif self.metadata_prefix == "mods" or self.metadata_prefix == "mods_no_ocr":
             oai_block = manifest.xpath("//mods:mods", namespaces=NS)[0]
+        elif self.metadata_prefix == "marc21":
+            ## TODO: Extract proper marc21 record            
+            oai_block = manifest.xpath("//metadata/record", namespaces=NS)[0]
         else:
             raise Exception(f"Unknown metadata prefix {self.metadata_prefix}")
 
