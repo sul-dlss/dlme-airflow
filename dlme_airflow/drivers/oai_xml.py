@@ -1,10 +1,17 @@
-import re
 import logging
 import intake
 import pandas as pd
 
 from lxml import etree
 from sickle import Sickle
+
+# xml namespaces and the prefixes that are used in parsing
+
+NS = {
+    "oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
+    "mods": "http://www.loc.gov/mods/v3",
+    "marc21": "http://www.loc.gov/MARC21/slim",
+}
 
 
 class OaiXmlSource(intake.source.base.DataSource):
@@ -62,45 +69,32 @@ class OaiXmlSource(intake.source.base.DataSource):
         return output
 
     def _get_tag(self, el):
-        """Return the element name, after removing namespace and lowercasing."""
-        return re.sub(r"{.+}", "", el.tag).lower()
+        """Return the element name, after removing namespace and lowercasing.
+        If it's a MARC element the tag and code attributes will be used instead.
+        """
+        qel = etree.QName(el)
+        if qel.namespace == NS["marc21"]:
+            if qel.localname in ["controlfield", "datafield"]:
+                return el.attrib["tag"]
+            elif qel.localname == "subfield":
+                return el.attrib["code"]
+            else:
+                return qel.localname
+        else:
+            return qel.localname
 
     # TODO: Discuss if this output shoould be an array (line 63) or a string
     def _from_metadata(self, manifest: etree) -> dict:
-        output = {}
-
-        NS = {
-            "oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
-            "mods": "http://www.loc.gov/mods/v3",
-        }
-
         if self.metadata_prefix == "oai_dc":
-            oai_block = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]
+            oai_rec = manifest.xpath("//oai_dc:dc", namespaces=NS)[0]
         elif self.metadata_prefix == "mods" or self.metadata_prefix == "mods_no_ocr":
-            oai_block = manifest.xpath("//mods:mods", namespaces=NS)[0]
+            oai_rec = manifest.xpath("//mods:mods", namespaces=NS)[0]
         elif self.metadata_prefix == "marc21":
-            ## TODO: Extract proper marc21 record            
-            oai_block = manifest.xpath("//metadata/record", namespaces=NS)[0]
+            oai_rec = manifest.xpath("//marc21:record", namespaces=NS)[0]
         else:
             raise Exception(f"Unknown metadata prefix {self.metadata_prefix}")
 
-        for metadata in oai_block.getchildren():
-            tag = self._get_tag(metadata)
-            if tag in output:
-                if isinstance(output[tag], str):
-                    if metadata.text is not None:
-                        output[tag] = [output[tag], metadata.text.strip()]
-                    else:
-                        output[tag] = [output[tag]]
-                else:
-                    output[tag].append(metadata.text.strip())
-            elif metadata.text is not None:
-                output[tag] = metadata.text.strip()
-            # if the element has child elements add them too
-            elif len(metadata) > 0:
-                output.update(self._flatten_tree(metadata))
-
-        return output
+        return self._element_to_dict(oai_rec)
 
     def _get_partition(self, i) -> pd.DataFrame:
         return pd.DataFrame(self._records)
@@ -111,6 +105,27 @@ class OaiXmlSource(intake.source.base.DataSource):
             paths[name] = info
 
         return paths
+
+    def _element_to_dict(self, rec_metadata):
+        """Given an lxml Element will return a dictionary of key/value pairs."""
+        result = {}
+        for el in rec_metadata.getchildren():
+            tag = self._get_tag(el)
+            if tag in result:
+                if isinstance(result[tag], str):
+                    if el.text is not None:
+                        result[tag] = [result[tag], el.text.strip()]
+                    else:
+                        result[tag] = [result[tag]]
+                else:
+                    result[tag].append(el.text.strip())
+            elif el.text is not None:
+                result[tag] = el.text.strip()
+            # if the element has child elements add them too
+            elif len(el) > 0:
+                result.update(self._flatten_tree(el))
+
+        return result
 
     # TODO: Ask/Investigate (with jnelson) what the purpose of dtyle=self.dtype
     def _get_schema(self):
@@ -143,7 +158,6 @@ class OaiXmlSource(intake.source.base.DataSource):
           "a_c": "y"
           "a_d_e": "z"
         }
-
         """
         if metadata is None:
             metadata = {}
