@@ -27,7 +27,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         manifest_result = requests.get(manifest_url)
         manifest_detail = manifest_result.json()
         record = self._construct_fields(manifest_detail)
-        # Handles metadata in IIIF manfest
+        # Handles metadata in IIIF manifest
         record.update(self._from_metadata(manifest_detail.get("metadata", [])))
         return record
 
@@ -75,11 +75,18 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def _get_partition(self, i) -> pd.DataFrame:
         result = self._open_manifest(self._manifest_urls[i])
-        return pd.DataFrame(
-            [
-                result,
-            ]
-        )
+
+        # If the dictionary has AT LEAST one value that is not None return a
+        # DataFrame with the keys as columns, and the values as a row.
+        # Otherwise return an empty DataFrame that can be concatenated.
+        # This will prevent rows with all empty values from being generated
+        # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
+
+        if any(result.values()):
+            return pd.DataFrame([result])
+        else:
+            logging.warn(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            return pd.DataFrame()
 
     def _get_schema(self):
         for name, info in self.metadata.get("fields", {}).items():
