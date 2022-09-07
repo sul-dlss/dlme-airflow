@@ -100,7 +100,7 @@ poetry install
 Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
 
 ### Running Code Formatter and Linter
-We are using [flake8][FLK8] for python code linting. To run [flake9][FLK8]
+We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
 against the entire code repository, run `flake8 dlme_airflow` from the root
 directory. To run the linter on a single file, run `flake8 dlme_airflow/path/to/file.py`.
 
