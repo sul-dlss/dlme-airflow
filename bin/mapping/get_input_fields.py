@@ -1,7 +1,8 @@
 #!/usr/bin/python
-import glob, os
+import glob
 import pandas as pd
 from argparse import ArgumentParser
+
 
 def main():
     """Takes the path the the provider as an input and returns a unique, sorted
@@ -26,6 +27,7 @@ def main():
 
         for i in sorted(set(column_names)):
             print(i)
+
 
 if __name__ == '__main__':
     # CLI client options.
