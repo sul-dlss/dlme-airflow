@@ -39,6 +39,12 @@ def mock_mods(monkeypatch):
     monkeypatch.setattr(Sickle, "harvest", harvest)
 
 
+@pytest.fixture
+def mock_marc21(monkeypatch):
+    harvest = make_harvest("tests/data/xml/oai-marc21.xml")
+    monkeypatch.setattr(Sickle, "harvest", harvest)
+
+
 def test_oai_dc(mock_oai_dc):
     oai = OaiXmlSource("https://example.org", "oai_dc")
     df = oai.read()
@@ -53,3 +59,11 @@ def test_mods(mock_mods):
     assert len(df) == 10, "expected number of rows"
     assert len(df.columns) == 18, "expected number of columns"
     assert "location_url" in df.columns, "hierarchical data encoded in header"
+
+
+def test_marc21(mock_marc21):
+    oai = OaiXmlSource("https://example.org", "marc21")
+    df = oai.read()
+    assert len(df) == 182, "expected number of rows"
+    assert len(df.columns) == 92, "expected number of columns"
+    assert "245_a" in df.columns, "marc field 245 subfield a extracted"
