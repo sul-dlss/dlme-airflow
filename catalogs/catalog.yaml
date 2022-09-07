@@ -22,7 +22,7 @@ sources:
   auc:
     args:
       path: catalogs/auc.yaml
-    description: "American University in Cairo IIIF Collections"
+    description: "American University in Cairo Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   bodleian:
@@ -59,6 +59,12 @@ sources:
     args:
       path: catalogs/harvard.yaml
     description: "Harvard University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  loc:
+    args:
+      path: catalogs/loc.yaml
+    description: "Library of Congress Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   manchester:
