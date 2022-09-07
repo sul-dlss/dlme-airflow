@@ -22,7 +22,7 @@ sources:
   auc:
     args:
       path: catalogs/auc.yaml
-    description: "American University in Cairo Collections"
+    description: "American University in Cairo IIIF Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   bodleian:
