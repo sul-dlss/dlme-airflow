@@ -61,12 +61,6 @@ sources:
     description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  loc:
-    args:
-      path: catalogs/loc.yaml
-    description: "Library of Congress Collections"
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
   manchester:
     args:
       path: catalogs/manchester.yaml
