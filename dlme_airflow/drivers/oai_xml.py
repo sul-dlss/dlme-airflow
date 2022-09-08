@@ -124,12 +124,13 @@ class OaiXmlSource(intake.source.base.DataSource):
                         result[tag] = [result[tag], el.text.strip()]
                     else:
                         result[tag] = [result[tag]]
-                else:
+                elif el.text is not None:
                     result[tag].append(el.text.strip())
             elif el.text is not None:
                 result[tag] = el.text.strip()
+
             # if the element has child elements add them too
-            elif len(el) > 0:
+            if len(el) > 0:
                 result.update(self._flatten_tree(el))
 
         return result
