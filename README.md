@@ -189,6 +189,22 @@ exploring_egypt:
 
 ```
 
+#### Getting Data
+
+Sometimes it can be useful to be able to fetch data from a provider on the command line. This can be useful when adding or modifying a catalog entry, developing a driver, or when working with the data that is collected. To aid in that the `bin/get` utility will fetch data from a provider/collection and output the collected CSV to stdout or to a file.
+
+First you'll want to enter the poetry virtual environment:
+
+```
+$ poetry shell
+```
+
+and then run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or aboart the harvest early with `--limit`):
+
+```
+$ bin/get yale babylonian --limit 20
+```
+
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [Poetry]: https://python-poetry.org

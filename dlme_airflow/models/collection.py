@@ -1,4 +1,4 @@
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 
 class Collection(object):

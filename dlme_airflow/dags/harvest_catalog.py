@@ -1,4 +1,5 @@
-from services.harvest_dag_generator import create_provider_dags, register_drivers
+from dlme_airflow.services.harvest_dag_generator import create_provider_dags
+from dlme_airflow.drivers import register_drivers
 
 register_drivers()
 

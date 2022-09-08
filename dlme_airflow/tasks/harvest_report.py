@@ -11,7 +11,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 # Constants for crosswalk
 fields = [

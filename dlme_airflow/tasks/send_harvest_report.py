@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 from airflow.utils.email import send_email
 
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 
 def email_callback(task_instance, task, **kwargs):

@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+# A utility for getting a provider collection from the intake catalog, running
+# the data collection and writing the CSV to stdout or a given location.
+
+import sys
+import logging
+import argparse
+
+from signal import signal, SIGPIPE, SIG_DFL  
+from dlme_airflow.models.provider import Provider
+from dlme_airflow.drivers import register_drivers
+
+
+def main(opts):
+    register_drivers()
+    provider = Provider(opts.provider)
+    collection = provider.get_collection(opts.collection)
+    if collection is None:
+        sys.exit("No such collection {opts.collection} for provider {opts.provider}")
+
+    # set driver record limit if it is allowed by the driver
+    if opts.limit: 
+        if hasattr(collection.catalog, 'record_limit'):
+            collection.catalog.record_limit = opts.limit
+        else:
+            logging.error(f"Unable to use --limit with {type(collection.catalog).name} driver")
+    
+    # read the data
+    df = collection.catalog.read()
+
+    # send output to a file or stdout
+    out = opts.output if opts.output else sys.stdout
+    df.to_csv(out, index=False)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Get data from a DLME provider collection as CSV")
+    parser.add_argument('provider', help="The DLME provider (e.g. penn)")
+    parser.add_argument('collection', help="The provider's collection (e.g. penn_egyptian")
+    parser.add_argument("--output", help="File to write CSV output to")
+    parser.add_argument("--limit", type=int, help="Limit output to number of rows")
+    opts = parser.parse_args()
+
+    # Ignore broken pipe errors when running from the command line.
+    # This allows: bin/get penn penn_babylonian | head -10
+    signal(SIGPIPE,SIG_DFL)
+
+    main(opts)
