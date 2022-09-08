@@ -50,8 +50,8 @@ def create_dag(provider, default_args):
     dag = DAG(
         provider.name,
         default_args=default_args,
-        schedule_interval="@once",
-        start_date=datetime(2021, 9, 6),
+        schedule_interval=provider.catalog.metadata.get("schedule", "@daily"),  # "@once",
+        start_date=datetime(2022, 9, 6),
     )
 
     with dag:
