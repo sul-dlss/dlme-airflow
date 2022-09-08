@@ -35,9 +35,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "directory",
         nargs="+",
-        help="Which data provider directory do you want to parse?")
+        help="Which data provider directory do you want to parse?",
+    )
     parser.add_argument(
         "-c",
-        help="This flag allows you to pass a column name in and returns source files containing that column.")
+        help="This flag allows you to pass a column name in and returns source files containing that column.",
+    )
     args = parser.parse_args()
     main()
