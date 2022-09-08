@@ -88,7 +88,7 @@ def test_test_IiifJsonSource_df(iiif_test_source, mock_response):
                 "iiif_format": "image/jpeg",
                 "source": ["Rare Books and Special Collections Library"],
                 "title-main": ["A great title of the Middle East"],
-                "title-sub": ["Subtitle 2"],
+                "title-sub": ["Subtitle 1", "Subtitle 2"],
             }
         ]
     )

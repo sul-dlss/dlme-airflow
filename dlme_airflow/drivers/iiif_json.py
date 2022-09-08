@@ -30,7 +30,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         manifest_detail = manifest_result.json()
         record = self._construct_fields(manifest_detail)
         # Handles metadata in IIIF manifest
-        record.update(self._from_metadata(manifest_detail.get("metadata", [])))
+        record.update(self._from_manifest_metadata(manifest_detail.get("metadata", [])))
         return record
 
     def _construct_fields(self, manifest: dict) -> dict:
@@ -55,9 +55,9 @@ class IiifJsonSource(intake.source.base.DataSource):
                         output[name].append(data.strip())
         return output
 
-    def _from_metadata(self, metadata) -> dict:
+    def _from_manifest_metadata(self, iiif_manifest_metadata) -> dict:
         output = {}
-        for row in metadata:
+        for row in iiif_manifest_metadata:
             name = (
                 row.get("label")
                 .replace(" ", "-")
@@ -65,14 +65,11 @@ class IiifJsonSource(intake.source.base.DataSource):
                 .replace("(", "")
                 .replace(")", "")
             )
-            output[name] = row.get(
-                "value"
-            )  # this will assign the last value found to output[name]
+            # initialize or append to output[name] based on whether we've seen the label
             if name in output:
-                if type(name) == list:
-                    output[name].append(row.get("value"))
-                elif type(name) == str:
-                    output[name] = [row.get("value")]
+                output[name].append(row.get("value"))
+            else:
+                output[name] = [row.get("value")]
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:
