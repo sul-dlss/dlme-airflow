@@ -26,6 +26,8 @@ class OaiXmlSource(intake.source.base.DataSource):
         super(OaiXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
+        self.record_limit = self.metadata.get("record_limit", None)
+        self.record_count = 0
         self.set = set
         self._collection = Sickle(self.collection_url)
         self._path_expressions = self._get_path_expressions()
@@ -43,6 +45,11 @@ class OaiXmlSource(intake.source.base.DataSource):
             record = self._construct_fields(xtree)
             record.update(self._from_metadata(xtree))
             self._records.append(record)
+
+            self.record_count += 1
+            if self.record_limit and self.record_count > self.record_limit:
+                logging.info(f"truncating results because limit={self.record_limit}")
+                break
 
     def _construct_fields(self, manifest: etree) -> dict:
         output = {}
@@ -178,4 +185,8 @@ class OaiXmlSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        if self.record_limit:
+            return df.head(self.record_limit)
+        else:
+            return df

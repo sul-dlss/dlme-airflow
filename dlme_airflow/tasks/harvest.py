@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from harvester.source_harvester import data_source_harvester
+from dlme_airflow.harvester.source_harvester import data_source_harvester
 
 
 def build_harvester_task(collection, task_group: TaskGroup, dag: DAG):

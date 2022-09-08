@@ -5,10 +5,10 @@ from airflow.utils.dag_cycle_tester import check_cycle
 
 from dlme_airflow.services.harvest_dag_generator import (
     create_provider_dags,
-    register_drivers,
     harvest_dags,
 )
-from utils.catalog import fetch_catalog
+from dlme_airflow.drivers import register_drivers
+from dlme_airflow.utils.catalog import fetch_catalog
 
 
 @pytest.fixture

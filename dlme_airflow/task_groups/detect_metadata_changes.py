@@ -5,8 +5,8 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
-from tasks.check_equality import check_equity
+from dlme_airflow.utils.catalog import catalog_for_provider
+from dlme_airflow.tasks.check_equality import check_equity
 
 
 def build_detect_changes_task(provider, task_group: TaskGroup, dag: DAG):

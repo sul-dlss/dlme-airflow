@@ -17,6 +17,8 @@ class IiifJsonSource(intake.source.base.DataSource):
         self.dtype = dtype
         self._manifest_urls = []
         self._path_expressions = {}
+        self.record_count = 0
+        self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
         collection_result = requests.get(self.collection_url)
@@ -74,6 +76,11 @@ class IiifJsonSource(intake.source.base.DataSource):
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:
+
+        # if we are over the defined limit return an empty DataFrame right away
+        if self.record_limit is not None and self.record_count > self.record_limit:
+            return pd.DataFrame()
+
         result = self._open_manifest(self._manifest_urls[i])
 
         # If the dictionary has AT LEAST one value that is not None return a
@@ -83,6 +90,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
 
         if any(result.values()):
+            self.record_count += 1
             return pd.DataFrame([result])
         else:
             logging.warn(f"{self._manifest_urls[i]} resulted in empty DataFrame")
@@ -102,4 +110,8 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        if self.record_limit:
+            return df.head(self.record_limit)
+        else:
+            return df
