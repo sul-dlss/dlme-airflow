@@ -1,3 +1,4 @@
+import os
 import sys
 
 from datetime import datetime
@@ -40,11 +41,13 @@ def default_dag_args():
 
 
 def create_dag(provider, default_args):
+    default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
+
     dag = DAG(
         provider.name,
         default_args=default_args,
-        schedule_interval="@once",
-        start_date=datetime(2021, 9, 6),
+        schedule_interval=provider.catalog.metadata.get("schedule", default_schedule),
+        start_date=datetime(2022, 9, 6),
     )
 
     with dag:
