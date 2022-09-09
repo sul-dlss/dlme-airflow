@@ -10,8 +10,7 @@ def merge_records(**kwargs):
     working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
     df = pd.read_csv(working_csv)
 
-
     # merge rows with the same shelf locator
-    df_merged = df.groupby('location_shelfLocator').agg(lambda x: x.tolist())
+    df_merged = df.groupby("location_shelfLocator").agg(lambda x: x.tolist())
 
     df_merged.to_csv(working_csv)
