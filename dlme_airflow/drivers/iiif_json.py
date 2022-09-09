@@ -3,6 +3,7 @@ import intake
 import requests
 import jsonpath_ng
 import pandas as pd
+from typing import Any
 
 container = "dataframe"
 name = "iiif_json"
@@ -35,7 +36,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         return record
 
     def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
-        output = {}
+        output: dict[str, Any] = {}
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
             result = [match.value for match in expression.find(iiif_manifest)]
@@ -54,14 +55,16 @@ class IiifJsonSource(intake.source.base.DataSource):
                 if (
                     len(result) == 1
                 ):  # the JSONPath expression found exactly one result in the manifest
-                    output[name] = __class__._stringify_and_strip_if_list(result[0])
+                    output[name] = self.__class__._stringify_and_strip_if_list(
+                        result[0]
+                    )
                 else:  # the JSONPath expression found exactly one result in the manifest
                     if name not in output:
                         output[name] = []
 
                     for data in result:
                         output[name].append(
-                            __class__._stringify_and_strip_if_list(data)
+                            self.__class__._stringify_and_strip_if_list(data)
                         )
         return output
 
@@ -72,8 +75,10 @@ class IiifJsonSource(intake.source.base.DataSource):
         else:
             return possible_list
 
-    def _extract_manifest_metadata(self, iiif_manifest_metadata) -> dict:
-        output = {}
+    def _extract_manifest_metadata(
+        self, iiif_manifest_metadata
+    ) -> dict[str, list[str]]:
+        output: dict[str, list[str]] = {}
         for row in iiif_manifest_metadata:
             name = (
                 row.get("label")

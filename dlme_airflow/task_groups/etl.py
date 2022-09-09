@@ -18,7 +18,7 @@ from dlme_airflow.task_groups.validate_dlme_metadata import (
 )
 
 
-def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
+def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> list[TaskGroup]:
     task_array = []
     for collection in provider.collections:
         task_array.append(

@@ -36,11 +36,11 @@ def send_harvest_report_tasks(provider, task_group: TaskGroup, dag: DAG):
         collections = list(source).__iter__()
         for collection in collections:
             send_report_task = build_send_harvest_report_task(
-                provider, collection, task_group, dag
+                collection, task_group, dag
             )
             task_array.append(send_report_task)
     except TypeError:
-        return build_send_harvest_report_task(f"{provider}", "", task_group, dag)
+        return build_send_harvest_report_task("", task_group, dag)
 
     return task_array
 

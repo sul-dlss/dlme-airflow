@@ -36,6 +36,19 @@ jobs:
           command: |
              poetry run black --diff --check .
 
+  typechecking:
+    executor:
+      name: python/default
+      tag: "3.9"
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          name: Type check with mypy
+          command: |
+             poetry run mypy .
+
   test:
      executor: 
        name: python/default
@@ -105,6 +118,9 @@ workflows:
     jobs:
       - build
       - linting:
+          requires:
+            - build
+      - typechecking:
           requires:
             - build
       - test:
