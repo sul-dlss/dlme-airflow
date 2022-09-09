@@ -16,7 +16,7 @@ from dlme_airflow.task_groups.etl import build_provider_etl_taskgroup
 from dlme_airflow.utils.catalog import fetch_catalog
 
 
-_harvest_dags = dict()
+_harvest_dags: dict[str, DAG] = dict()
 
 
 def harvest_dags():
@@ -40,7 +40,7 @@ def default_dag_args():
     }
 
 
-def create_dag(provider, default_args):
+def create_dag(provider, default_args) -> DAG:
     default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
 
     dag = DAG(
