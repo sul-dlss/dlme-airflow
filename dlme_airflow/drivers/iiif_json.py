@@ -25,25 +25,30 @@ class IiifJsonSource(intake.source.base.DataSource):
         for manifest in collection_result.json().get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
-    def _open_manifest(self, manifest_url: str):
+    def _open_manifest(self, manifest_url: str) -> dict:
         manifest_result = requests.get(manifest_url)
         manifest_detail = manifest_result.json()
-        record = self._construct_fields(manifest_detail)
+        record = self._extract_specified_fields(manifest_detail)
         # Handles metadata in IIIF manifest
-        record.update(self._from_manifest_metadata(manifest_detail.get("metadata", [])))
+        record.update(
+            self._extract_manifest_metadata(manifest_detail.get("metadata", []))
+        )
         return record
 
-    def _construct_fields(self, manifest: dict) -> dict:
+    def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
         output = {}
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
-            result = [match.value for match in expression.find(manifest)]
+            result = [match.value for match in expression.find(iiif_manifest)]
             if len(result) < 1:
                 if info.get("optional") is True:
-                    # Skip and continue
-                    continue
+                    logging.debug(
+                        f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
+                    )
                 else:
-                    logging.warn(f"{manifest.get('@id')} missing {name}")
+                    logging.warning(
+                        f"{iiif_manifest.get('@id')} missing required field: '{name}'; searched path: '{expression}'"
+                    )
             else:
                 if len(result) == 1:
                     output[name] = result[0].strip()
@@ -55,7 +60,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                         output[name].append(data.strip())
         return output
 
-    def _from_manifest_metadata(self, iiif_manifest_metadata) -> dict:
+    def _extract_manifest_metadata(self, iiif_manifest_metadata) -> dict:
         output = {}
         for row in iiif_manifest_metadata:
             name = (
@@ -90,7 +95,7 @@ class IiifJsonSource(intake.source.base.DataSource):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
-            logging.warn(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):
