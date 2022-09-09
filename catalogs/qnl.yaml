@@ -10,6 +10,7 @@ sources:
       set:
     metadata:
       data_path: qnl/british-library-combined
+      post_harvest: "merge_records"
       config: qnl_config
       fields:
         id:
