@@ -41,7 +41,7 @@ class MockIIIFManifestResponse:
                     ]
                 }
             ],
-            "description": "A descriptive phrase",
+            "description": ["A descriptive phrase", " with further elaboration "],
         }
 
 
@@ -112,7 +112,7 @@ def test_IiifJsonSource_df(iiif_test_source, mock_response):
         [
             {
                 "context": "http://iiif.io/api/presentation/2/context.json",
-                "description_top": "A descriptive phrase",
+                "description_top": ["A descriptive phrase", "with further elaboration"],
                 "iiif_format": ["image/jpeg", "image/jpeg"],
                 "source": ["Rare Books and Special Collections Library"],
                 "title-main": ["A great title of the Middle East"],
