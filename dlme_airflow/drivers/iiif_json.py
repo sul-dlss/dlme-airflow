@@ -21,17 +21,16 @@ class IiifJsonSource(intake.source.base.DataSource):
         self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        collection_result = requests.get(self.collection_url)
-        for manifest in collection_result.json().get("manifests", []):
+        collection_result = requests.get(self.collection_url).json()
+        for manifest in collection_result.get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
     def _open_manifest(self, manifest_url: str) -> dict:
-        manifest_result = requests.get(manifest_url)
-        manifest_detail = manifest_result.json()
-        record = self._extract_specified_fields(manifest_detail)
+        manifest_result = requests.get(manifest_url).json()
+        record = self._extract_specified_fields(manifest_result)
         # Handles metadata in IIIF manifest
         record.update(
-            self._extract_manifest_metadata(manifest_detail.get("metadata", []))
+            self._extract_manifest_metadata(manifest_result.get("metadata", []))
         )
         return record
 
