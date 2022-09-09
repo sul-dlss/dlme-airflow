@@ -61,11 +61,19 @@ def mock_response(monkeypatch):
 def iiif_test_source():
     metadata = {
         "fields": {
-            "context": {"path": "@context", "optional": True},
+            "context": {
+                "path": "@context",
+                "optional": True,
+            },  # a specified field with one value in the metadata
             "description_top": {"path": "description", "optional": True},
-            "iiif_format": {"path": "sequences..format"},
-            "profile": {"path": "sequences..profile"},
-            "thumbnail": {"path": "thumbnail..@id", "optional": True},
+            "iiif_format": {
+                "path": "sequences..format"
+            },  # a specified field with multiple values in the metadata
+            "profile": {"path": "sequences..profile"},  # a missing required field
+            "thumbnail": {
+                "path": "thumbnail..@id",
+                "optional": True,
+            },  # missing optional field
         }
     }
     return IiifJsonSource(

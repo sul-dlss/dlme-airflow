@@ -40,7 +40,9 @@ class IiifJsonSource(intake.source.base.DataSource):
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
             result = [match.value for match in expression.find(iiif_manifest)]
-            if len(result) < 1:
+            if (
+                len(result) < 1
+            ):  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
                     logging.debug(
                         f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
@@ -50,9 +52,11 @@ class IiifJsonSource(intake.source.base.DataSource):
                         f"{iiif_manifest.get('@id')} missing required field: '{name}'; searched path: '{expression}'"
                     )
             else:
-                if len(result) == 1:
+                if (
+                    len(result) == 1
+                ):  # the JSONPath expression found exactly one result in the manifest
                     output[name] = result[0].strip()
-                else:
+                else:  # the JSONPath expression found exactly one result in the manifest
                     if name not in output:
                         output[name] = []
 
