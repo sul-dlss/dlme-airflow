@@ -21,33 +21,41 @@ class IiifJsonSource(intake.source.base.DataSource):
         self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        collection_result = requests.get(self.collection_url)
-        for manifest in collection_result.json().get("manifests", []):
+        collection_result = requests.get(self.collection_url).json()
+        for manifest in collection_result.get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
-    def _open_manifest(self, manifest_url: str):
-        manifest_result = requests.get(manifest_url)
-        manifest_detail = manifest_result.json()
-        record = self._construct_fields(manifest_detail)
+    def _open_manifest(self, manifest_url: str) -> dict:
+        manifest_result = requests.get(manifest_url).json()
+        record = self._extract_specified_fields(manifest_result)
         # Handles metadata in IIIF manifest
-        record.update(self._from_metadata(manifest_detail.get("metadata", [])))
+        record.update(
+            self._extract_manifest_metadata(manifest_result.get("metadata", []))
+        )
         return record
 
-    def _construct_fields(self, manifest: dict) -> dict:
+    def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
         output = {}
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
-            result = [match.value for match in expression.find(manifest)]
-            if len(result) < 1:
+            result = [match.value for match in expression.find(iiif_manifest)]
+            if (
+                len(result) < 1
+            ):  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
-                    # Skip and continue
-                    continue
+                    logging.debug(
+                        f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
+                    )
                 else:
-                    logging.warn(f"{manifest.get('@id')} missing {name}")
+                    logging.warning(
+                        f"{iiif_manifest.get('@id')} missing required field: '{name}'; searched path: '{expression}'"
+                    )
             else:
-                if len(result) == 1:
+                if (
+                    len(result) == 1
+                ):  # the JSONPath expression found exactly one result in the manifest
                     output[name] = result[0].strip()
-                else:
+                else:  # the JSONPath expression found exactly one result in the manifest
                     if name not in output:
                         output[name] = []
 
@@ -55,9 +63,9 @@ class IiifJsonSource(intake.source.base.DataSource):
                         output[name].append(data.strip())
         return output
 
-    def _from_metadata(self, metadata) -> dict:
+    def _extract_manifest_metadata(self, iiif_manifest_metadata) -> dict:
         output = {}
-        for row in metadata:
+        for row in iiif_manifest_metadata:
             name = (
                 row.get("label")
                 .replace(" ", "-")
@@ -65,14 +73,11 @@ class IiifJsonSource(intake.source.base.DataSource):
                 .replace("(", "")
                 .replace(")", "")
             )
-            output[name] = row.get(
-                "value"
-            )  # this will assign the last value found to output[name]
+            # initialize or append to output[name] based on whether we've seen the label
             if name in output:
-                if type(name) == list:
-                    output[name].append(row.get("value"))
-                elif type(name) == str:
-                    output[name] = [row.get("value")]
+                output[name].append(row.get("value"))
+            else:
+                output[name] = [row.get("value")]
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:
@@ -93,7 +98,7 @@ class IiifJsonSource(intake.source.base.DataSource):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
-            logging.warn(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):
