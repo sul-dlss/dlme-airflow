@@ -99,6 +99,20 @@ poetry install
 
 Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
 
+### Other random Poetry tips
+
+As an alternative to running `poetry shell`, you can prefix all project-specific python
+commands from your default shell with `poetry run ...` (similar to `bundle exec ...` in
+Ruby-land).
+
+If you're running into dependency issues but believe your dependencies are specified correctly,
+and you've run `poetry install` to make sure the environment is up to date, you can try:
+* Updating to the latest version of `poetry`.  From Poetry 1.2.0 on, you should be able to call
+`poetry self update`, but see the docs for details.
+* Re-installing your env for the project.  You can see your installed environments with
+`poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
+  dependencies from a clean slate.
+
 ## Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
 against the entire code repository, run `flake8 dlme_airflow` from the root
@@ -108,9 +122,35 @@ To assist in passing the linter, use the [Black][BLK] opinionated code formatter
 by running `black dlme_airflow/path/to/file.py` (this will immediately apply the
 formatting it would suggest).
 
+## Typechecking
+We're using [mypy][MYPY] for type checking.  Type checking is opt-in, so you shouldn't have to specify
+types for new code, and unknown types from dependencies will be ignored (via project configuration).  But if
+expected type (especially for function or method return) is unclear or hard to reason about, consider adding
+a type annotation instead of a comment.  This will likely be more concise and the type enforcement in CI can
+help catch errors.  You can run it locally by calling `mypy .`.
+
 ## Running Tests
 To run the entire test suite from the root directory, `PYTHONPATH=dlme_airflow pytest`.
 You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/path/to/test.py`.
+
+## Misc useful development commands
+
+### Similar checks to CI, as one shell command
+```sh
+poetry run black --diff --check . &&
+  poetry run mypy . &&
+  poetry run flake8 &&
+  PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
+```
+* run black first because it's fast; remove the flags to just apply formatting
+* typechecking next because it's also fast
+* pytest: `-s` to show stdout, `--pdb` to drop to debugger on test failure, e.g. failed assertion
+
+### Debugging breakpoints
+You can call `breakpoint()` in your code to set a breakpoint for dropping into the debugger.  Note from @jmartin-sul:
+limited experience shows that this winds up in the expected context when used in code being tested, but can wind up in
+an unexpected stack frame without access to the expected variable context when called from the test code itself.
+
 
 ## Intake Catalogs
 The `catalog.yaml` contains nested [catalogs](https://intake.readthedocs.io/en/latest/catalog.html#catalog-nesting)
@@ -216,3 +256,4 @@ $ bin/get yale babylonian --limit 20
 [dlme-transform]: https://github.com/sul-dlss/dlme-transform
 [Spotlight]: https://github.com/projectblacklight/spotlight
 [ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
+[MYPY]: https://mypy.readthedocs.io/
