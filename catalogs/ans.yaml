@@ -47,6 +47,8 @@ sources:
           State: object
           Obverse Legend: object
           Obverse Type: object
+          Reverse Legend: object
+          Reverse Type: object
           Date on Object: float64
           Ah: float64
           Axis: float64
