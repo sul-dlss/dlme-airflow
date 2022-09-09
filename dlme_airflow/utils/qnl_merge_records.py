@@ -2,7 +2,6 @@
 import os
 import pandas as pd
 
-
 def merge_records(**kwargs):
     coll = kwargs["collection"]
     root_dir = os.path.dirname(os.path.abspath("metadata"))
