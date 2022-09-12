@@ -55,25 +55,14 @@ class IiifJsonSource(intake.source.base.DataSource):
                 if (
                     len(result) == 1
                 ):  # the JSONPath expression found exactly one result in the manifest
-                    output[name] = self.__class__._stringify_and_strip_if_list(
-                        result[0]
-                    )
+                    output[name] = _stringify_and_strip_if_list(result[0])
                 else:  # the JSONPath expression found exactly one result in the manifest
                     if name not in output:
                         output[name] = []
 
                     for data in result:
-                        output[name].append(
-                            self.__class__._stringify_and_strip_if_list(data)
-                        )
+                        output[name].append(_stringify_and_strip_if_list(data))
         return output
-
-    @classmethod
-    def _stringify_and_strip_if_list(cls, possible_list) -> list[str]:
-        if isinstance(possible_list, list):
-            return [str(elt).strip() for elt in possible_list]
-        else:
-            return possible_list
 
     def _extract_manifest_metadata(
         self, iiif_manifest_metadata
@@ -134,3 +123,10 @@ class IiifJsonSource(intake.source.base.DataSource):
             return df.head(self.record_limit)
         else:
             return df
+
+
+def _stringify_and_strip_if_list(possible_list) -> list[str]:
+    if isinstance(possible_list, list):
+        return [str(elt).strip() for elt in possible_list]
+    else:
+        return possible_list
