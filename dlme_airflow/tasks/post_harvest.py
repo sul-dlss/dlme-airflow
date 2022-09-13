@@ -6,6 +6,9 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.add_thumbnails import add_thumbnails
+from dlme_airflow.utils.qnl_merge_records import (
+    merge_records,
+)
 from dlme_airflow.utils.yale_babylon_remove_non_relevant_records import (
     remove_non_relevant,
 )
