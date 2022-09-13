@@ -14,6 +14,9 @@ class Provider(object):
                 return coll
         return None
 
+    def label(self):
+        return self.name
+
     def data_path(self):
         return self.catalog.metadata.get("data_path", self.name)
 

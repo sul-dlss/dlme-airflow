@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: auc
+  separate_dags: true
 sources:
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
