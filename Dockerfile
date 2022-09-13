@@ -1,11 +1,12 @@
 FROM apache/airflow:2.3.3-python3.9
 
-ENV POETRY_VERSION=1.1.13
+ENV POETRY_VERSION=1.2.0
 
 USER root
 RUN apt-get -y update && apt-get -y install git jq
 USER airflow
 
+RUN pip install --upgrade pip
 RUN pip --no-cache-dir install --upgrade awscli
 RUN pip install "poetry==$POETRY_VERSION"
 
