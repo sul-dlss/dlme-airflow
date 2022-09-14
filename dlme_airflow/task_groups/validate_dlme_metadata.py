@@ -17,21 +17,29 @@ metadata_directory = f"{home_directory}/metadata/"
 working_directory = f"{home_directory}/working/"
 s3_data = os.getenv("S3_BUCKET")
 
-# Task Configuration
-task_group_prefix = "validate_metadata"
-
 
 def require_credentials(**kwargs):
-    prefix = kwargs.get("task_group", task_group_prefix)
+
+    # This is a bit of a hack to derive the prefix for the task id we want to run
+    # using the fully qualified task_id for the task that was passed in
+    # so:
+    #
+    # MANCHESTER_ETL.nashriyah_etl.sync_nashriyah_metadata.verify_aws_credentials
+    #
+    # would be
+    #
+    # MANCHESTER_ETL.nashriyah_etl.sync_nashriyah_metadata
+    #
+    # This is needed because the prefix can change depending on whether the task group
+    # is part of a Provider or Collection based DAG
+    prefix = ".".join(kwargs["task"].task_id.split(".")[0:-1])
+
     if os.getenv("AWS_ACCESS_KEY_ID"):
         return f"{prefix}.assume_role"
-
     return f"{prefix}.sync_metadata"
 
 
 def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
-    task_group_prefix = f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.sync_{collection.name}_metadata"
-
     with TaskGroup(
         group_id=f"sync_{collection.name}_metadata"
     ) as sync_metadata_taskgroup:
@@ -39,7 +47,6 @@ def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
             task_id="verify_aws_credentials",
             task_group=sync_metadata_taskgroup,
             python_callable=require_credentials,
-            op_kwargs={"task_group": task_group_prefix},
             dag=dag,
         )
 

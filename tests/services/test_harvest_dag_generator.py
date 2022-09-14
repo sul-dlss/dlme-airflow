@@ -8,7 +8,6 @@ from dlme_airflow.services.harvest_dag_generator import (
     harvest_dags,
 )
 from dlme_airflow.drivers import register_drivers
-from dlme_airflow.utils.catalog import fetch_catalog
 
 
 @pytest.fixture
@@ -23,7 +22,5 @@ def mock_variable(monkeypatch):
 def test_create_provider_dags(mock_variable):
     register_drivers()
     create_provider_dags()
-    assert list(harvest_dags().keys()) == list(fetch_catalog())
-    for provider in iter(list(fetch_catalog())):
-        dag = harvest_dags()[provider]
+    for dag in harvest_dags().values():
         check_cycle(dag)
