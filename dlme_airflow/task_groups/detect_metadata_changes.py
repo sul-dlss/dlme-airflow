@@ -5,11 +5,13 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
-from tasks.check_equality import check_equity
+from dlme_airflow.utils.catalog import catalog_for_provider
+from dlme_airflow.tasks.check_equality import check_equity
 
 
-def build_detect_changes_task(provider, task_group: TaskGroup, dag: DAG):
+def build_detect_changes_task(
+    provider, task_group: TaskGroup, dag: DAG
+) -> PythonOperator:
     compare_dataframes = PythonOperator(
         task_id=f"{provider}_compare_dataframes",
         task_group=task_group,
@@ -21,7 +23,9 @@ def build_detect_changes_task(provider, task_group: TaskGroup, dag: DAG):
     return compare_dataframes
 
 
-def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
+def inspect_dataframe_tasks(
+    provider, task_group: TaskGroup, dag: DAG
+) -> list[PythonOperator]:
     task_array = []
     source = catalog_for_provider(provider)
 
@@ -32,12 +36,12 @@ def inspect_dataframe_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGr
                 build_detect_changes_task(f"{provider}.{collection}", task_group, dag)
             )
     except TypeError:
-        return build_detect_changes_task(f"{provider}", task_group, dag)
+        return [build_detect_changes_task(f"{provider}", task_group, dag)]
 
     return task_array
 
 
-def build_detect_metadata_changes_taskgroup(provider, dag: DAG) -> TaskGroup:
+def build_detect_metadata_changes_taskgroup(provider, dag: DAG) -> list[PythonOperator]:
     detect_metadata_changes_taskgroup = TaskGroup(group_id="detect_metadata_changes")
 
     return inspect_dataframe_tasks(provider, detect_metadata_changes_taskgroup, dag)

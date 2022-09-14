@@ -7,16 +7,18 @@ from airflow import DAG
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
 
-from tasks.harvest import build_harvester_task
-from tasks.post_harvest import build_post_harvest_task
-from tasks.transform import build_transform_task
-from tasks.index import index_task
-from tasks.harvest_report import build_harvest_report_task
-from tasks.send_harvest_report import build_send_harvest_report_task
-from task_groups.validate_dlme_metadata import build_sync_metadata_taskgroup
+from dlme_airflow.tasks.harvest import build_harvester_task
+from dlme_airflow.tasks.post_harvest import build_post_harvest_task
+from dlme_airflow.tasks.transform import build_transform_task
+from dlme_airflow.tasks.index import index_task
+from dlme_airflow.tasks.harvest_report import build_harvest_report_task
+from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
+from dlme_airflow.task_groups.validate_dlme_metadata import (
+    build_sync_metadata_taskgroup,
+)
 
 
-def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> TaskGroup:
+def etl_tasks(provider, task_group: TaskGroup, dag: DAG) -> list[TaskGroup]:
     task_array = []
     for collection in provider.collections:
         task_array.append(

@@ -3,6 +3,7 @@ import intake
 import requests
 import jsonpath_ng
 import pandas as pd
+from typing import Any
 
 container = "dataframe"
 name = "iiif_json"
@@ -17,45 +18,57 @@ class IiifJsonSource(intake.source.base.DataSource):
         self.dtype = dtype
         self._manifest_urls = []
         self._path_expressions = {}
+        self.record_count = 0
+        self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        collection_result = requests.get(self.collection_url)
-        for manifest in collection_result.json().get("manifests", []):
+        collection_result = requests.get(self.collection_url).json()
+        for manifest in collection_result.get("manifests", []):
             self._manifest_urls.append(manifest.get("@id"))
 
-    def _open_manifest(self, manifest_url: str):
-        manifest_result = requests.get(manifest_url)
-        manifest_detail = manifest_result.json()
-        record = self._construct_fields(manifest_detail)
-        # Handles metadata in IIIF manfest
-        record.update(self._from_metadata(manifest_detail.get("metadata", [])))
+    def _open_manifest(self, manifest_url: str) -> dict:
+        manifest_result = requests.get(manifest_url).json()
+        record = self._extract_specified_fields(manifest_result)
+        # Handles metadata in IIIF manifest
+        record.update(
+            self._extract_manifest_metadata(manifest_result.get("metadata", []))
+        )
         return record
 
-    def _construct_fields(self, manifest: dict) -> dict:
-        output = {}
+    def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
+        output: dict[str, Any] = {}
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
-            result = [match.value for match in expression.find(manifest)]
-            if len(result) < 1:
+            result = [match.value for match in expression.find(iiif_manifest)]
+            if (
+                len(result) < 1
+            ):  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
-                    # Skip and continue
-                    continue
+                    logging.debug(
+                        f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
+                    )
                 else:
-                    logging.warn(f"{manifest.get('@id')} missing {name}")
+                    logging.warning(
+                        f"{iiif_manifest.get('@id')} missing required field: '{name}'; searched path: '{expression}'"
+                    )
             else:
-                if len(result) == 1:
-                    output[name] = result[0].strip()
-                else:
+                if (
+                    len(result) == 1
+                ):  # the JSONPath expression found exactly one result in the manifest
+                    output[name] = _stringify_and_strip_if_list(result[0])
+                else:  # the JSONPath expression found exactly one result in the manifest
                     if name not in output:
                         output[name] = []
 
                     for data in result:
-                        output[name].append(data.strip())
+                        output[name].append(_stringify_and_strip_if_list(data))
         return output
 
-    def _from_metadata(self, metadata) -> dict:
-        output = {}
-        for row in metadata:
+    def _extract_manifest_metadata(
+        self, iiif_manifest_metadata
+    ) -> dict[str, list[str]]:
+        output: dict[str, list[str]] = {}
+        for row in iiif_manifest_metadata:
             name = (
                 row.get("label")
                 .replace(" ", "-")
@@ -63,23 +76,33 @@ class IiifJsonSource(intake.source.base.DataSource):
                 .replace("(", "")
                 .replace(")", "")
             )
-            output[name] = row.get(
-                "value"
-            )  # this will assign the last value found to output[name]
+            # initialize or append to output[name] based on whether we've seen the label
             if name in output:
-                if type(name) == list:
-                    output[name].append(row.get("value"))
-                elif type(name) == str:
-                    output[name] = [row.get("value")]
+                output[name].append(row.get("value"))
+            else:
+                output[name] = [row.get("value")]
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:
+
+        # if we are over the defined limit return an empty DataFrame right away
+        if self.record_limit is not None and self.record_count > self.record_limit:
+            return pd.DataFrame()
+
         result = self._open_manifest(self._manifest_urls[i])
-        return pd.DataFrame(
-            [
-                result,
-            ]
-        )
+
+        # If the dictionary has AT LEAST one value that is not None return a
+        # DataFrame with the keys as columns, and the values as a row.
+        # Otherwise return an empty DataFrame that can be concatenated.
+        # This will prevent rows with all empty values from being generated
+        # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
+
+        if any(result.values()):
+            self.record_count += 1
+            return pd.DataFrame([result])
+        else:
+            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            return pd.DataFrame()
 
     def _get_schema(self):
         for name, info in self.metadata.get("fields", {}).items():
@@ -95,4 +118,15 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        if self.record_limit:
+            return df.head(self.record_limit)
+        else:
+            return df
+
+
+def _stringify_and_strip_if_list(possible_list) -> list[str]:
+    if isinstance(possible_list, list):
+        return [str(elt).strip() for elt in possible_list]
+    else:
+        return possible_list

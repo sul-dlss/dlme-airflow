@@ -11,7 +11,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 # Constants for crosswalk
 fields = [
@@ -99,7 +99,7 @@ def thumbnail_report(image_sizes_list):
     return f"{round((passed_rec/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."  # noqa: E501
 
 
-def image_size(response):
+def image_size(response) -> tuple[int, int]:
     """Takes an http response and returns an image size."""
     if not isinstance(response, requests.models.Response):
         raise TypeError(
@@ -130,9 +130,9 @@ def resolve_url(response):
 
 
 # Define variables for capturing data from main
-thumbnail_image_sizes = []
-unresolvable_resources = []
-unresolvable_thumbnails = []
+thumbnail_image_sizes: list[tuple[int, int]] = []
+unresolvable_resources: list[str] = []
+unresolvable_thumbnails: list[str] = []
 
 
 def main(**kwargs):  # input:, config:):

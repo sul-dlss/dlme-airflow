@@ -1,3 +1,4 @@
+import os
 import sys
 
 from datetime import datetime
@@ -9,20 +10,13 @@ from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.models import Variable
 
-import intake
-
 # Our stuff
-from drivers.iiif_json import IiifJsonSource
-from drivers.feed import FeedSource
-from drivers.oai_xml import OaiXmlSource
-from drivers.xml import XmlSource
-from drivers.sequential_csv import SequentialCsvSource
-from models.provider import Provider
-from task_groups.etl import build_provider_etl_taskgroup
-from utils.catalog import fetch_catalog
+from dlme_airflow.models.provider import Provider
+from dlme_airflow.task_groups.etl import build_provider_etl_taskgroup
+from dlme_airflow.utils.catalog import fetch_catalog
 
 
-_harvest_dags = dict()
+_harvest_dags: dict[str, DAG] = dict()
 
 
 def harvest_dags():
@@ -46,12 +40,14 @@ def default_dag_args():
     }
 
 
-def create_dag(provider, default_args):
+def create_dag(provider, default_args) -> DAG:
+    default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
+
     dag = DAG(
         provider.name,
         default_args=default_args,
-        schedule_interval="@once",
-        start_date=datetime(2021, 9, 6),
+        schedule_interval=provider.catalog.metadata.get("schedule", default_schedule),
+        start_date=datetime(2022, 9, 6),
     )
 
     with dag:
@@ -76,14 +72,6 @@ def create_dag(provider, default_args):
         harvest_begin >> etl >> harvest_complete
 
     return dag
-
-
-def register_drivers():
-    intake.source.register_driver("iiif_json", IiifJsonSource)
-    intake.source.register_driver("oai_xml", OaiXmlSource)
-    intake.source.register_driver("feed", FeedSource)
-    intake.source.register_driver("xml", XmlSource)
-    intake.source.register_driver("sequential_csv", SequentialCsvSource)
 
 
 def create_provider_dags(module_name=None):

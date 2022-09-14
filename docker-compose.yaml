@@ -67,6 +67,7 @@ x-airflow-common:
     ECS_SUBNET: "${ECS_SUBNET}"
     S3_BUCKET: "s3://dlme-metadata-dev/metadata"
     SKIP_REPORT: "${SKIP_REPORT}"
+    DEFAULT_DAG_SCHEDULE: "@weekly"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working

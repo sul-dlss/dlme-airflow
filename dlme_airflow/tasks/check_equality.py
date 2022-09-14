@@ -1,6 +1,6 @@
 import os
-from utils.dataframe import dataframe_from_file
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.dataframe import dataframe_from_file
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 
 def check_equity(provider):

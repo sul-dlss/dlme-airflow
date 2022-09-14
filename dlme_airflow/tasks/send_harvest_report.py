@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 from airflow.utils.email import send_email
 
-from utils.catalog import catalog_for_provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 
 def email_callback(task_instance, task, **kwargs):
@@ -36,11 +36,11 @@ def send_harvest_report_tasks(provider, task_group: TaskGroup, dag: DAG):
         collections = list(source).__iter__()
         for collection in collections:
             send_report_task = build_send_harvest_report_task(
-                provider, collection, task_group, dag
+                collection, task_group, dag
             )
             task_array.append(send_report_task)
     except TypeError:
-        return build_send_harvest_report_task(f"{provider}", "", task_group, dag)
+        return build_send_harvest_report_task("", task_group, dag)
 
     return task_array
 

@@ -6,7 +6,7 @@
 
 This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data in an Amazon S3 bucket where it is loaded by the [dlme] [Spotlight] application. 
 
-# Getting Started
+# Running Airflow Locally
 
 ## Initialize local Docker infrastructure
 
@@ -36,9 +36,9 @@ open your browser to `http://localhost:8080`
 
 ## Enable the DAGs you wish to run locally
 
-## Run individual DAGs
+### Run individual DAGs
 
-### Allowing local Airflow to execute AWS resources
+#### Allowing local Airflow to execute AWS resources
 
 In order to trigger `dlme-transform` or `dlme-index` while running Airflow locally via `docker compose` your
 `AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `DEV_ROLE_ARN`, `ECS_SECURITY_GROUP`, `ECS_SUBNET` must be set in your local environment and a [configured aws connection](https://github.com/sul-dlss/dlme-airflow/wiki/Amazon-Web-Services-(AWS)-connection-configuration). 
@@ -54,7 +54,7 @@ ECS_SUBNET={Get value from shared configs}
 
 If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
 
-# Fetching data for review from S3
+## Fetching data for review from S3
 
 DLME-airlfow writes the metadata harvested from providers to S3. It is possible to fetch the written data in CSV format using the [aws cli](https://github.com/sul-dlss/terraform-aws/wiki/AWS-DLSS-Dev-Env-Setup).
 
@@ -75,9 +75,9 @@ Fetch an individual collection file:
 aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bodleian/persian/data.csv --profile development
 ```
 
-## Development
+# Development
 
-### Set-up
+## Set-up
 
 Create a Python virtual environment for dlme-airflow by first installing the  [Poetry] dependency management and packaging tool:
 
@@ -99,23 +99,64 @@ poetry install
 
 Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
 
-### Running Code Formatter and Linter
-We are using [flake8][FLK8] for python code linting. To run [flake9][FLK8]
+### Other random Poetry tips
+
+As an alternative to running `poetry shell`, you can prefix all project-specific python
+commands from your default shell with `poetry run ...` (similar to `bundle exec ...` in
+Ruby-land).
+
+If you're running into dependency issues but believe your dependencies are specified correctly,
+and you've run `poetry install` to make sure the environment is up to date, you can try:
+* Updating to the latest version of `poetry`.  From Poetry 1.2.0 on, you should be able to call
+`poetry self update`, but see the docs for details.
+* Re-installing your env for the project.  You can see your installed environments with
+`poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
+  dependencies from a clean slate.
+
+## Running Code Formatter and Linter
+We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
 against the entire code repository, run `flake8 dlme_airflow` from the root
 directory. To run the linter on a single file, run `flake8 dlme_airflow/path/to/file.py`.
 
 To assist in passing the linter, use the [Black][BLK] opinionated code formatter
-by running `black dlme_airflow/path/to/file.py`.
+by running `black dlme_airflow/path/to/file.py` (this will immediately apply the
+formatting it would suggest).
 
-### Running Tests
+## Typechecking
+We're using [mypy][MYPY] for type checking.  Type checking is opt-in, so you shouldn't have to specify
+types for new code, and unknown types from dependencies will be ignored (via project configuration).  But if
+expected type (especially for function or method return) is unclear or hard to reason about, consider adding
+a type annotation instead of a comment.  This will likely be more concise and the type enforcement in CI can
+help catch errors.  You can run it locally by calling `mypy .`.
+
+## Running Tests
 To run the entire test suite from the root directory, `PYTHONPATH=dlme_airflow pytest`.
 You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/path/to/test.py`.
 
-### Intake Catalogs
+## Misc useful development commands
+
+### Similar checks to CI, as one shell command
+```sh
+poetry run black --diff --check . &&
+  poetry run mypy . &&
+  poetry run flake8 &&
+  PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
+```
+* run black first because it's fast; remove the flags to just apply formatting
+* typechecking next because it's also fast
+* pytest: `-s` to show stdout, `--pdb` to drop to debugger on test failure, e.g. failed assertion
+
+### Debugging breakpoints
+You can call `breakpoint()` in your code to set a breakpoint for dropping into the debugger.  Note from @jmartin-sul:
+limited experience shows that this winds up in the expected context when used in code being tested, but can wind up in
+an unexpected stack frame without access to the expected variable context when called from the test code itself.
+
+
+## Intake Catalogs
 The `catalog.yaml` contains nested [catalogs](https://intake.readthedocs.io/en/latest/catalog.html#catalog-nesting)
 for larger collections.
 
-#### CSV Catalog
+### CSV Catalog
 For CSV based collections, we are using the `csv` as driver and under the
 *metadata* section, the `current_directory` should reference the location in the
 Docker container where the [dlme-metadata](https://github.com/sul-dlss/dlme-metadata)
@@ -125,7 +166,7 @@ In the *args/csv_kwargs* section, make sure the dtype has the correct values
 for the particular source and under *args/urlpath* list the URLs to download the
 CSV files from the institution.
 
-##### Example source entry:
+#### Example source entry:
 
 ```yaml
 yale_babylonian:
@@ -148,7 +189,7 @@ yale_babylonian:
 
 ```
 
-#### IIIF Catalog
+### IIIF Catalog
 For the collections with IIIF JSON format, we created a new `IiifJsonSource`
 driver class that extends `intake.source.base.DataSource`. In catalogs sources
 that use this driver, set the driver value to *iiif_json*.
@@ -164,7 +205,7 @@ column in the resulting Pandas DataFrame with the *path* value containing the
 is set to **true** for optional values (if this value is set to **false** or
 not present, a logging error will result for values not found).
 
-##### Example source entry:
+#### Example source entry:
 
 ```yaml
 exploring_egypt:
@@ -189,6 +230,22 @@ exploring_egypt:
 
 ```
 
+### Getting Data
+
+Sometimes it can be useful to be able to fetch data from a provider on the command line. This can be useful when adding or modifying a catalog entry, developing a driver, or when working with the data that is collected. To aid in that the `bin/get` utility will fetch data from a provider/collection and output the collected CSV to stdout or to a file.
+
+First you'll want to enter the poetry virtual environment:
+
+```
+$ poetry shell
+```
+
+and then run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or aboart the harvest early with `--limit`):
+
+```
+$ bin/get yale babylonian --limit 20
+```
+
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [Poetry]: https://python-poetry.org
@@ -199,3 +256,4 @@ exploring_egypt:
 [dlme-transform]: https://github.com/sul-dlss/dlme-transform
 [Spotlight]: https://github.com/projectblacklight/spotlight
 [ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
+[MYPY]: https://mypy.readthedocs.io/
