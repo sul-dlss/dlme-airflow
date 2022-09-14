@@ -21,18 +21,33 @@ sources:
           path: ".//title"
           namespace:
           optional: true
-        author:
-          path: ".//itunes:author"
+        description:
+          path: ".//description"
           namespace:
-            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
           optional: true
         pub_date:
           path: ".//pubDate"
           namespace:
           optional: true
-        description:
-          path: ".//description"
+        language:
+          path: ".//language"
           namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+          optional: true
+        copyright:
+          path: ".//copyright"
+          namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+          optional: true
+        category:
+          path: ".//category"
+          namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+          optional: true
+        author:
+          path: ".//itunes:author"
+          namespace:
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
           optional: true
         extent:
           path: ".//itunes:duration"

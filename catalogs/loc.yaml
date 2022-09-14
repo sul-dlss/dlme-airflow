@@ -1,0 +1,42 @@
+metadata:
+  version: 1
+  data_path: loc
+sources:
+  persian:
+    description: "Persian Language Rare Materials"
+    driver: iiif_json
+    args:
+      collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
+      dtype:
+        call-number: object
+        date: object
+        format: object
+        genre: object
+        language: object
+        medium: object
+        notes: object
+        rights: object
+        source-collection: object
+        subject: object
+        title: object
+    metadata:
+      data_path: loc/persian
+      config: loc_config
+      fields:
+        call-number:
+          path:
+            "item..@call_number"
+        id:
+          path: "group..@id"
+        description:
+          path: "description"
+        language:
+          path:
+            "item..@language"
+        rendering:
+          path: "resources..@url"
+        thumbnail:
+          path: "resources..@image"
+        title:
+          path:
+            "item..title"

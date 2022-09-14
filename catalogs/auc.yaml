@@ -5,28 +5,6 @@ sources:
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
-    metadata:
-      data_path: auc/iiif/al_musawwar
-      config: auc_iiif_config
-      fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: 'description'
-          optional: true
-        id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: 'sequences..format'
-        profile:
-          path: 'sequences..profile'
-        resource:
-          path: 'sequences..resource.@id'
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll29/manifest.json
       dtype:
@@ -48,6 +26,28 @@ sources:
         title: object
         type: object
         repository: object
+    metadata:
+      data_path: auc/iiif/al_musawwar
+      config: auc_iiif_config_csv
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   alexandria_bombardment:
     description: "Alexandria Bombardment of 1882 Photograph Album"
     driver: iiif_json
@@ -80,8 +80,8 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      data_path: auc/iiif/alexandria-bombardment
-      config: auc_iiif_config
+      data_path: auc/iiif/alexandria_bombardment
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -129,7 +129,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/iiif/bint_al_nil
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -150,37 +150,34 @@ sources:
           path: 'thumbnail..@id'
           optional: true
   campus_photos:
-    description: "Art in the Greek Campus"
+    description: "AUC Campus Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll32/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll37/manifest.json
       dtype:
         context: object
         id: object
         iiif_format: object
         profile: object
         resource: object
-        buildings: object
-        coverage: object
+        alternative-title: object
+        location: object
         creator: object
-        collection: object
         date: object
-        description: object
-        format: object
-        getty-aat: object
-        identifier: object
-        license: object
-        physical-box-number: object
+        genre-aat: object
+        language: object
+        publisher: object
         rights: object
         source: object
         subject: object
-        subseries: object
         title: object
         type: object
         repository: object
+        description: object
+        extent: object
     metadata:
-      data_path: auc/iiif/campus-photos
-      config: auc_iiif_config
+      data_path: auc/iiif/student_news
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -235,7 +232,7 @@ sources:
         location: object
     metadata:
       data_path: auc/iiif/coptic
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -255,22 +252,6 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
-  creswell:
-    description: "K.A.C. Creswell Photographs of Islamic Architecture"
-    driver: oai_xml
-    args:
-      collection_url: http://cdm15795.contentdm.oclc.org/oai/oai.php
-      metadata_prefix: oai_dc
-      set: p15795coll14
-    metadata:
-      data_path: auc/iiif/creswell
-      config: auc_oai_config
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
   fathy:
     description: "Hassan Fathy Architectural Archives"
     driver: iiif_json
@@ -298,7 +279,7 @@ sources:
         original-identifier: object
     metadata:
       data_path: auc/iiif/fathy
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -318,6 +299,22 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  historical_videos:
+    description: "AUC Historical Videos"
+    driver: oai_xml
+    args:
+      collection_url: http://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll23
+    metadata:
+      data_path: auc/oai/historical_videos
+      config: auc_oai_config_csv
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: True
   hopkins:
     description: "Nicholas S. Hopkins Rural Egypt Photographs"
     driver: iiif_json
@@ -344,7 +341,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/iiif/hopkins
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -392,8 +389,8 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/iiif/islamic-aa
-      config: auc_iiif_config
+      data_path: auc/iiif/islamic_aa
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -442,7 +439,7 @@ sources:
         description: object
     metadata:
       data_path: auc/iiif/kraus_meyerhof
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -493,7 +490,7 @@ sources:
         format: object
     metadata:
       data_path: auc/iiif/maps
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -544,7 +541,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/iiif/maritz
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -593,8 +590,8 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/iiif/napoleonic-egypt
-      config: auc_iiif_config
+      data_path: auc/iiif/napoleonic_egypt
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -641,7 +638,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/iiif/parker
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -688,7 +685,7 @@ sources:
         publisher: object
     metadata:
       data_path: auc/iiif/postcards
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -705,56 +702,6 @@ sources:
           path: 'sequences..profile'
         resource:
           path: 'sequences..resource.@id'
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
-  qurna:
-    description: "Qurna Hillside Oral History Project"
-    driver: iiif_json
-    args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll24/manifest.json
-      dtype:
-        context: object
-        id: object
-        iiif_format: object
-        profile: object
-        resource: object
-        coverage: object
-        interviewee: object
-        date: object
-        description: object
-        language: object
-        medium: object
-        license: object
-        rights: object
-        source: object
-        title: object
-        repository: object
-        format: object
-        identifier: object
-        publisher: object
-    metadata:
-      data_path: auc/iiif/qurna
-      config: auc_iiif_config
-      fields:
-        context:
-          path: '@context'
-          optional: true
-        description_top:
-          path: 'description'
-          optional: true
-        id:
-          path: '@id'
-          optional: true
-        iiif_format:
-          path: 'sequences..format'
-          optional: true
-        profile:
-          path: 'sequences..profile'
-          optional: true
-        resource:
-          path: 'sequences..resource.@id'
-          optional: true
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
@@ -785,8 +732,8 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/iiif/rare-books
-      config: auc_iiif_config
+      data_path: auc/iiif/rare_books
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -832,7 +779,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/iiif/sphinx
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -882,8 +829,8 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/iiif/taxiphote-slides
-      config: auc_iiif_config
+      data_path: auc/iiif/taxiphote_slides
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -938,7 +885,7 @@ sources:
         name: object
     metadata:
       data_path: auc/iiif/underwood
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -998,8 +945,8 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/iiif/university-on-the-square
-      config: auc_iiif_config
+      data_path: auc/iiif/university_on_the_square
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'
@@ -1048,7 +995,7 @@ sources:
         original-identifier: object
     metadata:
       data_path: auc/iiif/wassef
-      config: auc_iiif_config
+      config: auc_iiif_config_csv
       fields:
         context:
           path: '@context'

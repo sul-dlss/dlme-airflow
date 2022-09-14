@@ -135,3 +135,7 @@ dmypy.json
 /metadata/**/*
 metadata
 /ssh
+
+# Mac OS stuff
+.DS_Store
+dlme_airflow/.DS_Store
