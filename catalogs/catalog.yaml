@@ -25,6 +25,12 @@ sources:
     description: "American University in Cairo Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  bnf:
+    args:
+      path: catalogs/bnf.yaml
+    description: "The Bibliothèque nationale de France"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   bodleian:
     args:
       path: catalogs/bodleian.yaml
@@ -89,6 +95,12 @@ sources:
     args:
       path: catalogs/sakip_sabanci.yaml
     description: Sakip Sabanci Museum
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  shahre_farang:
+    args:
+      path: catalogs/shahre_farang.yaml
+    description: "Shahre Farang"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   stanford:

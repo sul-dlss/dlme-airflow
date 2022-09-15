@@ -1,0 +1,47 @@
+metadata:
+  version: 1
+  data_path: bnf
+  schedule: "0 0 * * *"
+sources:
+  ideo:
+    description: "The Bibliothèque nationale de France"
+    driver: xml
+    metadata:
+      data_path: bnf/ideo
+      config: bnf_config
+      record_selector:
+        path: "//srw:record"
+          srw: "http://www.loc.gov/zing/srw/"
+        namespace:
+        optional: false
+      fields:
+        id:
+          path: ".//srw:recordSchema"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: false
+    args:
+      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29#resultat-id-3
+  ifao:
+    description: "The Bibliothèque nationale de France"
+    driver: xml
+    metadata:
+      data_path: bnf/ifao
+      config: bnf_config
+      record_selector:
+        path: "//srw:record"
+        namespace:
+          srw: "http://www.loc.gov/zing/srw/"
+        optional: false
+      fields:
+        id:
+          path: ".//srw:recordSchema"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: false
+    args:
+      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
