@@ -47,15 +47,19 @@ x-airflow-common:
   image: ${AIRFLOW_IMAGE_NAME:-suldlss/dlme-airflow:latest}
   environment:
     &airflow-common-env
-    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
-    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # do not load example DAGs
     AIRFLOW__CORE__DAGS_FOLDER: '/opt/airflow/dlme_airflow/dags'
-    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Los_Angeles'
+    AIRFLOW__CORE__DEFAULT_UI_TIMEZONE: 'America/Los_Angeles'
+    AIRFLOW__CORE__DAG_DEFAULT_VIEW: 'graph'
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
     CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
