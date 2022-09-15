@@ -11,8 +11,8 @@ sources:
       config: bnf_config
       record_selector:
         path: "//srw:record"
-          srw: "http://www.loc.gov/zing/srw/"
         namespace:
+          srw: "http://www.loc.gov/zing/srw/"
         optional: false
       fields:
         id:
