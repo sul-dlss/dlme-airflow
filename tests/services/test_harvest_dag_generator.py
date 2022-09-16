@@ -7,7 +7,6 @@ from dlme_airflow.services.harvest_dag_generator import (
     create_provider_dags,
     harvest_dags,
 )
-from dlme_airflow.drivers import register_drivers
 
 
 @pytest.fixture
@@ -20,7 +19,6 @@ def mock_variable(monkeypatch):
 
 
 def test_create_provider_dags(mock_variable):
-    register_drivers()
     create_provider_dags()
     for dag in harvest_dags().values():
         check_cycle(dag)
