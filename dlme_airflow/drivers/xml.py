@@ -24,8 +24,7 @@ class XmlSource(intake.source.base.DataSource):
         collection_result = requests.get(self.collection_url).content
         xtree = etree.fromstring(collection_result)
         elements = xtree.findall(
-            self._record_selector["path"],
-            namespaces=self._record_selector["namespace"]
+            self._record_selector["path"], namespaces=self._record_selector["namespace"]
         )
         for counter, element in enumerate(elements, start=1):
             record = self._construct_fields(element)
@@ -72,10 +71,7 @@ class XmlSource(intake.source.base.DataSource):
         if not path:
             raise Exception("Missing path")
 
-        return {
-            "path": path,
-            "namespace": record_selector.get("namespace") or {}
-        }
+        return {"path": path, "namespace": record_selector.get("namespace") or {}}
 
     def _get_path_expressions(self):
         paths = {}
