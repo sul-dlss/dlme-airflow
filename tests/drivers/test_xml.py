@@ -28,7 +28,7 @@ def xml_feed_test_source():
     yahoo_namespace = {"media": "http://search.yahoo.com/mrss/"}
     metadata = {
         "data_path": "aims",
-        "record_selector": {"path": "//item", "namespace": None},
+        "record_selector": {"path": ".//item", "namespace": None},
         "fields": {
             "id": {"path": ".//guid", "namespace": None, "optional": False},
             "title": {"path": ".//title", "namespace": None, "optional": True},

@@ -10,7 +10,7 @@ sources:
       data_path: shahre_farang/arabic
       config: shahre_farang_config
       record_selector:
-        path: "//item"
+        path: ".//item"
         namespace:
       fields:
         id:
@@ -52,7 +52,7 @@ sources:
       data_path: shahre_farang/english
       config: shahre_farang_config
       record_selector:
-        path: "//item"
+        path: ".//item"
         namespace:
       fields:
         id:
@@ -94,7 +94,7 @@ sources:
       data_path: shahre_farang/persian
       config: shahre_farang_config
       record_selector:
-        path: "//item"
+        path: ".//item"
         namespace:
       fields:
         id:
