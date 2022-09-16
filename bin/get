@@ -17,7 +17,7 @@ def main(opts):
     provider = Provider(opts.provider)
     collection = provider.get_collection(opts.collection)
     if collection is None:
-        sys.exit("No such collection {opts.collection} for provider {opts.provider}")
+        sys.exit(f"No such collection {opts.collection} for provider {opts.provider}")
 
     # set driver record limit if it is allowed by the driver
     if opts.limit: 
