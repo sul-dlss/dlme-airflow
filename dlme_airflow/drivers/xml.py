@@ -16,13 +16,18 @@ class XmlSource(intake.source.base.DataSource):
     def __init__(self, collection_url, dtype=None, metadata=None):
         super(XmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
+        self._record_selector = self._get_record_selector()
         self._path_expressions = self._get_path_expressions()
         self._records = []
 
     def _open_collection(self):
         collection_result = requests.get(self.collection_url).content
         xtree = etree.fromstring(collection_result)
-        for counter, element in enumerate(xtree.findall(".//item"), start=1):
+        elements = xtree.findall(
+            self._record_selector["path"],
+            namespaces=self._record_selector["namespace"]
+        )
+        for counter, element in enumerate(elements, start=1):
             record = self._construct_fields(element)
             self._records.append(record)
 
@@ -30,8 +35,8 @@ class XmlSource(intake.source.base.DataSource):
         output = {}
         for field in self._path_expressions:
             path = self._path_expressions[field]["path"]
-            namespace = self._path_expressions[field]["namespace"]
-            optional = self._path_expressions[field]["optional"]
+            namespace = self._path_expressions[field].get("namespace", {})
+            optional = self._path_expressions[field].get("optional", False)
             result = manifest.xpath(path, namespaces=namespace)
             if len(result) < 1:
                 if optional is True:
@@ -57,6 +62,20 @@ class XmlSource(intake.source.base.DataSource):
 
     def _get_partition(self, i) -> pd.DataFrame:
         return pd.DataFrame(self._records)
+
+    def _get_record_selector(self):
+        record_selector = self.metadata.get("record_selector")
+        if not record_selector:
+            raise Exception("Missing record_selector")
+
+        path = record_selector.get("path")
+        if not path:
+            raise Exception("Missing path")
+
+        return {
+            "path": path,
+            "namespace": record_selector.get("namespace") or {}
+        }
 
     def _get_path_expressions(self):
         paths = {}

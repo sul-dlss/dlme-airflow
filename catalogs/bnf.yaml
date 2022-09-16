@@ -6,42 +6,96 @@ sources:
   ideo:
     description: "The Bibliothèque nationale de France"
     driver: xml
+    args:
+      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29#resultat-id-3
     metadata:
       data_path: bnf/ideo
       config: bnf_config
       record_selector:
-        path: "//srw:record"
+        path: ".//oai_dc:dc"
         namespace:
-          srw: "http://www.loc.gov/zing/srw/"
+          oai_dc: http://www.openarchives.org/OAI/2.0/oai_dc/
         optional: false
       fields:
         id:
-          path: ".//srw:recordSchema"
+          path: "dc:identifier"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
-            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
-            srw: "http://www.loc.gov/zing/srw/"
-          optional: false
-    args:
-      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29#resultat-id-3
+        title:
+          path: "dc:title"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+        creator:
+          path: "dc:creator"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        contributor:
+          path: "dc:contributor"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        date:
+          path: "dc:date"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        description:
+          path: "dc:description"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        format:
+          path: "dc:description"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        language:
+          path: "dc:language"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        subject:
+          path: "dc:subject"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+        type:
+          path: "dc:type"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
   ifao:
     description: "The Bibliothèque nationale de France"
     driver: xml
+    args:
+      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
     metadata:
       data_path: bnf/ifao
       config: bnf_config
       record_selector:
-        path: "//srw:record"
+        path: ".//item"
         namespace:
-          srw: "http://www.loc.gov/zing/srw/"
+          oai_dc: http://www.openarchives.org/OAI/2.0/oai_dc/
         optional: false
       fields:
         id:
-          path: ".//srw:recordSchema"
-          namespace:
-            dc: "http://purl.org/dc/elements/1.1/"
-            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
-            srw: "http://www.loc.gov/zing/srw/"
+          path: "link"
           optional: false
-    args:
-      collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
+        title:
+          path: "title"
+        summary:
+          path: "itunes:summary"
+          namespace:
+            itunes: http://www.itunes.com/dtds/podcast-1.0.dtd
+        image:
+          path: "image/url"
+          optional: true
+        audio:
+          path: "enclosure/@url"
+          optional: true
+        duration:
+          path: "itunes:duration"
+          namespace:
+            itunes: http://www.itunes.com/dtds/podcast-1.0.dtd
+          optional: true
