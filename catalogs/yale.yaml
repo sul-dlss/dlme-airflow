@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: yale
+  schedule: "20 13 * * *"
 sources:
   babylonian:
     description: Yale babylonian

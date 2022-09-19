@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: harvard
+  schedule: "0 10 * * *"
 sources:
   ihp:
     driver: oai_xml

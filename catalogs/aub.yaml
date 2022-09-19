@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: aub
+  schedule: "40 0 * * *"
 sources:
   aco:
     driver: oai_xml
