@@ -60,6 +60,7 @@ x-airflow-common:
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DEFAULT_UI_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DAG_DEFAULT_VIEW: 'graph'
+    AIRFLOW_CONN_AWS_CONN: "aws://${AWS_ACCESS_KEY}:${AWS_SECRET_ACCESS_KEY}@/?role_arn=${DEV_ROLE_ARN}&region_name=us-west-2"
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
     CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
