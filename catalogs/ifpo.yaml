@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: ifpo
+  schedule: "20 10 * * *"
 sources:
   photographs:
     driver: oai_xml

@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: qnl
+  schedule: "40 11 * * *"
 sources:
   qnl:
     driver: oai_xml

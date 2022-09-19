@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: princeton
+  schedule: "20 11 * * *"
 sources:
   manuscripts:
     description: "Islamic Manuscripts"

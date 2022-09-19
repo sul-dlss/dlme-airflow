@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: sakip-sabanci
+  schedule: "0 12 * * *"
 sources:
   abidindino:
     description: "ABİDİN DİNO ARCHIVE"

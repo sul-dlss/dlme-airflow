@@ -9,6 +9,7 @@ sources:
     metadata:
       data_path: auc/iiif/al_musawwar
       config: auc_iiif_config
+      schedule: "0 1 * * *"
       fields:
         context:
           path: '@context'
@@ -83,6 +84,7 @@ sources:
     metadata:
       data_path: auc/iiif/alexandria-bombardment
       config: auc_iiif_config
+      schedule: "20 1 * * *"
       fields:
         context:
           path: '@context'
@@ -131,6 +133,7 @@ sources:
     metadata:
       data_path: auc/iiif/bint_al_nil
       config: auc_iiif_config
+      schedule: "40 1 * * *"
       fields:
         context:
           path: '@context'
@@ -182,6 +185,7 @@ sources:
     metadata:
       data_path: auc/iiif/campus-photos
       config: auc_iiif_config
+      schedule: "0 2 * * *"
       fields:
         context:
           path: '@context'
@@ -237,6 +241,7 @@ sources:
     metadata:
       data_path: auc/iiif/coptic
       config: auc_iiif_config
+      schedule: "20 2 * * *"
       fields:
         context:
           path: '@context'
@@ -266,6 +271,7 @@ sources:
     metadata:
       data_path: auc/iiif/creswell
       config: auc_oai_config
+      schedule: "40 2 * * *"
       fields:
         id:
           path: "//header:identifier"
@@ -300,6 +306,7 @@ sources:
     metadata:
       data_path: auc/iiif/fathy
       config: auc_iiif_config
+      schedule: "0 3 * * *"
       fields:
         context:
           path: '@context'
@@ -346,6 +353,7 @@ sources:
     metadata:
       data_path: auc/iiif/hopkins
       config: auc_iiif_config
+      schedule: "20 3 * * *"
       fields:
         context:
           path: '@context'
@@ -395,6 +403,7 @@ sources:
     metadata:
       data_path: auc/iiif/islamic-aa
       config: auc_iiif_config
+      schedule: "40 3 * * *"
       fields:
         context:
           path: '@context'
@@ -444,6 +453,7 @@ sources:
     metadata:
       data_path: auc/iiif/kraus_meyerhof
       config: auc_iiif_config
+      schedule: "0 4 * * *"
       fields:
         context:
           path: '@context'
@@ -495,6 +505,7 @@ sources:
     metadata:
       data_path: auc/iiif/maps
       config: auc_iiif_config
+      schedule: "20 4 * * *"
       fields:
         context:
           path: '@context'
@@ -546,6 +557,7 @@ sources:
     metadata:
       data_path: auc/iiif/maritz
       config: auc_iiif_config
+      schedule: "40 4 * * *"
       fields:
         context:
           path: '@context'
@@ -596,6 +608,7 @@ sources:
     metadata:
       data_path: auc/iiif/napoleonic-egypt
       config: auc_iiif_config
+      schedule: "0 5 * * *"
       fields:
         context:
           path: '@context'
@@ -643,6 +656,7 @@ sources:
     metadata:
       data_path: auc/iiif/parker
       config: auc_iiif_config
+      schedule: "20 5 * * *"
       fields:
         context:
           path: '@context'
@@ -690,6 +704,7 @@ sources:
     metadata:
       data_path: auc/iiif/postcards
       config: auc_iiif_config
+      schedule: "40 5 * * *"
       fields:
         context:
           path: '@context'
@@ -737,6 +752,7 @@ sources:
     metadata:
       data_path: auc/iiif/qurna
       config: auc_iiif_config
+      schedule: "0 6 * * *"
       fields:
         context:
           path: '@context'
@@ -788,6 +804,7 @@ sources:
     metadata:
       data_path: auc/iiif/rare-books
       config: auc_iiif_config
+      schedule: "20 6 * * *"
       fields:
         context:
           path: '@context'
@@ -834,6 +851,7 @@ sources:
     metadata:
       data_path: auc/iiif/sphinx
       config: auc_iiif_config
+      schedule: "40 6 * * *"
       fields:
         context:
           path: '@context'
@@ -885,6 +903,7 @@ sources:
     metadata:
       data_path: auc/iiif/taxiphote-slides
       config: auc_iiif_config
+      schedule: "0 7 * * *"
       fields:
         context:
           path: '@context'
@@ -940,6 +959,7 @@ sources:
     metadata:
       data_path: auc/iiif/underwood
       config: auc_iiif_config
+      schedule: "20 7 * * *"
       fields:
         context:
           path: '@context'
@@ -1001,6 +1021,7 @@ sources:
     metadata:
       data_path: auc/iiif/university-on-the-square
       config: auc_iiif_config
+      schedule: "40 7 * * *"
       fields:
         context:
           path: '@context'
@@ -1050,6 +1071,7 @@ sources:
     metadata:
       data_path: auc/iiif/wassef
       config: auc_iiif_config
+      schedule: "0 8 * * *"
       fields:
         context:
           path: '@context'

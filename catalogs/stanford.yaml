@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: stanford
+  schedule: "40 12 * * *"
 sources:
   rumsey_maps:
     description: "Rumsey Maps"

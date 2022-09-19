@@ -1,6 +1,7 @@
 metadata:
   version: 1
   data_path: manchester
+  schedule: "40 10 * * *"
 sources:
   nashriyah:
     driver: oai_xml
