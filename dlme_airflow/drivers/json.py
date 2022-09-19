@@ -1,8 +1,8 @@
-import pandas
 import logging
 import requests
 import jsonpath_ng
 
+from pandas import DataFrame
 from intake.source.base import DataSource, Schema
 
 
@@ -62,19 +62,14 @@ class JsonSource(DataSource):
         self.collection_url = collection_url
         self.metadata = metadata
         self.csv_kwargs = csv_kwargs
-        self.record_limit = self.metadata.get("record_limit", None)
-        self.record_count = 0
         self._setup_json_paths()
 
-    def read(self):
+    def read(self) -> DataFrame:
         self._load_metadata()
         df = self._get_dataframe()
-        if self.record_limit:
-            return df.head(self.record_limit)
-        else:
-            return df
+        return df
 
-    def _get_schema(self):
+    def _get_schema(self) -> Schema:
         return Schema(
             datashape=None,
             dtype=self.csv_kwargs.get("dtype"),
@@ -82,7 +77,7 @@ class JsonSource(DataSource):
             npartitions=1,
         )
 
-    def _get_dataframe(self):
+    def _get_dataframe(self) -> DataFrame:
         resp = requests.get(self.collection_url)
         if resp.status_code != 200:
             raise Exception(
@@ -90,29 +85,33 @@ class JsonSource(DataSource):
             )
         return self._process_json(resp.json())
 
-    def _process_json(self, data):
-        result = self.record_selector.find(data)
-        if len(result) == 0:
-            raise Exception(
+    def _process_json(self, data) -> list:
+        # record_selector usually identifies a single list, but it could
+        # identify more than one if the jsonpath allows for that
+        record_containers = self.record_selector.find(data)
+        if len(record_containers) == 0:
+            logging.warn(
                 f"Couldn't find records selector: {self.record_selector.expression}"
             )
+            return []
 
         objects = []
-        for rec in result[0].value:
-            obj = {}
-            for field in self.field_paths:
-                path = field["path"]
-                name = field["name"]
-                result = path.find(rec)
-                if len(result) == 1:
-                    obj[name] = result[0].value
-                elif len(result) > 1:
-                    obj[name] = [m.value for m in result]
-                elif not field["optional"]:
-                    raise Exception(f"{name} is not optional")
-            objects.append(obj)
+        for record_container in record_containers:
+            for rec in record_container.value:
+                obj = {}
+                for field in self.field_paths:
+                    path = field["path"]
+                    name = field["name"]
+                    result = path.find(rec)
+                    if len(result) == 1:
+                        obj[name] = result[0].value
+                    elif len(result) > 1:
+                        obj[name] = [m.value for m in result]
+                    elif not field["optional"]:
+                        logging.warn(f"{name} is not optional")
+                objects.append(obj)
 
-        return pandas.DataFrame(objects)
+        return DataFrame(objects)
 
     def _setup_json_paths(self):
         # get the record selector and parse it

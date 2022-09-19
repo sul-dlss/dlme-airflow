@@ -1,5 +1,4 @@
 import json
-import pytest
 
 from dlme_airflow.drivers.json import JsonSource
 
@@ -17,7 +16,7 @@ def test_happy_path(requests_mock):
         "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json"
     )
 
-    # this jmespath configuration is required in the intake catalog
+    # this jsonpath configuration is required in the intake catalog
     metadata = {
         "record_selector": "content.results",
         "fields": {
@@ -55,21 +54,3 @@ def test_happy_path(requests_mock):
         df.thumbnail[99]
         == "https://tile.loc.gov/image-services/iiif/service:amed:amedpllc:00406537456:0055/full/pct:6.25/0/default.jpg"
     )
-
-
-def test_required(requests_mock):
-    requests_mock.get("https://example.com", json={"stuff": [{"title": "hi!"}]})
-    collection_url = "https://example.com"
-    metadata = {
-        "record_selector": "stuff",
-        "fields": {
-            "title": {"path": "title"},
-            "author": {"path": "author"},
-        },
-    }
-
-    with pytest.raises(Exception) as e:
-        js = JsonSource(collection_url, metadata=metadata)
-        js.read()
-
-    assert e.match("author is not optional")
