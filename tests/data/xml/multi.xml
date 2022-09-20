@@ -1,0 +1,14 @@
+<records>
+    <record>
+        <id>1</id>
+        <title>Article 1</title>
+        <name>Donna Haraway</name>
+        <name>bell hooks</name>
+    </record>
+    <record>
+        <id>2</id>
+        <title>Article 2</title>
+        <name>Elinor Ostrom</name>
+        <name>Ivan Illich</name>
+    </record>
+</records>

@@ -1,16 +1,19 @@
 import intake
 import logging
-import pandas as pd
 import requests
+import pandas as pd
+
 from lxml import etree
 from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
+
+from typing import Union, List, Dict
 
 
 class XmlSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "xml"
-    version = "0.0.1"
+    version = "0.0.2"
     partition_access = True
 
     def __init__(self, collection_url, dtype=None, metadata=None):
@@ -23,43 +26,59 @@ class XmlSource(intake.source.base.DataSource):
     def _open_collection(self):
         collection_result = requests.get(self.collection_url).content
         xtree = etree.fromstring(collection_result)
-        elements = xtree.findall(
+        record_elements = xtree.findall(
             self._record_selector["path"], namespaces=self._record_selector["namespace"]
         )
-        for counter, element in enumerate(elements, start=1):
-            record = self._construct_fields(element)
+        for record_el in record_elements:
+            record = self._construct_fields(record_el)
             self._records.append(record)
 
-    def _construct_fields(self, manifest: etree) -> dict:
-        output = {}
+    def _construct_fields(self, record_el: etree) -> dict:
+        record: Dict[str, Union[str, List]] = {}
         for field in self._path_expressions:
+
+            # look for the field in our data
             path = self._path_expressions[field]["path"]
             namespace = self._path_expressions[field].get("namespace", {})
             optional = self._path_expressions[field].get("optional", False)
-            result = manifest.xpath(path, namespaces=namespace)
-            if len(result) < 1:
+            els = record_el.xpath(path, namespaces=namespace)
+
+            if len(els) == 0:
                 if optional is True:
-                    # Skip and continue
                     continue
                 else:
-                    logging.warn(f"Manifest missing {field}")
+                    logging.warn(f"Record missing {field}")
             else:
-                try:
-                    field_doc = document_fromstring(result[0].text)
-                    cleaner = Cleaner(remove_unknown_tags=False, page_structure=True)
-                    output[field] = self.sanitize_value(
-                        cleaner.clean_html(field_doc).text_content()
-                    )  # Use first value
-                except AttributeError:
-                    output[field] = self.sanitize_value(
-                        result[0]
-                    )  # if getting text fails, we may be pulling an attribute.
-        return output
+                for el in els:
+                    if hasattr(el, "text") and el.text is not None:
+                        field_doc = document_fromstring(el.text)
+                        cleaner = Cleaner(
+                            remove_unknown_tags=False, page_structure=True
+                        )
+                        cleaned_el = cleaner.clean_html(field_doc)
+                        value = self.sanitize_value(cleaned_el.text_content())
+                    elif issubclass(type(el), str):
+                        value = self.sanitize_value(el)
+                    else:
+                        # we likely have an empty element
+                        continue
 
-    def sanitize_value(self, value):
+                    # a record with only value for a field will get a string
+                    # but records with multiple values for a field get a list
+
+                    if field in record and type(record[field]) == list:
+                        record[field].append(value)  # type: ignore
+                    elif field in record:
+                        record[field] = [record[field], value]
+                    else:
+                        record[field] = value
+
+        return record
+
+    def sanitize_value(self, value) -> str:
         return value.strip().replace("\n", " ").replace("\r", "")
 
-    def _get_partition(self, i) -> pd.DataFrame:
+    def _get_partition(self, _) -> pd.DataFrame:
         return pd.DataFrame(self._records)
 
     def _get_record_selector(self):
@@ -87,7 +106,7 @@ class XmlSource(intake.source.base.DataSource):
             datashape=None,
             dtype=self.dtype,
             shape=None,
-            npartitions=len(self._records),
+            npartitions=1,
             extra_metadata={},
         )
 
