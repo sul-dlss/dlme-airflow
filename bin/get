@@ -39,7 +39,10 @@ if __name__ == "__main__":
     parser.add_argument('collection', help="The provider's collection (e.g. penn_egyptian")
     parser.add_argument("--output", help="File to write CSV output to")
     parser.add_argument("--limit", type=int, help="Limit output to number of rows")
+    parser.add_argument("--log", default="get.log", help="A file path to write log messages")
     opts = parser.parse_args()
+
+    logging.basicConfig(filename=opts.log, format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
 
     # Ignore broken pipe errors when running from the command line.
     # This allows: bin/get penn penn_babylonian | head -10

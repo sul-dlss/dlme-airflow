@@ -67,3 +67,9 @@ def test_marc21(mock_marc21):
     assert len(df) == 182, "expected number of rows"
     assert len(df.columns) == 92, "expected number of columns"
     assert "245_a" in df.columns, "marc field 245 subfield a extracted"
+
+
+def test_wait(mock_oai_dc):
+    # ensure that the wait option can be used
+    oai = OaiXmlSource("https://example.org", "oai_dc", wait=2)
+    assert oai

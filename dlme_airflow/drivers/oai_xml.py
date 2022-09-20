@@ -1,9 +1,11 @@
+import time
 import logging
 import intake
 import pandas as pd
 
 from lxml import etree
 from sickle import Sickle
+from sickle.iterator import OAIItemIterator
 
 # xml namespaces and the prefixes that are used in parsing
 
@@ -21,7 +23,13 @@ class OaiXmlSource(intake.source.base.DataSource):
     partition_access = True
 
     def __init__(
-        self, collection_url, metadata_prefix, set=None, dtype=None, metadata=None
+        self,
+        collection_url,
+        metadata_prefix,
+        set=None,
+        wait=0,
+        dtype=None,
+        metadata=None,
     ):
         super(OaiXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
@@ -29,7 +37,10 @@ class OaiXmlSource(intake.source.base.DataSource):
         self.record_limit = self.metadata.get("record_limit", None)
         self.record_count = 0
         self.set = set
-        self._collection = Sickle(self.collection_url)
+        self.wait = wait
+        self._collection = Sickle(
+            self.collection_url, iterator=make_iterator(self.wait)
+        )
         self._path_expressions = self._get_path_expressions()
         self._records = []
 
@@ -191,3 +202,24 @@ class OaiXmlSource(intake.source.base.DataSource):
             return df.head(self.record_limit)
         else:
             return df
+
+
+def make_iterator(wait):
+    """
+    Return an iterator class depending on the desired wait behavior. If wait is
+    0 then the default iterator class is returned: OAIItemIterator. Otherwise a
+    WaitIterator class is created dynamically using the wait value, and it is
+    returned. WaitIterator will be a subclass of OAIItemIterator but it will
+    sleep for the given amount of seconds between issuing requests.
+    """
+    if wait == 0:
+        return OAIItemIterator
+
+    def _next_response(self):
+        logging.info(f"sleeping {wait} seconds")
+        time.sleep(wait)
+        super(type(self), self)._next_response()
+
+    # create a type SlowIterator that inherits from OAIItemIterator and
+    # overrides the _next_response method
+    return type("SlowIterator", (OAIItemIterator,), {"_next_response": _next_response})
