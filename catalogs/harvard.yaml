@@ -18,3 +18,76 @@ sources:
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
           optional: True
+  scw:
+    description: "Stuart Cary Welsch Collection"
+    driver: xml
+    metadata:
+      data_path: harvard/scw
+      config: harvard_scw_config
+      record_selector:
+        path: ".//mods:mods"
+        namespace:
+          mods: "http://www.loc.gov/mods/v3"
+      fields:
+        id:
+          path: ".//mods:recordInfo/mods:recordIdentifier"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title:
+          path: ".//mods:titleInfo/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: true
+        type:
+          path: ".//mods:typeOfResource"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        genre:
+          path: ".//mods:genre"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        place:
+          path: ".//mods:originInfo/mods:place/mods:placeTerm"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        start_date:
+          path: ".//mods:originInfo/mods:dateCreated[@point = 'start']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        end_date:
+          path: ".//mods:originInfo/mods:dateCreated[@point = 'end']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        physical_description:
+          path: ".//mods:physicalDescription/mods:extent"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        subject:
+          path: ".//mods:subject/mods:topic"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        physical_location:
+          path: ".//mods:location/mods:physicalLocation"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shown_at:
+          path: ".//mods:relatedItem[@otherType = 'HOLLIS Images record']/mods:location/mods:url"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        preview:
+          path: ".//mods:relatedItem[@type = 'constituent']/mods:location/mods:url[@displayLabel = 'Thumbnail']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+    args:
+      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*
