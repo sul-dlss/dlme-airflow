@@ -8,7 +8,7 @@ sources:
     args:
       collection_url: https://api.qdl.qa/api/oaipmh
       metadata_prefix: mods_no_ocr
-      set:
+      wait: 2
     metadata:
       data_path: qnl/british-library-combined
       post_harvest: "merge_records"
