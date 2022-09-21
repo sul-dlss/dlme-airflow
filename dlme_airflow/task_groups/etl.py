@@ -14,18 +14,11 @@ from dlme_airflow.tasks.post_harvest import build_post_harvest_task
 from dlme_airflow.tasks.transform import build_transform_task
 from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
+from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
 from dlme_airflow.task_groups.validate_dlme_metadata import (
     build_sync_metadata_taskgroup,
 )
-
-
-def validate_harvest(**kwargs):
-    collection = kwargs["collection"]
-    if False:
-        return f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.skip_load_data"
-    else:
-        return f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.load_data"
 
 
 def etl_tasks(provider, dag: DAG) -> list[TaskGroup]:
@@ -59,14 +52,15 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
         skip_load_data = DummyOperator(task_id="skip_load_data", trigger_rule="none_failed")
         load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
-        validate_harvest_task = BranchPythonOperator(
-            task_id="validate_harvest",
-            task_group=collection_etl_taskgroup,
-            python_callable=validate_harvest,
-            op_kwargs = {
-                "collection": collection
-            }
-        )
+        validate_harvest_task = build_validate_harvest_task(collection, collection_etl_taskgroup, dag)
+        # validate_harvest_task = BranchPythonOperator(
+        #     task_id="validate_harvest",
+        #     task_group=collection_etl_taskgroup,
+        #     python_callable=validate_harvest,
+        #     op_kwargs = {
+        #         "collection": collection
+        #     }
+        # )
 
         # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
