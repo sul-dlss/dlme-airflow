@@ -1,0 +1,52 @@
+metadata:
+  version: 1
+  data_path: sakip-sabanci
+  schedule: "0 12 * * *"
+sources:
+  abdul_hamid_ii_books:
+    description: "Abdul Hamid II Books"
+    driver: json
+    metadata:
+      data_path: loc/abdul_hamid_ii_books
+      config: loc_config
+      schedule: "0 1 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
