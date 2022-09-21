@@ -79,6 +79,33 @@ sources:
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
+        shelf_locator:
+          path: ".//mods:location/mods:shelfLocator"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        record_identifier:
+          path: ".//mods:recordInfo/mods:recordIdentifier"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        language:
+          path: ".//mods:language/mods:languageTerm[@type = 'code']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        cdwastyle:
+          path: ".//mods:extension/cdwalite:styleWrap/cdwalite:style"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+            cdwalite: "http://www.getty.edu/research/conducting_research/standards/cdwa/cdwalite"
+          optional: false
+        cdwaculture:
+          path: ".//mods:extension/cdwalite:cultureWrap/cdwalite:culture"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+            cdwalite: "http://www.getty.edu/research/conducting_research/standards/cdwa/cdwalite"
+          optional: false
         shown_at:
           path: ".//mods:relatedItem[@otherType = 'HOLLIS Images record']/mods:location/mods:url"
           namespace:
