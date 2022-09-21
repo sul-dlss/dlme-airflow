@@ -3,7 +3,7 @@ import intake
 import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any
+from typing import Any, Optional
 
 container = "dataframe"
 name = "iiif_json"
@@ -22,12 +22,26 @@ class IiifJsonSource(intake.source.base.DataSource):
         self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        collection_result = requests.get(self.collection_url).json()
-        for manifest in collection_result.get("manifests", []):
-            self._manifest_urls.append(manifest.get("@id"))
+        logging.info(f"getting collection {self.collection_url}")
+        resp = requests.get(self.collection_url)
+        if resp.status_code == 200:
+            collection_result = resp.json()
+            for manifest in collection_result.get("manifests", []):
+                self._manifest_urls.append(manifest.get("@id"))
+        else:
+            logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
 
-    def _open_manifest(self, manifest_url: str) -> dict:
-        manifest_result = requests.get(manifest_url).json()
+    def _open_manifest(self, manifest_url: str) -> Optional[dict]:
+        logging.info(f"getting manifest {manifest_url}")
+        resp = requests.get(manifest_url)
+        if resp.status_code == 200:
+            manifest_result = resp.json()
+        else:
+            logging.error(
+                f"got {resp.status_code} when fetching manifest {manifest_url}"
+            )
+            return None
+
         record = self._extract_specified_fields(manifest_result)
         # Handles metadata in IIIF manifest
         record.update(
@@ -97,7 +111,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         # This will prevent rows with all empty values from being generated
         # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
 
-        if any(result.values()):
+        if result is not None and any(result.values()):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
