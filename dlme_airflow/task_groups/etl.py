@@ -7,7 +7,6 @@ from airflow import DAG
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
 from airflow.operators.dummy import DummyOperator
-from airflow.operators.python import BranchPythonOperator
 
 from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task
@@ -50,17 +49,13 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         index = index_task(collection, collection_etl_taskgroup, dag)
 
         etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
-        skip_load_data = DummyOperator(task_id="skip_load_data", trigger_rule="none_failed")
+        skip_load_data = DummyOperator(
+            task_id="skip_load_data", trigger_rule="none_failed"
+        )
         load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
-        validate_harvest_task = build_validate_harvest_task(collection, collection_etl_taskgroup, dag)
-        # validate_harvest_task = BranchPythonOperator(
-        #     task_id="validate_harvest",
-        #     task_group=collection_etl_taskgroup,
-        #     python_callable=validate_harvest,
-        #     op_kwargs = {
-        #         "collection": collection
-        #     }
-        # )
+        validate_harvest_task = build_validate_harvest_task(
+            collection, collection_etl_taskgroup, dag
+        )
 
         # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
