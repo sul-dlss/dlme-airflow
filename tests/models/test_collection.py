@@ -18,6 +18,6 @@ def test_Collection():
 def test_Provider_NotFound():
     with pytest.raises(ValueError) as error:
         provider = Provider("aub")
-        Collection(provider, "amc")
+        Collection(provider, "amc").catalog
 
     assert str(error.value) == "Provider (aub.amc) not found in catalog"

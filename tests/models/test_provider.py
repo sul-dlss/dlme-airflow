@@ -12,6 +12,6 @@ def test_Provider():
 
 def test_Provider_NotFound():
     with pytest.raises(ValueError) as error:
-        Provider("does_not_exist")
+        Provider("does_not_exist").catalog
 
     assert str(error.value) == "Provider (does_not_exist) not found in catalog"
