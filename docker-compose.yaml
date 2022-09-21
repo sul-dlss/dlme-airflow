@@ -55,6 +55,7 @@ x-airflow-common:
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 90
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # do not load example DAGs
     AIRFLOW__CORE__DAGS_FOLDER: '/opt/airflow/dlme_airflow/dags'
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Los_Angeles'
