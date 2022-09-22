@@ -47,7 +47,7 @@ def mock_collection(monkeypatch):
     monkeypatch.setattr(Collection, "data_path", mock_data_path)
 
 
-def test_validate_harvest(mock_boto3, mock_collection):
+def test_validate_harvest_skip_load_data(mock_boto3, mock_collection):
     os.environ["S3_BUCKET"] = "test-bucket"
     test_provider = Provider("provider")
     test_collection = Collection(test_provider, "collection")
@@ -62,3 +62,20 @@ def test_validate_harvest(mock_boto3, mock_collection):
     )
 
     assert next_task == "PROVIDER_ETL.collection_etl.skip_load_data"
+
+
+def test_validate_harvest_load_data(mock_boto3, mock_collection):
+    os.environ["S3_BUCKET"] = "test-bucket"
+    test_provider = Provider("provider")
+    test_collection = Collection(test_provider, "collection")
+    mock_task_instance = mock.Mock()
+    mock_task = mock.Mock()
+    mock_task_instance.xcom_pull.return_value = [
+        os.path.join(os.path.abspath("tests"), "data", "csv", "example2.csv")
+    ]
+    mock_task.upstream_task_ids = ["task_id_1", "task_id_2"]
+    next_task = validate_harvest(
+        mock_task_instance, mock_task, collection=test_collection
+    )
+
+    assert next_task == "PROVIDER_ETL.collection_etl.load_data"
