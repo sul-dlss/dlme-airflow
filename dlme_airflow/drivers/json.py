@@ -118,7 +118,10 @@ class JsonSource(DataSource):
         path = self.metadata.get("record_selector")
         if path is None:
             raise Exception("JsonSource metadata must define a record_selector")
-        self.record_selector = jsonpath_ng.parse(path)
+        try:
+            self.record_selector = jsonpath_ng.parse(path)
+        except Exception as e:
+            raise Exception(f"Invalid JSONPath record_selector {path}: {e}")
 
         # get the mapping of field names to jsonpaths
         fields = self.metadata.get("fields")
@@ -136,10 +139,15 @@ class JsonSource(DataSource):
             if path is None:
                 raise Exception(f"The metadata field {field_name} must define a path")
 
+            try:
+                path = jsonpath_ng.parse(path)
+            except Exception as e:
+                raise Exception(f"Invalid {field_name} JSONPath {path}: {e}")
+
             self.field_paths.append(
                 {
                     "name": field_name,
-                    "path": jsonpath_ng.parse(path),
+                    "path": path,
                     "optional": field_info.get("optional"),
                 }
             )
