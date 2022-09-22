@@ -1,0 +1,56 @@
+
+properties:
+  metadata:
+    description: Provider metadata
+    type: object
+    properties:
+      version:
+        type: integer
+      data_path:
+        description: Directory for data
+        type: string
+      schedule:
+        type: string
+    required: [data_path]
+  sources:
+    description: Collections from a provider
+    type: object
+    additionalProperties: # since each source has an arbitrary key
+      properties:
+        driver:
+          description: Driver for airflow
+          type: string
+          enum:
+            - csv
+            - custom_json
+            - iiif_json
+            - oai_xml
+            - sequential_csv
+            - xml
+      allOf:
+        - if: 
+            properties:
+              driver: 
+                const: oai_xml
+          then:
+            properties:
+              args:
+                type: object
+                properties:
+                  metadata_prefix:
+                    type: string
+                required: [metadata_prefix]
+        - if:
+            properties:
+              driver: 
+                const: custom_json
+          then:
+            properties:
+              metadata:
+                type: object
+                properties:
+                  record_selector:
+                    type: string
+                required: [record_selector]
+      required: [driver]
+required: [metadata, sources]
