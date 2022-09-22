@@ -25,7 +25,7 @@ def mock_boto3(monkeypatch):
 
         expected_params = {
             "Bucket": "test-bucket",
-            "Key": "metadata/provider/collection/data.csv",
+            "Key": "metadata/aims/data.csv",
         }
 
         s3 = botocore.session.get_session().create_client("s3")
@@ -39,18 +39,18 @@ def mock_boto3(monkeypatch):
     monkeypatch.setattr(boto3, "client", mock_client)
 
 
-@pytest.fixture
-def mock_collection(monkeypatch):
-    def mock_data_path(self):
-        return "provider/collection"
+# @pytest.fixture
+# def mock_collection(monkeypatch):
+#     def mock_data_path(self):
+#         return "provider/collection"
 
-    monkeypatch.setattr(Collection, "data_path", mock_data_path)
+#     monkeypatch.setattr(Collection, "data_path", mock_data_path)
 
 
-def test_validate_harvest_skip_load_data(mock_boto3, mock_collection):
+def test_validate_harvest_skip_load_data(mock_boto3):
     os.environ["S3_BUCKET"] = "test-bucket"
-    test_provider = Provider("provider")
-    test_collection = Collection(test_provider, "collection")
+    test_provider = Provider("aims")
+    test_collection = Collection(test_provider, "aims")
     mock_task_instance = mock.Mock()
     mock_task = mock.Mock()
     mock_task_instance.xcom_pull.return_value = [
@@ -61,13 +61,13 @@ def test_validate_harvest_skip_load_data(mock_boto3, mock_collection):
         mock_task_instance, mock_task, collection=test_collection
     )
 
-    assert next_task == "PROVIDER_ETL.collection_etl.skip_load_data"
+    assert next_task == "AIMS_ETL.aims_etl.skip_load_data"
 
 
-def test_validate_harvest_load_data(mock_boto3, mock_collection):
+def test_validate_harvest_load_data(mock_boto3):
     os.environ["S3_BUCKET"] = "test-bucket"
-    test_provider = Provider("provider")
-    test_collection = Collection(test_provider, "collection")
+    test_provider = Provider("aims")
+    test_collection = Collection(test_provider, "aims")
     mock_task_instance = mock.Mock()
     mock_task = mock.Mock()
     mock_task_instance.xcom_pull.return_value = [
@@ -78,4 +78,4 @@ def test_validate_harvest_load_data(mock_boto3, mock_collection):
         mock_task_instance, mock_task, collection=test_collection
     )
 
-    assert next_task == "PROVIDER_ETL.collection_etl.load_data"
+    assert next_task == "AIMS_ETL.aims_etl.load_data"

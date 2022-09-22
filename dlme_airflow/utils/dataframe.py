@@ -39,9 +39,3 @@ def dataframe_to_file(collection):
     source_df.to_csv(working_csv, index=False)
 
     return working_csv
-
-
-# TODO:
-#    - Add a dataframe_from_file matching the above s3 method
-#    - Add a dataframe_changed? method compairing old and new
-#    -- Consider moving the dataframe_to_file call into the collection model (i.e. collection.to_csv will call dataframe_to_file)

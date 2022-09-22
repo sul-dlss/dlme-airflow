@@ -49,13 +49,19 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         index = index_task(collection, collection_etl_taskgroup, dag)
 
         etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
-        skip_load_data = DummyOperator(
-            task_id="skip_load_data", trigger_rule="none_failed"
-        )
         load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
-        validate_harvest_task = build_validate_harvest_task(
-            collection, collection_etl_taskgroup, dag
-        )
+
+        if not os.getenv("SKIP_HARVEST_VALIDATION"):
+            skip_load_data = DummyOperator(
+                task_id="skip_load_data", trigger_rule="none_failed"
+            )
+            validate_harvest_task = build_validate_harvest_task(
+                collection, collection_etl_taskgroup, dag
+            )
+            harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            skip_load_data >> etl_complete
+        else:
+            harvest >> load_data
 
         # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
@@ -63,15 +69,14 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             post_harvest_task = build_post_harvest_task(
                 collection, collection_etl_taskgroup, dag
             )
-            harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            # harvest >> validate_harvest_task >> [load_data, skip_load_data]
             load_data >> post_harvest_task >> sync
         else:
-            harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            # harvest >> validate_harvest_task >> [load_data, skip_load_data]
             load_data >> sync
 
         # common tasks
         sync >> transform >> index
-        skip_load_data >> etl_complete
 
         # add report unless the environment says not to
         if not os.getenv("SKIP_REPORT"):
