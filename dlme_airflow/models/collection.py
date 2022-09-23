@@ -5,10 +5,7 @@ class Collection(object):
     def __init__(self, provider, collection):
         self.name = collection
         self.provider = provider
-
-    @property
-    def catalog(self):
-        return catalog_for_provider(f"{self.provider.name}.{self.name}")
+        self.catalog = catalog_for_provider(f"{self.provider.name}.{self.name}")
 
     def label(self):
         return f"{self.provider.name}_{self.name}"

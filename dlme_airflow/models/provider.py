@@ -5,10 +5,7 @@ from dlme_airflow.models.collection import Collection
 class Provider(object):
     def __init__(self, catalog):
         self.name = catalog
-
-    @property
-    def catalog(self):
-        return catalog_for_provider(self.name)
+        self.catalog = catalog_for_provider(self.name)
 
     @property
     def collections(self):
