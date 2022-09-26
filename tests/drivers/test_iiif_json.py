@@ -9,6 +9,10 @@ LOGGER = logging.getLogger(__name__)
 
 
 class MockIIIFCollectionResponse:
+    @property
+    def status_code(self):
+        return 200
+
     @staticmethod
     def json():
         return {
@@ -19,6 +23,10 @@ class MockIIIFCollectionResponse:
 
 
 class MockIIIFManifestResponse:
+    @property
+    def status_code(self):
+        return 200
+
     @staticmethod
     def json():
         return {
