@@ -41,12 +41,13 @@ open your browser to `http://localhost:8080`
 #### Allowing local Airflow to execute AWS resources
 
 In order to trigger `dlme-transform` or `dlme-index` while running Airflow locally via `docker compose` your
-`AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `DEV_ROLE_ARN`, `ECS_SECURITY_GROUP`, `ECS_SUBNET` must be set in your local environment and a [configured aws connection](https://github.com/sul-dlss/dlme-airflow/wiki/Amazon-Web-Services-(AWS)-connection-configuration). 
+`AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY_URL_ENCODED`, `DEV_ROLE_ARN`, `ECS_SECURITY_GROUP`, `ECS_SUBNET` must be set in your local environment. The connection is set up with the `AIRFLOW_CONN_AWS_CONN` variable in `docker-compose.yml` but you can alternatively [configure and AWS connection](https://github.com/sul-dlss/dlme-airflow/wiki/Amazon-Web-Services-(AWS)-connection-configuration) using the Airflow UI. 
 
 Add a `.env` file to the root directory of the project and add your AWS credentials:
 ```
 AWS_ACCESS_KEY={YOUR AWS_ACCESS_KEY}
-AWS_SECRET_ACCESS_KEY={YOUR AWS_SECRET_ACCESS_KEY}
+AWS_SECRET_ACCESS_KEY={YOUR AWS_SECRET_ACCESS_KEY} 
+AWS_SECRET_ACCESS_KEY_URL_ENCODED={URL-encoded version of your AWS_SECRET_ACCESS_KEY}
 DEV_ROLE_ARN={The DEV_ROLE_ARN}
 ECS_SECURITY_GROUP={Get value from shared configs}
 ECS_SUBNET={Get value from shared configs}
