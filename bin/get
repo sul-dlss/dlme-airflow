@@ -17,14 +17,14 @@ def main(opts):
     provider = Provider(opts.provider)
     collection = provider.get_collection(opts.collection)
     if collection is None:
-        sys.exit("No such collection {opts.collection} for provider {opts.provider}")
+        sys.exit(f'💥 Provider "{opts.provider}" does not have a collection "{opts.collection}"')
 
     # set driver record limit if it is allowed by the driver
     if opts.limit: 
         if hasattr(collection.catalog, 'record_limit'):
             collection.catalog.record_limit = opts.limit
         else:
-            logging.error(f"Unable to use --limit with {type(collection.catalog).name} driver")
+            sys.exit(f"💥 Unable to use --limit with {type(collection.catalog).name} driver")
     
     # read the data
     df = collection.catalog.read()
