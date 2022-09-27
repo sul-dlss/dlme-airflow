@@ -1,12 +1,16 @@
 #!/usr/bin/python
-import dominate
-from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
+import io
 import json
 from collections import Counter, defaultdict
 from datetime import date
+import logging
+import random
+
+from dominate import document
+from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
+from PIL import Image
 import requests
 import validators
-
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
@@ -83,89 +87,158 @@ MODIFY_MACROS = {
     "translation_map": "The output value was mapped to a value in a DLME controlled vocabulary.",
 }
 
+IGNORE_FIELDS = [
+    "agg_data_provider",
+    "agg_data_provider_collection",
+    "agg_data_provider_country",
+    "agg_provider",
+    "agg_provider_country",
+    "cho_type_facet",
+    "dlme_collection",
+    "dlme_source_file",
+    "id",
+    "transform_version",
+    "transform_timestamp",
+]
+
+IGNORE_VALUES = [
+    "wr_dc_rights",
+    "wr_edm_rights",
+    "wr_is_referenced_by",
+    "fields_covered",
+]
+
+
+def write_file(url, filename):
+    with open(filename, "wb") as file:
+        try:
+            response = requests.get(url, allow_redirects=True)
+            response.raise_for_status()
+            file.write(response.content)
+        except requests.exceptions.RequestException as exception:
+            logging.error(f"Could not retrieve {url}: {exception}")
+            raise
+
+
+def count_fields(field, metadata):
+    """Increment counts for fields"""
+    if field not in IGNORE_FIELDS:
+        counts[field].update({"fields_covered": 1})
+        if isinstance(metadata, dict):
+            for key, values in metadata.items():
+                if isinstance(values, list):
+                    counts[field].update({key: len(values)})
+                else:
+                    counts[field].update({key: 1})
+        else:  # dates and other array or string values
+            counts[field].update({"values": 1})
+
 
 def thumbnail_report(image_sizes_list):
     """Takes a list of tuples as input and outputs a thumbnail image size report."""
-    passed_rec = 0
-    failed_rec = 0
+    passed_records = 0
+    failed_records = 0
     REC_SIZE = 400
 
-    for i in image_sizes_list:
-        if i[0] >= REC_SIZE or i[1] >= REC_SIZE:
-            passed_rec += 1
-        else:
-            failed_rec += 1
+    if not image_sizes_list:
+        return "No thumbnail images were resolvable."
+    else:
+        for size in image_sizes_list:
+            if size[0] >= REC_SIZE or size[1] >= REC_SIZE:
+                passed_records += 1
+            else:
+                failed_records += 1
 
-    return f"{round((passed_rec/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."  # noqa: E501
-
-
-def image_size(response) -> tuple[int, int]:
-    """Takes an http response and returns an image size."""
-    if not isinstance(response, requests.models.Response):
-        raise TypeError(
-            "The parameter passed to the image_size function is not an http response."
-        )
-    # print(Image.open(response.raw))
-    # size = Image.open(response.raw).size
-    # dataBytesIO = io.BytesIO(Image.open(response))
-    # size = Image.open(dataBytesIO).size
-    return (300, 265)  # should return size
+        return f"{round((passed_records/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."  # noqa: E501
 
 
-# validate urls
+def image_size(content) -> tuple[int, int]:
+    image = Image.open(io.BytesIO(content))
+
+    return image.size
+
+
 def validate_url(url):
     """Checks if url has valid form."""
-    if not validators.url(url):
-        raise f"Invalid url: {url}"
+    if validators.url(url):
+        return True
+    return False
 
 
-# resolve urls
-def resolve_url(response):
-    """Checks if url is resolvable."""
+def resolve_resource_url(record):
+    """Check resolvability of resource URL"""
+    url = record.get("agg_is_shown_at").get("wr_id")
+    unresolvable_message = (
+        f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {url}"
+    )
+    if validate_url(url):
+        try:
+            response = requests.head(
+                url,
+                allow_redirects=True,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:105.0) Gecko/20100101 Firefox/105.0"
+                },
+            )
+            if not response.ok:  # status_code < 400
+                unresolvable_resources.append(unresolvable_message)
+        except requests.exceptions.RequestException:
+            unresolvable_resources.append(unresolvable_message)
+    else:
+        unresolvable_resources.append(unresolvable_message)
+
+
+def resolve_thumbnail_url(record):
+    """Check resolvability of thumbnail URL"""
+    url = record.get("agg_preview").get("wr_id")
+    unresolvable_message = (
+        f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {url}"
+    )
+    if not validate_url(url):
+        unresolvable_thumbnails.append(unresolvable_message)
+        return
     try:
-        if response.status_code == 200:
-            return True
-    except AttributeError:
-        print("The value passed to resolve_url was not a valid url.")
+        response = requests.get(url, stream=True)
+        if response.ok:  # status_code < 400
+            thumbnail_image_urls.append(url)
+        else:
+            unresolvable_thumbnails.append(unresolvable_message)
+    except requests.exceptions.RequestException:
+        unresolvable_thumbnails.append(unresolvable_message)
 
 
-# Define variables for capturing data from main
+def sample_image_sizes(thumbnail_urls) -> list[tuple[int, int]]:
+    """Gets image sizes for a sample of thumbnails"""
+    sizes = []
+    if len(thumbnail_urls) > 5000:
+        sample = random.sample(thumbnail_urls, 250)
+    elif len(thumbnail_urls) > 100:
+        sample = random.sample(thumbnail_urls, 50)
+    else:
+        sample = thumbnail_urls
+    for url in sample:
+        try:
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+            sizes.append(image_size(response.content))
+        except requests.exceptions.RequestException:
+            continue  # skip image
+
+    return sizes
+
+
+# Define variables for collecting data from main
+thumbnail_image_urls: list[str] = []
 thumbnail_image_sizes: list[tuple[int, int]] = []
 unresolvable_resources: list[str] = []
 unresolvable_thumbnails: list[str] = []
+counts: defaultdict = defaultdict(Counter)
 
 
 def main(**kwargs):  # input:, config:):
     """Captures all field value counts in counter object and writes report to html file."""
-    DATE_ARRAY_FIELDS = ["cho_date_range_hijri", "cho_date_range_norm"]
-    IGNORE_FIELDS = [
-        "agg_data_provider",
-        "agg_data_provider_collection",
-        "agg_data_provider_country",
-        "agg_provider",
-        "agg_provider_country",
-        "cho_type_facet",
-        "dlme_collection",
-        "dlme_source_file",
-        "id",
-        "transform_version",
-        "transform_timestamp",
-    ]
-
-    IGNORE_VALUES = [
-        "wr_dc_rights",
-        "wr_edm_rights",
-        "wr_is_referenced_by",
-        "fields_covered",
-    ]
-
     record_count = 0
     # merge all records into single counter object and write field report
-    counts = defaultdict(Counter)
-    # for storing resource information during iteration
-    unresolvable_resources = []
-    unresolvable_thumbnails = []
-    thumbnail_image_sizes = []
 
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
@@ -176,83 +249,30 @@ def main(**kwargs):  # input:, config:):
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
     config_file = f"/tmp/{provider_id}_{collection_id}_config.rb"
-    r = requests.get(config_url, allow_redirects=True)
-    open(config_file, "wb").write(r.content)
+    write_file(config_url, config_file)
 
     input_url = f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{data_path}.ndjson"
-    input_file = f"/tmp/output-{provider_id}-{collection_id}.njson"
-    r = requests.get(input_url, allow_redirects=True)
-    open(input_file, "wb").write(r.content)
+    input_file = f"/tmp/output-{provider_id}-{collection_id}.ndjson"
+
+    write_file(input_url, input_file)
 
     with open(input_file, "r") as file:
-        records = file.readlines()
-        provider = json.loads(records[0])["agg_data_provider"]["en"][0]
-        collection = json.loads(records[0])["agg_data_provider_collection"]["en"][0]
-        record_count = len(records)
+        for line in file:
+            if line.strip():  # if line is not empty
+                record = json.loads(line)
+                record_count += 1
+                for field, metadata in record.items():
+                    count_fields(field, metadata)
 
-        # get counts for fields, values, languages
-        for count, record in enumerate(records, start=1):
-            if len(record) <= 1:
+                # Resolve resource and thumbnail urls
+                resolve_resource_url(record)
+                resolve_thumbnail_url(record)
+            else:  # if line is empty
                 continue
 
-            record = json.loads(record)
-            for field, metadata in record.items():
-                if field not in IGNORE_FIELDS:
-                    counts[field].update({"fields_covered": 1})
-                    if isinstance(metadata, dict):
-                        for key, values in metadata.items():
-                            if isinstance(values, list):
-                                counts[field].update({key: len(values)})
-                            else:
-                                counts[field].update({key: 1})
-                    elif field in DATE_ARRAY_FIELDS:
-                        counts[field].update({"values": 1})
-                    else:
-                        counts[field].update({"values": len(metadata)})
+    thumbnail_image_sizes = sample_image_sizes(thumbnail_image_urls)
 
-            # Resolve resource url
-            validate_url(record["agg_is_shown_at"]["wr_id"])  # will fail if invalid url
-            try:
-                resource = requests.get(record["agg_is_shown_at"]["wr_id"], stream=True)
-                if not resolve_url(resource):
-                    unresolvable_resources.append(
-                        f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_is_shown_at']['wr_id']}"
-                    )
-            except:  # noqa: E722
-                unresolvable_resources.append(
-                    f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_is_shown_at']['wr_id']}"
-                )
-
-            # Resolve thumbnail url, get size for sample of images or all
-            # depending on number of records in dataset
-            if "agg_preview" in record.keys():
-                validate_url(record["agg_preview"]["wr_id"])  # will fail if invalid url
-                try:
-                    thumbnail = requests.get(
-                        record["agg_preview"]["wr_id"], stream=True
-                    )
-                    if not resolve_url(thumbnail):
-                        unresolvable_thumbnails.append(
-                            f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
-                        )
-                except:  # noqa: E722
-                    unresolvable_thumbnails.append(
-                        f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {record['agg_preview']['wr_id']}"
-                    )
-
-                if len(records) > 5000:
-                    if count % 20 == 0:
-                        thumbnail_image_sizes.append(image_size(thumbnail))
-                elif len(records) > 500:
-                    if count % 10 == 0:
-                        thumbnail_image_sizes.append(image_size(thumbnail))
-                if len(records) > 100:
-                    if count % 2 == 0:
-                        thumbnail_image_sizes.append(image_size(thumbnail))
-                else:
-                    thumbnail_image_sizes.append(image_size(thumbnail))
-
-    doc = dominate.document(title="DLME Metadata Report")
+    doc = document(title="DLME Metadata Report")
 
     with doc.head:
         style(
@@ -279,8 +299,8 @@ def main(**kwargs):  # input:, config:):
         )
 
     with doc:
-        h1(f"DLME Metadata Report for {provider}")
-        h2(f"{collection} ({date.today()})")
+        h1(f"DLME Metadata Report for {provider_id}")
+        h2(f"{collection_id} ({date.today()})")
 
         with div():
             attr(cls="body")
@@ -312,7 +332,6 @@ def main(**kwargs):  # input:, config:):
                                 )
                             else:
                                 languages[k] = v
-
                         if languages:
                             sub_field_list += li(
                                 f"Average number of values: {round((sum(languages.values())/record_count), 2)}"
@@ -334,7 +353,7 @@ def main(**kwargs):  # input:, config:):
 
                         u_list.add(
                             li(
-                                f"{counts['agg_preview']['wr_id']} of {len(records)} records had valid urls to thumbnail images."
+                                f"{counts['agg_preview']['wr_id']} of {record_count} records had valid urls to thumbnail images."
                             )
                         )
                         if len(unresolvable_thumbnails) > 0:
@@ -349,7 +368,7 @@ def main(**kwargs):  # input:, config:):
 
                         u_list.add(
                             li(
-                                f"{counts['agg_is_shown_at']['wr_id']} of {len(records)} records had valid urls to resources."
+                                f"{counts['agg_is_shown_at']['wr_id']} of {record_count} records had valid urls to resources."
                             )
                         )
                         if len(unresolvable_resources) > 0:
@@ -363,7 +382,7 @@ def main(**kwargs):  # input:, config:):
                                 unresolvable_resources_list.add(li(i))
                         u_list.add(
                             li(
-                                f"{counts['agg_is_shown_at']['wr_is_referenced_by']} of {len(records)} records had iiif manifests."
+                                f"{counts['agg_is_shown_at']['wr_is_referenced_by']} of {record_count} records had iiif manifests."
                             )
                         )
 
@@ -375,7 +394,7 @@ def main(**kwargs):  # input:, config:):
                     u_list = ul()
                     u_list.add(
                         li(
-                            f"{counts['cho_dc_rights']['fields_covered']} of {len(records)} records had a clearly expressed copyright status for the cultural heritage object."  # noqa: E501
+                            f"{counts['cho_dc_rights']['fields_covered']} of {record_count} records had a clearly expressed copyright status for the cultural heritage object."  # noqa: E501
                         )
                     )
                     if counts["agg_is_shown_at"]["wr_edm_rights"] > 0:
@@ -384,12 +403,12 @@ def main(**kwargs):  # input:, config:):
                         wr_count = counts["agg_is_shown_at"]["wr_dc_rights"]
                     u_list.add(
                         li(
-                            f"{wr_count} of {len(records)} records had a clearly expressed copyright status for the web resource."
+                            f"{wr_count} of {record_count} records had a clearly expressed copyright status for the web resource."
                         )
                     )
                     u_list.add(
                         li(
-                            f"{counts['agg_edm_rights']['fields_covered']} of {len(records)} records had clearly expressed aggregation rights."  # noqa: E501
+                            f"{counts['agg_edm_rights']['fields_covered']} of {record_count} records had clearly expressed aggregation rights."  # noqa: E501
                         )
                     )
 
