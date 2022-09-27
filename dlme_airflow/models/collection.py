@@ -14,4 +14,5 @@ class Collection(object):
         return self.catalog.metadata.get("data_path")
 
     def intermidiate_representation_location(self):
-        return f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{self.data_path()}.ndjson"
+        normalized_data_path = self.data_path().replace("/", "-")
+        return f"https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-{normalized_data_path}.ndjson"
