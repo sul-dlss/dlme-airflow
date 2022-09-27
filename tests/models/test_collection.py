@@ -11,7 +11,7 @@ def test_Collection():
     assert collection.data_path() == "aub/aco"
     assert (
         collection.intermidiate_representation_location()
-        == "https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-aub/aco.ndjson"
+        == "https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-aub-aco.ndjson"
     )
 
 
