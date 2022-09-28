@@ -161,7 +161,7 @@ sources:
       metadata_prefix: oai_dc
       set: p15795coll32
     metadata:
-      data_path: auc/iiif/campus_photos
+      data_path: auc/oai/campus_photos
       config: auc_oai_config
       schedule: "40 2 * * *"
       fields:
