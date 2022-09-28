@@ -11,6 +11,7 @@ sources:
       set: "Manchester~18~18"
     metadata:
       data_path: manchester/nashriyah
+      config: manchester_nashriyah_config_csv
       fields:
         id:
           path: "//header:identifier"
