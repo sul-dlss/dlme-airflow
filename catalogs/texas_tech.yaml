@@ -11,6 +11,7 @@ sources:
       set: "com_10605_355119"
     metadata:
       data_path: texas-tech
+      config: texas_tech_config_csv
       fields:
         id:
           path: "//header:identifier"
