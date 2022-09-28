@@ -8,8 +8,8 @@ sources:
     driver: sequential_csv
     metadata:
       data_path: yale/babylonian
-      post_harvest: "remove_babylon_non_relevant"
-      config: yale_babylon_config
+      post_harvest: "remove_babylonian_non_relevant"
+      config: yale_babylonian_config
       fields:
         id:
           name_in_dataframe: "id"

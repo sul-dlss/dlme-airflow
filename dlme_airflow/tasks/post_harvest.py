@@ -11,7 +11,7 @@ from dlme_airflow.utils.qnl import (
     merge_records,
 )
 from dlme_airflow.utils.yale import (
-    remove_babylon_non_relevant,
+    remove_babylonian_non_relevant,
 )
 
 # The method name/include must match the value in metadata.post_harvest from the catalog
