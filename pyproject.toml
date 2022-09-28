@@ -37,6 +37,7 @@ jsonschema = "^4.16.0"
 requests-mock = "^1.10.0"
 mock = "^4.0.3"
 types-mock = "^4.0.15"
+yamllint = "^1.28.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

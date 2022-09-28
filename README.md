@@ -124,6 +124,11 @@ To assist in passing the linter, use the [Black][BLK] opinionated code formatter
 by running `black dlme_airflow/path/to/file.py` (this will immediately apply the
 formatting it would suggest).
 
+To help keep Intake catalog configs consistent in terms of basic style and formatting, we're using [yamllint][YAMLLINT].
+To lint all of the configs, run `yamllint catalogs/`.  If you want to lint individual files, run e.g. `yamllint file1.yaml path/file2.yml`.
+Note that if `yamllint` produces warnings but no errors, it'll return an exit code of 0, allowing the build to pass. If
+it detects errors, it'll return an exit code of 1 and fail the build.
+
 ## Typechecking
 We're using [mypy][MYPY] for type checking.  Type checking is opt-in, so you shouldn't have to specify
 types for new code, and unknown types from dependencies will be ignored (via project configuration).  But if
@@ -142,6 +147,7 @@ You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/pat
 poetry run black --diff --check . &&
   poetry run mypy . &&
   poetry run flake8 &&
+  poetry run yamllint catalogs/ &&
   PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
 ```
 * run black first because it's fast; remove the flags to just apply formatting
@@ -260,3 +266,4 @@ $ bin/get yale babylonian --limit 20
 [Spotlight]: https://github.com/projectblacklight/spotlight
 [ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
 [MYPY]: https://mypy.readthedocs.io/
+[YAMLLINT]: https://yamllint.readthedocs.io/en/stable/index.html
