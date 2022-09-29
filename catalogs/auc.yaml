@@ -7,7 +7,7 @@ sources:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/iiif/al_musawwar
+      data_path: auc/al_musawwar
       config: auc
       schedule: "0 1 * * *"
       fields:
@@ -30,7 +30,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll29/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll29/manifest.json
       dtype:
         context: object
         id: object
@@ -54,7 +54,7 @@ sources:
     description: "Alexandria Bombardment of 1882 Photograph Album"
     driver: iiif_json
     args:
-      collection_url: "https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll9/manifest.json"
+      collection_url: "https://cdm15795.contentdm.oclc.org/info/p15795coll9/manifest.json"
       dtype:
         context: object
         id: object
@@ -82,7 +82,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      data_path: auc/iiif/alexandria-bombardment
+      data_path: auc/alexandria-bombardment
       config: auc
       schedule: "20 1 * * *"
       fields:
@@ -108,7 +108,7 @@ sources:
     description: "Bint al-Nil Journal"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll19/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll19/manifest.json
       dtype:
         context: object
         id: object
@@ -131,7 +131,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/iiif/bint_al_nil
+      data_path: auc/bint_al_nil
       config: auc
       schedule: "40 1 * * *"
       fields:
@@ -154,10 +154,10 @@ sources:
           path: 'thumbnail..@id'
           optional: true
   campus_photos:
-    description: "AUC Student Newspapers"
+    description: "AUC Campus Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll26/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll37/manifest.json
       dtype:
         context: object
         id: object
@@ -187,7 +187,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/iiif/coptic
+      data_path: auc/campus_photos
       config: auc
       schedule: "20 2 * * *"
       fields:
@@ -213,7 +213,7 @@ sources:
     description: "Iryan Moftah Coptic Language and Religion Manuscripts"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll4/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll4/manifest.json
       dtype:
         context: object
         id: object
@@ -243,7 +243,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/iiif/coptic
+      data_path: auc/coptic
       config: auc
       schedule: "20 2 * * *"
       fields:
@@ -269,7 +269,7 @@ sources:
     description: "Creswell Photographs of Islamic Architecture"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll14/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll14/p1.json
       dtype:
         context: object
         id: object
@@ -299,7 +299,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/iiif/creswell
+      data_path: auc/creswell
       config: auc
       schedule: "20 2 * * *"
       fields:
@@ -325,7 +325,7 @@ sources:
     description: "Hassan Fathy Architectural Archives"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll13/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll13/manifest.json
       dtype:
         context: object
         id: object
@@ -347,7 +347,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      data_path: auc/iiif/fathy
+      data_path: auc/fathy
       config: auc
       schedule: "0 3 * * *"
       fields:
@@ -373,7 +373,7 @@ sources:
     description: "Nicholas S. Hopkins Rural Egypt Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll12/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll12/manifest.json
       dtype:
         context: object
         id: object
@@ -394,7 +394,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/iiif/hopkins
+      data_path: auc/hopkins
       config: auc
       schedule: "20 3 * * *"
       fields:
@@ -420,7 +420,7 @@ sources:
     description: "Islamic Art & Architecture Slides"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll30/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll30/manifest.json
       dtype:
         context: object
         id: object
@@ -444,7 +444,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/iiif/islamic-aa
+      data_path: auc/islamic-aa
       config: auc
       schedule: "40 3 * * *"
       fields:
@@ -470,7 +470,7 @@ sources:
     description: "Kraus-Meyerhof Offprints"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll1/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll1/manifest.json
       dtype:
         context: object
         id: object
@@ -494,7 +494,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/iiif/kraus_meyerhof
+      data_path: auc/kraus_meyerhof
       config: auc
       schedule: "0 4 * * *"
       fields:
@@ -520,7 +520,7 @@ sources:
     description: "Historic Maps Digital Collection"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll6/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll6/manifest.json
       dtype:
         context: object
         id: object
@@ -546,7 +546,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      data_path: auc/iiif/maps
+      data_path: auc/maps
       config: auc
       schedule: "20 4 * * *"
       fields:
@@ -572,7 +572,7 @@ sources:
     description: "Philip Maritz Collection of Émile Béchard's Photographs of Egypt"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll16/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll16/manifest.json
       dtype:
         context: object
         id: object
@@ -598,7 +598,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/iiif/maritz
+      data_path: auc/maritz
       config: auc
       schedule: "40 4 * * *"
       fields:
@@ -624,7 +624,7 @@ sources:
     description: "Napoleonic Egypt"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll2/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll2/manifest.json
       dtype:
         context: object
         id: object
@@ -649,7 +649,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/iiif/napoleonic-egypt
+      data_path: auc/napoleonic-egypt
       config: auc
       schedule: "0 5 * * *"
       fields:
@@ -675,7 +675,7 @@ sources:
     description: "Richard B. Parker Nile Watercraft Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll31/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll31/manifest.json
       dtype:
         context: object
         id: object
@@ -697,7 +697,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/iiif/parker
+      data_path: auc/parker
       config: auc
       schedule: "20 5 * * *"
       fields:
@@ -723,7 +723,7 @@ sources:
     description: "Egyptian Postcard Collection"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll21/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll21/manifest.json
       dtype:
         context: object
         id: object
@@ -745,7 +745,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      data_path: auc/iiif/postcards
+      data_path: auc/postcards
       config: auc
       schedule: "40 5 * * *"
       fields:
@@ -771,7 +771,7 @@ sources:
     description: "Selections from the Rare Books and Special Collections Library"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll11/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll11/manifest.json
       dtype:
         context: object
         id: object
@@ -794,7 +794,7 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/iiif/rare-books
+      data_path: auc/rare-books
       config: auc
       schedule: "20 6 * * *"
       fields:
@@ -820,7 +820,7 @@ sources:
     description: "The Sphinx"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/sphinx/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/2/sphinx/p1.json
       dtype:
         context: object
         id: object
@@ -841,7 +841,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/iiif/sphinx
+      data_path: auc/sphinx
       config: auc
       schedule: "40 6 * * *"
       fields:
@@ -867,7 +867,7 @@ sources:
     description: "Taxiphote Slides"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll15/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll15/manifest.json
       dtype:
         context: object
         id: object
@@ -893,7 +893,7 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/iiif/taxiphote-slides
+      data_path: auc/taxiphote-slides
       config: auc
       schedule: "0 7 * * *"
       fields:
@@ -919,7 +919,7 @@ sources:
     description: ""
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll8/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll8/manifest.json
       dtype:
         context: object
         id: object
@@ -949,7 +949,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      data_path: auc/iiif/underwood
+      data_path: auc/underwood
       config: auc
       schedule: "20 7 * * *"
       fields:
@@ -975,7 +975,7 @@ sources:
     description: "University on the Square, Documenting Egypt's 21st Century Revolution"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll7/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll7/manifest.json
       dtype:
         context: object
         id: object
@@ -1011,9 +1011,65 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/iiif/university-on-the-square
+      data_path: auc/university-on-the-square
       config: auc
       schedule: "40 7 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  student_news:
+    description: "AUC Student Newspapers"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll26/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        alternative-title: object
+        author: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        name: object
+        patron: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        scribe: object
+        repository: object
+        location: object
+    metadata:
+      data_path: auc/student_news
+      config: auc
+      schedule: "20 2 * * *"
       fields:
         context:
           path: '@context'
@@ -1037,7 +1093,7 @@ sources:
     description: ""
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/info/p15795coll5/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll5/manifest.json
       dtype:
         context: object
         id: object
@@ -1061,7 +1117,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      data_path: auc/iiif/wassef
+      data_path: auc/wassef
       config: auc
       schedule: "0 8 * * *"
       fields:
