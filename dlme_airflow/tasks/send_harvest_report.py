@@ -11,7 +11,7 @@ def email_callback(task_instance, task, **kwargs):
     content = task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
 
     send_email(
-        to=["amcollie@stanford.edu"],
+        to=["dlme-monitoring@lists.stanford.edu"],
         subject=subject,
         html_content=content,
     )
