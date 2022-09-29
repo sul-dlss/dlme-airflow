@@ -185,7 +185,7 @@ def main(**kwargs):  # input:, config:):
     open(input_file, "wb").write(r.content)
 
     with open(input_file, "r") as file:
-        records = file.readlines()
+        records = [line for line in file.readlines() if line.strip()]
         provider = json.loads(records[0])["agg_data_provider"]["en"][0]
         collection = json.loads(records[0])["agg_data_provider_collection"]["en"][0]
         record_count = len(records)
