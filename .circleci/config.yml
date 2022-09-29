@@ -12,9 +12,14 @@ executors:
 
 jobs:
   build:
-    docker:
-      - image: cimg/python:3.9
+    executor:
+      name: python/default
+      tag: "3.10"
     steps:
+      - run:
+          command: |
+            poetry --version
+          name: Show poetry version
       - checkout
       - python/install-packages:
           pkg-manager: poetry
@@ -22,7 +27,7 @@ jobs:
   linting:
      executor: 
        name: python/default
-       tag: "3.9"
+       tag: "3.10"
      steps:
       - checkout
       - python/install-packages:
@@ -39,7 +44,7 @@ jobs:
   typechecking:
     executor:
       name: python/default
-      tag: "3.9"
+      tag: "3.10"
     steps:
       - checkout
       - python/install-packages:
@@ -47,12 +52,12 @@ jobs:
       - run:
           name: Type check with mypy
           command: |
-             poetry run mypy .
+             poetry run mypy dlme_airflow
 
   test:
      executor: 
        name: python/default
-       tag: "3.9"
+       tag: "3.10"
      steps:
        - checkout
        - python/install-packages:
