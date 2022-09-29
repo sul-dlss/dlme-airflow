@@ -38,4 +38,4 @@ def dataframe_to_file(collection):
     )
     source_df.to_csv(working_csv, index=False)
 
-    return working_csv
+    return {"working_csv": working_csv, "source_df": source_df}
