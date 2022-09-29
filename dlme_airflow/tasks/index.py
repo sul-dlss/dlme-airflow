@@ -4,12 +4,12 @@ import os
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.providers.amazon.aws.operators.ecs import ECSOperator
+from airflow.providers.amazon.aws.operators.ecs import EcsOperator
 from airflow.utils.task_group import TaskGroup
 
 
 def index_task(collection, task_group: TaskGroup, dag: DAG) -> TaskGroup:
-    return ECSOperator(
+    return EcsOperator(
         task_id=f"index_{collection.label()}",
         task_group=task_group,
         aws_conn_id="aws_conn",
