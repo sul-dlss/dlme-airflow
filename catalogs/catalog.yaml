@@ -19,6 +19,12 @@ sources:
     description: "American University of Beirut"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  auc:
+    args:
+      path: catalogs/auc.yaml
+    description: "American University in Cairo"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   bnf:
     args:
       path: catalogs/bnf.yaml
@@ -77,6 +83,12 @@ sources:
     args:
       path: catalogs/princeton.yaml
     description: Princeton University
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  sakip_sabanci_museum:
+    args:
+      path: catalogs/sakip_sabanci_museum.yaml
+    description: Sakip Sabanci Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   shahre_farang:
