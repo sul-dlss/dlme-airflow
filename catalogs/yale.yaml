@@ -9,7 +9,7 @@ sources:
     metadata:
       data_path: yale/babylonian
       post_harvest: "remove_babylonian_non_relevant"
-      config: yale_babylonian_config
+      config: yale_babylonian
       fields:
         id:
           name_in_dataframe: "id"

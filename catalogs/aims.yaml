@@ -8,7 +8,7 @@ sources:
     driver: xml
     metadata:
       data_path: aims
-      config: aims_config
+      config: aims
       record_selector:
         path: ".//item"
         namespace:

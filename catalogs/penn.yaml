@@ -7,9 +7,9 @@ sources:
     description: University of Pennsylvania Egyptian Museum
     driver: csv
     metadata:
-      data_path: penn/egyptian-museum
+      data_path: penn/egyptian_museum
       post_harvest: add_thumbnails
-      config: penn_egyptian_config
+      config: penn_egyptian
       fields:
         id:
           name_in_dataframe: "emuIRN"
@@ -51,9 +51,9 @@ sources:
     description: University of Pennsylvania Near Eastern Museum
     driver: csv
     metadata:
-      data_path: penn/near-eastern
+      data_path: penn/near_eastern_museum
       post_harvest: add_thumbnails
-      config: penn_near_east_config
+      config: penn_near_east
       fields:
         id:
           name_in_dataframe: "emuIRN"

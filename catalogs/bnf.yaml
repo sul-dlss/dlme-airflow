@@ -10,7 +10,7 @@ sources:
       collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29#resultat-id-3
     metadata:
       data_path: bnf/ideo
-      config: bnf_config
+      config: bnf
       record_selector:
         path: ".//oai_dc:dc"
         namespace:
@@ -72,7 +72,7 @@ sources:
       collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
     metadata:
       data_path: bnf/ifao
-      config: bnf_config
+      config: bnf
       record_selector:
         path: ".//item"
         namespace:

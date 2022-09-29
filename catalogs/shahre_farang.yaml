@@ -8,7 +8,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/arabic
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:
@@ -50,7 +50,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/english
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:
@@ -92,7 +92,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/persian
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:

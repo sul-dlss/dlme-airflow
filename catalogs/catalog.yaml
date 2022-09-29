@@ -7,9 +7,9 @@ sources:
     description: "American Institute for Maghrib Studies"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  ans:
+  american_numismatic_society:
     args:
-      path: catalogs/ans.yaml
+      path: catalogs/american_numismatic_society.yaml
     description: "American Numismatic Society"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
@@ -17,12 +17,6 @@ sources:
     args:
       path: catalogs/aub.yaml
     description: "American University of Beirut"
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
-  auc:
-    args:
-      path: catalogs/auc.yaml
-    description: "American University in Cairo IIIF Collections"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   bnf:
@@ -83,12 +77,6 @@ sources:
     args:
       path: catalogs/princeton.yaml
     description: Princeton University
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
-  sakip_sabanci:
-    args:
-      path: catalogs/sakip_sabanci.yaml
-    description: Sakip Sabanci Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   shahre_farang:

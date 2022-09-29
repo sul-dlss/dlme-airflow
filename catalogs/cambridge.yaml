@@ -11,7 +11,7 @@ sources:
       dtype:
     metadata:
       data_path: cambridge/genizah
-      config: cambridge_genizah_config
+      config: cambridge_genizah
       fields:
         id:
           path: "@id"
@@ -25,7 +25,7 @@ sources:
       dtype:
     metadata:
       data_path: cambridge/hebrew
-      config: cambridge_hebrew_config
+      config: cambridge_hebrew
       fields:
         id:
           path: "@id"
@@ -39,7 +39,7 @@ sources:
       dtype:
     metadata:
       data_path: cambridge/islamic
-      config: cambridge_islamic_config
+      config: cambridge_islamic
       fields:
         id:
           path: "@id"

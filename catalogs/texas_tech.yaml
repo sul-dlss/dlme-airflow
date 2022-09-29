@@ -10,8 +10,8 @@ sources:
       metadata_prefix: oai_dc
       set: "com_10605_355119"
     metadata:
-      data_path: texas-tech
-      config: texas_tech_config_csv
+      data_path: texas_tech
+      config: texas_tech
       fields:
         id:
           path: "//header:identifier"

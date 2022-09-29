@@ -10,8 +10,8 @@ sources:
       collection_url:
       dtype:
     metadata:
-      data_path: stanford/rumsey-maps
-      config: stanford_config
+      data_path: stanford/rumsey_maps
+      config: stanford
       fields:
         id:
           path: "@id"

@@ -11,7 +11,7 @@ sources:
       set: manuscripta
     metadata:
       data_path: csic/manuscripts
-      config: csic_config
+      config: csic
       fields:
         id:
           path: "//header:identifier"

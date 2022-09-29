@@ -135,3 +135,6 @@ dmypy.json
 /metadata/**/*
 metadata
 /ssh
+
+# DS Store
+echo .DS_Store >> ~/.gitignore_global

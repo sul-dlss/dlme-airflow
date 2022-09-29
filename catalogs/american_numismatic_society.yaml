@@ -1,14 +1,13 @@
 metadata:
   version: 1
-  data_path: american-numismatic-society
   schedule: "20 0 * * *"
 sources:
-  ans:
+  american_numismatic_society:
     description: American Numismatic Society
     driver: csv
     metadata:
-      data_path: american-numismatic-society
-      config: numismatic_csv_config
+      data_path: american_numismatic_society
+      config: american_numismatic_society
       fields:
         id:
           name_in_dataframe: "RecordId"

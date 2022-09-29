@@ -47,7 +47,7 @@ sources:
         contents: object
     metadata:
       data_path: bodleian/arabic
-      config: bodleian_arabic_config
+      config: bodleian_arabic
       fields:
         id:
           path: "@id"
@@ -78,8 +78,8 @@ sources:
         record-created: object
         holding-institution: object
     metadata:
-      data_path: bodleian/exploring-egypt
-      config: bodleian_egypt_config
+      data_path: bodleian/exploring_egypt
+      config: bodleian_egypt
       fields:
         id:
           path: "@id"
@@ -140,7 +140,7 @@ sources:
         digitization-sponsor: object
     metadata:
       data_path: bodleian/hebrew
-      config: bodleian_hebrew_config
+      config: bodleian_hebrew
       fields:
         id:
           path: "@id"
@@ -191,7 +191,7 @@ sources:
         editors: object
     metadata:
       data_path: bodleian/persian
-      config: bodleian_persian_config
+      config: bodleian_persian
       fields:
         id:
           path: "@id"
@@ -237,7 +237,7 @@ sources:
         contents: object
     metadata:
       data_path: bodleian/turkish
-      config: bodleian_turkish_config
+      config: bodleian_turkish
       fields:
         id:
           path: "@id"
