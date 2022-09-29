@@ -15,6 +15,7 @@ from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
+from dlme_airflow.tasks.transform_validation import build_transform_validation_task
 from dlme_airflow.task_groups.validate_dlme_metadata import (
     build_sync_metadata_taskgroup,
 )
@@ -46,6 +47,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         harvest = build_harvester_task(collection, collection_etl_taskgroup, dag)
         sync = build_sync_metadata_taskgroup(collection, dag)
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
+        validate_transformation = build_transform_validation_task(
+            collection, collection_etl_taskgroup, dag, harvest.task_id
+        )
         index = index_task(collection, collection_etl_taskgroup, dag)
 
         etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
@@ -76,7 +80,7 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             load_data >> sync
 
         # common tasks
-        sync >> transform >> index
+        sync >> transform >> validate_transformation >> index
 
         # add report unless the environment says not to
         if not os.getenv("SKIP_REPORT"):
