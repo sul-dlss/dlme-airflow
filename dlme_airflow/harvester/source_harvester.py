@@ -14,4 +14,4 @@ def data_source_harvester(**kwargs):
 
     collection = kwargs.get("collection")
     # dataframe_to_file(source, collection.provider.name, collection)
-    dataframe_to_file(collection)
+    return dataframe_to_file(collection)

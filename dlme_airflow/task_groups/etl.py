@@ -6,12 +6,14 @@ from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
+from airflow.operators.dummy import DummyOperator
 
 from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task
 from dlme_airflow.tasks.transform import build_transform_task
 from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
+from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
 from dlme_airflow.task_groups.validate_dlme_metadata import (
     build_sync_metadata_taskgroup,
@@ -46,15 +48,32 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
         index = index_task(collection, collection_etl_taskgroup, dag)
 
+        etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
+        load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
+
+        if not os.getenv("SKIP_HARVEST_VALIDATION"):
+            skip_load_data = DummyOperator(
+                task_id="skip_load_data", trigger_rule="none_failed"
+            )
+            validate_harvest_task = build_validate_harvest_task(
+                collection, collection_etl_taskgroup, dag
+            )
+            harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            skip_load_data >> etl_complete
+        else:
+            harvest >> load_data
+
         # harvest and sync with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
             logging.info(f"adding post harvest task for {collection.label()}")
             post_harvest_task = build_post_harvest_task(
                 collection, collection_etl_taskgroup, dag
             )
-            harvest >> post_harvest_task >> sync
+            # harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            load_data >> post_harvest_task >> sync
         else:
-            harvest >> sync
+            # harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            load_data >> sync
 
         # common tasks
         sync >> transform >> index
@@ -67,8 +86,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             send_report = build_send_harvest_report_task(
                 collection, collection_etl_taskgroup, dag
             )
-            index >> report >> send_report
+            index >> report >> send_report >> etl_complete
         else:
+            index >> etl_complete
             logging.info("skipping report generation in etl tasks")
 
     return collection_etl_taskgroup
