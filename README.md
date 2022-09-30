@@ -80,10 +80,10 @@ aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bod
 
 ## Set-up
 
-Create a Python virtual environment for dlme-airflow by first installing the  [Poetry] dependency management and packaging tool:
+Create a Python virtual environment for dlme-airflow by first installing the [Poetry] dependency management and packaging tool. Use the [Poetry installer] script:
 
 ```
-pip3 install poetry
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
 Then you can bootstrap your environment:
@@ -113,6 +113,7 @@ and you've run `poetry install` to make sure the environment is up to date, you 
 * Re-installing your env for the project.  You can see your installed environments with
 `poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
   dependencies from a clean slate.
+* To add a dependency, run `poetry add <dependency>` or `poetry add <dependency> --group dev`.
 
 ## Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
@@ -249,7 +250,8 @@ $ bin/get yale babylonian --limit 20
 
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
-[Poetry]: https://python-poetry.org
+[Poetry]: https://python-poetry.org/docs
+[Poetry installer]: https://python-poetry.org/docs/#installation
 [Apache Airflow]: https://airflow.apache.org/
 [Intake]: https://intake.readthedocs.io/
 [Digital Library of the Middle East]: https://dlmenetwork.org/library
