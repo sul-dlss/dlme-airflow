@@ -7,7 +7,7 @@ from lxml import etree
 from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
 
-from typing import Union, List, Dict
+from typing import List, Dict
 
 
 class XmlSource(intake.source.base.DataSource):
@@ -34,7 +34,7 @@ class XmlSource(intake.source.base.DataSource):
             self._records.append(record)
 
     def _construct_fields(self, record_el: etree) -> dict:
-        record: Dict[str, Union[str, List]] = {}
+        record: Dict[str, (str | List)] = {}
         for field in self._path_expressions:
 
             # look for the field in our data
