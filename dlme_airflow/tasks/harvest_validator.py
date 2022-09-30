@@ -8,6 +8,7 @@ from dlme_airflow.utils.dataframe import dataframe_from_s3
 
 
 def validate_harvest(task_instance, task, **kwargs):
+    task_prefix = ".".join(task.task_id.split(".")[:-1])
     collection = kwargs["collection"]
     current_harvest = pd.read_csv(
         task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
@@ -15,9 +16,9 @@ def validate_harvest(task_instance, task, **kwargs):
     previous_harvest = dataframe_from_s3(collection)
 
     if current_harvest.equals(previous_harvest):
-        return f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.skip_load_data"
+        return f"{task_prefix}.skip_load_data"
     else:
-        return f"{collection.provider.name.upper()}_ETL.{collection.name}_etl.load_data"
+        return f"{task_prefix}.load_data"
 
 
 def build_validate_harvest_task(collection, task_group: TaskGroup, dag: DAG):

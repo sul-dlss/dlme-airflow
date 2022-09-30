@@ -53,6 +53,7 @@ def test_validate_harvest_skip_load_data(mock_boto3):
     test_collection = Collection(test_provider, "aims")
     mock_task_instance = mock.Mock()
     mock_task = mock.Mock()
+    mock_task.task_id = "AIMS_ETL.aims_etl.aims_aims_validate_harvest"
     mock_task_instance.xcom_pull.return_value = [
         os.path.join(os.path.abspath("tests"), "data", "csv", "example1.csv")
     ]
@@ -70,6 +71,7 @@ def test_validate_harvest_load_data(mock_boto3):
     test_collection = Collection(test_provider, "aims")
     mock_task_instance = mock.Mock()
     mock_task = mock.Mock()
+    mock_task.task_id = "AIMS_ETL.aims_etl.aims_aims_validate_harvest"
     mock_task_instance.xcom_pull.return_value = [
         os.path.join(os.path.abspath("tests"), "data", "csv", "example2.csv")
     ]
