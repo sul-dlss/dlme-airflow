@@ -14,7 +14,7 @@ def dataframe_from_s3(collection) -> pd.DataFrame:
     # TODO: This needs to take creds. See: https://stackoverflow.com/a/45982080/7600626
     #    -- see how to make this work with localstack so we don't have to hammer S3 for local dev.
     s3 = boto3.client("s3")
-    bucket = os.getenv("S3_BUCKET")
+    bucket = os.getenv("S3_BUCKET").replace("s3://", "")
     key = f"metadata/{data_path}/data.csv"
     obj = s3.get_object(Bucket=bucket, Key=key)
     return pd.read_csv(obj["Body"])

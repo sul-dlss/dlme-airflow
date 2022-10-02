@@ -13,8 +13,7 @@ from airflow.utils.task_group import TaskGroup
 dev_role_arn = os.getenv("DEV_ROLE_ARN")
 
 home_directory = os.getenv("AIRFLOW_HOME", "/opt/airflow")
-metadata_directory = f"{home_directory}/metadata/"
-working_directory = f"{home_directory}/working/"
+working_directory = f"{home_directory}/metadata"
 s3_data = os.getenv("S3_BUCKET")
 
 
@@ -55,7 +54,7 @@ def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
         export AWS_ACCESS_KEY_ID=$(echo $temp_role | jq .Credentials.AccessKeyId | xargs) && \
         export AWS_SECRET_ACCESS_KEY=$(echo $temp_role | jq .Credentials.SecretAccessKey | xargs) && \
         export AWS_SESSION_TOKEN=$(echo $temp_role | jq .Credentials.SessionToken | xargs) && \
-        aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/{collection.data_path()} --delete
+        aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/metadata/{collection.data_path()} --delete
         """
         aws_assume_role = BashOperator(
             task_id="assume_role",
@@ -64,7 +63,7 @@ def build_sync_metadata_taskgroup(collection, dag: DAG) -> TaskGroup:
             dag=dag,
         )
 
-        bash_sync_s3 = f"aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/{collection.data_path()} --delete"
+        bash_sync_s3 = f"aws s3 sync {working_directory}/{collection.data_path()} {s3_data}/metadata/{collection.data_path()} --delete"
         sync_metadata = BashOperator(
             task_id="sync_metadata",
             bash_command=bash_sync_s3,
