@@ -1,6 +1,7 @@
 metadata:
   version: 1
   schedule: "20 0 * * *"
+  data_path: "american_numismatic_society"
 sources:
   american_numismatic_society:
     description: American Numismatic Society
