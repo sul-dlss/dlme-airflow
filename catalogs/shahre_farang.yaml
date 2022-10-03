@@ -30,6 +30,11 @@ sources:
           path: ".//category"
           namespace:
           optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
+          optional: true
         description:
           path: ".//description"
           namespace:
@@ -72,6 +77,11 @@ sources:
           path: ".//category"
           namespace:
           optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
+          optional: true
         description:
           path: ".//description"
           namespace:
@@ -113,6 +123,11 @@ sources:
         category:
           path: ".//category"
           namespace:
+          optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
           optional: true
         description:
           path: ".//description"
