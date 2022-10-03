@@ -23,7 +23,7 @@ sources:
     metadata:
       record_selector: "content.results"
       data_path: loc/persian
-      config: loc_config
+      config: loc
       fields:
         call_number:
           path: "item.call_number[0]"

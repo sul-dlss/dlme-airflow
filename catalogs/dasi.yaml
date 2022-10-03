@@ -11,22 +11,7 @@ sources:
       set: epi_set
     metadata:
       data_path: dasi/epigraphs
-      config: dasi_config
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
-  objects:
-    driver: oai_xml
-    args:
-      collection_url: http://dasi.cnr.it/de/cgi-bin/dasi-oai-x.pl
-      metadata_prefix: oai_dc
-      set: obj_set
-    metadata:
-      data_path: dasi/objects
-      config: dasi_config
+      config: dasi
       fields:
         id:
           path: "//header:identifier"

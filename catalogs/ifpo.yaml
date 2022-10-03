@@ -11,7 +11,7 @@ sources:
       set: "collection:IFPOIMAGES"
     metadata:
       data_path: ifpo/photographs
-      config: ifpo_config
+      config: ifpo
       fields:
         id:
           path: "//header:identifier"

@@ -8,7 +8,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/arabic
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:
@@ -29,6 +29,11 @@ sources:
         category:
           path: ".//category"
           namespace:
+          optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
           optional: true
         description:
           path: ".//description"
@@ -50,7 +55,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/english
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:
@@ -71,6 +76,11 @@ sources:
         category:
           path: ".//category"
           namespace:
+          optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
           optional: true
         description:
           path: ".//description"
@@ -92,7 +102,7 @@ sources:
     driver: xml
     metadata:
       data_path: shahre_farang/persian
-      config: shahre_farang_config
+      config: shahre_farang
       record_selector:
         path: ".//item"
         namespace:
@@ -113,6 +123,11 @@ sources:
         category:
           path: ".//category"
           namespace:
+          optional: true
+        date:
+          path: ".//pubDate"
+          namespace:
+            media: "http://search.yahoo.com/mrss/"
           optional: true
         description:
           path: ".//description"

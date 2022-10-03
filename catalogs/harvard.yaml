@@ -10,8 +10,8 @@ sources:
       metadata_prefix: oai_dc
       set: "ihp"
     metadata:
-      data_path: harvard/islamic-heritage-project
-      config: harvard_ihp_config
+      data_path: harvard/islamic_heritage_project
+      config: harvard_islamic_heritage_project
       fields:
         id:
           path: "//header:identifier"
@@ -22,8 +22,8 @@ sources:
     description: "Stuart Cary Welsch Collection"
     driver: xml
     metadata:
-      data_path: harvard/scw
-      config: harvard_scw_config
+      data_path: harvard/harvard_stuart_cary_welch
+      config: harvard_stuart_cary_welch
       record_selector:
         path: ".//mods:mods"
         namespace:

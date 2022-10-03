@@ -3,28 +3,58 @@ metadata:
   data_path: sakip-sabanci
   schedule: "0 12 * * *"
 sources:
-  abidindino:
-    description: "ABİDİN DİNO ARCHIVE"
-    driver: oai_xml
-    args:
-      collection_url: http://cdm21044.contentdm.oclc.org/oai/oai.php
-      metadata_prefix: oai_dc
-      set: abidindino
+  abidin_dino:
+    description: "Abidin Dino Archive"
+    driver: iiif_json
     metadata:
-      data_path: sakip-sabanci/abidindino-xml
-      config: ssm_iiif_config
+      data_path: sakip_sabanci/abidin_dino
+      config: sakip_sabanci_museum
       fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
         id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/abidindino/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   emirgan:
     description: "Emirgan Archive"
     driver: iiif_json
     metadata:
-      data_path: sakip-sabanci/emirgan
-      config: ssm_iiif_config
+      data_path: sakip_sabanci/emirgan
+      config: sakip_sabanci_museum
       fields:
         context:
           path: '@context'
@@ -69,8 +99,8 @@ sources:
     description: "The Arts of Book and Calligraphy Collection"
     driver: iiif_json
     metadata:
-      data_path: sakip-sabanci/kitap-vehat
-      config: ssm_iiif_config
+      data_path: sakip_sabanci/kitap_vehat
+      config: sakip_sabanci_museum
       fields:
         context:
           path: '@context'
@@ -115,8 +145,8 @@ sources:
     description: "Early Turkish Paintings"
     driver: iiif_json
     metadata:
-      data_path: sakip-sabanci/resim-klksyn
-      config: ssm_iiif_config
+      data_path: sakip_sabanci/resim_klksyn
+      config: sakip_sabanci_museum
       fields:
         context:
           path: '@context'
