@@ -35,6 +35,10 @@ sources:
           path: "@id"
         description:
           path: "description"
+        attribution:
+          path: "attribution"
+        preview:
+          path: "sequences[0].canvases[0].images[0]..@id"
   islamic:
     description: "Islamic manuscripts"
     driver: iiif_json
@@ -49,3 +53,7 @@ sources:
           path: "@id"
         description:
           path: "description"
+        attribution:
+          path: "attribution"
+        preview:
+          path: "sequences[0].canvases[0].images[0]..@id"
