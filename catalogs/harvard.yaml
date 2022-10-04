@@ -4,23 +4,102 @@ metadata:
   schedule: "0 10 * * *"
 sources:
   ihp:
-    driver: oai_xml
+    driver: xml
     args:
-      collection_url: https://api.lib.harvard.edu/oai
-      metadata_prefix: oai_dc
-      set: "ihp"
+      collection_url: https://api.lib.harvard.edu/oai?verb=ListRecords&metadata_prefix=mods&set=ihp
     metadata:
       data_path: harvard/islamic_heritage_project
       config: harvard_islamic_heritage_project
+      record_selector:
+        path: ".//record"
+        namespace:
+          xmlns: "http://www.openarchives.org/OAI/2.0/"
       fields:
         id:
-          path: "//header:identifier"
+          path: ".//mods:recordInfo/mods:recordIdentifier"
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title:
+          path: ".//mods:titleInfo/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: true
+        type:
+          path: ".//mods:typeOfResource"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        genre:
+          path: ".//mods:genre"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        place:
+          path: ".//mods:originInfo/mods:place/mods:placeTerm"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        publisher:
+          path: ".//mods:originInfo/mods:place/mods:publisher"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        date_issued:
+          path: ".//mods:originInfo/mods:dateIssued"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        physical_description:
+          path: ".//mods:physicalDescription/mods:extent"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        subject:
+          path: ".//mods:subject/mods:topic"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        physical_location:
+          path: ".//mods:location/mods:physicalLocation"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shelf_locator:
+          path: ".//mods:location/mods:shelfLocator"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        record_identifier:
+          path: ".//mods:recordInfo/mods:recordIdentifier"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        language:
+          path: ".//mods:language/mods:languageTerm[@type = 'code']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shown_at:
+          path: ".//mods:location/mods:url[@access = 'object in context']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        preview:
+          path: ".//mods:location/mods:url[@access = 'preview']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        is_shown:
+          path: ".//mods:location/mods:url[@access = 'raw object']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
   scw:
     description: "Stuart Cary Welsch Collection"
     driver: xml
+    args:
+      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*
     metadata:
       data_path: harvard/harvard_stuart_cary_welch
       config: harvard_stuart_cary_welch
@@ -116,5 +195,3 @@ sources:
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
-    args:
-      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*

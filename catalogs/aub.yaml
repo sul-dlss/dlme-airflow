@@ -11,7 +11,7 @@ sources:
       set: "aco"
     metadata:
       data_path: aub/aco
-      config: aub_aco
+      config: aub
       fields:
         id:
           path: "//header:identifier"
@@ -26,7 +26,7 @@ sources:
       set: "aladab"
     metadata:
       data_path: aub/aladab
-      config: aub_aladab
+      config: aub
       fields:
         id:
           path: "//header:identifier"
@@ -41,7 +41,7 @@ sources:
       set: "postcards"
     metadata:
       data_path: aub/postcards
-      config: aub_postcards
+      config: aub
       fields:
         id:
           path: "//header:identifier"
@@ -56,7 +56,7 @@ sources:
       set: "posters"
     metadata:
       data_path: aub/posters
-      config: aub_posters
+      config: aub
       fields:
         id:
           path: "//header:identifier"
@@ -71,7 +71,7 @@ sources:
       set: "travelbooks"
     metadata:
       data_path: aub/travelbooks
-      config: aub_travelbooks
+      config: aub
       fields:
         id:
           path: "//header:identifier"

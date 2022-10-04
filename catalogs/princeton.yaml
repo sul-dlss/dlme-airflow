@@ -11,7 +11,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/princeton_mss
-      config: princeton_mss
+      config: princeton
       fields:
         id:
           path: "@id"
@@ -25,7 +25,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
-      config: princeton_movie_posters
+      config: princeton
       fields:
         id:
           path: "@id"
@@ -39,7 +39,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/princeton_ymdi
-      config: princeton_mss
+      config: princeton
       fields:
         id:
           path: "@id"
