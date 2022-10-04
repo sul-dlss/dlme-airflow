@@ -33,13 +33,17 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          name: Lint with flake8
+          name: Lint the code with flake8
           command: |
              poetry run flake8
       - run:
-          name: Lint with Black
+          name: Lint the code with Black
           command: |
              poetry run black --diff --check .
+      - run:
+          name: Lint the Intake catalog configs with yamllint
+          command: |
+             poetry run yamllint catalogs/
 
   typechecking:
     executor:

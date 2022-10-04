@@ -19,4 +19,4 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
