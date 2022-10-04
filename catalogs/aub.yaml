@@ -17,7 +17,7 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
   aladab:
     driver: oai_xml
     args:
@@ -32,7 +32,7 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
   postcards:
     driver: oai_xml
     args:
@@ -47,7 +47,7 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
   posters:
     driver: oai_xml
     args:
@@ -62,7 +62,7 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
   travelbooks:
     driver: oai_xml
     args:
@@ -77,4 +77,4 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
