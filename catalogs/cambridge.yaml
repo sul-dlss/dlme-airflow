@@ -17,6 +17,8 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: "sequences[0].canvases[0].images[0].resource.@id"
   hebrew:
     description: "Items of Hebrew origin"
     driver: iiif_json
@@ -31,6 +33,8 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: "sequences[0].canvases[0].images[0].resource.@id"
   islamic:
     description: "Islamic manuscripts"
     driver: iiif_json
@@ -45,3 +49,6 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: "sequences[0].canvases[0].images[0].resource.@id"
+
