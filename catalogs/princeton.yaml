@@ -17,6 +17,9 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   movie_posters:
     description: "Arabic Movie Posters"
     driver: iiif_json
@@ -31,6 +34,9 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   ymdi:
     description: "Yemen Collection"
     driver: iiif_json
@@ -45,3 +51,6 @@ sources:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
