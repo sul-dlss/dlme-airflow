@@ -22,7 +22,7 @@ sources:
     description: "Stuart Cary Welsch Collection"
     driver: xml
     metadata:
-      data_path: harvard/harvard_stuart_cary_welch
+      data_path: harvard/stuart_cary_welch
       config: harvard_stuart_cary_welch
       record_selector:
         path: ".//mods:mods"
@@ -30,7 +30,7 @@ sources:
           mods: "http://www.loc.gov/mods/v3"
       fields:
         id:
-          path: ".//mods:recordInfo/mods:recordIdentifier"
+          path: ".//mods:recordInfo/mods:recordIdentifier[not(@source)]"
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
