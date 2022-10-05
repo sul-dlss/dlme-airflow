@@ -4,7 +4,7 @@ metadata:
   schedule: "0 10 * * *"
 sources:
   ihp:
-    driver: xml
+    driver: oai_xml
     args:
       collection_url: https://api.lib.harvard.edu/oai?verb=ListRecords&metadata_prefix=mods&set=ihp
     metadata:
@@ -92,106 +92,6 @@ sources:
           optional: false
         is_shown:
           path: ".//mods:location/mods:url[@access = 'raw object']"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-  scw:
-    description: "Stuart Cary Welsch Collection"
-    driver: xml
-    args:
-      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*
-    metadata:
-      data_path: harvard/harvard_stuart_cary_welch
-      config: harvard_stuart_cary_welch
-      record_selector:
-        path: ".//mods:mods"
-        namespace:
-          mods: "http://www.loc.gov/mods/v3"
-      fields:
-        id:
-          path: ".//mods:recordInfo/mods:recordIdentifier"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        title:
-          path: ".//mods:titleInfo/mods:title"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: true
-        type:
-          path: ".//mods:typeOfResource"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        genre:
-          path: ".//mods:genre"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        place:
-          path: ".//mods:originInfo/mods:place/mods:placeTerm"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        start_date:
-          path: ".//mods:originInfo/mods:dateCreated[@point = 'start']"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        end_date:
-          path: ".//mods:originInfo/mods:dateCreated[@point = 'end']"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        physical_description:
-          path: ".//mods:physicalDescription/mods:extent"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        subject:
-          path: ".//mods:subject/mods:topic"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        physical_location:
-          path: ".//mods:location/mods:physicalLocation"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        shelf_locator:
-          path: ".//mods:location/mods:shelfLocator"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        record_identifier:
-          path: ".//mods:recordInfo/mods:recordIdentifier"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        language:
-          path: ".//mods:language/mods:languageTerm[@type = 'code']"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        cdwastyle:
-          path: ".//mods:extension/cdwalite:styleWrap/cdwalite:style"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-            cdwalite: "http://www.getty.edu/research/conducting_research/standards/cdwa/cdwalite"
-          optional: false
-        cdwaculture:
-          path: ".//mods:extension/cdwalite:cultureWrap/cdwalite:culture"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-            cdwalite: "http://www.getty.edu/research/conducting_research/standards/cdwa/cdwalite"
-          optional: false
-        shown_at:
-          path: ".//mods:relatedItem[@otherType = 'HOLLIS Images record']/mods:location/mods:url"
-          namespace:
-            mods: "http://www.loc.gov/mods/v3"
-          optional: false
-        preview:
-          path: ".//mods:relatedItem[@type = 'constituent']/mods:location/mods:url[@displayLabel = 'Thumbnail']"
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
