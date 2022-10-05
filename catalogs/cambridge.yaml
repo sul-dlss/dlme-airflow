@@ -51,4 +51,3 @@ sources:
           path: "description"
         thumbnail:
           path: "sequences[0].canvases[0].images[0].resource.@id"
-
