@@ -11,12 +11,15 @@ sources:
       dtype:
     metadata:
       data_path: princeton/princeton_mss
-      config: princeton
+      config: princeton_mss
       fields:
         id:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   movie_posters:
     description: "Arabic Movie Posters"
     driver: iiif_json
@@ -25,12 +28,15 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
-      config: princeton
+      config: princeton_movie_posters
       fields:
         id:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   ymdi:
     description: "Yemen Collection"
     driver: iiif_json
@@ -39,9 +45,12 @@ sources:
       dtype:
     metadata:
       data_path: princeton/princeton_ymdi
-      config: princeton
+      config: princeton_mss
       fields:
         id:
           path: "@id"
         description:
           path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
