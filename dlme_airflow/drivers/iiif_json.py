@@ -91,10 +91,14 @@ class IiifJsonSource(intake.source.base.DataSource):
                 .replace(")", "")
             )
             # initialize or append to output[name] based on whether we've seen the label
+            metadata_value = row.get("value")
+            if isinstance(metadata_value[0], dict):
+                metadata_value = metadata_value[0].get("@value")
+
             if name in output:
-                output[name].append(row.get("value"))
+                output[name].append(metadata_value)
             else:
-                output[name] = [row.get("value")]
+                output[name] = [metadata_value]
         return output
 
     def _get_partition(self, i) -> pd.DataFrame:
