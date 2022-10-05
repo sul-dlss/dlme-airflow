@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2022-10-05T20:50:33Z</responseDate>
+  <request>https://api.qdl.qa/api/oaipmh?verb=ListRecords&amp;resumptionToken=abc123</request>
+  <error code="badResumptionToken">sickle.oaiexceptions.BadResumptionToken: The value of the resumptionToken argument is invalid or expired.</error>
+</OAI-PMH>
