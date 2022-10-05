@@ -21,10 +21,12 @@ def main():
         for file in files:
             df = pd.read_csv(file)
             [column_names.append(c) for c in (df.columns)]
-        with open(f"{os.getcwd()}/../dlme-transform/traject_configs/{args.d}.rb", 'r') as traject_config:
+        with open(
+            f"{os.getcwd()}/../dlme-transform/traject_configs/{args.d}.rb", 'r'
+        ) as traject_config:
             lines = traject_config.readlines()
             for line in lines:
-                if 'column' in line:
+                if "column" in line:
                     mapped_columns.append(line.split("column('")[-1].split("')")[0])
             if args.r:
                 for i in sorted(set(mapped_columns).difference(set(column_names))):
@@ -66,7 +68,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-r",
-        action='store_true',
+        action="store_true",
         help="""This flag is used to reverse the order of search. It returns a list of fields in the traject
         config that are not column names in the source data.""",
     )
