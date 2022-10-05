@@ -20,7 +20,7 @@ def mock_boto3(monkeypatch):
 
         expected_params = {
             "Bucket": "test-bucket",
-            "Key": "provider/collection/data.csv",
+            "Key": "metadata/provider/collection/data.csv",
         }
 
         s3 = botocore.session.get_session().create_client("s3")

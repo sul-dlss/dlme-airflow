@@ -80,10 +80,10 @@ aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bod
 
 ## Set-up
 
-Create a Python virtual environment for dlme-airflow by first installing the  [Poetry] dependency management and packaging tool:
+Create a Python virtual environment for dlme-airflow by first installing the [Poetry] dependency management and packaging tool. Use the [Poetry installer] script:
 
 ```
-pip3 install poetry
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
 Then you can bootstrap your environment:
@@ -113,6 +113,7 @@ and you've run `poetry install` to make sure the environment is up to date, you 
 * Re-installing your env for the project.  You can see your installed environments with
 `poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
   dependencies from a clean slate.
+* To add a dependency, run `poetry add <dependency>` or `poetry add <dependency> --group dev`.
 
 ## Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
@@ -122,6 +123,11 @@ directory. To run the linter on a single file, run `flake8 dlme_airflow/path/to/
 To assist in passing the linter, use the [Black][BLK] opinionated code formatter
 by running `black dlme_airflow/path/to/file.py` (this will immediately apply the
 formatting it would suggest).
+
+To help keep Intake catalog configs consistent in terms of basic style and formatting, we're using [yamllint][YAMLLINT].
+To lint all of the configs, run `yamllint catalogs/`.  If you want to lint individual files, run e.g. `yamllint file1.yaml path/file2.yml`.
+Note that if `yamllint` produces warnings but no errors, it'll return an exit code of 0, allowing the build to pass. If
+it detects errors, it'll return an exit code of 1 and fail the build.
 
 ## Typechecking
 We're using [mypy][MYPY] for type checking.  Type checking is opt-in, so you shouldn't have to specify
@@ -141,6 +147,7 @@ You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/pat
 poetry run black --diff --check . &&
   poetry run mypy . &&
   poetry run flake8 &&
+  poetry run yamllint catalogs/ &&
   PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
 ```
 * run black first because it's fast; remove the flags to just apply formatting
@@ -249,7 +256,8 @@ $ bin/get yale babylonian --limit 20
 
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
-[Poetry]: https://python-poetry.org
+[Poetry]: https://python-poetry.org/docs
+[Poetry installer]: https://python-poetry.org/docs/#installation
 [Apache Airflow]: https://airflow.apache.org/
 [Intake]: https://intake.readthedocs.io/
 [Digital Library of the Middle East]: https://dlmenetwork.org/library
@@ -258,3 +266,4 @@ $ bin/get yale babylonian --limit 20
 [Spotlight]: https://github.com/projectblacklight/spotlight
 [ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
 [MYPY]: https://mypy.readthedocs.io/
+[YAMLLINT]: https://yamllint.readthedocs.io/en/stable/index.html

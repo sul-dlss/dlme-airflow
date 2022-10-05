@@ -17,58 +17,58 @@ sources:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
-          optional: True
+          optional: true
         description_ar:
           path: "//*/dc:description[@xml:lang='ar']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         description_en:
           path: "//*/dc:description[@xml:lang='en']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         description_fr:
           path: "//*/dc:description[@xml:lang='fr']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         subject_ar:
           path: "//*/dc:subject[@xml:lang='ar']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         subject_en:
           path: "//*/dc:subject[@xml:lang='en']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         subject_fr:
           path: "//*/dc:subject[@xml:lang='fr']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         title_ar:
           path: "//*/dc:title[@xml:lang='ar']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         title_en:
           path: "//*/dc:title[@xml:lang='en']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true
         title_fr:
           path: "//*/dc:title[@xml:lang='fr']"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
             dc: "http://purl.org/dc/elements/1.1/"
-          optional: True
+          optional: true

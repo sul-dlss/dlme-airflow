@@ -30,7 +30,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll29/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll29/manifest.json
       dtype:
         context: object
         id: object
@@ -54,7 +54,7 @@ sources:
     description: "Alexandria Bombardment of 1882 Photograph Album"
     driver: iiif_json
     args:
-      collection_url: "https://cdm15795.contentdm.oclc.org/info/p15795coll9/manifest.json"
+      collection_url: "https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll9/manifest.json"
       dtype:
         context: object
         id: object
@@ -108,7 +108,7 @@ sources:
     description: "Bint al-Nil Journal"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll19/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll19/manifest.json
       dtype:
         context: object
         id: object
@@ -213,7 +213,7 @@ sources:
     description: "Iryan Moftah Coptic Language and Religion Manuscripts"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll4/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll4/manifest.json
       dtype:
         context: object
         id: object
@@ -269,7 +269,7 @@ sources:
     description: "Creswell Photographs of Islamic Architecture"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll14/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/p15795coll14/p1.json
       dtype:
         context: object
         id: object
@@ -325,7 +325,7 @@ sources:
     description: "Hassan Fathy Architectural Archives"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll13/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll13/manifest.json
       dtype:
         context: object
         id: object
@@ -373,7 +373,7 @@ sources:
     description: "Nicholas S. Hopkins Rural Egypt Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll12/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll12/manifest.json
       dtype:
         context: object
         id: object
@@ -420,7 +420,7 @@ sources:
     description: "Islamic Art & Architecture Slides"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll30/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll30/manifest.json
       dtype:
         context: object
         id: object
@@ -470,7 +470,7 @@ sources:
     description: "Kraus-Meyerhof Offprints"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll1/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll1/manifest.json
       dtype:
         context: object
         id: object
@@ -520,7 +520,7 @@ sources:
     description: "Historic Maps Digital Collection"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll6/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll6/manifest.json
       dtype:
         context: object
         id: object
@@ -572,7 +572,7 @@ sources:
     description: "Philip Maritz Collection of Émile Béchard's Photographs of Egypt"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll16/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll16/manifest.json
       dtype:
         context: object
         id: object
@@ -624,7 +624,7 @@ sources:
     description: "Napoleonic Egypt"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll2/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll2/manifest.json
       dtype:
         context: object
         id: object
@@ -675,7 +675,7 @@ sources:
     description: "Richard B. Parker Nile Watercraft Photographs"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll31/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll31/manifest.json
       dtype:
         context: object
         id: object
@@ -723,7 +723,7 @@ sources:
     description: "Egyptian Postcard Collection"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll21/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll21/manifest.json
       dtype:
         context: object
         id: object
@@ -771,7 +771,7 @@ sources:
     description: "Selections from the Rare Books and Special Collections Library"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll11/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll11/manifest.json
       dtype:
         context: object
         id: object
@@ -820,7 +820,7 @@ sources:
     description: "The Sphinx"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/sphinx/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/sphinx/p1.json
       dtype:
         context: object
         id: object
@@ -867,7 +867,7 @@ sources:
     description: "Taxiphote Slides"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll15/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll15/manifest.json
       dtype:
         context: object
         id: object
@@ -919,7 +919,7 @@ sources:
     description: ""
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll8/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll8/manifest.json
       dtype:
         context: object
         id: object
@@ -975,7 +975,7 @@ sources:
     description: "University on the Square, Documenting Egypt's 21st Century Revolution"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll7/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll7/manifest.json
       dtype:
         context: object
         id: object
@@ -1037,7 +1037,7 @@ sources:
     description: "AUC Student Newspapers"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll26/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll26/p1.json
       dtype:
         context: object
         id: object
@@ -1093,7 +1093,7 @@ sources:
     description: ""
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/info/p15795coll5/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll5/manifest.json
       dtype:
         context: object
         id: object

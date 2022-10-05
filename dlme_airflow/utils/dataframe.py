@@ -11,9 +11,11 @@ def dataframe_from_s3(collection) -> pd.DataFrame:
     @param -- data_path
     """
     data_path = collection.data_path()
+    # TODO: This needs to take creds. See: https://stackoverflow.com/a/45982080/7600626
+    #    -- see how to make this work with localstack so we don't have to hammer S3 for local dev.
     s3 = boto3.client("s3")
     bucket = os.getenv("S3_BUCKET")
-    key = f"{data_path}/data.csv"
+    key = f"metadata/{data_path}/data.csv"
     obj = s3.get_object(Bucket=bucket, Key=key)
     return pd.read_csv(obj["Body"])
 
@@ -21,12 +23,10 @@ def dataframe_from_s3(collection) -> pd.DataFrame:
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
 def dataframe_to_file(collection):
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
-    data_path = collection.data_path()
-
-    working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
-    working_directory = os.path.join(root_dir, "working", data_path)
-    os.makedirs(working_directory, exist_ok=True)
+    working_csv = os.path.join(
+        os.path.abspath("metadata"), collection.data_path(), "data.csv"
+    )
+    os.makedirs(os.path.dirname(working_csv), exist_ok=True)
 
     unique_id = (
         collection.catalog.metadata.get("fields")
@@ -37,3 +37,5 @@ def dataframe_to_file(collection):
         subset=[unique_id], keep="first"
     )
     source_df.to_csv(working_csv, index=False)
+
+    return working_csv
