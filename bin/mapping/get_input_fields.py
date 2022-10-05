@@ -22,7 +22,7 @@ def main():
             df = pd.read_csv(file)
             [column_names.append(c) for c in (df.columns)]
         with open(
-            f"{os.getcwd()}/../dlme-transform/traject_configs/{args.d}.rb", 'r'
+            f"{os.getcwd()}/../dlme-transform/traject_configs/{args.d}.rb", "r"
         ) as traject_config:
             lines = traject_config.readlines()
             for line in lines:
