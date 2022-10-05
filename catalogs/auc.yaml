@@ -269,7 +269,7 @@ sources:
     description: "Creswell Photographs of Islamic Architecture"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll14/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/p15795coll14/p1.json
       dtype:
         context: object
         id: object
@@ -820,7 +820,7 @@ sources:
     description: "The Sphinx"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/sphinx/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/sphinx/p1.json
       dtype:
         context: object
         id: object
@@ -1037,7 +1037,7 @@ sources:
     description: "AUC Student Newspapers"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/2/p15795coll26/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll26/p1.json
       dtype:
         context: object
         id: object
