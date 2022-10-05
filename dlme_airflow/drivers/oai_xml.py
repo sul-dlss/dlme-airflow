@@ -6,6 +6,7 @@ import pandas as pd
 from lxml import etree
 from sickle import Sickle
 from sickle.iterator import OAIItemIterator
+from sickle.oaiexceptions import BadResumptionToken
 
 # xml namespaces and the prefixes that are used in parsing
 
@@ -28,6 +29,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         metadata_prefix,
         set=None,
         wait=0,
+        allow_expiration=False,
         dtype=None,
         metadata=None,
     ):
@@ -38,6 +40,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         self.record_count = 0
         self.set = set
         self.wait = wait
+        self.allow_expiration = allow_expiration
         self._collection = Sickle(
             self.collection_url, iterator=make_iterator(self.wait)
         )
@@ -49,18 +52,28 @@ class OaiXmlSource(intake.source.base.DataSource):
             set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True
         )
 
-        for counter, oai_record in enumerate(oai_records, start=1):
-            xtree = etree.fromstring(oai_record.raw)
-            if counter % 100 == 0:
-                logging.info(counter)
-            record = self._construct_fields(xtree)
-            record.update(self._from_metadata(xtree))
-            self._records.append(record)
+        try:
+            for counter, oai_record in enumerate(oai_records, start=1):
+                xtree = etree.fromstring(oai_record.raw)
+                if counter % 100 == 0:
+                    logging.info(counter)
+                record = self._construct_fields(xtree)
+                record.update(self._from_metadata(xtree))
+                self._records.append(record)
 
-            self.record_count += 1
-            if self.record_limit and self.record_count > self.record_limit:
-                logging.info(f"truncating results because limit={self.record_limit}")
-                break
+                self.record_count += 1
+                if self.record_limit and self.record_count > self.record_limit:
+                    logging.info(
+                        f"truncating results because limit={self.record_limit}"
+                    )
+                    break
+        except BadResumptionToken as e:
+            if self.allow_expiration:
+                logging.warning(
+                    "Caught invalid resumption token, returning incomplete results"
+                )
+            else:
+                raise e
 
     def _construct_fields(self, manifest: etree) -> dict:
         output = {}
