@@ -40,7 +40,6 @@ def default_dag_args():
         "email_on_retry": False,
         "retries": 0,
         "retry_delay": timedelta(seconds=60),
-        "catchup": False,
     }
 
 
@@ -73,6 +72,7 @@ def assemble_dag(source: Union[Provider, Collection]):
         default_args=default_args,
         schedule_interval=schedule,
         start_date=start_date,
+        catchup=False,
     ) as dag:
         harvest_begin = DummyOperator(
             task_id="harvest_begin", trigger_rule="none_failed"
