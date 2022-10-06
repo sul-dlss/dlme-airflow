@@ -23,12 +23,14 @@ def test_dataframe_retrieval_and_profiling(mocker: MockerFixture):
     collection = Collection(Provider("aims"), "aims")
     mock_task_instance = MockTaskInstance()
 
-    mock_df = pd.DataFrame(
-        [
-            {"id": "1", "source": ["Rare Books and Special Collections Library"]},
-            {"id": "2", "source": ["Rare Books and Special Collections Library"]},
-        ]
-    )
+    column_headers = ["id", "source"]
+    rows = [
+        column_headers,
+        ["1", ["Rare Books and Special Collections Library"]],
+        ["2", ["Rare Books and Special Collections Library"]],
+    ]
+
+    mock_df = pd.DataFrame(rows)
     mock_csv_path = "/metadata/data_path/data.csv"
 
     patched_dataframe_to_file = mocker.patch(
