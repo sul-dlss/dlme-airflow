@@ -2,7 +2,6 @@ import os
 import sys
 import logging
 
-from typing import Union
 from datetime import datetime
 from datetime import timedelta
 
@@ -58,7 +57,7 @@ def create_dags(provider) -> list[DAG]:
     return dags
 
 
-def assemble_dag(source: Union[Provider, Collection]):
+def assemble_dag(source: (Provider | Collection)):
     """Returns a DAG for either a Provider or a Collection."""
     default_args = default_dag_args()
     default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
