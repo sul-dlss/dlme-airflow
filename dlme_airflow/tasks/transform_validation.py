@@ -25,7 +25,10 @@ def _get_transformed_record_count(collection) -> int:
     with open(output_file_path, "r") as file:
         records = file.readlines()
         transformed_record_count = len(records)
-    return transformed_record_count
+
+    # TODO: row_count is halved here to work around a current bug in the dlme-transform code.
+    # get rid of halving once https://github.com/sul-dlss/dlme-transform/issues/931 is resolved.
+    return int(transformed_record_count / 2)
 
 
 def validate_transformation(task_instance, **kwargs):

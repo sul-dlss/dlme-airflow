@@ -20,7 +20,9 @@ class MockTaskInstance:
 
 
 def mock_ndjson_response_text(row_count) -> str:
-    json_rows = [json.dumps({"row_num": i}) for i in range(row_count)]
+    # TODO: row_count is doubled here to simulate a current bug in the dlme-transform code.
+    # get rid of doubling once https://github.com/sul-dlss/dlme-transform/issues/931 is resolved.
+    json_rows = [json.dumps({"row_num": i}) for i in range(row_count * 2)]
     return "\n".join(json_rows)
 
 
