@@ -11,6 +11,7 @@ def merge_records(**kwargs):
     df = pd.read_csv(working_csv)
 
     # merge rows with the same shelf locator
-    df_merged = df.groupby("location_shelfLocator").agg(lambda x: x.tolist())
+    df_filled = df.fillna("NOT PROVIDED")
+    df_merged = df_filled.groupby("location_shelfLocator").agg(lambda x: x.tolist())
 
     df_merged.to_csv(working_csv)
