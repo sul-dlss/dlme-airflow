@@ -21,3 +21,28 @@ sources:
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
+        author:
+          path: "//mods:namePart[../mods:role/mods:roleTerm='author']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shown_at:
+          path: ".//mods:location/mods:url[not(@access = 'preview')]"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        preview:
+          path: ".//mods:location/mods:url[@access = 'preview']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title_alternative:
+          path: "//mods:titleInfo[@type = 'alternative']/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title:
+          path: "//mods:titleInfo[not(ancestor::mods:relatedItem)]/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
