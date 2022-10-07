@@ -7,11 +7,12 @@ from dlme_airflow.utils.catalog import catalog_for_provider
 
 
 def email_callback(task_instance, task, **kwargs):
-    subject = f"ETL Report for {kwargs.get('collection').data_path()}"
+    subject = f"ETL Report for {kwargs.get('data_path')}"
+    provider_email = kwargs.get('email')
     content = task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
 
     send_email(
-        to=["dlme-monitoring@lists.stanford.edu"],
+        to=["dlme-monitoring@lists.stanford.edu", provider_email],
         subject=subject,
         html_content=content,
     )
@@ -23,7 +24,10 @@ def build_send_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
         dag=dag,
         task_group=task_group,
         python_callable=email_callback,
-        op_kwargs={"collection": collection},
+        op_kwargs={
+            "data_path": collection.data_path(),
+            "email": collection.provider.email
+        },
         trigger_rule="none_failed",
     )
 

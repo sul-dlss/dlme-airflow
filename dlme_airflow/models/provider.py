@@ -19,6 +19,10 @@ class Provider(object):
 
         return _collections
 
+    @property
+    def email(self):
+        return self.catalog.metadata.get("provider_email", "")
+
     def get_collection(self, collection_name):
         for coll in self.collections:
             if coll.name == collection_name:
