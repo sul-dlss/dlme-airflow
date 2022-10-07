@@ -1,3 +1,4 @@
+import time
 import logging
 import intake
 import requests
@@ -12,10 +13,11 @@ partition_access = True
 
 
 class IiifJsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url, dtype=None, metadata=None):
+    def __init__(self, collection_url, dtype=None, metadata=None, wait=None):
         super(IiifJsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
+        self.wait = wait
         self._manifest_urls = []
         self._path_expressions = {}
         self.record_count = 0
@@ -23,7 +25,7 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def _open_collection(self):
         logging.info(f"getting collection {self.collection_url}")
-        resp = requests.get(self.collection_url)
+        resp = self._get(self.collection_url)
         if resp.status_code == 200:
             collection_result = resp.json()
             for manifest in collection_result.get("manifests", []):
@@ -33,7 +35,7 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def _open_manifest(self, manifest_url: str) -> Optional[dict]:
         logging.info(f"getting manifest {manifest_url}")
-        resp = requests.get(manifest_url)
+        resp = self._get(manifest_url)
         if resp.status_code == 200:
             manifest_result = resp.json()
         else:
@@ -133,6 +135,12 @@ class IiifJsonSource(intake.source.base.DataSource):
             npartitions=len(self._manifest_urls),
             extra_metadata={},
         )
+
+    def _get(self, url):
+        if self.wait:
+            logging.info(f"waiting {self.wait} seconds")
+            time.sleep(self.wait)
+        return requests.get(url)
 
     def read(self):
         self._load_metadata()

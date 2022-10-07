@@ -146,3 +146,8 @@ def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
         "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"  # noqa: E501
         in caplog.text
     )
+
+
+def test_wait(iiif_test_source):
+    driver = IiifJsonSource("https://example.com/iiif/", wait=2)
+    assert driver, "IiifJsonSource constructor accepts wait parameter"
