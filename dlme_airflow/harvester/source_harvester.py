@@ -15,7 +15,6 @@ def data_source_harvester(task_instance, **kwargs):
     df_and_csv = dataframe_to_file(collection)
     df = df_and_csv["source_df"]
     working_csv = df_and_csv["working_csv"]
-    # subtract 1 from record_count because the first row will be the header
-    dataframe_stats = {"record_count": df.shape[0] - 1}
+    dataframe_stats = {"record_count": df.shape[0]}
     task_instance.xcom_push(key="dataframe_stats", value=dataframe_stats)
     return working_csv

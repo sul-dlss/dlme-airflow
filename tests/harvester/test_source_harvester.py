@@ -25,12 +25,11 @@ def test_dataframe_retrieval_and_profiling(mocker: MockerFixture):
 
     column_headers = ["id", "source"]
     rows = [
-        column_headers,
         ["1", ["Rare Books and Special Collections Library"]],
         ["2", ["Rare Books and Special Collections Library"]],
     ]
 
-    mock_df = pd.DataFrame(rows)
+    mock_df = pd.DataFrame(data=rows, columns=column_headers)
     mock_csv_path = "/metadata/data_path/data.csv"
 
     patched_dataframe_to_file = mocker.patch(
