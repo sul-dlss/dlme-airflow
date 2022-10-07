@@ -11,7 +11,15 @@ properties:
         type: string
       schedule:
         type: string
+      separate_dags:
+        description: Create separate dags per collection
+        type: boolean
+      provider_email:
+        description: Email address to send harvest reports to the provider
+        type: string
+        pattern: "^\\S+@\\S+\\.\\S+$"
     required: [data_path]
+    additionalProperties: false
   sources:
     description: Collections from a provider
     type: object
