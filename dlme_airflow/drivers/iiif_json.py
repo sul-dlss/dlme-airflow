@@ -94,6 +94,9 @@ class IiifJsonSource(intake.source.base.DataSource):
             )
             # initialize or append to output[name] based on whether we've seen the label
             metadata_value = row.get("value")
+            if not metadata_value:
+                continue
+
             if isinstance(metadata_value[0], dict):
                 metadata_value = metadata_value[0].get("@value")
 
