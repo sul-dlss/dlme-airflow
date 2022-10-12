@@ -7,7 +7,7 @@ def merge_records(**kwargs):
     coll = kwargs["collection"]
     root_dir = os.path.dirname(os.path.abspath("metadata"))
     data_path = coll.data_path()
-    working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
+    working_csv = os.path.join(root_dir, "metadata", data_path, "data.csv")
     df = pd.read_csv(working_csv)
 
     # merge rows with the same shelf locator

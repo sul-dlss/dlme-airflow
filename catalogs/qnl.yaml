@@ -12,7 +12,7 @@ sources:
       allow_expiration: true
     metadata:
       record_limit: 200
-      data_path: qnl/british-library-combined
+      data_path: qnl/british_library_combined
       post_harvest: "merge_records"
       config: qnl_config
       fields:
