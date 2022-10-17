@@ -140,7 +140,7 @@ sources:
         digitization-sponsor: object
     metadata:
       data_path: bodleian/hebrew
-      config: bodleian_hebrew
+      config: bodleian
       fields:
         id:
           path: "@id"
