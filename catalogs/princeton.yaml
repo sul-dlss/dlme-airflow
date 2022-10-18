@@ -3,14 +3,31 @@ metadata:
   data_path: princeton
   schedule: "20 11 * * *"
 sources:
-  manuscripts:
+  babi_bahai:
+    description: "Islamic Manuscripts"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/03556507-2e2b-4393-a50f-5207877c38e8/manifest
+      dtype:
+    metadata:
+      data_path: princeton/babi_bahai
+      config: princeton_mss
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  islamic_manuscripts:
     description: "Islamic Manuscripts"
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
       dtype:
     metadata:
-      data_path: princeton/princeton_mss
+      data_path: princeton/islamic_manuscripts
       config: princeton_mss
       fields:
         id:

@@ -82,7 +82,7 @@ sources:
         subject-tgm: object
         original-identifier: object
     metadata:
-      data_path: auc/alexandria-bombardment
+      data_path: auc/alexandria_bombardment
       config: auc
       schedule: "20 1 * * *"
       fields:
@@ -649,7 +649,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/napoleonic-egypt
+      data_path: auc/napoleonic_egypt
       config: auc
       schedule: "0 5 * * *"
       fields:
@@ -794,7 +794,7 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/rare-books
+      data_path: auc/rare_books
       config: auc
       schedule: "20 6 * * *"
       fields:
@@ -893,7 +893,7 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/taxiphote-slides
+      data_path: auc/taxiphote_slides
       config: auc
       schedule: "0 7 * * *"
       fields:
@@ -1011,7 +1011,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/university-on-the-square
+      data_path: auc/university_on_the_square
       config: auc
       schedule: "40 7 * * *"
       fields:
