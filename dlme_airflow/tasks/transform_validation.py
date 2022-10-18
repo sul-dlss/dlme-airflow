@@ -6,6 +6,10 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 
+def eval_record_count_formula(harvested_record_count, record_count_formula):
+    return eval(f"{harvested_record_count}{record_count_formula}")
+
+
 def _fetch_transform_output(collection) -> str:
     data_path = collection.data_path().replace(
         "/", "-"
@@ -34,8 +38,13 @@ def validate_transformation(task_instance, **kwargs):
     dataframe_stats = task_instance.xcom_pull(
         task_ids=kwargs.get("harvest_task_id"), key="dataframe_stats"
     )
-
-    df_record_count = dataframe_stats["record_count"]
+    if collection.catalog.metadata.get("record_count_formula"):
+        df_record_count = eval_record_count_formula(
+            dataframe_stats["record_count"],
+            collection.catalog.metadata.get("record_count_formula"),
+        )
+    else:
+        df_record_count = dataframe_stats["record_count"]
     transformed_record_count = _get_transformed_record_count(collection)
     if df_record_count != transformed_record_count:
         raise Exception(
