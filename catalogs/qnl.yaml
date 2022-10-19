@@ -11,11 +11,10 @@ sources:
       wait: 2
       allow_expiration: true
     metadata:
-      record_limit: 200
       record_count_formula: /2
       data_path: qnl/british_library_combined
       post_harvest: "merge_records"
-      config: qnl_config
+      config: qnl
       fields:
         id:
           path: "//header:identifier"
