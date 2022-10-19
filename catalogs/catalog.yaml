@@ -67,6 +67,12 @@ sources:
     description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  lebanese_american_university:
+    args:
+      path: catalogs/lebanese_american_university.yaml
+    description: "Lebanese American University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   manchester:
     args:
       path: catalogs/manchester.yaml
