@@ -190,7 +190,10 @@ def resolve_resource_url(record):
 
 def resolve_thumbnail_url(record):
     """Check resolvability of thumbnail URL"""
-    url = record.get("agg_preview").get("wr_id")
+    if record.get("agg_preview"):
+        url = record.get("agg_preview").get("wr_id")
+    else:
+        return
     unresolvable_message = (
         f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {url}"
     )
