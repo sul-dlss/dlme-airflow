@@ -190,7 +190,10 @@ def resolve_resource_url(record):
 
 def resolve_thumbnail_url(record):
     """Check resolvability of thumbnail URL"""
-    url = record.get("agg_preview").get("wr_id")
+    if record.get("agg_preview"):
+        url = record.get("agg_preview").get("wr_id")
+    else:
+        return
     unresolvable_message = (
         f"Identifier {record['id']} from DLME file {record['dlme_source_file']}: {url}"
     )
@@ -337,10 +340,10 @@ def main(**kwargs):  # input:, config:):
                                 f"Average number of values: {round((sum(languages.values())/record_count), 2)}"
                             )
                             lang_list = ul()
-                            sub_field_list += li("Languages:")
+                            sub_field_list += li("Languages (average):")
                             sub_field_list += lang_list
                             for k, v in languages.items():
-                                lang_list += li(f"{k}: {v}")
+                                lang_list += li(f"{k}: {v/record_count}")
 
             # column two
             with div():
