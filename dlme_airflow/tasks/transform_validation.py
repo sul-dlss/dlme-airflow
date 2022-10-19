@@ -7,7 +7,10 @@ from airflow.utils.task_group import TaskGroup
 
 
 def eval_record_count_formula(harvested_record_count, record_count_formula):
-    return eval(f"{harvested_record_count}{record_count_formula}")
+    try:
+        return eval(f"{harvested_record_count}{record_count_formula}")
+    except ZeroDivisionError:
+        return 0
 
 
 def _fetch_transform_output(collection) -> str:
