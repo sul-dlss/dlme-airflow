@@ -337,10 +337,10 @@ def main(**kwargs):  # input:, config:):
                                 f"Average number of values: {round((sum(languages.values())/record_count), 2)}"
                             )
                             lang_list = ul()
-                            sub_field_list += li("Languages:")
+                            sub_field_list += li("Languages (average):")
                             sub_field_list += lang_list
                             for k, v in languages.items():
-                                lang_list += li(f"{k}: {v}")
+                                lang_list += li(f"{k}: {v/record_count}")
 
             # column two
             with div():
