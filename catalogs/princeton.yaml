@@ -3,15 +3,15 @@ metadata:
   data_path: princeton
   schedule: "20 11 * * *"
 sources:
-  manuscripts:
+  islamic_mss:
     description: "Islamic Manuscripts"
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
       dtype:
     metadata:
-      data_path: princeton/princeton_mss
-      config: princeton_mss
+      data_path: princeton/islamic_mss
+      config: princeton
       fields:
         id:
           path: "@id"
@@ -28,7 +28,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
-      config: princeton_movie_posters
+      config: princeton
       fields:
         id:
           path: "@id"
@@ -44,8 +44,8 @@ sources:
       collection_url: https://figgy.princeton.edu/collections/eff75507-11bf-486b-b422-8fe29638b060/manifest
       dtype:
     metadata:
-      data_path: princeton/princeton_ymdi
-      config: princeton_mss
+      data_path: princeton/ymdi
+      config: princeton
       fields:
         id:
           path: "@id"
