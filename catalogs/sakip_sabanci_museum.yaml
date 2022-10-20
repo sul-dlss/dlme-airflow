@@ -7,7 +7,7 @@ sources:
     description: "Abidin Dino Archive"
     driver: iiif_json
     metadata:
-      data_path: sakip_sabanci/abidin_dino
+      data_path: sakip_sabanci_museum/abidin_dino
       config: sakip_sabanci_museum
       fields:
         context:
@@ -53,7 +53,7 @@ sources:
     description: "Emirgan Archive"
     driver: iiif_json
     metadata:
-      data_path: sakip_sabanci/emirgan
+      data_path: sakip_sabanci_museum/emirgan
       config: sakip_sabanci_museum
       fields:
         context:
@@ -99,7 +99,7 @@ sources:
     description: "The Arts of Book and Calligraphy Collection"
     driver: iiif_json
     metadata:
-      data_path: sakip_sabanci/kitap_vehat
+      data_path: sakip_sabanci_museum/kitap_vehat
       config: sakip_sabanci_museum
       fields:
         context:
@@ -145,7 +145,7 @@ sources:
     description: "Early Turkish Paintings"
     driver: iiif_json
     metadata:
-      data_path: sakip_sabanci/resim_klksyn
+      data_path: sakip_sabanci_museum/resim_klksyn
       config: sakip_sabanci_museum
       fields:
         context:
