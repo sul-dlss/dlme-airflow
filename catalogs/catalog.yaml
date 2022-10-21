@@ -103,12 +103,6 @@ sources:
     description: "Shahre Farang"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  stanford:
-    args:
-      path: catalogs/stanford.yaml
-    description: Stanford University
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
   texas_tech:
     args:
       path: catalogs/texas_tech.yaml

@@ -1,7 +1,6 @@
 metadata:
   version: 1
   data_path: lebanese_american_university
-  separate_dags: true
 sources:
   lebanese_painters:
     description: "Les Peintres Du Liban"
