@@ -343,7 +343,7 @@ def main(**kwargs):  # input:, config:):
                             sub_field_list += li("Languages (average):")
                             sub_field_list += lang_list
                             for k, v in languages.items():
-                                lang_list += li(f"{k}: {v/record_count}")
+                                lang_list += li(f"{k}: {round(v/record_count, 2)}")
 
             # column two
             with div():
