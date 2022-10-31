@@ -141,25 +141,23 @@ class OaiXmlSource(intake.source.base.DataSource):
         """Given an lxml Element will return a dictionary of key/value pairs."""
         result = {}
         for el in rec_metadata.getchildren():
-            tag = self._get_tag(el)
+            sub_element = self._flatten_tree(el)
+            tag = list(sub_element.keys())[0]
+            value = list(sub_element.values())[0].strip()
+
             if tag in result:
                 if isinstance(result[tag], str):
-                    if el.text is not None:
-                        result[tag] = [result[tag], el.text.strip()]
+                    if value is not None:
+                        result[tag] = [result[tag], value]
                     else:
                         result[tag] = [result[tag]]
-                elif el.text is not None:
-                    result[tag].append(el.text.strip())
-            elif el.text is not None:
-                result[tag] = el.text.strip()
-
-            # if the element has child elements add them too
-            if len(el) > 0:
-                result.update(self._flatten_tree(el))
+                elif value is not None:
+                    result[tag].append(value)
+            elif value is not None:
+                result[tag] = value
 
         return result
 
-    # TODO: Ask/Investigate (with jnelson) what the purpose of dtyle=self.dtype
     def _get_schema(self):
         self._open_set()
 
