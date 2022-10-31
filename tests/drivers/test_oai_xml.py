@@ -24,8 +24,8 @@ def test_mods(requests_mock):
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
     assert len(df) == 10, "expected number of rows"
-    assert len(df.columns) == 18, "expected number of columns"
-    assert "location_url" in df.columns, "hierarchical data encoded in header"
+    assert len(df.columns) == 14, "expected number of columns"
+    assert "location_shelfLocator" in df.columns, "hierarchical data encoded in header"
 
 
 def test_marc21(requests_mock):
@@ -36,7 +36,7 @@ def test_marc21(requests_mock):
     oai = OaiXmlSource("https://example.org", "marc21")
     df = oai.read()
     assert len(df) == 182, "expected number of rows"
-    assert len(df.columns) == 92, "expected number of columns"
+    assert len(df.columns) == 52, "expected number of columns"
     assert "245_a" in df.columns, "marc field 245 subfield a extracted"
 
 

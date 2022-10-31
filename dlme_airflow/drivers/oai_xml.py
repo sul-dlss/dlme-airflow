@@ -158,7 +158,6 @@ class OaiXmlSource(intake.source.base.DataSource):
 
         return result
 
-    
     def _get_schema(self):
         self._open_set()
 
