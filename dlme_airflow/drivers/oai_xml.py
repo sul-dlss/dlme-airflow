@@ -142,19 +142,20 @@ class OaiXmlSource(intake.source.base.DataSource):
         result = {}
         for el in rec_metadata.getchildren():
             sub_element = self._flatten_tree(el)
-            tag = list(sub_element.keys())[0]
-            value = list(sub_element.values())[0].strip()
+            if len(sub_element.keys()):
+                tag = list(sub_element.keys())[0]
+                value = list(sub_element.values())[0].strip()
 
-            if tag in result:
-                if isinstance(result[tag], str):
-                    if value is not None:
-                        result[tag] = [result[tag], value]
-                    else:
-                        result[tag] = [result[tag]]
+                if tag in result:
+                    if isinstance(result[tag], str):
+                        if value is not None:
+                            result[tag] = [result[tag], value]
+                        else:
+                            result[tag] = [result[tag]]
+                    elif value is not None:
+                        result[tag].append(value)
                 elif value is not None:
-                    result[tag].append(value)
-            elif value is not None:
-                result[tag] = value
+                    result[tag] = value
 
         return result
 
