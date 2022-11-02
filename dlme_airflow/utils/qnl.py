@@ -1,5 +1,6 @@
 # /bin/python
 import os
+import numpy as np
 import pandas as pd
 
 
@@ -12,6 +13,6 @@ def merge_records(**kwargs):
 
     # merge rows with the same shelf locator
     df_filled = df.fillna("NOT PROVIDED")
-    df_merged = df_filled.groupby("location_shelfLocator").agg(lambda x: x.tolist())
+    df_merged = df_filled.groupby("location_shelfLocator").agg(lambda x: np.unique(x.tolist()))
 
     df_merged.to_csv(working_csv)
