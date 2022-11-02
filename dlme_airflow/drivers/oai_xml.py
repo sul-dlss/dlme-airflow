@@ -142,14 +142,11 @@ class OaiXmlSource(intake.source.base.DataSource):
         result = {}
         for el in rec_metadata.getchildren():
             sub_element = self._flatten_tree(el)
-            if not len(sub_element.keys()):
+            if not len(sub_element):
                 continue
 
             tag = list(sub_element.keys())[0]
             value = list(sub_element.values())[0].strip()
-
-            if value is None:
-                continue
 
             if tag not in result:
                 result[tag] = value
