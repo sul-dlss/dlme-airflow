@@ -14,6 +14,8 @@ def test_oai_dc(requests_mock):
     assert len(df) == 100, "expected number of rows"
     assert len(df.columns) == 14, "expected number of columns"
     assert "title" in df.columns
+    assert "publisher" in df.columns
+    assert df.iloc[0]["publisher"] == ["HAL CCSD", "Wiley-VCH Verlag"]
 
 
 def test_mods(requests_mock):
@@ -38,6 +40,8 @@ def test_marc21(requests_mock):
     assert len(df) == 182, "expected number of rows"
     assert len(df.columns) == 52, "expected number of columns"
     assert "245_a" in df.columns, "marc field 245 subfield a extracted"
+    assert "035_a" in df.columns, "marc field 035 subfield a extracted"
+    assert len(df.iloc[0]["035_a"]) == 3, "much field 035 subfield a contains 3 values"
 
 
 def test_wait():
