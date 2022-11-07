@@ -25,10 +25,10 @@ def test_mods(requests_mock):
     )
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
-    assert len(df) == 10, "expected number of rows"
+    assert len(df) == 20, "expected number of rows"
     assert len(df.columns) == 14, "expected number of columns"
     assert "location_shelfLocator" in df.columns, "hierarchical data encoded in header"
-    assert [isinstance(i, list) for i in df['subject_name_namePart']]
+    assert df.subject_name_namePart.dtypes == object and df.iloc[9]['subject_name_namePart'].startswith('['), "objects begin with a ["
 
 
 def test_marc21(requests_mock):
