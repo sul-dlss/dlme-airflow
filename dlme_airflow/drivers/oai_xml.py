@@ -89,14 +89,11 @@ class OaiXmlSource(intake.source.base.DataSource):
                 else:
                     logging.warn(f"Manifest missing {field}")
             else:
-                if len(result) == 1:
-                    output[field] = result[0].text.strip()
-                else:
-                    if field not in output:
-                        output[field] = []
+                if field not in output:
+                    output[field] = []
 
-                    for data in result:
-                        output[field].append(data.text.strip())
+                for data in result:
+                    output[field].append(data.text.strip())
         return output
 
     def _get_tag(self, el):
@@ -149,18 +146,9 @@ class OaiXmlSource(intake.source.base.DataSource):
             value = list(sub_element.values())[0].strip()
 
             if tag not in result:
-                result[tag] = value
-                continue
-
-            if isinstance(result[tag], str):
-                result[tag] = [result[tag], value]
-                continue
-
-            result[tag].append(value)
-
-        for key,value in result.items():
-            if isinstance(value, str):
-                result[key] = "['" + value + "']"
+                result[tag] = [value]
+            else:
+                result[tag].append(value)
 
         return result
 

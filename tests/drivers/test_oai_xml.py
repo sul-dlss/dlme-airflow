@@ -28,7 +28,7 @@ def test_mods(requests_mock):
     assert len(df) == 20, "expected number of rows"
     assert len(df.columns) == 14, "expected number of columns"
     assert "location_shelfLocator" in df.columns, "hierarchical data encoded in header"
-    assert df.subject_name_namePart.dtypes == object and df.iloc[9]['subject_name_namePart'].startswith('['), "objects begin with a ["
+    assert df.subject_name_namePart.dtypes == object and isinstance([i for i in df.subject_name_namePart], list), "only list values"
 
 
 def test_marc21(requests_mock):
