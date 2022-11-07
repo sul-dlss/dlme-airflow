@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<OAI-PMH
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.openarchives.org/OAI/2.0/"
+  xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
   <responseDate>2022-08-30T16:38:20Z</responseDate>
   <request verb="ListRecords" metadataPrefix="mods_no_ocr">https://api.qdl.qa/api/oaipmh</request>
   <ListRecords>
@@ -32,10 +36,19 @@
           </language>
           <physicalDescription>
             <extent>كوديكس؛ صص. ‎v+‎١٢٥‎+vi</extent>
-            <extent>المادة: ورق غربي مسلَّكالأبعاد: حجم الورقة ٢١٤ × ١٤٠ مم [مساحة الكتابة ١٦٠ × ٧٦ مم]ترقيم الأوراق: ترقيم عربي شرقي بالحبر الأسود؛ ترقيم المتحف البريطاني بالقلم الرصاصالتسطير: لا يوجد تسطير مرئي؛ ١٥ سطرًا في كل صفحة؛ مسافة تباعد عمودية ١٠ أسطر لكل ١٠ سمالخط:
-                           نسخالحبر: حبر أسود، مع تحمير العناوين وإطارات النص باللونين الأحمر والأخضر؛الزخرفة: بداية النص مزخرفة بالذهب وأشكال ورود؛ لكل صفحة إطار نص باللونين الأحمر والأخضرالتجليد: ألواح عثمانية ورائدة مظروف مجلدة بالجلد الأحمر ومرفقة بصلب جديد مدور (على الطراز الأوروبي)؛ الألواح ورائدة المظروف لها جامات وهوامش مختومة بالقوالبالحالة: ممتازة؛ تلف بسيط للغاية ناتج عن المياه في الرأس باتجاه بداية ونهاية المجلدالحاشية: قليلة جدًا؛ جميعها (؟) بيد الناسخالأختام: لا يوجد</extent>
+            <extent>المادة: ورق غربي مسلَّكالأبعاد: حجم الورقة ٢١٤ × ١٤٠ مم [مساحة الكتابة ١٦٠ × ٧٦ مم]ترقيم الأوراق: ترقيم عربي شرقي بالحبر الأسود؛ ترقيم المتحف البريطاني بالقلم الرصاصالتسطير: لا يوجد تسطير مرئي؛ ١٥ سطرًا في كل صفحة؛ مسافة تباعد عمودية ١٠ أسطر
+              لكل ١٠ سمالخط: نسخالحبر: حبر أسود، مع تحمير العناوين وإطارات النص باللونين الأحمر والأخضر؛الزخرفة: بداية النص مزخرفة بالذهب وأشكال ورود؛ لكل صفحة إطار نص باللونين الأحمر والأخضرالتجليد: ألواح عثمانية ورائدة مظروف مجلدة بالجلد الأحمر ومرفقة بصلب جديد
+              مدور (على الطراز الأوروبي)؛ الألواح ورائدة المظروف لها جامات وهوامش مختومة بالقوالبالحالة: ممتازة؛ تلف بسيط للغاية ناتج عن المياه في الرأس باتجاه بداية ونهاية المجلدالحاشية: قليلة جدًا؛ جميعها (؟) بيد الناسخالأختام: لا يوجد</extent>
           </physicalDescription>
-          <abstract>أطروحة في الدفاع عن شرب التتن لأسباب طبية وقانونية، كتبها في سنة ١٠٩٢\١٦٨٢ عبد الغني بن إسماعيل النابلسي (وُلد سنة ١٦٤١، توفي سنة ١٧٣١) (انظر حرد المتن للمؤلف، ص. ١٢٧ظ، الأسطر ١١-١٣، منسوخة أدناه).استُكملت النسخة في نهاية شهر محرم ١١٦١/يناير-فبراير ١٧٤٨ (انظر حرد المتن للناسخ، ص. ١٢٧ظ، الأسطر ١٤-١٦، منسوخة أدناه).هناك بيتان من الشعر على صفحة العنوان حول موضوع التدخين بقلم الشيخ الزرقاني، وقد أُدرج شطران جديدان بين شطريهما (وهي ممارسة شعرية تُعرف بالتشطير) بقلم الشيخ الصفواني الرشيدي.الأطروحة مقسمة إلى سبعة فصول يوجد قائمة بأسمائها في المقدمة (صص. ٦ظ-٧ظ):الفصل الأول في بيان سبب اختلاف الناس في حكم بعض الأشياء المباحة وسبب اختلاف الفتاوى من العلماء في حل شرب التتن وحرمته (صص. ٧ظ-٢١ظ)؛الفصل الثاني في ابتداء استعمال هذا النبات المخصوص المعروف بالتتن وأصل كيفية شربه على هذا الوجه المخصوص وذكر أول حدوثه بالبلاد الشامية وغيرها وبيان أسمائه وأسماء آلاته (صص. ٢١ظ-٢٨و)؛الفصل الثالث في بيان أصل الدخان المطلق ومعرفة كيفية تولده وذكر منافعه ومضاره (صص. ٢٨و-٣٤ظ)؛الفصل الرابع في بيان هذا النبات المخصوص المسمى بالتتن وذكر دخانه ومنافعه (صص. ٣٤ظ-٤٤ظ)؛الفصل الخامس في بيان الأدلة الفاسدة التي استدل بها من حرم استعمال التتن (صص. ٤٤ظ-١٠٤و)؛الفصل السادس في ملخص ما يقال من التصريح بإباحة شرب التتن بعد انتفاء الحرمة عنه والكراهة التحريمية والتنزيهية وخلاف الأولى (صص. ١٠٤و-١١٩و)؛الفصل السابع فيما وجدناه في حق شرب التتن للمتأخرين من الأبيات الشعرية والتغزلات الأدبية وما لنا في ذلك على هذا المثال تتميمًا لما قصدناه من تحرير المقال (صص. ١١٩و-١٢٧ظ)؛البداية (ص. ٢ظ، الأسطر ٢-٦):الحمد لله الذي جعل استعمال دخان التتننافعًا بتجفيفه الرطوبات الزائدة في الأجسامومحللًا لما تكاثف في الصدر من لزوجة البلغمومهضمًا عن المعدة ثقل الطعام وطاردًاللرياح المحتبسة في العروق ...النهاية (ص. ١٢٧ظ، الأسطر ٩-١١):هذا آخر ما أردنا إراده في بيان هذه المسئلةنفّع الله تعالى بها الأمة وأزال بسببهاعنهم في ذلك الغمة ...حرد المتن للمؤلف (ص. ١٢٧ظ، الأسطر ١١-١٣):... وقد وافق فراغ تبييضهانهار الأربع أواخر شهر ذي الحجة المباركةختام سنة 1092 أثنين وتسعين وألفحرد المتن للناسخ (ص. ١٢٧ظ، الأسطر ١٤-١٦):ووافق أيضًا انتهاء تحرير هذه النسخة نهارالجمعة المباركة ختام شهر محرم الحرام المبارك(له 27 ع ؟) سنة 1161</abstract>
+          <abstract>أطروحة في الدفاع عن شرب التتن لأسباب طبية وقانونية، كتبها في سنة ١٠٩٢\١٦٨٢ عبد الغني بن إسماعيل النابلسي (وُلد سنة ١٦٤١، توفي سنة ١٧٣١) (انظر حرد المتن للمؤلف، ص. ١٢٧ظ، الأسطر ١١-١٣، منسوخة أدناه).استُكملت النسخة في نهاية شهر محرم
+            ١١٦١/يناير-فبراير ١٧٤٨ (انظر حرد المتن للناسخ، ص. ١٢٧ظ، الأسطر ١٤-١٦، منسوخة أدناه).هناك بيتان من الشعر على صفحة العنوان حول موضوع التدخين بقلم الشيخ الزرقاني، وقد أُدرج شطران جديدان بين شطريهما (وهي ممارسة شعرية تُعرف بالتشطير) بقلم الشيخ الصفواني
+            الرشيدي.الأطروحة مقسمة إلى سبعة فصول يوجد قائمة بأسمائها في المقدمة (صص. ٦ظ-٧ظ):الفصل الأول في بيان سبب اختلاف الناس في حكم بعض الأشياء المباحة وسبب اختلاف الفتاوى من العلماء في حل شرب التتن وحرمته (صص. ٧ظ-٢١ظ)؛الفصل الثاني في ابتداء استعمال هذا
+            النبات المخصوص المعروف بالتتن وأصل كيفية شربه على هذا الوجه المخصوص وذكر أول حدوثه بالبلاد الشامية وغيرها وبيان أسمائه وأسماء آلاته (صص. ٢١ظ-٢٨و)؛الفصل الثالث في بيان أصل الدخان المطلق ومعرفة كيفية تولده وذكر منافعه ومضاره (صص. ٢٨و-٣٤ظ)؛الفصل الرابع
+            في بيان هذا النبات المخصوص المسمى بالتتن وذكر دخانه ومنافعه (صص. ٣٤ظ-٤٤ظ)؛الفصل الخامس في بيان الأدلة الفاسدة التي استدل بها من حرم استعمال التتن (صص. ٤٤ظ-١٠٤و)؛الفصل السادس في ملخص ما يقال من التصريح بإباحة شرب التتن بعد انتفاء الحرمة عنه والكراهة
+            التحريمية والتنزيهية وخلاف الأولى (صص. ١٠٤و-١١٩و)؛الفصل السابع فيما وجدناه في حق شرب التتن للمتأخرين من الأبيات الشعرية والتغزلات الأدبية وما لنا في ذلك على هذا المثال تتميمًا لما قصدناه من تحرير المقال (صص. ١١٩و-١٢٧ظ)؛البداية (ص. ٢ظ، الأسطر
+            ٢-٦):الحمد لله الذي جعل استعمال دخان التتننافعًا بتجفيفه الرطوبات الزائدة في الأجسامومحللًا لما تكاثف في الصدر من لزوجة البلغمومهضمًا عن المعدة ثقل الطعام وطاردًاللرياح المحتبسة في العروق ...النهاية (ص. ١٢٧ظ، الأسطر ٩-١١):هذا آخر ما أردنا إراده في
+            بيان هذه المسئلةنفّع الله تعالى بها الأمة وأزال بسببهاعنهم في ذلك الغمة ...حرد المتن للمؤلف (ص. ١٢٧ظ، الأسطر ١١-١٣):... وقد وافق فراغ تبييضهانهار الأربع أواخر شهر ذي الحجة المباركةختام سنة 1092 أثنين وتسعين وألفحرد المتن للناسخ (ص. ١٢٧ظ، الأسطر
+            ١٤-١٦):ووافق أيضًا انتهاء تحرير هذه النسخة نهارالجمعة المباركة ختام شهر محرم الحرام المبارك(له 27 ع ؟) سنة 1161</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">مخطوطة</genre>
           <name type="personal">
@@ -72,7 +85,7 @@
             <recordIdentifer>Add MS 19547</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>al-Ṣulḥ bayna al-ikhwān fī ḥukm ibāḥat al-dukhān الصلح بين الإخوان في حكم إباحة الدخان  Nābulusī, ‘Abd al-Ghanī ibn Ismā‘īl نابلسي، عبد الغني بن إسماعيل</title>
+            <title>al-Ṣulḥ bayna al-ikhwān fī ḥukm ibāḥat al-dukhān الصلح بين الإخوان في حكم إباحة الدخان Nābulusī, ‘Abd al-Ghanī ibn Ismā‘īl نابلسي، عبد الغني بن إسماعيل</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1748/1748</dateIssued>
@@ -83,10 +96,26 @@
           </language>
           <physicalDescription>
             <extent>Codex; ff. v+125+vi</extent>
-            <extent>Material: Western laid paperDimensions: 214 x 140 mm leaf [160 x 76 mm written]Foliation: Eastern Arabic foliation in black ink; British Museum foliation in pencilRuling: No ruling visible; 15 lines per page; vertical spacing 10 lines per 10 cmScript:
-                           NaskhInk: Black ink, with rubricated headings and text frames in red and greenDecoration: Illuminated incipit with gold and floral pattern; each page has a text frame in red and greenBinding: Ottoman boards and envelope flap of red leather binding attached to new, rounded (European style) spine; boards and envelope flap have block stamped medallions and bordersCondition: Excellent; extremely minor water damage to head towards front and back of volumeMarginalia: Very few; all (?) by hand of scribeSeals: None</extent>
+            <extent>Material: Western laid paperDimensions: 214 x 140 mm leaf [160 x 76 mm written]Foliation: Eastern Arabic foliation in black ink; British Museum foliation in pencilRuling: No ruling visible; 15 lines per page; vertical spacing 10 lines per 10
+              cmScript: NaskhInk: Black ink, with rubricated headings and text frames in red and greenDecoration: Illuminated incipit with gold and floral pattern; each page has a text frame in red and greenBinding: Ottoman boards and envelope flap of red leather
+              binding attached to new, rounded (European style) spine; boards and envelope flap have block stamped medallions and bordersCondition: Excellent; extremely minor water damage to head towards front and back of volumeMarginalia: Very few; all (?) by
+              hand of scribeSeals: None</extent>
           </physicalDescription>
-          <abstract>Treatise in defense of tobacco smoking (شَرَب التُتُن) on medical and legal grounds, written in 1092/1682 (see Author's Colophon, f. 127v, lines 11-13, transcribed below) by ‘Abd al-Ghanī ibn Ismā‘īl al-Nābulusī (عبد الغني بن إسماعيل النابلسي, b. 1641, d. 1731).The copy was completed at the end of Muḥarram 1161/January-February 1748 (see Scribe's Colophon, f. 127v, lines 14-16, transcribed below).On the title page are recorded two lines (بيتان) of verse on the theme of smoking by Shaykh al-Zarqānī between the two hemistichs of which two new hemistichs have been inserted (a poetic practice known as تشطير) by al-Shaykh al-Ṣafwānī al-Rashīdī.The treatise is divided into seven chapters (فصول), a list of which is given in the introduction (ff. 6v-7v):Chapter One: Explanation of why people disagree over judging some things permissable, and why fatwas from the ulamas disagree over allowing or prohibiting tobacco smoking (الفصل الأول في بيان سبب اختلاف الناس في حكم بعض الأشياء المباحة وسبب اختلاف الفتاوى من العلماء في حل شرب التتن وحرمته; ff. 7v-21v);Chapter Two: The initial use of this special plant known as tobacco, the origin of the method of smoking it in this special way, a discussion of its appearance in the Levant and elsewhere, an explanation of its names and the names of its paraphernalia (الفصل الثاني في ابتداء استعمال هذا النبات المخصوص المعروف بالتتن وأصل كيفية شربه على هذا الوجه المخصوص وذكر أول حدوثه بالبلاد الشامية وغيرها وبيان أسمائه وأسماء آلاته; ff. 21v-28r);Chapter Three: Explanation of the origin of smoke in general, knowledge of how it is produced, and a discussion of its benefits and harms (الفصل الثالث في بيان أصل الدخان المطلق ومعرفة كيفية تولده وذكر منافعه ومضاره; ff. 28r-34v);Chapter Four: Explanation of this special plant called tobacco, and a discussion of its smoke and benefits (الفصل الرابع في بيان هذا النبات المخصوص المسمى بالتتن وذكر دخانه ومنافعه; ff. 34v-44v);Chapter Five: Explanation of the flawed evidence adduced by those who say the use of tobacco is forbidden (الفصل الخامس في بيان الأدلة الفاسدة التي استدل بها من حرم استعمال التتن; ff. 44v-104r);Chapter Six: Summary of what is said in the statement allowing the smoking of tobacco after forbidding it has been refuted, prohibitive and abstinential disgust, and the difference of the first (الفصل السادس في ملخص ما يقال من التصريح بإباحة شرب التتن بعد انتفاء الحرمة عنه والكراهة التحريمية والتنزيهية وخلاف الأولى; ff. 104r-119r);Chapter Seven: What we have discovered about the truth of tobacco smoking according to the moderns from poetic verses and refined love poems, and what we have written of this sort as a conclusion for what we have intended in writing these chapters (الفصل السابع فيما وجدناه في حق شرب التتن للمتأخرين من الأبيات الشعرية والتغزلات الأدبية وما لنا في ذلك على هذا المثال تتميمًا لما قصدناه من تحرير المقال; ff. 119r-127v).Begins (f. 2v, lines 2-6):الحمد لله الذي جعل استعمال دخان التتننافعًا بتجفيفه الرطوبات الزائدة في الأجسامومحللًا لما تكاثف في الصدر من لزوجة البلغمومهضمًا عن المعدة ثقل الطعام وطاردًاللرياح المحتبسة في العروق ...Ends (f. 127v, lines 9-11):هذا آخر ما أردنا إراده في بيان هذه المسئلةنفّع الله تعالى بها الأمة وأزال بسببهاعنهم في ذلك الغمة ...Author's Colophon (f. 127v, lines 11-13):... وقد وافق فراغ تبييضهانهار الأربع أواخر شهر ذي الحجة المباركةختام سنة 1092 أثنين وتسعين وألفScribe's Colophon (f. 127v, lines 14-16):ووافق أيضًا انتهاء تحرير هذه النسخة نهارالجمعة المباركة ختام شهر محرم الحرام المبارك(له 27 ع ؟) سنة 1161</abstract>
+          <abstract>Treatise in defense of tobacco smoking (شَرَب التُتُن) on medical and legal grounds, written in 1092/1682 (see Author's Colophon, f. 127v, lines 11-13, transcribed below) by ‘Abd al-Ghanī ibn Ismā‘īl al-Nābulusī (عبد الغني بن إسماعيل
+            النابلسي, b. 1641, d. 1731).The copy was completed at the end of Muḥarram 1161/January-February 1748 (see Scribe's Colophon, f. 127v, lines 14-16, transcribed below).On the title page are recorded two lines (بيتان) of verse on the theme of smoking by
+            Shaykh al-Zarqānī between the two hemistichs of which two new hemistichs have been inserted (a poetic practice known as تشطير) by al-Shaykh al-Ṣafwānī al-Rashīdī.The treatise is divided into seven chapters (فصول), a list of which is given in the
+            introduction (ff. 6v-7v):Chapter One: Explanation of why people disagree over judging some things permissable, and why fatwas from the ulamas disagree over allowing or prohibiting tobacco smoking (الفصل الأول في بيان سبب اختلاف الناس في حكم بعض
+            الأشياء المباحة وسبب اختلاف الفتاوى من العلماء في حل شرب التتن وحرمته; ff. 7v-21v);Chapter Two: The initial use of this special plant known as tobacco, the origin of the method of smoking it in this special way, a discussion of its appearance in the
+            Levant and elsewhere, an explanation of its names and the names of its paraphernalia (الفصل الثاني في ابتداء استعمال هذا النبات المخصوص المعروف بالتتن وأصل كيفية شربه على هذا الوجه المخصوص وذكر أول حدوثه بالبلاد الشامية وغيرها وبيان أسمائه وأسماء
+            آلاته; ff. 21v-28r);Chapter Three: Explanation of the origin of smoke in general, knowledge of how it is produced, and a discussion of its benefits and harms (الفصل الثالث في بيان أصل الدخان المطلق ومعرفة كيفية تولده وذكر منافعه ومضاره; ff.
+            28r-34v);Chapter Four: Explanation of this special plant called tobacco, and a discussion of its smoke and benefits (الفصل الرابع في بيان هذا النبات المخصوص المسمى بالتتن وذكر دخانه ومنافعه; ff. 34v-44v);Chapter Five: Explanation of the flawed
+            evidence adduced by those who say the use of tobacco is forbidden (الفصل الخامس في بيان الأدلة الفاسدة التي استدل بها من حرم استعمال التتن; ff. 44v-104r);Chapter Six: Summary of what is said in the statement allowing the smoking of tobacco after
+            forbidding it has been refuted, prohibitive and abstinential disgust, and the difference of the first (الفصل السادس في ملخص ما يقال من التصريح بإباحة شرب التتن بعد انتفاء الحرمة عنه والكراهة التحريمية والتنزيهية وخلاف الأولى; ff. 104r-119r);Chapter
+            Seven: What we have discovered about the truth of tobacco smoking according to the moderns from poetic verses and refined love poems, and what we have written of this sort as a conclusion for what we have intended in writing these chapters (الفصل
+            السابع فيما وجدناه في حق شرب التتن للمتأخرين من الأبيات الشعرية والتغزلات الأدبية وما لنا في ذلك على هذا المثال تتميمًا لما قصدناه من تحرير المقال; ff. 119r-127v).Begins (f. 2v, lines 2-6):الحمد لله الذي جعل استعمال دخان التتننافعًا بتجفيفه الرطوبات
+            الزائدة في الأجسامومحللًا لما تكاثف في الصدر من لزوجة البلغمومهضمًا عن المعدة ثقل الطعام وطاردًاللرياح المحتبسة في العروق ...Ends (f. 127v, lines 9-11):هذا آخر ما أردنا إراده في بيان هذه المسئلةنفّع الله تعالى بها الأمة وأزال بسببهاعنهم في ذلك الغمة
+            ...Author's Colophon (f. 127v, lines 11-13):... وقد وافق فراغ تبييضهانهار الأربع أواخر شهر ذي الحجة المباركةختام سنة 1092 أثنين وتسعين وألفScribe's Colophon (f. 127v, lines 14-16):ووافق أيضًا انتهاء تحرير هذه النسخة نهارالجمعة المباركة ختام شهر محرم
+            الحرام المبارك(له 27 ع ؟) سنة 1161</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">Manuscript</genre>
           <name type="personal">
@@ -134,10 +163,23 @@
           </language>
           <physicalDescription>
             <extent>كوديكس؛ صص. ii‎+٢٠٥‏+‎iv</extent>
-            <extent>المادة: ورق مسلَّك غربيالأبعاد: حجم الورقة ٣٠٥ x ٢١٠ مم [المساحة المكتوبة ٢٨٥ x ١٦٥ مم]ترقيم الأوراق: ترقيم تاريخي للصفحات بأرقام عربية غربية بالحبر البني؛ ترقيم المتحف البريطاني بالقلم الرصاص؛ ورقة غير مرقّمة بين صص. ١١٩ و١٢٠، الآن مرقّمة على النحو ١١٩أالتسطير: لا يوجد تسطير واضح؛ حوالي ٣٤-٥٢ سطرًا في كل صفحة؛ مسافة تباعد عمودية حوالي ١٢-١٥ سطرًا لكل ١٠ سمالخط: نسخ؛
-                           أكثر من يد ناسخ واحد (إذ توجد نصوص كُتبت بأيادٍ مختلفة في، على سبيل المثال، صص. ٧١و، ٨٧و.)الحبر: بنّيالزخرفة: لا يوجدالتجليد: تجليد المتحف البريطاني، نصفه من الجلدالحالة: بقع مائية (صص. ١٨٧-٢٠٤)الحاشية: قليلة جدًا، بيد الناسخ الأساسيالأختام: ختم المتحف البريطاني: صص. ١و، ص. ١٦و، ص. ٣٥و، ص. ٧٩، ص. ١١٤و، ص. ١٣٦و، ص. ١٥٥و، ص. ١٧٨و، ص. ٢٠٤ظ</extent>
+            <extent>المادة: ورق مسلَّك غربيالأبعاد: حجم الورقة ٣٠٥ x ٢١٠ مم [المساحة المكتوبة ٢٨٥ x ١٦٥ مم]ترقيم الأوراق: ترقيم تاريخي للصفحات بأرقام عربية غربية بالحبر البني؛ ترقيم المتحف البريطاني بالقلم الرصاص؛ ورقة غير مرقّمة بين صص. ١١٩ و١٢٠، الآن مرقّمة
+              على النحو ١١٩أالتسطير: لا يوجد تسطير واضح؛ حوالي ٣٤-٥٢ سطرًا في كل صفحة؛ مسافة تباعد عمودية حوالي ١٢-١٥ سطرًا لكل ١٠ سمالخط: نسخ؛ أكثر من يد ناسخ واحد (إذ توجد نصوص كُتبت بأيادٍ مختلفة في، على سبيل المثال، صص. ٧١و، ٨٧و.)الحبر: بنّيالزخرفة: لا
+              يوجدالتجليد: تجليد المتحف البريطاني، نصفه من الجلدالحالة: بقع مائية (صص. ١٨٧-٢٠٤)الحاشية: قليلة جدًا، بيد الناسخ الأساسيالأختام: ختم المتحف البريطاني: صص. ١و، ص. ١٦و، ص. ٣٥و، ص. ٧٩، ص. ١١٤و، ص. ١٣٦و، ص. ١٥٥و، ص. ١٧٨و، ص. ٢٠٤ظ</extent>
           </physicalDescription>
-          <abstract>دراسة شاملة عن الزراعة للعالم الزراعي الأندلسي أبو زكريا يحيى بن محمد بن أحمد الإشبيلي، عاش في أواخر القرن الثاني عشر؟)، المعروف باسم ابن العوام.أعدّ النسخة مستعرب أسباني مجهول، على ما يُقال من مدريد، Real Academia de la Historia, Gayangos Collection, Ms. IX، التي كانت في السابق جزءًا من مجموعات الإسكوريال (ابن العوام، كتاب الفلاحة، مشروع نصوص الفلاحة، http://www.filaha.org/author_ibn_al_awwam.html).ينقسم النص إلى مقدمة المؤلف مقسَّمة إلى فصول، ومقدمة، وخمسة وثلاثين بابًا مرقمة على التوالي عبر سفرين أو جزأين، فقط الثاني منهما معنون. توجد قائمة بالأبواب ذات العناوين والأوصاف الشاملة في المقدمة (صص. ٣ظ-٧ظ):مقدمة المؤلف (صص. ١و- ٣و)؛مقدمة (صص. ٣و-٧ظ)؛السفر/الجزء الأول (الأبواب ١-١٦، صص. ٨و-١١٩و)؛الباب الأول عن التربة (صص. ٨و-٢٤و)؛الباب الثاني، الأسمدة (صص. ٢٤و-٣٣و)؛الباب الثالث، المياه (صص. ٣٣و-٣٧و)؛الباب الرابع، تخطيط الحدائق (صص. ٣٧و-٣٧ظ)؛الباب الخامس، وضع الأشجار (صص. ٣٧ظ-٤٥ظ)؛الباب السادس، الزراعة (صص. ٤٥ظ-٥٠ظ)؛الباب السابع، أسماء الأنواع للزراعة في الأندلس (صص. ٥٠ظ-٨٤ظ)؛الباب الثامن، التطعيم (صص. ٨٤ظ-٩٨و)؛الباب التاسع، التقليم (صص. ٩٨و-٩٩و)؛الباب العاشر، الفلاحة (صص. ٩٩و-١٠١ظ)؛الباب الحادي عشر، وضع الأسمدة (صص. ١٠١ظ-١٠٢ظ)؛الباب الثاني عشر، الري (صص. ١٠٢ظ-١٠٦و)؛الباب الثالث عشر، التلقيح الاصطناعي (صص. ١٠٦و-١٠٧و)؛الباب الرابع عشر، علاجات الأشجار (صص. ١٠٧و-١١٣و)؛الباب الخامس عشر، أساليب تحسين نوعية المحصول (صص. ١١٣و-١١٥ظ)؛الباب السادس عشر، تخزين المحصول والحفاظ عليه (صص. ١١٥ظ-١١٩و)؛السفر/الجزء الثاني (الأبواب ١٧-٣٥، صص. ١١٩أ-ظ-٢٠٤و)؛الباب السابع عشر، الفلاحة وإعداد الأرض (صص. ١٢٠و-١٢١و)؛الباب الثامن عشر، الحبوب والبقوليات التي تحسّن التربة (صص. ١٢١و-١٢٣و)؛الباب التاسع عشر، زراعة الحبوب (صص. ١٢٣و-١٢٥ظ)؛الباب العشرون، زراعة الأرز والدخن والسمسم وغيرها (صص. ١٢٥ظ-١٢٩و)؛الباب الحادي والعشرون، زراعة الفول والحمص ونباتات التّرمس وغيرها (صص. ١٢٩و-١٣١و)؛الباب الثاني والعشرون، زراعة الكتان والقنب والقطن وغيرها (صص. ١٣١و-١٣٤ظ)؛الباب الثالث والعشرون، إنشاء حديقة مطبخ (صص. ١٣٤ظ-١٣٩و)؛الباب الرابع والعشرون، زراعة المحاصيل الجذرية (صص. ١٣٩و-١٤٣و)؛الباب الخامس والعشرون، زراعة البطيخ والقرع (١٤٣و-١٤٧و)؛الباب السادس والعشرون، زراعة توابل الطبخ والتوابل الطبية (صص. ١٤٧و-١٤٨ظ)؛الباب السابع والعشرون، زراعة النباتات العطرية (صص. ١٤٨ظ-١٥١ظ)؛الباب الثامن والعشرون، زراعة نباتات الحدائق (صص. ١٥١ظ-١٥٤ظ)؛الباب التاسع والعشرون، الحصاد (صص. ١٥٤ظ-١٦١و)؛الباب الثلاثون، مسائل متنوعة (صص. ١٦١و-١٦٩ظ؛ شكل توضيحي للحارث في ص. ١٦٩ظ)؛الباب الحادي والثلاثون، الماشية (صص. ١٦٩ظ-١٧٢و)؛الباب الثاني والثلاثون، دواب الحمل (صص. ١٧٢و-١٨٢ظ)؛الباب الثالث والثلاثون، طب الخيول (١٨٢ظ-١٩٩و)؛الباب الرابع والثلاثون، الدواجن والحمام والنحل (١٩٩و-٢٠٤و)؛الباب الخامس والثلاثون، الكلاب؛ مذكور في المقدمة ولكن لم يُعثر عليه في المخطوطة).البداية (ص. ١و، الأسطر ٣-٦):قال مؤلفه الشيخ الفاضل أبو زكريا يحيى ابن محمد بن أحمد بنالعوام عفي الله عنه الحمد لله رب العالمين وصلى الله علىالنبي محمد خاتم النبيين وعلى آله وصحبه الطيبين وسلمتسليمًا أما بعد فإني لما قرأت من كتب الفلاحة المسلمينالنهاية (ص. ٢٠٤و، الأسطر ٣٨-٤٢):...ثم (!) السفر الثاني من كتابالفلاحة في الأرضين والحيوان مما علي بجمعة من كتب الفلاحين والحكماء المتقدمين يحيى بن أحمد بن محمد بن العوامالإشبيلي عفا الله عنهوحمه (!) آمين</abstract>
+          <abstract>دراسة شاملة عن الزراعة للعالم الزراعي الأندلسي أبو زكريا يحيى بن محمد بن أحمد الإشبيلي، عاش في أواخر القرن الثاني عشر؟)، المعروف باسم ابن العوام.أعدّ النسخة مستعرب أسباني مجهول، على ما يُقال من مدريد، Real Academia de la Historia, Gayangos
+            Collection, Ms. IX، التي كانت في السابق جزءًا من مجموعات الإسكوريال (ابن العوام، كتاب الفلاحة، مشروع نصوص الفلاحة، http://www.filaha.org/author_ibn_al_awwam.html).ينقسم النص إلى مقدمة المؤلف مقسَّمة إلى فصول، ومقدمة، وخمسة وثلاثين بابًا مرقمة على
+            التوالي عبر سفرين أو جزأين، فقط الثاني منهما معنون. توجد قائمة بالأبواب ذات العناوين والأوصاف الشاملة في المقدمة (صص. ٣ظ-٧ظ):مقدمة المؤلف (صص. ١و- ٣و)؛مقدمة (صص. ٣و-٧ظ)؛السفر/الجزء الأول (الأبواب ١-١٦، صص. ٨و-١١٩و)؛الباب الأول عن التربة (صص.
+            ٨و-٢٤و)؛الباب الثاني، الأسمدة (صص. ٢٤و-٣٣و)؛الباب الثالث، المياه (صص. ٣٣و-٣٧و)؛الباب الرابع، تخطيط الحدائق (صص. ٣٧و-٣٧ظ)؛الباب الخامس، وضع الأشجار (صص. ٣٧ظ-٤٥ظ)؛الباب السادس، الزراعة (صص. ٤٥ظ-٥٠ظ)؛الباب السابع، أسماء الأنواع للزراعة في الأندلس (صص.
+            ٥٠ظ-٨٤ظ)؛الباب الثامن، التطعيم (صص. ٨٤ظ-٩٨و)؛الباب التاسع، التقليم (صص. ٩٨و-٩٩و)؛الباب العاشر، الفلاحة (صص. ٩٩و-١٠١ظ)؛الباب الحادي عشر، وضع الأسمدة (صص. ١٠١ظ-١٠٢ظ)؛الباب الثاني عشر، الري (صص. ١٠٢ظ-١٠٦و)؛الباب الثالث عشر، التلقيح الاصطناعي (صص.
+            ١٠٦و-١٠٧و)؛الباب الرابع عشر، علاجات الأشجار (صص. ١٠٧و-١١٣و)؛الباب الخامس عشر، أساليب تحسين نوعية المحصول (صص. ١١٣و-١١٥ظ)؛الباب السادس عشر، تخزين المحصول والحفاظ عليه (صص. ١١٥ظ-١١٩و)؛السفر/الجزء الثاني (الأبواب ١٧-٣٥، صص. ١١٩أ-ظ-٢٠٤و)؛الباب السابع
+            عشر، الفلاحة وإعداد الأرض (صص. ١٢٠و-١٢١و)؛الباب الثامن عشر، الحبوب والبقوليات التي تحسّن التربة (صص. ١٢١و-١٢٣و)؛الباب التاسع عشر، زراعة الحبوب (صص. ١٢٣و-١٢٥ظ)؛الباب العشرون، زراعة الأرز والدخن والسمسم وغيرها (صص. ١٢٥ظ-١٢٩و)؛الباب الحادي والعشرون،
+            زراعة الفول والحمص ونباتات التّرمس وغيرها (صص. ١٢٩و-١٣١و)؛الباب الثاني والعشرون، زراعة الكتان والقنب والقطن وغيرها (صص. ١٣١و-١٣٤ظ)؛الباب الثالث والعشرون، إنشاء حديقة مطبخ (صص. ١٣٤ظ-١٣٩و)؛الباب الرابع والعشرون، زراعة المحاصيل الجذرية (صص.
+            ١٣٩و-١٤٣و)؛الباب الخامس والعشرون، زراعة البطيخ والقرع (١٤٣و-١٤٧و)؛الباب السادس والعشرون، زراعة توابل الطبخ والتوابل الطبية (صص. ١٤٧و-١٤٨ظ)؛الباب السابع والعشرون، زراعة النباتات العطرية (صص. ١٤٨ظ-١٥١ظ)؛الباب الثامن والعشرون، زراعة نباتات الحدائق (صص.
+            ١٥١ظ-١٥٤ظ)؛الباب التاسع والعشرون، الحصاد (صص. ١٥٤ظ-١٦١و)؛الباب الثلاثون، مسائل متنوعة (صص. ١٦١و-١٦٩ظ؛ شكل توضيحي للحارث في ص. ١٦٩ظ)؛الباب الحادي والثلاثون، الماشية (صص. ١٦٩ظ-١٧٢و)؛الباب الثاني والثلاثون، دواب الحمل (صص. ١٧٢و-١٨٢ظ)؛الباب الثالث
+            والثلاثون، طب الخيول (١٨٢ظ-١٩٩و)؛الباب الرابع والثلاثون، الدواجن والحمام والنحل (١٩٩و-٢٠٤و)؛الباب الخامس والثلاثون، الكلاب؛ مذكور في المقدمة ولكن لم يُعثر عليه في المخطوطة).البداية (ص. ١و، الأسطر ٣-٦):قال مؤلفه الشيخ الفاضل أبو زكريا يحيى ابن محمد بن
+            أحمد بنالعوام عفي الله عنه الحمد لله رب العالمين وصلى الله علىالنبي محمد خاتم النبيين وعلى آله وصحبه الطيبين وسلمتسليمًا أما بعد فإني لما قرأت من كتب الفلاحة المسلمينالنهاية (ص. ٢٠٤و، الأسطر ٣٨-٤٢):...ثم (!) السفر الثاني من كتابالفلاحة في الأرضين
+            والحيوان مما علي بجمعة من كتب الفلاحين والحكماء المتقدمين يحيى بن أحمد بن محمد بن العوامالإشبيلي عفا الله عنهوحمه (!) آمين</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">مخطوطة</genre>
           <name type="personal">
@@ -171,7 +213,7 @@
             <recordIdentifer>Add MS 10461</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>Kitāb al-filāḥah كتاب الفلاحة  Ibn al-ʻAwwām, Yaḥyá ibn Muḥammad ابن العوام، يحيى بن محمد</title>
+            <title>Kitāb al-filāḥah كتاب الفلاحة Ibn al-ʻAwwām, Yaḥyá ibn Muḥammad ابن العوام، يحيى بن محمد</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1700/1799</dateIssued>
@@ -182,10 +224,27 @@
           </language>
           <physicalDescription>
             <extent>Codex; ff. ii+205+iv</extent>
-            <extent>Material: Western laid paperDimensions: 305 x 210 mm leaf [285 x 165 mm written]Foliation: Western Arabic historic pagination in brown ink; British Museum foliation in pencil; unfoliated leaf between ff. 119 and 120 now foliated as 119aRuling: No ruling visible; ca 34-52 lines per page; vertical spacing ca 12-15 lines per 10 cmScript:
-                           Naskh; more than one scribal hand is visible (changes of hand at, e.g., ff. 71r and 87r)Ink: BrownDecoration: NoneBinding: British Museum half leather bindingCondition: Waterstains (ff. 187-204)Marginalia: Very few by hand of main scribeSeals: British Museum stamp ff. 1r, 16r, 35r, 79, 114r, 136r, 155r, 178r, and 204v</extent>
+            <extent>Material: Western laid paperDimensions: 305 x 210 mm leaf [285 x 165 mm written]Foliation: Western Arabic historic pagination in brown ink; British Museum foliation in pencil; unfoliated leaf between ff. 119 and 120 now foliated as
+              119aRuling: No ruling visible; ca 34-52 lines per page; vertical spacing ca 12-15 lines per 10 cmScript: Naskh; more than one scribal hand is visible (changes of hand at, e.g., ff. 71r and 87r)Ink: BrownDecoration: NoneBinding: British Museum half
+              leather bindingCondition: Waterstains (ff. 187-204)Marginalia: Very few by hand of main scribeSeals: British Museum stamp ff. 1r, 16r, 35r, 79, 114r, 136r, 155r, 178r, and 204v</extent>
           </physicalDescription>
-          <abstract>Comprehensive treatise on agriculture by the Andalusian agronomist Abū Zakariyā Yaḥyá ibn Muḥammad ibn Aḥmad al-Ishbīlī (أبو زكريا يحيى بن محمد بن أحمد الإشبيلي, fl. late 12th century?), known as Ibn al-ʻAwwām (ابن العوام).The copy was made by an anonymous Spanish Arabist, reputedly from Madrid, Real Academia de la Historia, Gayangos Collection, Ms. IX, which was previously part of the Escorial collections ('Ibn al-ʻAwwām, Kitāb al-filāḥa', The Filāḥa Texts Project, http://www.filaha.org/author_ibn_al_awwam.html).The text is divided into a preface subdivided into sections (فصول), an introduction (مقدمة), thirty-five chapters (باب) numbered consecutively across two books (سفران) or parts (جزآن) only the second of which is announced with a heading. A list of the chapters with extensive titles and descriptions is given in the introduction (ff. 3v-7v):Preface (ff. 1r-3r);Introduction (مقدمة, ff. 3r-7v);Book/Part One (السفر/الجزء الأول, chapters 1-16, ff. 8r-119r);Chapter One (الباب الأول, on soils, ff. 8r-24r);Chapter Two (الباب الثاني, manures, ff. 24r-33r);Chapter Three (الباب الثالث, waters, ff. 33r-37r);Chapter Four (الباب الرابع, garden planning, ff. 37r-37v);Chapter Five (الباب الخامس, establishing trees, ff. 37v-45v);Chapter Six (الباب السادس, planting, ff. 45v-50v);Chapter Seven (الباب السابع, names of species for cultivation in al-Andalus, ff. 50v-84v);Chapter Eight (الباب الثامن, grafting, ff. 84v-98r);Chapter Nine (الباب التاسع, pruning, ff. 98r-99r);Chapter Ten (الباب العاشر, tillage, ff. 99r-101v);Chapter Eleven (الباب الحادي عشر, applying manures, ff. 101v-102v);Chapter Twelve (الباب الثاني عشر, irrigation, ff. 102v-106r);Chapter Thirteen (الباب الثالث عشر, artificial pollination, ff. 106r-107r);Chapter Fourteen (الباب الرابع عشر, treatments for trees, ff. 107r-113r);Chapter Fifteen (الباب الخامس عشر, methods for improving quality of produce, ff. 113r-115v);Chapter Sixteen (الباب السادس عشر, storage and preservation of produce, ff. 115v-119r);Book/Part Two (السفر/الجزء الثاني, chapters 17-35, ff. 119a-v-204r);Chapter Seventeen (الباب السابع عشر, tillage and land preparation, ff. 120r-121r);Chapter Eighteen (الباب الثامن عشر, grains and pulses that ameliorate soil, ff. 121r-123r);Chapter Nineteen (الباب التاسع عشر, cultivating grains, ff. 123r-125v);Chapter Twenty (الباب العشرون, cultivating rice, millet, sesame etc., ff. 125v-129r);Chapter Twenty-one (الباب الحادي والعشرون, cultivating fava beans, chickpeas, lupins etc., ff. 129r-131r);Chapter Twenty-two (الباب الثاني والعشرون, cultivating flax, hemp, cotton etc., ff. 131r-134v);Chapter Twenty-three (الباب الثالث والعشرون, establishing a kitchen garden, ff. 134v-139r);Chapter Twenty-four (الباب الرابع والعشرون, cultivating root crops, ff. 139r-143r);Chapter Twenty-five (الباب الخامس والعشرون, cultivating melons and gourds, ff. 143r-147r);Chapter Twenty-six (الباب السادس والعشرون, cultivating culinary and medicinal spices, ff. 147r-148v);Chapter Twenty-seven (الباب السابع والعشرون, cultivating aromatic plants, ff. 148v-151v);Chapter Twenty-eight (الباب الثامن والعشرون, cultivating garden plants, ff. 151v-154v);Chapter Twenty-nine (الباب التاسع والعشرون, harvesting, ff. 154v-161r);Chapter Thirty (الباب الثلاثون, miscellaneous, ff. 161r-169v; diagram of tiller on f. 169v);Chapter Thirty-one (الباب الحادي والثلاثون, livestock, ff. 169v-172r);Chapter Thirty-two (الباب الثاني والثلاثون, beasts of burden, ff. 172r-182v);Chapter Thirty-three (الباب الثالث والثلاثون, equine medicine, ff. 182v-199r);Chapter Thirty-four (الباب الرابع والثلاثون, poultry, pigeons and bees, ff. 199r-204r);Chapter Thirty-five (الباب الخامس والثلاثون, dogs; announced in introduction but not found in manuscript).Begins (f. 1r, lines 3-6):قال مؤلفه الشيخ الفاضل أبو زكريا يحيى ابن محمد بن أحمد بنالعوام عفي الله عنه الحمد لله رب العالمين وصلى الله علىالنبي محمد خاتم النبيين وعلى آله وصحبه الطيبين وسلمتسليمًا أما بعد فإني لما قرأت من كتب الفلاحة المسلمينEnds (f. 204r, lines 38-42):...ثم (!) السفر الثاني من كتابالفلاحة في الأرضين والحيوان مما علي بجمعة من كتب الفلاحين والحكماء المتقدمين يحيى بن أحمد بن محمد بن العوامالإشبيلي عفا الله عنهوحمه (!) آمين</abstract>
+          <abstract>Comprehensive treatise on agriculture by the Andalusian agronomist Abū Zakariyā Yaḥyá ibn Muḥammad ibn Aḥmad al-Ishbīlī (أبو زكريا يحيى بن محمد بن أحمد الإشبيلي, fl. late 12th century?), known as Ibn al-ʻAwwām (ابن العوام).The copy was made
+            by an anonymous Spanish Arabist, reputedly from Madrid, Real Academia de la Historia, Gayangos Collection, Ms. IX, which was previously part of the Escorial collections ('Ibn al-ʻAwwām, Kitāb al-filāḥa', The Filāḥa Texts Project,
+            http://www.filaha.org/author_ibn_al_awwam.html).The text is divided into a preface subdivided into sections (فصول), an introduction (مقدمة), thirty-five chapters (باب) numbered consecutively across two books (سفران) or parts (جزآن) only the second of
+            which is announced with a heading. A list of the chapters with extensive titles and descriptions is given in the introduction (ff. 3v-7v):Preface (ff. 1r-3r);Introduction (مقدمة, ff. 3r-7v);Book/Part One (السفر/الجزء الأول, chapters 1-16, ff.
+            8r-119r);Chapter One (الباب الأول, on soils, ff. 8r-24r);Chapter Two (الباب الثاني, manures, ff. 24r-33r);Chapter Three (الباب الثالث, waters, ff. 33r-37r);Chapter Four (الباب الرابع, garden planning, ff. 37r-37v);Chapter Five (الباب الخامس,
+            establishing trees, ff. 37v-45v);Chapter Six (الباب السادس, planting, ff. 45v-50v);Chapter Seven (الباب السابع, names of species for cultivation in al-Andalus, ff. 50v-84v);Chapter Eight (الباب الثامن, grafting, ff. 84v-98r);Chapter Nine (الباب
+            التاسع, pruning, ff. 98r-99r);Chapter Ten (الباب العاشر, tillage, ff. 99r-101v);Chapter Eleven (الباب الحادي عشر, applying manures, ff. 101v-102v);Chapter Twelve (الباب الثاني عشر, irrigation, ff. 102v-106r);Chapter Thirteen (الباب الثالث عشر,
+            artificial pollination, ff. 106r-107r);Chapter Fourteen (الباب الرابع عشر, treatments for trees, ff. 107r-113r);Chapter Fifteen (الباب الخامس عشر, methods for improving quality of produce, ff. 113r-115v);Chapter Sixteen (الباب السادس عشر, storage and
+            preservation of produce, ff. 115v-119r);Book/Part Two (السفر/الجزء الثاني, chapters 17-35, ff. 119a-v-204r);Chapter Seventeen (الباب السابع عشر, tillage and land preparation, ff. 120r-121r);Chapter Eighteen (الباب الثامن عشر, grains and pulses that
+            ameliorate soil, ff. 121r-123r);Chapter Nineteen (الباب التاسع عشر, cultivating grains, ff. 123r-125v);Chapter Twenty (الباب العشرون, cultivating rice, millet, sesame etc., ff. 125v-129r);Chapter Twenty-one (الباب الحادي والعشرون, cultivating fava
+            beans, chickpeas, lupins etc., ff. 129r-131r);Chapter Twenty-two (الباب الثاني والعشرون, cultivating flax, hemp, cotton etc., ff. 131r-134v);Chapter Twenty-three (الباب الثالث والعشرون, establishing a kitchen garden, ff. 134v-139r);Chapter
+            Twenty-four (الباب الرابع والعشرون, cultivating root crops, ff. 139r-143r);Chapter Twenty-five (الباب الخامس والعشرون, cultivating melons and gourds, ff. 143r-147r);Chapter Twenty-six (الباب السادس والعشرون, cultivating culinary and medicinal spices,
+            ff. 147r-148v);Chapter Twenty-seven (الباب السابع والعشرون, cultivating aromatic plants, ff. 148v-151v);Chapter Twenty-eight (الباب الثامن والعشرون, cultivating garden plants, ff. 151v-154v);Chapter Twenty-nine (الباب التاسع والعشرون, harvesting, ff.
+            154v-161r);Chapter Thirty (الباب الثلاثون, miscellaneous, ff. 161r-169v; diagram of tiller on f. 169v);Chapter Thirty-one (الباب الحادي والثلاثون, livestock, ff. 169v-172r);Chapter Thirty-two (الباب الثاني والثلاثون, beasts of burden, ff.
+            172r-182v);Chapter Thirty-three (الباب الثالث والثلاثون, equine medicine, ff. 182v-199r);Chapter Thirty-four (الباب الرابع والثلاثون, poultry, pigeons and bees, ff. 199r-204r);Chapter Thirty-five (الباب الخامس والثلاثون, dogs; announced in
+            introduction but not found in manuscript).Begins (f. 1r, lines 3-6):قال مؤلفه الشيخ الفاضل أبو زكريا يحيى ابن محمد بن أحمد بنالعوام عفي الله عنه الحمد لله رب العالمين وصلى الله علىالنبي محمد خاتم النبيين وعلى آله وصحبه الطيبين وسلمتسليمًا أما بعد
+            فإني لما قرأت من كتب الفلاحة المسلمينEnds (f. 204r, lines 38-42):...ثم (!) السفر الثاني من كتابالفلاحة في الأرضين والحيوان مما علي بجمعة من كتب الفلاحين والحكماء المتقدمين يحيى بن أحمد بن محمد بن العوامالإشبيلي عفا الله عنهوحمه (!) آمين</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">Manuscript</genre>
           <name type="personal">
@@ -230,11 +289,16 @@
           </language>
           <physicalDescription>
             <extent>كوديكس؛ صص. iii+‏١٧٩+‎‏iv</extent>
-            <extent>المادة: ورق نسج شرقيالأبعاد: حجم الورقة ٢٢٥ × ١٦٠ مم [المساحة المكتوبة ١٦٥ × ١٢٥ مم]ترقيم الأوراق: ترقيم المتحف البريطاني بالقلم الرصاصالتسطير:
-                           مسطرة؛ ٢٣ سطرًا في كل صفحة؛ مسافة تباعد عمودية ١٤ سطرًا لكل ١٠ سمالخط:
-                           نسخ؛ الناسخ هو محمد بن الشيخ محمد الشهير بابن الكتا؛ انظر حرد المتن ص. ١٧٩و، السطر ٢٠الحبر: حبر أسود، مع تحمير العناوين والخطوط الأفقية أعلى النصالتجليد: جلد أحمر مع جامة مطبوعة بالتمحيط، وقطع زوايا، وإطَارالحالة: ممتازة؛ بقع طفيفة جدًا؛ توجد تمزقات تم إصلاحها في صص. ١٧٨، ١٧٩ وهي لا تؤثر على النص؛ توجد إصلاحات للهامش السفلي في صص. ١-١٠الحاشية: توجد تصحيحات وتعليقات متفرقة، معظمها بخط الناسخ، لكن إحداها باللغة الإنجليزية وتنص على "لا يوجد به عيب" (ص. ١٦٠و، الهامش العلوي)الأختام: لا يوجد</extent>
+            <extent>المادة: ورق نسج شرقيالأبعاد: حجم الورقة ٢٢٥ × ١٦٠ مم [المساحة المكتوبة ١٦٥ × ١٢٥ مم]ترقيم الأوراق: ترقيم المتحف البريطاني بالقلم الرصاصالتسطير: مسطرة؛ ٢٣ سطرًا في كل صفحة؛ مسافة تباعد عمودية ١٤ سطرًا لكل ١٠ سمالخط: نسخ؛ الناسخ هو محمد بن
+              الشيخ محمد الشهير بابن الكتا؛ انظر حرد المتن ص. ١٧٩و، السطر ٢٠الحبر: حبر أسود، مع تحمير العناوين والخطوط الأفقية أعلى النصالتجليد: جلد أحمر مع جامة مطبوعة بالتمحيط، وقطع زوايا، وإطَارالحالة: ممتازة؛ بقع طفيفة جدًا؛ توجد تمزقات تم إصلاحها في صص. ١٧٨،
+              ١٧٩ وهي لا تؤثر على النص؛ توجد إصلاحات للهامش السفلي في صص. ١-١٠الحاشية: توجد تصحيحات وتعليقات متفرقة، معظمها بخط الناسخ، لكن إحداها باللغة الإنجليزية وتنص على "لا يوجد به عيب" (ص. ١٦٠و، الهامش العلوي)الأختام: لا يوجد</extent>
           </physicalDescription>
-          <abstract>دليل شامل في الطب بقلم الموفق شمس الرياسة أبو العشائر هبة الله بن زين؛ (المتوَفّى في ١١٩٨) الشهير بابن جميع، وهو الطبيب الشخصي لصلاح الدين الأيوبي سلطان مصر والشام؛ (المُتوفَّى في ١١٩٣).وينقسم العمل إلى أربع مقالات:المقالة الأولى: في القوانين الكلية من صناعة الطبّ؛ صص. ١ظ-٣٤و؛المقالة الثانية: في الأدوية المفردة والأغذية؛ صص. ٣٤ظ-٦٥و؛المقالة الثالثة: في حفظ الصحة ومداواة الأمراض؛ صص. ٦٥ظ-١٣٥و؛المقالة الرابعة: في الأدوية المركبة والأغذية؛ صص. ١٣٥ظ-١٧٩و.نُسخت الدراسة في ٨ رجب ٩٥١ / ٢٥ سبتمبر ١٥٤٤ بقلم محمد بن الشيخ محمد الشهير بابن الكتا، الذي أصدر النسخة لاستخدامه الخاص (انظر حرد المتن، ص. ١٧٩و، الأسطر ١٩-٢٣، منسوخ أدناه).البداية (ص. ١ظ، الأسطر ١-٣):... و ما توفيقي إلا بالله عليه توكلتإنّه لما كان المجلس السامي الأجل المولوي القاضي الفاضلي حرس الله فضيلة المحاسن بساحتهوادرّ موارد الجود من أنامله وراحته...النهاية (ص. ١٧٩و، الأسطر ١٠-١٢):... قوطولي من الزيت تسع أواقيو من الشراب عشر أواقي الملعقة ملعقتان ملعقة العسل وهي أربعة مثاقيل وملعقة الأدويةهي مثقال واحد الغرما ربع درهم والله سبحانه أعلم وحستنا الله ونعم الوكيل نعم المولي ونعم النعيم (؟)حرد المتن للمؤلف (ص. ١٧٩و، الأسطر ١٣-١٨):تمت المقالة الرابعةوبتمامها كمل كتاب الإرشاد بحمد اللوعونه وحسن توفيقه وصلوتهعلى محمد وآله وصحبه وسلمغفر لكاتبه ولأمةمحمد أجمعينحرد المتن للناسخ (ص. ١٧٩و، الأسطر ١٩-٢٤):كتبه لنفسه ولمن شاء الله من بعده الفقير إلى رحمة ربهالحاج محمد بن الشيخ محمد الشهير بابن الكتا عفا الله عنهووفق الفراغ من تعليقه صبيحة الجمعةالثامن من شهر رجب الفردسنة ٩٥١آمين</abstract>
+          <abstract>دليل شامل في الطب بقلم الموفق شمس الرياسة أبو العشائر هبة الله بن زين؛ (المتوَفّى في ١١٩٨) الشهير بابن جميع، وهو الطبيب الشخصي لصلاح الدين الأيوبي سلطان مصر والشام؛ (المُتوفَّى في ١١٩٣).وينقسم العمل إلى أربع مقالات:المقالة الأولى: في
+            القوانين الكلية من صناعة الطبّ؛ صص. ١ظ-٣٤و؛المقالة الثانية: في الأدوية المفردة والأغذية؛ صص. ٣٤ظ-٦٥و؛المقالة الثالثة: في حفظ الصحة ومداواة الأمراض؛ صص. ٦٥ظ-١٣٥و؛المقالة الرابعة: في الأدوية المركبة والأغذية؛ صص. ١٣٥ظ-١٧٩و.نُسخت الدراسة في ٨ رجب ٩٥١ /
+            ٢٥ سبتمبر ١٥٤٤ بقلم محمد بن الشيخ محمد الشهير بابن الكتا، الذي أصدر النسخة لاستخدامه الخاص (انظر حرد المتن، ص. ١٧٩و، الأسطر ١٩-٢٣، منسوخ أدناه).البداية (ص. ١ظ، الأسطر ١-٣):... و ما توفيقي إلا بالله عليه توكلتإنّه لما كان المجلس السامي الأجل المولوي
+            القاضي الفاضلي حرس الله فضيلة المحاسن بساحتهوادرّ موارد الجود من أنامله وراحته...النهاية (ص. ١٧٩و، الأسطر ١٠-١٢):... قوطولي من الزيت تسع أواقيو من الشراب عشر أواقي الملعقة ملعقتان ملعقة العسل وهي أربعة مثاقيل وملعقة الأدويةهي مثقال واحد الغرما ربع
+            درهم والله سبحانه أعلم وحستنا الله ونعم الوكيل نعم المولي ونعم النعيم (؟)حرد المتن للمؤلف (ص. ١٧٩و، الأسطر ١٣-١٨):تمت المقالة الرابعةوبتمامها كمل كتاب الإرشاد بحمد اللوعونه وحسن توفيقه وصلوتهعلى محمد وآله وصحبه وسلمغفر لكاتبه ولأمةمحمد أجمعينحرد
+            المتن للناسخ (ص. ١٧٩و، الأسطر ١٩-٢٤):كتبه لنفسه ولمن شاء الله من بعده الفقير إلى رحمة ربهالحاج محمد بن الشيخ محمد الشهير بابن الكتا عفا الله عنهووفق الفراغ من تعليقه صبيحة الجمعةالثامن من شهر رجب الفردسنة ٩٥١آمين</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">مخطوطة</genre>
           <name type="personal">
@@ -271,7 +335,7 @@
             <recordIdentifer>Add MS 25087</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>al-Irshād li-maṣāliḥ al-anfus wa-al-ajsād الإرشاد لمصالح الأنفس والأجساد  Ibn Jumayʿ, Hibat Allāh ibn Zayn ابن جميع، هبة الله بن زين</title>
+            <title>al-Irshād li-maṣāliḥ al-anfus wa-al-ajsād الإرشاد لمصالح الأنفس والأجساد Ibn Jumayʿ, Hibat Allāh ibn Zayn ابن جميع، هبة الله بن زين</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1544/1544</dateIssued>
@@ -282,11 +346,19 @@
           </language>
           <physicalDescription>
             <extent>Codex; ff. iii+179+iv</extent>
-            <extent>Material: Eastern wove paperDimensions: 225 x 160 mm leaf [165 x 125 mm written]Foliation: British Museum foliation in pencilRuling:
-                           Misṭarah; 23 lines per page; vertical spacing 14 lines per 10 cmScript:
-                           Naskh; the scribe is Muḥammad ibn al-Shaykh Muḥammad, known as Ibn al-Kattā (محمد بن الشيخ محمد الشهير بابن الكتا; see colophon, f. 179r, line 20)Ink: Black ink, with rubricated headings and overlinings in redBinding: Red leather with blind-tolled medallion, corner-peices, and borderCondition: Excellent; very minor staining; repaired tears on ff. 178 and 179 do not affect text; repairs to lower margin on ff. 1-10Marginalia: Occasional corrections and annotations, mostly by hand of scribe, but one in English reads 'not defective' (f. 160r, upper margin)Seals: none</extent>
+            <extent>Material: Eastern wove paperDimensions: 225 x 160 mm leaf [165 x 125 mm written]Foliation: British Museum foliation in pencilRuling: Misṭarah; 23 lines per page; vertical spacing 14 lines per 10 cmScript: Naskh; the scribe is Muḥammad ibn
+              al-Shaykh Muḥammad, known as Ibn al-Kattā (محمد بن الشيخ محمد الشهير بابن الكتا; see colophon, f. 179r, line 20)Ink: Black ink, with rubricated headings and overlinings in redBinding: Red leather with blind-tolled medallion, corner-peices, and
+              borderCondition: Excellent; very minor staining; repaired tears on ff. 178 and 179 do not affect text; repairs to lower margin on ff. 1-10Marginalia: Occasional corrections and annotations, mostly by hand of scribe, but one in English reads 'not
+              defective' (f. 160r, upper margin)Seals: none</extent>
           </physicalDescription>
-          <abstract>Comprehensive guide to medicine by al-Muwaffiq Shams al-Riyāsah abū al-‘Ashā’ir Hibat Allāh ibn Zayn (الموفق شمس الرياسة أبو العشائر هبة الله بن زين; d. 1198) known as Ibn Jumay‘ (ابن جميع), personal physician to the sultan of Egypt and Syria Saladin (صلاح الدين الأيوبي; d. 1193).The work is divided into four books (مقالات):Book One: On the General Principals of the Science of Medicine (المقالة الأولى في القوانين الكلية من صناعة الطبّ; ff. 1v-34r);Book Two: On Simple Drugs and Foods (المقالة الثانية في الأدوية المفردة والأغذية ; ff. 34v-65r);Book Three: On the Preservation of Health and the Treatment of Diseases (المقالة الثالثة في حفظ الصحة ومداواة الأمراض; ff. 65v-135r);Book Four: On Compund Drugs and Foods (المقالة الرابعة فيالأدوية المركبة والأغذية; ff. 135v-179r).The treatise was copied on 8 Rajab 951/25 September 1544 by Muḥammad ibn al-Shaykh Muḥammad, known as Ibn al-Kattā (محمد بن الشيخ محمد الشهير بابن الكتا), who produced the copy for his own use (see colophon, f. 179r, lines 19-23, transcribed below).Begins (f. 1v, lines 1-3):... و ما توفيقي إلا بالله عليه توكلتإنّه لما كان المجلس السامي الأجل المولوي القاضي الفاضلي حرس الله فضيلة المحاسن بساحتهوادرّ موارد الجود من أنامله وراحته ...Ends (f. 179r, lines 10-12):... قوطولي من الزيت تسع أواقيو من الشراب عشر أواقي الملعقة ملعقتان ملعقة العسل وهي أربعة مثاقيل وملعقة الأدويةهي مثقال واحد الغرما ربع درهم والله سبحانه أعلم وحستنا الله ونعم الوكيل نعم المولي ونعم النعيم (؟)Author's Colophon (f. 179r, lines 13-18):تمت المقالة الرابعةوبتمامها كمل كتاب الإرشاد بحمد اللوعونه وحسن توفيقه وصلوتهعلى محمد وآله وصحبه وسلمغفر لكاتبه ولأمةمحمد أجمعينScribe's Colophon (f. 179r, lines 19-24):كتبه لنفسه ولمن شاء الله من بعده الفقير إلى رحمة ربهالحاج محمد بن الشيخ محمد الشهير بابن الكتا عفا الله عنهووفق الفراغ من تعليقه صبيحة الجمعةالثامن من شهر رجب الفردسنة 951آمين</abstract>
+          <abstract>Comprehensive guide to medicine by al-Muwaffiq Shams al-Riyāsah abū al-‘Ashā’ir Hibat Allāh ibn Zayn (الموفق شمس الرياسة أبو العشائر هبة الله بن زين; d. 1198) known as Ibn Jumay‘ (ابن جميع), personal physician to the sultan of Egypt and
+            Syria Saladin (صلاح الدين الأيوبي; d. 1193).The work is divided into four books (مقالات):Book One: On the General Principals of the Science of Medicine (المقالة الأولى في القوانين الكلية من صناعة الطبّ; ff. 1v-34r);Book Two: On Simple Drugs and Foods
+            (المقالة الثانية في الأدوية المفردة والأغذية ; ff. 34v-65r);Book Three: On the Preservation of Health and the Treatment of Diseases (المقالة الثالثة في حفظ الصحة ومداواة الأمراض; ff. 65v-135r);Book Four: On Compund Drugs and Foods (المقالة الرابعة
+            فيالأدوية المركبة والأغذية; ff. 135v-179r).The treatise was copied on 8 Rajab 951/25 September 1544 by Muḥammad ibn al-Shaykh Muḥammad, known as Ibn al-Kattā (محمد بن الشيخ محمد الشهير بابن الكتا), who produced the copy for his own use (see colophon,
+            f. 179r, lines 19-23, transcribed below).Begins (f. 1v, lines 1-3):... و ما توفيقي إلا بالله عليه توكلتإنّه لما كان المجلس السامي الأجل المولوي القاضي الفاضلي حرس الله فضيلة المحاسن بساحتهوادرّ موارد الجود من أنامله وراحته ...Ends (f. 179r, lines
+            10-12):... قوطولي من الزيت تسع أواقيو من الشراب عشر أواقي الملعقة ملعقتان ملعقة العسل وهي أربعة مثاقيل وملعقة الأدويةهي مثقال واحد الغرما ربع درهم والله سبحانه أعلم وحستنا الله ونعم الوكيل نعم المولي ونعم النعيم (؟)Author's Colophon (f. 179r, lines
+            13-18):تمت المقالة الرابعةوبتمامها كمل كتاب الإرشاد بحمد اللوعونه وحسن توفيقه وصلوتهعلى محمد وآله وصحبه وسلمغفر لكاتبه ولأمةمحمد أجمعينScribe's Colophon (f. 179r, lines 19-24):كتبه لنفسه ولمن شاء الله من بعده الفقير إلى رحمة ربهالحاج محمد بن الشيخ
+            محمد الشهير بابن الكتا عفا الله عنهووفق الفراغ من تعليقه صبيحة الجمعةالثامن من شهر رجب الفردسنة 951آمين</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">Manuscript</genre>
           <name type="personal">
@@ -323,8 +395,7 @@
             <recordIdentifer>Add MS 18866</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>نهاية السؤل والامنية في تعلم أعمال الفروسية
-                              نهاية السؤل والأمنية في تعلم أعمال الفروسيةأقصرائي، محمد بن عيسى بن إسماعيل الحنفي</title>
+            <title>نهاية السؤل والامنية في تعلم أعمال الفروسية نهاية السؤل والأمنية في تعلم أعمال الفروسيةأقصرائي، محمد بن عيسى بن إسماعيل الحنفي</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1371/1371</dateIssued>
@@ -335,9 +406,27 @@
           </language>
           <physicalDescription>
             <extent>كوديكس؛ صص ii+292+ii</extent>
-            <extent>المادة: ورقيةالأبعاد: حجم الورقة 312 × 214 ملم /[المساحة المكتوبة 242 × 155 ملم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاصالتسطير: مسطرة؛ 19 سطرًا في كل صفحة؛ مسافة رأسية 8 سطور لكل 10 سمالخط:  نسخالحبر: حبر أسود مع تحمير بعض العناوينالزخرفة: ثماني عشرة لوحة ملونة وخمسة وعشرون رسمًا بيانيًا بالحبر الأسود والأحمرالتجليد: غلاف جلدي مع رائدة مظروف من جلد ماعز بني اللون؛ تصميمات دائرية على كلٍ من الغلاف والرائدة؛ يعود الغلاف تقريبًا إلى القرن الثامن/الرابع عشر مع وجود علامات تصليح في وقتٍ لاحقالحالة: حالة ممتازة، بقع صغيرة من علامات التصفح؛ تلف بسيط من المياه في الهوامش العليا في آخر المُجلدالتعليقات الهامشية:  إضافات وتصحيحات نادرة في الهوامش</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة 312 × 214 ملم /[المساحة المكتوبة 242 × 155 ملم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاصالتسطير: مسطرة؛ 19 سطرًا في كل صفحة؛ مسافة رأسية 8 سطور لكل 10 سمالخط: نسخالحبر: حبر أسود مع تحمير بعض
+              العناوينالزخرفة: ثماني عشرة لوحة ملونة وخمسة وعشرون رسمًا بيانيًا بالحبر الأسود والأحمرالتجليد: غلاف جلدي مع رائدة مظروف من جلد ماعز بني اللون؛ تصميمات دائرية على كلٍ من الغلاف والرائدة؛ يعود الغلاف تقريبًا إلى القرن الثامن/الرابع عشر مع وجود علامات
+              تصليح في وقتٍ لاحقالحالة: حالة ممتازة، بقع صغيرة من علامات التصفح؛ تلف بسيط من المياه في الهوامش العليا في آخر المُجلدالتعليقات الهامشية: إضافات وتصحيحات نادرة في الهوامش</extent>
           </physicalDescription>
-          <abstract>دليل المماليك للفروسية والفنون العسكرية والتقنية بقلم (محمد بن عيسى بن إسماعيل الحنفي الأقصرائي؛ بتاريخ  1348، دمشق)  تم الانتهاء من المخطوطة في 10 محرم 773 (25 يوليو 1371) بقلم الناسخ أحمد بن عمر بن أحمد الميسري (انظر حرد المتن ص.  292و، أسفل الصفحة).البداية (ص. 1ظ؛ السطور2-4):الحمد لله ناصر من أطاعه واتّقاه وكاسر من حاده وعصاه ورادع من أغرض عنهوعاداه ووادع من اعتقد أن لا إله سواه أحمده حمد من أيقن بنفعه وضرره وأذعنلقضائه وقدره وبذل مهجته في نصرة دينه وأقرّ بالوحدانية انقياد التمكينه ...النهاية (صص. 291ظ، السطر 17 – 292و، السطر 3):... مرهم النورة المستعمل وحده يؤخذ نورة وتشد[ص.  292و] في خرقة رقيقة وتحرك في إناء فيه ماء حتى يخرج ما فيه من النورة ويبقى التفل ويتركحتى يصفوا ثم يصب الماء عنه ويلقى عليه زيت ويضرب حتى يجتمع ويستعملنافع إن شاء الله تعالى ...حرد المتن (ص.  292و، السطور 3-14):... تم كتاب السؤل والأمنيةفي تعلم أعمال الفروسية ووافقالفراغ من تحريره بحمد الله تعالى وحسن توفيقهوتيسيره في يوم الخميس يوم عاشور من شهرالله المحرّم سنة ثلاث وسبعين وسبعمائةمن الهجرة النبوية على صاحبها أفضل الصلاةوالسلم على يد العبد الفقير إلى اللهأحمد بن عمر بن أحمد المصري الأدمي عفا الله عنه وعن والديه وعن مندعا له بالتوبة والرحمة والمغفرة والتجاوز عنه هو وسائر أموات المسلمينأجمعين من مشارق الأرض إلى مغاربها يا رب العالمين وحسب الله ونعمالوكيل وصلى الله على سيدنا محمد خير خلقه وآله وصحبه وسلم تسليمًا كثيرًاإلى يوم الدينأقسام النص كالتالي:المقدمة (صص.   1ظ – 27ظ)؛الكتاب الثاني في التعليم لرماية النشاب ( صص.  27ظ)؛كتاب في العلل التي تلحق الرامي في بدنه (صص.  36و-42ظ)؛الكتاب الثالث في تعليم الرمح ( صص.  42ظ – 118و)التعليم الثالث في العمل بالسيف ( صص.  118و-151و)التعليم الرابع في الترس ( صص. 151و-152ظ)؛التعليم الخامس في العمل بالعمود ( صص.  152ظ-153و)؛التعليم السادس في صناعة الجنود والفرسان ( صص. 153و-161ظ;التعليم السابع في ذكر الأسلحة ( صص.  161ظ-197ظ)؛التعليم الثامن في عقد الجيوش وجمعها وولاتها ( صص.  197ظ-211ظ)؛التعليم التاسع في تعبية الأمير الصفوف في القتال ( صص.  211ظ-235و)؛التعليم العاشر في المكايد الحربية من تسليط النيران ( صص.  235و-240ظ)؛التعليم الحادي عشر في قسمة الغنائم والأحكام الشرعية المتعلقة بالجهاد ( صص. 240ظ-281و)؛التعليم الثاني عشر فيما يحتاج إليه المحارب وغيره ( صص.  281ظ-292و)يتضمن النص مقتطفات من أعمال أخرى من ضمنها بحثًا عن صناعة السيوف للفيلسوف الكِندي يخاطب فيه الخليفة المعتصم (باب في السيوف أنواعها وسقاياتها رسالة أبي إسحق الكندي للمعتصم أمير المؤمنين؛ ص. 144و).الصور التوضيحية:تتضمن المخطوطة 18 رسمًا ملونًا و25 رسمًا بيانيًاالرسومات:(ص. 97و) صورة فارسين سنان كل واحد منهما بين كتفي صاحبه(ص. 99و) صورة عدة الفرسان يلعبون ناوردًا ورماحهم على أكتافهم(ص. 101و) صورة فارس يلعب برمح وسنان الرمح في يده وعقبه إلى خلف(ص. 109و) بدون عنوان؛ فارس يحمل رمحين بشكل أفقي؛(ص. 113و) بدون عنوان؛ فارس يضرب دبًا برمحه؛(ص. 121و) صورة فارس يلعب بسيف(ص. 122ظ) صورة فارس في يده سيف وكمه ملفوف على يده وهو بارز عن سرجه وهو يضرب بالسيف(ص. 125و) صورة فارس بيده سيف يضرب به من أذن الفرس إلى كفله الأيمن(ص. 127ظ) صورة فارس وذبابة السيف تحت إبطه الأيمن والقائم في يساره مع العنان(ص. 129ظ) صورة فارس مقلدٍ بدرقة صغيرة وفي يده سيف يلوح به يمينًا وشمالاً(ص. 130و) صورة فارس درقة على وجهه وذبابة السيف تحت إبطه الأيمن والقائم في شماله(ص. 131ظ) صورة فارس على رأسه خوذة حديدة ومعه سيف والنار توجج في الخوذة وفي ذباب السيف وفي [و]سط الترس  ص.(132ظ) صورة فارس ومعه سيف في يده اليمنى وذبابة على كتفه الأيسر وفي يده اليسرى سيف وذبابة تحت إبطه اليمنى(ص. 134و) صورة فارس في يده اليسار سيف وذبابة تحت إبطه الأيمن(ص. 135و) صورة فارسين متجاولين في أيديهما سيفين كل واحد منهما سيفه على متنه(ص. 136و) صورة فارس ومعه سيفين ودرقتين صغار درقة على وجهه الأخرى في يده مع السيف الواحد(ص. 138ظ) صورة فارس بيده رمح يجره وراءه وفي يده الأخرى ترس(ص. 140و) صورة أربع فوارس مع كل واحد منهم سيف ودرقة وكل منهم درقته على كفل فرسهالرسوم البيانية:(ص. 78و) جدول لرسائل (تساريح الشيخ نجم الدين)(صص. 90ظ-93و) اثنا عشر رسمًا بيانيًا لأساليب ترويض الخيل؛(صص. 93ظ-94و) رسم بياني لعروض عسكرية؛ الأرضية؛(صص. 209ظ-210و) رسم مُفصّل ومعنون لتصميم حصن ملكي؛(صص. 214و، 214ظ، 216و، 217و، 217ظ، 218ظ) سبع تصميمات للأشكال المُستخدمة في وضع علامات الوحدات المختلفة في صفوف الجيش؛(صص. 225ظ، 226و، 227و) ثلاث تصميمات لأشكال أقليدس (ص. 225، سطر 17) المُستخدمة كأشكال عسكرية من قِبل اليونانيين القدماء.</abstract>
+          <abstract>دليل المماليك للفروسية والفنون العسكرية والتقنية بقلم (محمد بن عيسى بن إسماعيل الحنفي الأقصرائي؛ بتاريخ 1348، دمشق) تم الانتهاء من المخطوطة في 10 محرم 773 (25 يوليو 1371) بقلم الناسخ أحمد بن عمر بن أحمد الميسري (انظر حرد المتن ص. 292و، أسفل
+            الصفحة).البداية (ص. 1ظ؛ السطور2-4):الحمد لله ناصر من أطاعه واتّقاه وكاسر من حاده وعصاه ورادع من أغرض عنهوعاداه ووادع من اعتقد أن لا إله سواه أحمده حمد من أيقن بنفعه وضرره وأذعنلقضائه وقدره وبذل مهجته في نصرة دينه وأقرّ بالوحدانية انقياد التمكينه
+            ...النهاية (صص. 291ظ، السطر 17 – 292و، السطر 3):... مرهم النورة المستعمل وحده يؤخذ نورة وتشد[ص. 292و] في خرقة رقيقة وتحرك في إناء فيه ماء حتى يخرج ما فيه من النورة ويبقى التفل ويتركحتى يصفوا ثم يصب الماء عنه ويلقى عليه زيت ويضرب حتى يجتمع ويستعملنافع
+            إن شاء الله تعالى ...حرد المتن (ص. 292و، السطور 3-14):... تم كتاب السؤل والأمنيةفي تعلم أعمال الفروسية ووافقالفراغ من تحريره بحمد الله تعالى وحسن توفيقهوتيسيره في يوم الخميس يوم عاشور من شهرالله المحرّم سنة ثلاث وسبعين وسبعمائةمن الهجرة النبوية على
+            صاحبها أفضل الصلاةوالسلم على يد العبد الفقير إلى اللهأحمد بن عمر بن أحمد المصري الأدمي عفا الله عنه وعن والديه وعن مندعا له بالتوبة والرحمة والمغفرة والتجاوز عنه هو وسائر أموات المسلمينأجمعين من مشارق الأرض إلى مغاربها يا رب العالمين وحسب الله
+            ونعمالوكيل وصلى الله على سيدنا محمد خير خلقه وآله وصحبه وسلم تسليمًا كثيرًاإلى يوم الدينأقسام النص كالتالي:المقدمة (صص. 1ظ – 27ظ)؛الكتاب الثاني في التعليم لرماية النشاب ( صص. 27ظ)؛كتاب في العلل التي تلحق الرامي في بدنه (صص. 36و-42ظ)؛الكتاب الثالث في
+            تعليم الرمح ( صص. 42ظ – 118و)التعليم الثالث في العمل بالسيف ( صص. 118و-151و)التعليم الرابع في الترس ( صص. 151و-152ظ)؛التعليم الخامس في العمل بالعمود ( صص. 152ظ-153و)؛التعليم السادس في صناعة الجنود والفرسان ( صص. 153و-161ظ;التعليم السابع في ذكر
+            الأسلحة ( صص. 161ظ-197ظ)؛التعليم الثامن في عقد الجيوش وجمعها وولاتها ( صص. 197ظ-211ظ)؛التعليم التاسع في تعبية الأمير الصفوف في القتال ( صص. 211ظ-235و)؛التعليم العاشر في المكايد الحربية من تسليط النيران ( صص. 235و-240ظ)؛التعليم الحادي عشر في قسمة
+            الغنائم والأحكام الشرعية المتعلقة بالجهاد ( صص. 240ظ-281و)؛التعليم الثاني عشر فيما يحتاج إليه المحارب وغيره ( صص. 281ظ-292و)يتضمن النص مقتطفات من أعمال أخرى من ضمنها بحثًا عن صناعة السيوف للفيلسوف الكِندي يخاطب فيه الخليفة المعتصم (باب في السيوف
+            أنواعها وسقاياتها رسالة أبي إسحق الكندي للمعتصم أمير المؤمنين؛ ص. 144و).الصور التوضيحية:تتضمن المخطوطة 18 رسمًا ملونًا و25 رسمًا بيانيًاالرسومات:(ص. 97و) صورة فارسين سنان كل واحد منهما بين كتفي صاحبه(ص. 99و) صورة عدة الفرسان يلعبون ناوردًا ورماحهم
+            على أكتافهم(ص. 101و) صورة فارس يلعب برمح وسنان الرمح في يده وعقبه إلى خلف(ص. 109و) بدون عنوان؛ فارس يحمل رمحين بشكل أفقي؛(ص. 113و) بدون عنوان؛ فارس يضرب دبًا برمحه؛(ص. 121و) صورة فارس يلعب بسيف(ص. 122ظ) صورة فارس في يده سيف وكمه ملفوف على يده وهو
+            بارز عن سرجه وهو يضرب بالسيف(ص. 125و) صورة فارس بيده سيف يضرب به من أذن الفرس إلى كفله الأيمن(ص. 127ظ) صورة فارس وذبابة السيف تحت إبطه الأيمن والقائم في يساره مع العنان(ص. 129ظ) صورة فارس مقلدٍ بدرقة صغيرة وفي يده سيف يلوح به يمينًا وشمالاً(ص. 130و)
+            صورة فارس درقة على وجهه وذبابة السيف تحت إبطه الأيمن والقائم في شماله(ص. 131ظ) صورة فارس على رأسه خوذة حديدة ومعه سيف والنار توجج في الخوذة وفي ذباب السيف وفي [و]سط الترس ص.(132ظ) صورة فارس ومعه سيف في يده اليمنى وذبابة على كتفه الأيسر وفي يده اليسرى
+            سيف وذبابة تحت إبطه اليمنى(ص. 134و) صورة فارس في يده اليسار سيف وذبابة تحت إبطه الأيمن(ص. 135و) صورة فارسين متجاولين في أيديهما سيفين كل واحد منهما سيفه على متنه(ص. 136و) صورة فارس ومعه سيفين ودرقتين صغار درقة على وجهه الأخرى في يده مع السيف
+            الواحد(ص. 138ظ) صورة فارس بيده رمح يجره وراءه وفي يده الأخرى ترس(ص. 140و) صورة أربع فوارس مع كل واحد منهم سيف ودرقة وكل منهم درقته على كفل فرسهالرسوم البيانية:(ص. 78و) جدول لرسائل (تساريح الشيخ نجم الدين)(صص. 90ظ-93و) اثنا عشر رسمًا بيانيًا لأساليب
+            ترويض الخيل؛(صص. 93ظ-94و) رسم بياني لعروض عسكرية؛ الأرضية؛(صص. 209ظ-210و) رسم مُفصّل ومعنون لتصميم حصن ملكي؛(صص. 214و، 214ظ، 216و، 217و، 217ظ، 218ظ) سبع تصميمات للأشكال المُستخدمة في وضع علامات الوحدات المختلفة في صفوف الجيش؛(صص. 225ظ، 226و، 227و)
+            ثلاث تصميمات لأشكال أقليدس (ص. 225، سطر 17) المُستخدمة كأشكال عسكرية من قِبل اليونانيين القدماء.</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">مخطوطة</genre>
           <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000044.0x0003ca#share">المُلكية العامة</accessCondition>
@@ -362,8 +451,7 @@
             <recordIdentifer>Add MS 18866</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>نهاية السؤل والامنية في تعلم أعمال الفروسية
-                              Nihāyat al-su’l wa-al-umnīyah fī ta‘allum a‘māl al-furūsīyahأقصرائي، محمد بن عيسى بن إسماعيل الحنفي  Aqṣarā’ī, Muḥammad ibn ‘Īsá ibn Ismā‘īl al-Ḥanafī</title>
+            <title>نهاية السؤل والامنية في تعلم أعمال الفروسية Nihāyat al-su’l wa-al-umnīyah fī ta‘allum a‘māl al-furūsīyahأقصرائي، محمد بن عيسى بن إسماعيل الحنفي Aqṣarā’ī, Muḥammad ibn ‘Īsá ibn Ismā‘īl al-Ḥanafī</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1371/1371</dateIssued>
@@ -374,9 +462,38 @@
           </language>
           <physicalDescription>
             <extent>Codex; ff. ii+292+ii</extent>
-            <extent>Material: PaperDimensions: 312 x 214 mm leaf [243 x 155 mm written]Foliation: British Museum foliation in pencilRuling: Misṭarah; 19 lines per page; vertical spacing 8 lines per 10 cmScript: NaskhInk: Black ink, with rubricated headingsDecoration: Eighteen colour paintings and 25 diagrams in black and red inkBinding: Brown goat-skin binding with envelope flap; blind-tooled circular designs on both covers and flap; probably 8th/14th century with signs of later repairCondition: Exellent condition; small amounts of grime through thumbing; minor water damage to top margin towards back of volumeMarginalia: Infrequent marginal additions and corrections</extent>
+            <extent>Material: PaperDimensions: 312 x 214 mm leaf [243 x 155 mm written]Foliation: British Museum foliation in pencilRuling: Misṭarah; 19 lines per page; vertical spacing 8 lines per 10 cmScript: NaskhInk: Black ink, with rubricated
+              headingsDecoration: Eighteen colour paintings and 25 diagrams in black and red inkBinding: Brown goat-skin binding with envelope flap; blind-tooled circular designs on both covers and flap; probably 8th/14th century with signs of later
+              repairCondition: Exellent condition; small amounts of grime through thumbing; minor water damage to top margin towards back of volumeMarginalia: Infrequent marginal additions and corrections</extent>
           </physicalDescription>
-          <abstract>A Mamluk manual on horsemanship, military arts and technology by Muḥammad ibn ‘Īsá ibn Ismā‘īl al-Ḥanafī al-Aqṣarā’ī (محمد بن عيسى بن إسماعيل الحنفي الأقصرائي ; d. 1348, Damascus). The manuscript was completed on 10 Muḥarram 773 (25 July 1371) by the scribe Aḥmad ibn ‘Umar ibn Aḥmad al-Miṣrī (see colophon on f. 292r, transcribed below).Begins (f. 1v, lines 2-4):الحمد لله ناصر من أطاعه واتّقاه وكاسر من حاده وعصاه ورادع من أغرض عنهوعاداه ووادع من اعتقد أن لا إله سواه أحمده حمد من أيقن بنفعه وضرره وأذعنلقضائه وقدره وبذل مهجته في نصرة دينه وأقرّ بالوحدانية انقياد التمكينه ...Ends (ff. 291v, line 17-292r, line 3):... مرهم النورة المستعمل وحده يؤخذ نورة وتشد[f. 292r] في خرقة رقيقة وتحرك في إناء فيه ماء حتى يخرج ما فيه من النورة ويبقى التفل ويتركحتى يصفوا ثم يصب الماء عنه ويلقى عليه زيت ويضرب حتى يجتمع ويستعملنافع إن شاء الله تعالى ...Colophon (f. 292r, lines 3-14):... تم كتاب السؤل والأمنيةفي تعلم أعمال الفروسية ووافقالفراغ من تحريره بحمد الله تعالى وحسن توفيقهوتيسيره في يوم الخميس يوم عاشور من شهرالله المحرّم سنة ثلاث وسبعين وسبعمائةمن الهجرة النبوية على صاحها أفضل الصلاةوالسلم على يد العبد الفقير إلى اللهأحمد بن عمر بن أحمد المصري الأدمي عفا الله عنه وعن والديه وعن مندعا له بالتوبة والرحمة والمغفرة والتجاوز عنه هو وسائر أموات المسلمينأجمعين من مشارق الأرض إلى مغاربها يا رب العالمين وحسب الله ونعمالوكيل وصلى الله على سيدنا محمد خير خلقه وآله وصحبه وسلم تسليمًا كثيرًاإلى يوم الدينDivision of the text are:Introduction (ff. 1v-27v);الكتاب الثاني في التعليم لرماية النشاب ('Book 2: Instruction in archery'; ff. 27v-);كتاب في العلل التي تلحق الرامي في بدنه ('Book on the illnesses that afflict the archer's body'; ff. 36r-42v);الكتاب الثالث في تعليم الرمح ('Book 3: Instruction in the lance'; ff. 42v-118r);التعليم الثالث في العمل بالسيف ('Teaching 3: Swordsmanship'; ff. 118r-151r);التعليم الرابع في الترس ('Teaching 4: The shield'; ff. 151r-152v);التعليم الخامس في العمل بالعمود ('Teaching 5: Using the mace'; ff. 152v-153r);التعليم السادس في صناعة الجنود والفرسان ('Teaching 6: The art of soldiers and cavalrymen'; ff.153r-161v);التعليم السابع في ذكر الأسلحة ('Teaching 7: Discussion of weapons'; ff. 161v-197v);التعليم الثامن في عقد الجيوش وجمعها وولاتها ('Teaching 8: The conscription, assembling and management of troops'; ff. 197v-211v);التعليم التاسع في تعبية الأمير الصفوف في القتال ('Teaching 9: Arrangement of battle lines by the general'; ff. 211v-235r);التعليم العاشر في المكايد الحربية من تسليط النيران ('Teaching 10: Military strategies with incendiaries'; ff. 235r-240v);التعليم الحادي عشر في قسمة الغنائم والأحكام الشرعية المتعلقة بالجهاد ('Teaching 11: The division of spoils, and legal judgements relating to holy war'; ff. 240v-281r);التعليم الثاني عشر فيما يحتاج إليه المحارب وغيره ('Teaching 12: What the soldier and others require'; ff. 281v-292r)The text includes a number of extracts from other works including a treatise on sword making by the philosopher Kindī and addressed to the Caliph al-Mu‘taṣim (باب في السيوف أنواعها وسقاياتها رسالة أبي إسحق الكندي للمعتصم أمير المؤمنين ; f. 144r ff.).Illustrations:The manuscript contains eighteen coloured paintings and 25 diagrams.Paintings:(f. 97r) صورة فارسين سنان كل واحد منهما بين كتفي صاحبه ('Illustration of two horsemen whose lance-heads are between each other's shoulder-blades');(f. 99r) صورة عدة الفرسان يلعبون ناوردًا ورماحهم على أكتافهم ('Illustration of a number of horsemen taking part in a contest, their lances on their shoulders');(f. 101r) صورة فارس يلعب برمح وسنان الرمح في يده وعقبه إلى خلف ('Illustration of a horseman taking part in a game with a lance, the lance-head being in his hand and its shaft to his rear');(f. 109r) Without caption; a horseman carrying two horizontal lances;(f. 113r) Without caption; a horseman impales a bear with his lance;(f. 121r) صورة فارس يلعب بسيف ('Illustration of a horseman performing a sword exercise');(f. 122v) صورة فارس في يده سيف وكمه ملفوف على يده وهو بارز عن سرجه وهو يضرب بالسيف ('Illustration of a horseman with a sword in his hand and his sleeve wound over his hand as he rises out of his saddle and strikes with the sword');(f. 125r) صورة فارس بيده سيف يضرب به من أذن الفرس إلى كفله الأيمن ('Illustration of a horseman with a sword in his hand with which he strikes from the horse's ear as far back as its right croup');(f. 127v) صورة فارس وذبابة السيف تحت إبطه الأيمن والقائم في يساره مع العنان ('Illustration of a horseman with the edge of the sword under his right armpit, the hilt in his left with the reins');(f. 129v) صورة فارس مقلدٍ بدرقة صغيرة وفي يده سيف يلوح به يمينًا وشمالاً ('Illustration of a horseman with a small sheild around his neck and a sword in his hand which he brandishes to left and right');(f. 130r) صورة فارس درقة على وجهه وذبابة السيف تحت إبطه الأيمن والقائم في شماله ('Illustration of a horseman with a hide shield over his face, the sword edge under his right armpit and the hilt on his left');(f. 131v) صورة فارس على رأسه خوذة حديدة ومعه سيف والنار توجج في الخوذة وفي ذباب السيف وفي [و]سط الترس ('Illustration of a horseman with an iron helmet on his head, with a sword. A fire is lit on the helmet, the sword blade and in the middle of the shield');(f.132v) صورة فارس ومعه سيف في يده اليمنى وذبابة على كتفه الأيسر وفي يده اليسرى سيف وذبابة تحت إبطه اليمنى ('Illustration of a horseman with a sword in his right hand, its blade on his left shoulder and a sword in his left hand whose blade is under his right armpit');(f. 134r) صورة فارس في يده اليسار سيف وذبابة تحت إبطه الأيمن ('Illustration of a horseman with a sword in his left hand and its tip under his left arm pit');(f. 135r) صورة فارسين متجاولين في أيديهما سيفين كل واحد منهما سيفه على متنه ('Illustration of two horsemen wheeling around, with a sword in each one's hand on the horse's back');(f. 136r) صورة فارس ومعه سيفين ودرقتين صغار درقة على وجهه الأخرى في يده مع السيف الواحد ('Illustration of a horseman with two swords and two small hide shields, on up at his face and the other in his hand with the sword');(f. 138v) صورة فارس بيده رمح يجره وراءه وفي يده الأخرى ترس ('Illustration of a horseman with a lance in his hand which he is dragging behind him, and a shield in his other hand');(f. 140r) صورة أربع فوارس مع كل واحد منهم سيف ودرقة وكل منهم درقته على كفل فرسه ('Illustration of four horsemen, each one with a sword and a hide shield, and each one carrying his shield on his horse's croup').Diagrams:(f. 78r) Table (جدول) of the 'dispatches (?) of Shaykh Najm al-Dīn (تساريح الشيخ نجم الدين)';(ff. 90v-93r) Twelve diagrams of dressage patterns;(ff. 93v-94r) Diagram of a parade; grounds;(ff. 209v-210r) Detailed and labeled diagram of the layout of a royal fortress;(ff. 214r, 214v, 216r, 217r, 217v, and 218v) Seven sketches of insignia (أشكال) used to mark various units (صفوف) within an army;(ff. 225v, 226r and 227r) Three sketches of Euclidean figures (أشكال أقليدس; f. 225, line 17) used by the ancient Greeks as military insignia.</abstract>
+          <abstract>A Mamluk manual on horsemanship, military arts and technology by Muḥammad ibn ‘Īsá ibn Ismā‘īl al-Ḥanafī al-Aqṣarā’ī (محمد بن عيسى بن إسماعيل الحنفي الأقصرائي ; d. 1348, Damascus). The manuscript was completed on 10 Muḥarram 773 (25 July
+            1371) by the scribe Aḥmad ibn ‘Umar ibn Aḥmad al-Miṣrī (see colophon on f. 292r, transcribed below).Begins (f. 1v, lines 2-4):الحمد لله ناصر من أطاعه واتّقاه وكاسر من حاده وعصاه ورادع من أغرض عنهوعاداه ووادع من اعتقد أن لا إله سواه أحمده حمد من أيقن
+            بنفعه وضرره وأذعنلقضائه وقدره وبذل مهجته في نصرة دينه وأقرّ بالوحدانية انقياد التمكينه ...Ends (ff. 291v, line 17-292r, line 3):... مرهم النورة المستعمل وحده يؤخذ نورة وتشد[f. 292r] في خرقة رقيقة وتحرك في إناء فيه ماء حتى يخرج ما فيه من النورة ويبقى
+            التفل ويتركحتى يصفوا ثم يصب الماء عنه ويلقى عليه زيت ويضرب حتى يجتمع ويستعملنافع إن شاء الله تعالى ...Colophon (f. 292r, lines 3-14):... تم كتاب السؤل والأمنيةفي تعلم أعمال الفروسية ووافقالفراغ من تحريره بحمد الله تعالى وحسن توفيقهوتيسيره في يوم
+            الخميس يوم عاشور من شهرالله المحرّم سنة ثلاث وسبعين وسبعمائةمن الهجرة النبوية على صاحها أفضل الصلاةوالسلم على يد العبد الفقير إلى اللهأحمد بن عمر بن أحمد المصري الأدمي عفا الله عنه وعن والديه وعن مندعا له بالتوبة والرحمة والمغفرة والتجاوز عنه هو
+            وسائر أموات المسلمينأجمعين من مشارق الأرض إلى مغاربها يا رب العالمين وحسب الله ونعمالوكيل وصلى الله على سيدنا محمد خير خلقه وآله وصحبه وسلم تسليمًا كثيرًاإلى يوم الدينDivision of the text are:Introduction (ff. 1v-27v);الكتاب الثاني في التعليم لرماية
+            النشاب ('Book 2: Instruction in archery'; ff. 27v-);كتاب في العلل التي تلحق الرامي في بدنه ('Book on the illnesses that afflict the archer's body'; ff. 36r-42v);الكتاب الثالث في تعليم الرمح ('Book 3: Instruction in the lance'; ff. 42v-118r);التعليم
+            الثالث في العمل بالسيف ('Teaching 3: Swordsmanship'; ff. 118r-151r);التعليم الرابع في الترس ('Teaching 4: The shield'; ff. 151r-152v);التعليم الخامس في العمل بالعمود ('Teaching 5: Using the mace'; ff. 152v-153r);التعليم السادس في صناعة الجنود
+            والفرسان ('Teaching 6: The art of soldiers and cavalrymen'; ff.153r-161v);التعليم السابع في ذكر الأسلحة ('Teaching 7: Discussion of weapons'; ff. 161v-197v);التعليم الثامن في عقد الجيوش وجمعها وولاتها ('Teaching 8: The conscription, assembling and
+            management of troops'; ff. 197v-211v);التعليم التاسع في تعبية الأمير الصفوف في القتال ('Teaching 9: Arrangement of battle lines by the general'; ff. 211v-235r);التعليم العاشر في المكايد الحربية من تسليط النيران ('Teaching 10: Military strategies with
+            incendiaries'; ff. 235r-240v);التعليم الحادي عشر في قسمة الغنائم والأحكام الشرعية المتعلقة بالجهاد ('Teaching 11: The division of spoils, and legal judgements relating to holy war'; ff. 240v-281r);التعليم الثاني عشر فيما يحتاج إليه المحارب وغيره
+            ('Teaching 12: What the soldier and others require'; ff. 281v-292r)The text includes a number of extracts from other works including a treatise on sword making by the philosopher Kindī and addressed to the Caliph al-Mu‘taṣim (باب في السيوف أنواعها
+            وسقاياتها رسالة أبي إسحق الكندي للمعتصم أمير المؤمنين ; f. 144r ff.).Illustrations:The manuscript contains eighteen coloured paintings and 25 diagrams.Paintings:(f. 97r) صورة فارسين سنان كل واحد منهما بين كتفي صاحبه ('Illustration of two horsemen
+            whose lance-heads are between each other's shoulder-blades');(f. 99r) صورة عدة الفرسان يلعبون ناوردًا ورماحهم على أكتافهم ('Illustration of a number of horsemen taking part in a contest, their lances on their shoulders');(f. 101r) صورة فارس يلعب برمح
+            وسنان الرمح في يده وعقبه إلى خلف ('Illustration of a horseman taking part in a game with a lance, the lance-head being in his hand and its shaft to his rear');(f. 109r) Without caption; a horseman carrying two horizontal lances;(f. 113r) Without
+            caption; a horseman impales a bear with his lance;(f. 121r) صورة فارس يلعب بسيف ('Illustration of a horseman performing a sword exercise');(f. 122v) صورة فارس في يده سيف وكمه ملفوف على يده وهو بارز عن سرجه وهو يضرب بالسيف ('Illustration of a horseman
+            with a sword in his hand and his sleeve wound over his hand as he rises out of his saddle and strikes with the sword');(f. 125r) صورة فارس بيده سيف يضرب به من أذن الفرس إلى كفله الأيمن ('Illustration of a horseman with a sword in his hand with which
+            he strikes from the horse's ear as far back as its right croup');(f. 127v) صورة فارس وذبابة السيف تحت إبطه الأيمن والقائم في يساره مع العنان ('Illustration of a horseman with the edge of the sword under his right armpit, the hilt in his left with the
+            reins');(f. 129v) صورة فارس مقلدٍ بدرقة صغيرة وفي يده سيف يلوح به يمينًا وشمالاً ('Illustration of a horseman with a small sheild around his neck and a sword in his hand which he brandishes to left and right');(f. 130r) صورة فارس درقة على وجهه وذبابة
+            السيف تحت إبطه الأيمن والقائم في شماله ('Illustration of a horseman with a hide shield over his face, the sword edge under his right armpit and the hilt on his left');(f. 131v) صورة فارس على رأسه خوذة حديدة ومعه سيف والنار توجج في الخوذة وفي ذباب
+            السيف وفي [و]سط الترس ('Illustration of a horseman with an iron helmet on his head, with a sword. A fire is lit on the helmet, the sword blade and in the middle of the shield');(f.132v) صورة فارس ومعه سيف في يده اليمنى وذبابة على كتفه الأيسر وفي يده
+            اليسرى سيف وذبابة تحت إبطه اليمنى ('Illustration of a horseman with a sword in his right hand, its blade on his left shoulder and a sword in his left hand whose blade is under his right armpit');(f. 134r) صورة فارس في يده اليسار سيف وذبابة تحت إبطه
+            الأيمن ('Illustration of a horseman with a sword in his left hand and its tip under his left arm pit');(f. 135r) صورة فارسين متجاولين في أيديهما سيفين كل واحد منهما سيفه على متنه ('Illustration of two horsemen wheeling around, with a sword in each
+            one's hand on the horse's back');(f. 136r) صورة فارس ومعه سيفين ودرقتين صغار درقة على وجهه الأخرى في يده مع السيف الواحد ('Illustration of a horseman with two swords and two small hide shields, on up at his face and the other in his hand with the
+            sword');(f. 138v) صورة فارس بيده رمح يجره وراءه وفي يده الأخرى ترس ('Illustration of a horseman with a lance in his hand which he is dragging behind him, and a shield in his other hand');(f. 140r) صورة أربع فوارس مع كل واحد منهم سيف ودرقة وكل منهم
+            درقته على كفل فرسه ('Illustration of four horsemen, each one with a sword and a hide shield, and each one carrying his shield on his horse's croup').Diagrams:(f. 78r) Table (جدول) of the 'dispatches (?) of Shaykh Najm al-Dīn (تساريح الشيخ نجم
+            الدين)';(ff. 90v-93r) Twelve diagrams of dressage patterns;(ff. 93v-94r) Diagram of a parade; grounds;(ff. 209v-210r) Detailed and labeled diagram of the layout of a royal fortress;(ff. 214r, 214v, 216r, 217r, 217v, and 218v) Seven sketches of
+            insignia (أشكال) used to mark various units (صفوف) within an army;(ff. 225v, 226r and 227r) Three sketches of Euclidean figures (أشكال أقليدس; f. 225, line 17) used by the ancient Greeks as military insignia.</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">Manuscript</genre>
           <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000044.0x0003ca#share">Public Domain</accessCondition>
@@ -412,12 +529,18 @@
           </language>
           <physicalDescription>
             <extent>كوديكس؛ صص.‏ vi‏‎‏+٢٢٤‏‏+v</extent>
-            <extent>المادة: ورقيةالأبعاد: حجم الورقة ٢٦٧ × ١٨٢ مم /[المساحة المكتوبة ١٦٥ × ١١٠ مم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاص والترقيم السابق بالأعداد الغربية بالحبر الأسود؛ لم يتم إضافة ترقيم باستخدام القلم الرصاص عند توافق التسلسلين؛ هناك ورقتان متتاليتان برقم ٥٥ في ترقيم الذي يستخدم الحبر ولم يتم تصحيح ذلك في ترقيم القلم الرصاص؛ علامات ترتيب الملزمة باستخدام الأعداد العربية الشرقية بالحبر الأسودالتسطير:
-                           مسطرة؛ ٩ أسطر في كل صفحة؛ مسافة تباعد رأسية ٦ أسطر لكل ١٠ سمالخط:
-                           نسخالحبر: حبر أسود مع تحمير بعض العناوين؛ تحول الحبر الأحمر إلى اللون الفضي في الورقات المستبدلة رقم ٤ و ٢٢٤؛ الرسوم البيانية باللون الأحمر والأخضر والأصفرالتجليد: تجليد غربي بجلد مائل للحمرة مع تحديد مُذهب على الغلاف؛ طلاء مُذهب على الحافة الأمامية والرأس والذيل؛ بطانة مجزّعة بالأصفر والأخضرالحالة: تلف مائي طفيف جداً، بعض الاتساخات وبصمات الأصابع؛ إصلاحات طفيفة بالورقة الأمامية vi وصص.‏ ١-٧‏‎، ٢١٦-٢٢٣؛ صص.‏ ٤، ٢٢٤ تم استبدالها بورق يحمل العلامة المائية على هيئة هلال ثلاثي (ص. ٢٢٤) والحروف الأولىGM‎ ‎‏ (ص. ٤‏‎)الحواش: قليلة جدًاالأختام: ص. ١و</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة ٢٦٧ × ١٨٢ مم /[المساحة المكتوبة ١٦٥ × ١١٠ مم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاص والترقيم السابق بالأعداد الغربية بالحبر الأسود؛ لم يتم إضافة ترقيم باستخدام القلم الرصاص عند توافق
+              التسلسلين؛ هناك ورقتان متتاليتان برقم ٥٥ في ترقيم الذي يستخدم الحبر ولم يتم تصحيح ذلك في ترقيم القلم الرصاص؛ علامات ترتيب الملزمة باستخدام الأعداد العربية الشرقية بالحبر الأسودالتسطير: مسطرة؛ ٩ أسطر في كل صفحة؛ مسافة تباعد رأسية ٦ أسطر لكل ١٠ سمالخط:
+              نسخالحبر: حبر أسود مع تحمير بعض العناوين؛ تحول الحبر الأحمر إلى اللون الفضي في الورقات المستبدلة رقم ٤ و ٢٢٤؛ الرسوم البيانية باللون الأحمر والأخضر والأصفرالتجليد: تجليد غربي بجلد مائل للحمرة مع تحديد مُذهب على الغلاف؛ طلاء مُذهب على الحافة الأمامية
+              والرأس والذيل؛ بطانة مجزّعة بالأصفر والأخضرالحالة: تلف مائي طفيف جداً، بعض الاتساخات وبصمات الأصابع؛ إصلاحات طفيفة بالورقة الأمامية vi وصص.‏ ١-٧‏‎، ٢١٦-٢٢٣؛ صص.‏ ٤، ٢٢٤ تم استبدالها بورق يحمل العلامة المائية على هيئة هلال ثلاثي (ص. ٢٢٤) والحروف
+              الأولىGM‎ ‎‏ (ص. ٤‏‎)الحواش: قليلة جدًاالأختام: ص. ١و</extent>
           </physicalDescription>
-          <abstract>عبارة عن دليل يتناول فنون الحرب، المفترض أنه تم اكتشافه بمقبرة الإسكندر الأكبر بالأسكندرية وتم ترجمته من اليونانية إلى العربية (انظر صص. ٢ظ، السطر ٧-٣و، السطر ٢) في الواقع، أغلب الظن أن المؤلف هو المملوك والخبير الحربي محمد بن منكلي أو ابن منجلي (١٣٦٢-١٣٧٦). عنوان الكتاب في ص. ٢ظ، السطور ٥-٧. ويحتوي العمل على واحد وعشرين باباً تم ذكرها في صص. ٣و-٤و، ولكن يوجد أيضًا العديد من الأقسام الفرعية الأخرى (تُسمى أيضاً أبواب). ويشتمل المجلد على قائمة بزيوت سريعة الاشتعال (ص. ٧١و-ظ) وخمسة عشر رسماً بيانياً لأجهزة ميكانيكية (صص. ١٤٨و، ١٤٩و، ١٥٠و ،١٥١و، ١٥٢و، ١٥٣، ١٥٦و-ظ، ١٥٧ظ، ١٥٨ظ، ١٦٠و، ١٦١و، ١٦٢ظ،١٦٣ظ، ١٦٤ظ)، وتظهر جميع الرسومات البيانية في "باب الدواليب" (يبدأ من ص. ١٤٦ظ).وتحمل صفحة العنوان (ص. ١و) النص الآتي:
-                           "كتاب الحيل في الحروب مما وجد في دخائر الإسكندر بن داراب الرومي المعروف بذي القرنين ونقل من اليوناني إلى العربي".البداية (ص. ١ظ، الأسطر ٢-٧):الحمد لله دي النعم والألاء والإفضالوالكرم خالق البرايا وبارئ النسم الذيأوجد الوجود بحكمته من العدم وعلمنامنه بلطفه ما لم نكن نعلم وفضلنا بكرمهعلى سائر الأمم برسوله المصطفى سيد العربوالعجم صلى الله عليه وعلى آله وسلم ...النهاية (ص. ٢٢٤ظ، الأسطر ٥-٨):... فإن أسلحتهم رثة واعتمادهمعلى الرجلة الأماكن من بلاد كابل والدبيل والزابلينوجل عتماد الهند على التراس والخفة عند الرجلةوخفة الأيدي باستعمالهم السيوف ...حرد المتن (ص. ٢٢٤ظ، الأسطر ٨-٩):... تم الكتاببحمد الله وعونه وحسن توفيقه</abstract>
+          <abstract>عبارة عن دليل يتناول فنون الحرب، المفترض أنه تم اكتشافه بمقبرة الإسكندر الأكبر بالأسكندرية وتم ترجمته من اليونانية إلى العربية (انظر صص. ٢ظ، السطر ٧-٣و، السطر ٢) في الواقع، أغلب الظن أن المؤلف هو المملوك والخبير الحربي محمد بن منكلي أو ابن
+            منجلي (١٣٦٢-١٣٧٦). عنوان الكتاب في ص. ٢ظ، السطور ٥-٧. ويحتوي العمل على واحد وعشرين باباً تم ذكرها في صص. ٣و-٤و، ولكن يوجد أيضًا العديد من الأقسام الفرعية الأخرى (تُسمى أيضاً أبواب). ويشتمل المجلد على قائمة بزيوت سريعة الاشتعال (ص. ٧١و-ظ) وخمسة عشر
+            رسماً بيانياً لأجهزة ميكانيكية (صص. ١٤٨و، ١٤٩و، ١٥٠و ،١٥١و، ١٥٢و، ١٥٣، ١٥٦و-ظ، ١٥٧ظ، ١٥٨ظ، ١٦٠و، ١٦١و، ١٦٢ظ،١٦٣ظ، ١٦٤ظ)، وتظهر جميع الرسومات البيانية في "باب الدواليب" (يبدأ من ص. ١٤٦ظ).وتحمل صفحة العنوان (ص. ١و) النص الآتي: "كتاب الحيل في الحروب مما
+            وجد في دخائر الإسكندر بن داراب الرومي المعروف بذي القرنين ونقل من اليوناني إلى العربي".البداية (ص. ١ظ، الأسطر ٢-٧):الحمد لله دي النعم والألاء والإفضالوالكرم خالق البرايا وبارئ النسم الذيأوجد الوجود بحكمته من العدم وعلمنامنه بلطفه ما لم نكن نعلم
+            وفضلنا بكرمهعلى سائر الأمم برسوله المصطفى سيد العربوالعجم صلى الله عليه وعلى آله وسلم ...النهاية (ص. ٢٢٤ظ، الأسطر ٥-٨):... فإن أسلحتهم رثة واعتمادهمعلى الرجلة الأماكن من بلاد كابل والدبيل والزابلينوجل عتماد الهند على التراس والخفة عند الرجلةوخفة
+            الأيدي باستعمالهم السيوف ...حرد المتن (ص. ٢٢٤ظ، الأسطر ٨-٩):... تم الكتاببحمد الله وعونه وحسن توفيقه</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">مخطوطة</genre>
           <name type="personal">
@@ -456,7 +579,7 @@
             <recordIdentifer>Add MS 14055</recordIdentifer>
           </recordInfo>
           <titleInfo>
-            <title>Kitāb al-ḥiyal fī al-ḥurūb wa-fatḥ al-madāʾin wa-ḥifẓ al-durūb كتاب الحيل في الحروب وفتح المدائن وحفظ الدروب  Ibn Mankalī, Muḥammad ابن منكلي، محمد</title>
+            <title>Kitāb al-ḥiyal fī al-ḥurūb wa-fatḥ al-madāʾin wa-ḥifẓ al-durūb كتاب الحيل في الحروب وفتح المدائن وحفظ الدروب Ibn Mankalī, Muḥammad ابن منكلي، محمد</title>
           </titleInfo>
           <originInfo>
             <dateIssued>1500/1699</dateIssued>
@@ -467,12 +590,19 @@
           </language>
           <physicalDescription>
             <extent>Codex; ff. vi+224+v</extent>
-            <extent>Material: PaperDimensions: 267 x 182 mm leaf [165 x 110 mm written]Foliation: British Museum foliation in pencil and previous western Arabic numeral foliation in black ink; where the two foliations correspond, often no pencil foliation has been added; there are two consecutive folios marked 55 in the ink foliation and this has not been rectified in the pencil foliation; quire marks (quinions) have been appear in eastern Arabic numerals in black inkRuling:
-                           Misṭarah; 9 lines per page; vertical spacing 6 lines per 10 cmScript:
-                           NaskhInk: Black ink, with rubricated headings; on replacement folios 4 and 224 the red ink has become silver; diagrams painted in red, green and yellowBinding: Western binding in vermillion leather with gilt tooling; fore-edge, head and tail gilt; yellow and green marbled pastedownCondition: Very minor water damage, some grime and fingerprints; minor repairs to front paper vi and ff. 1-7 and 216-223; ff. 4 and 224 have been replaced on paper bearing the tre lune watermark (f. 224) and initials GM (f. 4)Marginalia: Very fewSeals: f. 1r</extent>
+            <extent>Material: PaperDimensions: 267 x 182 mm leaf [165 x 110 mm written]Foliation: British Museum foliation in pencil and previous western Arabic numeral foliation in black ink; where the two foliations correspond, often no pencil foliation has
+              been added; there are two consecutive folios marked 55 in the ink foliation and this has not been rectified in the pencil foliation; quire marks (quinions) have been appear in eastern Arabic numerals in black inkRuling: Misṭarah; 9 lines per page;
+              vertical spacing 6 lines per 10 cmScript: NaskhInk: Black ink, with rubricated headings; on replacement folios 4 and 224 the red ink has become silver; diagrams painted in red, green and yellowBinding: Western binding in vermillion leather with gilt
+              tooling; fore-edge, head and tail gilt; yellow and green marbled pastedownCondition: Very minor water damage, some grime and fingerprints; minor repairs to front paper vi and ff. 1-7 and 216-223; ff. 4 and 224 have been replaced on paper bearing the
+              tre lune watermark (f. 224) and initials GM (f. 4)Marginalia: Very fewSeals: f. 1r</extent>
           </physicalDescription>
-          <abstract>A manual on the military arts supposed to have been discovered in the tomb of Alexander the Great at Alexandria and translated from Greek into Arabic (see ff. 2v, line 7-3r, line 2). In fact, the author is thought to be the mamluk general and tactician Muḥammad Ibn Mankalī or Ibn Manjlī (محمد بن منكلي or ابن منجلي, active 1362-1376). The title of the work is found on f. 2v, lines 5-7). A list of twenty-one chapters (أبواب) into which the text is said to be divided is given on ff. 3r-4r, but many other subdivisions (also called أبواب) are found in the work. The volume contains one table of inflammable oils (f. 71r-v) and fifteen diagrams of mechanical devices (ff. 148r, 149, r, 150r, 151r, 152r, 153r, 156r-v, 157v, 158v, 160r, 161r, 162v, 163v, and 164v), all of which diagrams appear in the 'Chapter on gears (باب الدواليب, begins on f. 146v)'.The title page (f. 1r) gives the title as '
-                           The Book of War Machines found amongst the Treasures of Alexander Son of Dārāb the Byzantine (al-Rūmī), known as the Two-Horned (Dhū al-Qarnayn), translated from Greek into Arabic(كتاب الحيل في الحروب مما وجد في دخائر الإسكندر بن داراب الرومي المعروف بذي القرنين ونقل من اليوناني إلى العربي)'.Begins (f. 1v, line 2-7):الحمد لله دي النعم والألاء والإفضالوالكرم خالق البرايا وبارئ النسم الذيأوجد الوجود بحكمته من العدم وعلمنامنه بلطفه ما لم نكن نعلم وفضلنا بكرمهعلى سائر الأمم برسوله المصطفى سيد العربوالعجم صلى الله عليه وعلى آله وسلم ...Ends (f. 224v, lines 5-8):... فإن أسلحتهم رثة واعتمادهمعلى الرجلة الأماكن من بلاد كابل والدبيل والزابلينوجل عتماد الهند على التراس والخفة عند الرجلةوخفة الأيدي باستعمالهم السيوف ...Colophon (f. 224v, lines 8-9):... تم الكتاببحمد الله وعونه وحسن توفيقه</abstract>
+          <abstract>A manual on the military arts supposed to have been discovered in the tomb of Alexander the Great at Alexandria and translated from Greek into Arabic (see ff. 2v, line 7-3r, line 2). In fact, the author is thought to be the mamluk general
+            and tactician Muḥammad Ibn Mankalī or Ibn Manjlī (محمد بن منكلي or ابن منجلي, active 1362-1376). The title of the work is found on f. 2v, lines 5-7). A list of twenty-one chapters (أبواب) into which the text is said to be divided is given on ff.
+            3r-4r, but many other subdivisions (also called أبواب) are found in the work. The volume contains one table of inflammable oils (f. 71r-v) and fifteen diagrams of mechanical devices (ff. 148r, 149, r, 150r, 151r, 152r, 153r, 156r-v, 157v, 158v, 160r,
+            161r, 162v, 163v, and 164v), all of which diagrams appear in the 'Chapter on gears (باب الدواليب, begins on f. 146v)'.The title page (f. 1r) gives the title as ' The Book of War Machines found amongst the Treasures of Alexander Son of Dārāb the
+            Byzantine (al-Rūmī), known as the Two-Horned (Dhū al-Qarnayn), translated from Greek into Arabic(كتاب الحيل في الحروب مما وجد في دخائر الإسكندر بن داراب الرومي المعروف بذي القرنين ونقل من اليوناني إلى العربي)'.Begins (f. 1v, line 2-7):الحمد لله دي
+            النعم والألاء والإفضالوالكرم خالق البرايا وبارئ النسم الذيأوجد الوجود بحكمته من العدم وعلمنامنه بلطفه ما لم نكن نعلم وفضلنا بكرمهعلى سائر الأمم برسوله المصطفى سيد العربوالعجم صلى الله عليه وعلى آله وسلم ...Ends (f. 224v, lines 5-8):... فإن أسلحتهم
+            رثة واعتمادهمعلى الرجلة الأماكن من بلاد كابل والدبيل والزابلينوجل عتماد الهند على التراس والخفة عند الرجلةوخفة الأيدي باستعمالهم السيوف ...Colophon (f. 224v, lines 8-9):... تم الكتاببحمد الله وعونه وحسن توفيقه</abstract>
           <typeOfResource>text</typeOfResource>
           <genre type="class">Manuscript</genre>
           <subject>
@@ -484,6 +614,619 @@
             <topic>Military art and science -- Early works to 1800</topic>
           </subject>
           <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000046.0x000086#share">Public Domain</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x00008f_ar</identifier>
+        <datestamp>2019-10-15T18:52:34.072Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x00008f_ar</identifier>
+          <location>
+            <shelfLocator>Or 1198</shelfLocator>
+            <url>http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x00008f</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x00008f/Or 1198_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>المكتبة البريطانية: مخطوطات شرقية</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 1198</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>كتاب منافع الأحجار وقيمتها وأصولهاتيفاشي، أحمد بن يوسف. كتاب منافع الأحجار وقيمتها وأصولها</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1397/1397</dateIssued>
+            <dateCaptured>2013-08-30T00:00:46</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>مخطوطات؛ صص i+60+ii</extent>
+            <extent>المادة ورقيةالأبعاد حجم الورقة 170 × 130 مم / [حجم الخط 135 × 95 مم]ترقيم الأوراق: ترقيم المتحف باستخدام قلم رصاصالتسطير: مسطرة؛ 13 سطرًا في كل صفحة؛ مسافة رأسية 10 سطور لكل 10 سمالخط: نسخ؛ وقّع كاتبه اسمه بخط غير مقروء أسفل الصفحة 60 جهة
+              الوجهالحبر: حبر أسود، مع طباعة العناوين والخطوط الأفقية أعلى النص باللون الأحمرالتغليف: تغليف المكتبة الغربيةالحالة: تلف ناتج عن المياه في الجزء العلوي من الأوراق، تلف بسيط ناتج عن ديدان تم إصلاح أغلبه؛ بعض بقع الأكسدةالتعليقات الهامشية: تصحيحات
+              متفرقة على الهامش بخط أحدث</extent>
+          </physicalDescription>
+          <abstract>بحث علمي عن الأحجار الكريمة لأحمد بن يوسف التيفاشي نُقل الكتاب بيد كاتب واحد أتم عمله في 15 جمادى الآخر 799 هـ (16 مارس 1397 م) ووقع اسمه بخط يتعذر قراءته أسفل الصفحة 60 جهة الوجهألّف التيفاشي هذا النص عام 640 هـ، وأعطاه العنوان الأكثر
+            شيوعًا والذي لم يُذكر في هذه النسخة وهو أزهار الأفكار في جواهر الأحجار)أزهار الأفكار في جواهر الأحجار).تحتوي الصفحة 60 جهة الظهر على 11 سطرًا من الشعر بخطٍ مختلفالبداية (الصفحة. 1 جهة الظهر، سطور 1-4)بسم الله الرحمن الرحيم وما توفيقي إلا بالله عليه
+            توكلتقال العبد الفقير إلى الله عز وجل أحمد بن يوسف التيفاشيعفا الله عنه هذا كتاب غريب الوضع عجيب الجمع عظيم النفعضمنته ذكر الأحجار التي توجد في خزائن الملوك ذخائر الرؤساءالنهاية )الصفحة 59 جهة الظهر، سطر 11- الصفحة 60 جهة الوجه، سطر 3)وإن أردت أن ترى
+            البيت كأنه لؤلؤة يجد من الطلق المحلول وأجعله فيأجانة ثم خذ صمغًا غريسًا (sic) مثل ثلاثة مدقوقًا فألفه عليه ثم أصرٮه (sic) بالماءحتى شرق ثم حصص البيت بجبسين ثم أمسح بالطلق البيت بعد الجبسينثم دعه ساعة ثم يصقل الحيطان بمصقلة زجاج صقلًا جيدًافإنه يصبر
+            كأنه لون الدر. قيمته وثمنه الأوقية من جيدهبدرهم نقرهبيانات النشر (الصفحة 60 جهة الوجه، السطور 3-10)ثم الكتاب بعون الله وحسن توفيقه.الحمد لله رب العالمين وصلى الله على سيدنا محمد وآله وصحبه وسلمورضي الله عن أصحاب رسول الله أجمعين.وحسبنا الله ونعم
+            الوكيلاللهم إني أستغفرك وأنوب إليك مماجنته يدي يا رب العالمين وصلى الله على سيدنا محمد وآله وسلم.وكتب في خامس عشر شهر جمادى الآخر سنة تسعة وتسعين وسبعمائةلمركز الشهور تسويده (؟) ما ربق (؟) والله أعلم</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">مخطوطة</genre>
+          <name type="personal">
+            <namePart>Aḥmad ibn Yūsuf Tīfāshī</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x00008f#share">المُلكية العامة</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x00008f_en</identifier>
+        <datestamp>2019-10-15T18:52:34.072Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x00008f_en</identifier>
+          <location>
+            <shelfLocator>Or 1198</shelfLocator>
+            <url>http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x00008f</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x00008f/Or 1198_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>British Library: Oriental Manuscripts</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 1198</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>Kitāb manāfi‘ al-aḥjār wa-qīmatihā wa-usūlihāكتاب منافع الأحجار وقيمتها وأصولها Tīfāshī, Aḥmad ibn Yūsuf تيفاشي، أحمد بن يوسف</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1397/1397</dateIssued>
+            <dateCaptured>2013-08-30T00:00:46</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Codex; ff. i+60+ii</extent>
+            <extent>Material: PaperDimensions: 170 x 130 mm leaf [135 x 95 mm written]Foliation: Museum foliation in pencilRuling: Misṭarah; 13 lines per page; vertical spacing 10 lines per 10 cmScript: Naskh; the scribe signed his name illegibly at the bottom
+              of f. 60rInk: Black ink, with rubricated headings and overlinings in redBinding: Western library bindingCondition: Water damage to upper portion of folios; minor worm damage mostly repaired; some foxingMarginalia: Occasional marginal corrections by a
+              later hand</extent>
+          </physicalDescription>
+          <abstract>A treatise on precious stones by Aḥmad ibn Yūsuf al-Tīfāshī. Transcribed by a single scribe who completed his work on 15 Jumādá II 799 AH (16 March AD 1397), and signed his name illegibly at the bottom of f. 60r.Al-Tīfāshī composed the text
+            in 640 AH and gave it the title by which it is more commonly known, but not mentioned in this copy, Azhār al-afkār fī jawāhir al-aḥjār(أزهار الأفكار في جواهر الأحجار).F. 60v contains 11 lines of poetry transcribed by another hand.Begins (f. 1v, lines
+            1-4):بسم الله الرحمن الرحيم وما توفيقي إلا بالله عليه توكلتقال العبد الفقير إلى الله عز وجل أحمد بن يوسف التيفاشيعفا الله عنه هذا كتاب غريب الوضع عجيب الجمع عظيم النفعضمنته ذكر الأحجار التي توجد في خزائن الملوك ذخائر الرؤساءEnds (ff. 59v, line
+            11-60r, line 3):وإن أردت أن ترى البيت كأنه لؤلؤة يجد من الطلق المحلول وأجعله فيأجانة ثم خذ صمغًا غريسًا (sic) مثل ثلاثة مدقوقًا فألفه عليه ثم أصرٮه (sic) بالماءحتى شرق ثم حصص البيت بجبسين ثم أمسح بالطلق البيت بعد الجبسينثم دعه ساعة ثم يصقل الحيطان
+            بمصقلة زجاج صقلًا جيدًافإنه يصبر كأنه لون الدر. قيمته وثمنه الأوقية من جيدهبدرهم نقرهColophon (f. 60r, lines 3-10):ثم الكتاب بعون الله وحسن توفيقه.الحمد لله رب العالمين وصلى الله على سيدنا محمد وآله وصحبه وسلمورضي الله عن أصحاب رسول الله
+            أجمعين.وحسبنا الله ونعم الوكيلاللهم إني أستغفرك وأنوب إليك مماجنته يدي يا رب العالمين وصلى الله على سيدنا محمد وآله وسلم.وكتب في خامس عشر شهر جمادى الآخر سنة تسعة وتسعين وسبعمائةلمركز الشهور تسويده (؟) ما ربق (؟) والله أعلم</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">Manuscript</genre>
+          <name type="personal">
+            <namePart>Aḥmad ibn Yūsuf Tīfāshī</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x00008f#share">Public Domain</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000092_ar</identifier>
+        <datestamp>2019-10-15T18:52:46.162Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000092_ar</identifier>
+          <location>
+            <shelfLocator>Or 1347</shelfLocator>
+            <url>http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000092</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000092/Or 1347_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>المكتبة البريطانية: مخطوطات شرقية</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 1347</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>تقويم الصحّة لابن بطلان</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1213/1213</dateIssued>
+            <dateCaptured>2015-03-07T00:25:24</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>كوديكس، صص. ii+٤٤‏+iii</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة ٢٤٠ × ١٥٥ مم [المساحة المكتوبة ٢٩٥ × ٢٢٠ مم]ترقيم الأوراق: ترقيم المتحف باستخدام القلم الرصاص؛ ترقيم الأوراق بأرقام عربية بحبرٍ أسود أعلى يسار جهة الظهر.التسطير: مسطرة؛ صص. ٣و-٤٣و، ٤٤و على شكل جدول.الخط:
+              نسخالحبر: أسود وأحمرالزخرفة: صفحة عنوان مزخرفة (ص. ١و)؛ جميع الصفحات لها إطارات مزيّنة، أول صفحتان متواجهتان مزخرفتان على وجه الخصوص بشكلٍ جميل (صص. ١ظ-٢و، ٢ظ-٣و)التجليد: تجليد المتحف البريطانيالحالة: الحالة جيدة مع وجود بعض البقع المائية والتلف
+              الناتج عن الدود، والذي يسوء باتجاه النهايةالحواش: عديدة، ومعظمها عبارة عن عناوين هامشيةالأختام: صص. ١و</extent>
+          </physicalDescription>
+          <abstract>نسخة عرض واضحة من كتاب إيوانيس المختار بن الحسن بن عبدون بن سعدون، المعروف بابن بطلان (توفَّى حوالي سنة ١٠٦٨)، في الطب الغذائي، والذي صدر لابن صلاح الدين الأيوبي (توفَّى في ١١٩٣)، الملك الظاهر (توفّى في ١٢١٦)، ملك حلب. تحتوي صفحة العنوان
+            (ص. ١و، الأسطر ٣-٨) على العنوان واسم المؤلف في الإطار العلوي، أما الإطار السفلي فيحتوي على الإهداء الخاص بهذه النسخة:خدم به خزانة مولانا السلطان السيد الأجلالملك الظاهر العالم العادل المجاهدالمرابط المثاغر غياث الدنيا والدين ملكالإسلام والمسلمين سيد
+            الملوك والسلاطين أبيالمظفر غازي بن يوسف بن أيوب ناصر أميرالمؤمنين عمرها الله بدوام العز ونفاذ الأمرالبداية (ص. ١ظ، الأسطر ١-٧):بسم الله الرحمن الرحيمتقويم الصحة بالأسباب الستة التي لا بدّ لكل إنسان يوثر دوامصحته من تعديلها وأوالها إصلاح الهواء الواصل
+            إلى قلبه والثانيتقدير مأكله ومشربه والثالث تعديل حركاته وسكونهوالرابع منع نفسه من الإغراق في نومه ويقظته والخامس تقديراستفراغ واحتقان فضلاته والسادس أخذ نفسه بالقصد فيفرجه وغضبه وفزعه وغمهينتهي النص (ص. ٤٤و، الأسطر ٢-٦) بجدول يتضمن الاختصارات التي
+            استخدمها المؤلف للإشارة إلى المراجع التي اقتبس منها. وعنوان الجدول هو "ذكر من اعتيضَ عن اسمه بأول حرف منه". يحتوي الجدول على ١٥ اسمًا، من اليمين إلى اليسار، ومن أعلى إلى أسفل:بقراط ب ، جالينوس ج ، روفس روديوسقوريدس د ، فولس فو ، أوريباسيوس اربياذوق
+            بيا ، يوحنا نو ، عيسى بن ماسويه ع هشرك الهندي ش ، الرازي الر ، مسيح محنين ح ، إسحق اس ، ماسرجويه ماحرد المتن (ص. ٤٤و، الأسطر ٧-١٢):ثم تقويم الصحة تأليف الشيخ أبي الحسن المختار بن بطلانوالحمد لله رب العالمين وصلواته على سيدنا محمد وآله وصحبهوسلم
+            كثيرًافرغ من نسخه وتسطيره العبد الفقير إلى رحمة ربه القديرفي العشر الأول من جمادىالآخر سنة عشر وستمائة للهجرة النبوية</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">مخطوطة</genre>
+          <name type="personal">
+            <namePart>ابن سلطان صلاح الدين الأيوبي الملك الظاهر</namePart>
+            <role>
+              <roleTerm type="text">former owner</roleTerm>
+            </role>
+          </name>
+          <name type="personal">
+            <namePart>أبو الحسن المختار بن عبدون ابن بطلان</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <subject>
+            <topic>الطب--أعمال ما قبل سنة ١٨٠٠</topic>
+          </subject>
+          <subject>
+            <topic>طب، إغريقي وروماني</topic>
+          </subject>
+          <subject>
+            <topic>الطب في العصور الوسطى</topic>
+          </subject>
+          <subject>
+            <topic>الطب عند العرب</topic>
+          </subject>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000092#share">المُلكية العامة</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000092_en</identifier>
+        <datestamp>2019-10-15T18:52:46.162Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000092_en</identifier>
+          <location>
+            <shelfLocator>Or 1347</shelfLocator>
+            <url>http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000092</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000092/Or 1347_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>British Library: Oriental Manuscripts</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 1347</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>Taqwīm al-ṣiḥḥah تقويم الصحّة Ibn Buṭlān ابن بطلان</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1213/1213</dateIssued>
+            <dateCaptured>2015-03-07T00:25:24</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Codex; ff. ii+44+iii</extent>
+            <extent>Material: PaperDimensions: 320 x 240 mm leaf [295 x 220 mm written]Foliation: Museum foliation in pencil; foliation in Arabic numerals in black ink in upper left-hand corners of rectos.Ruling: Misṭarah; ff. 3r-43r and 44r are laid out in
+              tabular formScript: NaskhInk: Black and redDecoration: Illuminated title page (f. 1r); all pages have elaborate borders, and the first two openings are particularly beautifully decorated (ff. 1v-2r and 2v-3r)Binding: British Museum bindingCondition:
+              Fair condition with some waterstaining and worm damage, worse towards the endMarginalia: Many, mostly marginal headingsSeals: ff. 1r</extent>
+          </physicalDescription>
+          <abstract>An elaborate presentation copy of Īwānīs al-Mukhtār ibn al-Ḥasan ibn ʻAbdūn ibn Saʻdūn's (إيوانيس المختار بن الحسن بن عبدون بن سعدون, known as Ibn Buṭlān [ابن بطلان], d. ca 1068) book on dietetic medicine produced for Saladin’s (صلاح الدين
+            الأيوبي; d. 1193) son, al-Malik al-Ẓāhir (الملك الظاهر; d. 1216), King of Aleppo. The title page (f. 1r, lines 3-8) bears the title and author in the upper frame and, in the lower frame, the dedication of this copy:خدم به خزانة مولانا السلطان السيد
+            الأجلالملك الظاهر العالم العادل المجاهدالمرابط المثاغر غياث الدنيا والدين ملكالإسلام والمسلمين سيد الملوك والسلاطين أبيالمظفر غازي بن يوسف بن أيوب ناصر أميرالمؤمنين عمرها الله بدوام العز ونفاذ الأمرBegins (f. 1v, lines 1-7):بسم الله الرحمن
+            الرحيمتقويم الصحة بالأسباب الستة التي لا بدّ لكل إنسان يوثر دوامصحته من تعديلها وأوالها إصلاح الهواء الواصل إلى قلبه والثانيتقدير مأكله ومشربه والثالث تعديل حركاته وسكونهوالرابع منع نفسه من الإغراق في نومه ويقظته والخامس تقديراستفراغ واحتقان فضلاته
+            والسادس أخذ نفسه بالقصد فيفرجه وغضبه وفزعه وغمهThe text ends (f. 44r, lines 2-6) with a table listing abbreviations used by the author to refer to the authorities quoted. The table is headed ذكر من اعتيضَ عن اسمه بأول حرف منه ('Mention of [the
+            authorities] referred to by their initials'). The table contains 15 names, right to left, top to bottom:بقراط ب ، جالينوس ج ، روفس روديوسقوريدس د ، فولس فو ، أوريباسيوس اربياذوق بيا ، يوحنا نو ، عيسى بن ماسويه ع هشرك الهندي ش ، الرازي الر ، مسيح
+            محنين ح ، إسحق اس ، ماسرجويه ماColophon (f., 44r, lines 7-12):ثم تقويم الصحة تأليف الشيخ أبي الحسن المختار بن بطلانوالحمد لله رب العالمين وصلواته على سيدنا محمد وآله وصحبهوسلم كثيرًافرغ من نسخه وتسطيره العبد الفقير إلى رحمة ربه القديرفي العشر الأول
+            من جمادىالآخر سنة عشر وستمائة للهجرة النبوية</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">Manuscript</genre>
+          <name type="personal">
+            <namePart>al-Malik al-Ẓāhir</namePart>
+            <role>
+              <roleTerm type="text">former owner</roleTerm>
+            </role>
+          </name>
+          <name type="personal">
+            <namePart>Abū al-Ḥasan al-Mukhtār ibn 'Abdūn Ibn Buṭlān</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <subject>
+            <topic>Medicine--Early works to 1800</topic>
+          </subject>
+          <subject>
+            <topic>Medicine, Greek and Roman</topic>
+          </subject>
+          <subject>
+            <topic>Medicine, Medieval</topic>
+          </subject>
+          <subject>
+            <topic>Medicine, Arab</topic>
+          </subject>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000092#share">Public Domain</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000093_ar</identifier>
+        <datestamp>2019-10-15T18:53:08.176Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000093_ar</identifier>
+          <location>
+            <shelfLocator>Or 5323</shelfLocator>
+            <url>http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000093</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000093/Or 5323_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>المكتبة البريطانية: مخطوطات شرقية</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 5323</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>كتاب صور الكواكب الثابتةصوفي، عبد الرحمن بن عمر صوفى</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1260/1280</dateIssued>
+            <dateCaptured>2013-12-02T15:10:46</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>كوديكس؛ صص. iii+٨٦+ii</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة ٣٣٥ × ٢٤٠ مم / [مساحة الكتابة ٢٦٠ × ٢٠٠ مم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاص؛ الترقيم العربي بحبر لونه بني باهت إلى جانب ما قد تعد ملاحظات على الرغم من التلف الكبير بها حيث يجعل استبدال
+              الهوامش من الصعب تحديد ذلك.التسطير: غير مرئي؛ متوسط ٢٦ سطرًا بكل صفحة من الصفحات دون صور أو جداول؛ مسافة رأسية ١١ سطرًا كل ١٠ سمالخط: نسخالحبر: حبر أسود مع طباعة العناوين، والبطاقاتوعلامات الوقف في النص باللون الأحمر. تحوَّل لون بعض الجداول والصور
+              الموجود بالحبر إلى البني الباهت. تم تحديد النجوم في الصور بالأحمر وتلوينها بالذهبيالزخرفة:التجليد: تجليد المتحف البريطانيالحالة: يوجد عيب في البداية وأرقام صفحات مفقودة (انظر الملاحظات المُحددة في مقدمة المجلد)؛ البقع المائية والأكسدة باتجاه الهامش
+              الأمامي والخلفي؛ تم استبدال كل الهوامش لكن نادرًا ما يؤثر هذا على النص، أو الجداول أو الصورالحواشي: توجد تصحيحات هامشية قليلة جدًا؛ وتعليقات لأكثر من شخص</extent>
+          </physicalDescription>
+          <abstract>وصف مصور يقدمه عبد الرحمن الصوفي للكواكب القديمة الثمانية وأربعين التي ناقشها بطليموس في كتابه المجسطي. يحتوي النص على صور مُعَنْوَنة للنجوم الثمانية والأربعين كما تظهر في الكرة السماوية وكما تظهر في السماء، إلى جانب الجداول التي تظهر
+            النجوم المنفصلة داخل كل مجموعة نجوم حيث يسرد أسمائها العربية، وإحداثياتها السماوية وحجمها.هذه النسخة معيبة في البداية، ولا يوجد بها مقدمات، وتحتاج أوراق عديدة، كما أن بها عيوب أخرى (انظر الملاحظات بالتفصيل باللغة الإنجليزية الخاصة بهذه العيوب في
+            مقدمة المجلد).يبدأ في (ص. ١و، السطور ١-٤):وهذا الكوكب هو ملاصق للكوكب السادس من كواكب الإكليل لأنهما جميعًا في الطول في موضع واحد غير أن الذيعلى الركبة أميل إلى الجنوب في العرض مقدار خمسين دقيقة وهما جميعًا في القدر الرابع. ولعل النقلةأو الوراقين
+            أثبتوا لهذين الكوكبين في الأقدار د فغلط الوراق وقدر أنه ب فأثبتهما جميعًا فيالقدر الثاني ...ينتهي النص في (ص. ٨٦و) بجدول عنوانه (جدول كوكبة الحوت الجنوبي بزيادة ١٢، و٤٢ وفقًا لخطوط الطول كما في كتاب المجسطي.صور توضيحية:النصف الشمالي من الكرة(النصف
+            الشمالي من الكرة)(ص. ٧و) كوكبة الدب الأصغر كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٨ظ) كوكبة الدب الأكبر كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء (بالأسفل)(ص. ١١ظ) كوكبة التنين كما تظهر في كرة سماوية (اليمين) وكما
+            تظهر في السماء (اليسار)(ص. ١٢و) كوكبة قيفاوس كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ١٣ظ كوكبة العواء كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ١٥ظ كوكبة السُلياق كما تظهر في كرة سماوية (اليمين) وكما تظهر
+            في السماء (اليسار)(ص. ١٧و كوكبة الدجاجة كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء (بالأسفل)(ص. ١٩و) كوكبة ذات الكرسي كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٢١ظ) كوكبة برشاوش كما تظهر في كرة سماوية (اليمين) وكما
+            تظهر في السماء (اليسار)(ص. ٢٢و) كوكبة ممسك الأعنة كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٢٣ظ) كوكبة الحوا والحية كما تظهر في كرة سماوية(ص. ٢٤ظ) كوكبة الحواء والحية (الحوا والحية) كما تظهر في السماء(ص. ٢٧ظ) كوكبة السهم كما
+            تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٢٨ظ، بالأعلى) كوكبة العقاب كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٢٨، بالأسفل) كوكبة الدلفين كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٢٩ظ)
+            كوكبة قطعة الفرس كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٣٠ظ) كوكبة الفرس الأعظم كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٣٢ظ) كوكبة المرأة المسلسلة كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء
+            (بالأسفل)(ص. ٣٣و) المرأة المسلسلة مع سمكة(ص. ٣٣ظ) المرأة المسلسلة مع سمكة(ص. ٣٤و) كوكبة المثلث كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)كواكب دائرة البروج(البروج)(ص. ٣٥ظ) كوكبة الحمل كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في
+            السماء (بالأسفل)(ص. ٣٨ظ) كوكبة الثور كما تظهر في كرة سماوية(ص. ٣٩و) كوكبة الثور كما تظهر في السماء(ص. ٤١ظ) كوكبة التوأمان كما تظهر في كرة سماوية(ص. ٤٢و) كوكبة التوأمان كما تظهر في السماء(ص. ٤٣ظ) كوكبة السرطان كما تظهر في كرة سماوية (اليمين) وكما تظهر
+            في السماء (اليسار)(ص. ٤٥ظ) كوكبة الأسد كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء (بالأسفل)(ص. ٥٠و) كوكبة الميزان كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٥١ظ) كوكبة العقرب كما تظهر في كرة سماوية (اليمين) وكما تظهر في
+            السماء (اليسار)(ص. ٥٣و) كوكبة الرامي كما تظهر في كرة سماوية(ص. ٥٤و) كوكبة الرامي كما تظهر في السماء(ص. ٥٥ظ) كوكبة الجدي كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء (بالأسفل)(ص. ٥٨و) كوكبة ساكب الماء كما تظهر في كرة سماوية(ص. ٥٨ظ) كوكبة ساكب
+            الماء كما تظهر في السماءالنصف الجنوبي من الكرة(النصف الجنوبي من الكرة)(ص. ٦١و) كوكبة قيطسّ كما تظهر في السماء(ص. ٦١ظ) كوكبة قيطسّ كما تظهر في كرة سماوية(ص. ٦٣ظ) كوكبة الجوزاء كما تظهر في كرة سماوية(ص. ٦٤ظ) كوكبة الجوزاء كما تظهر في السماء(ص. ٦٥ظ)
+            كوكبة النهر كما تظهر في السماء(ص. ٦٧و) كوكبة النهر كما تظهر في كرة سماوية(ص. ٦٨و) كوكبة الكلب الأكبر كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٧٠ظ) كوكبة الأرنب كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص.
+            ٧٢ظ) الكلب الأصغر(ص. ٧٥و) كوكبة السفينة كما تظهر في كرة سماوية(ص. ٧٥ظ) كوكبة السفينة كما تظهر في السماء(ص. ٧٧و) كوكبة الشجاع كما تظهر في السماء (اليمين) وكما تظهر في كرة سماوية (اليسار)(ص. ٧٨ظ) كوكبة الباطية كما تظهر في كرة سماوية (اليمين) وكما تظهر
+            في السماء (اليسار)(ص. ٧٩ظ) كوكبة الغراب كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٨٠و) كوكبة قنطورس والسبع كما تظهر في كرة سماوية (بالأعلى) وكما تظهر في السماء (بالأسفل)(ص. ٨٣و) كوكبة المجمرة كما تظهر في كرة سماوية (اليمين) وكما
+            تظهر في السماء (اليسار)(ص. ٨٣ظ) كوكبة الإكليل الجنوبي كما تظهر في كرة سماوية (اليمين) وكما تظهر في السماء (اليسار)(ص. ٨٥و) كوكبة الحوت الجنوبي كما تظهر في السماء (الأعلى) وكما تظهر في كرة سماوية (الأسفل)رسم بياني (ص. ٨٦و) دوَّنه المالك في قزوين،
+            بتاريخ ٦٧٨ هجرية (١٢٧٩-٨٠ ميلادية) وهو يستخدم طريقة لتحديد القبلة التي تم وصفها لأول مرة في مراغة في ١٢٧١. بالنسبة لهذه ومناقشة لتاريخ هذه المخطوطة انظر كاري، "تخطيط تقوية الذاكرة"، ٢٠١٠.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">مخطوطة</genre>
+          <subject>
+            <name type="personal">
+              <namePart>كلاوديوس بطلميوس (بطليمو)</namePart>
+            </name>
+          </subject>
+          <subject>
+            <topic>فلك، العرب</topic>
+          </subject>
+          <subject>
+            <topic>فلك، اليونان</topic>
+          </subject>
+          <subject>
+            <topic>فلك، العصور الوسطى</topic>
+          </subject>
+          <subject>
+            <topic>الكواكب</topic>
+          </subject>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000093#share">المُلكية العامة</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000093_en</identifier>
+        <datestamp>2019-10-15T18:53:08.176Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000093_en</identifier>
+          <location>
+            <shelfLocator>Or 5323</shelfLocator>
+            <url>http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000093</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000093/Or 5323_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>British Library: Oriental Manuscripts</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 5323</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>Kitāb ṣuwar al-kawākib al-thābitahكتاب صور الكواكب الثابتة Ṣūfī, ʻAbd al-Raḥmān ibn ʻUmar صوفى، عبد الرحمن ابن عمر</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1260/1280</dateIssued>
+            <dateCaptured>2013-12-02T15:10:46</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Codex; ff. iii+86+ii</extent>
+            <extent>Material: PaperDimensions: 335 x 240 mm leaf [260 x 200 mm written]Foliation: British Museum foliation in pencil; Arabic foliation in in faded brown ink along with what are perhaps quire marks although extensive damage to and replacement of
+              margins makes this difficult to determine.Ruling: none visible; an average of 26 lines per page on pages without illustrations or tables; vertical spacing 11 lines per 10 cmScript: NaskhInk: Black ink, with rubricated headings, labels and text stops
+              in red. Some tables and illustrations in ink that has faded to brown. Stars in illustrations are outlined in red and fill in goldDecoration:Binding: British Museum bindingCondition: Defective at beginning and missing a number of leaves (see notes
+              bound into front of volume); waterstains and foxing towards tail fore-edge margin; all margins have been replaced but this rarely affects text, tables or illustrationsMarginalia: Very few marginal corrections and notes by more than one hand</extent>
+          </physicalDescription>
+          <abstract>An illustrated description by ‘Abd al-Raḥmān al-Ṣūfī (عبد الرحمن الصوفي) of the 48 classical constellations discussed by Ptolemy in his Almagest. The text contains labelled illustrations of the 48 constellations as viewed on a celestial
+            globe and as viewed in the sky, along with supporting tables of individual stars within each constellation listing their Arabic names, celestial coordinates and magnitudes.This copy is defective at the beginning, missing the start of the preface, is
+            wanting several folios and is imperfect in other ways (see detailed notes in English concerning these imperfections bound into front of volume).Incipit (f. 1r, lines 1-4):وهذا الكوكب هو ملاصق للكوكب السادس من كواكب الإكليل لأنهما جميعًا في الطول في
+            موضع واحد غير أن الذيعلى الركبة أميل إلى الجنوب في العرض مقدار خمسين دقيقة وهما جميعًا في القدر الرابع. ولعل النقلةأو الوراقين أثبتوا لهذين الكوكبين في الأقدار د فغلط الوراق وقدر أنه ب فأثبتهما جميعًا فيالقدر الثاني ...The text ends (f. 86r) with a
+            table headed جدول كوكبة الحوت الجنوبي بزيادة يب مب على ما في المجسطي في الطول (‘Table of the stars of Pisces australis with increase 12, 42 according to the longitudes in the Almagest’).Illustrations:Northern Hemisphere(النصف الشمالي من الكرة)(f. 7r)
+            Ursa minor (الدب الأصغر) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 8v) Ursa major (الدب الأكبر) as viewed on a celestial globe (upper) and as viewed in the sky (lower)(f. 11v) Draco (التنين) as viewed on a celestial
+            globe (right) and as viewed in the sky (left)(f. 12r) Cepheus (قيفاوس) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 13v) Boötes (العواء) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 15v) Lyra
+            (السُلياق) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 17r) Cygnus (الدجاجة) as viewed on a celestial globe (upper) and as viewed in the sky (lower)(f. 19r) Cassiopeia (ذات الكرسي) as viewed on a celestial globe (right)
+            and as viewed in the sky (left)(f. 21v) Perseus (بَرشاوش) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 22r) Auriga (ممسك الأعنة) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 23v) Serpentarius
+            (الحوا والحية) as viewed on a celestial globe(f. 24v) Serpentarius (الحوا والحية) as viewed in the sky(f. 27v) Sagitta (السهم) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 28v, upper) Aquila (العقاب) as viewed on a
+            celestial globe (right) and as viewed in the sky (left)(f. 28, lower) Delphinus (الدلفين) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 29v) Equus minor (قطعة الفرس) as viewed on a celestial globe (right) and as viewed in
+            the sky (left)(f. 30v) Pegasus (الفرس الأعظم) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 32v) Andromeda (المرأة المسلسلة) as viewed on a celestial globe (upper) and as viewed in the sky (lower)(f. 33r) Andromeda with a
+            fish(f. 33v) Andromeda with a fish(f. 34r) Triangulum (المثلث) as viewed on a celestial globe (right) and as viewed in the sky (left)Signs of the Zodiac(البروج)(f. 35v) Aries (الحمل) as viewed on a celestial globe (upper) and as viewed in the sky
+            (lower)(f. 38v) Taurus (الثور) as viewed on a celestial globe(f. 39r) Taurus (الثور) as viewed in the sky(f. 41v) Gemini (التؤمان) as viewed on a celestial globe(f. 42r) Gemini (التؤمان) as viewed in the sky(f. 43v) Cancer (السرطان) as viewed on a
+            celestial globe (right) and as viewed in the sky (left)(f. 45v) Leo (الأسد) as viewed on a celestial globe (upper) and as viewed in the sky (lower)(f. 50r) Libra (الميزان) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 51v)
+            Scorpio (العقرب) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 53r) Sagittarius (الرامي) as viewed on a celestial globe(f. 54r) Sagittarius (الرامي) as viewed in the sky(f. 55v) Capricorn (الجدي) as viewed on a celestial
+            globe (upper) and as viewed in the sky (lower)(f. 58r) Aquarius (ساكب الماء) as viewed on a celestial globe(f. 58v) Aquarius (ساكب الماء) as viewed in the skySouthern Hemisphere(النصف الجنوبي من الكرة)(f. 61r) Cetus (قيطسّ) as viewed in the sky(f.
+            61v) Cetus (قيطسّ) as viewed on a celestial globe(f. 63v) Orion (الجوزاء) as viewed on a celestial globe(f. 64v) Orion (الجوزاء الجنوبي) as viewed in the sky(f. 65v) Eridanus (النهر) as viewed in the sky(f. 67r) Eridanus (النهر) as viewed on a
+            cestial sphere(f. 68r) Canis major (الكلب الأكبر) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 70v) Lepus (الأرنب) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 72v) Canis minor (الكلب
+            الأصغر)(f. 75r) Argo navis (السفينة) as viewed on a celestial globe(f. 75v) Argo navis (السفينة) as viewed in the sky(f. 77r) Hydra (الشجاع) as viewed in the sky (right) and as viewed on a celestial globe (left)(f. 78v) Crater (الباطية) as viewed on
+            a celestial globe (right) and as viewed in the sky (left)(f. 79v) Corvus (الغراب) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 80r) Centaurus and Lupus (قنطورس والسبع) as viewed on a celestial globe (upper) and as viewed
+            in the sky (lower)(f. 83r) Ara (المجمرة) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 83v) Corona australis (الإكليل الجنوبي) as viewed on a celestial globe (right) and as viewed in the sky (left)(f. 85r) Piscis australis
+            (الحوت الجنوبي) as viewed in the sky (upper) and as viewed on a celestial globe (lower)A diagram (f. 86r) inscribed by an owner in Qazwīn, dated 678 AH (AD 1279-80) uses a method for determining the qiblah that was first described in Marāgha in 1271.
+            For this and a discussion of the date of this manuscript see Carey, 'Mapping the Mnemonic', 2010.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">Manuscript</genre>
+          <subject>
+            <name type="personal">
+              <namePart>Claudius Ptolemaeus (Ptolemy)</namePart>
+            </name>
+          </subject>
+          <subject>
+            <name type="personal">
+              <namePart>'Abd al-Raḥmān ibn 'Umar Ṣūfī</namePart>
+            </name>
+          </subject>
+          <subject>
+            <topic>Astronomy, Arab</topic>
+          </subject>
+          <subject>
+            <topic>Astronomy, Greek</topic>
+          </subject>
+          <subject>
+            <topic>Astronomy, Medieval</topic>
+          </subject>
+          <subject>
+            <topic>Constellations</topic>
+          </subject>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000093#share">Public Domain</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000094_ar</identifier>
+        <datestamp>2019-10-15T18:53:28.807Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000094_ar</identifier>
+          <location>
+            <shelfLocator>Or 5593</shelfLocator>
+            <url>http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000094</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000094/Or 5593_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>المكتبة البريطانية: مخطوطات شرقية</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 5593</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>كتاب استيعاب الوجوه الممكنة في صنعة الأسطرلابكتاب استيعاب الوجوه الممكنة في صنعة الأسطرلاب بقلم بيروني، محمد بن أحمد</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1300/1399</dateIssued>
+            <dateCaptured>2013-10-19T00:00:56</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>كوديكس؛ صص ii+89+iii</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة 235 × 135 ملم / [المساحة المكتوبة 185 × 120]ترقيم الأوراق: ترقيم المتحف باستخدام القلم الرصاص؛ ترقيم بالعربية بحبرٍ أسود أعلى يمين جهة الظهر من كل ورقةالتسطير: مسطرة؛ 21 سطرًا في كل صفحة؛ مسافة رأسية 10 سطور
+              لكل 10 سمالخط: نسخالحبر: أسود؛ مع تحمير العناوين؛ وجداول ورسوم بيانية بالأحمر والأسودالتغليف: تغليف المتحف البريطانيالحالة: ص. 3 بها تلف وبعض الكلمات مفقودة من آخر سطرين؛ تلف بسيط ناحية حواف الكتاب ومقدمته نتيجة للمياه، تم إعادة التحبير في بعض
+              الأماكنالتعليقات الهامشية: تصحيحات قليلة على الهوامش وعناوين مُضافة بخط أحدث</extent>
+          </physicalDescription>
+          <abstract>واحدة من ثلاث نسخ معروفة لأطروحة مهمة تعني بإنشاء واستخدام الأسطرلاب وقام بكتابتها أبو الريحان محمد بن أحمد البيروني (973-1084 تقريبًا)، تحتوي على 122 رسم بياني و7 جداول ومساحة واحدة لرسم بياني أو جدول تُركت خالية وكتب مكانها "بياض صحيح"
+            (ص. 20ظ)البداية (ص. 3ظ، سطور 1-7)بسم الله الرحمن الرحيم رب يسر ولا تعسرالأنفس الصافية ذوات نراع واشتناق إلى تصور الموجودات والإحاطة بها على الإطلاق فلذلك تلتفت إلى ما يزيدها روتفا (!) وبهاوتنبعث إلى ما يكسبها صفًا ونقًا كنفس الشيخ أيده الله التي
+            صفتمن درن الطينة وخلصت عن كرر الطبيعة بل اتحدت بكلية النفوسوأشغلت بالمعتول (!) عن المحسوس فلا يقصد من العلوم إلا ما يكونمعلومه أفضل معلومالنهاية (89ظ، سطور 5-8):ووصلنا كل واحدة من تلك بالفلس حتى يكون لعروض كثيرة ويكونأحسن في الصورة بل لو ثمٮ
+            (!)الصفيحة باقطار بدل التربيع وفعل به ذلكاحتمل أفأما كثيرة وقاربت أن نعم العروض في العمل إن شاء الله وتمامهذه الآلة تم إنجاز الوعد بما وعد به والوفاء بما صمته بعون الله وتوفيقهتحتوي الحافة الخارجية والهوامش السفلية في ص. 89ظ على آيات قرآنية باللغة
+            الفارسية مكتوبة باليد بخلاف الآيات الواردة في النسخ الأساسي.يعرض الرسم البياني في الصفحة 83ظ التروس الداخلية للأسطرلاب. يُعتقد أن هذا الرسم البياني هو أول تصوير للتروس الداخلية لجهاز يمكن حمله باليد. أنظر دراسة هيل، التقويم الميكانيكي للبيروني، 1985.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">مخطوطة</genre>
+          <name type="personal">
+            <namePart>محمد بن أحمد البيروني</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000094#share">المُلكية العامة</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000094_en</identifier>
+        <datestamp>2019-10-15T18:53:28.807Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000094_en</identifier>
+          <location>
+            <shelfLocator>Or 5593</shelfLocator>
+            <url>http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000094</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000094/Or 5593_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>British Library: Oriental Manuscripts</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 5593</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>Kitāb istī‘āb al-wujūh al-mumkinah fī ṣan‘at al-asṭurlābكتاب استيعاب الوجوه الممكنة في صنعة الأسطرلاب Bīrūnī, Muḥammad ibn Aḥmad بيروني، محمد بن أحمد</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1300/1399</dateIssued>
+            <dateCaptured>2013-10-19T00:00:56</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Codex; ff. ii+89+iii</extent>
+            <extent>Material: PaperDimensions: 235 x 135 mm leaf [185 x 120 written]Foliation: Museum foliation in pencil; Arabic numeral foliation in black ink in upper right-hand corners of versosRuling: Misṭarah; 21 lines per page; vertical spacing 10 lines
+              per 10 cmScript: NaskhInk: Black; rubricated headings; tables and diagrams in red and blackBinding: British Museum bindingCondition: f. 3 damaged and some words missing from last two lines; light water damage towards foredge and head, re-inked in
+              placesMarginalia: infrequent marginal corrections and headings added by later hands</extent>
+          </physicalDescription>
+          <abstract>One of only three recorded copies of an influential treatise on the construction and use of astrolabes by Abū al-Rayḥān Muḥammad ibn Aḥmad al-Bīrūnī (أبو الريحان محمد بن أحمد البيروني, ca 973-1048) containing 122 diagrams, 7 tables and 1
+            space for a diagram or table left blank and marked بياض صحيح ('correctly blank'; f. 20v).Begins (f. 3v, lines 1-7):بسم الله الرحمن الرحيم رب يسر ولا تعسرالأنفس الصافية ذوات نراع واشتناق إلى تصور الموجودات والإحاطة بها على الإطلاق فلذلك تلتفت إلى ما
+            يزيدها روتفا (!) وبهاوتنبعث إلى ما يكسبها صفًا ونقًا كنفس الشيخ أيده الله التي صفتمن درن الطينة وخلصت عن كرر الطبيعة بل اتحدت بكلية النفوسوأشغلت بالمعتول (!) عن المحسوس فلا يقصد من العلوم إلا ما يكونمعلومه أفضل معلومEnds (89v, lines 5-8):ووصلنا كل
+            واحدة من تلك بالفلس حتى يكون لعروض كثيرة ويكونأحسن في الصورة بل لو ثمٮ (!)الصفيحة باقطار بدل التربيع وفعل به ذلكاحتمل أفأما كثيرة وقاربت أن نعم العروض في العمل إن شاء الله وتمامهذه الآلة تم إنجاز الوعد بما وعد به والوفاء بما صمته بعون الله وتوفيقهThe
+            fore-edge and lower margins of f. 89v contain verses in Persian written by a hand other than that of the main scribe.The diagram on for 83v shows the internal gears of an astrolabe. This diagram (although not this copy of it) is thought to be the
+            earliest depiction of the internal gears of a hand-held device. See Hill, 'Al-Bīrūnī's Mechanical Calendar', 1985.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">Manuscript</genre>
+          <name type="personal">
+            <namePart>Muḥammad ibn Aḥmad Bīrūnī</namePart>
+            <role>
+              <roleTerm type="text">author</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000094#share">Public Domain</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000095_ar</identifier>
+        <datestamp>2019-11-07T12:37:23.928Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000095_ar</identifier>
+          <location>
+            <shelfLocator>Or 14270</shelfLocator>
+            <url>http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000095</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000095/Or 14270_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>المكتبة البريطانية: مخطوطات شرقية</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 14270</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>أطروحتان في العلوم التقنية</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1292/1292</dateIssued>
+            <dateCaptured>2014-11-20T00:00:30</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>كوديكس؛ صص. i+٧٣‏+i</extent>
+            <extent>المادة: ورقيةالأبعاد: حجم الورقة ٢٥٤ × ١٨٥ مم [المساحة المكتوبة ١٩٨ × ١٣٥ مم]ترقيم الأوراق: ترقيم أوراق بالعربية الهندية بالحبر الأسود؛ ترقيم المتحف البريطاني بالقلم الرصاصالتسطير: مسطرة؛ ١٩ سطرًا للصفحة؛ مسافة عمودية ١٠ أسطر لكل ١٠ سمالخط:
+              نسخ؛ الناسخ هو عمر ابن محمد ابن طلحة (ص. ٧١و)الحبر: حبر كربوني أسود، مع تحمير العناوين، وخطوط علويّة وبعض المخطّطات باللون الأحمرالتجليد: تجليد المتحف البريطاني؛ بعض علامات ترتيب المَلزَمة ظاهرة (رباعيات)الحالة: توجد ثقوب دودية، عُولج بعضها؛ كما يوجد
+              وسخ وبقع حبر متكررةالحواشي: توجد بعض التصحيحات والتعليقات بأيادي متعدّدةالأختام: الورقة الأمامية ii والورقة الأخيرة i</extent>
+          </physicalDescription>
+          <abstract>مُجلد يحتوي على أطروحتين في العلوم التقنيةكتاب أرشميدس في عمل البنكامات(صص. ٢ظ-٢١و)؛أحمد بن محمد الفرغاني، الكامل في صنعة الأسطرلاب الشمالي والجنوبي وعللهما بالهندسة والحساب (صص. ٢١ظ-٧٣و).صفحة العنوان (ص. ٢و) تنص على ما يلي: كتاب عمل
+            الساعات لأرشميدس وكتاب عمل الأسطرلاب للفرغاني.تحتوي المخطوطة على خمسة وأربعين توضيحًا وخمسة وأربعين جدولًا.يتضمّن حرد المتن (ص. ٧١و) اسم الناسخ وهو عمر ابن محمد ابن طلحة، وتاريخ إتمام العمل هو ٢٨ شوال ٦٩١\١٢ أكتوبر ١٢٩٢. أ ملاحظات على صفحة العنوان
+            (ص. ٢و) وتحت حرد المتن (ص. ٧١و) تُحدّد الناسخ بأنه ابن طلحة الذي ألّف مفتاح الجفر، وهو عمل يتناول الروحانيات الشيعية. تاريخ الوفاة المنسوب إلى ابن طلحة، مؤلف كتاب مفتاح الجفر، هو ٦٥٢/ ١٢٥٤-٥، أي ٣٩ سنة قبل نسخ المخطوطة.توجد ملاحظات بخصوص
+            الأَسْطُرْلاب في الورقة ١و، وقائمة بالتوضيحات في كتاب الفرغاني الكامل في صنعة الأسطرلابتوجد (المادة ٢ في هذه المخطوطة) في الورقة ١ظ.مَلزَمة مُكوّنة من ثماني ورقات (رباعيّة) مفقودة بين الورقتين ٢٤ و٢٥ (موسومة ٢٣، ٣٢ على التوالي بترقيم الأوراق العربي
+            الهندي). على الرغم من أن علامات ترتيب المَلزَمة هنا متتابعة (الملزمة الخامسة تبدأ في ص. ٢٥ وتبدأ الملزمة السادسة في ص. ٣٣)، إلا أن فقدان مَلزَمة بين هاتين الملزمتين يمكن الاستدلال عليه أيضاً بحقيقة أن نهاية الفصل الثاني (النوع الثاني؛ تبدأ بالورقة
+            ٢٤ظ) وبداية الفصل الثالث (تنتهي في ص. ٢٨و) مفقودتان أيضًا.كما يحتوي الصندوق الذي يضم هذا المجلد أيضًا على التجليد السابق للمجلد، وأجزاء من النصوص على أوراق تم استعادتها من التجليد السابق. الورقتان اللتان يبدو أنهما البطانة اليُمنى واليسرى على التوالي
+            للتجليد السابق مُجلّدتان بالمجلد كورقة أمامية ii وورقة أخيرة i.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">مخطوطة</genre>
+          <name type="personal">
+            <namePart>محمد بن طلحة أبو سالم النصيبي</namePart>
+            <role>
+              <roleTerm type="text">scribe</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9/archive/81055/vdc_100000000094.0x000095#share">المُلكية العامة</accessCondition>
+        </mods>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>81055/vdc_100000000094.0x000095_en</identifier>
+        <datestamp>2019-11-07T12:37:23.928Z</datestamp>
+      </header>
+      <metadata>
+        <mods xmlns="http://www.loc.gov/mods/v3">
+          <identifier>81055/vdc_100000000094.0x000095_en</identifier>
+          <location>
+            <shelfLocator>Or 14270</shelfLocator>
+            <url>http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000095</url>
+            <url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100000000094.0x000095/Or 14270_0001.jp2/full/!1000,1000/0/default.jpg</url>
+            <physicalLocation>British Library: Oriental Manuscripts</physicalLocation>
+          </location>
+          <recordInfo>
+            <recordIdentifer>Or 14270</recordIdentifer>
+          </recordInfo>
+          <titleInfo>
+            <title>Two technological treatises</title>
+          </titleInfo>
+          <originInfo>
+            <dateIssued>1292/1292</dateIssued>
+            <dateCaptured>2014-11-20T00:00:30</dateCaptured>
+          </originInfo>
+          <language>
+            <languageTerm authority="iso639-2b">ara</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Codex; ff. i+73+i</extent>
+            <extent>Material: PaperDimensions: 254 x 185 mm leaf [198 x 135 mm written]Foliation: Arabic-Indic foliation in black ink; British Museum foliation in pencilRuling: Misṭarah; 19 lines per page; vertical spacing 10 lines per 10 cmScript: Naskh; the
+              scribe is ‘Umar ibn Muḥammad ibn Ṭalḥah (f. 71r)Ink: Black carbon ink, with rubricated headings, overlinings and some diagrams in redBinding: British Museum binding; some quire signatures visible (quaternions)Condition: Wormholes, some repaired;
+              grime and ink stains frequentMarginalia: Some corrections and annotations by various handsSeals: Frontpaper ii and endpaper i</extent>
+          </physicalDescription>
+          <abstract>Volume containing two technological treatises:Kitāb Arshimīdas fī ‘amal al-binkamāt(كتاب أرشميدس في عمل البنكامات) (ff. 2v-21r);Farghānī, Aḥmad ibn Muḥammad (أحمد بن محمد الفرغاني), al-Kāmil fī ṣan‘at al-asṭurlāb al-shimālī wa-al-junūbī
+            wa-‘ilalihuma bi-l-handasah wa-al-ḥisab (الكامل في صنعة الأسطرلاب الشمالي والجنوبي وعللهما بالهندسة والحساب) (ff. 21v-73r).The title page (f. 2r) reads: Kitāb ‘Amal al-sā‘āt li-Arshimīdas wa-Kitāb ‘Amal al-asṭurlāb lil-Farghānī(كتاب عمل الساعات
+            لأرشميدس وكتاب عمل الأسطرلاب للفرغاني).The manuscript contains forty-five illustrations and forty-five tables.The colophon (f. 71r) records the copyist's name as ‘Umar ibn Muḥammad ibn Ṭalḥah, and the completion date as 28 Shawwāl 691/12 October
+            1292. A notes on the title page (f. 2r) and beneath the colophon (f. 71r ) identify the copyist as the Ibn Ṭalḥah who authored the Key of Jafr(مفتاح الجفر) ,a work on shī‘īapocalyptic and divination. The death date ascribed to Ibn Ṭalḥah the author
+            of the Key of Jafr, however, is 652/1254-5, 39 years before the manuscript was copied.Notes concerning the astrolabe are found on folio 1r, and a list of illustrations in Farghānī's al-Kāmil fī ṣan‘at al-asṭurlāb(item 2 in this manuscript) is found
+            on folio 1v.A quire of eight leaves (quaternion) has been lost between folios 24 and 25 (marked 23 and 32 respectively in the Arabic-Indic foliation). Although the quire signatures here are consecutive (the fifth quire beginning on f. 25 and the
+            sixth quire on f. 33), the loss of a quire has between these two quires is further indicated by the fact that the end of Chapter Two (النوع الثاني; begins f. 24v) and the beginning of Chapter Three (ends f. 28r) are both missing.The box containing
+            this volume also holds the volume's previous binding, and fragments of texts on papers retrieved from the previous binding. Two paper leaves that appear to have been the right and left doublures respectively of the previous binding have been bound
+            into the volume as frontpaper ii and endpaper i.</abstract>
+          <typeOfResource>text</typeOfResource>
+          <genre type="class">Manuscript</genre>
+          <name type="personal">
+            <namePart>Muḥammad ibn Ṭalḥah Abū Sālim al-Naṣībī</namePart>
+            <role>
+              <roleTerm type="text">scribe</roleTerm>
+            </role>
+          </name>
+          <accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100000000094.0x000095#share">Public Domain</accessCondition>
         </mods>
       </metadata>
     </record>

@@ -158,6 +158,10 @@ class OaiXmlSource(intake.source.base.DataSource):
 
             result[tag].append(value)
 
+        for key,value in result.items():
+            if isinstance(value, str):
+                result[key] = "['" + value + "']"
+
         return result
 
     def _get_schema(self):
