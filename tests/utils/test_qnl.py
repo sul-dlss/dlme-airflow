@@ -1,0 +1,15 @@
+import pandas
+
+from dlme_airflow.utils.qnl import merge_df
+
+
+def test_merge():
+    df = pandas.read_csv("tests/data/csv/qnl.csv")
+    assert len(df) == 20
+    assert len(df.columns) == len(
+        merge_df(df).columns
+    ), "number of columns didn't change"
+
+    df = merge_df(df)
+    assert len(df) == 10
+    assert [isinstance(i, list) for i in df["subject_name_namePart"]]
