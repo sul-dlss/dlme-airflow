@@ -1,7 +1,8 @@
 # /bin/python
 import os
-import numpy as np
-import pandas as pd
+import pandas
+
+from itertools import chain
 
 
 def merge_records(**kwargs):
@@ -9,24 +10,14 @@ def merge_records(**kwargs):
     root_dir = os.path.dirname(os.path.abspath("metadata"))
     data_path = coll.data_path()
     working_csv = os.path.join(root_dir, "metadata", data_path, "data.csv")
-    df = pd.read_csv(working_csv)
+    df = pandas.read_csv(working_csv)
     df = merge_df(df)
     df.to_csv(working_csv)
 
 
-def merge_df(df) -> pd.DataFrame:
-    df_filled = df.fillna("NOT PROVIDED")
+def merge_df(df) -> pandas.DataFrame:
+    df_filled = df.fillna("")
     df_merged = df_filled.groupby("location_shelfLocator", as_index=False).agg(
-        lambda x: np.unique(x)
+        lambda x: list(chain(*x))
     )
     return df_merged
-
-
-def squash_lists(value):
-    value = [x.replace("\n", "") for x in value]
-    return (value[0] + value[1]).replace("][", ", ") if len(value) > 1 else value
-
-
-def squash_df(df) -> pd.DataFrame:
-    df_squashed = df.applymap(squash_lists)
-    return df_squashed
