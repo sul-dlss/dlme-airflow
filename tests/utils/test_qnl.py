@@ -6,13 +6,11 @@ from dlme_airflow.utils.qnl import merge_df
 def test_merge_df():
     df = pandas.DataFrame(
         [
-            # this row has three columns
             {
                 "location_shelfLocator": "123",
                 "title": ["Hi!"],
                 "subject": ["Greetings", "Greetings"],
             },
-            # this only has two
             {
                 "location_shelfLocator": "123",
                 "title": ["Bonjour!"],
