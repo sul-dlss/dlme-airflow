@@ -6,6 +6,7 @@ from itertools import chain
 
 
 def merge_records(**kwargs):
+    """Called by intake to post process harvested data."""
     coll = kwargs["collection"]
     root_dir = os.path.dirname(os.path.abspath("metadata"))
     data_path = coll.data_path()
@@ -16,6 +17,9 @@ def merge_records(**kwargs):
 
 
 def merge_df(df) -> pandas.DataFrame:
+    """Takes a DataFrame and returns a new DataFrame where row values have been
+    merged using the location_shelfLocator column.
+    """
     df_filled = df.fillna("")
     df_merged = df_filled.groupby("location_shelfLocator", as_index=False).agg(
         lambda x: list(chain(*x))
