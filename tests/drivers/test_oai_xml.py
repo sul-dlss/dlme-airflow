@@ -52,7 +52,7 @@ def test_construct_fields(requests_mock):
     )
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
-    assert len(df.subject_topic[0]) = 2
+    assert len(df.subject_topic[0]) == 2
 
 
 def test_wait():
