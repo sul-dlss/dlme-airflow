@@ -25,9 +25,10 @@ def test_mods(requests_mock):
     )
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
-    assert len(df) == 10, "expected number of rows"
+    assert len(df) == 20, "expected number of rows"
     assert len(df.columns) == 14, "expected number of columns"
     assert "location_shelfLocator" in df.columns, "hierarchical data encoded in header"
+    assert [isinstance(i, list) for i in df["subject_name_namePart"]]
 
 
 def test_marc21(requests_mock):
@@ -42,6 +43,16 @@ def test_marc21(requests_mock):
     assert "245_a" in df.columns, "marc field 245 subfield a extracted"
     assert "035_a" in df.columns, "marc field 035 subfield a extracted"
     assert len(df.iloc[0]["035_a"]) == 3, "much field 035 subfield a contains 3 values"
+
+
+def test_construct_fields(requests_mock):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=mods_no_ocr&verb=ListRecords",
+        text=open("tests/data/xml/oai-mods.xml").read(),
+    )
+    oai = OaiXmlSource("https://example.org", "mods_no_ocr")
+    df = oai.read()
+    assert len(df.subject_topic[0]) == 2
 
 
 def test_wait():
