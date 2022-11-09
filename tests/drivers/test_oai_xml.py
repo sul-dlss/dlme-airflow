@@ -45,6 +45,16 @@ def test_marc21(requests_mock):
     assert len(df.iloc[0]["035_a"]) == 3, "much field 035 subfield a contains 3 values"
 
 
+def test_construct_fields(requests_mock):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=mods_no_ocr&verb=ListRecords",
+        text=open("tests/data/xml/oai-mods.xml").read(),
+    )
+    oai = OaiXmlSource("https://example.org", "mods_no_ocr")
+    df = oai.read()
+    assert len(df.subject_topic[0]) = 2
+
+
 def test_wait():
     # ensure that the wait option can be used
     oai = OaiXmlSource("https://example.org", "oai_dc", wait=2)
