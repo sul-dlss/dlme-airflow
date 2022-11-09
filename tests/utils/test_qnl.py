@@ -1,7 +1,9 @@
 import pandas
 from ast import literal_eval
 
-from dlme_airflow.utils.qnl import *
+from dlme_airflow.utils.qnl import merge_df
+from dlme_airflow.utils.qnl import squash_df
+from dlme_airflow.utils.qnl import squash_lists
 
 
 def test_merge():
@@ -17,11 +19,23 @@ def test_merge():
 
     assert (
         squash_lists(df.subject_topic[1])
-        == "['Medicine, Arab', 'Medicine, Medieval', 'Medicine, Greek and Roman', 'الطب عند العرب', 'الطب في العصور الوسطى', 'طب، إغريقي وروماني']"
+        == "['Medicine, Arab', 'Medicine, Medieval', 'Medicine, Greek and Roman', 'الطب عند العرب',"
+        " 'الطب في العصور الوسطى', 'طب، إغريقي وروماني']"
     )
     assert (
         squash_lists(df.physicalDescription_extent[1])
-        == "['Material: PaperDimensions: 295 x 212 mm leaf [198 x 127 mm written]Foliation: British Museum foliation in pencil; Arabic pagination in red inkRuling: Misṭarah; 19 lines per page; vertical spacing 10 lines per 10 cm; the written area is enclosed by a frame of double lines in red inkScript: NaskhInk: Black ink, with rubricated headings and overlinings in red; text frame in red inkBinding: British Museum binding in dark brown leatherCondition: Excellent conditionMarginalia: None', 'المادة: ورقيةالأبعاد: حجم الورقة ٢٩٥ × ٢١٢ مم /[المساحة المكتوبة ١٩٨ × ١٢٧ مم]ترقيم الأوراق: ترقيم المتحف البريطاني باستخدام قلم رصاص؛ ترقيم الصفحات باللغة العربية بالحبر الأحمرالتسطير: مسطرة؛ ١٩ سطرًا في كل صفحة؛ مسافة رأسية ١٠ سطور كل ١٠ سم؛ يحيط بالمساحة المكتوبة إطار من سطرين مزدوجين بالحبر الأحمرالخط: نسخالحبر: حبر أسود مع تحمير العناوين والخطوط الأفقية أعلى النص بالحبر الأحمر؛ إطار النص بالحبر الأحمرالتجليد: تجليد المتحف البريطاني بالجلد البني الداكنالحالة: حالة ممتازةالحواشي: لا يوجد']"
+        == "['Material: PaperDimensions: 295 x 212 mm leaf [198 x 127 mm written]Foliation: British Museum"
+        " foliation in pencil; Arabic pagination in red inkRuling: Misṭarah; 19 lines per page; vertical spacing"
+        " 10 lines per 10 cm; the written area is enclosed by a frame of double lines in red inkScript: NaskhInk: "
+        "Black ink, with rubricated headings and overlinings in red; text frame in red inkBinding: British Museum "
+        "binding in dark brown leatherCondition: Excellent conditionMarginalia: None', 'المادة: ورقيةالأبعاد:"
+        " حجم الورقة ٢٩٥ × ٢١٢ مم /[المساحة المكتوبة ١٩٨ × ١٢٧ مم]ترقيم الأوراق: ترقيم "
+        "المتحف البريطاني باستخدام قلم رصاص؛ ترقيم الصفحات باللغة العربية بالحبر "
+        "الأحمرالتسطير: مسطرة؛ ١٩ سطرًا في كل صفحة؛ مسافة رأسية ١٠ سطور كل ١٠ سم؛ يحيط "
+        "بالمساحة المكتوبة إطار من سطرين مزدوجين بالحبر الأحمرالخط: نسخالحبر: حبر أسود مع "
+        "تحمير العناوين والخطوط الأفقية أعلى النص بالحبر الأحمر؛ إطار النص بالحبر "
+        "الأحمرالتجليد: تجليد المتحف البريطاني بالجلد البني الداكنالحالة: حالة ممتازة"
+        "الحواشي: لا يوجد']"
     )
     df = squash_df(df)
     assert len(literal_eval(df.subject_topic[1])) == 6
