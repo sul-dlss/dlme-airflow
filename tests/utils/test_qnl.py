@@ -10,10 +10,14 @@ def test_merge_df():
             {
                 "location_shelfLocator": "123",
                 "title": ["Hi!"],
-                "subject": ["Greetings"],
+                "subject": ["Greetings", "Greetings"],
             },
             # this only has two
-            {"location_shelfLocator": "123", "title": ["Bonjour!"]},
+            {
+                "location_shelfLocator": "123",
+                "title": ["Bonjour!"],
+                "subject": ["Greetings", "Welcome!"],
+            },
         ]
     )
 
@@ -30,4 +34,4 @@ def test_merge_df():
     row = df.iloc[0]
     assert type(row.title) == list
     assert set(row.title) == {"Hi!", "Bonjour!"}
-    assert set(row.subject) == {"Greetings"}
+    assert set(row.subject) == {"Greetings", "Welcome!"}
