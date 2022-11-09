@@ -15,8 +15,15 @@ def test_merge():
 
     df = merge_df(df)
     assert len(df) == 10
-    assert [isinstance(i, list) for i in df["subject_name_namePart"]]
-
+    # assert [isinstance(i, str) for i in df.subject_name_namePart]
+    # for i in df.subject_name_namePart:
+    #     assert isinstance(i.tolist(), list)
+    # We sqaush multiple string values that look like lists into one.
+    # e.g. "['one'], ['two']" > "[one, two]"
+    for column in df:
+        if column != 'location_shelfLocator':
+            for i in df[column].values:
+                assert len(i) <= 2
     assert (
         squash_lists(df.subject_topic[1])
         == "['Medicine, Arab', 'Medicine, Medieval', 'Medicine, Greek and Roman', 'الطب عند العرب',"
