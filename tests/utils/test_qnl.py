@@ -15,13 +15,19 @@ def test_merge():
 
     df = merge_df(df)
     assert len(df) == 10
-    # assert [isinstance(i, str) for i in df.subject_name_namePart]
-    # for i in df.subject_name_namePart:
-    #     assert isinstance(i.tolist(), list)
+    return df
+
+
+def test_squash_lists():
+    df = pandas.read_csv("tests/data/csv/qnl.csv")
+    df = merge_df(df)
+
     # We sqaush multiple string values that look like lists into one.
     # e.g. "['one'], ['two']" > "[one, two]"
+    # Then we check for lengths 1 and 2 in qnl.py:27.
+    # This test ensures that there are no other lenghts
     for column in df:
-        if column != 'location_shelfLocator':
+        if column != "location_shelfLocator":
             for i in df[column].values:
                 assert len(i) <= 2
     assert (
@@ -44,6 +50,11 @@ def test_merge():
         "الأحمرالتجليد: تجليد المتحف البريطاني بالجلد البني الداكنالحالة: حالة ممتازة"
         "الحواشي: لا يوجد']"
     )
+
+
+def test_squash_df():
+    df = pandas.read_csv("tests/data/csv/qnl.csv")
+    df = merge_df(df)
     df = squash_df(df)
     assert len(literal_eval(df.subject_topic[1])) == 6
     assert len(literal_eval(df.subject_name_namePart[1])) == 10
