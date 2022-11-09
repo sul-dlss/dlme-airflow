@@ -14,15 +14,19 @@ def merge_records(**kwargs):
     df.to_csv(working_csv)
 
 
-def merge_lists(value):
-    value = [x.replace("\n", "") for x in value]
-    return (value[0] + value[1]).replace("][", ", ") if len(value) > 1 else value
-
-
 def merge_df(df) -> pd.DataFrame:
     df_filled = df.fillna("NOT PROVIDED")
     df_merged = df_filled.groupby("location_shelfLocator", as_index=False).agg(
         lambda x: np.unique(x)
     )
-    df_merged = df_merged.applymap(merge_lists)
     return df_merged
+
+
+def squash_lists(value):
+    value = [x.replace("\n", "") for x in value]
+    return (value[0] + value[1]).replace("][", ", ") if len(value) > 1 else value
+
+
+def squash_df(df) -> pd.DataFrame:
+    df_squashed = df.applymap(squash_lists)
+    return df_squashed
