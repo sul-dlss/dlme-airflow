@@ -1,5 +1,4 @@
 # /bin/python
-from ast import literal_eval
 import os
 import numpy as np
 import pandas as pd
