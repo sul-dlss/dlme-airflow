@@ -1,6 +1,6 @@
 import pandas
 
-from dlme_airflow.utils.qnl import merge_df
+from dlme_airflow.utils.qnl import merge_df, read_csv_with_lists
 
 
 def test_merge_df():
@@ -33,3 +33,11 @@ def test_merge_df():
     assert type(row.title) == list
     assert set(row.title) == {"Hi!", "Bonjour!"}
     assert set(row.subject) == {"Greetings", "Welcome!"}
+
+
+def test_read_csv_with_lists():
+    # this csv file was generated with bin/get qnl qnl --limit 250
+    # each cell in the dataframe contains a list serialized as a string
+    # read_csv_with_lists() ensures that these are parsed back into lists
+    df = read_csv_with_lists("tests/data/csv/qnl.csv")
+    assert type(df.iloc[0].title) == list
