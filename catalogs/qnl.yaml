@@ -11,7 +11,7 @@ sources:
       wait: 2
       allow_expiration: true
       start_date: "2019-10-15T00:00:00Z"
-      end_date: "2020-10-15T19:00:00Z"
+      end_date: "2019-10-15T19:00:00Z"
     metadata:
       record_count_formula: /2
       data_path: qnl/british_library_combined

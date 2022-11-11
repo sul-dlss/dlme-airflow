@@ -53,30 +53,48 @@ class OaiXmlSource(intake.source.base.DataSource):
         self._records = []
 
     def _open_set(self):
+        # Note: Using ONLY the until/end_date param to see if this format works,
+        # it does not appear to.
+        print(f"From: {self.start_date}, Until: {self.end_date}")
         oai_records = self._collection.ListRecords(
-            **{'set': self.set,
-               'metadataPrefix': self.metadata_prefix,
-               'ignore_deleted': True,
-               'from': self.start_date,
-               'until': self.end_date
-            }
+            set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True, until=self.end_date
         )
 
-        try:
-            for counter, oai_record in enumerate(oai_records, start=1):
-                xtree = etree.fromstring(oai_record.raw)
-                if counter % 100 == 0:
-                    logging.info(counter)
-                record = self._construct_fields(xtree)
-                record.update(self._from_metadata(xtree))
-                self._records.append(record)
+        # Note: this is the original call with both from and until
+        # see: https://github.com/mloesch/sickle/blob/master/docs/tutorial.rst#using-the-from-parameter
+        #      as to the reason for the dictionary of params.
+        # This also does not work.
+        # oai_records = self._collection.ListRecords(
+        #     **{'set': self.set,
+        #        'metadataPrefix': self.metadata_prefix,
+        #        'ignore_deleted': True,
+        #        'from': self.start_date,
+        #        'until': self.end_date
+        #     }
+        # )
 
-                self.record_count += 1
-                if self.record_limit and self.record_count > self.record_limit:
-                    logging.info(
-                        f"truncating results because limit={self.record_limit}"
-                    )
-                    break
+        # print(f"RECORDS = {len(oai_records)}")
+        try:
+            i = 1
+            for oai_record in oai_records:
+                # print(f"Record {i} = {oai_record}") # Note: uncomment to see the record, this will show dates outside of the range.
+                print(f"Record {i}") # Note: uncomment to see the record, this will show dates outside of the range.
+                i += 1
+            # for counter, oai_record in enumerate(oai_records, start=1):
+            #     print(f"Record: {counter}")
+            #     xtree = etree.fromstring(oai_record.raw)
+            #     if counter % 100 == 0:
+            #         logging.info(counter)
+            #     record = self._construct_fields(xtree)
+            #     record.update(self._from_metadata(xtree))
+            #     self._records.append(record)
+
+            #     self.record_count += 1
+            #     if self.record_limit and self.record_count > self.record_limit:
+            #         logging.info(
+            #             f"truncating results because limit={self.record_limit}"
+            #         )
+            #         break
         except BadResumptionToken as e:
             if self.allow_expiration:
                 logging.warning(
@@ -96,8 +114,8 @@ class OaiXmlSource(intake.source.base.DataSource):
                 if optional is True:
                     # Skip and continue
                     continue
-                else:
-                    logging.warn(f"Manifest missing {field}")
+                # else:
+                #     logging.warn(f"Manifest missing {field}")
             else:
                 if field not in output:
                     output[field] = []
