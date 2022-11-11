@@ -31,12 +31,16 @@ class OaiXmlSource(intake.source.base.DataSource):
         set=None,
         wait=0,
         allow_expiration=False,
+        start_date=None,
+        end_date=None,
         dtype=None,
         metadata=None,
     ):
         super(OaiXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
+        self.start_date = start_date
+        self.end_date = end_date
         self.record_limit = self.metadata.get("record_limit", None)
         self.record_count = 0
         self.set = set
@@ -50,7 +54,12 @@ class OaiXmlSource(intake.source.base.DataSource):
 
     def _open_set(self):
         oai_records = self._collection.ListRecords(
-            set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True
+            **{'set': self.set,
+               'metadataPrefix': self.metadata_prefix,
+               'ignore_deleted': True,
+               'from': self.start_date,
+               'until': self.end_date
+            }
         )
 
         try:
