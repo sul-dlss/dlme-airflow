@@ -11,7 +11,13 @@ def main():
     @example -- python bin/mapping/data_validation.py path_to_file
 
     """
-    REQUIRED_FIELDS = ["agg_preview", "agg_is_shown_at", "cho_dc_rights", "cho_edm_type", "cho_has_type"]
+    REQUIRED_FIELDS = [
+        "agg_preview",
+        "agg_is_shown_at",
+        "cho_dc_rights",
+        "cho_edm_type",
+        "cho_has_type",
+    ]
     URL_FIELDS = ["agg_preview", "agg_is_shown_at"]
 
     def check_required_fields(record):
