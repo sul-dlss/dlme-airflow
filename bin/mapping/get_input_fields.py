@@ -63,7 +63,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-d",
-        help="""This flag allows you to pass a path to a traject config file in and a sorted list of fields
+        help="""This flag allows you to pass a path to a traject config file in and returns a sorted list of fields
         in the provider data that are not in the config.""",
     )
     parser.add_argument(
