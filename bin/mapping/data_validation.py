@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 import json
 
+
 def main():
     """Takes the path of the intermediate represenation file as an input and returns a unique,
      checks for the existence of all required fields. In all records, makes sure urls are all valid,
@@ -12,7 +13,6 @@ def main():
     """
     REQUIRED_FIELDS = ["agg_preview", "agg_is_shown_at", "cho_dc_rights", "cho_edm_type", "cho_has_type"]
     URL_FIELDS = ["agg_preview", "agg_is_shown_at"]
-
 
     def check_required_fields(record):
         """Make sure all required fields are present.
@@ -29,7 +29,6 @@ def main():
 
         return bad_records
 
-
     with open(args.data[0], "r") as file:
         bad_records = {}
         for line in file:
@@ -42,8 +41,8 @@ def main():
                     else:
                         bad_records[key] = value
 
-        for k,v in bad_records.items():
-            print(k,v)
+        for k, v in bad_records.items():
+            print(k, v)
 
 
 if __name__ == "__main__":
