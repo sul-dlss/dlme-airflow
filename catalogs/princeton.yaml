@@ -3,23 +3,6 @@ metadata:
   data_path: princeton
   schedule: "20 11 * * *"
 sources:
-  babi_bahai:
-    description: "Islamic Manuscripts"
-    driver: iiif_json
-    args:
-      collection_url: https://figgy.princeton.edu/collections/03556507-2e2b-4393-a50f-5207877c38e8/manifest
-      dtype:
-    metadata:
-      data_path: princeton/babi_bahai
-      config: princeton_mss
-      fields:
-        id:
-          path: "@id"
-        description:
-          path: "description"
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
   islamic_manuscripts:
     description: "Islamic Manuscripts"
     driver: iiif_json
@@ -45,23 +28,6 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
-      config: princeton
-      fields:
-        id:
-          path: "@id"
-        description:
-          path: "description"
-        thumbnail:
-          path: 'thumbnail..@id'
-          optional: true
-  ymdi:
-    description: "Yemen Collection"
-    driver: iiif_json
-    args:
-      collection_url: https://figgy.princeton.edu/collections/eff75507-11bf-486b-b422-8fe29638b060/manifest
-      dtype:
-    metadata:
-      data_path: princeton/ymdi
       config: princeton
       fields:
         id:
