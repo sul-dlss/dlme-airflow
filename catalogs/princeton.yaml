@@ -11,7 +11,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/islamic_manuscripts
-      config: princeton_mss
+      config: princeton
       fields:
         id:
           path: "@id"
