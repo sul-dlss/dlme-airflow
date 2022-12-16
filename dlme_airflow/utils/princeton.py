@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 
+
 def remove_ymdi(**kwargs):
     coll = kwargs["collection"]
     root_dir = os.path.dirname(os.path.abspath("metadata"))
