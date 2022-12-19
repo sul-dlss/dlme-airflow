@@ -9,7 +9,18 @@ def remove_ymdi(**kwargs):
     data_path = coll.data_path()
     working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
     df = pd.read_csv(working_csv)
-    # Filter out ymdi records and over write the csv
-    df = df[~df["member-of-collections"].str.contains("Yemeni Manuscript Digitization Initiative")]
+
+    filter_df(df)
 
     df.to_csv(working_csv)
+
+
+def filter_df(df):
+    # Filter out ymdi records and overwrite the csv
+    df = df[
+        ~df["member-of-collections"].str.contains(
+            "Yemeni Manuscript Digitization Initiative"
+        )
+    ]
+
+    return df
