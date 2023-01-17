@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: princeton
-  schedule:
+  schedule: "30 22 01 Jan,Apr,Jul,Oct"
 sources:
   islamic_manuscripts:
     description: "Islamic Manuscripts"
