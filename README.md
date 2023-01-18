@@ -254,6 +254,13 @@ and then run `bin/get` with a provider and collection as arguments (optionally y
 $ bin/get yale babylonian --limit 20
 ```
 
+To harvest a single record for a known identifier:
+
+```
+$ bin/get yale babylonian --id some_known_id
+```
+
+
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [Poetry]: https://python-poetry.org/docs

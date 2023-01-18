@@ -25,13 +25,28 @@ def main(opts):
             collection.catalog.record_limit = opts.limit
         else:
             sys.exit(f"💥 Unable to use --limit with {type(collection.catalog).name} driver")
-    
+
+    # set record id to harvest if it is allowed by the driver (ONLY OAI as of 1/18/23)
+    if opts.id: 
+        if hasattr(collection.catalog, 'identifier'):
+            print(f"Harvesting individual identifier: {opts.id}")
+            collection.catalog.identifier = opts.id
+        else:
+            sys.exit(f"💥 Unable to use --id with {type(collection.catalog).name} driver")
+
     # read the data
     df = collection.catalog.read()
 
+    # select output format, defaults to CSV
+    output_format = opts.format.upper()
+
     # send output to a file or stdout
     out = opts.output if opts.output else sys.stdout
-    df.to_csv(out, index=False)
+    if output_format == "JSON":
+        df.to_json(out)
+    else:
+        df.to_csv(out, index=False)
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get data from a DLME provider collection as CSV")
@@ -39,7 +54,9 @@ if __name__ == "__main__":
     parser.add_argument('collection', help="The provider's collection (e.g. penn_egyptian")
     parser.add_argument("--output", help="File to write CSV output to")
     parser.add_argument("--limit", type=int, help="Limit output to number of rows")
+    parser.add_argument("--id", help="ID of individual record to harvest")
     parser.add_argument("--log", default="get.log", help="A file path to write log messages")
+    parser.add_argument("--format", default="CSV", help="Output file format")
     opts = parser.parse_args()
 
     logging.basicConfig(filename=opts.log, format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
