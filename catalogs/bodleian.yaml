@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: bodleian
-  schedule: "30 11 01 Jan,Apr,Jul,Oct"
+  schedule: "30 11 1 * *"
 sources:
   arabic:
     description: "Items of Arabic origin"

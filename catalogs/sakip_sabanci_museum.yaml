@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: sakip-sabanci
-  schedule: "0 12 * * *"
+  schedule: "0 15 15 * *"
 sources:
   abidin_dino:
     description: "Abidin Dino Archive"

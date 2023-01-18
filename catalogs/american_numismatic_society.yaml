@@ -1,6 +1,6 @@
 metadata:
   version: 1
-  schedule: "20 0 * * *"
+  schedule: "20 0 15 * *"
   data_path: "american_numismatic_society"
 sources:
   american_numismatic_society:

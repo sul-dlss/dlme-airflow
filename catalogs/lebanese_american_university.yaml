@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: lebanese_american_university
-  schedule: "30 01 01 Jan,Apr,Jul,Oct"
+  schedule: "30 13 1 * *"
 sources:
   lebanese_painters:
     description: "Les Peintres Du Liban"
