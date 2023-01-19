@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: cambridge
-  schedule: "0 9 * * *"
+  schedule: "0 9 22 Jan,Apr,Jul,Oct *"
 sources:
   genizah:
     description: "Items from the Cairo Genizah collection"

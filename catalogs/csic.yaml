@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: csic
-  schedule: "20 9 * * *"
+  schedule: "20 9 27 Jan,Apr,Jul,Oct *"
 sources:
   manuscripts:
     driver: oai_xml

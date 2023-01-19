@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: dasi
-  schedule: "40 9 * * *"
+  schedule: "40 9 28 Jan,Apr,Jul,Oct *"
 sources:
   epigraphs:
     driver: oai_xml

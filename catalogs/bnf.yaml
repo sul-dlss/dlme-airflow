@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: bnf
-  schedule: "20 8 * * *"
+  schedule: "20 8 6 Jan,Apr,Jul,Oct *"
 sources:
   ideo:
     description: "The Bibliothèque nationale de France"

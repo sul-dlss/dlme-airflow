@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: aub
-  schedule: "40 0 * * *"
+  schedule: "30 13 15 Jan,Apr,Jul,Oct *"
 sources:
   aco:
     driver: oai_xml

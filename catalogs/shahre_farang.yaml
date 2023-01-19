@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: shahre_farang
-  schedule: "20 12 * * *"
+  schedule: "20 12 22 Jan,Apr,Jul,Oct *"
 sources:
   arabic:
     description: "Shahre Farang"

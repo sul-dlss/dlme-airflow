@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: aims
-  schedule: "0 0 * * *"
+  schedule: "0 0 1 Jan,Apr,Jul,Oct *"
 sources:
   aims:
     description: "American Institute for Maghrib Studies"

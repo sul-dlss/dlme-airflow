@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: texas-tech
-  schedule: "0 13 * * *"
+  schedule: "0 13 14 Jan,Apr,Jul,Oct *"
 sources:
   turkish_stories:
     driver: oai_xml
