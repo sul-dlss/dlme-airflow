@@ -23,9 +23,10 @@ def build_transform_task(collection, task_group: TaskGroup, dag: DAG):
         dag=dag,
         mounts=[
             Mount(
-                source="/opt/airflow/metadata",
-                target="/opt/airflow/metadata:r",
+                source="/Users/amcollie/github/sul-dlss/dlme-airflow/metadata",
+                target="/opt/airflow/metadata",
                 type="bind"
             )
-        ]
+        ],
+        mount_tmp_dir=False
     )
