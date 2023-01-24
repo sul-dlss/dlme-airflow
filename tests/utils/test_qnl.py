@@ -1,6 +1,7 @@
 import pandas
 
-from dlme_airflow.utils.qnl import merge_df, read_csv_with_lists
+from dlme_airflow.utils.qnl import merge_df, merge_records, read_csv_with_lists
+from dlme_airflow.models.provider import Provider
 
 
 def test_merge_df():
@@ -41,3 +42,10 @@ def test_read_csv_with_lists():
     # read_csv_with_lists() ensures that these are parsed back into lists
     df = read_csv_with_lists("tests/data/csv/qnl.csv")
     assert type(df.iloc[0].title) == list
+
+
+def test_merge_records():
+    provider = Provider("qnl")
+    params = {"collection": provider.get_collection("qnl")}
+
+    assert "metadata/qnl/british_library_combined/data.csv" in merge_records(**params)
