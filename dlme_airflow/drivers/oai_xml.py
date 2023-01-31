@@ -38,6 +38,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
         self.record_limit = self.metadata.get("record_limit", None)
+        self.identifier = self.metadata.get("identifier", None)
         self.record_count = 0
         self.set = set
         self.wait = wait
@@ -49,9 +50,19 @@ class OaiXmlSource(intake.source.base.DataSource):
         self._records = []
 
     def _open_set(self):
-        oai_records = self._collection.ListRecords(
-            set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True
-        )
+        if self.identifier:
+            oai_records = [
+                self._collection.GetRecord(
+                    set=self.set,
+                    identifier=self.identifier,
+                    metadataPrefix=self.metadata_prefix,
+                    ignore_deleted=True,
+                )
+            ]
+        else:
+            oai_records = self._collection.ListRecords(
+                set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True
+            )
 
         try:
             for counter, oai_record in enumerate(oai_records, start=1):
@@ -94,7 +105,8 @@ class OaiXmlSource(intake.source.base.DataSource):
                     output[field] = []
 
                 for data in result:
-                    output[field].append(data.text.strip())
+                    value = data.text.strip().strip("'").strip('"').replace('"', "###")
+                    output[field].append(value)
         return output
 
     def _get_tag(self, el):
@@ -144,7 +156,17 @@ class OaiXmlSource(intake.source.base.DataSource):
                 continue
 
             tag = list(sub_element.keys())[0]
-            value = list(sub_element.values())[0].strip()
+            # This odd encoding is a temporary measure to address inconsistent data entry
+            # issues specifically with QNL data that cannot be addressed up stream at this time.
+            # These encodings are decoded in dlme-transform
+            value = (
+                list(sub_element.values())[0]
+                .strip()
+                .strip("'")
+                .strip('"')
+                .replace('"', "###")
+                .replace("'", "####")
+            )
 
             if tag not in result:
                 result[tag] = [value]

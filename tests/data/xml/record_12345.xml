@@ -1,0 +1,40 @@
+<OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+<responseDate>2023-01-31T23:27:09Z</responseDate>
+<request verb="GetRecord" identifier="12345" metadataPrefix="mods_no_ocr">https://api.qdl.qa/api/oaipmh</request>
+<GetRecord>
+<record>
+<header>
+<identifier>12345</identifier>
+<datestamp>2020-11-09T18:15:05.676Z</datestamp>
+</header>
+<metadata>
+<mods xmlns="http://www.loc.gov/mods/v3">
+<identifier>12345</identifier>
+<location>
+<shelfLocator>IOR/L/MAR/C/4, f 155-156</shelfLocator>
+<url>http://www.qdl.qa/en/archive/81055/vdc_100101148540.0x000001</url>
+<url access="preview">https://images.qdl.qa/iiif/images/81055/vdc_100022551646.0x000005/IOR_L_MAR_C_4_0322.jp2/full/!1000,1000/0/default.jpg</url>
+<physicalLocation>British Library: India Office Records and Private Papers</physicalLocation>
+</location>
+<recordInfo>
+<recordIdentifer>IOR/L/MAR/C/4, f 155-156</recordIdentifer>
+</recordInfo>
+<titleInfo>
+<title>‘A draught of the South land lately discovered’ ["Tasmania"] and Covering Sheet</title>
+</titleInfo>
+<originInfo>
+<dateIssued>1643/1643</dateIssued>
+<dateCaptured>2019-07-10T12:41:35</dateCaptured>
+</originInfo>
+<language>
+<languageTerm authority="iso639-2b">eng</languageTerm>
+</language>
+<physicalDescription>
+<extent>1 map and 1 folio</extent>
+</physicalDescription>
+<accessCondition type="Use and reproduction" xlink:href="http://www.qdl.qa/en/archive/81055/vdc_100101148540.0x000001#share">Open Government Licence</accessCondition>
+</mods>
+</metadata>
+</record>
+</GetRecord>
+</OAI-PMH>

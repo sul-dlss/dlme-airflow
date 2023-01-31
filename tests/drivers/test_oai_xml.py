@@ -4,6 +4,35 @@ from sickle.oaiexceptions import BadResumptionToken
 from dlme_airflow.drivers.oai_xml import OaiXmlSource
 
 
+def test_oai_record(requests_mock):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=mods_no_ocr&verb=GetRecord&identifier=12345",
+        text=open("tests/data/xml/record_12345.xml").read(),
+    )
+    oai = OaiXmlSource(
+        "https://example.org",
+        "mods_no_ocr",
+        metadata={
+            "identifier": "12345",
+            "fields": {
+                "title": {
+                    "path": "//mods:titleInfo[not(ancestor::mods:relatedItem)]/mods:title",
+                    "namespace": {
+                        "mods": "http://www.loc.gov/mods/v3",
+                    },
+                    "optional": "false",
+                },
+            },
+        },
+    )
+    df = oai.read()
+    assert len(df) == 1, "One record expected"
+    assert df.iloc[0]["identifier"] == ["12345"]
+    assert df.iloc[0]["title"] == [
+        "‘A draught of the South land lately discovered’ [###Tasmania###] and Covering Sheet"
+    ]
+
+
 def test_oai_dc(requests_mock):
     requests_mock.get(
         "https://example.org?metadataPrefix=oai_dc&verb=ListRecords",
