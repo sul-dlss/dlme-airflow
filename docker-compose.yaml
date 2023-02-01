@@ -170,5 +170,10 @@ services:
       retries: 5
     restart: always
 
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    ports:
+      - "15672:15672"
+
 volumes:
   postgres-db-volume:
