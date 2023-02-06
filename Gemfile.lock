@@ -10,6 +10,8 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-maintenance (1.2.1)
+      capistrano (>= 3.0)
     capistrano-one_time_key (0.1.0)
       capistrano (~> 3.0)
     capistrano-shared_configs (0.2.2)
@@ -76,6 +78,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capistrano
+  capistrano-maintenance (~> 1.2)
   dlss-capistrano-docker
   rake
   rspec
