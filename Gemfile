@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'byebug'
 gem 'capistrano'
-gem 'dlss-capistrano'
+gem 'dlss-capistrano-docker', require: false
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
