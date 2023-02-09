@@ -5,15 +5,22 @@ import pandas
 from itertools import chain
 
 
+def get_working_csv(data_path):
+    root_dir = os.path.dirname(os.path.abspath("metadata"))
+    return os.path.join(root_dir, "metadata", data_path, "data.csv")
+
+
 def merge_records(**kwargs):
     """Called by the Airflow workflow to merge records in multiple languages"""
     coll = kwargs["collection"]
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
     data_path = coll.data_path()
-    working_csv = os.path.join(root_dir, "metadata", data_path, "data.csv")
-    df = read_csv_with_lists(working_csv)
-    df = merge_df(df)
-    df.to_csv(working_csv)
+    working_csv = get_working_csv(data_path)
+    if os.path.isfile(working_csv):
+        df = read_csv_with_lists(working_csv)
+        df = merge_df(df)
+        df.to_csv(working_csv)
+
+    return working_csv
 
 
 def read_csv_with_lists(path) -> pandas.DataFrame:

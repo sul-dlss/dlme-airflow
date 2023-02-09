@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+# A utility for running the configured post harvest tasks for a collection
+
+import sys
+import logging
+import argparse
+
+from signal import signal, SIGPIPE, SIG_DFL  
+from dlme_airflow.models.provider import Provider
+from dlme_airflow.drivers import register_drivers
+from dlme_airflow.utils.qnl import merge_records
+
+def main(opts):
+    register_drivers()
+    provider = Provider(opts.provider)
+    collection = provider.get_collection(opts.collection)
+    if collection is None:
+        sys.exit(f'Provider "{opts.provider}" does not have a collection "{opts.collection}".')
+
+    post_harvest = collection.catalog.metadata.get("post_harvest")
+    if post_harvest is None:
+        sys.exit(f'Provider "{opts.provider}" does not have a post harvest task configured for the "{opts.collection}" collection.')
+
+    params = {'collection': collection}
+    output_location = globals()[post_harvest](**params)
+    print(f"Post harvest output: {output_location}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Merge data from a DLME provider harvest as CSV")
+    parser.add_argument('provider', help="The DLME provider (e.g. penn)")
+    parser.add_argument('collection', help="The provider's collection (e.g. penn_egyptian")
+    parser.add_argument("--log", default="merge.log", help="A file path to write log messages")
+    opts = parser.parse_args()
+
+    logging.basicConfig(filename=opts.log, format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
+
+    # Ignore broken pipe errors when running from the command line.
+    # This allows: bin/get penn penn_babylonian | head -10
+    signal(SIGPIPE,SIG_DFL)
+
+    main(opts)
