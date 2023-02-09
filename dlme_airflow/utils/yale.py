@@ -20,11 +20,15 @@ NON_RELEVANT_COUNTRIES = [
 ]
 
 
+def get_working_csv(data_path):
+    root_dir = os.path.dirname(os.path.abspath("metadata"))
+    return os.path.join(root_dir, "working", data_path, "data.csv")
+
+
 def remove_babylonian_non_relevant(**kwargs):
     coll = kwargs["collection"]
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
     data_path = coll.data_path()
-    working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
+    working_csv = get_working_csv(data_path)
 
     if os.path.isfile(working_csv):
         df = pd.read_csv(working_csv)
