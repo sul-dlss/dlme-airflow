@@ -16,9 +16,6 @@ from dlme_airflow.tasks.harvest_report import build_harvest_report_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
 from dlme_airflow.tasks.transform_validation import build_transform_validation_task
-from dlme_airflow.task_groups.validate_dlme_metadata import (
-    build_sync_metadata_taskgroup,
-)
 
 
 def etl_tasks(provider, dag: DAG) -> list[TaskGroup]:
@@ -45,7 +42,6 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         group_id=f"{collection.name}_etl", dag=dag
     ) as collection_etl_taskgroup:
         harvest = build_harvester_task(collection, collection_etl_taskgroup, dag)
-        sync = build_sync_metadata_taskgroup(collection, dag)
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
         validate_transformation = build_transform_validation_task(
             collection, collection_etl_taskgroup, dag, harvest.task_id
@@ -67,20 +63,20 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         else:
             harvest >> load_data
 
-        # harvest and sync with an optional post_harvest_task if catalog metadata wants it
+        # harvest and transform with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
             logging.info(f"adding post harvest task for {collection.label()}")
             post_harvest_task = build_post_harvest_task(
                 collection, collection_etl_taskgroup, dag
             )
             # harvest >> validate_harvest_task >> [load_data, skip_load_data]
-            load_data >> post_harvest_task >> sync
+            load_data >> post_harvest_task >> transform
         else:
             # harvest >> validate_harvest_task >> [load_data, skip_load_data]
-            load_data >> sync
+            load_data >> transform
 
         # common tasks
-        sync >> transform >> validate_transformation >> index
+        transform >> validate_transformation >> index
 
         # add report unless the environment says not to
         if not os.getenv("SKIP_REPORT"):
