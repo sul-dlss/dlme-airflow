@@ -75,6 +75,9 @@ x-airflow-common:
     SKIP_REPORT: "${SKIP_REPORT}"
     SKIP_HARVEST_VALIDATION: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
+    METADATA_OUTPUT_PATH: "${PWD}/metadata"
+    SOURCE_DATA_PATH: "${PWD}/working"
+    TRANSFORM_IMAGE: "suldlss/dlme-transform:spike"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
