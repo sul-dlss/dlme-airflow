@@ -49,7 +49,7 @@ x-airflow-common:
     &airflow-common-env
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW__CELERY__RESULT_BACKEND: "db+postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOSTNAME}/dlme-airflow"
-    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__BROKER_URL: "redis://:${REDIS_PASSWORD}@redis:6379/0"
     AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOSTNAME}/dlme-airflow
@@ -81,8 +81,7 @@ x-airflow-common:
 services:
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
+    command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -133,15 +132,3 @@ services:
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
-
-  flower:
-    <<: *airflow-common
-    command: celery flower
-    ports:
-      - 5555:5555
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-    restart: always
