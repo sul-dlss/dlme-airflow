@@ -73,6 +73,7 @@ x-airflow-common:
     - /opt/app/dlme/dlme-airflow/shared/metadata:/opt/airflow/metadata
     - /opt/app/dlme/dlme-airflow/current/dlme_airflow:/opt/airflow/dlme_airflow
     - /opt/app/dlme/dlme-airflow/current/catalogs:/opt/airflow/catalogs
+    - "/var/run/docker.sock:/var/run/docker.sock"
   user: "503:0"
   depends_on:
     redis:
@@ -132,3 +133,9 @@ services:
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+
+  docker-proxy:
+    image: bobrik/socat
+    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
