@@ -1,3 +1,4 @@
+import os
 import time
 import logging
 import intake
@@ -66,6 +67,14 @@ class OaiXmlSource(intake.source.base.DataSource):
 
         try:
             for counter, oai_record in enumerate(oai_records, start=1):
+                working_xml = os.path.join(
+                    os.path.abspath("working"), "raw", self.metadata.get("data_path"), f"{counter}.xml"
+                )
+                os.makedirs(os.path.dirname(working_xml), exist_ok=True)
+                f = open(working_xml, "wb")
+                f.write(oai_record.raw.encode('utf8'))
+                f.close()
+
                 xtree = etree.fromstring(oai_record.raw)
                 if counter % 100 == 0:
                     logging.info(counter)
