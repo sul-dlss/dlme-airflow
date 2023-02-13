@@ -67,10 +67,12 @@ x-airflow-common:
     SKIP_REPORT: "true"
     SKIP_HARVEST_VALIDATION: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
+    METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare"
+    SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
+    TRANSFORM_IMAGE: "suldlss/dlme-transform:spike"
   volumes:
     - /opt/app/dlme/dlme-airflow/shared/logs:/opt/airflow/logs
     - /opt/app/dlme/dlme-airflow/shared/source_data:/opt/airflow/working
-    - /opt/app/dlme/dlme-airflow/shared/metadata:/opt/airflow/metadata
     - /opt/app/dlme/dlme-airflow/current/dlme_airflow:/opt/airflow/dlme_airflow
     - /opt/app/dlme/dlme-airflow/current/catalogs:/opt/airflow/catalogs
     - "/var/run/docker.sock:/var/run/docker.sock"

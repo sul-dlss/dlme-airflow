@@ -24,7 +24,7 @@ def dataframe_from_s3(collection) -> pd.DataFrame:
 #       the metadata. Need to handle this error.
 def dataframe_to_file(collection):
     working_csv = os.path.join(
-        os.path.abspath("metadata"), collection.data_path(), "data.csv"
+        os.path.abspath("working"), collection.data_path(), "data.csv"
     )
     os.makedirs(os.path.dirname(working_csv), exist_ok=True)
 
