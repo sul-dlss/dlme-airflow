@@ -3,6 +3,194 @@ metadata:
   data_path: auc
   separate_dags: true
 sources:
+  abdullah_freres:
+    description: "Abdullah Frères Album"
+    driver: iiif_json
+    metadata:
+      data_path: auc/abdullah_freres
+      config: auc
+      schedule: "15 11 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll38/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  ahmed_toughan_collection:
+    description: "Ahmed Toughan Papers and Cartoons Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/ahmed_toughan_collection
+      config: auc
+      schedule: "15 1 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll47/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  akhir_saah_magazines:
+    description: "Ākhir sāʼah - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/akhir_saah_magazines
+      config: auc
+      schedule: "15 2 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll32/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  al_kawakib_magazines:
+    description: "Al Kawākib - Magazine"
+    driver: iiif_json
+    metadata:
+      data_path: auc/al_kawakib_magazines
+      config: auc
+      schedule: "15 7 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll22/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
@@ -104,6 +292,53 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  ancient_egyptian_paintings:
+    description: "Ancient Egyptian Paintings"
+    driver: iiif_json
+    metadata:
+      data_path: auc/ancient_egyptian_paintings
+      config: auc
+      schedule: "45 2 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll44/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   bint_al_nil:
     description: "Bint al-Nil Journal"
     driver: iiif_json
@@ -245,7 +480,7 @@ sources:
     metadata:
       data_path: auc/coptic
       config: auc
-      schedule: "13 0 10 Jan,Apr,Jul,Oct *"
+      schedule: "20 2 * * *"
       fields:
         context:
           path: '@context'
@@ -301,7 +536,63 @@ sources:
     metadata:
       data_path: auc/creswell
       config: auc
-      schedule: "13 0 9 Jan,Apr,Jul,Oct *"
+      schedule: "20 2 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  egyptian_gardens:
+    description: "Egyptian Gardens & Horticulture"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/p15795coll33/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        alternative-title: object
+        author: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        name: object
+        patron: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        scribe: object
+        repository: object
+        location: object
+    metadata:
+      data_path: auc/egyptian_gardens
+      config: auc
+      schedule: "13 0 10 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -348,6 +639,54 @@ sources:
         original-identifier: object
     metadata:
       data_path: auc/fathy
+      config: auc
+      schedule: "13 0 9 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  historical_magazines:
+    description: "Historical Magazines Collection"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll28/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        collection: object
+        location-in-english: object
+        date-created: object
+        creator: object
+        access-rights: object
+        license: object
+        source: object
+        site: object
+        subject: object
+        title-in-english: object
+        title-in-arabic: object
+        repository: object
+        location-in-arabic: object
+        original-identifier: object
+    metadata:
+      data_path: auc/historical_magazines
       config: auc
       schedule: "13 0 8 Jan,Apr,Jul,Oct *"
       fields:
@@ -516,6 +855,53 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  le_mondain_egyptien_magazines:
+    description: "Le Mondain Egyptien - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/le_mondain_egyptien_magazines
+      config: auc
+      schedule: "30 9 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll43/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   maps:
     description: "Historic Maps Digital Collection"
     driver: iiif_json
@@ -816,6 +1202,53 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  saleh_lamei:
+    description: "Saleh Lamei Architectural Drawings"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll35/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      data_path: auc/saleh_lamei
+      config: auc
+      schedule: "30 5 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   sphinx:
     description: "The Sphinx"
     driver: iiif_json
@@ -844,6 +1277,62 @@ sources:
       data_path: auc/sphinx
       config: auc
       schedule: "13 0 19 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  student_news:
+    description: "AUC Student Newspapers"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll26/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        alternative-title: object
+        author: object
+        date-created: object
+        description: object
+        format: object
+        extent: object
+        medium: object
+        identifier: object
+        language: object
+        name: object
+        patron: object
+        collection: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        type: object
+        scribe: object
+        repository: object
+        location: object
+    metadata:
+      data_path: auc/student_news
+      config: auc
+      schedule: "20 2 * * *"
       fields:
         context:
           path: '@context'
@@ -896,6 +1385,53 @@ sources:
       data_path: auc/taxiphote_slides
       config: auc
       schedule: "13 0 20 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  tutwiler_photographs:
+    description: "Tutwiler photos of Middle Eastern environment, civilization, and agriculture"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll41/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      data_path: auc/tutwiler_photographs
+      config: auc
+      schedule: "30 7 * * *"
       fields:
         context:
           path: '@context'
@@ -1033,11 +1569,11 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
-  student_news:
-    description: "AUC Student Newspapers"
+  van_leo_photographs:
+    description: ""
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll26/p1.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll10/manifest.json
       dtype:
         context: object
         id: object
@@ -1045,29 +1581,23 @@ sources:
         profile: object
         resource: object
         acknowledgements: object
-        alternative-title: object
-        author: object
+        collection: object
+        location: object
+        architect: object
         date-created: object
-        description: object
-        format: object
         extent: object
         medium: object
         identifier: object
-        language: object
-        name: object
-        patron: object
-        collection: object
         access-rights: object
         license: object
         source: object
         subject-lcsh: object
         title: object
-        type: object
-        scribe: object
         repository: object
-        location: object
+        format: object
+        original-identifier: object
     metadata:
-      data_path: auc/student_news
+      data_path: auc/van_leo_photographs
       config: auc
       schedule: "13 0 23 Jan,Apr,Jul,Oct *"
       fields:
@@ -1088,6 +1618,24 @@ sources:
           path: 'sequences..resource.@id'
         thumbnail:
           path: 'thumbnail..@id'
+          optional: true
+  voice_of_america:
+    description: "Voice of America radio recordings"
+    driver: oai_xml
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll40
+      wait: 2
+      allow_expiration: true
+    metadata:
+      data_path: auc/voice_of_america
+      config: auc
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
   wassef:
     description: ""
