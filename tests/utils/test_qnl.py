@@ -2,7 +2,6 @@ import pandas
 import pytest
 
 from dlme_airflow.utils.qnl import (
-    get_working_csv,
     merge_df,
     merge_records,
     read_csv_with_lists,
@@ -60,15 +59,7 @@ def mock_dataframe_to_csv(monkeypatch):
 
 
 def test_merge_records(mocker, mock_dataframe_to_csv):
-    mocker.patch(
-        "dlme_airflow.utils.qnl.get_working_csv",
-        return_value="tests/data/csv/qnl.csv",
-    )
     provider = Provider("qnl")
     params = {"collection": provider.get_collection("qnl")}
 
-    assert "tests/data/csv/qnl.csv" in merge_records(**params)
-
-
-def test_get_working_csv():
-    assert "metadata/test_collection/data.csv" in get_working_csv("test_collection")
+    assert "metadata/qnl/british_library_combined/data.csv" in merge_records(**params)

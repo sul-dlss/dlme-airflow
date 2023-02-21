@@ -2,6 +2,8 @@
 import os
 import pandas as pd
 
+from dlme_airflow.utils.catalog import get_working_csv
+
 # Objects from these countries will be suppressed
 NON_RELEVANT_COUNTRIES = [
     "Canada",
@@ -18,11 +20,6 @@ NON_RELEVANT_COUNTRIES = [
     "South Africa",
     "USA",
 ]
-
-
-def get_working_csv(data_path):
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
-    return os.path.join(root_dir, "working", data_path, "data.csv")
 
 
 def remove_babylonian_non_relevant(**kwargs):
