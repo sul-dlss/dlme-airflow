@@ -1,0 +1,149 @@
+metadata:
+  version: 1
+  data_path: qalamos
+  separate_dags: true
+sources:
+  osterreichische:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_atoenb"
+    metadata:
+      data_path: qalamos/osterreichische
+      config: qalamos
+      schedule: "30 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  bayerische_staatsbibliothek:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de12"
+    metadata:
+      data_path: qalamos/bayerische_staatsbibliothek
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  christian_weise_bibliothek:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de124"
+    metadata:
+      data_path: qalamos/christian_weise_bibliothek
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  sächsische_landesbibliothek:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de14"
+    metadata:
+      data_path: qalamos/sächsische_landesbibliothek
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  staatsbibliothek:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de1"
+    metadata:
+      data_path: qalamos/staatsbibliothek
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  universität_tübingen:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de21"
+    metadata:
+      data_path: qalamos/universität_tübingen
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  universitätsbibliothek_leipzig:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de15"
+    metadata:
+      data_path: qalamos/universitätsbibliothek_leipzig
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  universitätsbibliothek_hamburg_carl:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de18"
+    metadata:
+      data_path: qalamos/universitätsbibliothek_hamburg_carl
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  universitätsbibliothek_heidelberg:
+    driver: oai_xml
+    args:
+      collection_url: https://www.qalamos.net/oai2
+      metadata_prefix: oai_marc21
+      set: "owner:owner_de16"
+    metadata:
+      data_path: qalamos/universitätsbibliothek_heidelberg
+      config: qalamos
+      schedule: "45 15 1 Feb,May,Aug,Nov *"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true

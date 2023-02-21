@@ -109,6 +109,12 @@ sources:
     description: Texas Tech Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  qalamos:
+    args:
+      path: catalogs/qalamos.yaml
+    description: Qalamos, a project aiming to convert mss metadata in Germany to digital form
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   qnl:
     args:
       path: catalogs/qnl.yaml

@@ -3,11 +3,7 @@ import os
 import pandas
 
 from itertools import chain
-
-
-def get_working_csv(data_path):
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
-    return os.path.join(root_dir, "metadata", data_path, "data.csv")
+from dlme_airflow.utils.catalog import get_working_csv
 
 
 def merge_records(**kwargs):

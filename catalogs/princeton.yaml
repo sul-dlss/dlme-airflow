@@ -3,14 +3,32 @@ metadata:
   data_path: princeton
   schedule: "0 15 16 Jan,Apr,Jul,Oct *"
 sources:
+  al_madani:
+    description: "Al-Madani Library"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/3bab572e-6603-4abf-8305-16ce6fe3ac5c/manifest
+      dtype:
+    metadata:
+      data_path: princeton/al_madani
+      config: princeton
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
   islamic_manuscripts:
-    description: "Islamic Manuscripts"
+    description: "Manuscripts of the Isalmic World: a super collection that includes, the Babí-Bahá'í, Yemeni Manuscripts Digitization Initiative, etc.'"
     driver: iiif_json
     args:
       collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
       dtype:
     metadata:
       data_path: princeton/islamic_manuscripts
+      post_harvest: "remove_ymdi"
       config: princeton
       fields:
         id:
@@ -28,6 +46,40 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
+      config: princeton
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  papyri:
+    description: "Papyri collection"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/a75d15df-4a2d-42f2-b2ea-319ba18c7d33/manifest
+      dtype:
+    metadata:
+      data_path: princeton/papyri
+      config: princeton
+      fields:
+        id:
+          path: "@id"
+        description:
+          path: "description"
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  shahnameh:
+    description: "Peck Shahnameh"
+    driver: iiif_json
+    args:
+      collection_url: https://figgy.princeton.edu/collections/d33b2405-1258-435e-b57e-67af091a2ec8/manifest
+      dtype:
+    metadata:
+      data_path: princeton/shahnameh
       config: princeton
       fields:
         id:
