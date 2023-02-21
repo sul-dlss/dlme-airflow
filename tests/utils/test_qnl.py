@@ -1,4 +1,5 @@
 import pandas
+import pytest
 
 from dlme_airflow.utils.qnl import (
     get_working_csv,
@@ -49,7 +50,16 @@ def test_read_csv_with_lists():
     assert type(df.iloc[0].title) == list
 
 
-def test_merge_records(mocker):
+# This mock prevents writing to the fixture CSV when testing
+@pytest.fixture
+def mock_dataframe_to_csv(monkeypatch):
+    def mock_to_csv(_self, _filename):
+        return True
+
+    monkeypatch.setattr(pandas.DataFrame, "to_csv", mock_to_csv)
+
+
+def test_merge_records(mocker, mock_dataframe_to_csv):
     mocker.patch(
         "dlme_airflow.utils.qnl.get_working_csv",
         return_value="tests/data/csv/qnl.csv",
