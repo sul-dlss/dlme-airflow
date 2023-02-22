@@ -4,7 +4,7 @@ import intake
 import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional
+from typing import Any, Optional, Generator
 
 container = "dataframe"
 name = "iiif_json"
@@ -104,7 +104,9 @@ class IiifJsonSource(intake.source.base.DataSource):
                 output[name].append(metadata_value)
             else:
                 output[name] = [metadata_value]
-        return output
+
+        # flatten any nested lists into a single list
+        return {k: list(_flatten_list(v)) for (k, v) in output.items()}
 
     def _get_partition(self, i) -> pd.DataFrame:
 
@@ -159,3 +161,11 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
         return [str(elt).strip() for elt in possible_list]
     else:
         return possible_list
+
+
+def _flatten_list(lst: list) -> Generator:
+    for item in lst:
+        if type(item) == list:
+            yield from _flatten_list(item)
+        else:
+            yield item

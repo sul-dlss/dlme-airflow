@@ -40,6 +40,7 @@ class MockIIIFManifestResponse:
                 {"label": "Title (main)", "value": "A great title of the Middle East"},
                 {"label": "Title (sub)", "value": "Subtitle 1"},
                 {"label": "Title (sub)", "value": "Subtitle 2"},
+                {"label": "Date Created", "value": ["1974"]},
             ],
             "sequences": [
                 {
@@ -125,6 +126,7 @@ def test_IiifJsonSource_df(iiif_test_source, mock_response):
                 "source": ["Rare Books and Special Collections Library"],
                 "title-main": ["A great title of the Middle East"],
                 "title-sub": ["Subtitle 1", "Subtitle 2"],
+                "date-created": ["1974"],
             }
         ]
     )
@@ -151,3 +153,8 @@ def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
 def test_wait(iiif_test_source):
     driver = IiifJsonSource("https://example.com/iiif/", wait=2)
     assert driver, "IiifJsonSource constructor accepts wait parameter"
+
+
+def test_list_encode(iiif_test_source, mock_response):
+    iiif_df = iiif_test_source.read()
+    assert iiif_df["date-created"][0] == ["1974"]
