@@ -1,41 +1,37 @@
 import os
+import requests
+import json
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.providers.amazon.aws.operators.ecs import EcsOperator
+from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 
-def index_task(collection, task_group: TaskGroup, dag: DAG) -> TaskGroup:
-    return EcsOperator(
+def index_collection(**kwargs):
+    api_endpoint = os.environ.get("API_ENDPOINT")
+    token = os.environ.get("API_TOKEN")
+    collection = kwargs["collection"]
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-type": "application/json",
+    }
+    payload = {
+        "url": collection.intermidiate_representation_location(),
+    }
+    request = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
+    return request
+
+
+def index_task(collection, task_group: TaskGroup, dag: DAG) -> PythonOperator:
+    return PythonOperator(
         task_id=f"index_{collection.label()}",
         task_group=task_group,
-        aws_conn_id="aws_conn",
-        cluster="dlme-dev",
-        task_definition="dlme-index-from-s3",
-        launch_type="FARGATE",
-        overrides={
-            "containerOverrides": [
-                {
-                    "name": "dlme-index-from-s3",
-                    "environment": [
-                        {
-                            "name": "S3_FETCH_URL",
-                            "value": collection.intermidiate_representation_location(),
-                        }
-                    ],
-                },
-            ],
-        },
-        network_configuration={
-            "awsvpcConfiguration": {
-                "securityGroups": [
-                    os.environ.get("SECURITY_GROUP_ID", os.getenv("ECS_SECURITY_GROUP"))
-                ],
-                "subnets": [os.environ.get("SUBNET_ID", os.getenv("ECS_SUBNET"))],
-            },
-        },
         dag=dag,
+        python_callable=index_collection,
+        op_kwargs={
+            "collection": collection,
+        },
     )

@@ -61,23 +61,17 @@ x-airflow-common:
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DEFAULT_UI_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DAG_DEFAULT_VIEW: 'graph'
-    AIRFLOW_CONN_AWS_CONN: "aws://${AWS_ACCESS_KEY}:${AWS_SECRET_ACCESS_KEY_URL_ENCODED}@/?role_arn=${DEV_ROLE_ARN}&region_name=us-west-2"
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
     CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
-    AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY}"
-    AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
-    AWS_DEFAULT_REGION: 'us-west-2'
-    DEV_ROLE_ARN: "${DEV_ROLE_ARN}"
-    ECS_SECURITY_GROUP: "${ECS_SECURITY_GROUP}"
-    ECS_SUBNET: "${ECS_SUBNET}"
-    S3_BUCKET: "dlme-metadata-dev"
     SKIP_REPORT: "${SKIP_REPORT}"
     SKIP_HARVEST_VALIDATION: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
     METADATA_OUTPUT_PATH: "${PWD}/metadata"
     SOURCE_DATA_PATH: "${PWD}/working"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:spike"
+    API_ENDPOINT: "${API_ENDPOINT}"
+    API_TOKEN: "${API_TOKEN}"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working

@@ -38,43 +38,15 @@ open your browser to `http://localhost:8080`
 
 ### Run individual DAGs
 
-#### Allowing local Airflow to execute AWS resources
-
-In order to trigger `dlme-transform` or `dlme-index` while running Airflow locally via `docker compose` your
-`AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY_URL_ENCODED`, `DEV_ROLE_ARN`, `ECS_SECURITY_GROUP`, `ECS_SUBNET` must be set in your local environment. The connection is set up with the `AIRFLOW_CONN_AWS_CONN` variable in `docker-compose.yml` but you can alternatively [configure and AWS connection](https://github.com/sul-dlss/dlme-airflow/wiki/Amazon-Web-Services-(AWS)-connection-configuration) using the Airflow UI. 
-
 Add a `.env` file to the root directory of the project and add your AWS credentials:
 ```
-AWS_ACCESS_KEY={YOUR AWS_ACCESS_KEY}
-AWS_SECRET_ACCESS_KEY={YOUR AWS_SECRET_ACCESS_KEY} 
-AWS_SECRET_ACCESS_KEY_URL_ENCODED={URL-encoded version of your AWS_SECRET_ACCESS_KEY}
-DEV_ROLE_ARN={The DEV_ROLE_ARN}
-ECS_SECURITY_GROUP={Get value from shared configs}
-ECS_SUBNET={Get value from shared configs}
+SKIP_REPORT=true
+REDIS_PASSWORD=thisisasecurepassword
+API_ENDPOINT=https://dlme-stage.stanford.edu/api/harvests
+API_TOKEN=[GET API TOKEN FROM SERVER]
 ```
 
 If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
-
-## Fetching data for review from S3
-
-DLME-airlfow writes the metadata harvested from providers to S3. It is possible to fetch the written data in CSV format using the [aws cli](https://github.com/sul-dlss/terraform-aws/wiki/AWS-DLSS-Dev-Env-Setup).
-
-Note below that `metadata`, `metadata/bodleian`, and `metadata/bodleian/persian/data.csv` are the local paths to where the aws cli will copy the data. These paths will be created by the aws cli if they do not exist.
-
-Fetch all current metadata:
-```
-aws s3 cp s3://dlme-metadata-dev/metadata metadata --recursive --profile development
-```
-
-Fetch all current metadata for a provider:
-```
-aws s3 cp s3://dlme-metadata-dev/metadata/bodleian metadata/bodleian --recursive --profile development
-```
-
-Fetch an individual collection file:
-```
-aws s3 cp s3://dlme-metadata-dev/metadata/bodleian/persian/data.csv metadata/bodleian/persian/data.csv --profile development
-```
 
 # Development
 
