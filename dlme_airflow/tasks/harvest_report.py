@@ -250,15 +250,13 @@ def harvest_report(**kwargs):  # input:, config:):
         "/", "-"
     )  # penn/egyptian-museum => penn-egyptian-museum
 
-    print(f"Starting report for {provider_id} / {collection_id}")
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
-    config_file = f"tmp/{provider_id}_{collection_id}_config.rb"
+    config_file = f"/tmp/{provider_id}_{collection_id}_config.rb"
     write_file(config_url, config_file)
 
-    input_file = f"{os.environ.get('METADATA_OUTPUT_PATH')}/output-{provider_id}-{collection_id}.ndjson"
+    input_file = f"{os.environ.get('METADATA_OUTPUT_PATH')}/output-{data_path}.ndjson"
 
-    print(f"Starting file input...")
     with open(input_file, "r") as file:
         for line in file:
             if line.strip():  # if line is not empty

@@ -51,7 +51,7 @@ def test_successful_harvest_report(
         "collection": "test",
         "data_path": "testmuseum",
     }
-    doc = harvest_report.main(**options)
+    doc = harvest_report.harvest_report(**options)
 
     assert "h2" in doc
     # Coverage Report
