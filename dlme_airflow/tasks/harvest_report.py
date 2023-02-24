@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import io
 import json
+import os
 from collections import Counter, defaultdict
 from datetime import date
 import logging
@@ -238,7 +239,7 @@ unresolvable_thumbnails: list[str] = []
 counts: defaultdict = defaultdict(Counter)
 
 
-def main(**kwargs):  # input:, config:):
+def harvest_report(**kwargs):  # input:, config:):
     """Captures all field value counts in counter object and writes report to html file."""
     record_count = 0
     # merge all records into single counter object and write field report
@@ -249,16 +250,15 @@ def main(**kwargs):  # input:, config:):
         "/", "-"
     )  # penn/egyptian-museum => penn-egyptian-museum
 
+    print(f"Starting report for {provider_id} / {collection_id}")
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
-    config_file = f"/tmp/{provider_id}_{collection_id}_config.rb"
+    config_file = f"tmp/{provider_id}_{collection_id}_config.rb"
     write_file(config_url, config_file)
 
-    input_url = f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{data_path}.ndjson"
-    input_file = f"/tmp/output-{provider_id}-{collection_id}.ndjson"
+    input_file = f"{os.environ.get('METADATA_OUTPUT_PATH')}/output-{provider_id}-{collection_id}.ndjson"
 
-    write_file(input_url, input_file)
-
+    print(f"Starting file input...")
     with open(input_file, "r") as file:
         for line in file:
             if line.strip():  # if line is not empty
@@ -495,7 +495,7 @@ def build_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
         task_id=f"{collection.label()}_harvest_report",
         dag=dag,
         task_group=task_group,
-        python_callable=main,
+        python_callable=harvest_report,
         op_kwargs={
             "provider": collection.provider.name,
             "collection": collection.name,
