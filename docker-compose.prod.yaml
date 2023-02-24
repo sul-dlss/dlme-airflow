@@ -70,6 +70,8 @@ x-airflow-common:
     METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare"
     SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:spike"
+    API_ENDPOINT: "https://dlme-stage.stanford.edu/api/harvests"
+    API_TOKEN: "${API_TOKEN}"
   volumes:
     - /opt/app/dlme/dlme-airflow/shared/logs:/opt/airflow/logs
     - /opt/app/dlme/dlme-airflow/shared/source_data:/opt/airflow/working

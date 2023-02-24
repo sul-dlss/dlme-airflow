@@ -9,10 +9,7 @@ def test_Collection():
     collection = Collection(provider, "aco")
     assert collection.label() == "aub_aco"
     assert collection.data_path() == "aub/aco"
-    assert (
-        collection.intermidiate_representation_location()
-        == "https://dlme-metadata-dev.s3.us-west-2.amazonaws.com/output/output-aub-aco.ndjson"
-    )
+    assert collection.intermidiate_representation_location() == "output-aub-aco.ndjson"
 
 
 def test_Provider_NotFound():
