@@ -36,7 +36,6 @@ class XmlSource(intake.source.base.DataSource):
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
         for field in self._path_expressions:
-
             # look for the field in our data
             path = self._path_expressions[field]["path"]
             namespace = self._path_expressions[field].get("namespace", {})

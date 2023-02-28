@@ -1,5 +1,7 @@
 from dlme_airflow.utils.dataframe import dataframe_to_file
 
+from airflow.utils.state import DagRunState
+
 COLLECTION = "collection"
 PROVIDER = "provider"
 
@@ -11,8 +13,15 @@ def data_source_harvester(task_instance, **kwargs):
     use in e.g. downstream validation of transform output.
     """
 
+    last_dagrun = task_instance.get_previous_dagrun(DagRunState.SUCCESS)
+    if last_dagrun is not None:
+        last_harvest_start_date = last_dagrun.start_date
+    else:
+        last_harvest_start_date = None
+
     collection = kwargs.get("collection")
-    df_and_csv = dataframe_to_file(collection)
+
+    df_and_csv = dataframe_to_file(collection, last_harvest_start_date)
     df = df_and_csv["source_df"]
     working_csv = df_and_csv["working_csv"]
     dataframe_stats = {"record_count": df.shape[0]}

@@ -6,7 +6,7 @@ import pandas as pd
 from lxml import etree
 from sickle import Sickle
 from sickle.iterator import OAIItemIterator
-from sickle.oaiexceptions import BadResumptionToken
+from sickle.oaiexceptions import BadResumptionToken, NoRecordsMatch
 from typing import Dict
 
 # xml namespaces and the prefixes that are used in parsing
@@ -33,15 +33,18 @@ class OaiXmlSource(intake.source.base.DataSource):
         allow_expiration=False,
         dtype=None,
         metadata=None,
+        full_harvest=None,
     ):
         super(OaiXmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
+        self.full_harvest = full_harvest
         self.record_limit = self.metadata.get("record_limit", None)
         self.identifier = self.metadata.get("identifier", None)
         self.record_count = 0
         self.set = set
         self.wait = wait
+        self.last_harvest_start_date = None
         self.allow_expiration = allow_expiration
         self._collection = Sickle(
             self.collection_url, iterator=make_iterator(self.wait)
@@ -60,9 +63,25 @@ class OaiXmlSource(intake.source.base.DataSource):
                 )
             ]
         else:
-            oai_records = self._collection.ListRecords(
-                set=self.set, metadataPrefix=self.metadata_prefix, ignore_deleted=True
+            opts = {
+                "set": self.set,
+                "metadataPrefix": self.metadata_prefix,
+                "ignore_deleted": True,
+            }
+
+            if self.last_harvest_start_date and not self.full_harvest:
+                # need to use opts dict since "from" is a reserved word
+                opts["from"] = self.last_harvest_start_date.strftime("%Y-%m-%d")
+
+            logging.info(
+                "Harvesting %s with OAI ListRecords: %s", self.collection_url, opts
             )
+
+            try:
+                oai_records = self._collection.ListRecords(**opts)
+            except NoRecordsMatch:
+                logging.info("No new or updated records matching %s", opts)
+                oai_records = []
 
         try:
             for counter, oai_record in enumerate(oai_records, start=1):
@@ -138,7 +157,10 @@ class OaiXmlSource(intake.source.base.DataSource):
         return self._element_to_dict(oai_rec)
 
     def _get_partition(self, i) -> pd.DataFrame:
-        return pd.DataFrame(self._records)
+        if len(self._records) > 0:
+            return pd.DataFrame(self._records)
+        else:
+            return self._empty_dataframe()
 
     def _get_path_expressions(self):
         paths = {}
@@ -146,6 +168,12 @@ class OaiXmlSource(intake.source.base.DataSource):
             paths[name] = info
 
         return paths
+
+    def _empty_dataframe(self):
+        """Return a DataFrame with the correct series in it, but with no actual values."""
+        return pd.DataFrame(
+            {name: [] for name in self.metadata.get("fields", {}).keys()}
+        )
 
     def _element_to_dict(self, rec_metadata):
         """Given an lxml Element will return a dictionary of key/value pairs."""

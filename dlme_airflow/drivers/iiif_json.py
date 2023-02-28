@@ -109,7 +109,6 @@ class IiifJsonSource(intake.source.base.DataSource):
         return {k: list(_flatten_list(v)) for (k, v) in output.items()}
 
     def _get_partition(self, i) -> pd.DataFrame:
-
         # if we are over the defined limit return an empty DataFrame right away
         if self.record_limit is not None and self.record_count > self.record_limit:
             return pd.DataFrame()
