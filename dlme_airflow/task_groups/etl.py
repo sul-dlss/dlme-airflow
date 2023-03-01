@@ -76,7 +76,7 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             load_data >> transform
 
         # common tasks
-        transform >> validate_transformation >> index
+        transform >> validate_transformation
 
         # add report unless the environment says not to
         if not os.getenv("SKIP_REPORT"):
@@ -86,9 +86,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             send_report = build_send_harvest_report_task(
                 collection, collection_etl_taskgroup, dag
             )
-            index >> report >> send_report >> etl_complete
+            validate_transformation >> report >> send_report >> index >> etl_complete
         else:
-            index >> etl_complete
+            validate_transformation >> index >> etl_complete
             logging.info("skipping report generation in etl tasks")
 
     return collection_etl_taskgroup

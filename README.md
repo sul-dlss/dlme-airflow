@@ -232,6 +232,16 @@ To harvest a single record for a known identifier:
 $ bin/get yale babylonian --id some_known_id
 ```
 
+### Manually run the report for a collection
+
+This method requires setting the path to the ndjson output directory on execution, this path
+can be wherever the `output-provider-collection.ndjson` file will be found.
+
+Example:
+```
+METADATA_OUTPUT_PATH=$PWD/metadata poetry run bin/report aims aims > report.html
+open report.html # to open in your browser
+```
 
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
