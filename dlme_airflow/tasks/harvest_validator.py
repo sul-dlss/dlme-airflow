@@ -4,7 +4,7 @@ from airflow import DAG
 from airflow.operators.python import BranchPythonOperator
 from airflow.utils.task_group import TaskGroup
 
-from dlme_airflow.utils.dataframe import dataframe_from_s3
+from dlme_airflow.utils.dataframe import dataframe_from_file
 
 
 def validate_harvest(task_instance, task, **kwargs):
@@ -13,7 +13,7 @@ def validate_harvest(task_instance, task, **kwargs):
     current_harvest = pd.read_csv(
         task_instance.xcom_pull(task_ids=task.upstream_task_ids)[0]
     )
-    previous_harvest = dataframe_from_s3(collection)
+    previous_harvest = dataframe_from_file(collection)
 
     if current_harvest.equals(previous_harvest):
         return f"{task_prefix}.skip_load_data"
