@@ -6,6 +6,7 @@ class Collection(object):
         self.name = collection
         self.provider = provider
         self.catalog = catalog_for_provider(f"{self.provider.name}.{self.name}")
+        self.last_harvest_start_date = None
 
     def label(self):
         return f"{self.provider.name}_{self.name}"

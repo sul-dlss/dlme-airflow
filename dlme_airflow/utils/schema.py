@@ -12,7 +12,6 @@ def get_schema(url) -> Optional[dict]:
 
     # if we've got html
     if "html" in resp.headers.get("content-type", ""):
-
         # parse the html
         doc = BeautifulSoup(resp.content, "html.parser")
 

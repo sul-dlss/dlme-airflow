@@ -351,7 +351,6 @@ def harvest_report(**kwargs):  # input:, config:):
                     attr(cls="report")
                     h2("Resource Report")
                     with ul() as u_list:
-
                         u_list.add(
                             li(
                                 f"{counts['agg_preview']['wr_id']} of {record_count} records had valid urls to thumbnail images."

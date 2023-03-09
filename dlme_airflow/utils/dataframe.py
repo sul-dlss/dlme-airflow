@@ -22,7 +22,7 @@ def dataframe_from_file(collection) -> pd.DataFrame:
 
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
-def dataframe_to_file(collection):
+def dataframe_to_file(collection, last_harvest_start_date=None):
     working_csv = datafile_for_collection(collection)
     os.makedirs(os.path.dirname(working_csv), exist_ok=True)
 
@@ -31,6 +31,11 @@ def dataframe_to_file(collection):
         .get("id")
         .get("name_in_dataframe", "id")
     )
+
+    # We need to set last_harvest_start_date here since the catalog metadata comes
+    # from the YAML Intake catalog file, but in some cases (oai driver currently)
+    # we need the Intake driver to know about the last time the harvest ran successfully.
+    setattr(collection.catalog, "last_harvest_start_date", last_harvest_start_date)
 
     source_df = collection.catalog.read()
 

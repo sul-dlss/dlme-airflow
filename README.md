@@ -175,7 +175,7 @@ driver class that extends `intake.source.base.DataSource`. In catalogs sources
 that use this driver, set the driver value to *iiif_json*.
 
 Under the *args* section, the *collection_url* should be an URL to the JSON file
-that contains links to other manfest files under it's *manifests* field. The
+that contains links to other manifest files under it's *manifests* field. The
 catalog *args* should also contain the *dtype* values for the data source.
 
 In the *metadata* section, the *current_directory* value is the same as the
@@ -209,6 +209,42 @@ exploring_egypt:
         optional: true
 
 ```
+
+### OAI-PMH Catalog
+
+The `OaiXmlSource` Intake driver allows for harvesting of metadata from [OAI-PMH](https://www.openarchives.org/pmh/) services. The OAI-PMH protocol allows for multiple types of XML based metadata to be made available. DLME currently understands Dublin Core, MODS, and MARCXML. By default the driver will only harvest records that have been updated or created since the last successful harvest. Incremental harvesting can be turned off with the *full_harvest* option (see below).
+
+There are several settings in the *args* section that need to be configured for the driver to work properly.
+
+- **collection_url**: the URL for a OAI-PMH endpoint
+- **metadata_prefix**: what type of metadata should be harvested: `oai_dc`, `mods`, or `marc21`
+- **set**: indicate which OAI-PMH set to harvest from (optional)
+- **wait**: number of seconds to wait between requests to the server (optional)
+- **fields**: a mapping of property names and XPath locations where to find the value in the XML
+- **full_harvest**: when set to a value this will turn off incremental harvesting and fetch all records on each run
+
+#### Example source entry:
+
+```yaml
+voice_of_america:
+  description: "Voice of America radio recordings"
+  driver: oai_xml
+  args:
+    collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+    metadata_prefix: oai_dc
+    set: p15795coll40
+    wait: 2
+  metadata:
+    data_path: auc/voice_of_america
+    config: auc
+    fields:
+      id:
+        path: "//header:identifier"
+        namespace:
+          header: "http://www.openarchives.org/OAI/2.0/"
+        optional: true
+```
+
 
 ### Getting Data
 
