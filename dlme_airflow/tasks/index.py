@@ -21,8 +21,8 @@ def index_collection(**kwargs):
     payload = {
         "url": collection.intermidiate_representation_location(),
     }
-    request = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
-    return request
+    response = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
+    return response.json()["message"]
 
 
 def index_task(collection, task_group: TaskGroup, dag: DAG) -> PythonOperator:
