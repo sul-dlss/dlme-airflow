@@ -10,6 +10,26 @@ def datafile_for_collection(collection):
     return working_csv
 
 
+def datafile_for_collection_archive(collection):
+    working_csv = os.path.join(
+        os.path.abspath("working"), collection.data_path(), "archive", "data.csv"
+    )
+
+    return working_csv
+
+
+# TODO: If not files are found / dir is empty / etc, this raising an error.
+#       We should handle this error more cleanly.
+def dataframe_from_previous(collection) -> pd.DataFrame:
+    """Returns existing DLME metadata as a Pandas dataframe from S3
+
+    @param -- collection
+    """
+    return pd.read_csv(datafile_for_collection_archive(collection))
+
+
+# TODO: If not files are found / dir is empty / etc, this raising an error.
+#       We should handle this error more cleanly.
 def dataframe_from_file(collection) -> pd.DataFrame:
     """Returns existing DLME metadata for a collection as a Pandas dataframe
 
