@@ -12,6 +12,7 @@ from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task
 from dlme_airflow.tasks.transform import build_transform_task
 from dlme_airflow.tasks.index import index_task
+from dlme_airflow.tasks.archive import archive_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
@@ -48,6 +49,7 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         #     collection, collection_etl_taskgroup, dag, harvest.task_id
         # )
         index = index_task(collection, collection_etl_taskgroup, dag)
+        archive = archive_task(collection, collection_etl_taskgroup, dag)
 
         etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
         load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
@@ -87,11 +89,13 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             send_report = build_send_harvest_report_task(
                 collection, collection_etl_taskgroup, dag
             )
-            # validate_transformation >> report >> send_report >> index >> etl_complete
-            transform >> report >> send_report >> index >> etl_complete
+            # validate_transformation >> report >> send_report >> index
+            transform >> report >> send_report >> index
         else:
-            # validate_transformation >> index >> etl_complete
-            transform >> index >> etl_complete
+            # validate_transformation >> index
+            transform >> index
             logging.info("skipping report generation in etl tasks")
+
+        index >> archive >> etl_complete
 
     return collection_etl_taskgroup

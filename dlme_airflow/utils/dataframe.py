@@ -10,14 +10,15 @@ def datafile_for_collection(collection):
     return working_csv
 
 
-# TODO: If not files are found / dir is empty / etc, this raising an error.
-#       We should handle this error more cleanly.
 def dataframe_from_file(collection) -> pd.DataFrame:
-    """Returns existing DLME metadata as a Pandas dataframe from S3
+    """Returns existing DLME metadata for a collection as a Pandas dataframe
 
     @param -- collection
     """
-    return pd.read_csv(datafile_for_collection(collection))
+    csv_path = datafile_for_collection(collection)
+    if not os.path.isfile(csv_path):
+        raise Exception(f"Unable to find CSV at f{csv_path}")
+    return pd.read_csv(csv_path)
 
 
 # TODO: An Error is thrown on line 22 if working_directory is not found in
