@@ -1,77 +1,89 @@
-import json
-import logging
+import pandas
 import pytest
+import shutil
+import logging
 
-from dlme_airflow.models.collection import Collection
+from pathlib import Path
+
 from dlme_airflow.models.provider import Provider
+from dlme_airflow.models.collection import Collection
+from dlme_airflow.tasks import transform_validation
 from dlme_airflow.tasks.transform_validation import validate_transformation
 
 
-class MockTaskInstance:
-    def __init__(self, upstream_task_id, row_count):
-        self.upstream_task_id = upstream_task_id
-        self.row_count = row_count
-
-    def xcom_pull(self, task_ids: str, key: str):
-        if task_ids == self.upstream_task_id and key == "dataframe_stats":
-            return {"record_count": self.row_count}
-        else:
-            return None
-
-
-def mock_ndjson_response_text(row_count) -> str:
-    json_rows = [json.dumps({"row_num": i}) for i in range(row_count)]
-    return "\n".join(json_rows)
+@pytest.fixture
+def cleanup():
+    metadata = Path("test-metadata")
+    # setup
+    if metadata.is_dir():
+        shutil.rmtree(metadata)
+    yield
+    # teardown
+    if metadata.is_dir():
+        shutil.rmtree(metadata)
 
 
-def setup_mock_ndjson_response(collection, ndjson_row_count, requests_mock):
-    data_path = collection.data_path().replace(
-        "/", "-"
-    )  # penn/egyptian-museum => penn-egyptian-museum
+@pytest.fixture
+def setup_df(monkeypatch):
+    # mock the dataframe for the harvest
+    df = pandas.DataFrame({"id": [1, 2, 3], "title": ["a", "b", "c"]})
+    monkeypatch.setattr(transform_validation, "dataframe_from_file", lambda _: df)
 
-    requests_mock.get(
-        f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{data_path}.ndjson",
-        text=mock_ndjson_response_text(ndjson_row_count),
+
+@pytest.fixture
+def setup_df_extra(monkeypatch):
+    # mock a dataframe for the harvest with an extra row which will not match ndson
+    df = pandas.DataFrame({"id": [1, 2, 3, 4], "title": ["a", "b", "c", "d"]})
+    monkeypatch.setattr(transform_validation, "dataframe_from_file", lambda _: df)
+
+
+@pytest.fixture
+def setup_ndjson(monkeypatch):
+    # mock the transformed dataframe serialized as ndjson
+    ndjson = Path("test-metadata/aims/aims/output-aims-aims.ndjson")
+    ndjson.parent.mkdir(parents=True)
+    monkeypatch.setattr(transform_validation, "get_transformed_path", lambda _: ndjson)
+    open(ndjson, "w").writelines(
+        [
+            '{"id": 1, "title": "a"}\n',
+            '{"id": 2, "title": "b"}\n',
+            '{"id": 3, "title": "c"}\n',
+        ]
     )
 
 
-def test_validation_passes(requests_mock, caplog):
-    collection = Collection(Provider("aims"), "aims")
-    harvest_task_id = "aims_aims_harvest"
+def test_transform_path():
+    collection = Collection(Provider("princeton"), "islamic_manuscripts")
+    path = transform_validation.get_transformed_path(collection)
+    assert str(path).endswith(
+        "metadata/princeton/islamic_manuscripts/output-princeton-islamic-manuscripts.ndjson"
+    )
 
-    mock_task_instance = MockTaskInstance(harvest_task_id, 5)
-    setup_mock_ndjson_response(collection, 5, requests_mock)
+
+def test_validation_passes(caplog, cleanup, setup_df, setup_ndjson):
+    collection = Collection(Provider("aims"), "aims")
 
     with caplog.at_level(logging.INFO):
-        validate_transformation(
-            mock_task_instance, collection=collection, harvest_task_id=harvest_task_id
-        )
+        validate_transformation(collection)
 
     assert (
-        "OK: dataframe harvested record count == transform output record count (5)"
+        "OK: dataframe harvested record count == transform output record count (3)"
         in caplog.text
     )
 
 
-def test_validation_fails(requests_mock, caplog):
+def test_validation_fails(caplog, cleanup, setup_df_extra, setup_ndjson):
     collection = Collection(Provider("aims"), "aims")
-    harvest_task_id = "aims_aims_harvest"
-
-    mock_task_instance = MockTaskInstance(harvest_task_id, 5)
-    setup_mock_ndjson_response(collection, 4, requests_mock)
 
     with pytest.raises(Exception) as excinfo:
         with caplog.at_level(logging.DEBUG):
-            validate_transformation(
-                mock_task_instance,
-                collection=collection,
-                harvest_task_id=harvest_task_id,
-            )
+            validate_transformation(collection)
 
     assert (
-        "ERROR: failed to transform all harvested records: harvested record count (5) != transformed record count (4)"
+        "ERROR: failed to transform all harvested records: harvested record count (4) != transformed record count (3)"
         in str(excinfo.value)
     )
+
     assert (
         "OK: dataframe harvested record count == transform output record count"
         not in caplog.text

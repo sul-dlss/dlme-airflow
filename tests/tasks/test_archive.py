@@ -40,6 +40,10 @@ def setup_dir():
     if test_csv.parent.is_dir():
         shutil.rmtree(test_dir)
     test_csv.parent.mkdir(parents=True)
+    yield
+    # teardown
+    if test_working.is_dir():
+        shutil.rmtree(test_working)
 
 
 def test_csv_with_data(setup_dir, mock_csv, mock_now):

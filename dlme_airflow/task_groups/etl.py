@@ -16,8 +16,7 @@ from dlme_airflow.tasks.archive import archive_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
-
-# from dlme_airflow.tasks.transform_validation import build_transform_validation_task
+from dlme_airflow.tasks.transform_validation import build_transform_validation_task
 
 
 def etl_tasks(provider, dag: DAG) -> list[TaskGroup]:
@@ -45,9 +44,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
     ) as collection_etl_taskgroup:
         harvest = build_harvester_task(collection, collection_etl_taskgroup, dag)
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
-        # validate_transformation = build_transform_validation_task(
-        #     collection, collection_etl_taskgroup, dag, harvest.task_id
-        # )
+        validate_transformation = build_transform_validation_task(
+            collection, collection_etl_taskgroup, dag
+        )
         index = index_task(collection, collection_etl_taskgroup, dag)
         archive = archive_task(collection, collection_etl_taskgroup, dag)
 
@@ -78,8 +77,7 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             # harvest >> validate_harvest_task >> [load_data, skip_load_data]
             load_data >> transform
 
-        # common tasks
-        # transform >> validate_transformation
+        transform >> validate_transformation
 
         # add report unless the environment says not to
         if not os.getenv("SKIP_REPORT"):
@@ -89,11 +87,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             send_report = build_send_harvest_report_task(
                 collection, collection_etl_taskgroup, dag
             )
-            # validate_transformation >> report >> send_report >> index
-            transform >> report >> send_report >> index
+            validate_transformation >> report >> send_report >> index
         else:
-            # validate_transformation >> index
-            transform >> index
+            validate_transformation >> index
             logging.info("skipping report generation in etl tasks")
 
         index >> archive >> etl_complete

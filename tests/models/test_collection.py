@@ -9,7 +9,7 @@ def test_Collection():
     collection = Collection(provider, "aco")
     assert collection.label() == "aub_aco"
     assert collection.data_path() == "aub/aco"
-    assert collection.intermidiate_representation_location() == "output-aub-aco.ndjson"
+    assert collection.intermediate_representation_location() == "output-aub-aco.ndjson"
 
 
 def test_Provider_NotFound():
