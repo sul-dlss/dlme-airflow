@@ -4,9 +4,23 @@
 
 # dlme-airflow
 
-This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data in an Amazon S3 bucket where it is loaded by the [dlme] [Spotlight] application. 
+This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data on a shared filesystem where it is loaded by the [dlme] [Spotlight] application. 
 
 # Running Airflow Locally
+
+## Environment
+
+Add a `.env` file to the root directory of the project:
+
+```
+REDIS_PASSWORD=thisisasecurepassword
+API_ENDPOINT=https://dlme-stage.stanford.edu/api/harvests
+API_TOKEN=[GET API TOKEN FROM SERVER]
+```
+
+The `API_ENDPOINT` identifies a [dlme](https://github.com/sul-dlss/dlme) instance that is used for indexing harvested and transformed content. You will need to get the `API_TOKEN` from the server or from a DLME developer.
+
+If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
 
 ## Initialize local Docker infrastructure
 
@@ -33,20 +47,6 @@ then stop and restart all of the docker compose resources.
 ## Visit the Airflow dashboard
 
 open your browser to `http://localhost:8080`
-
-## Enable the DAGs you wish to run locally
-
-### Run individual DAGs
-
-Add a `.env` file to the root directory of the project and add your AWS credentials:
-```
-SKIP_REPORT=true
-REDIS_PASSWORD=thisisasecurepassword
-API_ENDPOINT=https://dlme-stage.stanford.edu/api/harvests
-API_TOKEN=[GET API TOKEN FROM SERVER]
-```
-
-If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
 
 # Development
 
