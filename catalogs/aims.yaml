@@ -44,9 +44,9 @@ sources:
           namespace:
           optional: true
         thumbnail:
-          path: ".//media:content/@url"
+          path: ".//itunes:image/@href"
           namespace:
-            media: "http://search.yahoo.com/mrss/"
+            itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
           optional: true
     args:
       collection_url: https://feed.podbean.com/themaghribpodcast/feed.xml
