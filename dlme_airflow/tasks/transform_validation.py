@@ -64,5 +64,5 @@ def get_transformed_record_count(collection: Collection) -> int:
 
 def get_transformed_path(collection) -> str:
     transform_file = collection.intermediate_representation_location()
-    transform_dir = os.path.join("metadata", collection.data_path(), transform_file)
+    transform_dir = os.path.join("metadata", transform_file)
     return os.path.abspath(transform_dir)
