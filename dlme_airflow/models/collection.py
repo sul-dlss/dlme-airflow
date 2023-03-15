@@ -14,6 +14,6 @@ class Collection(object):
     def data_path(self):
         return self.catalog.metadata.get("data_path")
 
-    def intermidiate_representation_location(self):
+    def intermediate_representation_location(self):
         normalized_data_path = self.data_path().replace("/", "-").replace("_", "-")
         return f"output-{normalized_data_path}.ndjson"

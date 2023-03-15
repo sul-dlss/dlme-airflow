@@ -19,7 +19,7 @@ def index_collection(**kwargs):
         "Content-type": "application/json",
     }
     payload = {
-        "url": collection.intermidiate_representation_location(),
+        "url": collection.intermediate_representation_location(),
     }
     response = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
     return response.json()["message"]

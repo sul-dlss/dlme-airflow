@@ -1,54 +1,36 @@
+import os
 import logging
-import requests
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
-
-def eval_record_count_formula(harvested_record_count, record_count_formula):
-    try:
-        return eval(f"{harvested_record_count}{record_count_formula}")
-    except ZeroDivisionError:
-        return 0
+from dlme_airflow.models.collection import Collection
+from dlme_airflow.utils.dataframe import dataframe_from_file
 
 
-def _fetch_transform_output(collection) -> str:
-    data_path = collection.data_path().replace(
-        "/", "-"
-    )  # penn/egyptian-museum => penn-egyptian-museum
-    transform_output_url = f"https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-{data_path}.ndjson"
-    output_file_path = (
-        f"/tmp/output-{collection.provider.name}-{collection.name}.ndjson"
+def build_transform_validation_task(
+    collection: Collection, task_group: TaskGroup, dag: DAG
+) -> PythonOperator:
+    return PythonOperator(
+        task_id=f"{collection.label()}_transform_validation",
+        task_group=task_group,
+        dag=dag,
+        python_callable=validate_transformation,
+        op_kwargs={"collection": collection},
     )
-    r = requests.get(transform_output_url, allow_redirects=True)
-    open(output_file_path, "wb").write(r.content)
-    return output_file_path
 
 
-def _get_transformed_record_count(collection) -> int:
-    output_file_path = _fetch_transform_output(collection)
-    transformed_record_count = 0
-    with open(output_file_path, "r") as file:
-        records = file.readlines()
-        transformed_record_count = len(records)
+def validate_transformation(collection: Collection) -> None:
+    df_record_count = get_record_count(collection)
 
-    return int(transformed_record_count)
-
-
-def validate_transformation(task_instance, **kwargs):
-    collection = kwargs.get("collection")
-    dataframe_stats = task_instance.xcom_pull(
-        task_ids=kwargs.get("harvest_task_id"), key="dataframe_stats"
-    )
     if collection.catalog.metadata.get("record_count_formula"):
         df_record_count = eval_record_count_formula(
-            dataframe_stats["record_count"],
+            df_record_count,
             collection.catalog.metadata.get("record_count_formula"),
         )
-    else:
-        df_record_count = dataframe_stats["record_count"]
-    transformed_record_count = _get_transformed_record_count(collection)
+
+    transformed_record_count = get_transformed_record_count(collection)
     if df_record_count != transformed_record_count:
         raise Exception(
             f"ERROR: failed to transform all harvested records: harvested record count ({df_record_count}) != transformed record count ({transformed_record_count})"  # noqa: E501
@@ -59,13 +41,28 @@ def validate_transformation(task_instance, **kwargs):
         )
 
 
-def build_transform_validation_task(
-    collection, task_group: TaskGroup, dag: DAG, harvest_task_id: str
-):
-    return PythonOperator(
-        task_id=f"{collection.label()}_transform_validation",
-        task_group=task_group,
-        dag=dag,
-        python_callable=validate_transformation,
-        op_kwargs={"collection": collection, "harvest_task_id": harvest_task_id},
-    )
+def eval_record_count_formula(
+    harvested_record_count: int, record_count_formula: str
+) -> int:
+    try:
+        return eval(f"{harvested_record_count}{record_count_formula}")
+    except ZeroDivisionError:
+        return 0
+
+
+def get_record_count(collection: Collection) -> int:
+    return len(dataframe_from_file(collection))
+
+
+def get_transformed_record_count(collection: Collection) -> int:
+    output_file_path = get_transformed_path(collection)
+    count = 0
+    for line in open(output_file_path, "r"):
+        count += 1
+    return count
+
+
+def get_transformed_path(collection) -> str:
+    transform_file = collection.intermediate_representation_location()
+    transform_dir = os.path.join("metadata", collection.data_path(), transform_file)
+    return os.path.abspath(transform_dir)
