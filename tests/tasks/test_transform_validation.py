@@ -55,7 +55,9 @@ def setup_ndjson(monkeypatch):
 def test_transform_path():
     collection = Collection(Provider("princeton"), "islamic_manuscripts")
     path = transform_validation.get_transformed_path(collection)
-    assert str(path).endswith("metadata/output-princeton-islamic-manuscripts.ndjson")
+    assert str(path).endswith(
+        "metadata/princeton/islamic_manuscripts/output-princeton-islamic-manuscripts.ndjson"
+    )
 
 
 def test_validation_passes(caplog, cleanup, setup_df, setup_ndjson):
