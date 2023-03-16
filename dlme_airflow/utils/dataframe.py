@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 
+# TODO: should these maybe be methods on Collection?
+
 
 def datafile_for_collection(collection):
     working_csv = os.path.join(
