@@ -69,12 +69,14 @@ x-airflow-common:
     DEFAULT_DAG_SCHEDULE: "@weekly"
     METADATA_OUTPUT_PATH: "${PWD}/metadata"
     SOURCE_DATA_PATH: "${PWD}/working"
+    ARCHIVE_PATH: "${PWD}/archive"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"
     API_ENDPOINT: "${API_ENDPOINT}"
     API_TOKEN: "${API_TOKEN}"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working
+    - ./archive:/opt/airflow/archive
     - ./metadata:/opt/airflow/metadata
     - ./dlme_airflow:/opt/airflow/dlme_airflow
     - ./catalogs:/opt/airflow/catalogs

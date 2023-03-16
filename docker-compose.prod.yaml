@@ -69,6 +69,7 @@ x-airflow-common:
     DEFAULT_DAG_SCHEDULE: "@weekly"
     METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare"
     SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
+    ARCHIVE_PATH: "/opt/app/dlme/dlme-airflow/shared/archive"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"
     API_ENDPOINT: "https://dlme-stage.stanford.edu/api/harvests"
     API_TOKEN: "${API_TOKEN}"

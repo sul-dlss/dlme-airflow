@@ -1,3 +1,5 @@
+import os
+
 from dlme_airflow.utils.catalog import catalog_for_provider
 
 
@@ -17,3 +19,7 @@ class Collection(object):
     def intermediate_representation_location(self):
         normalized_data_path = self.data_path().replace("/", "-").replace("_", "-")
         return f"output-{normalized_data_path}.ndjson"
+
+    def archive_dir(self):
+        archive_root = os.environ.get("ARCHIVE_PATH", "archive")
+        return os.path.join(archive_root, self.data_path())
