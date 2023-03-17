@@ -35,7 +35,7 @@ def default_dag_args():
         "owner": "airflow",
         "depends_on_past": False,
         "email": [Variable.get("data_manager_email")],
-        "email_on_failure": False,
+        "email_on_failure": True,
         "email_on_retry": False,
         "retries": 0,
         "retry_delay": timedelta(seconds=60),
