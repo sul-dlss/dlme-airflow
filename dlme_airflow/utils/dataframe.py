@@ -4,29 +4,26 @@ import pandas as pd
 # TODO: should these maybe be methods on Collection?
 
 
-def datafile_for_collection(collection):
-    working_csv = os.path.join(
-        os.path.abspath("working"), collection.data_path(), "data.csv"
-    )
-
-    return working_csv
-
-
-def dataframe_from_file(collection) -> pd.DataFrame:
+def dataframe_from_file(collection, format="csv") -> pd.DataFrame:
     """Returns existing DLME metadata for a collection as a Pandas dataframe
 
     @param -- collection
     """
-    csv_path = datafile_for_collection(collection)
-    if not os.path.isfile(csv_path):
-        raise Exception(f"Unable to find CSV at f{csv_path}")
-    return pd.read_csv(csv_path)
+    datafile_path = collection.datafile(format)
+    if not os.path.isfile(datafile_path):
+        raise Exception(f"Unable to find {format.upper()} at {datafile_path}")
+
+    if format == "json":
+        return pd.read_json(datafile_path)
+
+    return pd.read_csv(datafile_path)
 
 
 # TODO: An Error is thrown on line 22 if working_directory is not found in
 #       the metadata. Need to handle this error.
 def dataframe_to_file(collection, last_harvest_start_date=None):
-    working_csv = datafile_for_collection(collection)
+    working_csv = collection.datafile("csv")
+    working_json = collection.datafile("json")
     os.makedirs(os.path.dirname(working_csv), exist_ok=True)
 
     unique_id = (
@@ -51,5 +48,6 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     source_df = source_df.drop_duplicates(subset=[unique_id], keep="first")
 
     source_df.to_csv(working_csv, index=False)
+    source_df.to_json(working_json, orient="records", force_ascii=False)
 
     return {"working_csv": working_csv, "source_df": source_df}

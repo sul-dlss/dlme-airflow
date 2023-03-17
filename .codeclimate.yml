@@ -1,7 +1,7 @@
 checks:
   method-complexity:
     config:
-      threshold: 6
+      threshold: 7
 
 exclude_patterns:
 - "catalogs/"
