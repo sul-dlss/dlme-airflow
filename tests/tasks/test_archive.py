@@ -16,19 +16,17 @@ test_now = datetime.datetime(2023, 3, 13, 18, 6, 31)
 
 
 @pytest.fixture
-def mock_csv(monkeypatch):
-    def mock(_):
-        return str(test_csv.absolute())
+def mock_collection_datafile(monkeypatch):
+    def mock_datafile(_, format):
+        match format:
+            case "json":
+                return str(test_json.absolute())
+            case _:
+                return str(test_csv.absolute())
 
-    monkeypatch.setattr("dlme_airflow.tasks.archive.datafile_for_collection", mock)
-
-
-@pytest.fixture
-def mock_json(monkeypatch):
-    def mock(_):
-        return str(test_json.absolute())
-
-    monkeypatch.setattr("dlme_airflow.tasks.archive.datafile_for_collection", mock)
+    monkeypatch.setattr(
+        "dlme_airflow.models.collection.Collection.datafile", mock_datafile
+    )
 
 
 @pytest.fixture
@@ -62,7 +60,7 @@ def test_archive_dir():
     assert collection.archive_dir().endswith("archive/aub/aco")
 
 
-def test_csv_with_data(setup, mock_csv, mock_now):
+def test_csv_with_data(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
 
@@ -74,24 +72,24 @@ def test_csv_with_data(setup, mock_csv, mock_now):
     result = archive_collection(collection=collection)
 
     assert result is not None
-    assert result.endswith(
+    assert result["csv"].endswith(
         "test-archive/aub/aco/data-20230313180631.csv"
-    ), "returned archived filename"
-    assert Path(result).is_file(), "archived file exists"
+    ), "returned CSV archive filename"
+    assert Path(result["csv"]).is_file(), "archived file exists"
     assert test_csv.is_file(), "original data file should still be there"
 
 
-def test_empty_csv(setup, mock_csv, mock_now):
+def test_empty_csv(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
     test_csv.touch()
 
     result = archive_collection(collection=collection)
 
-    assert result is None, "no archived file for empty csv"
+    assert len(result) == 0, "no archived file for empty csv"
 
 
-def test_csv_with_header(setup, mock_csv, mock_now):
+def test_csv_with_header(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
 
@@ -99,11 +97,11 @@ def test_csv_with_header(setup, mock_csv, mock_now):
 
     result = archive_collection(collection=collection)
 
-    assert result is None, "no archived file for csv with no data"
+    assert len(result) == 0, "no archived file for csv with no data"
 
 
 # mock_now not used here since we want to call at two different times
-def test_identical_csv(setup, mock_csv):
+def test_identical_csv(setup, mock_collection_datafile):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
 
@@ -113,10 +111,12 @@ def test_identical_csv(setup, mock_csv):
     fh.close()
 
     result = archive_collection(collection=collection)
-    assert result is not None and result.endswith(".csv"), "first archive is created"
+    assert len(result) != 0 and result["csv"].endswith(
+        ".csv"
+    ), "first archive is created"
 
     result = archive_collection(collection=collection)
-    assert result is None, "identical archive not created"
+    assert len(result) == 0, "identical archive not created"
 
     fh = test_csv.open("w")
     fh.write("id,author,title\n")
@@ -125,10 +125,12 @@ def test_identical_csv(setup, mock_csv):
     fh.close()
 
     result = archive_collection(collection=collection)
-    assert result is not None and result.endswith(".csv"), "new data creates an archive"
+    assert len(result) != 0 and result["csv"].endswith(
+        ".csv"
+    ), "new data creates an archive"
 
 
-def test_json_with_data(setup, mock_json, mock_now):
+def test_json_with_data(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
 
@@ -138,19 +140,19 @@ def test_json_with_data(setup, mock_json, mock_now):
 
     result = archive_collection(collection=collection)
 
-    assert result is not None
-    assert result.endswith(
+    assert len(result) != 0
+    assert result["json"].endswith(
         "test-archive/aub/aco/data-20230313180631.json"
     ), "returned archived json filename"
-    assert Path(result).is_file(), "archived file exists"
+    assert Path(result["json"]).is_file(), "archived file exists"
     assert test_json.is_file(), "original data file should still be there"
 
 
-def test_empty_json(setup, mock_json, mock_now):
+def test_empty_json(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
     collection = Collection(provider, "aco")
     test_json.touch()
 
     result = archive_collection(collection=collection)
 
-    assert result is None, "no archived file for empty json"
+    assert len(result) == 0, "no archived file for empty json"

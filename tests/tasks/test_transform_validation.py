@@ -27,14 +27,18 @@ def cleanup():
 def setup_df(monkeypatch):
     # mock the dataframe for the harvest
     df = pandas.DataFrame({"id": [1, 2, 3], "title": ["a", "b", "c"]})
-    monkeypatch.setattr(transform_validation, "dataframe_from_file", lambda _: df)
+    monkeypatch.setattr(
+        transform_validation, "dataframe_from_file", lambda coll, fmt: df
+    )
 
 
 @pytest.fixture
 def setup_df_extra(monkeypatch):
     # mock a dataframe for the harvest with an extra row which will not match ndson
     df = pandas.DataFrame({"id": [1, 2, 3, 4], "title": ["a", "b", "c", "d"]})
-    monkeypatch.setattr(transform_validation, "dataframe_from_file", lambda _: df)
+    monkeypatch.setattr(
+        transform_validation, "dataframe_from_file", lambda coll, fmt: df
+    )
 
 
 @pytest.fixture

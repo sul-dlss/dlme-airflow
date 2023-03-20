@@ -23,3 +23,13 @@ class Collection(object):
     def archive_dir(self):
         archive_root = os.environ.get("ARCHIVE_PATH", "archive")
         return os.path.join(archive_root, self.data_path())
+
+    def datafile(self, format):
+        OUTPUT_FORMATS = ["csv", "json"]
+        working_data_path = os.path.abspath("working")
+
+        if format in OUTPUT_FORMATS:
+            filename = f"data.{format}"
+            return os.path.join(working_data_path, self.data_path(), filename)
+        else:
+            raise Exception(f"Unsupported data output format: {format}")

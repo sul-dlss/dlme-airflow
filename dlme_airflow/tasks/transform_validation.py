@@ -51,7 +51,11 @@ def eval_record_count_formula(
 
 
 def get_record_count(collection: Collection) -> int:
-    return len(dataframe_from_file(collection))
+    return len(
+        dataframe_from_file(
+            collection, collection.catalog.metadata.get("output_format")
+        )
+    )
 
 
 def get_transformed_record_count(collection: Collection) -> int:

@@ -13,6 +13,7 @@ sources:
     metadata:
       record_count_formula: /2
       data_path: qnl/british_library_combined
+      output_format: json
       post_harvest: "merge_records"
       config: qnl
       fields:
