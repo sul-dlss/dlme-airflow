@@ -8,7 +8,7 @@ sources:
     args:
       collection_url: https://api.qdl.qa/api/oaipmh
       metadata_prefix: mods_no_ocr
-      wait: 2
+      wait: 1
       allow_expiration: true
     metadata:
       record_count_formula: /2

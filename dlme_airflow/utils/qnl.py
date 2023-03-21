@@ -3,37 +3,37 @@ import os
 import pandas
 
 from itertools import chain
-from dlme_airflow.utils.catalog import get_working_csv
 
 
 def merge_records(**kwargs):
     """Called by the Airflow workflow to merge records in multiple languages"""
     coll = kwargs["collection"]
-    data_path = coll.data_path()
-    working_csv = get_working_csv(data_path)
-    if os.path.isfile(working_csv):
-        df = read_csv_with_lists(working_csv)
+    json_path = coll.datafile(format="json")
+    if os.path.isfile(json_path):
+        df = pandas.read_json(json_path, orient="records")
         df = merge_df(df)
-        df.to_csv(working_csv)
-
-    return working_csv
-
-
-def read_csv_with_lists(path) -> pandas.DataFrame:
-    """Reads a CSV and returns a Pandas DataFrame after having converted
-    lists serialized as strings back into lists again.
-    """
-    df = pandas.read_csv(path)
-    df = df.applymap(lambda v: eval(v) if type(v) == str else None)
-    return df
+        df.to_json(json_path, orient="records", force_ascii=False)
+    return json_path
 
 
 def merge_df(df) -> pandas.DataFrame:
     """Takes a DataFrame and returns a new DataFrame where row values have been
     merged using the location_shelfLocator column.
     """
-    df_filled = df.fillna("")
-    df_merged = df_filled.groupby(
+
+    # put the id in a list so the groupby/agg doesn't split the string into a list
+    df.id = df.id.apply(lambda id: [id])
+
+    # replace NaN values with empty string to avoid warnings
+    df = df.fillna("")
+
+    # this pandas hocus-pocus groups by the call number, and then aggregate the
+    # results while preserving the lists that are present
+    df = df.groupby(
         by=lambda i: df.iloc[i].location_shelfLocator[0], as_index=False
     ).agg(lambda x: list(chain(*x)))
-    return df_merged
+
+    # convert the id back into a string by using the first id value present in the list
+    df.id = df.id.apply(lambda l: l[0])
+
+    return df
