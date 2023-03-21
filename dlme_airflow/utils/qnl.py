@@ -7,13 +7,23 @@ from itertools import chain
 
 def merge_records(**kwargs):
     """Called by the Airflow workflow to merge records in multiple languages"""
-    coll = kwargs["collection"]
-    json_path = coll.datafile(format="json")
-    if os.path.isfile(json_path):
-        df = pandas.read_json(json_path, orient="records")
+    collection = kwargs["collection"]
+    data_file = collection.datafile("json")
+    if os.path.isfile(data_file):
+        df = read_datafile_with_lists(data_file)
         df = merge_df(df)
-        df.to_json(json_path, orient="records", force_ascii=False)
-    return json_path
+        df.to_json(data_file, orient="records", force_ascii=False)
+
+    return data_file
+
+
+def read_datafile_with_lists(path) -> pandas.DataFrame:
+    """Reads a JSON datafile and returns a Pandas DataFrame after having converted
+    lists serialized as strings back into lists again.
+    """
+    df = pandas.read_json(path)
+    df = df.applymap(lambda v: v if v else None)
+    return df
 
 
 def merge_df(df) -> pandas.DataFrame:
