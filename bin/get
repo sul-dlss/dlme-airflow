@@ -43,7 +43,7 @@ def main(opts):
     # send output to a file or stdout
     out = opts.output if opts.output else sys.stdout
     if output_format == "JSON":
-        df.to_json(out)
+        df.to_json(out, orient='records', force_ascii=False)
     else:
         df.to_csv(out, index=False)
         
