@@ -184,17 +184,7 @@ class OaiXmlSource(intake.source.base.DataSource):
                 continue
 
             tag = list(sub_element.keys())[0]
-            # This odd encoding is a temporary measure to address inconsistent data entry
-            # issues specifically with QNL data that cannot be addressed up stream at this time.
-            # These encodings are decoded in dlme-transform
-            value = (
-                list(sub_element.values())[0]
-                .strip()
-                .strip("'")
-                .strip('"')
-                .replace('"', "###")
-                .replace("'", "####")
-            )
+            value = list(sub_element.values())[0].strip()
 
             if tag not in result:
                 result[tag] = [value]
