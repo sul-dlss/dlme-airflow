@@ -71,7 +71,7 @@ x-airflow-common:
     SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
     ARCHIVE_PATH: "/opt/airflow/archive"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"
-    API_ENDPOINT: "https://dlme-stage.stanford.edu/api/harvests"
+    API_ENDPOINT: "https://dlme-prod-review.stanford.edu/api/harvests"
     API_TOKEN: "${API_TOKEN}"
   volumes:
     - /opt/app/dlme/dlme-airflow/shared/logs:/opt/airflow/logs
