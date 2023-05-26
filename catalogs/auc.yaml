@@ -343,7 +343,7 @@ sources:
     description: "Bint al-Nil Journal"
     driver: iiif_json
     args:
-      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll19/manifest.json
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll48/manifest.json
       dtype:
         context: object
         id: object
