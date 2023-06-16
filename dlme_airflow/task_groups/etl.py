@@ -15,6 +15,7 @@ from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.archive import archive_task
 from dlme_airflow.tasks.harvest_report import build_harvest_report_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
+from dlme_airflow.tasks.remove_duplicates import build_remove_duplicates_task
 from dlme_airflow.tasks.send_harvest_report import build_send_harvest_report_task
 from dlme_airflow.tasks.transform_validation import build_transform_validation_task
 
@@ -43,6 +44,7 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         group_id=f"{collection.name}_etl", dag=dag
     ) as collection_etl_taskgroup:
         harvest = build_harvester_task(collection, collection_etl_taskgroup, dag)
+        remove_duplicates = build_remove_duplicates_task(collection, collection_etl_taskgroup, dag)
         transform = build_transform_task(collection, collection_etl_taskgroup, dag)
         validate_transformation = build_transform_validation_task(
             collection, collection_etl_taskgroup, dag
@@ -60,10 +62,10 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
             validate_harvest_task = build_validate_harvest_task(
                 collection, collection_etl_taskgroup, dag
             )
-            harvest >> validate_harvest_task >> [load_data, skip_load_data]
+            harvest >> validate_harvest_task >> remove_duplicates >> [load_data, skip_load_data]
             skip_load_data >> etl_complete
         else:
-            harvest >> load_data
+            harvest >> remove_duplicates >> load_data
 
         # harvest and transform with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
