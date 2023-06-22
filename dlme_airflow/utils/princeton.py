@@ -2,13 +2,10 @@
 import os
 import pandas as pd
 
-from dlme_airflow.utils.catalog import get_working_csv
-
 
 def remove_ymdi(**kwargs):
     coll = kwargs["collection"]
-    data_path = coll.data_path()
-    working_csv = get_working_csv(data_path)
+    working_csv = coll.datafile("csv")
 
     if os.path.isfile(working_csv):
         df = pd.read_csv(working_csv)

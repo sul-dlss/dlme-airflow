@@ -15,8 +15,7 @@ def add_thumbnails(**kwargs) -> None:
         raise Exception(f"unable to find data_path for collection={coll}")
 
     # ensure that the working csv is present on the filesystem
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
-    working_csv = os.path.join(root_dir, "working", data_path, "data.csv")
+    working_csv = coll.datafile("csv")
     if not os.path.isfile(working_csv):
         raise Exception(f"unable to locate working CSV data: {working_csv}")
 
