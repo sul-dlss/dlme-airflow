@@ -18,6 +18,6 @@ def test_remove_babylonian_non_relevant(mocker, mock_dataframe_to_csv):
     provider = Provider("yale")
     params = {"collection": provider.get_collection("babylonian")}
 
-    assert "metadata/yale/babylonian/data.csv" in remove_babylonian_non_relevant(
+    assert "working/yale/babylonian/data.csv" in remove_babylonian_non_relevant(
         **params
     )

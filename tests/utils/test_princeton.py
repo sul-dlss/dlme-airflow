@@ -15,14 +15,10 @@ def mock_dataframe_to_csv(monkeypatch):
 
 
 def test_remove_ymdi(mocker, mock_dataframe_to_csv):
-    mocker.patch(
-        "dlme_airflow.utils.catalog.get_working_csv",
-        return_value="tests/data/csv/princeton.csv",
-    )
     provider = Provider("princeton")
     params = {"collection": provider.get_collection("islamic_manuscripts")}
 
-    assert "metadata/princeton/islamic_manuscripts/data.csv" in remove_ymdi(**params)
+    assert "working/princeton/islamic_manuscripts/data.csv" in remove_ymdi(**params)
 
 
 def test_filter_df():

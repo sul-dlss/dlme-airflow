@@ -17,8 +17,3 @@ def catalog_for_provider(provider):
         )  # Raises Attribute error for missing provider
     except AttributeError:
         raise ValueError(f"Provider ({provider}) not found in catalog")
-
-
-def get_working_csv(data_path):
-    root_dir = os.path.dirname(os.path.abspath("metadata"))
-    return os.path.join(root_dir, "metadata", data_path, "data.csv")
