@@ -6,7 +6,7 @@ import pytest
 import requests
 from PIL import Image
 
-import dlme_airflow.tasks.harvest_report as harvest_report
+import dlme_airflow.tasks.mapping_report as mapping_report
 
 
 @pytest.fixture
@@ -21,14 +21,14 @@ def mock_catalog_for_provider(monkeypatch):
         return MockCatalog()
 
     monkeypatch.setattr(
-        "dlme_airflow.tasks.harvest_report.catalog_for_provider", mockreturn
+        "dlme_airflow.tasks.mapping_report.catalog_for_provider", mockreturn
     )
 
 
-def test_successful_harvest_report(
+def test_successful_mapping_report(
     requests_mock, mock_catalog_for_provider, thumbnail_image
 ):
-    # Mock the harvest output data that is input to harvest_report. It is an ndjson file.
+    # Mock the harvest output data that is input to mapping_report. It is an ndjson file.
     testmuseum_harvest_data = open("tests/data/ndjson/output-testmuseum.ndjson").read()
     requests_mock.get(
         "https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-testmuseum.ndjson",
@@ -51,7 +51,7 @@ def test_successful_harvest_report(
         "collection": "test",
         "data_path": "testmuseum",
     }
-    doc = harvest_report.harvest_report(**options)
+    doc = mapping_report.mapping_report(**options)
 
     assert "h2" in doc
     # Coverage Report
@@ -113,7 +113,7 @@ def test_image_size(requests_mock, thumbnail_image):
     # mock thumbnail URL lookup
     requests_mock.get("https://example.com/image1.jpg", content=thumbnail_image)
     response = requests.get("https://example.com/image1.jpg")
-    size = harvest_report.image_size(response.content)
+    size = mapping_report.image_size(response.content)
 
     assert size == (150, 56)
 
@@ -122,12 +122,12 @@ def test_sample_image_sizes(requests_mock, thumbnail_image):
     thumbnail_urls = ["https://example.com/image1.jpg" for _ in range(101)]
     requests_mock.get("https://example.com/image1.jpg", content=thumbnail_image)
 
-    assert len(harvest_report.sample_image_sizes(thumbnail_urls)) == 50
+    assert len(mapping_report.sample_image_sizes(thumbnail_urls)) == 50
 
 
 def test_thumbnail_report(large_thumbnail_image):
     images_sizes = [(100, 200), (400, 300), (100, 500)]
-    report = harvest_report.thumbnail_report(images_sizes)
+    report = mapping_report.thumbnail_report(images_sizes)
 
     assert (
         report
@@ -139,31 +139,31 @@ def test_thumbnail_report(large_thumbnail_image):
 def unresolvable_resources(monkeypatch):
     unresolvable_resources = []
     monkeypatch.setattr(
-        harvest_report, "unresolvable_resources", unresolvable_resources
+        mapping_report, "unresolvable_resources", unresolvable_resources
     )
 
 
 def test_resolve_good_resource_url(requests_mock, unresolvable_resources):
     requests_mock.head("https://example.com", status_code=200)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    harvest_report.resolve_resource_url(record)
+    mapping_report.resolve_resource_url(record)
 
-    assert len(harvest_report.unresolvable_resources) == 0
+    assert len(mapping_report.unresolvable_resources) == 0
 
 
 def test_resolve_bad_resource_url(requests_mock, unresolvable_resources):
     requests_mock.head("https://example.com", status_code=404)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    harvest_report.resolve_resource_url(record)
+    mapping_report.resolve_resource_url(record)
 
-    assert len(harvest_report.unresolvable_resources) == 1
+    assert len(mapping_report.unresolvable_resources) == 1
 
 
 @pytest.fixture
 def thumbnail_image_urls(monkeypatch):
     """Monkeypatch global variable"""
     thumbnail_image_urls = []
-    monkeypatch.setattr(harvest_report, "thumbnail_image_urls", thumbnail_image_urls)
+    monkeypatch.setattr(mapping_report, "thumbnail_image_urls", thumbnail_image_urls)
 
 
 @pytest.fixture
@@ -171,7 +171,7 @@ def unresolvable_thumbnails(monkeypatch):
     """Monkeypatch global variable"""
     unresolvable_thumbnails = []
     monkeypatch.setattr(
-        harvest_report, "unresolvable_thumbnails", unresolvable_thumbnails
+        mapping_report, "unresolvable_thumbnails", unresolvable_thumbnails
     )
 
 
@@ -180,10 +180,10 @@ def test_resolve_good_thumbnail_url(
 ):
     requests_mock.get("https://example.com/image1.jpg", status_code=200)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    harvest_report.resolve_thumbnail_url(record)
+    mapping_report.resolve_thumbnail_url(record)
 
-    assert len(harvest_report.unresolvable_thumbnails) == 0
-    assert len(harvest_report.thumbnail_image_urls) == 1
+    assert len(mapping_report.unresolvable_thumbnails) == 0
+    assert len(mapping_report.thumbnail_image_urls) == 1
 
 
 def test_resolve_bad_thumbnail_url(
@@ -191,10 +191,10 @@ def test_resolve_bad_thumbnail_url(
 ):
     requests_mock.get("https://example.com/image1.jpg", status_code=404)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    harvest_report.resolve_thumbnail_url(record)
+    mapping_report.resolve_thumbnail_url(record)
 
-    assert len(harvest_report.unresolvable_thumbnails) == 1
-    assert len(harvest_report.thumbnail_image_urls) == 0
+    assert len(mapping_report.unresolvable_thumbnails) == 1
+    assert len(mapping_report.thumbnail_image_urls) == 0
 
 
 def test_resolve_invalid_thumbnail_url(
@@ -202,24 +202,24 @@ def test_resolve_invalid_thumbnail_url(
 ):
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
     record["agg_preview"]["wr_id"] = "not_a_url"
-    harvest_report.resolve_thumbnail_url(record)
+    mapping_report.resolve_thumbnail_url(record)
 
-    assert len(harvest_report.unresolvable_thumbnails) == 1
-    assert len(harvest_report.thumbnail_image_urls) == 0
+    assert len(mapping_report.unresolvable_thumbnails) == 1
+    assert len(mapping_report.thumbnail_image_urls) == 0
 
 
 @pytest.fixture
 def counts_global(monkeypatch):
     """Monkeypatch global variable"""
     counts = defaultdict(Counter)
-    monkeypatch.setattr(harvest_report, "counts", counts)
+    monkeypatch.setattr(mapping_report, "counts", counts)
 
 
 def test_count_fields(counts_global):
     field = "cho_test_dict"
     metadata = {"en": ["Test item title"]}
-    harvest_report.count_fields(field, metadata)
-    assert dict(harvest_report.counts) == {
+    mapping_report.count_fields(field, metadata)
+    assert dict(mapping_report.counts) == {
         "cho_test_dict": {"fields_covered": 1, "en": 1}
     }
 
@@ -227,8 +227,8 @@ def test_count_fields(counts_global):
 def test_count_fields_str(counts_global):
     field = "agg_provider_collection_id"
     metadata = "abcd"
-    harvest_report.count_fields(field, metadata)
-    assert dict(harvest_report.counts) == {
+    mapping_report.count_fields(field, metadata)
+    assert dict(mapping_report.counts) == {
         "agg_provider_collection_id": {"fields_covered": 1, "values": 1}
     }
 
@@ -236,7 +236,7 @@ def test_count_fields_str(counts_global):
 def test_count_fields_dict(counts_global):
     field = "cho_test_edm"
     metadata = {"en": ["Object"], "ar-Arab": ["كائن"]}
-    harvest_report.count_fields(field, metadata)
-    assert dict(harvest_report.counts) == {
+    mapping_report.count_fields(field, metadata)
+    assert dict(mapping_report.counts) == {
         "cho_test_edm": {"fields_covered": 1, "en": 1, "ar-Arab": 1}
     }

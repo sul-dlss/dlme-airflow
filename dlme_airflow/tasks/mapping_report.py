@@ -239,7 +239,7 @@ unresolvable_thumbnails: list[str] = []
 counts: defaultdict = defaultdict(Counter)
 
 
-def harvest_report(**kwargs):  # input:, config:):
+def mapping_report(**kwargs):  # input:, config:):
     """Captures all field value counts in counter object and writes report to html file."""
     record_count = 0
     # merge all records into single counter object and write field report
@@ -487,12 +487,12 @@ def harvest_report(**kwargs):  # input:, config:):
     return doc.render()
 
 
-def build_harvest_report_task(collection, task_group: TaskGroup, dag: DAG):
+def build_mapping_report_task(collection, task_group: TaskGroup, dag: DAG):
     return PythonOperator(
-        task_id=f"{collection.label()}_harvest_report",
+        task_id=f"{collection.label()}_mapping_report",
         dag=dag,
         task_group=task_group,
-        python_callable=harvest_report,
+        python_callable=mapping_report,
         op_kwargs={
             "provider": collection.provider.name,
             "collection": collection.name,

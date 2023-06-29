@@ -6,11 +6,11 @@ import sys
 import logging
 import argparse
 
-from signal import signal, SIGPIPE, SIG_DFL  
+from signal import signal, SIGPIPE, SIG_DFL
 from dlme_airflow.models.provider import Provider
 from dlme_airflow.drivers import register_drivers
 from dlme_airflow.utils.qnl import merge_records
-from dlme_airflow.tasks.harvest_report import harvest_report
+from dlme_airflow.tasks.mapping_report import mapping_report
 
 
 def main(opts):
@@ -25,7 +25,7 @@ def main(opts):
         'collection': collection.name,
         'data_path': collection.data_path(),
     }
-    print(harvest_report(**params))
+    print(mapping_report(**params))
 
 
 if __name__ == "__main__":
