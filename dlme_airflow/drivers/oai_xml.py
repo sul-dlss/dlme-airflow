@@ -124,8 +124,8 @@ class OaiXmlSource(intake.source.base.DataSource):
                     output[field] = []
 
                 for data in result:
-                    value = data.text.strip().strip("'").strip('"').replace('"', "###")
-                    output[field].append(value)
+                    output[field].append(data.text.strip())
+
         return output
 
     def _get_tag(self, el):
