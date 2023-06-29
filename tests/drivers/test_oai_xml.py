@@ -29,7 +29,7 @@ def test_oai_record(requests_mock):
     assert len(df) == 1, "One record expected"
     assert df.iloc[0]["identifier"] == ["12345"]
     assert df.iloc[0]["title"] == [
-        "‘A draught of the South land lately discovered’ [###Tasmania###] and Covering Sheet"
+        '‘A draught of the South land lately discovered’ ["Tasmania"] and Covering Sheet'
     ]
 
 
