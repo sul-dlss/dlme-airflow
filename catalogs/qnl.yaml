@@ -11,7 +11,6 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      record_count_formula: /2
       data_path: qnl/british_library_combined
       output_format: json
       post_harvest: "merge_records"
@@ -27,13 +26,23 @@ sources:
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
-        shown_at:
-          path: ".//mods:location/mods:url[not(@access = 'preview')]"
+        cartographer:
+          path: "//mods:namePart[../mods:role/mods:roleTerm='cartographer']"
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
         preview:
           path: ".//mods:location/mods:url[@access = 'preview']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        publisher:
+          path: "//mods:namePart[../mods:role/mods:roleTerm='publisher']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shown_at:
+          path: ".//mods:location/mods:url[not(@access = 'preview')]"
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
