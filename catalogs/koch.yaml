@@ -30,7 +30,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url:  https://libdigitalcollections.ku.edu.tr/iiif/2/MC/manifest.json
+      collection_url: https://libdigitalcollections.ku.edu.tr/iiif/2/MC/manifest.json
       dtype:
         context: object
         id: object
