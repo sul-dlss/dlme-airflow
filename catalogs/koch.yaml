@@ -7,8 +7,8 @@ sources:
     description: "Koç University Manuscript Collection"
     driver: iiif_json
     metadata:
-      data_path: koç/manuscripts
-      config: koç
+      data_path: koch/manuscripts
+      config: koch
       schedule: "15 11 * * *"
       fields:
         context:
