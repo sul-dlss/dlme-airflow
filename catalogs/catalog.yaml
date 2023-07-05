@@ -67,9 +67,9 @@ sources:
     description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  koç:
+  koch:
     args:
-      path: catalogs/koç.yaml
+      path: catalogs/koch.yaml
     description: "Koç University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}

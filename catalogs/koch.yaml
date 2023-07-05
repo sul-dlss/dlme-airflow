@@ -1,6 +1,6 @@
 metadata:
   version: 1
-  data_path: aub
+  data_path: koch
   schedule: "30 13 15 Jan,Apr,Jul,Oct *"
 sources:
   manuscripts:
