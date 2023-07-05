@@ -1,0 +1,52 @@
+metadata:
+  version: 1
+  data_path: aub
+  schedule: "30 13 15 Jan,Apr,Jul,Oct *"
+sources:
+  manuscripts:
+    description: "Koç University Manuscript Collection"
+    driver: iiif_json
+    metadata:
+      data_path: koç/manuscripts
+      config: koç
+      schedule: "15 11 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url:  https://libdigitalcollections.ku.edu.tr/iiif/2/MC/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object

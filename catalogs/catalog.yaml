@@ -67,6 +67,12 @@ sources:
     description: "Harvard University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  koç:
+    args:
+      path: catalogs/koç.yaml
+    description: "Koç University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   lebanese_american_university:
     args:
       path: catalogs/lebanese_american_university.yaml
