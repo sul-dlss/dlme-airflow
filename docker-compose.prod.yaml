@@ -65,7 +65,7 @@ x-airflow-common:
     CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
     SKIP_HARVEST_VALIDATION: "true"
-    SKIP_REPORT: "true"
+    # SKIP_REPORT: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
     METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare"
     SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
