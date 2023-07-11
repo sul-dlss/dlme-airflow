@@ -17,6 +17,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.catalog import catalog_for_provider
+from dlme_airflow.models.provider import Provider
 
 # Constants for crosswalk
 fields = [
@@ -246,16 +247,15 @@ def mapping_report(**kwargs):  # input:, config:):
 
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
-    data_path = kwargs.get("data_path").replace(
-        "/", "-"
-    )  # penn/egyptian-museum => penn-egyptian-museum
+    provider = Provider(provider_id)
+    collection = provider.get_collection(collection_id)
 
     catalog = catalog_for_provider(f"{provider_id}.{collection_id}")
     config_url = f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
     config_file = f"/tmp/{provider_id}_{collection_id}_config.rb"
     write_file(config_url, config_file)
 
-    input_file = f"{os.environ.get('METADATA_OUTPUT_PATH')}/output-{data_path}.ndjson"
+    input_file = f"{os.environ.get('METADATA_REPORT_PATH')}/{collection.intermediate_representation_location()}"
 
     with open(input_file, "r") as file:
         for line in file:
