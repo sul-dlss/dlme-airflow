@@ -67,7 +67,8 @@ x-airflow-common:
     SKIP_HARVEST_VALIDATION: "true"
     # SKIP_REPORT: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
-    METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare"
+    METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare" # Host path
+    METADATA_REPORT_PATH: "/opt/airflow/metadata" # Docker container path
     SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
     ARCHIVE_PATH: "/opt/airflow/archive"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"

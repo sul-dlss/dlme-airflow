@@ -24,6 +24,25 @@ def mock_catalog_for_provider(monkeypatch):
         "dlme_airflow.tasks.mapping_report.catalog_for_provider", mockreturn
     )
 
+    monkeypatch.setattr("dlme_airflow.models.provider.catalog_for_provider", mockreturn)
+
+    def mock_collection(self, collection):
+        class MockCollection:
+            def __init__(self):
+                self.name = collection
+
+            def data_path(self):
+                return "testmuseum"
+
+            def intermediate_representation_location(self):
+                return "output-testmuseum.ndjson"
+
+        return MockCollection()
+
+    monkeypatch.setattr(
+        "dlme_airflow.models.provider.Provider.get_collection", mock_collection
+    )
+
 
 def test_successful_mapping_report(
     requests_mock, mock_catalog_for_provider, thumbnail_image
