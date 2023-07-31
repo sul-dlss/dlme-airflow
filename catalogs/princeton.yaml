@@ -11,6 +11,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/al_madani
+      output_format: json
       config: princeton
       fields:
         id:
