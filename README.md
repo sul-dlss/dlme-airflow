@@ -292,3 +292,16 @@ open report.html # to open in your browser
 [ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
 [MYPY]: https://mypy.readthedocs.io/
 [YAMLLINT]: https://yamllint.readthedocs.io/en/stable/index.html
+
+### Validate a traject config file
+
+There is a utility for validating traject mappings when the input file is json. It will compare 
+all fields in the input data against all fields in the traject config and write a report listing 
+unmapped fields and fields the traject config attempts to map that do not exist in the input data.
+Call it with the data path used to invoke the traject transformation.
+
+Example:
+```
+bin/validate-traject qnl
+```
+
