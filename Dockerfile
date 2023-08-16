@@ -1,6 +1,6 @@
-FROM apache/airflow:2.4.0-python3.10
+FROM apache/airflow:2.6.2-python3.11
 
-ENV POETRY_VERSION=1.2.0
+ENV POETRY_VERSION=1.5.0
 
 USER root
 RUN apt-get -y update && apt-get -y install git jq
