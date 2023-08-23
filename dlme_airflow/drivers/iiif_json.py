@@ -29,13 +29,13 @@ class IiifJsonSource(intake.source.base.DataSource):
         if resp.status_code == 200:
             collection_result = resp.json()
             try:
-                for manifest in collection_result["manifests"]: # IIIF version 2
+                for manifest in collection_result["manifests"]:  # IIIF version 2
                     try:
                         self._manifest_urls.append(manifest["@id"])
                     except KeyError:
                         self._manifest_urls.append(manifest.get("id"))
             except KeyError:
-                for manifest in collection_result.get("items", []): # IIIF version 3
+                for manifest in collection_result.get("items", []):  # IIIF version 3
                     try:
                         self._manifest_urls.append(manifest["@id"])
                     except KeyError:
