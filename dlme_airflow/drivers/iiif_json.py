@@ -33,7 +33,9 @@ class IiifJsonSource(intake.source.base.DataSource):
             elif "items" in collection_result:  # IIIF v3
                 manifests = collection_result["items"]
             else:
-                raise Exception(f"Unknown collection manifest format: {self.collection_url}")
+                raise Exception(
+                    f"Unknown collection manifest format: {self.collection_url}"
+                )
 
             for manifest in manifests:
                 if "@id" in manifest:
