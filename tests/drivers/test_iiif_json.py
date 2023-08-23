@@ -130,20 +130,20 @@ def iiif_test_v3_source():
     )
 
 
-def test_IiifJsonSource_initial(iiif_test_source, mock_response):
-    assert len(iiif_test_source._manifest_urls) == 0
+def test_IiifJsonSource_initial(iiif_test_v2_source, mock_response):
+    assert len(iiif_test_v2_source._manifest_urls) == 0
 
 
-def test_IiifJsonSource_get_schema(iiif_test_source, mock_response):
-    iiif_test_source._get_schema()
+def test_IiifJsonSource_get_schema(iiif_test_v2_source, mock_response):
+    iiif_test_v2_source._get_schema()
     assert (
-        iiif_test_source._manifest_urls[0]
+        iiif_test_v2_source._manifest_urls[0]
         == "https://collection.edu/iiif/p15795coll29:28/manifest.json"
     )
 
 
-def test_IiifJsonSource_read(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_IiifJsonSource_read(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     test_columns = [
         "context",
         "description_top",
@@ -155,8 +155,8 @@ def test_IiifJsonSource_read(iiif_test_source, mock_response):
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 
-def test_IiifJsonSource_df(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     test_df = pd.DataFrame(
         [
             {
@@ -173,9 +173,9 @@ def test_IiifJsonSource_df(iiif_test_source, mock_response):
     assert iiif_df.equals(test_df)
 
 
-def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
+def test_IiifJsonSource_logging(iiif_test_v2_source, mock_response, caplog):
     with caplog.at_level(logging.WARNING):
-        iiif_test_source.read()
+        iiif_test_v2_source.read()
     assert (
         "https://collection.edu/iiif/p15795coll29:28/manifest.json missing required field: 'profile'; searched path: 'sequences..profile'"  # noqa: E501
         in caplog.text
@@ -183,18 +183,18 @@ def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
     assert "missing optional field" not in caplog.text
 
     with caplog.at_level(logging.DEBUG):
-        iiif_test_source.read()
+        iiif_test_v2_source.read()
     assert (
         "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"  # noqa: E501
         in caplog.text
     )
 
 
-def test_wait(iiif_test_source):
+def test_wait(iiif_test_v2_source):
     driver = IiifJsonSource("https://example.com/iiif/", wait=2)
     assert driver, "IiifJsonSource constructor accepts wait parameter"
 
 
-def test_list_encode(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_list_encode(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     assert iiif_df["date-created"][0] == ["1974"]
