@@ -30,10 +30,7 @@ class IiifJsonSource(intake.source.base.DataSource):
             collection_result = resp.json()
             try:
                 for manifest in collection_result["manifests"]:  # IIIF version 2
-                    try:
-                        self._manifest_urls.append(manifest["@id"])
-                    except KeyError:
-                        self._manifest_urls.append(manifest.get("id"))
+                    self._manifest_urls.append(manifest["@id"])
             except KeyError:
                 for manifest in collection_result.get("items", []):  # IIIF version 3
                     try:
