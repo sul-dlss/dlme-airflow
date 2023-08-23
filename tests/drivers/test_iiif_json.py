@@ -8,7 +8,7 @@ from dlme_airflow.drivers.iiif_json import IiifJsonSource
 LOGGER = logging.getLogger(__name__)
 
 
-class MockIIIFCollectionResponse:
+class MockIIIFCollectionV2Response:
     @property
     def status_code(self):
         return 200
@@ -18,6 +18,20 @@ class MockIIIFCollectionResponse:
         return {
             "manifests": [
                 {"@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
+            ]
+        }
+
+
+class MockIIIFCollectionV3Response:
+    @property
+    def status_code(self):
+        return 200
+
+    @staticmethod
+    def json():
+        return {
+            "items": [
+                {"id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
             ]
         }
 
@@ -57,8 +71,10 @@ class MockIIIFManifestResponse:
 @pytest.fixture
 def mock_response(monkeypatch):
     def mock_get(*args, **kwargs):
-        if args[0].endswith("collection.json"):
-            return MockIIIFCollectionResponse()
+        if args[0].endswith("v2_collection.json"):
+            return MockIIIFCollectionV2Response()
+        if args[0].endswith("v3_collection.json"):
+            return MockIIIFCollectionV3Response()
         if args[0].endswith("manifest.json"):
             return MockIIIFManifestResponse()
         return
@@ -67,7 +83,7 @@ def mock_response(monkeypatch):
 
 
 @pytest.fixture
-def iiif_test_source():
+def iiif_test_v2_source():
     metadata = {
         "fields": {
             "context": {
@@ -86,24 +102,48 @@ def iiif_test_source():
         }
     }
     return IiifJsonSource(
-        collection_url="http://iiif_collection.json", metadata=metadata
+        collection_url="http://iiif_v2_collection.json", metadata=metadata
     )
 
 
-def test_IiifJsonSource_initial(iiif_test_source, mock_response):
-    assert len(iiif_test_source._manifest_urls) == 0
+@pytest.fixture
+def iiif_test_v3_source():
+    metadata = {
+        "fields": {
+            "context": {
+                "path": "@context",
+                "optional": True,
+            },  # a specified field with one value in the metadata
+            "description_top": {"path": "description", "optional": True},
+            "iiif_format": {
+                "path": "sequences..format"
+            },  # a specified field with multiple values in the metadata
+            "profile": {"path": "sequences..profile"},  # a missing required field
+            "thumbnail": {
+                "path": "thumbnail..@id",
+                "optional": True,
+            },  # missing optional field
+        }
+    }
+    return IiifJsonSource(
+        collection_url="http://iiif_v3_collection.json", metadata=metadata
+    )
 
 
-def test_IiifJsonSource_get_schema(iiif_test_source, mock_response):
-    iiif_test_source._get_schema()
+def test_IiifJsonSource_initial(iiif_test_v2_source, mock_response):
+    assert len(iiif_test_v2_source._manifest_urls) == 0
+
+
+def test_IiifJsonSource_get_schema(iiif_test_v2_source, mock_response):
+    iiif_test_v2_source._get_schema()
     assert (
-        iiif_test_source._manifest_urls[0]
+        iiif_test_v2_source._manifest_urls[0]
         == "https://collection.edu/iiif/p15795coll29:28/manifest.json"
     )
 
 
-def test_IiifJsonSource_read(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_IiifJsonSource_read(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     test_columns = [
         "context",
         "description_top",
@@ -115,8 +155,8 @@ def test_IiifJsonSource_read(iiif_test_source, mock_response):
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 
-def test_IiifJsonSource_df(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     test_df = pd.DataFrame(
         [
             {
@@ -133,9 +173,9 @@ def test_IiifJsonSource_df(iiif_test_source, mock_response):
     assert iiif_df.equals(test_df)
 
 
-def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
+def test_IiifJsonSource_logging(iiif_test_v2_source, mock_response, caplog):
     with caplog.at_level(logging.WARNING):
-        iiif_test_source.read()
+        iiif_test_v2_source.read()
     assert (
         "https://collection.edu/iiif/p15795coll29:28/manifest.json missing required field: 'profile'; searched path: 'sequences..profile'"  # noqa: E501
         in caplog.text
@@ -143,18 +183,18 @@ def test_IiifJsonSource_logging(iiif_test_source, mock_response, caplog):
     assert "missing optional field" not in caplog.text
 
     with caplog.at_level(logging.DEBUG):
-        iiif_test_source.read()
+        iiif_test_v2_source.read()
     assert (
         "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"  # noqa: E501
         in caplog.text
     )
 
 
-def test_wait(iiif_test_source):
+def test_wait(iiif_test_v2_source):
     driver = IiifJsonSource("https://example.com/iiif/", wait=2)
     assert driver, "IiifJsonSource constructor accepts wait parameter"
 
 
-def test_list_encode(iiif_test_source, mock_response):
-    iiif_df = iiif_test_source.read()
+def test_list_encode(iiif_test_v2_source, mock_response):
+    iiif_df = iiif_test_v2_source.read()
     assert iiif_df["date-created"][0] == ["1974"]

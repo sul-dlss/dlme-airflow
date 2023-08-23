@@ -127,6 +127,12 @@ sources:
     description: Qatar National Library
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  ucla:
+    args:
+      path: catalogs/ucla.yaml
+    description: University of California, Los Angeles
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   yale:
     args:
       path: catalogs/yale.yaml
