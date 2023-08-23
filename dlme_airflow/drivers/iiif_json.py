@@ -28,20 +28,20 @@ class IiifJsonSource(intake.source.base.DataSource):
         resp = self._get(self.collection_url)
         if resp.status_code == 200:
             collection_result = resp.json()
-            if 'manifests' in collection_result:  # IIIF v2
-                manifests = collection_result['manifests']
-            elif 'items' in collection_result:  # IIIF v3
-                manifests = collection_result['items']
+            if "manifests" in collection_result:  # IIIF v2
+                manifests = collection_result["manifests"]
+            elif "items" in collection_result:  # IIIF v3
+                manifests = collection_result["items"]
             else:
                 raise Exception(f"Unknown collection manifest format: {self.collection_url}")
 
             for manifest in manifests:
-                if '@id' in manifest:
-                    url = manifest['@id']  # valid in IIIF v2 or v3
-                elif 'id' in manifest:
-                    url = manifest['id']  # valid in IIIF v3 only
+                if "@id" in manifest:
+                    url = manifest["@id"]  # valid in IIIF v2 or v3
+                elif "id" in manifest:
+                    url = manifest["id"]  # valid in IIIF v3 only
                 else:
-                    raise Exception(f'Unknown URL in manifest: {manifest}')
+                    raise Exception(f"Unknown URL in manifest: {manifest}")
                 self._manifest_urls.append(url)
         else:
             logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
