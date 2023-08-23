@@ -8,7 +8,7 @@ from dlme_airflow.drivers.iiif_json import IiifJsonSource
 LOGGER = logging.getLogger(__name__)
 
 
-class MockIIIFCollectionResponse:
+class MockIIIFCollectionV2Response:
     @property
     def status_code(self):
         return 200
@@ -18,6 +18,20 @@ class MockIIIFCollectionResponse:
         return {
             "manifests": [
                 {"@id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
+            ]
+        }
+
+
+class MockIIIFCollectionV3Response:
+    @property
+    def status_code(self):
+        return 200
+
+    @staticmethod
+    def json():
+        return {
+            "items": [
+                {"id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
             ]
         }
 
@@ -57,8 +71,10 @@ class MockIIIFManifestResponse:
 @pytest.fixture
 def mock_response(monkeypatch):
     def mock_get(*args, **kwargs):
-        if args[0].endswith("collection.json"):
-            return MockIIIFCollectionResponse()
+        if args[0].endswith("v2_collection.json"):
+            return MockIIIFCollectionV2Response()
+        if args[0].endswith("v3_collection.json"):
+            return MockIIIFCollectionV3Response()
         if args[0].endswith("manifest.json"):
             return MockIIIFManifestResponse()
         return
@@ -67,7 +83,7 @@ def mock_response(monkeypatch):
 
 
 @pytest.fixture
-def iiif_test_source():
+def iiif_test_v2_source():
     metadata = {
         "fields": {
             "context": {
@@ -86,7 +102,31 @@ def iiif_test_source():
         }
     }
     return IiifJsonSource(
-        collection_url="http://iiif_collection.json", metadata=metadata
+        collection_url="http://iiif_v2_collection.json", metadata=metadata
+    )
+
+
+@pytest.fixture
+def iiif_test_v3_source():
+    metadata = {
+        "fields": {
+            "context": {
+                "path": "@context",
+                "optional": True,
+            },  # a specified field with one value in the metadata
+            "description_top": {"path": "description", "optional": True},
+            "iiif_format": {
+                "path": "sequences..format"
+            },  # a specified field with multiple values in the metadata
+            "profile": {"path": "sequences..profile"},  # a missing required field
+            "thumbnail": {
+                "path": "thumbnail..@id",
+                "optional": True,
+            },  # missing optional field
+        }
+    }
+    return IiifJsonSource(
+        collection_url="http://iiif_v3_collection.json", metadata=metadata
     )
 
 
