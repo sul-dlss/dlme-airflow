@@ -268,6 +268,12 @@ To harvest a single record for a known identifier:
 $ bin/get yale babylonian --id some_known_id
 ```
 
+By default `bin/get` will output json format. A csv file may be useful for checking available fields and coverage. To harvest as csv, use `--format`:
+
+```
+$ bin/get yale babylonian --format csv
+```
+
 ### Manually run the report for a collection
 
 This method requires setting the path to the ndjson output directory on execution, this path

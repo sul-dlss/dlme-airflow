@@ -109,6 +109,12 @@ sources:
     description: "Shahre Farang"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  test:
+    args:
+      path: catalogs/test.yaml
+    description: Test from Google Drive
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   texas_tech:
     args:
       path: catalogs/texas_tech.yaml
@@ -125,6 +131,12 @@ sources:
     args:
       path: catalogs/qnl.yaml
     description: Qatar National Library
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  ucla:
+    args:
+      path: catalogs/ucla.yaml
+    description: University of California, Los Angeles
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   yale:

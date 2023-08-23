@@ -28,8 +28,18 @@ class IiifJsonSource(intake.source.base.DataSource):
         resp = self._get(self.collection_url)
         if resp.status_code == 200:
             collection_result = resp.json()
-            for manifest in collection_result.get("manifests", []):
-                self._manifest_urls.append(manifest.get("@id"))
+            try:
+                for manifest in collection_result["manifests"]: # IIIF version 2
+                    try:
+                        self._manifest_urls.append(manifest["@id"])
+                    except KeyError:
+                        self._manifest_urls.append(manifest.get("id"))
+            except KeyError:
+                for manifest in collection_result.get("items", []): # IIIF version 3
+                    try:
+                        self._manifest_urls.append(manifest["@id"])
+                    except KeyError:
+                        self._manifest_urls.append(manifest.get("id"))
         else:
             logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
 
