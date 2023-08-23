@@ -109,12 +109,6 @@ sources:
     description: "Shahre Farang"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  test:
-    args:
-      path: catalogs/test.yaml
-    description: Test from Google Drive
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
   texas_tech:
     args:
       path: catalogs/texas_tech.yaml
