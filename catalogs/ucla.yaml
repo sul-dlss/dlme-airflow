@@ -1,69 +1,372 @@
 metadata:
   version: 1
   data_path: ucla
+  separate_dags: true
   schedule: "30 13 1 Jan,Apr,Jul,Oct *"
 sources:
-  dupree:
-    description: "Louis Dupree and Nancy Dupree Collection"
-    driver: iiif_json
-    metadata:
-      data_path: ucla/dupree
-      output_format: json
-      config: ucla
-      schedule: "0 1 * * *"
-      fields:
-        body:
-          path: 'items[0]..items..items..body..id'
-          optional: true
-        context:
-          path: '@context'
-          optional: true
-        format:
-          path: 'items[0]..thumbnail..format'
-          optional: true
-        id:
-          path: 'id'
-          optional: true
-        label:
-          path: 'label..none'
-          optional: true
-        thumbnail:
-          path: 'items[0]..thumbnail..id'
-          optional: true
-        type:
-          path: 'items[0]..thumbnail..type'
-          optional: true
-    args:
-      collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz16d7kmn?_ga=2.253576201.1800389534.1692626387-126723786.1692626386
   arab_image_foundation:
-    description: "Arab Image Foundation Photo Negatives"
-    driver: iiif_json
+    description: "Arab Image Foundation Photograph Negatives"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:v7h1gc1z-89112
+      wait: 1
+      allow_expiration: true
     metadata:
       data_path: ucla/arab_image_foundation
       output_format: json
       config: ucla
-      schedule: "0 1 * * *"
+      post_harvest: "merge_dataframes"
+      iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1cg1h7v?_ga=2.148465271.1363753726.1694552417-126723786.1692626386
       fields:
-        body:
-          path: 'items[0]..items..items..body..id'
-          optional: true
-        context:
-          path: '@context'
-          optional: true
-        format:
-          path: 'items[0]..thumbnail..format'
-          optional: true
         id:
-          path: 'id'
+          path: "//dc:identifier[1]"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
           optional: true
-        label:
-          path: 'label..none'
-          optional: true
-        thumbnail:
-          path: 'items[0]..thumbnail..id'
-          optional: true
-        type:
-          path: 'items[0]..thumbnail..type'
-          optional: true
+  armenian_manuscripts:
+    description: "Armenian Manuscripts"
+    driver: oai_xml
     args:
-      collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1cg1h7v?_ga=2.144982324.1800389534.1692626387-126723786.1692626386
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:d2xg9000zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/armenian_manuscripts
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  armenia_collections:
+    description: "Armenia Collections"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:x1s7s81z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/armenia_collections
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  armenian_massacre:
+    description: "Sachtleben (William) Images of Armenian Massacre"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:054jh200zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/armenian_massacre
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  dupree:
+    description: "Louis Dupree and Nancy Dupree Collection"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:nmk7d61z-89112
+      wait: 2
+      allow_expiration: true
+    metadata:
+      data_path: ucla/dupree
+      output_format: json
+      config: ucla
+      post_harvest: "merge_dataframes"
+      iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz16d7kmn?_ga=2.119220809.1363753726.1694552417-126723786.1692626386
+      fields:
+        id:
+          path: "//dc:identifier[1]"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+          optional: true
+  egyptology:
+    description: "UCLA Encyclopedia of Egyptology (UEE)"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:d8nwr000zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/ucla_egyptology
+      separate_dags: true
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  freidlander_americana:
+    description: "Friedlander (Jonathan) Collection of Middle Eastern Americana, 1875-2006"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:fhgr9000zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/freidlander_americana
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  historic_cairo:
+    description: "Historic Cairo Architectural Mapping"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:8k45qj1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/historic_cairo
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  iranian_bahai_archives:
+    description: "Iranian National Baha'i Archives"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:fmt5h200zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/iranian_bahai_archives
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  green_movement:
+    description: "Green Movement (Iran)"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:txk75c1z-89112
+      wait: 2
+      allow_expiration: true
+    metadata:
+      data_path: ucla/green_movement
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  kirkuk_mosque:
+    description: "Kirkuk’s Great Sufi Mosque"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:wnt7cb1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/kirkuk_mosque
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  kurdish_referendum:
+    description: "Kurdish Referendum for Independence"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:k2b9wk1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/kurdish_referendum
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  minasian_armenian_collection:
+    description: "Caro Minasian Collection of Armenian Material, circa 1600-1968"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:txkqb200zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/minasian_armenian_collection
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  minasian_manuscript_collection:
+    description: "Minasian (Caro) Collection of Persian and Arabic Manuscripts"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:fkmrw000zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/minasian_manuscript_collection
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  mosul_lives:
+    description: "Mosul Lives"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:1tc6jf1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/mosul_lives
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  near_east_manuscripts:
+    description: "Exhibit Collection of Near Eastern Manuscripts, 1492-1848"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:j4sh8000zz-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/near_east_mss
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  soviet_armenian_posters:
+    description: "Soviet Armenian Posters"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:wv36971z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/soviet_armenian_posters
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  sulaimani_villages:
+    description: "Villages of Sulaimani (1960-1980)"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:jzg6vc1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/sulaimani_villages
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+  yazidi_posters:
+    description: "Yazidi Posters"
+    driver: oai_xml
+    args:
+      collection_url: https://digital.library.ucla.edu/catalog/oai
+      metadata_prefix: oai_dc
+      set: member_of_collection_ids_ssim:sqh0kc1z-89112
+      wait: 1
+      allow_expiration: true
+    metadata:
+      data_path: ucla/yazidi_posters
+      output_format: json
+      config: ucla
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
