@@ -16,7 +16,7 @@ sources:
     metadata:
       data_path: ucla/arab_image_foundation
       output_format: json
-      config: ucla
+      config: ucla_iiif_v3
       post_harvest: "merge_dataframes"
       iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1cg1h7v?_ga=2.148465271.1363753726.1694552417-126723786.1692626386
       fields:
@@ -37,7 +37,7 @@ sources:
     metadata:
       data_path: ucla/armenian_manuscripts
       output_format: json
-      config: ucla
+      config: ucla_armenian
       fields:
         id:
           path: "//header:identifier"
@@ -56,7 +56,7 @@ sources:
     metadata:
       data_path: ucla/armenia_collections
       output_format: json
-      config: ucla
+      config: ucla_armenian
       fields:
         id:
           path: "//header:identifier"
@@ -75,7 +75,7 @@ sources:
     metadata:
       data_path: ucla/armenian_massacre
       output_format: json
-      config: ucla
+      config: ucla_armenian
       fields:
         id:
           path: "//header:identifier"
@@ -94,7 +94,7 @@ sources:
     metadata:
       data_path: ucla/dupree
       output_format: json
-      config: ucla
+      config: ucla_iiif_v3
       post_harvest: "merge_dataframes"
       iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz16d7kmn?_ga=2.119220809.1363753726.1694552417-126723786.1692626386
       fields:
@@ -116,14 +116,14 @@ sources:
       data_path: ucla/ucla_egyptology
       separate_dags: true
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
-  freidlander_americana:
+  friedlander_americana:
     description: "Friedlander (Jonathan) Collection of Middle Eastern Americana, 1875-2006"
     driver: oai_xml
     args:
@@ -133,9 +133,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/freidlander_americana
+      data_path: ucla/friedlander_americana
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -154,7 +154,7 @@ sources:
     metadata:
       data_path: ucla/historic_cairo
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -173,7 +173,7 @@ sources:
     metadata:
       data_path: ucla/iranian_bahai_archives
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -192,7 +192,7 @@ sources:
     metadata:
       data_path: ucla/green_movement
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -211,7 +211,7 @@ sources:
     metadata:
       data_path: ucla/kirkuk_mosque
       output_format: json
-      config: ucla
+      config: ucla_no_preview
       fields:
         id:
           path: "//header:identifier"
@@ -230,7 +230,7 @@ sources:
     metadata:
       data_path: ucla/kurdish_referendum
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -249,7 +249,7 @@ sources:
     metadata:
       data_path: ucla/minasian_armenian_collection
       output_format: json
-      config: ucla
+      config: ucla_armenian
       fields:
         id:
           path: "//header:identifier"
@@ -268,7 +268,7 @@ sources:
     metadata:
       data_path: ucla/minasian_manuscript_collection
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -287,7 +287,7 @@ sources:
     metadata:
       data_path: ucla/mosul_lives
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -306,7 +306,7 @@ sources:
     metadata:
       data_path: ucla/near_east_mss
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -325,7 +325,7 @@ sources:
     metadata:
       data_path: ucla/soviet_armenian_posters
       output_format: json
-      config: ucla
+      config: ucla_armenian
       fields:
         id:
           path: "//header:identifier"
@@ -344,7 +344,7 @@ sources:
     metadata:
       data_path: ucla/sulaimani_villages
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
@@ -363,7 +363,7 @@ sources:
     metadata:
       data_path: ucla/yazidi_posters
       output_format: json
-      config: ucla
+      config: ucla_iiif_v2
       fields:
         id:
           path: "//header:identifier"
