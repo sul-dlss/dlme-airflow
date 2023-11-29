@@ -85,6 +85,12 @@ sources:
     description: Manchester Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  newcastle:
+    args:
+      path: catalogs/newcastle.yaml
+    description: "University of Newcastle"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   penn:
     args:
       path: catalogs/penn.yaml
