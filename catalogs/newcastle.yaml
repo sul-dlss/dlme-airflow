@@ -1,0 +1,55 @@
+metadata:
+  version: 1
+  data_path: newcastle
+  schedule: "0 0 1 Jan,Apr,Jul,Oct *"
+sources:
+  newcastle:
+    description: "Gertrude Bell Archive"
+    driver: xml
+    metadata:
+      data_path: newcastle
+      config: newcastle
+      record_selector:
+        path: ".//item"
+      fields:
+        creation_date:
+          path: ".//field_creation_date"
+          namespace:
+          optional: true
+        creator:
+          path: ".//field_creator_for_page"
+          namespace:
+          optional: true
+        country_and_region:
+          path: ".//field_country_and_region"
+          optional: true
+        description:
+          path: ".//field_description"
+          optional: true
+        extent:
+          path: ".//field_extent_and_medium"
+          optional: true
+        id:
+          path: "@key"
+          optional: false
+        iiif_manifest:
+          path: ".//field_iiif_manifest"
+          optional: true
+        language:
+          path: ".//field_language"
+          optional: true
+        letter_recipient:
+          path: ".//field_recipient_for_page"
+          optional: true
+        shown_at:
+          path: ".//view_node"
+          optional: true
+        title:
+          path: ".//title"
+          namespace:
+          optional: true
+        type:
+          path: ".//type"
+          optional: true
+    args:
+      collection_url: https://gertrudebell.ncl.ac.uk/sites/default/files/views_data_export/dlme_export_data_export_1/1700065077/dlme_export.xml
