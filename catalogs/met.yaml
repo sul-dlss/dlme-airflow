@@ -10,7 +10,7 @@ sources:
       increment:
         variable_string: offset=
         amount: "100"
-      collection_selector: results
+      record_selector: results
       result_count:
         path: "totalResults"
     metadata:
@@ -48,7 +48,7 @@ sources:
       increment:
         variable_string: offset=
         amount: "100"
-      collection_selector: results
+      record_selector: results
       result_count:
         path: "totalResults"
     metadata:

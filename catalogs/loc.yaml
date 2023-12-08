@@ -8,7 +8,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/abdul_hamid_books
       output_format: json
@@ -48,7 +48,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/abdul_hamid_photos
       output_format: json
@@ -88,7 +88,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/eltaher-collection/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/el_taher
       output_format: json
@@ -128,7 +128,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/greek-and-armenian-patriarchates-of-jerusalem/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/greek_and_armenian_patriarchates
       output_format: json
@@ -168,7 +168,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/persian
       output_format: json
@@ -208,7 +208,7 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/manuscripts-in-st-catherines-monastery-mount-sinai/?c=100&fo=json
       nextpage_path: pagination.next
-      collection_selector: "content.results"
+      record_selector: "content.results"
     metadata:
       data_path: loc/st_catherines
       output_format: json

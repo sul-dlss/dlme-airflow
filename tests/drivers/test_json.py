@@ -12,7 +12,7 @@ def test_happy_path(requests_mock):
     )
 
     # the collection selector json path defined in the Intake catalog
-    collection_selector = "content.results"
+    record_selector = "content.results"
 
     # the collection url defined in the Intake catalog
     collection_url = (
@@ -34,7 +34,7 @@ def test_happy_path(requests_mock):
     # create our JsonSource object
     js = JsonSource(
         collection_url,
-        collection_selector=collection_selector,
+        record_selector=record_selector,
         metadata=metadata,
     )
 

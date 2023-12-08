@@ -20,7 +20,7 @@ class JsonSource(intake.source.base.DataSource):
         nextpage_path=None,
         increment=None,
         result_count=None,
-        collection_selector=None,
+        record_selector=None,
         dtype=None,
         metadata=None,
         wait=None,
@@ -30,7 +30,7 @@ class JsonSource(intake.source.base.DataSource):
         self.nextpage_path = nextpage_path
         self.increment = increment
         self.result_count = result_count
-        self.collection_selector = collection_selector
+        self.record_selector = record_selector
         self.dtype = dtype
         self.wait = wait
         self._page_urls = []
@@ -117,7 +117,7 @@ class JsonSource(intake.source.base.DataSource):
         resp = self._get(page_url)
         if resp.status_code == 200:
             page_result = resp.json()
-            expression = jsonpath_ng.parse(self.collection_selector)
+            expression = jsonpath_ng.parse(self.record_selector)
             page_result = _flatten_list(
                 [match.value for match in expression.find(page_result)]
             )
