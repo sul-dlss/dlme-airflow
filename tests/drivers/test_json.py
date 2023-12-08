@@ -11,14 +11,19 @@ def test_happy_path(requests_mock):
         json=loc_data,
     )
 
+    # the collection selector json path defined in the Intake catalog
+    collection_selector = "content.results"
+
     # the collection url defined in the Intake catalog
     collection_url = (
         "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json"
     )
 
+    # the nextpage json path defined in the Intake catalog
+    nextpage_path = "pagination.next"
+
     # this jsonpath configuration is required in the intake catalog
     metadata = {
-        "record_selector": "content.results",
         "fields": {
             "id": {"path": "id"},
             "title": {"path": "title"},
@@ -30,7 +35,12 @@ def test_happy_path(requests_mock):
     }
 
     # create our JsonSource object
-    js = JsonSource(collection_url, metadata=metadata)
+    js = JsonSource(
+        collection_url,
+        collection_selector=collection_selector,
+        nextpage_path=nextpage_path,
+        metadata=metadata,
+    )
 
     # get the DataFrame
     df = js.read()

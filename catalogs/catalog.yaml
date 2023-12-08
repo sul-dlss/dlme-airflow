@@ -79,10 +79,22 @@ sources:
     description: "Lebanese American University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  loc:
+    args:
+      path: catalogs/loc.yaml
+    description: "Library of Congress"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   manchester:
     args:
       path: catalogs/manchester.yaml
     description: Manchester Uninversity
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  met:
+    args:
+      path: catalogs/met.yaml
+    description: Met Museum
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   newcastle:
