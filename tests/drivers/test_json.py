@@ -19,9 +19,6 @@ def test_happy_path(requests_mock):
         "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json"
     )
 
-    # the nextpage json path defined in the Intake catalog
-    nextpage_path = "pagination.next"
-
     # this jsonpath configuration is required in the intake catalog
     metadata = {
         "fields": {
@@ -38,7 +35,6 @@ def test_happy_path(requests_mock):
     js = JsonSource(
         collection_url,
         collection_selector=collection_selector,
-        nextpage_path=nextpage_path,
         metadata=metadata,
     )
 
