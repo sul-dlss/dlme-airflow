@@ -22,7 +22,7 @@ properties:
           type: string
           enum:
             - csv
-            - custom_json
+            - json
             - iiif_json
             - oai_xml
             - sequential_csv
