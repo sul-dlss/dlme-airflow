@@ -36,6 +36,7 @@ def test_happy_path(requests_mock):
         collection_url,
         record_selector=record_selector,
         metadata=metadata,
+        paging={"urls": "pagination.page_list"},
     )
 
     # get the DataFrame
