@@ -24,6 +24,7 @@ class JsonSource(intake.source.base.DataSource):
         dtype=None,
         metadata=None,
         wait=None,
+        api_key=None,
     ):
         super(JsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
@@ -37,16 +38,15 @@ class JsonSource(intake.source.base.DataSource):
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
+        self.api_key = api_key
 
     def _open_collection(self):
         # either the API passes the next page or we increment with a url pattern
+        self._page_urls.append(self.collection_url)
         if self.paging:
-            self._page_urls.append(self.collection_url)
-            logging.info(f"getting collection {self.collection_url}")
-            self._page_urls = PartitionBuilder(self.collection_url, self.paging).urls()
+            self._page_urls = PartitionBuilder(self.collection_url, self.paging, self.api_key).urls()
 
     def _open_page(self, page_url: str) -> Optional[list]:
-        logging.info(f"getting page {page_url}")
         resp = self._get(page_url)
         if resp.status_code == 200:
             page_result = resp.json()
@@ -150,10 +150,14 @@ class JsonSource(intake.source.base.DataSource):
         )
 
     def _get(self, url):
+        headers = {}
+        if self.api_key:
+            headers["api_key"] = self.api_key
+
         if self.wait:
             logging.info(f"waiting {self.wait} seconds")
             time.sleep(self.wait)
-        return requests.get(url)
+        return requests.get(url, headers = headers)
 
     def read(self):
         self._load_metadata()
