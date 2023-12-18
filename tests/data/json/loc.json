@@ -33114,18 +33114,6 @@
       {
         "number": 1,
         "url": null
-      },
-      {
-        "number": 2,
-        "url": "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json&sp=2"
-      },
-      {
-        "number": 3,
-        "url": "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json&sp=3"
-      },
-      {
-        "number": "...",
-        "url": "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json&sp=4"
       }
     ],
     "perpage": 100,

@@ -1,0 +1,34 @@
+metadata:
+  version: 1
+  data_path: brooklyn
+sources:
+  near-east-egyptian:
+    description: "Near east and Egyptian"
+    driver: custom_json
+    args:
+      collection_url: https://www.brooklynmuseum.org/api/v2/object/
+      paging:
+        pages_url: https://www.brooklynmuseum.org/api/v2/collection/5/object
+        urls: data.id
+        limit: 25
+      record_selector: "data"
+      api_key: "0IzFpBiUksT8LMVGLUxovj9IR0ltlSH1"
+    metadata:
+      data_path: brooklyn/near-east-egyptian
+      output_format: json
+      config: brooklyn_near_east_egyptian
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date_added"
+        preview:
+          path: "primary_image"
+        shown_at:
+          path: "primary_image"
+        subject:
+          path: "classification"
+        title:
+          path: "title"

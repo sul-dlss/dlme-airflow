@@ -5,29 +5,30 @@ import requests
 import jsonpath_ng
 import pandas as pd
 from typing import Any, Optional, Generator
-
-
-container = "dataframe"
-name = "custom_json"
-version = "0.0.1"
-partition_access = True
+from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
 class JsonSource(intake.source.base.DataSource):
+    container = "dataframe"
+    name = "custom_json"
+    version = "0.0.1"
+    partition_access = True
+
     def __init__(
         self,
         collection_url,
-        nextpage_path=None,
+        paging=None,
         increment=None,
         result_count=None,
         record_selector=None,
         dtype=None,
         metadata=None,
         wait=None,
+        api_key=None,
     ):
         super(JsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
-        self.nextpage_path = nextpage_path
+        self.paging = paging
         self.increment = increment
         self.result_count = result_count
         self.record_selector = record_selector
@@ -37,83 +38,17 @@ class JsonSource(intake.source.base.DataSource):
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
+        self.api_key = api_key
 
     def _open_collection(self):
         # either the API passes the next page or we increment with a url pattern
-        if self.nextpage_path:
-            self._page_urls.append(self.collection_url)
-            logging.info(f"getting collection {self.collection_url}")
-            resp = self._get(self.collection_url)
-            if resp.status_code == 200:
-                collection_result = resp.json()
-                expression = jsonpath_ng.parse(self.nextpage_path)
-                if [match.value for match in expression.find(collection_result)]:
-                    next = [
-                        match.value for match in expression.find(collection_result)
-                    ][0]
-                    while next:
-                        self._page_urls.append(next)
-
-                        resp = self._get(next)
-                        if resp.status_code == 200:
-                            result = resp.json()
-                            next = [match.value for match in expression.find(result)][0]
-                        else:
-                            logging.error(
-                                f"got {resp.status_code} when fetching {next}"
-                            )
-                else:
-                    raise Exception(
-                        f"Pagination path not found in: {self.collection_url}"
-                    )
-            else:
-                logging.error(
-                    f"got {resp.status_code} when fetching {self.collection_url}"
-                )
-        else:
-            self._page_urls.append(self.collection_url)
-            logging.info(f"getting collection {self.collection_url}")
-            # pass a json path for the result count in the catalog or hard code the count
-            if self.result_count:
-                if self.result_count.get("path"):
-                    resp = self._get(self.collection_url)
-                    if resp.status_code == 200:
-                        collection_result = resp.json()
-                        expression = jsonpath_ng.parse(self.result_count.get("path"))
-
-                        if [
-                            match.value for match in expression.find(collection_result)
-                        ]:
-                            result_count = [
-                                match.value
-                                for match in expression.find(collection_result)
-                            ][0]
-                else:
-                    try:
-                        result_count = int(self.result_count.get("count"))
-                    except result_count.does_not_exist:
-                        logging.error(
-                            "result_count needs to be set in the catalog with a json path or a hard coded number"
-                        )
-            url = self.collection_url
-            if self.increment:
-                start = int(self.increment.get("amount"))
-                for i in range(
-                    int(self.increment.get("amount")),
-                    result_count,
-                    int(self.increment.get("amount")),
-                ):
-                    url = url.replace(
-                        f"{self.increment.get('variable_string')}{start}",
-                        f"{self.increment.get('variable_string')}{start+int(self.increment.get('amount'))}",
-                    )
-                    start += int(self.increment.get("amount"))
-                    self._page_urls.append(url)
-            else:
-                logging.error("increment key not found in catalog")
+        self._page_urls.append(self.collection_url)
+        if self.paging:
+            self._page_urls = PartitionBuilder(
+                self.collection_url, self.paging, self.api_key
+            ).urls()
 
     def _open_page(self, page_url: str) -> Optional[list]:
-        logging.info(f"getting page {page_url}")
         resp = self._get(page_url)
         if resp.status_code == 200:
             page_result = resp.json()
@@ -217,10 +152,14 @@ class JsonSource(intake.source.base.DataSource):
         )
 
     def _get(self, url):
+        headers = {}
+        if self.api_key:
+            headers["api_key"] = self.api_key
+
         if self.wait:
             logging.info(f"waiting {self.wait} seconds")
             time.sleep(self.wait)
-        return requests.get(url)
+        return requests.get(url, headers=headers)
 
     def read(self):
         self._load_metadata()

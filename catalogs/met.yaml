@@ -6,13 +6,12 @@ sources:
     description: "Near East"
     driver: custom_json
     args:
-      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=10&showOnly=openAccess&perPage=100&offset=100
-      increment:
-        variable_string: offset=
-        amount: "100"
+      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=10&showOnly=openAccess&perPage=100
+      paging:
+        increment: 100
+        query_param: offset
+        result_count: "totalResults"
       record_selector: results
-      result_count:
-        path: "totalResults"
     metadata:
       data_path: met/egyptian
       output_format: json
@@ -44,13 +43,12 @@ sources:
     description: "Near East"
     driver: custom_json
     args:
-      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=3&showOnly=openAccess&perPage=100&offset=100
-      increment:
-        variable_string: offset=
-        amount: "100"
+      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=3&showOnly=openAccess&perPage=100
+      paging:
+        increment: 100
+        query_param: offset
+        result_count: "totalResults"
       record_selector: results
-      result_count:
-        path: "totalResults"
     metadata:
       data_path: met/near_east
       output_format: json
