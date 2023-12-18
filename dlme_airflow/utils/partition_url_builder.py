@@ -6,6 +6,7 @@ class PartitionBuilder:
     """Determine the method used to extract or format the
     page queries when provider API requires paging.
     """
+
     def __init__(
         self,
         collection_url,
@@ -27,7 +28,7 @@ class PartitionBuilder:
             return self._calculate_partitions()
         elif self.paging_config.get("urls"):
             return self._urls_from_provider()
-        
+
         return []
 
     def _urls_from_provider(self):
@@ -41,7 +42,7 @@ class PartitionBuilder:
             for next in page_urls:
                 if next["url"]:
                     urls.append(next["url"])
-        
+
         return urls
 
     def _calculate_partitions(self):
@@ -53,26 +54,25 @@ class PartitionBuilder:
         while offset < record_count:
             urls.append(f"{self.collection_url}&offset={offset}")
             offset += increment
-        
+
         return urls
 
     def _prefetch_page_urls(self):
         offset = 0
         harvested = 0
-        records = 0
         ids = []
         while True:
-            api_endpoint = f"{self.paging_config['pages_url']}?limit={self.paging_config['limit']}&offset={offset}" 
-            data = self._fetch_provider_data(api_endpoint)['data']
-            offset+=self.paging_config['limit']
-            harvested=len(data)
+            api_endpoint = f"{self.paging_config['pages_url']}?limit={self.paging_config['limit']}&offset={offset}"
+            data = self._fetch_provider_data(api_endpoint)["data"]
+            offset += self.paging_config["limit"]
+            harvested = len(data)
 
             for i in data:
                 ids.append(f"{self.collection_url}{i['id']}")
 
-            if harvested < self.paging_config['limit']:
+            if harvested < self.paging_config["limit"]:
                 break
-        
+
         return ids
 
     def _fetch_provider_data(self, url):
@@ -80,6 +80,6 @@ class PartitionBuilder:
         if self.api_key:
             headers["api_key"] = self.api_key
 
-        resp = requests.get(url, headers = headers)
+        resp = requests.get(url, headers=headers)
         if resp.status_code == 200:
             return resp.json()

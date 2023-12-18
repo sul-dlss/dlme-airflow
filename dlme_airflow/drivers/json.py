@@ -44,7 +44,9 @@ class JsonSource(intake.source.base.DataSource):
         # either the API passes the next page or we increment with a url pattern
         self._page_urls.append(self.collection_url)
         if self.paging:
-            self._page_urls = PartitionBuilder(self.collection_url, self.paging, self.api_key).urls()
+            self._page_urls = PartitionBuilder(
+                self.collection_url, self.paging, self.api_key
+            ).urls()
 
     def _open_page(self, page_url: str) -> Optional[list]:
         resp = self._get(page_url)
@@ -157,7 +159,7 @@ class JsonSource(intake.source.base.DataSource):
         if self.wait:
             logging.info(f"waiting {self.wait} seconds")
             time.sleep(self.wait)
-        return requests.get(url, headers = headers)
+        return requests.get(url, headers=headers)
 
     def read(self):
         self._load_metadata()

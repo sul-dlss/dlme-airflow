@@ -37,6 +37,12 @@ sources:
     description: "Bodleian Libraries, University of Oxford"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  brooklyn:
+    args:
+      path: catalogs/brooklyn.yaml
+    description: "Brooklyn Near East and Egyptian collection"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   cambridge:
     args:
       path: catalogs/cambridge.yaml
