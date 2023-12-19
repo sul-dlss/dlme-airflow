@@ -75,9 +75,7 @@ def test_happy_path_incremental_paging(requests_mock):
     record_selector = "results"
 
     # the collection url defined in the Intake catalog
-    collection_url = (
-        "https://example.com/"
-    )
+    collection_url = "https://example.com/"
 
     # this jsonpath configuration is required in the intake catalog
     metadata = {
@@ -93,7 +91,11 @@ def test_happy_path_incremental_paging(requests_mock):
         collection_url,
         record_selector=record_selector,
         metadata=metadata,
-        paging={"increment": 20, "query_param": "offset", "result_count": "totalResults"},
+        paging={
+            "increment": 20,
+            "query_param": "offset",
+            "result_count": "totalResults",
+        },
     )
 
     # get the DataFrame
@@ -111,10 +113,63 @@ def test_happy_path_incremental_paging(requests_mock):
     )
 
     assert df.id[19] == "26.7.1183"
-    assert (
-        df.title[19] == "Kohl Tube in the Form of a Papyrus Column"
-    )
+    assert df.title[19] == "Kohl Tube in the Form of a Papyrus Column"
     assert (
         df.thumbnail[19]
         == "https://images.metmuseum.org/CRDImages/eg/mobile-large/LC-26_7_1183_EGDP034542.jpg"
     )
+
+
+def test_happy_path_prefetch_urls(requests_mock):
+    # mock the http call to return some real loc.gov data
+    object_pages = json.load(open("tests/data/json/pre_fetch_ids.json"))
+    requests_mock.get(
+        "https://example.com/collection?limit=3&offset=0",
+        json=object_pages,
+    )
+
+    data_for_116787 = json.load(open("tests/data/json/116787.json"))
+    requests_mock.get(
+        "https://example.com/object/116787",
+        json=data_for_116787,
+    )
+
+    data_for_60732 = json.load(open("tests/data/json/60732.json"))
+    requests_mock.get(
+        "https://example.com/object/60732",
+        json=data_for_60732,
+    )
+
+    # the collection selector json path defined in the Intake catalog
+    record_selector = "data"
+
+    # the collection url defined in the Intake catalog
+    collection_url = "https://example.com/object/"
+
+    # this jsonpath configuration is required in the intake catalog
+    metadata = {
+        "fields": {
+            "id": {"path": "id"},
+            "title": {"path": "title"},
+            "thumbnail": {"path": "primary_image"},
+        },
+    }
+
+    # create our JsonSource object
+    js = JsonSource(
+        collection_url,
+        record_selector=record_selector,
+        metadata=metadata,
+        paging={
+            "pages_url": "https://example.com/collection",
+            "urls": "data.id",
+            "limit": 3,
+        },
+    )
+
+    # get the DataFrame
+    df = js.read()
+
+    assert len(df) == 2
+    assert len(df.columns) == 3
+    assert set(df.columns) == set(["id", "title", "thumbnail"])
