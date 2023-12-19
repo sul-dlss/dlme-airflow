@@ -1,0 +1,1933 @@
+{
+  "request": {
+    "q": null,
+    "showOnly": "openAccess",
+    "artist": null,
+    "material": null,
+    "era": null,
+    "geolocation": null,
+    "department": "10",
+    "pkgIds": null,
+    "exhibitionId": null,
+    "feature": null,
+    "searchField": null,
+    "page": 1,
+    "pageId": "00000000-0000-0000-0000-000000000000",
+    "perPage": 20,
+    "offset": 0,
+    "sortOrder": null,
+    "sortBy": null,
+    "queryParameters": null
+  },
+  "results": [
+    {
+      "title": "Wall casing",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: 664–610 B.C.<br/>Accession Number: 23.3.935</p>",
+      "url": "/art/collection/search/548138?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=1",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/bb468-70.jpg",
+      "regularImage": "eg/web-additional/bb468-70.jpg",
+      "largeImage": "eg/web-large/bb468-70.jpg",
+      "date": "664–610 B.C.",
+      "medium": "Limestone",
+      "accessionNumber": "23.3.935",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Heart Scarab",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1295–1070 B.C.<br/>Accession Number: 10.130.1657</p>",
+      "url": "/art/collection/search/569718?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=2",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/10.130.1657 top.jpg",
+      "regularImage": "eg/web-additional/10.130.1657 top.jpg",
+      "largeImage": "eg/web-large/10.130.1657 top.jpg",
+      "date": "ca. 1295–1070 B.C.",
+      "medium": "Green stone",
+      "accessionNumber": "10.130.1657",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjA1OTExLDQwLjc4MDI1MTU4QGxtQDE0NTI1NzQ1Nzg1Ng==' target='_blank'>Gallery 122</a>"
+    },
+    {
+      "title": "Baboon figurine",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 2030–1640 B.C.<br/>Accession Number: 66.99.154</p>",
+      "url": "/art/collection/search/561162?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=3",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/66.99.154.jpg",
+      "regularImage": "eg/web-additional/66.99.154.jpg",
+      "largeImage": "eg/web-large/66.99.154.jpg",
+      "date": "ca. 2030–1640 B.C.",
+      "medium": "Glazed steatite",
+      "accessionNumber": "66.99.154",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Scarab, private",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1550–1295 B.C.<br/>Accession Number: 30.8.686</p>",
+      "url": "/art/collection/search/560060?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=4",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/LC-30_8_686_EGDP025567.jpg",
+      "regularImage": "eg/web-additional/LC-30_8_686_EGDP025567.jpg",
+      "largeImage": "eg/web-large/LC-30_8_686_EGDP025567.jpg",
+      "date": "ca. 1550–1295 B.C.",
+      "medium": "Faience",
+      "accessionNumber": "30.8.686",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MTk2OTE4LDQwLjc4MDIzNDA2QGxtQDgxMTYyNDM2NTY0OA==' target='_blank'>Gallery 117</a>"
+    },
+    {
+      "title": "Scarab Finger Ring",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1991–1450 B.C.<br/>Accession Number: 26.7.753</p>",
+      "url": "/art/collection/search/552430?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=5",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/26.7.753_bottom.jpg",
+      "regularImage": "eg/web-additional/26.7.753_bottom.jpg",
+      "largeImage": "eg/web-large/26.7.753_bottom.jpg",
+      "date": "ca. 1991–1450 B.C.",
+      "medium": "Steatite, silver wire\nBlue glazed steatite, silver wire",
+      "accessionNumber": "26.7.753",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MTk4MDkxLDQwLjc4MDE5MDI1QGxtQDU0MzE4Mjc5MjM0Ng==' target='_blank'>Gallery 114</a>"
+    },
+    {
+      "title": "Vase fragment",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1981–1640 B.C.<br/>Accession Number: 22.1.1150</p>",
+      "url": "/art/collection/search/556909?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=6",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/22.1.1150_EGDP015751.jpg",
+      "regularImage": "eg/web-additional/22.1.1150_EGDP015751.jpg",
+      "largeImage": "eg/web-large/22.1.1150_EGDP015751.jpg",
+      "date": "ca. 1981–1640 B.C.",
+      "medium": "Blue faience",
+      "accessionNumber": "22.1.1150",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjEwMDcyLDQwLjc4MDEyNjRAbG1ANTExNDY3ODY1MDAy' target='_blank'>Gallery 109</a>"
+    },
+    {
+      "title": "Jar",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 3100–2649 B.C.<br/>Accession Number: 02.4.35</p>",
+      "url": "/art/collection/search/547500?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=7",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/02.4.35_EGDP012053.jpg",
+      "regularImage": "eg/web-additional/02.4.35_EGDP012053.jpg",
+      "largeImage": "eg/web-large/02.4.35_EGDP012053.jpg",
+      "date": "ca. 3100–2649 B.C.",
+      "medium": "Pottery (Nile clay)",
+      "accessionNumber": "02.4.35",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Loom Heddle Jack",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1850–1070 B.C.<br/>Accession Number: 22.1.725</p>",
+      "url": "/art/collection/search/568350?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=8",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/22.1.725.jpg",
+      "regularImage": "eg/web-additional/22.1.725.jpg",
+      "largeImage": "eg/web-large/22.1.725.jpg",
+      "date": "ca. 1850–1070 B.C.",
+      "medium": "Wood",
+      "accessionNumber": "22.1.725",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Hairpin with a Figure of a Hippopotamus",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1981–1640 B.C.<br/>Accession Number: 07.228.165</p>",
+      "url": "/art/collection/search/545537?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=9",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/DP112569.jpg",
+      "regularImage": "eg/web-additional/DP112569.jpg",
+      "largeImage": "eg/web-large/DP112569.jpg",
+      "date": "ca. 1981–1640 B.C.",
+      "medium": "Bone",
+      "accessionNumber": "07.228.165",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MTkxODUsNDAuNzgwMDkzNzlAbG1AMTAwMDk3OTkzMDg3NQ==' target='_blank'>Gallery 111</a>"
+    },
+    {
+      "title": "Jar, goat relief",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: 2nd century BC or later<br/>Accession Number: 41.162.150</p>",
+      "url": "/art/collection/search/572003?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=10",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/LC-41_162_150_EGDP034004.jpg",
+      "regularImage": "eg/web-additional/LC-41_162_150_EGDP034004.jpg",
+      "largeImage": "eg/web-large/LC-41_162_150_EGDP034004.jpg",
+      "date": "2nd century BC or later",
+      "medium": "Faience",
+      "accessionNumber": "41.162.150",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Chin (?) from a head",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1353–1336 B.C.<br/>Accession Number: 57.180.105</p>",
+      "url": "/art/collection/search/549629?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=11",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/57.180.105_v1.jpg",
+      "regularImage": "eg/web-additional/57.180.105_v1.jpg",
+      "largeImage": "eg/web-large/57.180.105_v1.jpg",
+      "date": "ca. 1353–1336 B.C.",
+      "medium": "Indurated limestone",
+      "accessionNumber": "57.180.105",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjA1OTExLDQwLjc4MDI1MTU4QGxtQDE0NTI1NzQ1Nzg1Ng==' target='_blank'>Gallery 122</a>"
+    },
+    {
+      "title": "Tablet from the foundation deposit of Mentuhotep II",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 2060–2010 B.C.<br/>Accession Number: 22.3.188</p>",
+      "url": "/art/collection/search/544003?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=12",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/135847.jpg",
+      "regularImage": "eg/web-additional/135847.jpg",
+      "largeImage": "eg/web-large/135847.jpg",
+      "date": "ca. 2060–2010 B.C.",
+      "medium": "Travertine (Egyptian alabaster)",
+      "accessionNumber": "22.3.188",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjA4NTcsNDAuNzc5ODIwMDJAbG1AMzU4MTQ4MTI2ODg1' target='_blank'>Gallery 106</a>"
+    },
+    {
+      "title": "Ostracon with liliform capital",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: 664–610 B.C.<br/>Accession Number: 23.3.35</p>",
+      "url": "/art/collection/search/558432?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=13",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/bb23.3.35.jpg",
+      "regularImage": "eg/web-additional/bb23.3.35.jpg",
+      "largeImage": "eg/web-large/bb23.3.35.jpg",
+      "date": "664–610 B.C.",
+      "medium": "Limestone, ink",
+      "accessionNumber": "23.3.35",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjI3NjMsNDAuNzgwMTA4ODdAbG1ANTEwNzkyMTg5ODYw' target='_blank'>Gallery 127</a>"
+    },
+    {
+      "title": "Ring fragment with part of name Tiy",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1390–1352 B.C.<br/>Accession Number: 11.215.87</p>",
+      "url": "/art/collection/search/558986?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=14",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/11.215.87.jpg",
+      "regularImage": "eg/web-additional/11.215.87.jpg",
+      "largeImage": "eg/web-large/11.215.87.jpg",
+      "date": "ca. 1390–1352 B.C.",
+      "medium": "Faience, blue",
+      "accessionNumber": "11.215.87",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "String of 46 disc beads",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: 30 B.C.–A.D. 364<br/>Accession Number: 10.130.3078</p>",
+      "url": "/art/collection/search/570526?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=15",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/10.130.3078_EGDP017071.jpg",
+      "regularImage": "eg/web-additional/10.130.3078_EGDP017071.jpg",
+      "largeImage": "eg/web-large/10.130.3078_EGDP017071.jpg",
+      "date": "30 B.C.–A.D. 364",
+      "medium": "Yellow glass",
+      "accessionNumber": "10.130.3078",
+      "galleryInformation": "Not on view"
+    },
+    {
+      "title": "Anklet",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 4400–3800 B.C.<br/>Accession Number: 32.2.38</p>",
+      "url": "/art/collection/search/547338?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=16",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/32.2.38 (91302tf).jpg",
+      "regularImage": "eg/web-additional/32.2.38 (91302tf).jpg",
+      "largeImage": "eg/web-large/32.2.38 (91302tf).jpg",
+      "date": "ca. 4400–3800 B.C.",
+      "medium": "Travertine (Egyptian alabaster), bone, serpentinite",
+      "accessionNumber": "32.2.38",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjUyNTA4LDQwLjc3OTQ0NDAyQGxtQDc5MTE2NTM5Mzc3Nw==' target='_blank'>Gallery 101</a>"
+    },
+    {
+      "title": "Barque Sphinx",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 664–525 B.C.<br/>Accession Number: 2011.96</p>",
+      "url": "/art/collection/search/590745?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=17",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/DP247004.jpg",
+      "regularImage": "eg/web-additional/DP247004.jpg",
+      "largeImage": "eg/web-large/DP247004.jpg",
+      "date": "ca. 664–525 B.C.",
+      "medium": "Leaded bronze",
+      "accessionNumber": "2011.96",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjQ3ODM0LDQwLjc3OTcyMTMxQGxtQDYyMDQ3ODk3MjE2OQ==' target='_blank'>Gallery 136</a>"
+    },
+    {
+      "title": "Vase fragment",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1981–1640 B.C.<br/>Accession Number: 15.3.920</p>",
+      "url": "/art/collection/search/556917?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=18",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/15.3.920_EGDP015781.jpg",
+      "regularImage": "eg/web-additional/15.3.920_EGDP015781.jpg",
+      "largeImage": "eg/web-large/15.3.920_EGDP015781.jpg",
+      "date": "ca. 1981–1640 B.C.",
+      "medium": "Blue faience",
+      "accessionNumber": "15.3.920",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjEwMDcyLDQwLjc4MDEyNjRAbG1ANTExNDY3ODY1MDAy' target='_blank'>Gallery 109</a>"
+    },
+    {
+      "title": "Statuette of the Child Amenemhab",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1550–1479 B.C.<br/>Accession Number: 26.7.1413a, b</p>",
+      "url": "/art/collection/search/544451?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=19",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/DP115775.jpg",
+      "regularImage": "eg/web-additional/DP115775.jpg",
+      "largeImage": "eg/web-large/DP115775.jpg",
+      "date": "ca. 1550–1479 B.C.",
+      "medium": "Bronze, separate silver lotus, wood base with pigmented inlays\n",
+      "accessionNumber": "26.7.1413a, b",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MTk4MDkxLDQwLjc4MDE5MDI1QGxtQDU0MzE4Mjc5MjM0Ng==' target='_blank'>Gallery 114</a>"
+    },
+    {
+      "title": "Kohl Tube in the Form of a Papyrus Column",
+      "description": " ",
+      "artist": "",
+      "culture": "",
+      "teaserText": "<p>Date: ca. 1400–1352 B.C.<br/>Accession Number: 26.7.1183</p>",
+      "url": "/art/collection/search/548609?&deptids=10&ft=*&offset=0&rpp=20&amp;pos=20",
+      "image": "https://images.metmuseum.org/CRDImages/eg/mobile-large/LC-26_7_1183_EGDP034542.jpg",
+      "regularImage": "eg/web-additional/LC-26_7_1183_EGDP034542.jpg",
+      "largeImage": "eg/web-large/LC-26_7_1183_EGDP034542.jpg",
+      "date": "ca. 1400–1352 B.C.",
+      "medium": "Glass",
+      "accessionNumber": "26.7.1183",
+      "galleryInformation": "On view at The Met Fifth Avenue in <a href='https://maps.metmuseum.org/?feature=LTczLjk2MjAxMjU4LDQwLjc4MDMzNTI1QGxtQDM5NTU3MzAzMTUxOA==' target='_blank'>Gallery 118</a>"
+    }
+  ],
+  "facets": [
+    {
+      "filterGroupId": null,
+      "filterGroupType": null,
+      "filterGroupLabel": null,
+      "filterGroupName": null,
+      "filterGroupItems": null,
+      "id": "artist",
+      "label": "Artist / Culture",
+      "searchable": true,
+      "name": null,
+      "values": [
+        {
+          "id": "Berard, Hazel de$Hazel de Berard",
+          "label": "Hazel de Berard",
+          "name": "Berard, Hazel de",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Crane, Lancelot$Lancelot Crane",
+          "label": "Lancelot Crane",
+          "name": "Crane, Lancelot",
+          "count": 11,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Davies, Nina de Garis$Nina de Garis Davies",
+          "label": "Nina de Garis Davies",
+          "name": "Davies, Nina de Garis",
+          "count": 108,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Davies, Norman de Garis$Norman de Garis Davies",
+          "label": "Norman de Garis Davies",
+          "name": "Davies, Norman de Garis",
+          "count": 53,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Hopgood, Hugh R.$Hugh R. Hopgood",
+          "label": "Hugh R. Hopgood",
+          "name": "Hopgood, Hugh R.",
+          "count": 29,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Jones, E. Harold$E. Harold Jones",
+          "label": "E. Harold Jones",
+          "name": "Jones, E. Harold",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Luther, Grace A.$Grace A. Luther",
+          "label": "Grace A. Luther",
+          "name": "Luther, Grace A.",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Palmer-Jones, William J.$William J. Palmer-Jones",
+          "label": "William J. Palmer-Jones",
+          "name": "Palmer-Jones, William J.",
+          "count": 7,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Paser$Paser",
+          "label": "Paser",
+          "name": "Paser",
+          "count": 3,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Unknown Copyist$Unknown Copyist",
+          "label": "Unknown Copyist",
+          "name": "Unknown Copyist",
+          "count": 17,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Unwin, Francis Sydney$Francis Sydney Unwin",
+          "label": "Francis Sydney Unwin",
+          "name": "Unwin, Francis Sydney",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Wilkinson, Charles K.$Charles K. Wilkinson",
+          "label": "Charles K. Wilkinson",
+          "name": "Wilkinson, Charles K.",
+          "count": 53,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        }
+      ],
+      "facets": null
+    },
+    {
+      "filterGroupId": null,
+      "filterGroupType": null,
+      "filterGroupLabel": null,
+      "filterGroupName": null,
+      "filterGroupItems": null,
+      "id": "material",
+      "label": "Object Type / Material",
+      "searchable": true,
+      "name": null,
+      "values": [
+        {
+          "id": "Alabaster",
+          "label": "Alabaster",
+          "name": "Alabaster",
+          "count": 322,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Amethyst",
+          "label": "Amethyst",
+          "name": "Amethyst",
+          "count": 52,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Amulets",
+          "label": "Amulets",
+          "name": "Amulets",
+          "count": 880,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Arms",
+          "label": "Arms",
+          "name": "Arms",
+          "count": 200,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Beads",
+          "label": "Beads",
+          "name": "Beads",
+          "count": 479,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Bone",
+          "label": "Bone",
+          "name": "Bone",
+          "count": 269,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Bottles",
+          "label": "Bottles",
+          "name": "Bottles",
+          "count": 64,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Bowls",
+          "label": "Bowls",
+          "name": "Bowls",
+          "count": 150,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Boxes",
+          "label": "Boxes",
+          "name": "Boxes",
+          "count": 77,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Bracelets",
+          "label": "Bracelets",
+          "name": "Bracelets",
+          "count": 116,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Bronze",
+          "label": "Bronze",
+          "name": "Bronze",
+          "count": 413,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Canopic jars",
+          "label": "Canopic jars",
+          "name": "Canopic jars",
+          "count": 68,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Carnelian",
+          "label": "Carnelian",
+          "name": "Carnelian",
+          "count": 202,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cartouches",
+          "label": "Cartouches",
+          "name": "Cartouches",
+          "count": 174,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Ceramics",
+          "label": "Ceramics",
+          "name": "Ceramics",
+          "count": 1061,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Chalcedony",
+          "label": "Chalcedony",
+          "name": "Chalcedony",
+          "count": 277,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Clay",
+          "label": "Clay",
+          "name": "Clay",
+          "count": 653,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Coffins",
+          "label": "Coffins",
+          "name": "Coffins",
+          "count": 113,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Collars",
+          "label": "Collars",
+          "name": "Collars",
+          "count": 51,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Copper",
+          "label": "Copper",
+          "name": "Copper",
+          "count": 364,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Copper alloy",
+          "label": "Copper alloy",
+          "name": "Copper alloy",
+          "count": 504,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cord",
+          "label": "Cord",
+          "name": "Cord",
+          "count": 70,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cosmetics",
+          "label": "Cosmetics",
+          "name": "Cosmetics",
+          "count": 145,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Costume",
+          "label": "Costume",
+          "name": "Costume",
+          "count": 643,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cups",
+          "label": "Cups",
+          "name": "Cups",
+          "count": 78,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cylinder seals",
+          "label": "Cylinder seals",
+          "name": "Cylinder seals",
+          "count": 78,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Diorite",
+          "label": "Diorite",
+          "name": "Diorite",
+          "count": 60,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Dishes",
+          "label": "Dishes",
+          "name": "Dishes",
+          "count": 62,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Drinking vessels",
+          "label": "Drinking vessels",
+          "name": "Drinking vessels",
+          "count": 80,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Ear ornaments",
+          "label": "Ear ornaments",
+          "name": "Ear ornaments",
+          "count": 116,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Earrings",
+          "label": "Earrings",
+          "name": "Earrings",
+          "count": 115,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Edged weapons",
+          "label": "Edged weapons",
+          "name": "Edged weapons",
+          "count": 104,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Facsimiles",
+          "label": "Facsimiles",
+          "name": "Facsimiles",
+          "count": 264,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Faience",
+          "label": "Faience",
+          "name": "Faience",
+          "count": 2642,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Figures",
+          "label": "Figures",
+          "name": "Figures",
+          "count": 220,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Figurines",
+          "label": "Figurines",
+          "name": "Figurines",
+          "count": 546,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Flint",
+          "label": "Flint",
+          "name": "Flint",
+          "count": 140,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Fragments",
+          "label": "Fragments",
+          "name": "Fragments",
+          "count": 877,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Funerary containers",
+          "label": "Funerary containers",
+          "name": "Funerary containers",
+          "count": 251,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Furniture",
+          "label": "Furniture",
+          "name": "Furniture",
+          "count": 139,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Game pieces",
+          "label": "Game pieces",
+          "name": "Game pieces",
+          "count": 64,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Gesso",
+          "label": "Gesso",
+          "name": "Gesso",
+          "count": 83,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Glass",
+          "label": "Glass",
+          "name": "Glass",
+          "count": 619,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Glass paste",
+          "label": "Glass paste",
+          "name": "Glass paste",
+          "count": 76,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Glaze",
+          "label": "Glaze",
+          "name": "Glaze",
+          "count": 50,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Glazing",
+          "label": "Glazing",
+          "name": "Glazing",
+          "count": 758,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Gold",
+          "label": "Gold",
+          "name": "Gold",
+          "count": 569,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Gold leaf",
+          "label": "Gold leaf",
+          "name": "Gold leaf",
+          "count": 50,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Grass",
+          "label": "Grass",
+          "name": "Grass",
+          "count": 79,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Graywacke",
+          "label": "Graywacke",
+          "name": "Graywacke",
+          "count": 61,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Gypsum",
+          "label": "Gypsum",
+          "name": "Gypsum",
+          "count": 331,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Ink",
+          "label": "Ink",
+          "name": "Ink",
+          "count": 348,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Ivory",
+          "label": "Ivory",
+          "name": "Ivory",
+          "count": 207,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Jars",
+          "label": "Jars",
+          "name": "Jars",
+          "count": 596,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Jasper",
+          "label": "Jasper",
+          "name": "Jasper",
+          "count": 63,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Jewelry",
+          "label": "Jewelry",
+          "name": "Jewelry",
+          "count": 481,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Lapis lazuli",
+          "label": "Lapis lazuli",
+          "name": "Lapis lazuli",
+          "count": 109,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Leather",
+          "label": "Leather",
+          "name": "Leather",
+          "count": 50,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Lids",
+          "label": "Lids",
+          "name": "Lids",
+          "count": 90,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Limestone",
+          "label": "Limestone",
+          "name": "Limestone",
+          "count": 1957,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Linen",
+          "label": "Linen",
+          "name": "Linen",
+          "count": 389,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Metal",
+          "label": "Metal",
+          "name": "Metal",
+          "count": 1485,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Models",
+          "label": "Models",
+          "name": "Models",
+          "count": 261,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Molds",
+          "label": "Molds",
+          "name": "Molds",
+          "count": 120,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Mud",
+          "label": "Mud",
+          "name": "Mud",
+          "count": 674,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Mummies",
+          "label": "Mummies",
+          "name": "Mummies",
+          "count": 101,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Necklaces",
+          "label": "Necklaces",
+          "name": "Necklaces",
+          "count": 187,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Ostraka",
+          "label": "Ostraka",
+          "name": "Ostraka",
+          "count": 151,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Paper",
+          "label": "Paper",
+          "name": "Paper",
+          "count": 267,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Papyrus",
+          "label": "Papyrus",
+          "name": "Papyrus",
+          "count": 137,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Pendants",
+          "label": "Pendants",
+          "name": "Pendants",
+          "count": 256,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Plaques",
+          "label": "Plaques",
+          "name": "Plaques",
+          "count": 156,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Plaster",
+          "label": "Plaster",
+          "name": "Plaster",
+          "count": 134,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Pottery",
+          "label": "Pottery",
+          "name": "Pottery",
+          "count": 1060,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Quartzite",
+          "label": "Quartzite",
+          "name": "Quartzite",
+          "count": 136,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Reed",
+          "label": "Reed",
+          "name": "Reed",
+          "count": 56,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Reliefs",
+          "label": "Reliefs",
+          "name": "Reliefs",
+          "count": 936,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Rings",
+          "label": "Rings",
+          "name": "Rings",
+          "count": 194,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Sandstone",
+          "label": "Sandstone",
+          "name": "Sandstone",
+          "count": 109,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Scarabs",
+          "label": "Scarabs",
+          "name": "Scarabs",
+          "count": 1063,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Sculpture",
+          "label": "Sculpture",
+          "name": "Sculpture",
+          "count": 3748,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Seals",
+          "label": "Seals",
+          "name": "Seals",
+          "count": 229,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Serpentinite",
+          "label": "Serpentinite",
+          "name": "Serpentinite",
+          "count": 72,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Shabti",
+          "label": "Shabti",
+          "name": "Shabti",
+          "count": 944,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Shell",
+          "label": "Shell",
+          "name": "Shell",
+          "count": 84,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Silver",
+          "label": "Silver",
+          "name": "Silver",
+          "count": 129,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Stamps",
+          "label": "Stamps",
+          "name": "Stamps",
+          "count": 54,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Statues",
+          "label": "Statues",
+          "name": "Statues",
+          "count": 747,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Steatite",
+          "label": "Steatite",
+          "name": "Steatite",
+          "count": 897,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Stelae",
+          "label": "Stelae",
+          "name": "Stelae",
+          "count": 117,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Stone",
+          "label": "Stone",
+          "name": "Stone",
+          "count": 153,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tablets",
+          "label": "Tablets",
+          "name": "Tablets",
+          "count": 105,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Talc",
+          "label": "Talc",
+          "name": "Talc",
+          "count": 898,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tempera",
+          "label": "Tempera",
+          "name": "Tempera",
+          "count": 264,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tile",
+          "label": "Tile",
+          "name": "Tile",
+          "count": 100,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Travertine",
+          "label": "Travertine",
+          "name": "Travertine",
+          "count": 319,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Vases",
+          "label": "Vases",
+          "name": "Vases",
+          "count": 144,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Vessels",
+          "label": "Vessels",
+          "name": "Vessels",
+          "count": 965,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Wax",
+          "label": "Wax",
+          "name": "Wax",
+          "count": 1050,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Wood",
+          "label": "Wood",
+          "name": "Wood",
+          "count": 840,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        }
+      ],
+      "facets": null
+    },
+    {
+      "filterGroupId": null,
+      "filterGroupType": null,
+      "filterGroupLabel": null,
+      "filterGroupName": null,
+      "filterGroupItems": null,
+      "id": "geolocation",
+      "label": "Geographic Location",
+      "searchable": true,
+      "name": null,
+      "values": [
+        {
+          "id": "Abu Ṣīr al-Malaq",
+          "label": "Abu Ṣīr al-Malaq",
+          "name": "Abu Ṣīr al-Malaq",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Abydos",
+          "label": "Abydos",
+          "name": "Abydos",
+          "count": 187,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Aegean Sea",
+          "label": "Aegean Sea",
+          "name": "Aegean Sea",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Africa",
+          "label": "Africa",
+          "name": "Africa",
+          "count": 12546,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Akhmim",
+          "label": "Akhmim",
+          "name": "Akhmim",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Al Lisht",
+          "label": "Al Lisht",
+          "name": "Al Lisht",
+          "count": 1956,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Alexandria",
+          "label": "Alexandria",
+          "name": "Alexandria",
+          "count": 9,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Amarna",
+          "label": "Amarna",
+          "name": "Amarna",
+          "count": 402,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Anatolia",
+          "label": "Anatolia",
+          "name": "Anatolia",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Asia",
+          "label": "Asia",
+          "name": "Asia",
+          "count": 17,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Aswan",
+          "label": "Aswan",
+          "name": "Aswan",
+          "count": 73,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Asyut",
+          "label": "Asyut",
+          "name": "Asyut",
+          "count": 35,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Beni Hasan",
+          "label": "Beni Hasan",
+          "name": "Beni Hasan",
+          "count": 10,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cusae",
+          "label": "Cusae",
+          "name": "Cusae",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Cyprus",
+          "label": "Cyprus",
+          "name": "Cyprus",
+          "count": 3,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Dahshur",
+          "label": "Dahshur",
+          "name": "Dahshur",
+          "count": 10,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Edfu",
+          "label": "Edfu",
+          "name": "Edfu",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Egypt",
+          "label": "Egypt",
+          "name": "Egypt",
+          "count": 12508,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "El Giza",
+          "label": "El Giza",
+          "name": "El Giza",
+          "count": 9,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Episkopí",
+          "label": "Episkopí",
+          "name": "Episkopí",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Europe",
+          "label": "Europe",
+          "name": "Europe",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Fayum",
+          "label": "Fayum",
+          "name": "Fayum",
+          "count": 22,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Girga",
+          "label": "Girga",
+          "name": "Girga",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Hawara",
+          "label": "Hawara",
+          "name": "Hawara",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Heliopolis",
+          "label": "Heliopolis",
+          "name": "Heliopolis",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Hermopolis",
+          "label": "Hermopolis",
+          "name": "Hermopolis",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Italy",
+          "label": "Italy",
+          "name": "Italy",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Jazirat Aswān",
+          "label": "Jazirat Aswān",
+          "name": "Jazirat Aswān",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Kom al Ahmar",
+          "label": "Kom al Ahmar",
+          "name": "Kom al Ahmar",
+          "count": 68,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Levant",
+          "label": "Levant",
+          "name": "Levant",
+          "count": 12,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Lower Egypt",
+          "label": "Lower Egypt",
+          "name": "Lower Egypt",
+          "count": 53,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Medinet Habu",
+          "label": "Medinet Habu",
+          "name": "Medinet Habu",
+          "count": 12,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Meidum",
+          "label": "Meidum",
+          "name": "Meidum",
+          "count": 6,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Memphis",
+          "label": "Memphis",
+          "name": "Memphis",
+          "count": 12,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Mersa Matrûh",
+          "label": "Mersa Matrûh",
+          "name": "Mersa Matrûh",
+          "count": 1956,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Miṣr al Qadīmah",
+          "label": "Miṣr al Qadīmah",
+          "name": "Miṣr al Qadīmah",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Naqada",
+          "label": "Naqada",
+          "name": "Naqada",
+          "count": 5,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Nubia",
+          "label": "Nubia",
+          "name": "Nubia",
+          "count": 38,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Oxyrhynchus",
+          "label": "Oxyrhynchus",
+          "name": "Oxyrhynchus",
+          "count": 53,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Philae",
+          "label": "Philae",
+          "name": "Philae",
+          "count": 3,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Qifṭ",
+          "label": "Qifṭ",
+          "name": "Qifṭ",
+          "count": 4,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Saqqara",
+          "label": "Saqqara",
+          "name": "Saqqara",
+          "count": 189,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Serabit el-Khadim",
+          "label": "Serabit el-Khadim",
+          "name": "Serabit el-Khadim",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tall Basṭah",
+          "label": "Tall Basṭah",
+          "name": "Tall Basṭah",
+          "count": 32,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tanis",
+          "label": "Tanis",
+          "name": "Tanis",
+          "count": 4,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Thebes",
+          "label": "Thebes",
+          "name": "Thebes",
+          "count": 5776,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Tivoli",
+          "label": "Tivoli",
+          "name": "Tivoli",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Turkey",
+          "label": "Turkey",
+          "name": "Turkey",
+          "count": 2,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "Upper Egypt",
+          "label": "Upper Egypt",
+          "name": "Upper Egypt",
+          "count": 6890,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        }
+      ],
+      "facets": null
+    },
+    {
+      "filterGroupId": null,
+      "filterGroupType": null,
+      "filterGroupLabel": null,
+      "filterGroupName": null,
+      "filterGroupItems": null,
+      "id": "era",
+      "label": "Date / Era",
+      "searchable": false,
+      "name": null,
+      "values": [
+        {
+          "id": "8000-2000 B.C.",
+          "label": "8000-2000 B.C.",
+          "name": "0",
+          "count": 952,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "2000-1000 B.C.",
+          "label": "2000-1000 B.C.",
+          "name": "1",
+          "count": 7952,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "1000 B.C.-A.D. 1",
+          "label": "1000 B.C.-A.D. 1",
+          "name": "2",
+          "count": 2393,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "A.D. 1-500",
+          "label": "A.D. 1-500",
+          "name": "3",
+          "count": 221,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "A.D. 500-1000",
+          "label": "A.D. 500-1000",
+          "name": "4",
+          "count": 15,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "A.D. 1000-1400",
+          "label": "A.D. 1000-1400",
+          "name": "5",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "A.D. 1900-present",
+          "label": "A.D. 1900-present",
+          "name": "9",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        }
+      ],
+      "facets": null
+    },
+    {
+      "filterGroupId": null,
+      "filterGroupType": null,
+      "filterGroupLabel": null,
+      "filterGroupName": null,
+      "filterGroupItems": null,
+      "id": "department",
+      "label": "Department",
+      "searchable": false,
+      "name": null,
+      "values": [
+        {
+          "id": "20",
+          "label": "Antonio Ratti Textile Center",
+          "name": "Antonio Ratti Textile Center",
+          "count": 1,
+          "selected": false,
+          "hidden": false,
+          "orderId": 0
+        },
+        {
+          "id": "10",
+          "label": "Egyptian Art",
+          "name": "Egyptian Art",
+          "count": 12587,
+          "selected": true,
+          "hidden": false,
+          "orderId": 0
+        }
+      ],
+      "facets": null
+    }
+  ],
+  "totalResults": 20,
+  "totalCollectionResults": 512309,
+  "fromCache": false,
+  "isCorrected": false,
+  "originalQuery": null,
+  "correctedQuery": null,
+  "urlCorrectionRequired": false
+}
