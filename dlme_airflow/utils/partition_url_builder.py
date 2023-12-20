@@ -34,15 +34,7 @@ class PartitionBuilder:
     def _urls_from_provider(self):
         urls = [self.collection_url]
         expression = jsonpath_ng.parse(self.paging_config["urls"])
-        for match in expression.find(self.provider_data):
-            if [match.value for match in expression.find(self.provider_data)]:
-                page_urls = [
-                    match.value for match in expression.find(self.provider_data)
-                ][0]
-            for next in page_urls:
-                if next["url"]:
-                    urls.append(next["url"])
-
+        map(urls.append, [match.value for match in expression.find(self.provider_data)])
         return urls
 
     def _calculate_partitions(self):

@@ -14,7 +14,10 @@ def test_urls_from_provider(requests_mock):
 
     partitionBuilder = PartitionBuilder(
         collection_url=collection_url,
-        paging_config={"urls": "pagination.page_list"},
+        paging_config={
+            "page_data": "pagination",
+            "urls": "pagination.page_list[*].url",
+        },
     )
 
     assert partitionBuilder.urls() == ["https://www.example.com"]
