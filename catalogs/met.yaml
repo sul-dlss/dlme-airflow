@@ -1,0 +1,78 @@
+metadata:
+  version: 1
+  data_path: met
+sources:
+  egyptian:
+    description: "Near East"
+    driver: custom_json
+    args:
+      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=10&showOnly=openAccess&perPage=100
+      paging:
+        increment: 100
+        query_param: offset
+        result_count: "totalResults"
+      record_selector: results
+    metadata:
+      data_path: met/egyptian
+      output_format: json
+      config: met
+      fields:
+        id:
+          path: "id"
+        artist:
+          path: "artist"
+        culture:
+          path: "culture"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "accessionNumber"
+        medium:
+          path: "medium"
+        shown_at:
+          path: "url"
+        thumbnail:
+          path: "image"
+        title:
+          path: "title"
+        teaser_text:
+          path: "teaserText"
+  near-east:
+    description: "Near East"
+    driver: custom_json
+    args:
+      collection_url: https://metmuseum.org/api/collection/collectionlisting?department=3&showOnly=openAccess&perPage=100
+      paging:
+        increment: 100
+        query_param: offset
+        result_count: "totalResults"
+      record_selector: results
+    metadata:
+      data_path: met/near_east
+      output_format: json
+      config: met
+      fields:
+        id:
+          path: "id"
+        artist:
+          path: "artist"
+        culture:
+          path: "culture"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "accessionNumber"
+        medium:
+          path: "medium"
+        shown_at:
+          path: "url"
+        thumbnail:
+          path: "image"
+        title:
+          path: "title"
+        teaser_text:
+          path: "teaserText"

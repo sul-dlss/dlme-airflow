@@ -23,6 +23,7 @@ properties:
           enum:
             - csv
             - custom_json
+            - json
             - iiif_json
             - oai_xml
             - sequential_csv
@@ -38,9 +39,9 @@ properties:
           required: [data_path, config]
       required: [metadata, driver]
       allOf:
-        - if: 
+        - if:
             properties:
-              driver: 
+              driver:
                 const: oai_xml
           then:
             properties:
@@ -52,11 +53,11 @@ properties:
                 required: [metadata_prefix]
         - if:
             properties:
-              driver: 
+              driver:
                 const: custom_json
           then:
             properties:
-              metadata:
+              args:
                 type: object
                 properties:
                   record_selector:

@@ -2,59 +2,249 @@ metadata:
   version: 1
   data_path: loc
 sources:
+  abdul-hamid-books:
+    description: "Abdul-Hamid II Books"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
+      paging:
+        urls: pagination.page_list
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/abdul_hamid_books
+      output_format: json
+      config: loc_abdul_hamid_books
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
+        thumbnail:
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"
+  abdul-hamid-photos:
+    description: "Abdul-Hamid II Photos"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/abdul-hamid-ii/?c=100&fo=json
+      paging:
+        urls: pagination.page_list
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/abdul_hamid_photos
+      output_format: json
+      config: loc_abdul_hamid_photos
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
+        thumbnail:
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"
+  el-taher:
+    description: "El-Taher Collection"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/eltaher-collection/?c=100&fo=json
+      paging:
+        urls: pagination.page_list
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/el_taher
+      output_format: json
+      config: loc_el_taher
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
+        thumbnail:
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"
+  greek-and-armenian-patriarchates:
+    description: "Greek and Armenian Patriarchates"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/greek-and-armenian-patriarchates-of-jerusalem/?c=100&fo=json
+      paging:
+        urls: pagination.page_list
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/greek_and_armenian_patriarchates
+      output_format: json
+      config: loc_greek_and_armenian_patriarchates
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
+        thumbnail:
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"
   persian:
     description: "Persian Language Rare Materials"
     driver: custom_json
     args:
       collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
-      csv_kwargs:
-        dtype:
-          call_number: object
-          date: object
-          format: object
-          genre: object
-          language: object
-          medium: object
-          notes: object
-          rights: object
-          source-collection: object
-          subject: object
-          title: object
-    metadata:
+      paging:
+        urls: pagination.page_list
       record_selector: "content.results"
+    metadata:
       data_path: loc/persian
-      config: loc
+      output_format: json
+      config: loc_persian
       fields:
-        call_number:
-          path: "item.call_number[0]"
-          optional: true
-        date:
-          path: "item.date"
-          optional: true
-        format:
-          path: "item.format"
-          optional: true
-        language:
-          path: "item.language"
-          optional: true
-        medium:
-          path: "item.medium"
-          optional: true
-        notes:
-          path: "item.notes"
-          opional: true
-        subject:
-          path: "item.subjects"
-          optional: true
-        title:
-          path: "item.title"
         id:
           path: "id"
         description:
           path: "description"
-          optional: true
-        rendering:
-          path: "resources[0].url"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
         thumbnail:
-          path: "resources[0].image"
-          optional: true
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"
+  st-catherines:
+    description: "St. Catherine's Monastery"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/manuscripts-in-st-catherines-monastery-mount-sinai/?c=100&fo=json
+      paging:
+        urls: pagination.page_list
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/st_catherines
+      output_format: json
+      config: loc_st_catherines
+      fields:
+        id:
+          path: "id"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location_country:
+          path: "location_country"
+        format:
+          path: "original_format"
+        part_of:
+          path: "part_of"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subject:
+          path: "subject"
+        thumbnail:
+          path: 'thumbnail..@id'
+        title:
+          path: "title"
+        type:
+          path: "type"

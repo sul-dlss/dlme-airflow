@@ -1,155 +1,185 @@
+import time
 import logging
+import intake
 import requests
 import jsonpath_ng
+import pandas as pd
+from typing import Any, Optional, Generator
+from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
-from pandas import DataFrame
-from intake.source.base import DataSource, Schema
 
-
-class JsonSource(DataSource):
-    """
-    JsonSource lets you configure your Intake catalog entry with JSONPath
-    expressions that populate the resulting Pandas DataFrame.
-    See https://github.com/h2non/jsonpath-ng#jsonpath-syntax for what constitues a valid JSONPath.
-
-    For example if your Intake catalog contains:
-
-        args:
-            collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
-        metadata:
-          record_selector: "content.results"
-          fields:
-            id:
-              path: "id",
-            title:
-              path: "title"
-            thumbnail:
-              path: "resources[0].image"
-
-    and the collection URL returns JSON that looks like:
-
-    {
-      "content": {
-        "results": [
-          {
-            "id": "http://www.loc.gov/item/2017498321/",
-            "title": "[Majmuʻah, or, Collection]",
-            "resources": [
-              "image": "https://tile.loc.gov/image-services/iiif/service:amed:plmp:m154:0334/full/pct:6.25/0/default.jpg"
-            ]
-          },
-          {
-            "id": "http://www.loc.gov/item/00313408/",
-            "title": "Sakīnat al-fuz̤alāʼ mawsūm bi-ism-i tārīkhī-i Bahār-i Afghānī",
-            "resources": [
-              "image": "https://tile.loc.gov/image-services/iiif/service:amed:amedpllc:00406537456:0055/full/pct:6.25/0/default.jpg"
-            ]
-          }
-        ]
-      }
-    }
-
-    You would end up with a CSV with three columns (id, title and thumbnail) and two rows.
-    """
-
+class JsonSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "custom_json"
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, metadata={}, csv_kwargs={}):
+    def __init__(
+        self,
+        collection_url,
+        paging=None,
+        increment=None,
+        result_count=None,
+        record_selector=None,
+        dtype=None,
+        metadata=None,
+        wait=None,
+        api_key=None,
+    ):
         super(JsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
-        self.metadata = metadata
-        self.csv_kwargs = csv_kwargs
-        self._setup_json_paths()
+        self.paging = paging
+        self.increment = increment
+        self.result_count = result_count
+        self.record_selector = record_selector
+        self.dtype = dtype
+        self.wait = wait
+        self._page_urls = []
+        self._path_expressions = {}
+        self.record_count = 0
+        self.record_limit = self.metadata.get("record_limit")
+        self.api_key = api_key
 
-    def read(self) -> DataFrame:
-        self._load_metadata()
-        df = self._get_dataframe()
-        return df
+    def _open_collection(self):
+        # either the API passes the next page or we increment with a url pattern
+        self._page_urls.append(self.collection_url)
+        if self.paging:
+            self._page_urls = PartitionBuilder(
+                self.collection_url, self.paging, self.api_key
+            ).urls()
 
-    def _get_schema(self) -> Schema:
-        return Schema(
+    def _open_page(self, page_url: str) -> Optional[list]:
+        resp = self._get(page_url)
+        if resp.status_code == 200:
+            page_result = resp.json()
+            expression = jsonpath_ng.parse(self.record_selector)
+            page_result = _flatten_list(
+                [match.value for match in expression.find(page_result)]
+            )
+        else:
+            logging.error(f"got {resp.status_code} when fetching manifest {page_url}")
+            return None
+        records = [self._extract_specified_fields(record) for record in page_result]
+        for record in records:
+            record.update(self._extract_record_metadata(record.get("metadata", [])))
+        return records
+
+    def _extract_specified_fields(self, json_page_result: dict) -> dict:
+        output: dict[str, Any] = {}
+        for name, info in self.metadata.get("fields").items():
+            expression = self._path_expressions.get(name)
+            result = [match.value for match in expression.find(json_page_result)]
+            if (
+                len(result) < 1
+            ):  # the JSONPath expression didn't find anything in the manifest
+                if info.get("optional") is True:
+                    logging.debug(
+                        f"{json_page_result} missing optional field: '{name}'; searched path: '{expression}'"
+                    )
+                else:
+                    logging.warning(
+                        f"{json_page_result} missing required field: '{name}'; searched path: '{expression}'"
+                    )
+            else:
+                if (
+                    len(result) == 1
+                ):  # the JSONPath expression found exactly one result in the manifest
+                    output[name] = _stringify_and_strip_if_list(result[0])
+                else:  # the JSONPath expression found exactly one result in the manifest
+                    if name not in output:
+                        output[name] = []
+
+                    for data in result:
+                        output[name].append(_stringify_and_strip_if_list(data))
+        return output
+
+    def _extract_record_metadata(self, record_metadata) -> dict[str, list[str]]:
+        output: dict[str, list[str]] = {}
+        for row in record_metadata:
+            name = (
+                row.get("label")
+                .replace(" ", "-")
+                .lower()
+                .replace("(", "")
+                .replace(")", "")
+            )
+            # initialize or append to output[name] based on whether we've seen the label
+            metadata_value = row.get("value")
+            if not metadata_value:
+                continue
+
+            if isinstance(metadata_value[0], dict):
+                metadata_value = metadata_value[0].get("@value")
+
+            if name in output:
+                output[name].append(metadata_value)
+            else:
+                output[name] = [metadata_value]
+
+        # flatten any nested lists into a single list
+        return {k: list(_flatten_list(v)) for (k, v) in output.items()}
+
+    def _get_partition(self, i) -> pd.DataFrame:
+        # if we are over the defined limit return an empty DataFrame right away
+        if self.record_limit is not None and self.record_count > self.record_limit:
+            return pd.DataFrame()
+
+        result = self._open_page(self._page_urls[i])
+
+        # If the dictionary has AT LEAST one value that is not None return a
+        # DataFrame with the keys as columns, and the values as a row.
+        # Otherwise return an empty DataFrame that can be concatenated.
+        # This will prevent rows with all empty values from being generated
+        # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
+
+        if result is not None and len(result) > 0:
+            self.record_count = len(result)
+            return pd.DataFrame(result)
+        else:
+            logging.warning(f"{self._page_urls[i]} resulted in empty DataFrame")
+            return pd.DataFrame()
+
+    def _get_schema(self):
+        for name, info in self.metadata.get("fields", {}).items():
+            self._path_expressions[name] = jsonpath_ng.parse(info.get("path"))
+        self._open_collection()
+        return intake.source.base.Schema(
             datashape=None,
-            dtype=self.csv_kwargs.get("dtype"),
+            dtype=self.dtype,
             shape=None,
-            npartitions=1,
+            npartitions=len(self._page_urls),
+            extra_metadata={},
         )
 
-    def _get_dataframe(self) -> DataFrame:
-        resp = requests.get(self.collection_url)
-        if resp.status_code != 200:
-            raise Exception(
-                f"HTTP request for {self.collection_url} resulted in {resp.status_code}"
-            )
-        return self._process_json(resp.json())
+    def _get(self, url):
+        headers = {}
+        if self.api_key:
+            headers["api_key"] = self.api_key
 
-    def _process_json(self, data) -> list:
-        # record_selector usually identifies a single list, but it could
-        # identify more than one if the jsonpath allows for that
-        record_containers = self.record_selector.find(data)
-        if len(record_containers) == 0:
-            logging.warn(
-                f"Couldn't find records selector: {self.record_selector.expression}"
-            )
-            return []
+        if self.wait:
+            logging.info(f"waiting {self.wait} seconds")
+            time.sleep(self.wait)
+        return requests.get(url, headers=headers)
 
-        objects = []
-        for record_container in record_containers:
-            for rec in record_container.value:
-                obj = {}
-                for field in self.field_paths:
-                    path = field["path"]
-                    name = field["name"]
-                    result = path.find(rec)
-                    if len(result) == 1:
-                        obj[name] = result[0].value
-                    elif len(result) > 1:
-                        obj[name] = [m.value for m in result]
-                    elif not field["optional"]:
-                        logging.warn(f"{name} is not optional")
-                objects.append(obj)
+    def read(self):
+        self._load_metadata()
+        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        if self.record_limit:
+            return df.head(self.record_limit)
+        else:
+            return df
 
-        return DataFrame(objects)
 
-    def _setup_json_paths(self):
-        # get the record selector and parse it
-        path = self.metadata.get("record_selector")
-        if path is None:
-            raise Exception("JsonSource metadata must define a record_selector")
-        try:
-            self.record_selector = jsonpath_ng.parse(path)
-        except Exception as e:
-            raise Exception(f"Invalid JSONPath record_selector {path}: {e}")
+def _stringify_and_strip_if_list(possible_list) -> list[str]:
+    if isinstance(possible_list, list):
+        return [str(elt).strip() for elt in possible_list]
+    else:
+        return possible_list
 
-        # get the mapping of field names to jsonpaths
-        fields = self.metadata.get("fields")
-        if fields is None or type(fields) is not dict:
-            raise Exception("JsonSource metadata must define fields as an object")
 
-        self.field_paths = []
-        for field_name, field_info in fields.items():
-            if type(field_info) != dict:
-                raise Exception(
-                    f"The value for metadata field {field_name} must be an object"
-                )
-
-            path = field_info.get("path")
-            if path is None:
-                raise Exception(f"The metadata field {field_name} must define a path")
-
-            try:
-                path = jsonpath_ng.parse(path)
-            except Exception as e:
-                raise Exception(f"Invalid {field_name} JSONPath {path}: {e}")
-
-            self.field_paths.append(
-                {
-                    "name": field_name,
-                    "path": path,
-                    "optional": field_info.get("optional"),
-                }
-            )
-
-        logging.info(f"Found jsonpaths: {self.field_paths}")
+def _flatten_list(lst: list) -> Generator:
+    for item in lst:
+        if type(item) == list:
+            yield from _flatten_list(item)
+        else:
+            yield item
