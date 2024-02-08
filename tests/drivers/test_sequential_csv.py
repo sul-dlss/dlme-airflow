@@ -18,3 +18,9 @@ def test_multi():
     src = SequentialCsvSource(urlpath=files)
     df = src.read()
     assert len(df) == 20
+
+
+def test_tsv():
+    src = SequentialCsvSource(urlpath="tests/data/csv/example1.tsv")
+    df = src.read()
+    assert len(df) == 4

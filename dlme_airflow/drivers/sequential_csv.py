@@ -36,8 +36,8 @@ class SequentialCsvSource(DataSource):
             logging.info(f"skipping partition because record limit {self.record_limit}")
             return pandas.DataFrame()
         logging.info(f"reading {self.urls[i]}")
-        if self.urls[i].endswith('.tsv'):
-            df = pandas.read_csv(self.urls[i], sep='\t')
+        if self.urls[i].endswith(".tsv"):
+            df = pandas.read_csv(self.urls[i], sep="\t")
         else:
             df = pandas.read_csv(self.urls[i])
         self.record_count += len(df)
