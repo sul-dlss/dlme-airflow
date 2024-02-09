@@ -109,6 +109,12 @@ sources:
     description: "University of Newcastle"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  openiti:
+    args:
+      path: catalogs/openiti.yaml
+    description: Open Islamicate Text Initiative
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   penn:
     args:
       path: catalogs/penn.yaml
@@ -119,6 +125,18 @@ sources:
     args:
       path: catalogs/princeton.yaml
     description: Princeton University
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  qalamos:
+    args:
+      path: catalogs/qalamos.yaml
+    description: Qalamos, a project aiming to convert mss metadata in Germany to digital form
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  qnl:
+    args:
+      path: catalogs/qnl.yaml
+    description: Qatar National Library
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   sakip_sabanci_museum:
@@ -137,18 +155,6 @@ sources:
     args:
       path: catalogs/texas_tech.yaml
     description: Texas Tech Uninversity
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
-  qalamos:
-    args:
-      path: catalogs/qalamos.yaml
-    description: Qalamos, a project aiming to convert mss metadata in Germany to digital form
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
-  qnl:
-    args:
-      path: catalogs/qnl.yaml
-    description: Qatar National Library
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   ucla:

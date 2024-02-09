@@ -1,0 +1,34 @@
+metadata:
+  version: 1
+  schedule: "20 0 15 Jan,Apr,Jul,Oct *"
+  data_path: "openiti"
+sources:
+  openiti:
+    description: Open Islamicate Text Initiative
+    driver: sequential_csv
+    metadata:
+      data_path: openiti
+      config: openiti
+      fields:
+        version_uri:
+          name_in_dataframe: "version_uri"
+          path: "version_uri"
+    args:
+      csv_kwargs:
+        blocksize: null
+        dtype:
+          version_uri: object
+          date: string
+          title_lat: object
+          title_ar: object
+          author_lat: object
+          author_ar: object
+          ed_info: object
+          tags: object
+          text_url: object
+          one2all_data_url: object
+          one2all_stats_url: object
+          one2all_vis_url: object
+          pairwise_data_url: object
+      urlpath:
+        - https://raw.githubusercontent.com/OpenITI/kitab-metadata-automation/master/kitab_metadata_for_DLME_latest_release.tsv

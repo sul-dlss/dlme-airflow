@@ -5,7 +5,7 @@ from intake.source.base import DataSource, Schema
 
 
 class SequentialCsvSource(DataSource):
-    """Loads multiple CSV files sequentially with pandas rather than in parallel
+    """Loads multiple CSV or TSV files sequentially with pandas rather than in parallel
     with dask. This can be helpful in situations where dask is aggravating the
     web server that is publishing the CSV data with HEAD requests and things
     that it is not able to respond to in parallel.
@@ -36,7 +36,10 @@ class SequentialCsvSource(DataSource):
             logging.info(f"skipping partition because record limit {self.record_limit}")
             return pandas.DataFrame()
         logging.info(f"reading {self.urls[i]}")
-        df = pandas.read_csv(self.urls[i])
+        if self.urls[i].endswith(".tsv"):
+            df = pandas.read_csv(self.urls[i], sep="\t")
+        else:
+            df = pandas.read_csv(self.urls[i])
         self.record_count += len(df)
         return df
 
