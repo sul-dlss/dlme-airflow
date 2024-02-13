@@ -16,6 +16,9 @@ from dlme_airflow.utils.qnl import (
 from dlme_airflow.utils.add_iiif_v3_source import (
     merge_dataframes,
 )
+from dlme_airflow.utils.walters import (
+    remove_walters_non_relevant,
+)
 from dlme_airflow.utils.yale import (
     remove_babylonian_non_relevant,
 )

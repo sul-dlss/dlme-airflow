@@ -163,6 +163,12 @@ sources:
     description: University of California, Los Angeles
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  walters:
+    args:
+      path: catalogs/walters.yaml
+    description: Walters Art Museum
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   yale:
     args:
       path: catalogs/yale.yaml

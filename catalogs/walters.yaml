@@ -1,0 +1,47 @@
+metadata:
+  version: 1
+  data_path: walters
+  schedule: "0 15 25 Jan,Apr,Jul,Oct *"
+sources:
+  mena:
+    description: MENA Collection
+    driver: sequential_csv
+    metadata:
+      data_path: walters/mena
+      post_harvest: "remove_walters_non_relevant"
+      config: walters
+      fields:
+        id:
+          name_in_dataframe: "ObjectID"
+          path: "ObjectID"
+    args:
+      urlpath:
+        - https://raw.githubusercontent.com/WaltersArtMuseum/api-thewalters-org/main/art.csv
+      csv_kwargs:
+        dtype:
+          ObjectID: int64
+          ObjectNumber: object
+          SortNumber: object
+          ObjectName: object
+          DateBeginYear: object
+          DateEndYear: object
+          DateText: object
+          Title: object
+          Dimensions: object
+          Medium: object
+          Style: object
+          Culture: object
+          Inscriptions: object
+          Classification: object
+          Period: object
+          ResourceURL: object
+          Description: float64
+          CreditLine: object
+          Provenance: object
+          Dynasty: object
+          Reign: object
+          RelatedObjects: object
+          Images: object
+          CollectionID: object
+          CollectionName: object
+          MuseumLocation: object
