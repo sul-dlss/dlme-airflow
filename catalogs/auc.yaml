@@ -9,7 +9,7 @@ sources:
     metadata:
       data_path: auc/abdullah_freres
       config: auc
-      schedule: "15 11 * * *"
+      schedule: "0 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -56,7 +56,7 @@ sources:
     metadata:
       data_path: auc/ahmed_toughan_collection
       config: auc
-      schedule: "15 1 * * *"
+      schedule: "10 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -103,7 +103,7 @@ sources:
     metadata:
       data_path: auc/akhir_saah_magazines
       config: auc
-      schedule: "15 2 * * *"
+      schedule: "20 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -150,7 +150,7 @@ sources:
     metadata:
       data_path: auc/al_kawakib_magazines
       config: auc
-      schedule: "15 7 * * *"
+      schedule: "30 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -197,7 +197,7 @@ sources:
     metadata:
       data_path: auc/al_musawwar
       config: auc
-      schedule: "13 0 15 Jan,Apr,Jul,Oct *"
+      schedule: "40 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -272,7 +272,7 @@ sources:
     metadata:
       data_path: auc/alexandria_bombardment
       config: auc
-      schedule: "13 0 14 Jan,Apr,Jul,Oct *"
+      schedule: "50 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -298,7 +298,7 @@ sources:
     metadata:
       data_path: auc/ancient_egyptian_paintings
       config: auc
-      schedule: "45 2 * * *"
+      schedule: "0 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -368,7 +368,7 @@ sources:
     metadata:
       data_path: auc/bint_al_nil
       config: auc
-      schedule: "13 0 13 Jan,Apr,Jul,Oct *"
+      schedule: "10 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -424,7 +424,7 @@ sources:
     metadata:
       data_path: auc/campus_photos
       config: auc
-      schedule: "13 0 12 Jan,Apr,Jul,Oct *"
+      schedule: "20 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -480,7 +480,7 @@ sources:
     metadata:
       data_path: auc/coptic
       config: auc
-      schedule: "20 2 * * *"
+      schedule: "30 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -536,7 +536,7 @@ sources:
     metadata:
       data_path: auc/creswell
       config: auc
-      schedule: "20 2 * * *"
+      schedule: "40 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -592,7 +592,7 @@ sources:
     metadata:
       data_path: auc/egyptian_gardens
       config: auc
-      schedule: "13 0 10 Jan,Apr,Jul,Oct *"
+      schedule: "50 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -640,7 +640,7 @@ sources:
     metadata:
       data_path: auc/fathy
       config: auc
-      schedule: "13 0 9 Jan,Apr,Jul,Oct *"
+      schedule: "0 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -688,7 +688,7 @@ sources:
     metadata:
       data_path: auc/historical_magazines
       config: auc
-      schedule: "13 0 8 Jan,Apr,Jul,Oct *"
+      schedule: "10 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -735,7 +735,7 @@ sources:
     metadata:
       data_path: auc/hopkins
       config: auc
-      schedule: "13 0 7 Jan,Apr,Jul,Oct *"
+      schedule: "20 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -785,7 +785,7 @@ sources:
     metadata:
       data_path: auc/islamic-aa
       config: auc
-      schedule: "13 0 6 Jan,Apr,Jul,Oct *"
+      schedule: "30 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -835,7 +835,7 @@ sources:
     metadata:
       data_path: auc/kraus_meyerhof
       config: auc
-      schedule: "13 0 5 Jan,Apr,Jul,Oct *"
+      schedule: "40 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -861,7 +861,7 @@ sources:
     metadata:
       data_path: auc/le_mondain_egyptien_magazines
       config: auc
-      schedule: "30 9 * * *"
+      schedule: "50 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -934,7 +934,7 @@ sources:
     metadata:
       data_path: auc/maps
       config: auc
-      schedule: "13 0 4 Jan,Apr,Jul,Oct *"
+      schedule: "0 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -986,7 +986,7 @@ sources:
     metadata:
       data_path: auc/maritz
       config: auc
-      schedule: "13 0 3 Jan,Apr,Jul,Oct *"
+      schedule: "10 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1037,7 +1037,7 @@ sources:
     metadata:
       data_path: auc/napoleonic_egypt
       config: auc
-      schedule: "13 0 2 Jan,Apr,Jul,Oct *"
+      schedule: "20 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1085,7 +1085,7 @@ sources:
     metadata:
       data_path: auc/parker
       config: auc
-      schedule: "13 0 16 Jan,Apr,Jul,Oct *"
+      schedule: "30 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1133,7 +1133,7 @@ sources:
     metadata:
       data_path: auc/postcards
       config: auc
-      schedule: "13 0 17 Jan,Apr,Jul,Oct *"
+      schedule: "40 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1182,7 +1182,7 @@ sources:
     metadata:
       data_path: auc/rare_books
       config: auc
-      schedule: "13 0 18 Jan,Apr,Jul,Oct *"
+      schedule: "50 04 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1229,7 +1229,7 @@ sources:
     metadata:
       data_path: auc/saleh_lamei
       config: auc
-      schedule: "30 5 * * *"
+      schedule: "0 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1276,7 +1276,7 @@ sources:
     metadata:
       data_path: auc/sphinx
       config: auc
-      schedule: "13 0 19 Jan,Apr,Jul,Oct *"
+      schedule: "10 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1332,7 +1332,7 @@ sources:
     metadata:
       data_path: auc/student_news
       config: auc
-      schedule: "20 2 * * *"
+      schedule: "20 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1384,7 +1384,7 @@ sources:
     metadata:
       data_path: auc/taxiphote_slides
       config: auc
-      schedule: "13 0 20 Jan,Apr,Jul,Oct *"
+      schedule: "30 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1431,7 +1431,7 @@ sources:
     metadata:
       data_path: auc/tutwiler_photographs
       config: auc
-      schedule: "30 7 * * *"
+      schedule: "40 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1487,7 +1487,7 @@ sources:
     metadata:
       data_path: auc/underwood
       config: auc
-      schedule: "13 0 21 Jan,Apr,Jul,Oct *"
+      schedule: "50 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1549,7 +1549,7 @@ sources:
     metadata:
       data_path: auc/university_on_the_square
       config: auc
-      schedule: "13 0 22 Jan,Apr,Jul,Oct *"
+      schedule: "0 06 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1599,7 +1599,7 @@ sources:
     metadata:
       data_path: auc/van_leo_photographs
       config: auc
-      schedule: "13 0 23 Jan,Apr,Jul,Oct *"
+      schedule: "10 06 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -1667,7 +1667,7 @@ sources:
     metadata:
       data_path: auc/wassef
       config: auc
-      schedule: "13 0 24 Jan,Apr,Jul,Oct *"
+      schedule: "20 06 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'

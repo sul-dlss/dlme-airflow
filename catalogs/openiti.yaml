@@ -10,7 +10,7 @@ sources:
       data_path: openiti
       config: openiti
       fields:
-        version_uri:
+        id:
           name_in_dataframe: "version_uri"
           path: "version_uri"
     args:
