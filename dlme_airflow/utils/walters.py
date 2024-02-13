@@ -49,13 +49,19 @@ def remove_walters_non_relevant(**kwargs):
     if os.path.isfile(working_csv):
         df = pd.read_csv(working_csv)
         # Filter out non relevant records and over write the csv
-        mena_culture = df[df["Culture"].isin(RELEVANT_CULTURES)]
-        islamic_art_collection = df[df["CollectionName"] == "Islamic Art"]
-
-        df = pd.concat([mena_culture, islamic_art_collection]).drop_duplicates(
-            subset="ObjectID"
-        )
+        df = filter_df(df)
 
         df.to_csv(working_csv)
 
     return working_csv
+
+
+def filter_df(df):
+    mena_culture = df[df["Culture"].isin(RELEVANT_CULTURES)]
+    islamic_art_collection = df[df["CollectionName"] == "Islamic Art"]
+
+    df = pd.concat([mena_culture, islamic_art_collection]).drop_duplicates(
+        subset="ObjectID"
+    )
+
+    return df
