@@ -19,7 +19,6 @@ class PartitionBuilder:
         self.api_key = api_key
 
     def urls(self):
-        # self.provider_data = self._fetch_provider_data()
         if self.paging_config.get("pages_url"):
             return self._prefetch_page_urls()
 
@@ -34,7 +33,11 @@ class PartitionBuilder:
     def _urls_from_provider(self):
         urls = [self.collection_url]
         expression = jsonpath_ng.parse(self.paging_config["urls"])
-        map(urls.append, [match.value for match in expression.find(self.provider_data)])
+        [
+            urls.append(page["url"])
+            for page in expression.find(self.provider_data)[0].value
+            if page["url"] is not None
+        ]
         return urls
 
     def _calculate_partitions(self):

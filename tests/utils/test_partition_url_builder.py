@@ -15,8 +15,7 @@ def test_urls_from_provider(requests_mock):
     partitionBuilder = PartitionBuilder(
         collection_url=collection_url,
         paging_config={
-            "page_data": "pagination",
-            "urls": "pagination.page_list[*].url",
+            "urls": "pagination.page_list",
         },
     )
 
