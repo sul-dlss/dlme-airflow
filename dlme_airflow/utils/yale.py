@@ -1,6 +1,6 @@
 # /bin/python
 import os
-import pandas as pd
+from dlme_airflow.utils.read_df import read_datafile_with_lists
 
 
 # Objects from these countries will be suppressed
@@ -22,13 +22,18 @@ NON_RELEVANT_COUNTRIES = [
 
 
 def remove_babylonian_non_relevant(**kwargs):
-    coll = kwargs["collection"]
-    working_csv = coll.datafile("csv")
+    """Called by the Airflow workflow to merge records in multiple languages"""
+    collection = kwargs["collection"]
+    data_file = collection.datafile("json")
+    if os.path.isfile(data_file):
+        df = read_datafile_with_lists(data_file)
+        df = filter_df(df)
+        df.to_json(data_file, orient="records", force_ascii=False)
 
-    if os.path.isfile(working_csv):
-        df = pd.read_csv(working_csv)
-        # Filter out non relevant records and over write the csv
-        df = df[~df["geographic_country"].isin(NON_RELEVANT_COUNTRIES)]
-        df.to_csv(working_csv)
+    return data_file
 
-    return working_csv
+
+def filter_df(df):
+    df = df[~df["geographic_country"].isin(NON_RELEVANT_COUNTRIES)]
+
+    return df

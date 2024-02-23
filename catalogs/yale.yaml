@@ -8,6 +8,7 @@ sources:
     driver: sequential_csv
     metadata:
       data_path: yale/babylonian
+      output_format: json
       post_harvest: "remove_babylonian_non_relevant"
       config: yale_babylonian
       fields:

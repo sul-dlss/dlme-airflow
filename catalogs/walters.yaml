@@ -8,6 +8,7 @@ sources:
     driver: sequential_csv
     metadata:
       data_path: walters/mena
+      output_format: json
       post_harvest: "remove_walters_non_relevant"
       config: walters
       fields:

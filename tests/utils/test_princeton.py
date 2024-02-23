@@ -18,7 +18,7 @@ def test_remove_ymdi(mocker, mock_dataframe_to_csv):
     provider = Provider("princeton")
     params = {"collection": provider.get_collection("islamic_manuscripts")}
 
-    assert "working/princeton/islamic_manuscripts/data.csv" in remove_ymdi(**params)
+    assert "working/princeton/islamic_manuscripts/data.json" in remove_ymdi(**params)
 
 
 def test_filter_df():
@@ -32,3 +32,14 @@ def test_filter_df():
 
     # make sure the correct number of rows were removed
     assert df.shape[0] == 95
+
+    df = pandas.read_json("tests/data/json/princeton.json")
+
+    # make sure the DataFrame looks how we expect
+    assert df.shape[0] == 6
+
+    # merge the rows
+    df = filter_df(df)
+
+    # make sure the correct number of rows were removed
+    assert df.shape[0] == 5

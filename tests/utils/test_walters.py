@@ -18,7 +18,7 @@ def test_remove_walters_non_relevant(mocker, mock_dataframe_to_csv):
     provider = Provider("walters")
     params = {"collection": provider.get_collection("mena")}
 
-    assert "working/walters/mena/data.csv" in remove_walters_non_relevant(**params)
+    assert "working/walters/mena/data.json" in remove_walters_non_relevant(**params)
 
 
 def test_filter_df():
@@ -33,3 +33,14 @@ def test_filter_df():
     # make sure the correct rows were removed
     assert df.shape[0] == 3
     assert set(df.ObjectID) == {14, 74, 98}
+
+    df = pandas.read_json("tests/data/json/walters.json")
+
+    # make sure the DataFrame looks how we expect
+    assert df.shape[0] == 18
+
+    # remove non MENA records
+    df = filter_df(df)
+
+    # make sure the correct rows were removed
+    assert df.shape[0] == 17

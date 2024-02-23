@@ -1,26 +1,33 @@
 # /bin/python
 import os
-import pandas as pd
+from dlme_airflow.utils.read_df import read_datafile_with_lists
 
 
 def remove_ymdi(**kwargs):
-    coll = kwargs["collection"]
-    working_csv = coll.datafile("csv")
+    """Called by the Airflow workflow to merge records in multiple languages"""
+    collection = kwargs["collection"]
+    data_file = collection.datafile("json")
+    if os.path.isfile(data_file):
+        df = read_datafile_with_lists(data_file)
+        df = filter_df(df)
+        df.to_json(data_file, orient="records", force_ascii=False)
 
-    if os.path.isfile(working_csv):
-        df = pd.read_csv(working_csv)
-        filter_df(df)
-        df.to_csv(working_csv)
-
-    return working_csv
+    return data_file
 
 
 def filter_df(df):
     # Filter out ymdi records and overwrite the csv
-    df = df[
-        ~df["member-of-collections"].str.contains(
-            "Yemeni Manuscript Digitization Initiative"
-        )
-    ]
+    if type(df["member-of-collections"][0]) == str:
+        df = df[
+            ~df["member-of-collections"].str.contains(
+                "Yemeni Manuscript Digitization Initiative"
+            )
+        ]
+    else:
+        df = df[
+            ~df["member-of-collections"].map(
+                set(["Yemeni Manuscript Digitization Initiative"]).issubset
+            )
+        ]
 
     return df
