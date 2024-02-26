@@ -46,6 +46,34 @@ def test_calculate_partitions(requests_mock):
     ]
 
 
+# This test covers the hack for LOC paging
+def test_calculate_loc_partitions(requests_mock):
+    collection_url = "https://www.example.com"
+    # mock the http call to return some real loc.gov data
+    page_data = json.load(open("tests/data/json/loc_paging.json"))
+    requests_mock.get(
+        collection_url,
+        json=page_data,
+    )
+
+    partitionBuilder = PartitionBuilder(
+        collection_url=collection_url,
+        paging_config={
+            "increment": 1,
+            "query_param": "sp",
+            "result_count": "pagination.total",
+            "skip_first": True,
+        },
+    )
+
+    assert partitionBuilder.urls() == [
+        "https://www.example.com",
+        "https://www.example.com&sp=2",
+        "https://www.example.com&sp=3",
+        "https://www.example.com&sp=4",
+    ]
+
+
 def test_prefetch_page_urls(requests_mock):
     collection_url = "https://www.example.com/object/"
     # mock the http call to return some real loc.gov data
