@@ -43,11 +43,19 @@ class PartitionBuilder:
     def _calculate_partitions(self):
         urls = [self.collection_url]
         increment = offset = self.paging_config["increment"]
+        offset_param = self.paging_config["query_param"]
         expression = jsonpath_ng.parse(self.paging_config["result_count"])
         record_count = expression.find(self.provider_data)[0].value
 
+        # This is a hack to skip the first page of results because the
+        # LOC paging is 0 based with a 1 increment and the "sp=1" page is skipped.
+        # Therefore example paging for 4 pages is sp=0, sp=2, sp=3, and sp=4
+        if self.paging_config.get("skip_first"):
+            offset = self.paging_config["increment"] + 1
+            record_count += 1
+
         while offset < record_count:
-            urls.append(f"{self.collection_url}&offset={offset}")
+            urls.append(f"{self.collection_url}&{offset_param}={offset}")
             offset += increment
 
         return urls
