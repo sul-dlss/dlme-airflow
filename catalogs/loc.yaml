@@ -16,7 +16,7 @@ sources:
     metadata:
       data_path: loc/abdul_hamid_books
       output_format: json
-      config: loc_abdul_hamid_books
+      config: loc
       fields:
         id:
           path: "id"
@@ -60,7 +60,7 @@ sources:
     metadata:
       data_path: loc/abdul_hamid_photos
       output_format: json
-      config: loc_abdul_hamid_photos
+      config: loc
       fields:
         id:
           path: "id"
@@ -104,7 +104,7 @@ sources:
     metadata:
       data_path: loc/el_taher
       output_format: json
-      config: loc_el_taher
+      config: loc
       fields:
         id:
           path: "id"
@@ -148,7 +148,7 @@ sources:
     metadata:
       data_path: loc/greek_and_armenian_patriarchates
       output_format: json
-      config: loc_greek_and_armenian_patriarchates
+      config: loc
       fields:
         id:
           path: "id"
@@ -192,7 +192,7 @@ sources:
     metadata:
       data_path: loc/persian
       output_format: json
-      config: loc_persian
+      config: loc
       fields:
         id:
           path: "id"
@@ -236,7 +236,7 @@ sources:
     metadata:
       data_path: loc/st_catherines
       output_format: json
-      config: loc_st_catherines
+      config: loc
       fields:
         id:
           path: "id"
