@@ -8,7 +8,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii-books/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/abdul_hamid_books
@@ -49,7 +52,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/abdul-hamid-ii/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/abdul_hamid_photos
@@ -90,7 +96,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/eltaher-collection/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/el_taher
@@ -131,7 +140,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/greek-and-armenian-patriarchates-of-jerusalem/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/greek_and_armenian_patriarchates
@@ -172,7 +184,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/persian
@@ -213,7 +228,10 @@ sources:
     args:
       collection_url: https://www.loc.gov/collections/manuscripts-in-st-catherines-monastery-mount-sinai/?c=100&fo=json
       paging:
-        urls: pagination.page_list
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
       record_selector: "content.results"
     metadata:
       data_path: loc/st_catherines
