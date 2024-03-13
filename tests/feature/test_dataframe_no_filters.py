@@ -17,9 +17,7 @@ def mock_collection_datafile(monkeypatch, tmp_path):
     monkeypatch.setattr(Collection, "datafile", mock_datafile)
 
 
-def test_filter_dataframe_without_filters(
-    mocker, mock_collection_datafile, tmp_path
-):
+def test_filter_dataframe_without_filters(mocker, mock_collection_datafile, tmp_path):
     provider = Provider("aims")
     params = {"collection": provider.get_collection("aims")}
     source_dataframe = pandas.read_json("tests/data/json/walters/unfiltered.json")

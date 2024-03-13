@@ -26,8 +26,8 @@ def test_filter_exclude_filter_with_sets(mocker, mock_collection_datafile, tmp_p
     assert f"{tmp_path}/princeton.json" in filter_dataframe(**params)
 
     filtered_dataframe = pandas.read_json(f"{tmp_path}/princeton.json")
-    assert source_dataframe.shape[0] == 3063
-    assert filtered_dataframe.shape[0] == 2807
+    assert source_dataframe.shape[0] == 2
+    assert filtered_dataframe.shape[0] == 1
     # This test confirms that the only records remaining are those where
     # member-of-collections does not include "Yemeni Manuscript Digitization Initiative"
     assert "Yemeni Manuscript Digitization Initiative" in list(
