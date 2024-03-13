@@ -9,7 +9,58 @@ sources:
     metadata:
       data_path: walters/mena
       output_format: json
-      post_harvest: "remove_walters_non_relevant"
+      filters:
+        Culture:
+          - Egyptian
+          - Egyptian-Islamic
+          - Anatolian
+          - Anatolian?
+          - Akkadian
+          - Armenian
+          - Babylonian
+          - Byzantine
+          - Byzantine; Christian
+          - Christian; Armenian
+          - Christian; Byzantine; Armenian
+          - Coptic
+          - Early Christian
+          - Gnostic
+          - Gutian or Neo-Sumerian
+          - Iranian-Islamic
+          - Islamic
+          - Mamluk
+          - Mesopotamia
+          - Mesopotamian
+          - Neo-Assyrian
+          - Neo-Babylonian
+          - Neo-Babylonian or Achaemenid
+          - Neo-Sumerian
+          - Neo-Sumerian or Babylonian
+          - Neo-Sumerian; Ur III
+          - Old Babylonian
+          - Ottoman
+          - Ottoman-Islamic
+          - Persian
+          - Persian~Islamic
+          - Sumerian
+          - Syrian
+          - Syro-Palestine
+        CollectionName:
+          - Ancient Art
+          - Renaissance and Baroque Art
+          - South and Southeast Asian Art
+          - East Asian Art
+          - 18th and 19th Century Art
+          - Medieval Art
+          - Manuscripts
+          - African Art
+          - Ancient Americas
+          - Modern and Contemporary Art
+          - Incunabula
+          - Rare Books
+          - Archives
+          - Frame Department
+          - Chamber of Arts and Wonders
       config: walters
       fields:
         id:
@@ -46,3 +97,5 @@ sources:
           CollectionID: object
           CollectionName: object
           MuseumLocation: object
+          Creators: int64
+          Exhibitions: int64
