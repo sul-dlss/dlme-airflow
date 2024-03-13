@@ -7,9 +7,6 @@ from airflow.utils.task_group import TaskGroup
 
 # While it looks like they're not used these are called dynamically by run_post_harvest
 from dlme_airflow.utils.add_thumbnails import add_thumbnails
-from dlme_airflow.utils.princeton import (
-    remove_ymdi,
-)
 from dlme_airflow.utils.qnl import (
     merge_records,
 )

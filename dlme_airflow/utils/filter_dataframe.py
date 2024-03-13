@@ -5,11 +5,15 @@ from dlme_airflow.utils.read_df import read_datafile_with_lists
 
 def filter_by_field(df, field, filters):
     """Filter records by field values."""
+
     if "include" in filters:
         df = df[df[field].isin(filters["include"])]
 
     if "exclude" in filters:
-        df = df[~df[field].isin(filters["exclude"])]
+        if isinstance(df[field][0], str):
+            df = df[~df[field].isin(filters["exclude"])]
+        else:
+            df = df[~df[field].map(set(filters["exclude"]).issubset)]
 
     return df
 

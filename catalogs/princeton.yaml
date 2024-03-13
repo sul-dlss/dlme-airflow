@@ -30,7 +30,10 @@ sources:
     metadata:
       data_path: princeton/islamic_manuscripts
       output_format: json
-      post_harvest: "post_harvest_df"
+      filters:
+        member-of-collections:
+          exclude:
+            - Yemeni Manuscript Digitization Initiative
       config: princeton
       fields:
         id:
