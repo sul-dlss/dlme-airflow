@@ -1,12 +1,17 @@
 # /bin/python
 import os
-import pandas as pd
 from dlme_airflow.utils.read_df import read_datafile_with_lists
 
 
-def filter_by_field(df, field, permitted_values):
+def filter_by_field(df, field, filters):
     """Filter records by field values."""
-    return df[df[field].isin(permitted_values)]
+    if "include" in filters:
+        df = df[df[field].isin(filters["include"])]
+
+    if "exclude" in filters:
+        df = df[~df[field].isin(filters["exclude"])]
+
+    return df
 
 
 def filter_dataframe(**kwargs):
@@ -17,9 +22,9 @@ def filter_dataframe(**kwargs):
 
     if os.path.isfile(data_file):
         df = read_datafile_with_lists(data_file)
-        for field, permitted_values in filters.items():
-            df = filter_by_field(df, field, permitted_values)
-    
+        for field, filters in filters.items():
+            df = filter_by_field(df, field, filters)
+
         df.to_json(data_file, orient="records", force_ascii=False)
 
     return data_file

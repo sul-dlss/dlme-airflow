@@ -33,6 +33,6 @@ class Collection(object):
             return os.path.join(working_data_path, self.data_path(), filename)
         else:
             raise Exception(f"Unsupported data output format: {format}")
-    
+
     def filters(self):
         return self.catalog.metadata.get("filters", {})

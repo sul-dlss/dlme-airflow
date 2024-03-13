@@ -9,7 +9,22 @@ sources:
     metadata:
       data_path: yale/babylonian
       output_format: json
-      post_harvest: "remove_babylonian_non_relevant"
+      filters:
+        geographic_country:
+          exclude:
+            - Canada
+            - China
+            - Ecuador
+            - Guatemala
+            - Greece
+            - Honduras
+            - Italy
+            - Korea
+            - Malaysia
+            - Mexico
+            - Peru
+            - South Africa
+            - USA
       config: yale_babylonian
       fields:
         id:
