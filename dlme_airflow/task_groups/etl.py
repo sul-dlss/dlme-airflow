@@ -10,6 +10,7 @@ from airflow.operators.dummy import DummyOperator
 
 from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task
+from dlme_airflow.tasks.filter_data import build_filter_data_task
 from dlme_airflow.tasks.transform import build_transform_task
 from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.archive import archive_task
@@ -65,6 +66,9 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         else:
             harvest >> load_data
 
+        filter_data = build_filter_data_task(collection, collection_etl_taskgroup, dag)
+        load_data >> filter_data
+
         # harvest and transform with an optional post_harvest_task if catalog metadata wants it
         if post_harvest:
             logging.info(f"adding post harvest task for {collection.label()}")
@@ -72,10 +76,10 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
                 collection, collection_etl_taskgroup, dag
             )
             # harvest >> validate_harvest_task >> [load_data, skip_load_data]
-            load_data >> post_harvest_task >> transform
+            filter_data >> post_harvest_task >> transform
         else:
             # harvest >> validate_harvest_task >> [load_data, skip_load_data]
-            load_data >> transform
+            filter_data >> transform
 
         transform >> validate_transformation
 
