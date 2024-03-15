@@ -3,7 +3,7 @@ metadata:
   data_path: newcastle
   schedule: "0 0 1 Jan,Apr,Jul,Oct *"
 sources:
-  newcastle:
+  gertrude-bell:
     description: "Gertrude Bell Archive"
     driver: xml
     metadata:
@@ -41,6 +41,9 @@ sources:
         letter_recipient:
           path: ".//field_recipient_for_page"
           optional: true
+        thumbnail:
+          path: ".//field_thumbnail_image"
+          optional: true
         shown_at:
           path: ".//view_node"
           optional: true
@@ -52,4 +55,4 @@ sources:
           path: ".//type"
           optional: true
     args:
-      collection_url: https://gertrudebell.ncl.ac.uk/sites/default/files/views_data_export/dlme_export_data_export_1/1700065077/dlme_export.xml
+      collection_url: https://gertrudebell.ncl.ac.uk/sites/default/files/views_data_export/dlme_export_data_export_1/1707866284/dlme_export.xml

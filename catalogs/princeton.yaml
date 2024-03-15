@@ -29,7 +29,11 @@ sources:
       dtype:
     metadata:
       data_path: princeton/islamic_manuscripts
-      post_harvest: "remove_ymdi"
+      output_format: json
+      filters:
+        member-of-collections:
+          exclude:
+            - Yemeni Manuscript Digitization Initiative
       config: princeton
       fields:
         id:
@@ -47,6 +51,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/movie_posters
+      output_format: json
       config: princeton
       fields:
         id:
@@ -64,6 +69,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/papyri
+      output_format: json
       config: princeton
       fields:
         id:
@@ -81,6 +87,7 @@ sources:
       dtype:
     metadata:
       data_path: princeton/shahnameh
+      output_format: json
       config: princeton
       fields:
         id:

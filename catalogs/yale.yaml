@@ -8,7 +8,23 @@ sources:
     driver: sequential_csv
     metadata:
       data_path: yale/babylonian
-      post_harvest: "remove_babylonian_non_relevant"
+      output_format: json
+      filters:
+        geographic_country:
+          exclude:
+            - Canada
+            - China
+            - Ecuador
+            - Guatemala
+            - Greece
+            - Honduras
+            - Italy
+            - Korea
+            - Malaysia
+            - Mexico
+            - Peru
+            - South Africa
+            - USA
       config: yale_babylonian
       fields:
         id:
