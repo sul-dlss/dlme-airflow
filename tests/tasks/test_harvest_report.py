@@ -227,6 +227,17 @@ def test_resolve_invalid_thumbnail_url(
     assert len(mapping_report.thumbnail_image_urls) == 0
 
 
+def test_resolve_null_thumbnail_url(
+    requests_mock, thumbnail_image_urls, unresolvable_thumbnails
+):
+    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    record["agg_preview"]["wr_id"] = None
+    mapping_report.resolve_thumbnail_url(record)
+
+    assert len(mapping_report.unresolvable_thumbnails) == 1
+    assert len(mapping_report.thumbnail_image_urls) == 0
+
+
 @pytest.fixture
 def counts_global(monkeypatch):
     """Monkeypatch global variable"""
