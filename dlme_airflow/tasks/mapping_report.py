@@ -162,8 +162,10 @@ def image_size(content) -> tuple[int, int]:
 
 def validate_url(url):
     """Checks if url has valid form."""
-    if validators.url(url):
-        return True
+    if url is not None:
+        if validators.url(url):
+            return True
+        return False
     return False
 
 
