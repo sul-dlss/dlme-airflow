@@ -74,6 +74,19 @@ def test_marc21(requests_mock):
     assert len(df.iloc[0]["035_a"]) == 3, "much field 035 subfield a contains 3 values"
 
 
+def test_oai_dpla(requests_mock):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=oai_dpla&verb=ListRecords",
+        text=open("tests/data/xml/oai-dpla.xml").read(),
+    )
+    oai = OaiXmlSource("https://example.org", "oai_dpla")
+    df = oai.read()
+    assert len(df) == 25, "expected number of rows"
+    assert len(df.columns) == 14, "expected number of columns"
+    assert "title" in df.columns, "extracte title"
+    assert "description" in df.columns, "extracted description"
+
+
 def test_construct_fields(requests_mock):
     requests_mock.get(
         "https://example.org?metadataPrefix=mods_no_ocr&verb=ListRecords",
