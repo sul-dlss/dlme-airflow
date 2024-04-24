@@ -9,7 +9,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:v7h1gc1z-89112
       wait: 1
       allow_expiration: true
@@ -30,7 +30,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:d2xg9000zz-89112
       wait: 1
       allow_expiration: true
@@ -49,7 +49,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:x1s7s81z-89112
       wait: 1
       allow_expiration: true
@@ -68,7 +68,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:054jh200zz-89112
       wait: 1
       allow_expiration: true
@@ -87,7 +87,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:nmk7d61z-89112
       wait: 2
       allow_expiration: true
@@ -108,7 +108,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:d8nwr000zz-89112
       wait: 1
       allow_expiration: true
@@ -128,7 +128,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:fhgr9000zz-89112
       wait: 1
       allow_expiration: true
@@ -147,7 +147,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:8k45qj1z-89112
       wait: 1
       allow_expiration: true
@@ -166,7 +166,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:fmt5h200zz-89112
       wait: 1
       allow_expiration: true
@@ -185,7 +185,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:txk75c1z-89112
       wait: 2
       allow_expiration: true
@@ -204,7 +204,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:wnt7cb1z-89112
       wait: 1
       allow_expiration: true
@@ -223,7 +223,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:k2b9wk1z-89112
       wait: 1
       allow_expiration: true
@@ -242,7 +242,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:txkqb200zz-89112
       wait: 1
       allow_expiration: true
@@ -261,7 +261,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:fkmrw000zz-89112
       wait: 1
       allow_expiration: true
@@ -280,7 +280,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:xbt9fd1z-89112
       wait: 1
       allow_expiration: true
@@ -299,7 +299,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:1tc6jf1z-89112
       wait: 1
       allow_expiration: true
@@ -318,7 +318,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:j4sh8000zz-89112
       wait: 1
       allow_expiration: true
@@ -337,7 +337,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:wv36971z-89112
       wait: 1
       allow_expiration: true
@@ -356,7 +356,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:jzg6vc1z-89112
       wait: 1
       allow_expiration: true
@@ -375,7 +375,7 @@ sources:
     driver: oai_xml
     args:
       collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dc
+      metadata_prefix: oai_dpla
       set: member_of_collection_ids_ssim:sqh0kc1z-89112
       wait: 1
       allow_expiration: true

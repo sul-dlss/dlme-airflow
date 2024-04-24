@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/assets/blacklight_oai_provider/oai2-f5bbeed678ad7f0e8aa64ed892344db51dbb4beca820d135ec51e711df82385e.xsl"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2024-04-24T20:53:28Z</responseDate>
+  <request metadataPrefix="oai_dpla" set="member_of_collection_ids_ssim:d2xg9000zz-89112" verb="ListRecords">https://ursus.library.ucla.edu/catalog/oai?verb=Identify</request>
+  <ListRecords>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvdk</identifier>
+        <datestamp>2023-04-27T20:21:42Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 23: Fragments from Three Ritual Books</dc:title>
+          <dcterms:alternative>Mashtots‘</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4974</dc:rights>
+          <dc:date>16th-17th Century</dc:date>
+          <dc:date>1501/1700</dc:date>
+          <dc:description>Traditional Armenian binding. Damaged brown leather over wooden boards. Blind-tooled borders, but extremely  worn. No flap, clasps, or cloth boublures. Traditional raised endbands of blue, red and white silk (?) evident but in poor condition. Edges darkened. Text sewn on three cords, using three V-notches, but board attachment no longer evident. Slips now appear to be adhered between the leather covering and the wooden boards. Both boards have two unused holes near spine where loops would have been attached – these boards must have been reused, because there are now three sewing supports which do not correspond to the two holes in the boards. White cloth spine lining.</dc:description>
+          <dc:description>The binding and some leaves are loose. The book has suffered damage from fire and dampness. Some leaves have been repaired.</dc:description>
+          <dc:description>Fragment I has no illiustrations. Fragment II has three simple initials, all slightly different. Fol. 24  has a tubular abbreviation of Tēr (Lord) drawn in dark brown ink, and shaded in brick red and gray. The initial on fol. 36 is a tubular E drawn in fine lines of black ink matching that of the text, with no other color. Fol. 46v has a simple TR, with fine black outlines, edges with red and blue.Fragment III has seven fine sets of initials (tubular and bird-form) with corresponding marginalia, all elegantly drawn in very fine purple lines, shaded in brown and picked out in red and blue (fols. 50, 61, 66, 73v, 88v, 100, and 104v).</dc:description>
+          <dc:description>Fragments of three Ritual Books, herewith described individually: Fragment I: Text in bolorgir, written in one column of 22-26 lines. Subtitles mostly in bolorgir, others in notragir; initials throughout the text in large erkat’agir, all in black ink.Fragment II: Text in bolorgir, written in one column of 15-18 lines. Subtitles in red bolorgir, and initials throughout the text in large erkat’agir, in red ink.Fragment III: Text in bolorgir, written in one column of 20 lines. Subtitles in red bolorgir, and initials throughout the text in large erkat’agir, also in red. Fragment I consists of one quire of 10 leaves. The quires of Fragments II and III appear to have had 12 leaves each.</dc:description>
+          <dc:description>Fol. 60v. in lower margin in minuscule bolorgir.Fol. 112v. In lower margin in minuscule bolorgir.Fols. 112v-113, 113v, 113v-114,</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 23</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvdk</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026z5tz/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvdk</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvgm</identifier>
+        <datestamp>2023-04-27T20:21:48Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 25: Ritual Book</dc:title>
+          <dcterms:alternative>Mashtots'</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4972</dc:rights>
+          <dc:date>17th/18th Century</dc:date>
+          <dc:date>1601/1800</dc:date>
+          <dc:description>Traditional Armenian binding, damaged.  Half of textblock is detached, and the other half is loose but is tied to the binding by string at the central board attachment loop. Spine rebacked with large piece of alum-tawed, yellowed leather which  covers half of both wooden boards. Original dark brown leather  (damaged) blind-tooled on front with guilloche borders and a central rectangle of knotwork.  Back board has same guilloche borders and a central  circular design with scattered concentric almond tool. Fore-edge flap extant, but is only half the thickness of the book. Two holes in back board are evidence of fastenings, but three holes can be seen on front board where there were once three closure pins. Fragmentary traditional red, white and black raised endbands. Cloth doublures of red, white, and brown floral printed design. Head only covered red. No notches.</dc:description>
+          <dc:description>The book is in a poor state of preservation. Desides the damaged binding, some leaves have suffered damage from dampness; several leaves are partially torn, and a number of folios have been scribbled on.There are lacunae in the text and many leaves have been misbound. Folios are also missing at the beginning and end of the book. Folios 113-149, representing quires 2 through 6 (with a number of lacunae), should have been bound at the beginning of the codex, that is, before fol. 1.</dc:description>
+          <dc:description>There is only one illustrated page (fol. 36) in the codex, consisting of a small headpiece (measuring 10.5 x 3.8 cm.) with corresponding birdform initial and barely preserved marginal palmette.The headpiece was hesitantly drawn in very fine black lines. Its frame follows the underlying rulings for the text and margins. The field is occupied by a rinceau of vines forming interlocking hearts, with trilobed buds centered in each. Colors are confidently handled; the framed field outside the rinceau is an even green, and the other forms are modeled in progressively lighter bands of red, gray-blue, or orange.The outstretched blue wing of the bird-initial, striped in red, is the only spot where directly juxtaposed colors survive. Only the inner edges of the marginal palmette survive.</dc:description>
+          <dc:description>Text in notragir, written in one column of 27-29 lines. Subtitles in red notragir, and initials throughout the text in large erkat’agir or notragir. There are many lacunae in the codex and numerous leaves have been misbound; hence a number of gatherings have an uneven number of leaves. The codex at one time had at least 15 quires, with gatherings of 12 leaves.</dc:description>
+          <dc:description>None. Contemporary inscriptions: Fols. 35v, 46.  Later inscriptions: Fol. 35v. In bolorgir. Fol. 35v. In left-hand margin in bolorgir. Fol. 102v. In upper margin in notragir. Fol. 130. In upper margin in modern sheghagir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 25</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvgm</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00277qgh/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvgm</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvjn</identifier>
+        <datestamp>2023-04-27T20:21:56Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 27: Ritual Book</dc:title>
+          <dcterms:alternative>Mashtots'</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4970</dc:rights>
+          <dc:date>1807</dc:date>
+          <dc:date>1807</dc:date>
+          <dc:description>Rebound, 19th century half-calf, with brown calfskin and yellow marbled paper sides over pasteboards. Squares only at fore-edge. Spine has four false bands, blind-tooled with a simple leaf design and outlined with a gold-tooled fillet. “CYRIL” gold-tooled on spine. Faded red edges.This is not the original binding of the textblock, but is a remboitage. Text of blue paper appears to be stab-sewn; a piece of paper was glued onto the spine, and the entire textblock was then glued into this previously used case binding.</dc:description>
+          <dc:description>The MS is in a good state of preservation. Folios are missing at the beginning and end of the book. The scribe has paginated the codex, totaling 464 pages. Because several sets of numbers have been inadvertently repeated, we have renumbered the leaves, now totaling 243 folios.</dc:description>
+          <dc:description>The codex is illustrated with two headpieces, one full-page illustration, five marginal ornaments, and seven decorative initials. The illumination in this MS is an amalgam of Armenian traditions and European conventions. The headpieces (fols. 10 and 42) are laid out according to Armenian tradition: |e| lines, with square knots filling the boxes formed by the intersection of the framing lines. At the top are leafy finials flanking a central plamette. The influence of European book illustration is most pronounced in the drawing of the vegetal motifs which fill the frame – fol. 10, a band of floral buds, and fol. 42, a fleshy vine. The handling of inks in these drawings is foreign to the medieval tradition. The lines are feathery, and free pink and gray washes produce a smoky, atmospheric effect. The leaves and vines have a convoluted, almost fleshy vitality. On fol. 42, the vine thrusts up out of the frame to join the leaf palmette above in an expression of independent life which is out of character with the decorative role of these motifs in the Armenian tradition.The Baptism scene (fol. 10v) is an ink drawing. The extensive use of hatching suggests that it is modeled on a European engraving. Christ stands in the river, blessing John, who half kneels on the bank, supporting himself on his staff and extending a cup (?) toward Christ. On the far bank a very somber angel holds drapery, probably Christ’s robes. The figure stops rather abruptly at the knees, without quite conveying the impression that he is kneeling. A dove descends from a bright opening in the cloudy sky. This is all set in a landscape including distant hills a building, and a tree. The artist had considerable difficulty n controlling the source of light, and in modeling the bodies.The two headpieces are accompanied by marginal ornaments with floral designs. Of the remaining three marginalia, one is formed of tulips (fol. 46v), one is a cross surmounted by a crown (fol. 53), and one is heraldic type of cross with four equal petal-shaped arms radiating from a small central circle. The seven decorative initials are bird-form letters drawn in black ink and dray shading.</dc:description>
+          <dc:description>Text in exquisite notragir, written in one column of 18 lines. Subtitles and opening lines of text in bolorgir, and large erkat’agir initials throughout the codex. Twenty-nine quires of 8 leaves each, numbered with the letters of the Armenian alphabet written in bolorgir in the lower margin of the page.</dc:description>
+          <dc:description>Fols. 8v-9. In notragir.Fol. 99. In minuscule notragir.Fol. 172v. In minuscule notragir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 27</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvjn</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz002734q4/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvjn</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hv6g</identifier>
+        <datestamp>2023-04-27T20:21:59Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 14: The Shield of Faith by Mik’ayēl Ch‘amch‘ian</dc:title>
+          <dcterms:alternative>Vahan Havatoy</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4982</dc:rights>
+          <dc:description>19th century half-leather, dark brown, with blue and brown marbled paper over pasteboards. Paper pastedown. No endbands. Spine is divided into six panels by gold-tooled fillets, with an acorn stamp gold-tooled into each panel. Edges lightly sprinkled in red. Text paper is pale purple. Not a traditional Armenian binding. Embossed stamp in upper right corner throughout text reads: "J. WHATMAN [or WEATMAN?] 1941" around a crown.</dc:description>
+          <dc:description>Very good state of preservation.</dc:description>
+          <dc:description>The MS is a copy of the abridged version of "The Shield of Faith, Concerning the Orthodoxy of the Armenian Church" (Vahan havatoy ułłap῾aṙut῾ean Hayastaneayc῾ Yekełec῾voy), authored by the Venice Mekhitarist Father Mik῾ayēl Č’amčian (1738-1823). According to Ormanian, the original unabridged manuscript of this work, a copy of which he saw in the library of the Antonian Armenian Catholic monastic order at Constantinople, consisted of 924 handwritten pages (see Ormanian, 1816, Azgapatum, para. 2165). In this work, which was written during the years 1776-1816, Č’amčian endeavored to defend the "orthodoxy" of the Armenian church against Catholic Armenian charges that it had deviated from the truth. There were ten such charges, namely, that the Armenians: 1) reject the decisions of the Council of Chalcedon; 2)proclaim only one nature in Christ; 3)reject the procession of the Holy Spirit from the Father and the Son; 4) hold an erroneous position toward life in the hereafter; 5) recite "Holy God" with the addition of "who were crucified for us"; 6) celebrate Christmas on January 6; 7)do not dilute the Eucharistic wine; 8) do not conform to the observance of the Roman church'es rules and commandments; 9) reject extreme unction; 10) reject the primacy of the Roman see. Discussing each of these accusations, Č’amčian concludes that the charges are groundless and that "there is no justification for calling the Armenians deviationists or heretics; rather, they must be recognized as orthodox".</dc:description>
+          <dc:description>Fols. 59-60. The unabridged Text and the Verdict of the InquisitionFol. 60-60vFol. 61Fol. 61v</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 14</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hv6g</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026x3rh/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hv6g</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w39b</identifier>
+        <datestamp>2023-04-27T20:22:00Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 77: Readings from the Book of Daniel</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4939</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 77</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w39b</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00291cmw/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w39b</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w3dw</identifier>
+        <datestamp>2023-04-27T20:22:01Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 82: Fragments of a Menologium</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4936</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 82</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w3dw</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00291z5c/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w3dw</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w32q</identifier>
+        <datestamp>2023-04-27T20:22:22Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 61: Nerses Šnorhali's Works</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4949</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 61</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w32q</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0028xmq2/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w32q</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w337</identifier>
+        <datestamp>2023-04-27T20:22:27Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 62: Collection of Canticles</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4948</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 62</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w337</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0028z66z/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w337</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz002gxc6d</identifier>
+        <datestamp>2023-04-27T20:22:30Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 18: Menologium</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4979</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 18</dc:identifier>
+          <dc:identifier>ark:/21198/zz002gxc6d</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz002gz5g3/full/600,/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz002gxc6d</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hv70</identifier>
+        <datestamp>2023-04-27T20:22:34Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 17: Menologium and Sermonary</dc:title>
+          <dcterms:alternative>Yaysmavurk' ew Kʻaroz girkʻ</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4980</dc:rights>
+          <dc:date>17th century</dc:date>
+          <dc:date>1601/1700</dc:date>
+          <dc:description>None: At present, textblock is crudely stab-sewn with thick cord wrapped through stabbed hole and spine. Fragments of original leather and cloth spine lining can be seen on spine. Text was previously sewn over four vellum supports.</dc:description>
+          <dc:description>Poor state of preservation. Folios missing at the beginning and end of the codex. Some leaves have suffered damage from dampness. Crude outline drawings in black ink have been added in more recent times. The margin of fol. 4 has been cut out, probably to remove the decoration.</dc:description>
+          <dc:description>The MS is illustrated with 13 marginal ornaments and 14 large decorative initials.  Each illumination is based on a drawing in uneven lines of black ink. Up to folio 48v, the drawings have been overpainted in bright, uneven washes of red, blue, and purple. Little blank paper is reserved, and the resulting images look flat. Starting with fol. 48v, the ink drawings have not been colored. On folios 1-73, the decorative initials correspond to the marginal illuminations. These letters are all bird-form. Often they deviate awkwardly from traditional dispositions of the birds; for example, the letter A is composed if three birds of equal size, two joined at their tails to form the vertical body of the letter, and the third comprising a greatly oversized horizontal ligature. Starting with fol. 74v, the letters are no longer bird-form, and there are no marginalia.Fol. 86v, one of the older leaves at the end, that do not belong to this codex, carries a badly preserved one-column headpieces and a marginal palmette, drawn in magenta and highlighted in blue. Their softly modeled forms recall the illumination of MS 5.</dc:description>
+          <dc:description>Paper; 89 folios. Text in notragir, written in one column on 28 lines. Subtitles of texts in red bolorgir. Large decorative initials on the opening lines of text: the first lines of text are in magenta arkat’agir, the second in red bolorgir, the rest of the page in notragir. Numerous initials throughout the codex in red notragir capital letters.There are two sets of quire numbers. According to the original numbering, the codex consisted of 8 quires, but at least 8 leaves are missing at the beginning and others at the end of the book.  The first numbered quire is on fol. 9v, designating it as quire 2. The remaining numbered quires have a varying number of leaves: no. 3 has fourteen, no. 4 has sixteen, nos. 5, 6, and 12 have twelve, and no. 7 has ten leaves. According to the second set of quire numbers, the original codex consisted of 14 numbered quires.</dc:description>
+          <dc:description>Prayers/inscriptions written by scribe:Fols, 17, 20, 37v, 48v, 51v, 54, 57v, 61v, 65, and 79vLater inscriptions:Fols. 38v-39r. Written in lower margins of both pages in crude handwriting.Fol. 59v. In left margin in bolorgir.Fol. 85v. Two illegible inscriptions, one in left margin and the other in lower margin.Fol. 86. In lower margin in notragir.Fol. 86v. At the end of text in left column in notragir.Fol. 86v. In lower margin in crude notragir.Fol. 87v. In left and lower margins in crude notragir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 17</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hv70</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026xg6j/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hv70</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hv5z</identifier>
+        <datestamp>2023-04-27T20:22:39Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 12: Miscellany</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4925</dc:rights>
+          <dc:date>1742</dc:date>
+          <dc:date>1742</dc:date>
+          <dc:description>Not a traditional Armenian binding. Rebound, probably in 19th century.  Upper board wanting. Lower board and spine of brown calfskin over pasteboards, gold-tooled. Spine also gold-tooled, forming three panels, each with a large floral stamp in center. Gilt edges. White paper pastedown. First quire loose. Sewn on two single cords, kettlestitches evident.  Shallow notches. Fragments of blue and red silk threads from endbands at head. Gutter repairs, trimmed edges (cutting into marginal notations), and leaves bound upside down (fols. 267, 269) are all evidence of rebinding.</dc:description>
+          <dc:description>The codex is in a rather poor state of preservation. The front cover and folios 1-4 are missing, and folios 5-9 are loose. A considerable number of leaves are moth-eaten; many of these have been partially repaired. Many leaves are smudged. Quite a few pages are misnumbered by the scribe. The homily numbered 17 on folio 254 should be corrected to read 15. The index to the commentary should be folios 270, 268, 269, 267, 271-276. Folios 267 and 269 are bound upside down. This index should have been bound at the beginning of the codex.</dc:description>
+          <dc:description>The codex is illustrated with seven one-column headpieces (fols. 12v, 37v, 77v, 97v, 122v, 158, and 211). Six of these mark the six chapters of the “Analysis of the Gospel of Matthew,” and the seventh (fol. 211) marks the beginning of the sermons. Additionally, there are 21 large decorative initials marking the opening lines of the major divisions of the codex. With one exception, the illuminations are drawn in the magenta ink used for rubrics. Traces of blue and orange remain on fol. 12v. The headpiece on fol. 211 was drawn in brown ink and filled in, rather erratically, in orange and magenta. Its design is awkward; a pattern of square knots framing buds had to be abandoned in mid-knot, leaving loop.Twenty of the 21 initials are formed by birds, and one has ornate designs. Three of these bird-form initials (fols. 220, 225, and 229v) were colored in blue.</dc:description>
+          <dc:description>Text in bolorgir, written in two columns. Columns separated by border lines in purple ink. Subtitles and other divisions throughout the codex in red ink. Index on fols. 267-276 is in minuscule notragir. Corrections of text in the margins in notragir. The codex has two sets of numbers. The book originally consisted of 560 pages numbered by the scribe with the letters of the Armenian alphabet, written in the left and right upper corners of the page The ten surviving folios of the codex are not numbered. The second set of numbers was done by Dr. Minasian at a time when the codex consisted of 278 folios. Since then however, fols. 1-4 have disappeared. Twenty-three quires numbered with the letters of the Armenian alphabet, written in large bolorgir in the lower margin of the page, mostly in black but occasionally also in red ink. The quires usually have gatherings of twelve leaves each. Because leaves are missing at the beginning, quire 1 has five and quire 2 has eleven leaves; quires 20 and 23 have eight leaves, and quire 22 has six.</dc:description>
+          <dc:description>Fol. 209v. Principle colophon in bolorgirFol. 77. In the same bolorgir as the textFol. 96v. In the same bolorgir as the textFol. 158. In the same bolorgir as the textFol. 235. In the same bolorgir as the textFol. 237v. In the same bolorgir as the textFol. 277. In miuscule notragir.Fol. 278v. On blank endsheet, in Minasian's handwriting.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 12</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hv5z</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00272h9s/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hv5z</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0025djx7</identifier>
+        <datestamp>2023-04-27T20:22:45Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 2: Four Gospels</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4986</dc:rights>
+          <dc:date>1327</dc:date>
+          <dc:date>1327</dc:date>
+          <dc:description>None. Textblock sewn and mostly intact (initial quires are detached from rest of textblock). Sewn on cords using a herringbone stitch. Traditional Armenian sewing structure, altough  present sewing is probably not the original, since there are two unusual notches visible. Fragment of cloth spine remains. Edges colored red.</dc:description>
+          <dc:description>Poor state of preservation. The penciled pagination shows that  originally the codex consisted of 259 folios, at least 40 of which had been removed before the book entered the Minasian collection. While retaining the original pagination, we have renumbered the surviving leaves to reflect the current state of the codex, and its contents are given according to this foliation. Because the covers are missing, the spine of the book and several leaves are loose. The edges of the leaves are frayed and many folios are partially torn. The codex also lacks the usual Letter of Eusebius to Carpianus, the Canon Tables, and the Prefacesand Indexes to the gospels. THere are some scribbles in Persian on fol. 219v.</dc:description>
+          <dc:description>It appeas that vandals have removed all the folios that once contained the codex's major illuminations, which probably included the usual rubricated Letter of Eusebius to Carpianus, the Canon Tables, the portraits of the evangelists, and the illustrated incipit pages of the individual gospels. The surviving folios contain 117 marginal illuminations, marking the pericope numbers. Around each number, a compass was used to rule a circle, which served as a guide for palmettes, birds, and floral and geometric designs, painted in a very light sepia wash. These swift sketches may have been intended to receive color later.</dc:description>
+          <dc:description>Text in large bolorgir in black ink, written in two columns of 19-21 lines. Initials and first lines of pericopes in large erkat'agir in red ink. Eusebian section numbers in margins against text; concordance numbers in lower margins.According to the principal colophon (fols. 218v-219), the MS was written by the priest Astuacatur, during the pontificate of Catholicos Zak'aria I (Sefedinian, 1296-1327), of the see if Aghtamar. Although the book was initally commissioned by the priests Karapet and Hayrapet, it was actually acquired by Hayrapet. Although the book's okace if execution is unknown, it can perhaps safely be assumed that it was written in teh region of Lake Van.</dc:description>
+          <dc:description>Fols. 218v-219. Principal colophon in large bolorgir.Fols. 219. Later inscription in minuscule bolorgir.Fol 219v. Later inscription in bolorgir.Fol. 219. Later inscription in notargir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 2</dc:identifier>
+          <dc:identifier>ark:/21198/zz0025djx7</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0025djzr/full/600,/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0025djx7</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz002gxc5w</identifier>
+        <datestamp>2023-04-27T20:23:04Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 16: Menologium</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4981</dc:rights>
+          <dc:date>17th Century</dc:date>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 16</dc:identifier>
+          <dc:identifier>ark:/21198/zz002gxc5w</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz002gxcs6/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz002gxc5w</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w3fd</identifier>
+        <datestamp>2023-04-27T20:23:04Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 87: Readings from the Book of Daniel</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4932</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 87</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w3fd</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00291zfh/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w3fd</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w358</identifier>
+        <datestamp>2023-04-27T20:23:07Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 64: Minstrel Yart'un Olli's Daftar</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4946</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 64</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w358</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0028zkfw/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w358</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz002gxcbg</identifier>
+        <datestamp>2023-04-27T20:23:13Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 68: Amirdovlat' Amasiac'i's "Useless to the Ignorant"</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4945</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 68</dc:identifier>
+          <dc:identifier>ark:/21198/zz002gxcbg</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz002h0w0v/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz002gxcbg</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w30p</identifier>
+        <datestamp>2023-04-27T20:23:16Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 53: Theological and Other Texts</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4952</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 53</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w30p</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0028wzds/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w30p</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w34r</identifier>
+        <datestamp>2023-04-27T20:23:19Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 63: Book of Odes</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4947</dc:rights>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 63</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w34r</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0028zfwp/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w34r</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvts</identifier>
+        <datestamp>2023-04-27T20:23:28Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 36: Liturgical Texts (Fragments)</dc:title>
+          <dcterms:alternative>T ōnats’oyts’, Zhamagirk’, Gandzaran</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4962</dc:rights>
+          <dc:date>15th/16th century</dc:date>
+          <dc:date>1401/1600</dc:date>
+          <dc:description>Traditional 17th/18th-cenuty Armenian binding, from New Julfa, in excellent condition. Light brown calf over thin wooden boards. Upper board blind-tooled with two concentric borders filled with two different leaf tools, and outlined by a double fillet. Central rectangle has a stamp of the crowned Virgin and Child standing on a crescent moon. Lower cover blind-tooled with same borders, but central stamp depicts a Crucifixion over a skull with a saint at the foot of the cross. The stamps are similar to others used in New Julfa at this time. Spine has three slightly raised bands forming four panels, each blind-stamped with a symmetrically shaped foliated tool. Fore-edge flap extant and blind-tooled with same stamps as those forming the borders. Flap lined with a red, yellow and green vertically striped cloth, probably silk. Two holes on each board indicate previous placement of clasp, now wanting, except for fragment of one wooden pin on upper board. Traditional raised endbands of red, black, and white silk, in excellent condition. Paper pastedowns. Edges uncolored, but stained. Three V-notches.</dc:description>
+          <dc:description>Good state of preservation. Leaves missing at the beginning of the book. The edges of the textblock have been somewhat damaged by fire, and several pages have suffered damage from dampness. Fols. 15-18 have been rewritten to replace missing leaves.</dc:description>
+          <dc:description>Fragment I (fols. 1-127) has three small headpieces with marginal palmettes and tubular initials (fols. 4v, 47v, and 108v). There are also 12 marginal ornaments consisting of palmettes, crosses, or tempietti, and 13 tubular and bird-form initials, all of which mark the divisions of the text. A confident black line, apparently in the same ink as the text, underlies all the illuminations. Many initials and palmettes (particularly after fol. 82) add only the orange-pink used in the text for rubrics, but others, and the headpieces, use s fuller palette adding magenta, blue, and a faint yellow-brown wash.The headpiece on fol. 4v is more elaborate than the others. It is almost square. With a fleur-de-lis cut out at the bottom edge. The remainder of the field is filled with a  vine interlocking around clusters of buds and leaves. The frame is banded  in two shades of magenta which are used along with blue, on the vines. The background is a faint brown wash. The marginal palmette and incipit initials are crisply picked out in the same colors, with the addition of the orange used for rubrics.The headpieces on fols. 47v and 108v (If they can be called headpieces, since they occur in the middle of the pages) are narrower, the field in both filled with a simple rinceau made up of a single loop of forming two knots and three ovals.Fragment II (fols. 128-222)has 20 decorative initials (bird-form, tubular, and simple expanded outlines) with corresponding marginal palmettes, birds, plants, and tempietti. The illuminations in this fragment are hesitantly drawn in heavy black lines, and are frequently retraced. Most have areas colored in a drab, reddish purple; some also have yellow washes. The palmette on fol. 196v was left uncolored. The palmette forms often show some difficulty with the traditional geometric combinations of leaf forms. More free-form plant drawings (e.g. the clump of grasses on fol. 150v) are most successful.Fragment III (fols. 223-228) contains no illumination.</dc:description>
+          <dc:description>Fragments of three different liturgical texts bound together. Each fragment is described separately as follows:Fragment I: Text in minuscule bolorgir, and initials throughout the text in red notragir capitals.Fragment II: Text in notragir, written in one column of 18 lines. Subtitles in red ink, and initials throughout the text in red notragir capitals. Musical notations on fols. 128-139v, 165v-201.Fragment III:  Text in notragir, written in one column of 16 lines. Some subtitles in bolorgir and others in notragir in red ink, and initials in red notragir capitals.With few exceptions, the quires in the three fragments are not numbered.</dc:description>
+          <dc:description>Fol. 47v. In same script as the text.Fol. 139v. Later inscription in notragir.Fol. 222. Later inscription in crude notragir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 36</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvts</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00274967/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvts</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvrr</identifier>
+        <datestamp>2023-04-27T20:23:34Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 34: Hymnal (Fragments)</dc:title>
+          <dcterms:alternative>Sharaknots'</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4964</dc:rights>
+          <dc:date>16th Century</dc:date>
+          <dc:date>1501/1600</dc:date>
+          <dc:description>None. Textblock sewn and intact, but some quires loose. Many pages torn, some repaired. Traditional Armenian structure evident. Textblock is somewhat distorted at spine. Spine lined with beige cloth. Endban tie-downs through spine lining from primary sewing extant. Herringbone stitch used on four cord supports; four V-notches.</dc:description>
+          <dc:description>Poor state of preservation. Folios missing at beginning and end of the book; also lacunae between fols. 8 and 9, 30 and 31, 32 and 33, 35 and 36, 38 and 39, 58 and 59, 80 and 81, 109 and 110, 122 and 123, 134 and 135, 147 and 148, 156 and 157, 158 and 159, 170 and 171, 182 and 183. Moreover, the entire codex has suffered damage from fire. Fol. 147 has been partially torn off, and some marginal ornaments are partially cut off. Many leaves have been repaired.</dc:description>
+          <dc:description>The illustrations of the codex consist of one full-page miniature (fol. 46v), four headpieces with illuminated incipit initials and marginal palmettes (fols. 30, 47, 174, 190v), and a fifth headpiece with a marginal tempietto (fol. 125). There are also, throughout the codex, 79 marginal palmettes and 72 tubular and bird-form initials marking the major divisions of the manuscript.Two hands seem to be represented in the decorative illumination of this codex. The unsteady initials and marginalia on fols. 31-35v are drawn in brick red and occasionally picked out in green.  They lack the fuller modeling of the headpieces and other initials, all of which are executed with a softer, surer line in red with accents of blue.The full-page miniature, representing the Three Marys at the Empty Tomb, would appear to be the work of a third artist, in whom ambition overreached skill, particularly in the handling of color. The composition is familiar; it is an advanced stage in the series of ever more crowded compositions based ultimately on Sargis Pitsak’s  Gospel of A.D. 1357 at Aght’amar (Matenadaran MS 5332). The Myrophores are crushed against the left margin. Only the first of them has a body; the other two are represented by heads peering over Mary’s shoulder. Their hands, gesturing in inquiry, slip behind the angel, who sits on the slab fallen from the tomb. His wings are splayed, the right one lifted up over the tomb, as in the prototype, but here they are virtually wedged between the Holy Women and the empty tomb. The angel gestures, with two left hands, toward the shroud. Below him, three sleeping guards are shown as three heads perched on a bundle of drapery. Above, the sky is filled with drapery and stray bits of architecture. The sense of crowding is enhanced by compulsive overpainting. No area, save the blue ground behind the shroud, carries less than two colors. The faces are tinted with a light orange, lined with a darker shade of the same pigment, over which the features are outlined in black and dark blue. The effect is more of a war paint than of modeling.</dc:description>
+          <dc:description>Text in small bolorgir, written in one column of 22 lines. Subtitles in red bolorgir, and initials in red erkat’agir. Fols. 31-35 written in bolorgir by a different hand. Musical notations throughout the codex.Because folios are missing at the beginning and end of the book and there are many lacunae throughout the codex, the total number of quires and of the leaves in the gatherings cannot be determined. Only the following folios have quire numbers; quire 6 on fol. 33v; quire 7 on fol. 34; quire 14 on fol. 93v; first page of quire 15 on fol. 94; last page of quire 15 on fol. 109v; quire 16 on fol. 122v. These quires are numbered with the letters of the Armenian alphabet written in bolorgir in the lower margin of the page.</dc:description>
+          <dc:description>Fol. 29v. Written by the scribe.Fol. 190. Written by the scribe.Later Inscription:Fol. 124v. In lower half of the page in notragir.Fol. 124v. In the left margin.Fol. 149. In crude notragir.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 34</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvrr</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00278t68/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvrr</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvv9</identifier>
+        <datestamp>2023-04-27T20:23:40Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 39: Psalter</dc:title>
+          <dcterms:alternative>Saghmosaran</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4961</dc:rights>
+          <dc:date>15th/16th Century</dc:date>
+          <dc:date>1401/1600</dc:date>
+          <dc:description>Detached quires and leaves of thick polished paper, damaged. Four V-notches edient. However, the quire which starts with fol. 135 has two central W-notches, and a fragment of white sewing thread in its center. There are also four punched holes approximately 0.5 cm. away from the spine passing through the text, perhaps indicating that at one point the book was stab-sewn. Edges worn and damaged.</dc:description>
+          <dc:description>Very poor state of preservation. The MS has differed extensive damage from fire and dampness, but the text is generally legible. Folios missing at the beginning and end of the book, and there are lacunae between fols. 4 and 5, 5 and 6, 11 and 12, 15 and 16, 29 and 30, 54 and 55, 93 and 94, 94 and 95, 97 and 98, 98 and 99, 122 and 123m 124 and 125. Many smudges and scribbles throughout the text, and many leaves have ink stains.</dc:description>
+          <dc:description>The codex is illuminated with five one-column headpieces (fols. 12, 55v, 77v, 117 and 137) and 54 tubular and bird-form initials with corresponding marginal palmettes.The paper of the MS is made of two thinner sheets, glued together; in several places (e.g. fol. 97, and fol. 118), the paper has been split, making room for children’s calligraphy practice.Although the text itself is fairly neat and even, the problems the illuminator had with his task are apparent throughout the book. Marginal palmettes and tubular initials, which ought to be symmetrical, instead drift off-axis to the lower right. The scale of the initials varies throughout the manuscript, as does the palette; the impression is of one artist trying different solutions, rather than of several equally iept hands. Thus one finds tubular initials drawn only in outline (fol. 1) or filled in (fol. 12), and palmettes drawn in shades of brown or purple or both together, with the areas they enclose filled in with green (fol. 11) or red (fol. 83v).The five modest one-column headpieces all suffer from similar problems. The field is a simple box, to be filled with traditional leaf and vine rinceaux. Where interlacing vines are called for, the artist often produced a tangle; the geometry of leaves curling to produce arabesque forms in rarely achieved. The headpieces on fols. 55v and 77v are badly smudged, evidently the result both of water damage and of  the original artist’s poor control of his paints.</dc:description>
+          <dc:description>Text in bolorgir, written in two columns of 21 lines each. Subtitles in red bolorgir, and initials in red erkat’agir.The original codex must have had at least 15 quires; currently, the last numbered quire has the number 15 written in the lower margin on fol. 146. Some complete quires suggest that the gatherings probably consisted of 12 leaves each. As is customary, the quires are numbered with the letters of the Armenian alphabet written in bolorgir in the lower margin of the page.</dc:description>
+          <dc:description>None:Inscriptions written by the scribe:Fols, 29, 43, 60v-61, 77, 100, 71, 102v, 125.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 39</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvv9</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0027989j/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvv9</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026w2k0</identifier>
+        <datestamp>2023-04-27T20:23:45Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 41: Breviary</dc:title>
+          <dcterms:alternative>Zhamagirk'</dcterms:alternative>
+          <dc:publisher>New Julfa</dc:publisher>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4960</dc:rights>
+          <dc:date>1678</dc:date>
+          <dc:date>1678</dc:date>
+          <dc:description>Traditional Armenian binding, probably contemporary with text (no evidence of rebinding). Worm, brown leather over thin wooden boards cut with a vertical grain. Very worn blind-tooling. No spine leather; spine now rebacked with a piece of blue cloth with white circles. No fore-edge flap. Two holes on both boards are evidence of clasps, now wanting. Fragmentary traditional raised end-bands. Inside boards line with white fabric, but now covered by paper pastedowns. Edges uncolored. Two sewing stations, and two board attachment loops, but no notches.</dc:description>
+          <dc:description>Fair state of preservation. The MS has suffered damage from fire and dampness. Fols. 47 and 48 are partially worn. Leaves are missing at the beginning and end of the codex, and lacunae exists between fols. 2 and 3, 16 and 17, 48 and 49. 60 and 61, 95 and 96, 114 and 115, 116 and 117.</dc:description>
+          <dc:description>The illustrations of this codex consist of one headpiece (fol. 21) and two decorative initials (fols. 52v and 123v).The small headpiece (measuring 4.8x2.3 cm.) is drawn in wavering lines of dark brow, shaded with an erratic application of magenta, orange, and olive. The forms are traditional, if somewhat awkwardly realized. Double lines define the frame. The rinceau filling the field is a familiar row of lotus –like fan leaves, their curving edhes forming arches to frame pairs of affronted trilobed buds. Oddly, the carefully symmetrical motif has been cut asymmetrically: the left frame cuts down the middle of the fan, while one of the buds faces the right frame. A marginal bird and bird-form initial complete the page.The initial on fol. 52v is formed by a bird, and that on fol. 123v has one ornate design. Both are painted in brilliant colors.</dc:description>
+          <dc:description>Text in notragir, written in one column of 15-16 lines. Opening lines of text in red notragir, and initials in notragir capitals. Fifteen quires of 12 leaves each, numbered with the letters if the Armenian alphabet, written in notragir in the lower margin of the page.</dc:description>
+          <dc:description>Fol. 143-143v. Principle colophon.Later Inscriptions:Fol. 60v. In modern sheghagir in left margin.Fol. 114v. In left margin in notragir.Fol. 133v. Illegible inscription dated A.D. 1697.Fol. 134v. In left margin in crude notragir</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 41</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026w2k0</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz00279n5s/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026w2k0</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvn6</identifier>
+        <datestamp>2023-04-27T20:23:48Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 31: Ritual Book</dc:title>
+          <dcterms:alternative>Mashtots'</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4966</dc:rights>
+          <dc:date>1830</dc:date>
+          <dc:date>1830</dc:date>
+          <dc:description>Dark brown, worn leather (goatskin?) over pasteboards. Worn blind-tooling of a central rectangle with intersecting diagonal lines over a diamond. Spine leather wanting. No evidence of fore-edge flap or clasps, although one small hole can be seen on front cover near fore-edge. Yellpw silk raised endbands in poor condition. Fragment of blue paper on inside boards which may have been part of pastedown. Edhes darkened. Sewn on two thick single cords, but sewing no longer extant. Quires detached. Slips appear to be attached to boards by being glued between the leather and the pasteboard; no holes through boards for board attachment. Two V-notches in quires. Blue cloth spine lining. This binding appears to be a type of hybrid. The board attachment is not traditional, but notches are still used. The raised endbands are too deteriorated for us to be sure of they were the traditional triple chevron.</dc:description>
+          <dc:description>Besides the dilapidated lining, the codex has suffered damage from fire and dampness. Many lacunae in the text. Fols. 1-32 were paginated by the scribe; there are lacunae after fol. 32. The rest of the book has been paginated beginning with page 97, but the following pages are missing: 101-106, 111-116, 120-126, 154-1616, 163-166. For purposes of this description, we have renumbered the folios. Many pages have been scribbled on.</dc:description>
+          <dc:description>Text in notragir, written by three different hands in one column: fols. 1-32 have 18 lines each, and fols. 33-59 have 13-15 lines each. Subtitles in red notragir or bolorgir, and initials throughout the codex in red notragir capitals. The quires are not numbered. Because of the many lacunae in the codex, the number of leaves in the gatherings cannot be determined.</dc:description>
+          <dc:description>On the opening page in red bolorgir.Fol. 22v. In right-hand margin.Fol. 29. In right-hand margin.Fol. 60. On the last page of the text.Fol. 61. In right-hand margin in pencil, written by Dr. MinasianFol. 61v. Signature of Yarut’iwn Hayrapet Yarut’iwnian.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 31</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvn6</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026wzdz/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvn6</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz0026hvpq</identifier>
+        <datestamp>2023-04-27T20:23:51Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 32: Calendar of Feasts</dc:title>
+          <dcterms:alternative>Tonatsʻuytsʻ</dcterms:alternative>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4965</dc:rights>
+          <dc:date>14th/15th Century</dc:date>
+          <dc:date>1301/1500</dc:date>
+          <dc:description>Traditional Armenian binding of worn dark brown leather over wooden boards cut with a vertical grain. No tooling discernible. A vertical section of upper right corner of upper board is missing. No flap. Two holes on each board are evidence of fastening system, now wanting. Fragmentary raised endbands. Fragments of paper pastedowns. Edges darkened. Traditional board attachment using three loops. Sewn with red silk thread, no notches. Some sewing holes apparently no longer used; must have been rebound. Beige cloth spine lining.</dc:description>
+          <dc:description>Fairly good state of preservation. There are leaves missing at the beginning and end of the book. In the likelihood, fols. 65-71 did not originally belong to the codex.</dc:description>
+          <dc:description>The only surviving illumination is a very badly-damaged palmette and corresponding bird-form initial (fol. 60v). The gold which outlined the traditional leaf and bird forms survives, along with smudged patches of blue, purple, green, and orange pigment.</dc:description>
+          <dc:description>Text in minuscule bolorgir, written in one column of 18 lines. The nine calendrical tables at the beginning of the codex are in black and red bolorgir, and the initials of the titles in each column are in red or blue erkat’agir. Subtitles throughout the text are in red bolorgir, with the initials of the subtitles in red erkat’agir. Seven quires with gatherings of 10 or 12 leaves; all except the last two quires are numbered with the letters of the Armenian alphabet, written in bolorgir in the lower margin of the page.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 32</dc:identifier>
+          <dc:identifier>ark:/21198/zz0026hvpq</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026x8pw/full/full/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz0026hvpq</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+          <edm:hasType>Illuminations</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+    <record>
+      <header>
+        <identifier>oai:library.ucla.edu:ark:/21198/zz002gxcdh</identifier>
+        <datestamp>2023-04-27T20:23:52Z</datestamp>
+        <setSpec>member_of_collection_ids_ssim:d2xg9000zz-89112</setSpec>
+      </header>
+      <metadata>
+        <oai_dpla:dpla xmlns:oai_dpla="https://digital.library.ucla.edu/oai_dpla/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://digital.library.ucla.edu/oai_dpla/ https://digital.library.ucla.edu/oai_dpla/oai_dpla.xsd">
+          <dc:source>Armenian Manuscripts</dc:source>
+          <dc:title>Manuscript No. 84: Collection of Poems</dc:title>
+          <dc:type>http://id.loc.gov/vocabulary/resourceTypes/txt</dc:type>
+          <dc:rights>UCLA Library Special Collections, A1713 Charles E. Young Research Library, Box 951575, Los Angeles, CA 90095-1575. Email: spec-coll@library.ucla.edu. Phone: (310) 825-4934</dc:rights>
+          <dc:description>Paper; 74 folios, plus unnumbered folios with text in front; 27x21 cm. (written surface area: 23x17 cm.).  Text in modern šełagir, written in one column of 26 lines. Notebook composed of sheets of "David Bros. &amp; Co." loose-leaf paper bound together.Contents: The codex is a "Collection of Poems," composed mostly by G. M. George in Armenian, Persian, and English. Many of these poems deal with the theme of love and are addressed to his wife, Aruseak; some are vulgar and even obscene. Additionally, there are lyrics composed by Persian-Armenian minstrels, Łul Yovhannēs and Amir Ōłli, whose poems are reproduced in this codex from other, unnamed sources.</dc:description>
+          <dc:language>arm</dc:language>
+          <dc:identifier>Armenian MS 84</dc:identifier>
+          <dc:identifier>ark:/21198/zz002gxcdh</dc:identifier>
+          <edm:object>https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz002h1zx7/full/600,/0/default.jpg</edm:object>
+          <edm:isShownAt>https://digital.library.ucla.edu/catalog/ark:/21198/zz002gxcdh</edm:isShownAt>
+          <edm:dataProvider>University of California, Los Angeles. Library. Department of Special Collections</edm:dataProvider>
+          <edm:hasType>Manuscripts</edm:hasType>
+        </oai_dpla:dpla>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>

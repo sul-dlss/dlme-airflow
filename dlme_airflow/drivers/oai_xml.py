@@ -13,6 +13,7 @@ from typing import Dict
 
 NS = {
     "oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
+    "oai_dpla": "https://digital.library.ucla.edu/oai_dpla/",
     "mods": "http://www.loc.gov/mods/v3",
     "marc21": "http://www.loc.gov/MARC21/slim",
 }
@@ -151,6 +152,8 @@ class OaiXmlSource(intake.source.base.DataSource):
             oai_rec = manifest.xpath("//mods:mods", namespaces=NS)[0]
         elif self.metadata_prefix == "marc21":
             oai_rec = manifest.xpath("//marc21:record", namespaces=NS)[0]
+        elif self.metadata_prefix == "oai_dpla":
+            oai_rec = manifest.xpath("//oai_dpla:dpla", namespaces=NS)[0]
         else:
             raise Exception(f"Unknown metadata prefix {self.metadata_prefix}")
 
