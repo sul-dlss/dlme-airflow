@@ -14,9 +14,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v3/arab_image_foundation
+      data_path: ucla/iiif/arab_image_foundation
       output_format: json
-      config: ucla_iiif_v3
+      config: ucla_iiif
       post_harvest: "merge_dataframes"
       iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1cg1h7v?_ga=2.148465271.1363753726.1694552417-126723786.1692626386
       fields:
@@ -92,11 +92,9 @@ sources:
       wait: 2
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v3/dupree
+      data_path: ucla/iiif/dupree
       output_format: json
-      config: ucla_iiif_v3
-      post_harvest: "merge_dataframes"
-      iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz16d7kmn?_ga=2.119220809.1363753726.1694552417-126723786.1692626386
+      config: ucla_iiif
       fields:
         id:
           path: "//dc:identifier[1]"
@@ -113,10 +111,10 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/egyptology
+      data_path: ucla/iiif/egyptology
       separate_dags: true
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -133,9 +131,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/friedlander_americana
+      data_path: ucla/iiif/friedlander_americana
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -152,9 +150,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/historic_cairo
+      data_path: ucla/iiif/historic_cairo
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -171,9 +169,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/iranian_bahai_archives
+      data_path: ucla/iiif/iranian_bahai_archives
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -190,9 +188,9 @@ sources:
       wait: 2
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/green_movement
+      data_path: ucla/iiif/green_movement
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -228,9 +226,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/kurdish_referendum
+      data_path: ucla/iiif/kurdish_referendum
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -266,9 +264,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/minasian_manuscript_collection
+      data_path: ucla/iiif/minasian_manuscript_collection
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -285,9 +283,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/mena
+      data_path: ucla/iiif/mena
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -304,9 +302,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/mosul_lives
+      data_path: ucla/iiif/mosul_lives
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -323,9 +321,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/near_east_mss
+      data_path: ucla/iiif/near_east_mss
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -361,9 +359,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/sulaimani_villages
+      data_path: ucla/iiif/sulaimani_villages
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
@@ -380,9 +378,9 @@ sources:
       wait: 1
       allow_expiration: true
     metadata:
-      data_path: ucla/iiif_v2/yazidi_posters
+      data_path: ucla/iiif/yazidi_posters
       output_format: json
-      config: ucla_iiif_v2
+      config: ucla_iiif
       fields:
         id:
           path: "//header:identifier"
