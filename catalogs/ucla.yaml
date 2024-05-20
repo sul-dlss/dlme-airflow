@@ -17,8 +17,6 @@ sources:
       data_path: ucla/iiif/arab_image_foundation
       output_format: json
       config: ucla_iiif
-      post_harvest: "merge_dataframes"
-      iiif_collection_url: https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1cg1h7v?_ga=2.148465271.1363753726.1694552417-126723786.1692626386
       fields:
         id:
           path: "//dc:identifier[1]"
