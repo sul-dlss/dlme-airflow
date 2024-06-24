@@ -31,4 +31,4 @@ sources:
           one2all_vis_url: object
           pairwise_data_url: object
       urlpath:
-        - https://raw.githubusercontent.com/OpenITI/kitab-metadata-automation/master/kitab_metadata_for_DLME_latest_release.tsv
+        - https://raw.githubusercontent.com/kitab-project-org/kitab_metadata_for_DLME/main/kitab_metadata_for_DLME_latest_release.tsv
