@@ -1,6 +1,6 @@
 metadata:
   version: 1
-  data_path: brooklyn
+  data_path: brooklyn_museum
 sources:
   near-east-egyptian:
     description: "Near east and Egyptian"
@@ -14,9 +14,9 @@ sources:
       record_selector: "data"
       api_key: "0IzFpBiUksT8LMVGLUxovj9IR0ltlSH1"
     metadata:
-      data_path: brooklyn/near-east-egyptian
+      data_path: brooklyn_museum/near-east-egyptian
       output_format: json
-      config: brooklyn_near_east_egyptian
+      config: brooklyn
       fields:
         id:
           path: "id"
