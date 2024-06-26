@@ -48,6 +48,9 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     source_df = source_df.drop_duplicates(subset=[unique_id], keep="first")
 
     source_df.to_csv(working_csv, index=False)
-    source_df.to_json(working_json, orient="records", force_ascii=False)
+
+    # This patter is required to write the json file with utf-8 encoding
+    with open(working_json, 'w', encoding='utf-8') as file:
+        source_df.to_json(file, orient="records", force_ascii=False)
 
     return {"working_csv": working_csv, "source_df": source_df}
