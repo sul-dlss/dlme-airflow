@@ -20,6 +20,7 @@ def build_transform_task(collection, task_group: TaskGroup, dag: DAG):
         environment={
             "DATA_PATH": collection.data_path(),
             "SOURCE_DATA": os.environ.get("SOURCE_DATA_PATH"),
+            "PYTHONIOENCODING": "utf-8",
         },
         docker_url="tcp://docker-proxy:2375",
         network_mode="bridge",
