@@ -26,4 +26,7 @@ def data_source_harvester(task_instance, **kwargs):
     working_csv = df_and_csv["working_csv"]
     dataframe_stats = {"record_count": df.shape[0]}
     task_instance.xcom_push(key="dataframe_stats", value=dataframe_stats)
+
+    assert len(df) > 0, f"DataFrame for {collection.name} is empty"
+
     return working_csv
