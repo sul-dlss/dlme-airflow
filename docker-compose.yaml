@@ -165,7 +165,9 @@ services:
       retries: 5
 
   docker-proxy:
-    image: bobrik/socat
+    image: suldlss/airflow-proxy:latest
+    build:
+      dockerfile: Dockerfile.proxy
     command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

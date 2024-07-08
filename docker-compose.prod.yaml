@@ -147,7 +147,9 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
 
   docker-proxy:
-    image: bobrik/socat
+    image: suldlss/airflow-proxy:latest
+    build:
+      dockerfile: Dockerfile.proxy
     command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
