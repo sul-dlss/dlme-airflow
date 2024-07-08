@@ -7,7 +7,6 @@ RUN apt-get -y update && apt-get -y install jq
 USER airflow
 
 RUN pip install --upgrade pip
-RUN pip --no-cache-dir install --upgrade awscli
 RUN pip install "poetry==$POETRY_VERSION"
 
 COPY --chown=airflow:root poetry.lock pyproject.toml /opt/airflow/
