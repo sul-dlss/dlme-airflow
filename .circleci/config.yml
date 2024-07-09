@@ -14,7 +14,7 @@ jobs:
   build:
     executor:
       name: python/default
-      tag: "3.10"
+      tag: "3.12"
     steps:
       - run:
           command: |
@@ -27,7 +27,7 @@ jobs:
   linting:
      executor: 
        name: python/default
-       tag: "3.10"
+       tag: "3.12"
      steps:
       - checkout
       - python/install-packages:
@@ -48,7 +48,7 @@ jobs:
   typechecking:
     executor:
       name: python/default
-      tag: "3.10"
+      tag: "3.12"
     steps:
       - checkout
       - python/install-packages:
@@ -61,7 +61,7 @@ jobs:
   test:
      executor: 
        name: python/default
-       tag: "3.10"
+       tag: "3.12"
      steps:
        - checkout
        - python/install-packages:
