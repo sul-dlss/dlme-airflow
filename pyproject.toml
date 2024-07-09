@@ -7,13 +7,13 @@ authors = ["Aaron Collier <aaron.collier@stanford.edu>"]
 license = "Apache2"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.12,<3.13"
 lxml = "^4.6.3"
 Sickle = "^0.7.0"
 intake = {extras = ["dataframe"], version = "^0.6.2"}
 aiohttp = "^3.7.4.post0"
 jsonpath_ng = "^1.5.3"
-apache-airflow = {extras = ["amazon"], version = "^2.4.0"}
+apache-airflow = "^2.9.2"
 feedparser = "^6.0.2"
 validators = "^0.18.2"
 dominate = "^2.6.0"
