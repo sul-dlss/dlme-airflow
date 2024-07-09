@@ -21,7 +21,11 @@ jobs:
             poetry --version
           name: Show poetry version
       - checkout
+      - run:
+          command: |
+            poetry lock
       - python/install-packages:
+          no_output_timeout: 20m
           pkg-manager: poetry
 
   linting:
