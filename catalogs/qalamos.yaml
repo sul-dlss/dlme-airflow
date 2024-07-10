@@ -1,7 +1,7 @@
 metadata:
   version: 1
   data_path: qalamos
-  separate_dags: true
+  separate_dags: false
 sources:
   osterreichische:
     driver: oai_xml
@@ -9,6 +9,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_atoenb"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/osterreichische
       config: qalamos
@@ -25,6 +27,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de12"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/bayerische_staatsbibliothek
       config: qalamos
@@ -41,6 +45,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de124"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/christian_weise_bibliothek
       config: qalamos
@@ -57,6 +63,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de14"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/sächsische_landesbibliothek
       config: qalamos
@@ -73,6 +81,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de1"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/staatsbibliothek
       config: qalamos
@@ -89,6 +99,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de21"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/universität_tübingen
       config: qalamos
@@ -105,6 +117,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de15"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/universitätsbibliothek_leipzig
       config: qalamos
@@ -121,6 +135,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de18"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/universitätsbibliothek_hamburg_carl
       config: qalamos
@@ -137,6 +153,8 @@ sources:
       collection_url: https://www.qalamos.net/oai2
       metadata_prefix: oai_marc21
       set: "owner:owner_de16"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qalamos/universitätsbibliothek_heidelberg
       config: qalamos

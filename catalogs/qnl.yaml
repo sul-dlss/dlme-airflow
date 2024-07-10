@@ -10,6 +10,7 @@ sources:
       metadata_prefix: mods_no_ocr
       wait: 1
       allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: qnl/british_library_combined
       output_format: json

@@ -9,6 +9,8 @@ sources:
       collection_url: https://api.archives-ouvertes.fr/oai/hal
       metadata_prefix: oai_dc
       set: "collection:IFPOIMAGES"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: ifpo/photographs
       config: ifpo
