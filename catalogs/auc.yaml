@@ -1628,6 +1628,7 @@ sources:
       set: p15795coll40
       wait: 2
       allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: auc/voice_of_america
       config: auc

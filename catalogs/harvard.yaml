@@ -9,6 +9,8 @@ sources:
       collection_url: https://api.lib.harvard.edu/oai
       metadata_prefix: mods
       set: "ihp"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: harvard/islamic_heritage_project
       config: harvard_islamic_heritage_project

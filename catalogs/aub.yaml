@@ -9,6 +9,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "aco"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/aco
       config: aub
@@ -24,6 +26,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "aladab"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/aladab
       config: aub
@@ -39,6 +43,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "postcards"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/postcards
       config: aub
@@ -54,6 +60,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "posters"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/posters
       config: aub
@@ -69,6 +77,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "thf"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/thamarat_al_funun
       config: aub
@@ -84,6 +94,8 @@ sources:
       collection_url: https://libraries.aub.edu.lb/xtf/oai
       metadata_prefix: oai_dc
       set: "travelbooks"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: aub/travelbooks
       config: aub

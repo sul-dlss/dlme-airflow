@@ -9,6 +9,8 @@ sources:
       collection_url: http://dasi.cnr.it/de/cgi-bin/dasi-oai-x.pl
       metadata_prefix: oai_dc
       set: epi_set
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: dasi/epigraphs
       config: dasi
