@@ -29,6 +29,7 @@ class SequentialCsvSource(DataSource):
             dtype=self.csv_kwargs.get("dtype"),
             shape=None,
             npartitions=len(self.urls),
+            extra_metadata={},
         )
 
     def _get_partition(self, i):

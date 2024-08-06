@@ -14,20 +14,24 @@ jobs:
   build:
     executor:
       name: python/default
-      tag: "3.10"
+      tag: "3.12"
     steps:
       - run:
           command: |
             poetry --version
           name: Show poetry version
       - checkout
+      - run:
+          command: |
+            poetry lock
       - python/install-packages:
+          no_output_timeout: 20m
           pkg-manager: poetry
 
   linting:
      executor: 
        name: python/default
-       tag: "3.10"
+       tag: "3.12"
      steps:
       - checkout
       - python/install-packages:
@@ -48,7 +52,7 @@ jobs:
   typechecking:
     executor:
       name: python/default
-      tag: "3.10"
+      tag: "3.12"
     steps:
       - checkout
       - python/install-packages:
@@ -61,7 +65,7 @@ jobs:
   test:
      executor: 
        name: python/default
-       tag: "3.10"
+       tag: "3.12"
      steps:
        - checkout
        - python/install-packages:
