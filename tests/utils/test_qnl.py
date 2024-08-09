@@ -52,13 +52,13 @@ def test_merge_df():
     assert len(df) == 1
     row = df.iloc[0]
 
-    assert type(row.id) == str, "there is only one identifier"
+    assert type(row.id) is str, "there is only one identifier"
     assert row.id == "1", "the first identifier wins"
 
-    assert type(row.title) == list, "title is a list"
+    assert type(row.title) is list, "title is a list"
     assert set(row.title) == {"Hi!", "Bonjour!"}, "title values are correct"
 
-    assert type(row.subject) == list, "subject is a list"
+    assert type(row.subject) is list, "subject is a list"
     assert set(row.subject) == {"Greetings", "Welcome!"}, "subject values are correct"
 
 

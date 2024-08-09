@@ -1,18 +1,14 @@
-FROM apache/airflow:2.6.2-python3.11
-
-ENV POETRY_VERSION=1.5.0
+FROM apache/airflow:2.9.3-python3.12
 
 USER root
-RUN apt-get -y update && apt-get -y install git jq
+RUN apt-get update && apt-get install -y gcc g++ git
+# libjpeg-dev zlib1g-dev
+
+ENV PYTHONPATH "${PYTHONPATH}:/opt/airflow/"
+
 USER airflow
 
-RUN pip install --upgrade pip
-RUN pip --no-cache-dir install --upgrade awscli
-RUN pip install "poetry==$POETRY_VERSION"
+COPY dlme_airflow ./dlme_airflow
+COPY requirements.txt ./
 
-COPY --chown=airflow:root poetry.lock pyproject.toml /opt/airflow/
-COPY --chown=airflow:root ./dlme_airflow /opt/airflow/dlme_airflow
-COPY --chown=airflow:root ./catalogs /opt/airflow/catalogs
-
-RUN poetry build --format=wheel
-RUN pip install dist/*.whl
+RUN uv pip install --no-cache "apache-airflow==${AIRFLOW_VERSION}" -r requirements.txt

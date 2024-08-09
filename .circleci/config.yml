@@ -11,76 +11,46 @@ executors:
       - image: circleci/buildpack-deps:stretch
 
 jobs:
-  build:
+  build_test_and_lint:
     executor:
       name: python/default
-      tag: "3.10"
+      tag: "3.12"
     steps:
       - run:
+          name: Install PIP
           command: |
-            poetry --version
-          name: Show poetry version
+            pip install uv
       - checkout
-      - python/install-packages:
-          pkg-manager: poetry
-
-  linting:
-     executor: 
-       name: python/default
-       tag: "3.10"
-     steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: poetry
       - run:
-          name: Lint the code with flake8
+          name: Setup venv
           command: |
-             poetry run flake8
+            uv venv
       - run:
-          name: Lint the code with Black
+          name: Activate venv
           command: |
-             poetry run black --diff --check .
+            source .venv/bin/activate
       - run:
-          name: Lint the Intake catalog configs with yamllint
+          name: Install dependencies
           command: |
-             poetry run yamllint catalogs/
-
-  typechecking:
-    executor:
-      name: python/default
-      tag: "3.10"
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: poetry
+            pip install -r requirements.txt -r requirements-dev.txt
       - run:
-          name: Type check with mypy
+          name: Lint the code with ruff
           command: |
-             poetry run mypy dlme_airflow
-
-  test:
-     executor: 
-       name: python/default
-       tag: "3.10"
-     steps:
-       - checkout
-       - python/install-packages:
-           pkg-manager: poetry
-       - run:
-           name: Setup Code Climate test-reporter
-           command: |
-              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-              chmod +x ./cc-test-reporter
-              ./cc-test-reporter before-build
-       - run:
-           name: Run tests
-           command: |
-              PYTHONPATH=dlme_airflow poetry run pytest
-       - run:
-           name: Report test coverage results to CodeClimate
-           command: |
-              ./cc-test-reporter after-build --coverage-input-type 'coverage.py' --exit-code $?
-
+             ruff check
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+      - run:
+          name: Run tests
+          command: |
+            coverage run -m pytest
+      - run:
+          name: Report test coverage results to CodeClimate
+          command: |
+            coverage xml && ./cc-test-reporter after-build --coverage-input-type 'coverage.py' --exit-code $?
   publish_to_dockerhub:
     executor: docker-publisher
     steps:
@@ -99,19 +69,9 @@ jobs:
 
 workflows:
   version: 2
-
   build:
     jobs:
-      - build
-      - linting:
-          requires:
-            - build
-      - typechecking:
-          requires:
-            - build
-      - test:
-          requires:
-            - build
+      - build_test_and_lint
       - publish_to_dockerhub:
           filters:
             branches:

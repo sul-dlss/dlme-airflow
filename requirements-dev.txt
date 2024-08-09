@@ -1,0 +1,7 @@
+pytest
+pytest-cov
+python-dotenv
+pytest-mock
+ruff
+apache-airflow==2.9.3
+requests-mock

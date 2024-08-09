@@ -36,6 +36,6 @@ def merge_df(df) -> pandas.DataFrame:
     ).agg(lambda x: list(chain(*x)))
 
     # convert the id back into a string by using the first id value present in the list
-    df.id = df.id.apply(lambda l: l[0])
+    df.id = df.id.apply(lambda source_record: source_record[0])
 
     return df

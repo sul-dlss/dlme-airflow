@@ -65,7 +65,7 @@ class XmlSource(intake.source.base.DataSource):
                     # a record with only value for a field will get a string
                     # but records with multiple values for a field get a list
 
-                    if field in record and type(record[field]) == list:
+                    if field in record and type(record[field]) is list:
                         record[field].append(value)  # type: ignore
                     elif field in record:
                         record[field] = [record[field], value]

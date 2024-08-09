@@ -179,7 +179,7 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
 
 def _flatten_list(lst: list) -> Generator:
     for item in lst:
-        if type(item) == list:
+        if type(item) is list:
             yield from _flatten_list(item)
         else:
             yield item

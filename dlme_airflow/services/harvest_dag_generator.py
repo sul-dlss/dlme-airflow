@@ -79,9 +79,9 @@ def assemble_dag(source: (Provider | Collection)):
         harvest_complete = DummyOperator(
             task_id="harvest_complete", trigger_rule="none_failed"
         )
-        if type(source) == Provider:
+        if type(source) is Provider:
             etl = build_provider_etl_taskgroup(source, dag)
-        elif type(source) == Collection:
+        elif type(source) is Collection:
             etl = build_collection_etl_taskgroup(source, dag)
         else:
             raise Exception("source must be a Provider or a Collection")
