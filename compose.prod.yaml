@@ -41,17 +41,17 @@
 #
 # Feel free to modify this file to suit your needs.
 ---
-version: '3'
 x-airflow-common:
   &airflow-common
   image: ${AIRFLOW_IMAGE_NAME:-suldlss/dlme-airflow:latest}
   environment:
     &airflow-common-env
-    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
-    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW__CELERY__RESULT_BACKEND: "db+postgresql://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOSTNAME}/dlme-airflow"
     AIRFLOW__CELERY__BROKER_URL: "redis://:${REDIS_PASSWORD}@redis:6379/0"
     AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOSTNAME}/dlme-airflow
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 90
@@ -60,49 +60,37 @@ x-airflow-common:
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DEFAULT_UI_TIMEZONE: 'America/Los_Angeles'
     AIRFLOW__CORE__DAG_DEFAULT_VIEW: 'graph'
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__SMTP__SMTP_USER: ${AIRFLOW__SMTP__SMTP_USER}
+    AIRFLOW__SMTP__SMTP_HOST: ${AIRFLOW__SMTP__SMTP_HOST}
+    AIRFLOW__SMTP__SMTP_PASSWORD: ''
+    AIRFLOW__SMTP__SMTP_MAIL_FROM: ${AIRFLOW__SMTP__SMTP_MAIL_FROM}
     AIRFLOW_VAR_DATA_MANAGER_EMAIL: 'amcollie@stanford.edu'
     CATALOG_SOURCE: '/opt/airflow/catalogs/catalog.yaml'
     PYTHONPATH: '$PYTHONPATH:/opt/airflow/dlme_airflow'
     SKIP_HARVEST_VALIDATION: "true"
     # SKIP_REPORT: "true"
     DEFAULT_DAG_SCHEDULE: "@weekly"
-    METADATA_OUTPUT_PATH: "${PWD}/metadata" # Host path
+    METADATA_OUTPUT_PATH: "/opt/app/dlme/datashare" # Host path
     METADATA_REPORT_PATH: "/opt/airflow/metadata" # Docker container path
-    SOURCE_DATA_PATH: "${PWD}/working"
+    SOURCE_DATA_PATH: "/opt/app/dlme/dlme-airflow/shared/source_data"
     ARCHIVE_PATH: "/opt/airflow/archive"
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"
-    API_ENDPOINT: "${API_ENDPOINT}"
+    API_ENDPOINT: "https://dlme-review.stanford.edu/api/harvests"
     API_TOKEN: "${API_TOKEN}"
   volumes:
-    - ./logs:/opt/airflow/logs
-    - ./working:/opt/airflow/working
-    - ./archive:/opt/airflow/archive
-    - ./metadata:/opt/airflow/metadata
-    - ./dlme_airflow:/opt/airflow/dlme_airflow
-    - ./catalogs:/opt/airflow/catalogs
+    - /opt/app/dlme/dlme-airflow/shared/logs:/opt/airflow/logs
+    - /opt/app/dlme/dlme-airflow/shared/source_data:/opt/airflow/working
+    - /opt/app/dlme/dlme-airflow/shared/archive:/opt/airflow/archive
+    - /opt/app/dlme/dlme-airflow/current/dlme_airflow:/opt/airflow/dlme_airflow
+    - /opt/app/dlme/dlme-airflow/current/catalogs:/opt/airflow/catalogs
+    - /opt/app/dlme/datashare/:/opt/airflow/metadata
     - "/var/run/docker.sock:/var/run/docker.sock"
-  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
+  user: "503:0"
   depends_on:
     redis:
       condition: service_healthy
-    postgres:
-      condition: service_healthy
 
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
-      interval: 5s
-      retries: 5
-
   redis:
     image: redis:latest
     command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
@@ -111,17 +99,19 @@ services:
       interval: 5s
       timeout: 30s
       retries: 50
+    restart: always
 
-  airflow-webserver:
+  app:
     <<: *airflow-common
     command: webserver
     ports:
-      - 8080:8080
+      - 3000:8080
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s
       timeout: 10s
       retries: 5
+    restart: always
 
   airflow-scheduler:
     <<: *airflow-common
@@ -131,6 +121,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    restart: always
 
   airflow-worker:
     <<: *airflow-common
@@ -142,6 +133,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    restart: always
 
   airflow-init:
     <<: *airflow-common
@@ -153,17 +145,6 @@ services:
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
 
-  flower:
-    <<: *airflow-common
-    command: celery flower
-    ports:
-      - 5555:5555
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-
   docker-proxy:
     image: suldlss/airflow-proxy:latest
     build:
@@ -171,6 +152,3 @@ services:
     command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-
-volumes:
-  postgres-db-volume:
