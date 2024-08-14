@@ -9,6 +9,8 @@ sources:
       collection_url: https://swco-ir.tdl.org/oai/request?
       metadata_prefix: oai_dc
       set: "com_10605_355119"
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: texas_tech
       config: texas_tech

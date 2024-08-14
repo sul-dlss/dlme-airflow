@@ -9,6 +9,8 @@ sources:
       collection_url: https://eu.alma.exlibrisgroup.com/view/oai/34CSIC_INST/request?
       metadata_prefix: marc21
       set: manuscripta
+      allow_expiration: true
+      full_harvest: true
     metadata:
       data_path: csic/manuscripts
       config: csic
