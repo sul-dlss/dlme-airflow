@@ -18,7 +18,7 @@ class SequentialCsvSource(DataSource):
 
     def __init__(self, urlpath, metadata={}, csv_kwargs={}):
         super(SequentialCsvSource, self).__init__(metadata=metadata)
-        self.urls = urlpath if type(urlpath) == list else [urlpath]
+        self.urls = urlpath if type(urlpath) is list else [urlpath]
         self.csv_kwargs = csv_kwargs
         self.record_limit = self.metadata.get("record_limit", None)
         self.record_count = 0
@@ -29,6 +29,7 @@ class SequentialCsvSource(DataSource):
             dtype=self.csv_kwargs.get("dtype"),
             shape=None,
             npartitions=len(self.urls),
+            extra_metadata={},
         )
 
     def _get_partition(self, i):

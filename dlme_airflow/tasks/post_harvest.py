@@ -6,6 +6,8 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 # While it looks like they're not used these are called dynamically by run_post_harvest
+# Disable flake8 F401 checks for these imports
+# ruff: noqa: F401
 from dlme_airflow.utils.add_thumbnails import add_thumbnails
 from dlme_airflow.utils.qnl import (
     merge_records,

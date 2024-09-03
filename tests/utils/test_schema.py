@@ -23,4 +23,4 @@ def test_no_html():
 
 def test_control_chars():
     data = get_schema("https://www.penn.museum/collections/object/46326")
-    assert type(data) == dict
+    assert type(data) is dict
