@@ -1,6 +1,6 @@
 import requests
 import jsonpath_ng
-
+import validators
 
 class PartitionBuilder:
     """Determine the method used to extract or format the
@@ -65,13 +65,17 @@ class PartitionBuilder:
         harvested = 0
         ids = []
         while True:
-            api_endpoint = f"{self.paging_config['pages_url']}?limit={self.paging_config['limit']}&offset={offset}"
-            data = self._fetch_provider_data(api_endpoint)["data"]
+            api_endpoint = self.paging_config['pages_url'].format(offset,self.paging_config['limit'])
+            print(f"Fetching {api_endpoint}")
+            data = self._fetch_provider_data(api_endpoint)[self.paging_config['page_data']]
             offset += self.paging_config["limit"]
             harvested = len(data)
 
             for i in data:
-                ids.append(f"{self.collection_url}{i['id']}")
+                if validators.url(i['id']):
+                    ids.append(i['id'])
+                else:
+                    ids.append(f"{self.collection_url}{i['id']}")
 
             if harvested < self.paging_config["limit"]:
                 break
