@@ -25,12 +25,12 @@ sources:
     args:
       collection_url: https://libraries.aub.edu.lb/iiifservices/collection/al-Adab
       paging:
-        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/al-Adab/{}/{}
+        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/al-Adab/{offset}/{limit}
         page_data: items
         page_fields:
           - id
           - thumbnail.id
-        limit: 1010
+        limit: 1000
     metadata:
       data_path: aub/aladab
       config: aub

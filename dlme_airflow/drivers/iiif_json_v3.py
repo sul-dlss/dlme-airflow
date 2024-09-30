@@ -7,18 +7,21 @@ import pandas as pd
 from typing import Any, Optional, Generator
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
-container = "dataframe"
-name = "iiif_json_v3"
-version = "0.0.2"
-partition_access = True
-
 
 class IiifV3JsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url, dtype=None, metadata=None, wait=None, paging=None):
+    container = "dataframe"
+    name = "iiif_json_v3"
+    version = "0.0.2"
+    partition_access = True
+
+    def __init__(
+        self,
+        collection_url,
+        paging=None,
+        metadata=None
+    ):
         super(IiifV3JsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
-        self.dtype = dtype
-        self.wait = wait
         self.paging = paging
         self._manifest_urls = []
         self._path_expressions = {}
@@ -26,7 +29,6 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        logging.info(f"getting collection {self.collection_url}")
         resp = self._get(self.collection_url)
         if resp.status_code == 200:
             if self.paging:
@@ -166,9 +168,6 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         )
 
     def _get(self, url):
-        if self.wait:
-            logging.info(f"waiting {self.wait} seconds")
-            time.sleep(self.wait)
         return requests.get(url)
 
     def read(self):
