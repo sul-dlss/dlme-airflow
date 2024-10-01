@@ -161,9 +161,10 @@ def test_happy_path_prefetch_urls(requests_mock):
         record_selector=record_selector,
         metadata=metadata,
         paging={
-            "pages_url": "https://example.com/collection",
+            "pages_url": "https://example.com/collection?limit={limit}&offset={offset}",
             "urls": "data.id",
             "limit": 3,
+            "page_data": "data",
         },
     )
 
