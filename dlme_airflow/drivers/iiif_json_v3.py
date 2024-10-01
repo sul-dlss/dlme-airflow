@@ -22,46 +22,27 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         super(IiifV3JsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging = paging
-        self._manifest_urls = []
+        self._manifests = []
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
+        self.partition_builder = None
+
+        if self.paging:
+            self.partition_builder = PartitionBuilder(self.collection_url, self.paging)
 
 
     def _open_collection(self):
-        self._manifest_urls = self._get_manifest_urls()
+        self._manifests = self._get_manifests()
 
-    def _get_manifest_urls(self):
+
+    def _get_manifests(self):
         if self.paging:
-            return PartitionBuilder(self.collection_url, self.paging).urls()
-        else:
-            return self._get_manifest_urls_from_items()
+            return self.partition_builder.records()
 
 
-    def _get_manifest_urls_from_items(self):
-        resp = self._get(self.collection_url)
-        collection_result = resp.json()
-        urls = []
-        if "items" in collection_result:  # IIIF v3
-            manifests = collection_result["items"]
-        else:
-            raise Exception(
-                f"Unknown collection manifest format: {self.collection_url}"
-            )
-
-        for manifest in manifests:
-            if "@id" in manifest:
-                url = manifest["@id"]  # valid in IIIF v2 or v3
-            elif "id" in manifest:
-                url = manifest["id"]  # valid in IIIF v3 only
-            else:
-                raise Exception(f"Unknown URL in manifest: {manifest}")
-            urls.append(url)
-        
-        return urls
-
-
-    def _open_manifest(self, manifest_url: str) -> Optional[dict]:
+    def _open_manifest(self, manifest: dict) -> Optional[dict]:
+        manifest_url = manifest["id"]
         resp = self._get(manifest_url)
         if resp.status_code == 200:
             manifest_result = resp.json()
@@ -77,6 +58,9 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         record.update(
             self._extract_manifest_metadata(manifest_result.get("metadata", []))
         )
+
+        # Handles the thumbnail field provided in the collection manifest
+        record.update({"thumbnail": manifest.get("thumbnail")})
         return record
 
     def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
@@ -106,7 +90,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         if optional is True:
             logging.debug(f"{id} missing optional field: '{field}'; searched path: '{expression}'")
             return
-        
+
         logging.warning(f"{id} missing required field: '{field}'; searched path: '{expression}'")
 
 
@@ -116,33 +100,28 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         output: dict[str, list[str]] = {}
 
         for row in iiif_manifest_metadata:
-            for key in row.get("label").keys():
-                name = (
-                    row.get("label")[key][0]
-                    .replace(" ", "-")
-                    .lower()
-                    .replace("(", "")
-                    .replace(")", "")
-                )
-                # initialize or append to output[name] based on whether we've seen the label
-                metadata_value = row.get("value")[key]
-                if not metadata_value:
-                    continue
+            (label, values) = self._extract_metadata_for_row(row)
+            output.setdefault(label, []).extend(values)
 
-                if name in output:
-                    output.update({name: _flatten_list([output[name], metadata_value])})
-                else:
-                    output[name] = metadata_value
+        return output
 
-        # flatten any nested lists into a single list
-        return {k: list(_flatten_list(v)) for (k, v) in output.items()}
+    def _extract_metadata_for_row(self, row):
+        values = []
+        lang = next(iter(row.get("label")))
+        label = row.get("label")[lang][0].replace(" ", "-").lower().replace("(", "").replace(")", "")
+        for key in row.get("label").keys():
+            # initialize or append to output[name] based on whether we've seen the label
+            values += row.get("value")[key]
+
+        return label, values
+
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
         if self.record_limit is not None and self.record_count > self.record_limit:
             return pd.DataFrame()
 
-        result = self._open_manifest(self._manifest_urls[i])
+        result = self._open_manifest(self._manifests[i])
 
         # If the dictionary has AT LEAST one value that is not None return a
         # DataFrame with the keys as columns, and the values as a row.
@@ -165,7 +144,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
             datashape=None,
             dtype=self.dtype,
             shape=None,
-            npartitions=len(self._manifest_urls),
+            npartitions=len(self._manifests),
             extra_metadata={},
         )
 
@@ -188,10 +167,10 @@ def _stringify_and_strip_if_list(record) -> list[str]:
     result_list = []
     for data in record:
         result_list.append(_stringify_and_strip_if_list(data))
-    
+
     if len(result_list) == 1:
         return result_list[0]
-    
+
     return result_list
 
 

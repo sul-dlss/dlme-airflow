@@ -1,7 +1,7 @@
+import json
 import logging
 import pytest
 import requests
-import pandas as pd
 
 from dlme_airflow.drivers.iiif_json_v3 import IiifV3JsonSource
 
@@ -29,12 +29,9 @@ class MockIIIFCollectionV3Response:
 
     @staticmethod
     def json():
-        return {
-            "items": [
-                {"id": "https://collection.edu/iiif/p15795coll29:28/manifest.json"}
-            ]
-        }
-
+        with open("tests/data/iiif_v3/collection_items.json") as f:
+            data = json.load(f)
+        return data
 
 class MockIIIFManifestResponse:
     @property
@@ -43,33 +40,9 @@ class MockIIIFManifestResponse:
 
     @staticmethod
     def json():
-        return {
-            "@context": "http://iiif.io/api/presentation/3/context.json",
-            "id": "https://collection.edu/iiif/p15795coll29:28/manifest.json",
-            "metadata": [
-                {
-                    "label": {
-                        "en": ["Source"]
-                    },
-                    "value": {
-                        "en": ["Rare Books and Special Collections Library"]
-                    },
-                },
-                {"label": {"en": ["Title (main)"]}, "value": {"en": ["A great title of the Middle East"]}},
-                {"label": {"en": ["Title (sub)"]}, "value": {"en": ["Subtitle 1"]}},
-                {"label": {"en": ["Title (sub)"]}, "value": {"en": ["Subtitle 2"]}},
-                {"label": {"en": ["Date Created"]}, "value": {"en": [["1974"]]}},
-            ],
-            "sequences": [
-                {
-                    "canvases": [
-                        {"images": [{"resource": {"format": "image/jpeg"}}]},
-                        {"images": [{"resource": {"format": "image/jpeg"}}]},
-                    ]
-                }
-            ],
-            "description": ["A descriptive phrase", " with further elaboration "],
-        }
+        with open("tests/data/iiif_v3/item_manifest.json") as f:
+            data = json.load(f)
+        return data
 
 
 @pytest.fixture
@@ -77,10 +50,12 @@ def mock_response(monkeypatch):
     def mock_get(*args, **kwargs):
         if args[0].endswith("v2_collection.json"):
             return MockIIIFCollectionV2Response()
-        if args[0].endswith("v3_collection.json"):
-            return MockIIIFCollectionV3Response()
-        if args[0].endswith("manifest.json"):
+        # if args[0].endswith("v3_collection.json"):
+        #     return MockIIIFCollectionV3Response()
+        if args[0].endswith("manifest"):
             return MockIIIFManifestResponse()
+        if "iiifservices/collection/al-Adab" in args[0]:
+            return MockIIIFCollectionV3Response()
         return
 
     monkeypatch.setattr(requests, "get", mock_get)
@@ -90,82 +65,100 @@ def mock_response(monkeypatch):
 def iiif_test_v3_source():
     metadata = {
         "fields": {
-            "context": {
-                "path": "@context",
-                "optional": True,
+            "id": {
+                "path": "id",
             },  # a specified field with one value in the metadata
-            "description_top": {"path": "description", "optional": True},
-            "iiif_format": {
-                "path": "sequences..format"
-            },  # a specified field with multiple values in the metadata
-            "profile": {"path": "sequences..profile"},  # a missing required field
-            "thumbnail": {
-                "path": "thumbnail..@id",
-                "optional": True,
-            },  # missing optional field
         }
     }
+    paging = {
+        "pages_url": "https://iiif_v3_collection/iiifservices/collection/al-Adab/{offset}/{limit}",
+        "page_data": "items",
+        "limit": 1000
+    }
     return IiifV3JsonSource(
-        collection_url="http://iiif_v3_collection.json", metadata=metadata
+        collection_url="https://iiif_v3_collection/iiifservices/collection/Posters",
+        paging=paging,
+        metadata=metadata
     )
 
 
 def test_IiifJsonSource_initial(iiif_test_v3_source, mock_response):
-    assert len(iiif_test_v3_source._manifest_urls) == 0
+    assert len(iiif_test_v3_source._manifests) == 0
 
 
 def test_IiifJsonSource_get_schema(iiif_test_v3_source, mock_response):
     iiif_test_v3_source._get_schema()
+    assert len(iiif_test_v3_source._manifests) == 2
     assert (
-        iiif_test_v3_source._manifest_urls[0]
-        == "https://collection.edu/iiif/p15795coll29:28/manifest.json"
+        iiif_test_v3_source._manifests[0]["id"]
+        == "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3hd1k/manifest"
     )
 
 
 def test_IiifJsonSource_read(iiif_test_v3_source, mock_response):
     iiif_df = iiif_test_v3_source.read()
+    print(f"Columns: {iiif_df.columns}")
     test_columns = [
-        "context",
-        "description_top",
-        "iiif_format",
-        "source",
-        "title-main",
-        "title-sub",
+        "id",
+        "title",
+        "identifier",
+        "language",
+        "date",
+        "authors",
+        "descriptions",
+        "extent",
+        "subjects",
+        "collection",
+        "rights",
     ]
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 
 def test_IiifJsonSource_df(iiif_test_v3_source, mock_response):
     iiif_df = iiif_test_v3_source.read()
-    test_df = pd.DataFrame(
-        [
-            {
-                "context": "http://iiif.io/api/presentation/3/context.json",
-                "description_top": ["A descriptive phrase", "with further elaboration"],
-                "iiif_format": ["image/jpeg", "image/jpeg"],
-                "source": ["Rare Books and Special Collections Library"],
-                "title-main": ["A great title of the Middle East"],
-                "title-sub": ["Subtitle 1", "Subtitle 2"],
-                "date-created": ["1974"],
-            }
-        ]
+    assert len(iiif_df.get('id')) == 2
+    assert iiif_df.get('id').to_list() == ["https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest", "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest"]
+
+
+@pytest.fixture
+def iiif_test_v3_source_with_profile():
+    metadata = {
+        "fields": {
+            "thumbnail": {
+                "path": "thumbnail",
+                "optional": True,
+            },  # a specified field with one value in the metadata
+            "profile": {
+                "path": "profile",
+                "optional": False,
+            },
+        }
+    }
+    paging = {
+        "pages_url": "https://iiif_v3_collection/iiifservices/collection/al-Adab/{offset}/{limit}",
+        "page_data": "items",
+        "limit": 1000
+    }
+    return IiifV3JsonSource(
+        collection_url="http://iiif_v3_collection/iiifservices/collection/al-Adab",
+        paging=paging,
+        metadata=metadata
     )
-    assert iiif_df.equals(test_df)
 
-
-def test_IiifJsonSource_logging(iiif_test_v3_source, mock_response, caplog):
+def test_IiifJsonSource_logging(iiif_test_v3_source_with_profile, mock_response, caplog):
     with caplog.at_level(logging.WARNING):
-        iiif_test_v3_source.read()
+        iiif_test_v3_source_with_profile.read()
+        print(f"CAPLOG: {caplog.text}")
     assert (
-        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing required field: 'profile'; searched path: 'sequences..profile'"  # noqa: E501
+        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing required field: 'profile'; searched path: 'profile'"  # noqa: E501
         in caplog.text
     )
     assert "missing optional field" not in caplog.text
 
     with caplog.at_level(logging.DEBUG):
-        iiif_test_v3_source.read()
+        iiif_test_v3_source_with_profile.read()
     assert (
-        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"  # noqa: E501
+        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing optional field: 'thumbnail'; searched path: 'thumbnail'"  # noqa: E501
         in caplog.text
     )
 
@@ -177,4 +170,4 @@ def test_IiifJsonSource_logging(iiif_test_v3_source, mock_response, caplog):
 
 def test_list_encode(iiif_test_v3_source, mock_response):
     iiif_df = iiif_test_v3_source.read()
-    assert iiif_df["date-created"][0] == ["1974"]
+    assert iiif_df.get("date").to_list() == [["1998"], ["1998"]]

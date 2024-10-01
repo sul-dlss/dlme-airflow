@@ -19,6 +19,8 @@ def main(opts):
     if collection is None:
         sys.exit(f'💥 Provider "{opts.provider}" does not have a collection "{opts.collection}"')
 
+    print(f"Harvesting collection: {opts.collection}")
+
     # set driver record limit if it is allowed by the driver
     if opts.limit:
         if hasattr(collection.catalog, 'record_limit'):

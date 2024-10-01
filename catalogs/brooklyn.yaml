@@ -8,9 +8,10 @@ sources:
     args:
       collection_url: https://www.brooklynmuseum.org/api/v2/object/
       paging:
-        pages_url: https://www.brooklynmuseum.org/api/v2/collection/5/object
+        pages_url: https://www.brooklynmuseum.org/api/v2/collection/5/object?limit={limit}&offset={offset}  
         urls: data.id
         limit: 25
+        page_data: data
       record_selector: "data"
       api_key: "0IzFpBiUksT8LMVGLUxovj9IR0ltlSH1"
     metadata:

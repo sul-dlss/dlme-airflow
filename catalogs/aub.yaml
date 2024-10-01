@@ -3,23 +3,6 @@ metadata:
   data_path: aub
   schedule: "30 13 15 Jan,Apr,Jul,Oct *"
 sources:
-  aco:
-    driver: oai_xml
-    args:
-      collection_url: https://libraries.aub.edu.lb/xtf/oai
-      metadata_prefix: oai_dc
-      set: "aco"
-      allow_expiration: true
-      full_harvest: true
-    metadata:
-      data_path: aub/aco
-      config: aub
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
   aladab:
     driver: iiif_json_v3
     args:
@@ -30,7 +13,7 @@ sources:
         page_fields:
           - id
           - thumbnail.id
-        limit: 1000
+        limit: 1010
     metadata:
       data_path: aub/aladab
       config: aub
@@ -38,70 +21,70 @@ sources:
         id:
           path: "id"
   postcards:
-    driver: oai_xml
+    driver: iiif_json_v3
     args:
-      collection_url: https://libraries.aub.edu.lb/xtf/oai
-      metadata_prefix: oai_dc
-      set: "postcards"
-      allow_expiration: true
-      full_harvest: true
+      collection_url: https://libraries.aub.edu.lb/iiifservices/collection/Postcards
+      paging:
+        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/Postcards/{offset}/{limit}
+        page_data: items
+        page_fields:
+          - id
+          - thumbnail.id
+        limit: 1010
     metadata:
       data_path: aub/postcards
       config: aub
       fields:
         id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
+          path: "id"
   posters:
-    driver: oai_xml
+    driver: iiif_json_v3
     args:
-      collection_url: https://libraries.aub.edu.lb/xtf/oai
-      metadata_prefix: oai_dc
-      set: "posters"
-      allow_expiration: true
-      full_harvest: true
+      collection_url: https://libraries.aub.edu.lb/iiifservices/collection/Posters
+      paging:
+        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/Posters/{offset}/{limit}
+        page_data: items
+        page_fields:
+          - id
+          - thumbnail.id
+        limit: 1000
     metadata:
-      data_path: aub/posters
+      data_path: aub/postcards
       config: aub
       fields:
         id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
-  thamarat_al_funun:
-    driver: oai_xml
-    args:
-      collection_url: https://libraries.aub.edu.lb/xtf/oai
-      metadata_prefix: oai_dc
-      set: "thf"
-      allow_expiration: true
-      full_harvest: true
-    metadata:
-      data_path: aub/thamarat_al_funun
-      config: aub
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
+          path: "id"
   travelbooks:
-    driver: oai_xml
+    driver: iiif_json_v3
     args:
-      collection_url: https://libraries.aub.edu.lb/xtf/oai
-      metadata_prefix: oai_dc
-      set: "travelbooks"
-      allow_expiration: true
-      full_harvest: true
+      collection_url: https://libraries.aub.edu.lb/iiifservices/collection/Travel%20Books
+      paging:
+        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/Travel%20Books/{offset}/{limit}
+        page_data: items
+        page_fields:
+          - id
+          - thumbnail.id
+        limit: 1000
     metadata:
-      data_path: aub/travelbooks
+      data_path: aub/postcards
       config: aub
       fields:
         id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
+          path: "id"
+  manuscripts:
+    driver: iiif_json_v3
+    args:
+      collection_url: https://libraries.aub.edu.lb/iiifservices/collection/Manuscripts
+      paging:
+        pages_url: https://libraries.aub.edu.lb/iiifservices/collection/Manuscripts/{offset}/{limit}
+        page_data: items
+        page_fields:
+          - id
+          - thumbnail.id
+        limit: 1000
+    metadata:
+      data_path: aub/postcards
+      config: aub
+      fields:
+        id:
+          path: "id"
