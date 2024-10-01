@@ -58,7 +58,7 @@ class MockIIIFManifestResponse:
                 {"label": {"en": ["Title (main)"]}, "value": {"en": ["A great title of the Middle East"]}},
                 {"label": {"en": ["Title (sub)"]}, "value": {"en": ["Subtitle 1"]}},
                 {"label": {"en": ["Title (sub)"]}, "value": {"en": ["Subtitle 2"]}},
-                {"label": {"en": ["Date Created"]}, "value": {"en": [["1974"]]}},
+                {"label": {"en": ["Date Created"]}, "value": {"en": ["1974"]}},
             ],
             "sequences": [
                 {

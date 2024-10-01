@@ -116,26 +116,21 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         output: dict[str, list[str]] = {}
 
         for row in iiif_manifest_metadata:
-            for key in row.get("label").keys():
-                name = (
-                    row.get("label")[key][0]
-                    .replace(" ", "-")
-                    .lower()
-                    .replace("(", "")
-                    .replace(")", "")
-                )
-                # initialize or append to output[name] based on whether we've seen the label
-                metadata_value = row.get("value")[key]
-                if not metadata_value:
-                    continue
+            (label, values) = self._extract_metadata_for_row(row)
+            output.setdefault(label, []).extend(values)
+                               
+        return output
 
-                if name in output:
-                    output.update({name: _flatten_list([output[name], metadata_value])})
-                else:
-                    output[name] = metadata_value
+    def _extract_metadata_for_row(self, row):
+        values = []
+        lang = next(iter(row.get("label")))
+        label = row.get("label")[lang][0].replace(" ", "-").lower().replace("(", "").replace(")", "")
+        for key in row.get("label").keys():
+            # initialize or append to output[name] based on whether we've seen the label
+            values += row.get("value")[key]
 
-        # flatten any nested lists into a single list
-        return {k: list(_flatten_list(v)) for (k, v) in output.items()}
+        return label, values
+
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
