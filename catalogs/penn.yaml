@@ -1,92 +1,170 @@
 metadata:
   version: 1
-  data_path: penn
-  schedule: "0 15 25 Jan,Apr,Jul,Oct *"
+  data_path: penn_museum
+  schedule: "0 15 25 Jan,Oct *"
 sources:
-  penn_egyptian:
+  babylonian:
+    description: University of Pennsylvania Babylonian Museum
+    driver: sequential_csv
+    metadata:
+      data_path: penn_museum/babylonian
+      output_format: json
+      filters:
+        curatorialSection:
+          include:
+            - Babylonian
+      post_harvest: add_thumbnails
+      config: penn_museum
+      fields:
+        id:
+          name_in_dataframe: "emuIRN"
+          path: "emuIRN"
+    args:
+      urlpath:
+        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
+      csv_kwargs:
+        dtype:
+          accession_credit_line: object
+          creator: object
+          culture_area: object
+          culture: object
+          curatorial_section: object
+          date_made_early: object
+          date_made_late: object
+          date_made: object
+          dateMade: object
+          description: object
+          earlyDate: object
+          emuIRN: object
+          iconography: object
+          iconographySubject: object
+          inscriptionMarkLanguage: object
+          lateDate: object
+          manufacture_locationlocus: object
+          material: object
+          measurement_height: object
+          measurement_length: object
+          measurement_outside_diameter: object
+          measurement_tickness: object
+          measurement_unit: object
+          measurement_width: object
+          native_name: object
+          object_name: object
+          object_number: object
+          other_numbers: object
+          period: object
+          provenience: object
+          siteName: object
+          technique: object
+          title: object
+          url: object
+  egyptian:
     description: University of Pennsylvania Egyptian Museum
     driver: csv
     metadata:
-      data_path: penn/egyptian_museum
+      data_path: penn_museum/egyptian
+      output_format: json
+      filters:
+        curatorialSection:
+          include:
+            - Egyptian
       post_harvest: add_thumbnails
-      config: penn_egyptian
+      config: penn_museum
       fields:
         id:
           name_in_dataframe: "emuIRN"
           path: "emuIRN"
     args:
       urlpath:
-        - http://www.penn.museum/collections/assets/data/egyptian-csv-latest.zip
+        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
       csv_kwargs:
         dtype:
-          emuIRN: int64
-          curatorial_section: object
-          object_number: object
-          object_name: object
-          native_name: object
-          culture: object
-          provenience: object
-          material: object
-          period: object
-          date_made: object
-          date_made_early: object
-          date_made_late: object
           accession_credit_line: object
           creator: object
-          description: object
-          manufacture_locationlocus: float64
           culture_area: object
-          technique: object
+          culture: object
+          curatorial_section: object
+          date_made_early: object
+          date_made_late: object
+          date_made: object
+          dateMade: object
+          description: object
+          earlyDate: object
+          emuIRN: object
           iconography: object
-          measurement_height: float64
-          measurement_length: float64
-          measurement_width: float64
-          measurement_outside_diameter: float64
-          measurement_tickness: float64
+          iconographySubject: object
+          inscriptionMarkLanguage: object
+          lateDate: object
+          manufacture_locationlocus: object
+          material: object
+          measurement_height: object
+          measurement_length: object
+          measurement_outside_diameter: object
+          measurement_tickness: object
           measurement_unit: object
+          measurement_width: object
+          native_name: object
+          object_name: object
+          object_number: object
           other_numbers: object
+          period: object
+          provenience: object
+          siteName: object
+          technique: object
+          title: object
           url: object
-
-  penn_near_eastern:
+  near_eastern:
     description: University of Pennsylvania Near Eastern Museum
     driver: csv
     metadata:
-      data_path: penn/near_eastern_museum
+      data_path: penn_museum/near_eastern
+      output_format: json
+      filters:
+        curatorialSection:
+          include:
+            - Near Eastern
       post_harvest: add_thumbnails
-      config: penn_near_east
+      config: penn_museum
       fields:
         id:
           name_in_dataframe: "emuIRN"
           path: "emuIRN"
     args:
       urlpath:
-        - http://www.penn.museum/collections/assets/data/near-eastern-csv-latest.zip
+        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
       csv_kwargs:
         dtype:
-          emuIRN: int64
-          curatorial_section: object
-          object_number: object
-          object_name: object
-          native_name: object
-          culture: object
-          provenience: object
-          material: object
-          period: object
-          date_made: object
-          date_made_early: object
-          date_made_late: object
           accession_credit_line: object
           creator: object
-          description: object
-          manufacture_locationlocus: float64
           culture_area: object
-          technique: object
+          culture: object
+          curatorial_section: object
+          date_made_early: object
+          date_made_late: object
+          date_made: object
+          dateMade: object
+          description: object
+          earlyDate: object
+          emuIRN: object
           iconography: object
-          measurement_height: float64
-          measurement_length: float64
-          measurement_width: float64
-          measurement_outside_diameter: float64
-          measurement_tickness: float64
+          iconographySubject: object
+          inscriptionMarkLanguage: object
+          lateDate: object
+          manufacture_locationlocus: object
+          material: object
+          measurement_height: object
+          measurement_length: object
+          measurement_outside_diameter: object
+          measurement_tickness: object
           measurement_unit: object
+          measurement_width: object
+          native_name: object
+          object_name: object
+          object_number: object
           other_numbers: object
+          period: object
+          provenience: object
+          siteName: object
+          technique: object
+          title: object
           url: object

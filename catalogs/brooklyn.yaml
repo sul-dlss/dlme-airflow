@@ -14,21 +14,103 @@ sources:
       record_selector: "data"
       api_key: "0IzFpBiUksT8LMVGLUxovj9IR0ltlSH1"
     metadata:
-      data_path: brooklyn_museum/near-east-egyptian
+      data_path: brooklyn_museum/near_east_egyptian
       output_format: json
       config: brooklyn
       fields:
         id:
           path: "id"
+        accession_number:
+          path: "accession_number"
+        artists:
+          path: "artists"
+        classification:
+          path: "classification"
+        collections:
+          path: "collections"
+        credit_line:
+          path: "credit_line"
         description:
           path: "description"
+        dimensions:
+          path: "dimensions"
         date:
           path: "date_added"
+        geographical_locations:
+          path: "geographical_locations"
+        inscribed:
+          path: "inscribed"
+        medium:
+          path: "medium"
+        object_date:
+          path: "object_date"
+        object_date_begin:
+          path: "object_date_begin"
+        object_date_end:
+          path: "object_date_end"
+        period:
+          path: "period"
         preview:
           path: "primary_image"
-        shown_at:
-          path: "primary_image"
-        subject:
+        related_items:
+          path: "related_items"
+        signed:
+          path: "signed"
+        title:
+          path: "title"
+  arts-of-the-islamic-world:
+    description: "Arts of the Islamic World"
+    driver: custom_json
+    args:
+      collection_url: https://www.brooklynmuseum.org/api/v2/object/
+      paging:
+        pages_url: https://www.brooklynmuseum.org/api/v2/collection/20/object
+        urls: data.id
+        limit: 25
+      record_selector: "data"
+      api_key: "0IzFpBiUksT8LMVGLUxovj9IR0ltlSH1"
+    metadata:
+      data_path: brooklyn_museum/arts_islamic_world
+      output_format: json
+      config: brooklyn
+      fields:
+        id:
+          path: "id"
+        accession_number:
+          path: "accession_number"
+        artists:
+          path: "artists"
+        classification:
           path: "classification"
+        collections:
+          path: "collections"
+        credit_line:
+          path: "credit_line"
+        description:
+          path: "description"
+        dimensions:
+          path: "dimensions"
+        date:
+          path: "date_added"
+        geographical_locations:
+          path: "geographical_locations"
+        inscribed:
+          path: "inscribed"
+        medium:
+          path: "medium"
+        object_date:
+          path: "object_date"
+        object_date_begin:
+          path: "object_date_begin"
+        object_date_end:
+          path: "object_date_end"
+        period:
+          path: "period"
+        preview:
+          path: "primary_image"
+        related_items:
+          path: "related_items"
+        signed:
+          path: "signed"
         title:
           path: "title"
