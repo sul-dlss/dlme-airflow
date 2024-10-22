@@ -17,47 +17,52 @@ sources:
       csv_kwargs:
         blocksize: null
         dtype:
-          URI: object
-          Title: object
-          RecordId: object
-          Coin Type URI: object
-          From Date: float64
-          To Date: float64
+          Ah: object
           Artist: object
-          SubjectEvent: object
-          SubjectIssuer: object
-          SubjectPerson: object
-          SubjectPlace: object
+          Authenticity: object
           Authority: object
+          Axis: object
           Coin Type: object
-          Degree: float64
+          Coin Type URI: object
+          Date on Object: object
+          Date Record Modified: object
+          Degree: object
           Deity: object
           Denomination: object
           Department: object
+          Diameter: object
           Dynasty: object
-          Engraver: float64
+          Engraver: object
+          Findspot: object
+          From Date: object
+          Issuer: object
           Maker: object
           Manufacture: object
           Material: object
           Mint: object
           Object Type: object
-          Portrait: object
-          Reference: object
-          Region: object
-          Script: object
-          State: object
           Obverse Legend: object
           Obverse Type: object
+          Place of Issue: object
+          Portrait: object
+          RecordId: object
+          Reference: object
+          Region: object
           Reverse Legend: object
           Reverse Type: object
-          Date on Object: float64
-          Ah: float64
-          Axis: float64
-          Diameter: float64
-          Weight: float64
+          Script: object
+          State: object
+          Stated Authority: object
+          SubjectEvent: object
+          SubjectIssuer: object
+          SubjectPerson: object
+          SubjectPlace: object
           Thumbnail_obv: object
           Thumbnail_rev: object
-          Date Record Modified: object
+          Title: object
+          To Date: object
+          URI: object
+          Weight: object
       urlpath:
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1
         - http://numismatics.org/search/query.csv?q=imagesavailable:true%20AND%20department_facet:%22Islamic%22&start=1001

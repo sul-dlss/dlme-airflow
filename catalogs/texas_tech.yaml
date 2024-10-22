@@ -6,7 +6,7 @@ sources:
   turkish_stories:
     driver: oai_xml
     args:
-      collection_url: https://swco-ir.tdl.org/oai/request?
+      collection_url: https://swco-ir.tdl.org/server/oai/request?
       metadata_prefix: oai_dc
       set: "com_10605_355119"
       allow_expiration: true

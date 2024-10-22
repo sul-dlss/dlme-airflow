@@ -106,6 +106,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                 .lower()
                 .replace("(", "")
                 .replace(")", "")
+                .replace("/", "")
             )
             # initialize or append to output[name] based on whether we've seen the label
             metadata_value = row.get("value")

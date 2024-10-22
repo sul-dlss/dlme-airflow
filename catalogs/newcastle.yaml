@@ -55,4 +55,4 @@ sources:
           path: ".//type"
           optional: true
     args:
-      collection_url: https://gertrudebell.ncl.ac.uk/sites/default/files/views_data_export/dlme_export_data_export_1/1707866284/dlme_export.xml
+      collection_url: https://gertrudebell.ncl.ac.uk/export/

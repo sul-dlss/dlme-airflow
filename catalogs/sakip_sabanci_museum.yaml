@@ -1,6 +1,6 @@
 metadata:
   version: 1
-  data_path: sakip-sabanci
+  data_path: sakip_sabanci_museum
   schedule: "0 15 15 Jan,Apr,Jul,Oct *"
 sources:
   abidin_dino:
