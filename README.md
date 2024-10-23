@@ -52,25 +52,40 @@ open your browser to `http://localhost:8080`
 
 ## Set-up
 
-Create a Python virtual environment for dlme-airflow by first installing the [Poetry] dependency management and packaging tool. Use the [Poetry installer] script:
-
+1. Install `uv` for dependency management as described in [the uv docs](https://github.com/astral-sh/uv?tab=readme-ov-file#getting-started).
+2. Create a virtual environment:
 ```
-curl -sSL https://install.python-poetry.org | python3 -
-```
-
-Then you can bootstrap your environment:
-
-```
-poetry shell
+uv venv
 ```
 
-and install the dependencies:
+This will create the virtual environment at the default location of `.venv/`. `uv` automatically looks for a venv at this location when installing dependencies.
 
+3. Activate the virtual environment:
 ```
-poetry install
+source .venv/bin/activate
 ```
 
-Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
+
+## Install dependencies
+```
+uv pip install -r requirements.txt
+```
+
+To add a dependency:
+1. `uv pip install flask`
+2. Add the dependency to `pyproject.toml`.
+3. To re-generate the locked dependencies in `requirements.txt`:
+```
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+Unlike poetry, uv's dependency resolution is not platform-agnostic. If we find we need to generate a requirements.txt for linux, we can use [uv's multi-platform resolution options](https://github.com/astral-sh/uv?tab=readme-ov-file#multi-platform-resolution).
+
+## Upgrading dependencies
+To upgrade Python dependencies:
+```
+uv pip compile pyproject.toml -o requirements.txt --upgrade
+```
 
 ### Other random Poetry tips
 
