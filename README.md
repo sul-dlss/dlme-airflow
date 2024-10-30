@@ -52,40 +52,40 @@ open your browser to `http://localhost:8080`
 
 ## Set-up
 
-Create a Python virtual environment for dlme-airflow by first installing the [Poetry] dependency management and packaging tool. Use the [Poetry installer] script:
-
+1. Install `uv` for dependency management as described in [the uv docs](https://github.com/astral-sh/uv?tab=readme-ov-file#getting-started).
+2. Create a virtual environment:
 ```
-curl -sSL https://install.python-poetry.org | python3 -
-```
-
-Then you can bootstrap your environment:
-
-```
-poetry shell
+uv venv
 ```
 
-and install the dependencies:
+This will create the virtual environment at the default location of `.venv/`. `uv` automatically looks for a venv at this location when installing dependencies.
 
+3. Activate the virtual environment:
 ```
-poetry install
+source .venv/bin/activate
 ```
 
-Every time you open a new shell terminal you will want to run `poetry shell` again to ensure your you are using the dlme-airflow development environment. If you are using VSCode the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) should enable it automatically for you when you open a terminal window.
 
-### Other random Poetry tips
+## Install dependencies
+```
+uv pip install -r requirements.txt
+```
 
-As an alternative to running `poetry shell`, you can prefix all project-specific python
-commands from your default shell with `poetry run ...` (similar to `bundle exec ...` in
-Ruby-land).
+To add a dependency:
+1. `uv pip install flask`
+2. Add the dependency to `pyproject.toml`.
+3. To re-generate the locked dependencies in `requirements.txt`:
+```
+uv pip compile pyproject.toml -o requirements.txt
+```
 
-If you're running into dependency issues but believe your dependencies are specified correctly,
-and you've run `poetry install` to make sure the environment is up to date, you can try:
-* Updating to the latest version of `poetry`.  From Poetry 1.2.0 on, you should be able to call
-`poetry self update`, but see the docs for details.
-* Re-installing your env for the project.  You can see your installed environments with
-`poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
-  dependencies from a clean slate.
-* To add a dependency, run `poetry add <dependency>` or `poetry add <dependency> --group dev`.
+Unlike poetry, uv's dependency resolution is not platform-agnostic. If we find we need to generate a requirements.txt for linux, we can use [uv's multi-platform resolution options](https://github.com/astral-sh/uv?tab=readme-ov-file#multi-platform-resolution).
+
+## Upgrading dependencies
+To upgrade Python dependencies:
+```
+uv pip compile pyproject.toml -o requirements.txt --upgrade
+```
 
 ## Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
@@ -113,18 +113,6 @@ To run the entire test suite from the root directory, `PYTHONPATH=dlme_airflow p
 You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/path/to/test.py`.
 
 ## Misc useful development commands
-
-### Similar checks to CI, as one shell command
-```sh
-poetry run black --diff --check . &&
-  poetry run mypy . &&
-  poetry run flake8 &&
-  poetry run yamllint catalogs/ &&
-  PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
-```
-* run black first because it's fast; remove the flags to just apply formatting
-* typechecking next because it's also fast
-* pytest: `-s` to show stdout, `--pdb` to drop to debugger on test failure, e.g. failed assertion
 
 ### Debugging breakpoints
 You can call `breakpoint()` in your code to set a breakpoint for dropping into the debugger.  Note from @jmartin-sul:
@@ -281,14 +269,12 @@ can be wherever the `output-provider-collection.ndjson` file will be found.
 
 Example:
 ```
-METADATA_OUTPUT_PATH=$PWD/metadata poetry run bin/report aims aims > report.html
+METADATA_OUTPUT_PATH=$PWD/metadata uv run bin/report aims aims > report.html
 open report.html # to open in your browser
 ```
 
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
-[Poetry]: https://python-poetry.org/docs
-[Poetry installer]: https://python-poetry.org/docs/#installation
 [Apache Airflow]: https://airflow.apache.org/
 [Intake]: https://intake.readthedocs.io/
 [Digital Library of the Middle East]: https://dlmenetwork.org/library
