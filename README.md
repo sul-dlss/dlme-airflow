@@ -87,21 +87,6 @@ To upgrade Python dependencies:
 uv pip compile pyproject.toml -o requirements.txt --upgrade
 ```
 
-### Other random Poetry tips
-
-As an alternative to running `poetry shell`, you can prefix all project-specific python
-commands from your default shell with `poetry run ...` (similar to `bundle exec ...` in
-Ruby-land).
-
-If you're running into dependency issues but believe your dependencies are specified correctly,
-and you've run `poetry install` to make sure the environment is up to date, you can try:
-* Updating to the latest version of `poetry`.  From Poetry 1.2.0 on, you should be able to call
-`poetry self update`, but see the docs for details.
-* Re-installing your env for the project.  You can see your installed environments with
-`poetry env list`.  Then `poetry env remove <env id>`, then `poetry install` to install
-  dependencies from a clean slate.
-* To add a dependency, run `poetry add <dependency>` or `poetry add <dependency> --group dev`.
-
 ## Running Code Formatter and Linter
 We are using [flake8][FLK8] for python code linting. To run [flake8][FLK8]
 against the entire code repository, run `flake8 dlme_airflow` from the root
@@ -128,18 +113,6 @@ To run the entire test suite from the root directory, `PYTHONPATH=dlme_airflow p
 You can also run individual tests with `PYTHONPATH=dlme_airflow pytest tests/path/to/test.py`.
 
 ## Misc useful development commands
-
-### Similar checks to CI, as one shell command
-```sh
-poetry run black --diff --check . &&
-  poetry run mypy . &&
-  poetry run flake8 &&
-  poetry run yamllint catalogs/ &&
-  PYTHONPATH=dlme_airflow poetry run pytest -s --pdb
-```
-* run black first because it's fast; remove the flags to just apply formatting
-* typechecking next because it's also fast
-* pytest: `-s` to show stdout, `--pdb` to drop to debugger on test failure, e.g. failed assertion
 
 ### Debugging breakpoints
 You can call `breakpoint()` in your code to set a breakpoint for dropping into the debugger.  Note from @jmartin-sul:
@@ -296,14 +269,12 @@ can be wherever the `output-provider-collection.ndjson` file will be found.
 
 Example:
 ```
-METADATA_OUTPUT_PATH=$PWD/metadata poetry run bin/report aims aims > report.html
+METADATA_OUTPUT_PATH=$PWD/metadata uv run bin/report aims aims > report.html
 open report.html # to open in your browser
 ```
 
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
-[Poetry]: https://python-poetry.org/docs
-[Poetry installer]: https://python-poetry.org/docs/#installation
 [Apache Airflow]: https://airflow.apache.org/
 [Intake]: https://intake.readthedocs.io/
 [Digital Library of the Middle East]: https://dlmenetwork.org/library
