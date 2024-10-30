@@ -1,10 +1,13 @@
 
 [project]
-name = "dlme-airflow"
+name = "dlme_airflow"
 version = "0.1.0"
 description = "ETL Pipeline management for the Digital Library of the Middle East (DLME)"
-authors = ["Aaron Collier <aaron.collier@stanford.edu>"]
-license = "Apache2"
+authors = [
+    { name = "Aaron Collier", email = "aaron.collier@stanford.edu" },
+    { name = "Jacob Hill", email = "jtim@stanford.edu" }
+]
+license = { text = "Apache2" }
 requires-python = ">= 3.12"
 dependencies = [
     "aiohttp",
@@ -30,7 +33,7 @@ pythonpath = ["."]
 addopts = "-v"
 
 [tool.setuptools]
-py-modules = []
+packages = ["dlme_airflow"]
 
 [build-system]
 requires = ["setuptools"]
