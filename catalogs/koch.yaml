@@ -20,12 +20,8 @@ sources:
         id:
           path: '@id'
           optional: true
-        iiif_format:
-          path: 'sequences..format'
-        profile:
-          path: 'sequences..profile'
         resource:
-          path: 'sequences..resource.@id'
+          path: 'sequences[0].canvases[0].images[0].resource.@id'
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
