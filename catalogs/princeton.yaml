@@ -28,7 +28,7 @@ sources:
       collection_url: https://figgy.princeton.edu/collections/52abe8f7-e2a1-46e9-9d13-3dc4fbc0bf0a/manifest
       dtype:
     metadata:
-      data_path: princeton/islamic_manuscripts
+      data_path: princeton/mss
       output_format: json
       filters:
         member-of-collections:
@@ -50,7 +50,7 @@ sources:
       collection_url: https://figgy.princeton.edu/collections/2ce536fa-8c6e-4f1d-b411-29a28fe188d5/manifest
       dtype:
     metadata:
-      data_path: princeton/movie_posters
+      data_path: princeton/posters
       output_format: json
       config: princeton
       fields:
