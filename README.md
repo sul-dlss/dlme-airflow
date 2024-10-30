@@ -250,13 +250,13 @@ voice_of_america:
 
 Sometimes it can be useful to be able to fetch data from a provider on the command line. This can be useful when adding or modifying a catalog entry, developing a driver, or when working with the data that is collected. To aid in that the `bin/get` utility will fetch data from a provider/collection and output the collected CSV to stdout or to a file.
 
-First you'll want to enter the poetry virtual environment:
+First you will want to activate your virtual environment with:
 
 ```
-$ poetry shell
+$ source .venv/bin/activate
 ```
 
-and then run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or aboart the harvest early with `--limit`):
+Then run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or abort the harvest early with `--limit`):
 
 ```
 $ bin/get yale babylonian --limit 20
