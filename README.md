@@ -65,7 +65,6 @@ This will create the virtual environment at the default location of `.venv/`. `u
 source .venv/bin/activate
 ```
 
-
 ## Install dependencies
 ```
 uv pip install -r requirements.txt
@@ -238,28 +237,22 @@ voice_of_america:
 
 Sometimes it can be useful to be able to fetch data from a provider on the command line. This can be useful when adding or modifying a catalog entry, developing a driver, or when working with the data that is collected. To aid in that the `bin/get` utility will fetch data from a provider/collection and output the collected CSV to stdout or to a file.
 
-First you will want to activate your virtual environment with:
+You use `uv` to run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or abort the harvest early with `--limit`):
 
 ```
-$ source .venv/bin/activate
-```
-
-Then run `bin/get` with a provider and collection as arguments (optionally you can write to a file with `--output`, or abort the harvest early with `--limit`):
-
-```
-$ bin/get yale babylonian --limit 20
+$ uv run bin/get yale babylonian --limit 20
 ```
 
 To harvest a single record for a known identifier:
 
 ```
-$ bin/get yale babylonian --id some_known_id
+$ uv run bin/get yale babylonian --id some_known_id
 ```
 
 By default `bin/get` will output json format. A csv file may be useful for checking available fields and coverage. To harvest as csv, use `--format`:
 
 ```
-$ bin/get yale babylonian --format csv
+$ uv run bin/get yale babylonian --format csv
 ```
 
 ### Manually run the report for a collection
@@ -294,6 +287,6 @@ Call it with the data path used to invoke the traject transformation.
 
 Example:
 ```
-bin/validate-traject qnl
+uv run bin/validate-traject qnl
 ```
 

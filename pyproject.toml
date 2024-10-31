@@ -11,7 +11,6 @@ license = { text = "Apache2" }
 requires-python = ">= 3.12"
 dependencies = [
     "aiohttp",
-    "apache-airflow-providers-docker",
     "beautifulsoup4",
     "dominate",
     "feedparser",
@@ -19,7 +18,7 @@ dependencies = [
     "jsonpath_ng",
     "lxml",
     "lxml_html_clean",
-    "numpy<2.0.0",
+    "numpy",
     "pandas",
     "Pillow",
     "python-dotenv",
