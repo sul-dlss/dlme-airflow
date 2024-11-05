@@ -60,7 +60,7 @@ sources:
           url: object
   egyptian:
     description: University of Pennsylvania Egyptian Museum
-    driver: csv
+    driver: sequential_csv
     metadata:
       data_path: penn_museum/egyptian
       output_format: json
@@ -115,7 +115,7 @@ sources:
           url: object
   near_eastern:
     description: University of Pennsylvania Near Eastern Museum
-    driver: csv
+    driver: sequential_csv
     metadata:
       data_path: penn_museum/near_eastern
       output_format: json
