@@ -2,6 +2,7 @@
 import os
 import pandas
 import logging
+import json
 
 from typing import Optional
 from dlme_airflow.utils.schema import get_schema
@@ -21,14 +22,18 @@ def add_thumbnails(**kwargs) -> None:
 
     # add a thumbnail column and save it
     df = pandas.read_csv(working_csv)
-    df["thumbnail"] = df.url.apply(get_thumbnail)
+    df["thumbnail"] = df.emuIRN.apply(get_thumbnail)
     df.to_csv(working_csv)
 
 
-def get_thumbnail(url) -> Optional[str]:
+def get_thumbnail(id) -> Optional[str]:
+    url = f"https://www.penn.museum/collections/object/{id}"
     logging.info(f"getting thumbnail for {url}")
-    schema = get_schema(url)
-    if schema:
-        return schema.get("thumbnailUrl")
-    else:
-        return None
+    try:
+        schema = get_schema(url)
+        if schema:
+            return schema.get("thumbnailUrl")
+        else:
+            return None
+    except json.JSONDecodeError as e:
+        logging.error(f"JSONDecodeError occurred: %s for record {url}", e)
