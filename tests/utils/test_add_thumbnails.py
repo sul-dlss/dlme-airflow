@@ -6,7 +6,6 @@ import os
 from unittest.mock import patch
 from dlme_airflow.utils.add_thumbnails import add_thumbnails, get_thumbnail
 
-print(os.environ['PYTHONPATH'])
 
 @pytest.fixture
 def mock_collection():
@@ -26,7 +25,6 @@ def test_add_thumbnails_success(mock_collection, monkeypatch):
 
     monkeypatch.setattr('dlme_airflow.utils.add_thumbnails.get_thumbnail', mock_get_thumbnail)
     monkeypatch.setattr('pandas.read_csv', lambda file: pd.DataFrame({'emuIRN': ['1', '2', '3']}))
-    monkeypatch.setattr('pandas.DataFrame.to_csv', lambda self, path: print(f"Mock to_csv called with:\n{self}"))
 
     add_thumbnails(collection=mock_collection)
 
