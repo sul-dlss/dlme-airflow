@@ -15,15 +15,15 @@ def add_thumbnails(**kwargs) -> None:
     if data_path is None:
         raise Exception(f"unable to find data_path for collection={coll}")
 
-    # ensure that the working csv is present on the filesystem
-    working_csv = coll.datafile("csv")
-    if not os.path.isfile(working_csv):
-        raise Exception(f"unable to locate working CSV data: {working_csv}")
+    # ensure that the working json is present on the filesystem
+    working_json = coll.datafile("json")
+    if not os.path.isfile(working_json):
+        raise Exception(f"unable to locate working json data: {working_json}")
 
     # add a thumbnail column and save it
-    df = pandas.read_csv(working_csv)
+    df = pandas.read_json(working_json)
     df["thumbnail"] = df.emuIRN.apply(get_thumbnail)
-    df.to_csv(working_csv)
+    df.to_json(working_json, orient="records")
 
 
 def get_thumbnail(id) -> Optional[str]:
