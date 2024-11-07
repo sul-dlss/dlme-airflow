@@ -13,7 +13,7 @@ def mock_collection():
             return '/mock/path'
 
         def datafile(self, filetype):
-            return 'tests/data/csv/penn.csv'
+            return 'tests/data/json/penn.json'
 
     return MockCollection()
 
@@ -23,7 +23,7 @@ def test_add_thumbnails_success(mock_collection, monkeypatch):
         return f'http://thumbnail{id}.jpg'
 
     monkeypatch.setattr('dlme_airflow.utils.add_thumbnails.get_thumbnail', mock_get_thumbnail)
-    monkeypatch.setattr('pandas.read_csv', lambda file: pd.DataFrame({'emuIRN': ['1', '2', '3']}))
+    monkeypatch.setattr('pandas.read_json', lambda file: pd.DataFrame({'emuIRN': ['1', '2', '3']}))
 
     add_thumbnails(collection=mock_collection)
 
