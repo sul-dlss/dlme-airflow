@@ -23,6 +23,7 @@ def add_thumbnails(**kwargs) -> None:
     # add a thumbnail column and save it
     df = pandas.read_json(working_json)
     df["thumbnail"] = df.emuIRN.apply(get_thumbnail)
+    df.dropna(subset=["thumbnail"], inplace=True)
     df.to_json(working_json, orient="records")
 
 
