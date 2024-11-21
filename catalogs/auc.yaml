@@ -102,7 +102,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/akhir_saah_magazines
-      config: auc
+      config: auc_serials
       schedule: "20 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -149,7 +149,7 @@ sources:
       driver: iiif_json
       metadata:
         data_path: auc/al_fatah
-        config: auc
+        config: auc_serials
         schedule: "21 01 01 Jan,Apr,Jul,Oct *"
         fields:
           context:
@@ -196,7 +196,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/al_jamiah
-      config: auc
+      config: auc_serials
       schedule: "22 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -243,7 +243,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/al_kawakib_magazines
-      config: auc
+      config: auc_serials
       schedule: "30 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -290,7 +290,7 @@ sources:
       driver: iiif_json
       metadata:
         data_path: auc/al_lataif_al_musawwarah
-        config: auc
+        config: auc_serials
         schedule: "22 01 01 Jan,Apr,Jul,Oct *"
         fields:
           context:
@@ -337,7 +337,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/al_musawwar
-      config: auc
+      config: auc_serials
       schedule: "40 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -384,7 +384,7 @@ sources:
       driver: iiif_json
       metadata:
         data_path: auc/al_mushir
-        config: auc
+        config: auc_serials
         schedule: "23 01 01 Jan,Apr,Jul,Oct *"
         fields:
           context:
@@ -431,7 +431,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/al_nahda_al_nisaiyya
-      config: auc
+      config: auc_serials
       schedule: "24 01 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -579,7 +579,7 @@ sources:
       driver: iiif_json
       metadata:
         data_path: auc/bina_al_watan
-        config: auc
+        config: auc_serials
         schedule: "27 02 01 Jan,Apr,Jul,Oct *"
         fields:
           context:
@@ -649,7 +649,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/bint_al_nil
-      config: auc
+      config: auc_serials
       schedule: "10 02 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -969,7 +969,7 @@ sources:
         original-identifier: object
     metadata:
       data_path: auc/historical_magazines
-      config: auc
+      config: auc_serials
       schedule: "10 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -1142,7 +1142,7 @@ sources:
     driver: iiif_json
     metadata:
       data_path: auc/le_mondain_egyptien_magazines
-      config: auc
+      config: auc_serials
       schedule: "50 03 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -1371,7 +1371,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/misr_al_hadith
-      config: auc
+      config: auc_serials
       schedule: "10 06 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
@@ -1712,7 +1712,7 @@ sources:
         repository: object
     metadata:
       data_path: auc/sphinx
-      config: auc
+      config: auc_serials
       schedule: "10 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
