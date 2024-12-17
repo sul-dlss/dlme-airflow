@@ -86,9 +86,10 @@ def test_prefetch_page_urls(requests_mock):
     partitionBuilder = PartitionBuilder(
         collection_url=collection_url,
         paging_config={
-            "pages_url": "https://example.com/collection",
+            "pages_url": "https://example.com/collection?limit={limit}&offset={offset}",
             "urls": "data.id",
             "limit": 3,
+            "page_data": "data",
         },
     )
 

@@ -24,6 +24,6 @@ def mock_request(monkeypatch):
 
 def test_index_collection(mock_request):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
     params = {"collection": collection}
     assert index_collection(**params) == "Harvest successfully initiated"
