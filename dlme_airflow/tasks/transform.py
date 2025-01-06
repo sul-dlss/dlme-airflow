@@ -16,7 +16,7 @@ def build_transform_task(collection, task_group: TaskGroup, dag: DAG):
         image=os.environ.get("TRANSFORM_IMAGE"),
         force_pull=True,
         api_version="auto",
-        auto_remove=True,
+        auto_remove='force',
         environment={
             "DATA_PATH": collection.data_path(),
             "SOURCE_DATA": os.environ.get("SOURCE_DATA_PATH"),
