@@ -22,13 +22,13 @@ def mock_collection_datafile(monkeypatch):
 
 def test_dataframe_from_csv_file(mock_collection_datafile):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     assert dataframe_from_file(collection)["id"].count() == 4
 
 
 def test_dataframe_from_json_file(mock_collection_datafile):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     assert dataframe_from_file(collection, "json")["id"].count() == 2

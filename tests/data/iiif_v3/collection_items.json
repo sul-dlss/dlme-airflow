@@ -1,0 +1,41 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "https://libraries.aub.edu.lb/iiifservices/collection/Posters/0/166",
+  "type" : "Collection",
+  "label" : {
+    "en" : [ "Ranged collection for Posters." ]
+  },
+  "requiredStatement" : {
+    "label" : {
+      "en" : [ "Attribution" ]
+    },
+    "value" : {
+      "en" : [ "AUB University Libraries." ]
+    }
+  },
+  "items" : [ {
+    "id" : "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3hd1k/manifest",
+    "type" : "Manifest",
+    "label" : {
+      "en" : [ "Madi" ],
+      "ar" : [ "ماضي" ]
+    },
+    "thumbnail" : [ {
+      "id" : "https://libraries.aub.edu.lb/iiifservices/files/posters/ark86073b3hd1k/thumb.jpg",
+      "type" : "Image",
+      "format" : "image/jpeg"
+    } ]
+  }, {
+    "id" : "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3705g/manifest",
+    "type" : "Manifest",
+    "label" : {
+      "en" : [ "H. Madi" ],
+      "ar" : [ "ماضي" ]
+    },
+    "thumbnail" : [ {
+      "id" : "https://libraries.aub.edu.lb/iiifservices/files/posters/ark86073b3705g/thumb.jpg",
+      "type" : "Image",
+      "format" : "image/jpeg"
+    } ]
+  } ]
+}

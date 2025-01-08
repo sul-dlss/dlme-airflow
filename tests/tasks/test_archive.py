@@ -9,7 +9,7 @@ from dlme_airflow.tasks.archive import archive_collection
 
 test_working = Path("test-working")
 test_archive = Path("test-archive")
-test_dir = test_working / "aub" / "aco"
+test_dir = test_working / "aub" / "aladab"
 test_csv = test_dir / "data.csv"
 test_json = test_dir / "data.json"
 test_now = datetime.datetime(2023, 3, 13, 18, 6, 31)
@@ -56,13 +56,13 @@ def setup(monkeypatch):
 
 def test_archive_dir():
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
-    assert collection.archive_dir().endswith("archive/aub/aco")
+    collection = Collection(provider, "aladab")
+    assert collection.archive_dir().endswith("archive/aub/aladab")
 
 
 def test_csv_with_data(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     fh = test_csv.open("w")
     fh.write("id,author,title\n")
@@ -73,7 +73,7 @@ def test_csv_with_data(setup, mock_collection_datafile, mock_now):
 
     assert result is not None
     assert result["csv"].endswith(
-        "test-archive/aub/aco/data-20230313180631.csv"
+        "test-archive/aub/aladab/data-20230313180631.csv"
     ), "returned CSV archive filename"
     assert Path(result["csv"]).is_file(), "archived file exists"
     assert test_csv.is_file(), "original data file should still be there"
@@ -81,7 +81,7 @@ def test_csv_with_data(setup, mock_collection_datafile, mock_now):
 
 def test_empty_csv(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
     test_csv.touch()
 
     result = archive_collection(collection=collection)
@@ -91,7 +91,7 @@ def test_empty_csv(setup, mock_collection_datafile, mock_now):
 
 def test_csv_with_header(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     test_csv.open("w").write("id,author,title\n")
 
@@ -103,7 +103,7 @@ def test_csv_with_header(setup, mock_collection_datafile, mock_now):
 # mock_now not used here since we want to call at two different times
 def test_identical_csv(setup, mock_collection_datafile):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     fh = test_csv.open("w")
     fh.write("id,author,title\n")
@@ -132,7 +132,7 @@ def test_identical_csv(setup, mock_collection_datafile):
 
 def test_json_with_data(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
 
     fh = test_json.open("w")
     fh.write("""{"id": 1, "title": "Maṭnawīye Ma'nawī"}\n""")
@@ -142,7 +142,7 @@ def test_json_with_data(setup, mock_collection_datafile, mock_now):
 
     assert len(result) != 0
     assert result["json"].endswith(
-        "test-archive/aub/aco/data-20230313180631.json"
+        "test-archive/aub/aladab/data-20230313180631.json"
     ), "returned archived json filename"
     assert Path(result["json"]).is_file(), "archived file exists"
     assert test_json.is_file(), "original data file should still be there"
@@ -150,7 +150,7 @@ def test_json_with_data(setup, mock_collection_datafile, mock_now):
 
 def test_empty_json(setup, mock_collection_datafile, mock_now):
     provider = Provider("aub")
-    collection = Collection(provider, "aco")
+    collection = Collection(provider, "aladab")
     test_json.touch()
 
     result = archive_collection(collection=collection)

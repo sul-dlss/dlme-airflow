@@ -1,0 +1,170 @@
+{
+  "@context" : [ "http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json" ],
+  "id" : "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest",
+  "type" : "Manifest",
+  "label" : {
+    "en" : [ "Nicolas Sursock Museum 21st Autumn Salon" ]
+  },
+  "logo" : [ {
+    "id" : "https://libraries.aub.edu.lb/iiifservices/files/aub_libraries_logo.jpg",
+    "type" : "Image",
+    "format" : "image/jpeg"
+  } ],
+  "homepage" : [ {
+    "id" : "https://libraries.aub.edu.lb/blacklight/catalog/ark86073b3x34b",
+    "type" : "Text",
+    "format" : "text/html",
+    "label" : {
+      "en" : [ "Homepage" ]
+    }
+  } ],
+  "requiredStatement" : {
+    "label" : {
+      "en" : [ "Attribution" ]
+    },
+    "value" : {
+      "en" : [ "AUB University Libraries." ]
+    }
+  },
+  "metadata" : [ {
+    "label" : {
+      "en" : [ "Title" ]
+    },
+    "value" : {
+      "en" : [ "Nicolas Sursock Museum 21st Autumn Salon" ]
+    }
+  }, {
+    "label" : {
+      "ar" : [ "Title" ]
+    },
+    "value" : {
+      "ar" : [ "متحف نقولا سرسق : معرض الخريف الحادي والعشرون" ]
+    }
+  }, {
+    "label" : {
+      "fr" : [ "Title" ]
+    },
+    "value" : {
+      "fr" : [ "Musée Nicolas Sursock XXIe salon d'automne" ]
+    }
+  }, {
+    "label" : {
+      "none" : [ "Identifier" ]
+    },
+    "value" : {
+      "none" : [ "ark86073b3x34b" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Language" ]
+    },
+    "value" : {
+      "en" : [ "Arabic" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Date" ]
+    },
+    "value" : {
+      "en" : [ "1998" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Author(s)" ]
+    },
+    "value" : {
+      "en" : [ "Theo" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Description(s)" ]
+    },
+    "value" : {
+      "en" : [ "Musée Nicolas Sursock XXIe salon d'automne 28 Novembre 1997 - 10 January 1998. Painting reproduced on poster by Theo." ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Extent" ]
+    },
+    "value" : {
+      "en" : [ "printed on paper : 58 x 44 cm" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Subject(s)" ]
+    },
+    "value" : {
+      "en" : [ "Lebanese painters", "Art Exhibitions -- Lebanon" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Collection" ]
+    },
+    "value" : {
+      "en" : [ "Sursock Museum Collection", "American University of Beirut Art posters Collection" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Rights" ]
+    },
+    "value" : {
+      "en" : [ "AUB University Libraries Digital Collections are available under a Creative Commons Attribution-Noncommercial-NoDerivatives 4.0 International License under CC BY-NC-ND 4.0. Except where otherwise stated, anyone is free to download and share works under this license as long as they give credit for the original creation, the shared work is not changed and not used for commercial purposes. Attribution should be given to \"AUB University Libraries.\"" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Homepage" ]
+    },
+    "value" : {
+      "en" : [ "<a href=\"https://n2t.net/ark:/86073/b3x34b\">View on AUB Digital Collections</a>" ]
+    }
+  }, {
+    "label" : {
+      "en" : [ "Usage Terms" ]
+    },
+    "value" : {
+      "en" : [ "<a href=\"https://libraries.aub.edu.lb/digital-collections/about#terms\">View Usage Terms on AUB Digital Collections</a>" ]
+    }
+  } ],
+  "items" : [ {
+    "id" : "https://libraries.aub.edu.lb/blacklight/catalog/ark86073b3x34b/cps_2001d_0147",
+    "type" : "Canvas",
+    "label" : {
+      "en" : [ "1" ]
+    },
+    "height" : 6000,
+    "width" : 4515,
+    "items" : [ {
+      "type" : "AnnotationPage",
+      "id" : "https://libraries.aub.edu.lb/blacklight/catalog/ark86073b3x34b/cps_2001d_0147/ap",
+      "items" : [ {
+        "id" : "https://libraries.aub.edu.lb/blacklight/catalog/ark86073b3x34b/cps_2001d_0147/image",
+        "type" : "Annotation",
+        "motivation" : "painting",
+        "target" : "https://libraries.aub.edu.lb/blacklight/catalog/ark86073b3x34b/cps_2001d_0147",
+        "body" : {
+          "id" : "https://lib-iiifmedia.aub.edu.lb/iiif/2/posters%2Fark86073b3x34b%2Fps_2001d_0147.jpg/full/full/0/default.jpg",
+          "type" : "Image",
+          "format" : "image/jpeg",
+          "height" : 6000,
+          "width" : 4515,
+          "service" : [ {
+            "id" : "https://lib-iiifmedia.aub.edu.lb/iiif/2/posters%2Fark86073b3x34b%2Fps_2001d_0147.jpg",
+            "type" : "ImageService2",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          } ]
+        }
+      } ]
+    } ],
+    "thumbnail" : [ {
+      "id" : "https://lib-iiifmedia.aub.edu.lb/iiif/2/posters%2Fark86073b3x34b%2Fps_2001d_0147.jpg/full/91,/0/default.jpg",
+      "type" : "Image",
+      "format" : "image/jpeg",
+      "service" : [ {
+        "id" : "https://lib-iiifmedia.aub.edu.lb/iiif/2/posters%2Fark86073b3x34b%2Fps_2001d_0147.jpg",
+        "type" : "ImageService2",
+        "profile" : "http://iiif.io/api/image/2/level2.json"
+      } ]
+    } ]
+  } ],
+  "viewingDirection" : "right-to-left"
+}

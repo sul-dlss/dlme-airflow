@@ -25,6 +25,7 @@ properties:
             - custom_json
             - json
             - iiif_json
+            - iiif_json_v3
             - oai_xml
             - sequential_csv
             - xml
