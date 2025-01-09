@@ -55,4 +55,7 @@ sources:
           path: ".//type"
           optional: true
     args:
-      collection_url: https://gertrudebell.ncl.ac.uk/export/
+      collection_url: https://gertrudebell.ncl.ac.uk/export?resumptionToken={offset}
+      paging:
+        resumptionToken: True
+        increment: 0

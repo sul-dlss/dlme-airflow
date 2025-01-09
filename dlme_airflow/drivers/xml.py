@@ -16,9 +16,10 @@ class XmlSource(intake.source.base.DataSource):
     version = "0.0.2"
     partition_access = True
 
-    def __init__(self, collection_url, dtype=None, metadata=None):
+    def __init__(self, collection_url, paging=None, dtype=None, metadata=None):
         super(XmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
+        self.paging_config = paging
         self._record_selector = self._get_record_selector()
         self._path_expressions = self._get_path_expressions()
         self._records = []
@@ -29,9 +30,38 @@ class XmlSource(intake.source.base.DataSource):
         record_elements = xtree.findall(
             self._record_selector["path"], namespaces=self._record_selector["namespace"]
         )
+
         for record_el in record_elements:
             record = self._construct_fields(record_el)
             self._records.append(record)
+
+    def _open_paged_collection(self):
+        offset = 0
+        while True:
+            offset += self.paging_config["increment"]
+            collection_url = self.collection_url.format(offset=offset)
+            print("Collection URL: ", collection_url)
+            collection_result = requests.get(collection_url).content
+            print("Collection result: ", collection_result)
+            xtree = etree.fromstring(collection_result)
+            record_elements = xtree.findall(
+                self._record_selector["path"], namespaces=self._record_selector["namespace"]
+            )
+
+            if len(record_elements) == 0:
+                break
+
+            for record_el in record_elements:
+                record = self._construct_fields(record_el)
+                self._records.append(record)
+
+            if self.paging_config["resumptionToken"]:
+                resumptionToken = xtree.xpath(".//resumptionToken")
+                print("Resumption Token: ", resumptionToken)
+                [_unused, token] = resumptionToken[0].text.split("=")
+                self.paging_config["increment"] = int(token)
+                offset = 0
+                print("offset: ", self.paging_config["increment"])
 
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
@@ -50,7 +80,12 @@ class XmlSource(intake.source.base.DataSource):
             else:
                 for el in els:
                     if hasattr(el, "text") and el.text is not None:
-                        field_doc = document_fromstring(el.text)
+                        try:
+                          field_doc = document_fromstring(el.text)
+                        except etree.ParserError:
+                            # Skip any fields that cannot be parsed
+                            continue
+
                         cleaner = Cleaner(
                             remove_unknown_tags=False, page_structure=True
                         )
@@ -99,7 +134,10 @@ class XmlSource(intake.source.base.DataSource):
         return paths
 
     def _get_schema(self):
-        self._open_collection()
+        if self.paging_config:
+            self._open_paged_collection()
+        else:
+            self._open_collection()
 
         return intake.source.base.Schema(
             datashape=None,

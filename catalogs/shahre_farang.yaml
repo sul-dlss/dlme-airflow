@@ -96,7 +96,9 @@ sources:
             media: "http://search.yahoo.com/mrss/"
           optional: true
     args:
-      collection_url: http://shahrefarang.com/en/feed/
+      collection_url: http://shahrefarang.com/en/feed/?paged={offset}
+      paging:
+        increment: 1
   persian:
     description: "Shahre Farang"
     driver: xml
@@ -143,4 +145,6 @@ sources:
             media: "http://search.yahoo.com/mrss/"
           optional: true
     args:
-      collection_url: http://shahrefarang.com/feed/
+      collection_url: http://shahrefarang.com/feed//?paged={offset}
+      paging:
+        increment: 1
