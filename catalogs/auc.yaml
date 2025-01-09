@@ -7,7 +7,7 @@ sources:
     description: "Abdullah Frères Album"
     driver: iiif_json
     metadata:
-      data_path: auc/abdullah_freres
+      data_path: auc/general/abdullah_freres
       config: auc
       schedule: "0 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -54,7 +54,7 @@ sources:
     description: "Ahmed Toughan Papers and Cartoons Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/ahmed_toughan_collection
+      data_path: auc/general/ahmed_toughan_collection
       config: auc
       schedule: "10 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -101,7 +101,7 @@ sources:
     description: "Ākhir sāʼah - Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/akhir_saah_magazines
+      data_path: auc/serials/akhir_saah_magazines
       config: auc_serials
       schedule: "20 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -144,58 +144,58 @@ sources:
         title: object
         type: object
         repository: object
-    al_fatah:
-      description: "al Fatāh - Magazine Collection"
-      driver: iiif_json
-      metadata:
-        data_path: auc/al_fatah
-        config: auc_serials
-        schedule: "21 01 01 Jan,Apr,Jul,Oct *"
-        fields:
-          context:
-            path: '@context'
-            optional: true
-          description_top:
-            path: 'description'
-            optional: true
-          id:
-            path: '@id'
-            optional: true
-          iiif_format:
-            path: 'sequences..format'
-          profile:
-            path: 'sequences..profile'
-          resource:
-            path: 'sequences..resource.@id'
-          thumbnail:
-            path: 'thumbnail..@id'
-            optional: true
-      args:
-        collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll55/p1.json
-        dtype:
-          context: object
-          id: object
-          iiif_format: object
-          profile: object
-          resource: object
-          genre: object
-          coverage: object
-          date: object
-          format: object
-          language: object
-          publisher: object
-          access: object
-          rights: object
-          source: object
-          subject: object
-          title: object
-          type: object
-          repository: object
+  al_fatah:
+    description: "al Fatāh - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/serials/al_fatah
+      config: auc_serials
+      schedule: "21 01 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll55/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   al_jamiah:
     description: "al Jāmiʻah - Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/al_jamiah
+      data_path: auc/serials/al_jamiah
       config: auc_serials
       schedule: "22 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -242,7 +242,7 @@ sources:
     description: "al Kawākib - Magazine"
     driver: iiif_json
     metadata:
-      data_path: auc/al_kawakib_magazines
+      data_path: auc/serials/al_kawakib_magazines
       config: auc_serials
       schedule: "30 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -285,58 +285,58 @@ sources:
         title: object
         type: object
         repository: object
-    al_lataif_al_musawwarah:
-      description: "al Laṭāʼif al-Muṣawwarah - Magazine Collection"
-      driver: iiif_json
-      metadata:
-        data_path: auc/al_lataif_al_musawwarah
-        config: auc_serials
-        schedule: "22 01 01 Jan,Apr,Jul,Oct *"
-        fields:
-          context:
-            path: '@context'
-            optional: true
-          description_top:
-            path: 'description'
-            optional: true
-          id:
-            path: '@id'
-            optional: true
-          iiif_format:
-            path: 'sequences..format'
-          profile:
-            path: 'sequences..profile'
-          resource:
-            path: 'sequences..resource.@id'
-          thumbnail:
-            path: 'thumbnail..@id'
-            optional: true
-      args:
-        collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll24/manifest.json
-        dtype:
-          context: object
-          id: object
-          iiif_format: object
-          profile: object
-          resource: object
-          genre: object
-          coverage: object
-          date: object
-          format: object
-          language: object
-          publisher: object
-          access: object
-          rights: object
-          source: object
-          subject: object
-          title: object
-          type: object
-          repository: object
+  al_lataif_al_musawwarah:
+    description: "al Laṭāʼif al-Muṣawwarah - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/serials/al_lataif_al_musawwarah
+      config: auc_serials
+      schedule: "22 01 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll24/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   al_musawwar:
     description: "Al-Musawwar Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/al_musawwar
+      data_path: auc/serials/al_musawwar
       config: auc_serials
       schedule: "40 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -379,58 +379,58 @@ sources:
         title: object
         type: object
         repository: object
-    al_mushir:
-      description: "al Mushīr - Magazine Collection"
-      driver: iiif_json
-      metadata:
-        data_path: auc/al_mushir
-        config: auc_serials
-        schedule: "23 01 01 Jan,Apr,Jul,Oct *"
-        fields:
-          context:
-            path: '@context'
-            optional: true
-          description_top:
-            path: 'description'
-            optional: true
-          id:
-            path: '@id'
-            optional: true
-          iiif_format:
-            path: 'sequences..format'
-          profile:
-            path: 'sequences..profile'
-          resource:
-            path: 'sequences..resource.@id'
-          thumbnail:
-            path: 'thumbnail..@id'
-            optional: true
-      args:
-        collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll18/manifest.json
-        dtype:
-          context: object
-          id: object
-          iiif_format: object
-          profile: object
-          resource: object
-          genre: object
-          coverage: object
-          date: object
-          format: object
-          language: object
-          publisher: object
-          access: object
-          rights: object
-          source: object
-          subject: object
-          title: object
-          type: object
-          repository: object
+  al_mushir:
+    description: "al Mushīr - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/serials/al_mushir
+      config: auc_serials
+      schedule: "23 01 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll18/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   al_nahda_al_nisaiyya:
     description: "al-Nahda al-Nisa’iyya - Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/al_nahda_al_nisaiyya
+      data_path: auc/serials/al_nahda_al_nisaiyya
       config: auc_serials
       schedule: "24 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -477,7 +477,7 @@ sources:
     description: "Alexandria Bombardment of 1882 Photograph Album"
     driver: iiif_json
     metadata:
-      data_path: auc/alexandria_bombardment
+      data_path: auc/general/alexandria_bombardment
       config: auc
       schedule: "50 01 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -531,7 +531,7 @@ sources:
     description: "Ancient Egyptian Paintings"
     driver: iiif_json
     metadata:
-      data_path: auc/ancient_egyptian_paintings
+      data_path: auc/general/ancient_egyptian_paintings
       config: auc
       schedule: "0 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -574,53 +574,53 @@ sources:
         title: object
         type: object
         repository: object
-    bina_al_watan:
-      description: "Bināʼ al-Waṭan - Magazine Collection"
-      driver: iiif_json
-      metadata:
-        data_path: auc/bina_al_watan
-        config: auc_serials
-        schedule: "27 02 01 Jan,Apr,Jul,Oct *"
-        fields:
-          context:
-            path: '@context'
-            optional: true
-          description_top:
-            path: 'description'
-            optional: true
-          id:
-            path: '@id'
-            optional: true
-          iiif_format:
-            path: 'sequences..format'
-          profile:
-            path: 'sequences..profile'
-          resource:
-            path: 'sequences..resource.@id'
-          thumbnail:
-            path: 'thumbnail..@id'
-            optional: true
-      args:
-        collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll53/manifest.json
-        dtype:
-          context: object
-          id: object
-          iiif_format: object
-          profile: object
-          resource: object
-          genre: object
-          coverage: object
-          date: object
-          format: object
-          language: object
-          publisher: object
-          access: object
-          rights: object
-          source: object
-          subject: object
-          title: object
-          type: object
-          repository: object
+  bina_al_watan:
+    description: "Bināʼ al-Waṭan - Magazine Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/serials/bina_al_watan
+      config: auc_serials
+      schedule: "27 02 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll53/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   bint_al_nil:
     description: "Bint al-Nil Journal"
     driver: iiif_json
@@ -648,7 +648,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/bint_al_nil
+      data_path: auc/serials/bint_al_nil
       config: auc_serials
       schedule: "10 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -704,7 +704,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/campus_photos
+      data_path: auc/general/campus_photos
       config: auc
       schedule: "20 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -760,7 +760,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/coptic
+      data_path: auc/general/coptic
       config: auc
       schedule: "30 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -816,7 +816,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/creswell
+      data_path: auc/general/creswell
       config: auc
       schedule: "40 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -872,7 +872,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/egyptian_gardens
+      data_path: auc/general/egyptian_gardens
       config: auc
       schedule: "50 02 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -920,7 +920,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      data_path: auc/fathy
+      data_path: auc/general/fathy
       config: auc
       schedule: "0 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -968,7 +968,7 @@ sources:
         location-in-arabic: object
         original-identifier: object
     metadata:
-      data_path: auc/historical_magazines
+      data_path: auc/serials/historical_magazines
       config: auc_serials
       schedule: "10 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1015,7 +1015,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/hopkins
+      data_path: auc/general/hopkins
       config: auc
       schedule: "20 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1065,7 +1065,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/islamic-aa
+      data_path: auc/general/islamic-aa
       config: auc
       schedule: "30 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1115,7 +1115,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/kraus_meyerhof
+      data_path: auc/general/kraus_meyerhof
       config: auc
       schedule: "40 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1141,7 +1141,7 @@ sources:
     description: "Le Mondain Egyptien - Magazine Collection"
     driver: iiif_json
     metadata:
-      data_path: auc/le_mondain_egyptien_magazines
+      data_path: auc/serials/le_mondain_egyptien_magazines
       config: auc_serials
       schedule: "50 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1214,7 +1214,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      data_path: auc/maps
+      data_path: auc/general/maps
       config: auc
       schedule: "0 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1266,7 +1266,7 @@ sources:
         coverage-spatial: object
         format: object
     metadata:
-      data_path: auc/margo_veillon
+      data_path: auc/general/margo_veillon
       config: auc
       schedule: "29 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1318,7 +1318,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/maritz
+      data_path: auc/general/maritz
       config: auc
       schedule: "10 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1370,7 +1370,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/misr_al_hadith
+      data_path: auc/serials/misr_al_hadith
       config: auc_serials
       schedule: "10 06 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1421,7 +1421,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/napoleonic_egypt
+      data_path: auc/general/napoleonic_egypt
       config: auc
       schedule: "20 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1472,7 +1472,7 @@ sources:
         format: object
         type: object
     metadata:
-      data_path: auc/nubia
+      data_path: auc/general/nubia
       config: auc
       schedule: "18 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1520,7 +1520,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/parker
+      data_path: auc/general/parker
       config: auc
       schedule: "30 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1568,7 +1568,7 @@ sources:
         repository: object
         publisher: object
     metadata:
-      data_path: auc/postcards
+      data_path: auc/general/postcards
       config: auc
       schedule: "40 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1617,7 +1617,7 @@ sources:
         description: object
         extent: object
     metadata:
-      data_path: auc/rare_books
+      data_path: auc/general/rare_books
       config: auc
       schedule: "50 04 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1664,7 +1664,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/saleh_lamei
+      data_path: auc/general/saleh_lamei
       config: auc
       schedule: "0 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1711,7 +1711,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/sphinx
+      data_path: auc/serials/sphinx
       config: auc_serials
       schedule: "10 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1767,7 +1767,7 @@ sources:
         repository: object
         location: object
     metadata:
-      data_path: auc/student_news
+      data_path: auc/serials/student_news
       config: auc
       schedule: "20 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1819,7 +1819,7 @@ sources:
         name: object
         creator: object
     metadata:
-      data_path: auc/taxiphote_slides
+      data_path: auc/general/taxiphote_slides
       config: auc
       schedule: "30 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1866,7 +1866,7 @@ sources:
         type: object
         repository: object
     metadata:
-      data_path: auc/tutwiler_photographs
+      data_path: auc/general/tutwiler_photographs
       config: auc
       schedule: "40 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1922,7 +1922,7 @@ sources:
         architectural-detail: object
         name: object
     metadata:
-      data_path: auc/underwood
+      data_path: auc/general/underwood
       config: auc
       schedule: "50 05 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1984,7 +1984,7 @@ sources:
         occupation: object
         relationship-to-auc: object
     metadata:
-      data_path: auc/university_on_the_square
+      data_path: auc/general/university_on_the_square
       config: auc
       schedule: "0 06 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -2034,7 +2034,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      data_path: auc/van_leo_photographs
+      data_path: auc/general/van_leo_photographs
       config: auc
       schedule: "10 06 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -2067,7 +2067,7 @@ sources:
       allow_expiration: true
       full_harvest: true
     metadata:
-      data_path: auc/voice_of_america
+      data_path: auc/general/voice_of_america
       config: auc
       fields:
         id:
@@ -2103,7 +2103,7 @@ sources:
         format: object
         original-identifier: object
     metadata:
-      data_path: auc/wassef
+      data_path: auc/general/wassef
       config: auc
       schedule: "20 06 01 Jan,Apr,Jul,Oct *"
       fields:
