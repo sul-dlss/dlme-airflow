@@ -111,7 +111,8 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         label = row.get("label")[lang][0].replace(" ", "-").lower().replace("(", "").replace(")", "")
         for key in row.get("label").keys():
             # initialize or append to output[name] based on whether we've seen the label
-            values += row.get("value")[key]
+            if row.get("value"):
+                values += row.get("value")[key]
 
         return label, values
 
