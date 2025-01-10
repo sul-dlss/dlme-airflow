@@ -26,8 +26,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url: None
-      item_urls:
+      manifest_urls:
         - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926827/manifest/
         - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926798/manifest/
         - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289969/manifest/

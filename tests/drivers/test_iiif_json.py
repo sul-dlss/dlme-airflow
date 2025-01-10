@@ -107,6 +107,30 @@ def iiif_test_v2_source():
 
 
 @pytest.fixture
+def iiif_test_v2_no_collection_source():
+    metadata = {
+        "fields": {
+            "context": {
+                "path": "@context",
+                "optional": True,
+            },  # a specified field with one value in the metadata
+            "description_top": {"path": "description", "optional": True},
+            "iiif_format": {
+                "path": "sequences..format"
+            },  # a specified field with multiple values in the metadata
+            "profile": {"path": "sequences..profile"},  # a missing required field
+            "thumbnail": {
+                "path": "thumbnail..@id",
+                "optional": True,
+            },  # missing optional field
+        }
+    }
+    return IiifJsonSource(
+        manifest_urls=["https://collection.edu/iiif/p15795coll29:28/manifest.json"], metadata=metadata
+    )
+
+
+@pytest.fixture
 def iiif_test_v3_source():
     metadata = {
         "fields": {
@@ -154,6 +178,18 @@ def test_IiifJsonSource_read(iiif_test_v2_source, mock_response):
     ]
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
+
+def test_IiifJsonNoCollectionSource_read(iiif_test_v2_no_collection_source, mock_response):
+    iiif_df = iiif_test_v2_no_collection_source.read()
+    test_columns = [
+        "context",
+        "description_top",
+        "iiif_format",
+        "source",
+        "title-main",
+        "title-sub",
+    ]
+    assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
     iiif_df = iiif_test_v2_source.read()

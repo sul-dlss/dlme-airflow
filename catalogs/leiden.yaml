@@ -26,8 +26,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url: None
-      item_urls:
+      manifest_urls:
         - https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:1381859/manifest
         - https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:1381960/manifest
         - https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:1382065/manifest

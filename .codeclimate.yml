@@ -1,4 +1,7 @@
 checks:
+  argument-count:
+    config:
+      threshold: 5
   method-complexity:
     config:
       threshold: 7
