@@ -1,0 +1,114 @@
+metadata:
+  version: 1
+  data_path: goettingen
+  schedule: "30 13 15 Jan,Apr,Jul,Oct *"
+sources:
+  manuscripts:
+    description: "Goettingen University Manuscript Collection"
+    driver: iiif_json
+    metadata:
+      data_path: goettingen/manuscripts
+      config: goettingen
+      schedule: "15 11 * * *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        resource:
+          path: 'sequences[0].canvases[0].images[0].resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      manifest_urls:
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926827/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926798/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289969/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290078/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289985/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928900/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928867/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926826/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290044/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290027/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290083/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290113/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289964/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928922/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290037/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290036/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289990/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928956/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290038/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926840/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926814/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926815/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290002/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290080/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290372/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926811/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926800/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290042/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289966/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_927202/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289965/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926813/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290112/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289963/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290039/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926809/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290150/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926822/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290115/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928878/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290065/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926807/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928945/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926817/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290035/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926823/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290045/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1289970/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926816/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926806/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926833/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290040/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926796/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926828/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290000/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926838/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290041/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290007/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290073/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926802/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290070/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926799/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290030/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_928911/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_1290032/manifest/
+        - https://sammlungen.uni-goettingen.de/api/v1/records/record_kuniweb_926824/manifest/
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object

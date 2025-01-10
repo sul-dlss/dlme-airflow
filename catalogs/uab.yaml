@@ -1,0 +1,22 @@
+metadata:
+  version: 1
+  data_path: uab
+  schedule: "20 9 27 Jan,Apr,Jul,Oct *"
+sources:
+  medical_manuscripts:
+    driver: oai_xml
+    args:
+      collection_url: https://na01.alma.exlibrisgroup.com/view/oai/01AL_UALB/request?
+      metadata_prefix: marc21
+      set: middleeastmedical
+      allow_expiration: true
+      full_harvest: true
+    metadata:
+      data_path: uab/medical_manuscripts
+      config: uab
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true

@@ -13,40 +13,41 @@ partition_access = True
 
 
 class IiifJsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url, dtype=None, metadata=None, wait=None):
+    def __init__(self, collection_url=None, manifest_urls=[], dtype=None, metadata=None, wait=None):
         super(IiifJsonSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
         self.wait = wait
-        self._manifest_urls = []
+        self._manifest_urls = list(set(manifest_urls))
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
 
     def _open_collection(self):
-        logging.info(f"getting collection {self.collection_url}")
-        resp = self._get(self.collection_url)
-        if resp.status_code == 200:
-            collection_result = resp.json()
-            if "manifests" in collection_result:  # IIIF v2
-                manifests = collection_result["manifests"]
-            elif "items" in collection_result:  # IIIF v3
-                manifests = collection_result["items"]
-            else:
-                raise Exception(
-                    f"Unknown collection manifest format: {self.collection_url}"
-                )
-
-            for manifest in manifests:
-                if "@id" in manifest:
-                    url = manifest["@id"]  # valid in IIIF v2 or v3
-                elif "id" in manifest:
-                    url = manifest["id"]  # valid in IIIF v3 only
+        if self.collection_url is not None:
+            logging.info(f"getting collection {self.collection_url}")
+            resp = self._get(self.collection_url)
+            if resp.status_code == 200:
+                collection_result = resp.json()
+                if "manifests" in collection_result:  # IIIF v2
+                    manifests = collection_result["manifests"]
+                elif "items" in collection_result:  # IIIF v3
+                    manifests = collection_result["items"]
                 else:
-                    raise Exception(f"Unknown URL in manifest: {manifest}")
-                self._manifest_urls.append(url)
-        else:
-            logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
+                    raise Exception(
+                        f"Unknown collection manifest format: {self.collection_url}"
+                    )
+
+                for manifest in manifests:
+                    if "@id" in manifest:
+                        url = manifest["@id"]  # valid in IIIF v2 or v3
+                    elif "id" in manifest:
+                        url = manifest["id"]  # valid in IIIF v3 only
+                    else:
+                        raise Exception(f"Unknown URL in manifest: {manifest}")
+                    self._manifest_urls.append(url)
+            else:
+                logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
 
     def _open_manifest(self, manifest_url: str) -> Optional[dict]:
         logging.info(f"getting manifest {manifest_url}")
@@ -100,29 +101,31 @@ class IiifJsonSource(intake.source.base.DataSource):
     ) -> dict[str, list[str]]:
         output: dict[str, list[str]] = {}
         for row in iiif_manifest_metadata:
-            name = (
-                row.get("label")
-                .replace(" ", "-")
-                .lower()
-                .replace("(", "")
-                .replace(")", "")
-                .replace("/", "")
-            )
-            # initialize or append to output[name] based on whether we've seen the label
-            metadata_value = row.get("value")
-            if not metadata_value:
-                continue
+            for data in self._metadata_from_row(row):
+                label = data.get("label")
+                value = data.get("value")
 
-            if isinstance(metadata_value[0], dict):
-                metadata_value = metadata_value[0].get("@value")
+                if not value:
+                    continue
 
-            if name in output:
-                output[name].append(metadata_value)
-            else:
-                output[name] = [metadata_value]
+                if isinstance(value[0], dict):
+                    value = value[0].get("@value")
+
+                if label in output:
+                    output[label] = output[label] + value
+                else:
+                    output[label] = value
 
         # flatten any nested lists into a single list
         return {k: list(_flatten_list(v)) for (k, v) in output.items()}
+
+    def _metadata_from_row(self, data: dict) -> dict:
+        label = data.get("label")
+        value = data.get("value")
+        if isinstance(label, str): # Indicates single, unlabeled language label
+            return [{'label': _format_label(label), 'value': _listify_if_string(value)}]
+        elif isinstance(label, list): # Indicates multi-language labels
+            return [{'label': _format_label(lang_value.get("@value")), 'value': _listify_if_string(value)} for lang_value in label]
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
@@ -177,6 +180,11 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
     else:
         return possible_list
 
+def _listify_if_string(value) -> list:
+    if isinstance(value, str):
+        return [value]
+    else:
+        return value
 
 def _flatten_list(lst: list) -> Generator:
     for item in lst:
@@ -184,3 +192,6 @@ def _flatten_list(lst: list) -> Generator:
             yield from _flatten_list(item)
         else:
             yield item
+
+def _format_label(label: str) -> str:
+    return label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")

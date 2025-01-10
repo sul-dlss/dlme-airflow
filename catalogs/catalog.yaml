@@ -67,6 +67,12 @@ sources:
     description: "Archives ouvertes de l'Institut français du Proche-Orient"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  goettingen:
+    args:
+      path: catalogs/goettingen.yaml
+    description: "Goettingen University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   harvard:
     args:
       path: catalogs/harvard.yaml
@@ -77,6 +83,12 @@ sources:
     args:
       path: catalogs/koch.yaml
     description: "Koç University"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  leiden:
+    args:
+      path: catalogs/leiden.yaml
+    description: "Leiden University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   lebanese_american_university:
@@ -155,6 +167,12 @@ sources:
     args:
       path: catalogs/texas_tech.yaml
     description: Texas Tech Uninversity
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  uab:
+    args:
+      path: catalogs/uab.yaml
+    description: "University of Alabama"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   ucla:

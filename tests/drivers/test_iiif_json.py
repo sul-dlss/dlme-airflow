@@ -55,6 +55,12 @@ class MockIIIFManifestResponse:
                 {"label": "Title (sub)", "value": "Subtitle 1"},
                 {"label": "Title (sub)", "value": "Subtitle 2"},
                 {"label": "Date Created", "value": ["1974"]},
+                {
+                    "label": [
+                        {"@language": "en", "@value": "Date Tagged"},
+                    ],
+                    "value": "1975",
+                },
             ],
             "sequences": [
                 {
@@ -107,6 +113,30 @@ def iiif_test_v2_source():
 
 
 @pytest.fixture
+def iiif_test_v2_no_collection_source():
+    metadata = {
+        "fields": {
+            "context": {
+                "path": "@context",
+                "optional": True,
+            },  # a specified field with one value in the metadata
+            "description_top": {"path": "description", "optional": True},
+            "iiif_format": {
+                "path": "sequences..format"
+            },  # a specified field with multiple values in the metadata
+            "profile": {"path": "sequences..profile"},  # a missing required field
+            "thumbnail": {
+                "path": "thumbnail..@id",
+                "optional": True,
+            },  # missing optional field
+        }
+    }
+    return IiifJsonSource(
+        manifest_urls=["https://collection.edu/iiif/p15795coll29:28/manifest.json"], metadata=metadata
+    )
+
+
+@pytest.fixture
 def iiif_test_v3_source():
     metadata = {
         "fields": {
@@ -155,6 +185,18 @@ def test_IiifJsonSource_read(iiif_test_v2_source, mock_response):
     assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
 
 
+def test_IiifJsonNoCollectionSource_read(iiif_test_v2_no_collection_source, mock_response):
+    iiif_df = iiif_test_v2_no_collection_source.read()
+    test_columns = [
+        "context",
+        "description_top",
+        "iiif_format",
+        "source",
+        "title-main",
+        "title-sub",
+    ]
+    assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
+
 def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
     iiif_df = iiif_test_v2_source.read()
     test_df = pd.DataFrame(
@@ -167,6 +209,7 @@ def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
                 "title-main": ["A great title of the Middle East"],
                 "title-sub": ["Subtitle 1", "Subtitle 2"],
                 "date-created": ["1974"],
+                "date-tagged": ["1975"],
             }
         ]
     )
