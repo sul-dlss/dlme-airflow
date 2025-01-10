@@ -20,6 +20,7 @@ class XmlSource(intake.source.base.DataSource):
         super(XmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging_config = paging
+        self.paging_increment = 0
         self._record_selector = self._get_record_selector()
         self._path_expressions = self._get_path_expressions()
         self._records = []
@@ -36,32 +37,67 @@ class XmlSource(intake.source.base.DataSource):
             self._records.append(record)
 
     def _open_paged_collection(self):
-        offset = 0
-        while True:
-            offset += self.paging_config["increment"]
-            collection_url = self.collection_url.format(offset=offset)
-            print("Collection URL: ", collection_url)
-            collection_result = requests.get(collection_url).content
-            print("Collection result: ", collection_result)
-            xtree = etree.fromstring(collection_result)
-            record_elements = xtree.findall(
-                self._record_selector["path"], namespaces=self._record_selector["namespace"]
-            )
+        if "increment" not in self.paging_config:
+            self.paging_increment = 0
+        else:
+            self.paging_increment = self.paging_config["increment"]
 
-            if len(record_elements) == 0:
+        while True:
+            collection_url = self._get_collection_url(self.paging_increment)
+            collection_result = self._fetch_collection(collection_url)
+
+            if len(collection_result) == 0:
                 break
 
-            for record_el in record_elements:
-                record = self._construct_fields(record_el)
-                self._records.append(record)
+            xtree = etree.fromstring(collection_result)
+            record_elements = self._get_record_elements(xtree)
 
-            if self.paging_config["resumptionToken"]:
-                resumptionToken = xtree.xpath(".//resumptionToken")
-                print("Resumption Token: ", resumptionToken)
-                [_unused, token] = resumptionToken[0].text.split("=")
-                self.paging_config["increment"] = int(token)
-                offset = 0
-                print("offset: ", self.paging_config["increment"])
+            if not record_elements:
+                break
+
+            self._process_records(record_elements)
+
+            if not self._update_paging_config(xtree):
+                break
+
+    def _get_collection_url(self, offset):
+        """Generate the collection URL with the current offset."""
+        return self.collection_url.format(offset=offset)
+
+    def _fetch_collection(self, url):
+        """Fetch the content of the collection URL."""
+        return requests.get(url).content
+
+    def _get_record_elements(self, xtree):
+        """Find record elements in the XML tree."""
+        return xtree.findall(
+            self._record_selector["path"], namespaces=self._record_selector["namespace"]
+        )
+
+    def _process_records(self, record_elements):
+        """Process record elements and append to the records list."""
+        for record_el in record_elements:
+            record = self._construct_fields(record_el)
+            self._records.append(record)
+
+    def _update_paging_config(self, xtree):
+        """
+        Update the paging configuration using the resumption token, if available.
+
+        Returns:
+            bool: True if paging should continue, False otherwise.
+        """
+        if "resumptionToken" in self.paging_config:
+            resumption_token_elements = xtree.xpath(".//resumptionToken")
+            if resumption_token_elements:
+                _, token = resumption_token_elements[0].text.split("=")
+                self.paging_increment = int(token)
+                return True
+            else:
+                return False
+        else:
+            self.paging_increment += self.paging_config.get("increment", 1)
+            return True
 
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
