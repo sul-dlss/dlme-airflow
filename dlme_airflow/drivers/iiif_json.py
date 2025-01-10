@@ -122,14 +122,10 @@ class IiifJsonSource(intake.source.base.DataSource):
     def _metadata_from_row(self, data: dict) -> dict:
         label = data.get("label")
         value = data.get("value")
-
         if isinstance(label, str): # Indicates single, unlabeled language label
-            label = label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")
-            if isinstance(value, str):
-                value = [value]
-            return [{'label': label, 'value': value}]
+            return [{'label': _format_label(label), 'value': _listify_if_string(value)}]
         elif isinstance(label, list): # Indicates multi-language labels
-            return [{'label': lang_value.get("@value"), 'value': value} for lang_value in label]
+            return [{'label': _format_label(lang_value.get("@value")), 'value': _listify_if_string(value)} for lang_value in label]
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
@@ -184,6 +180,11 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
     else:
         return possible_list
 
+def _listify_if_string(value) -> list:
+    if isinstance(value, str):
+        return [value]
+    else:
+        return value
 
 def _flatten_list(lst: list) -> Generator:
     for item in lst:
@@ -191,3 +192,6 @@ def _flatten_list(lst: list) -> Generator:
             yield from _flatten_list(item)
         else:
             yield item
+
+def _format_label(label: str) -> str:
+    return label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")
