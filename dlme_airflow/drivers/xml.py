@@ -16,11 +16,11 @@ class XmlSource(intake.source.base.DataSource):
     version = "0.0.2"
     partition_access = True
 
-    def __init__(self, collection_url, paging=None, dtype=None, metadata=None):
+    def __init__(self, collection_url, paging={}, dtype=None, metadata=None):
         super(XmlSource, self).__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging_config = paging
-        self.paging_increment = 0
+        self.paging_increment = paging.get("increment", 1)
         self._record_selector = self._get_record_selector()
         self._path_expressions = self._get_path_expressions()
         self._records = []
@@ -37,36 +37,26 @@ class XmlSource(intake.source.base.DataSource):
             self._records.append(record)
 
     def _open_paged_collection(self):
-        if "increment" not in self.paging_config:
-            self.paging_increment = 0
-        else:
-            self.paging_increment = self.paging_config["increment"]
-
-        while True:
-            collection_url = self._get_collection_url(self.paging_increment)
-            collection_result = self._fetch_collection(collection_url)
-
-            if len(collection_result) == 0:
-                break
-
-            xtree = etree.fromstring(collection_result)
-            record_elements = self._get_record_elements(xtree)
-
-            if not record_elements:
-                break
-
+        for record_elements in self._fetch_collection():
             self._process_records(record_elements)
-
-            if not self._update_paging_config(xtree):
-                break
 
     def _get_collection_url(self, offset):
         """Generate the collection URL with the current offset."""
         return self.collection_url.format(offset=offset)
 
-    def _fetch_collection(self, url):
+    def _fetch_collection(self):
         """Fetch the content of the collection URL."""
-        return requests.get(url).content
+        records = []
+        try:
+            while True:
+                collection_url = self._get_collection_url(self.paging_increment)
+                collection_result = requests.get(collection_url).content
+                xtree = etree.fromstring(collection_result)
+                records.append(self._get_record_elements(xtree))
+                self._set_offset(xtree)
+        except etree.XMLSyntaxError:
+            # If the XML is malformed or empty, we stop fetching and return the records
+            return records
 
     def _get_record_elements(self, xtree):
         """Find record elements in the XML tree."""
@@ -80,24 +70,20 @@ class XmlSource(intake.source.base.DataSource):
             record = self._construct_fields(record_el)
             self._records.append(record)
 
-    def _update_paging_config(self, xtree):
+    def _set_offset(self, xtree):
         """
-        Update the paging configuration using the resumption token, if available.
+        Sets the offset based on the current increment or presence of a resumption token.
+        """
+        self.paging_increment += self.paging_config.get("increment", 0)
 
-        Returns:
-            bool: True if paging should continue, False otherwise.
-        """
         if "resumptionToken" in self.paging_config:
-            resumption_token_elements = xtree.xpath(".//resumptionToken")
-            if resumption_token_elements:
-                _, token = resumption_token_elements[0].text.split("=")
-                self.paging_increment = int(token)
-                return True
-            else:
-                return False
-        else:
-            self.paging_increment += self.paging_config.get("increment", 1)
-            return True
+            if xtree is not None:
+                resumption_token = xtree.xpath(".//resumptionToken")
+                if resumption_token:
+                    _, token = resumption_token[0].text.split("=")
+                    self.paging_increment = int(token)
+                else:
+                    raise Exception("Missing resumption token")
 
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
