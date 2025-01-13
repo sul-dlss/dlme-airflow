@@ -1,0 +1,11 @@
+<response>
+  <responseDate>2025-01-13T06:10:21Z</responseDate>
+  <items>
+    <item>
+      <node_id>1</node_id>
+      <title>First page of records</title>
+      <type>record</type>
+    </item>
+  </items>
+  <resumptionToken>/export?resumptionToken=2</resumptionToken>
+</response>

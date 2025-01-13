@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:media="http://search.yahoo.com/mrss/">
+
+<channel>
+	<title>ShahreFarang</title>
+	<atom:link href="https://shahrefarang.com/en/feed/" rel="self" type="application/rss+xml" />
+	<link>https://shahrefarang.com/en/</link>
+	<description>شهرفرنگ</description>
+	<lastBuildDate>Thu, 24 Feb 2022 14:52:19 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.0.9</generator>
+	<item>
+		<title>Plasco Building, Tehran</title>
+		<link>https://shahrefarang.com/en/plasco-tehran/</link>
+					<comments>https://shahrefarang.com/en/plasco-tehran/#comments</comments>
+
+		<dc:creator><![CDATA[سورنا پرهام]]></dc:creator>
+		<pubDate>Fri, 20 Jan 2017 06:38:34 +0000</pubDate>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Nostalgia]]></category>
+		<category><![CDATA[تهران]]></category>
+		<category><![CDATA[خیابان]]></category>
+		<category><![CDATA[ساختمان]]></category>
+		<category><![CDATA[مناظر شهری]]></category>
+		<guid isPermaLink="false">http://shahrefarang.com/?p=23291/</guid>
+
+					<description><![CDATA[The Plasco Building was a 17-story high-rise in Tehran. It was built in 1962 by the prominent Iranian Jewish businessman Habib Elghanian, and it was named after his plastics company. The building was the tallest building in Iran when it was constructed, and it was considered an iconic landmark of the Tehran skyline. The Plasco building collapsed on January 19, 2017, during a fire.]]></description>
+
+					<wfw:commentRss>https://shahrefarang.com/en/plasco-tehran/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+
+
+
+		<media:content url="https://shahrefarang.com/wp-content/uploads/2017/01/plasco-101-712x742.jpg" type="image/jpeg" medium="image" width="100%" height="auto">
+				<media:description type="plain"><![CDATA[plasco-101]]></media:description>
+		</media:content>	</item>
+		<item>
+		<title>1920s Vintage Ads in Iranian Newspapers</title>
+		<link>https://shahrefarang.com/en/iran-ads-1920s-2/</link>
+					<comments>https://shahrefarang.com/en/iran-ads-1920s-2/#respond</comments>
+
+		<dc:creator><![CDATA[شهرفرنگ]]></dc:creator>
+		<pubDate>Mon, 05 Dec 2016 19:29:44 +0000</pubDate>
+				<category><![CDATA[Everyday Life]]></category>
+		<category><![CDATA[Fashion]]></category>
+		<category><![CDATA[Literature]]></category>
+		<category><![CDATA[Nostalgia]]></category>
+		<category><![CDATA[Advertisement]]></category>
+		<category><![CDATA[Car]]></category>
+		<category><![CDATA[Clothing]]></category>
+		<guid isPermaLink="false">http://shahrefarang.com/en/?p=23059</guid>
+
+					<description><![CDATA[Advertising in Iranian newspapers was a new phenomenon in the late 1920s. Advertisements introduced Iranians to some other new phenomena such as cars, radio, instant cameras, and the European-style outfit that revolutionized how Iranians lived and interacted with each other.
+The ads here are selected from the newspapers published between 1926 to 1931. ]]></description>
+
+					<wfw:commentRss>https://shahrefarang.com/en/iran-ads-1920s-2/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+
+		<media:content url="https://shahrefarang.com/wp-content/uploads/2016/11/ads-rezashah-header-1-712x324.jpg" type="image/jpeg" medium="image" width="100%" height="auto">
+				<media:description type="plain"><![CDATA[ads-rezashah-header]]></media:description>
+		</media:content>	</item>
+	</channel>
+</rss>
