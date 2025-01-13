@@ -668,11 +668,11 @@ sources:
         title: object
         type: object
         repository: object
-  auc_news:
+  news:
     description: "AUC New Clippings"
     driver: iiif_json
     metadata:
-      data_path: auc/general/auc_news
+      data_path: auc/general/news
       config: auc
       schedule: "0 04 01 Jan,Apr,Jul,Oct *"
       fields:
