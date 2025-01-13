@@ -108,9 +108,6 @@ class IiifJsonSource(intake.source.base.DataSource):
                 if not value:
                     continue
 
-                if isinstance(value[0], dict):
-                    value = value[0].get("@value")
-
                 if label in output:
                     output[label] = output[label] + value
                 else:
@@ -123,9 +120,9 @@ class IiifJsonSource(intake.source.base.DataSource):
         label = data.get("label")
         value = data.get("value")
         if isinstance(label, str): # Indicates single, unlabeled language label
-            return [{'label': _format_label(label), 'value': _listify_if_string(value)}]
+            return [{'label': _format_label(label), 'value': _listify_if_string_or_dict(value)}]
         elif isinstance(label, list): # Indicates multi-language labels
-            return [{'label': _format_label(lang_value.get("@value")), 'value': _listify_if_string(value)} for lang_value in label]
+            return [{'label': _format_label(lang_value.get("@value")), 'value': _listify_if_string_or_dict(value)} for lang_value in label]
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
@@ -180,8 +177,8 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
     else:
         return possible_list
 
-def _listify_if_string(value) -> list:
-    if isinstance(value, str):
+def _listify_if_string_or_dict(value) -> list:
+    if isinstance(value, str) or isinstance(value, dict):
         return [value]
     else:
         return value
