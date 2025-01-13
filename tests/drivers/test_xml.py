@@ -151,3 +151,36 @@ def test_paged_xml(requests_mock):
     assert df.title[1] == "1920s Vintage Ads in Iranian Newspapers"
     assert df.title[2] == "Ettelaat Daily’s Old Building"
     assert df.title[3] == "Iran National Football Team"
+
+def test_resumptionToken_paged_xml(requests_mock):
+    requests_mock.get(
+        "https://example.com/export?resumptionToken=0",
+        text=open("tests/data/xml/paged/resumption_token_1.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    requests_mock.get(
+        "https://example.com/export?resumptionToken=2",
+        text=open("tests/data/xml/paged/resumption_token_2.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    metadata = {
+        "record_selector": {"path": ".//item", "namespace": None},
+        "fields": {
+            "id": {"path": ".//node_id", "namespace": None},
+            "title": {"path": ".//title", "namespace": None},
+            "type": {"path": ".//type", "namespace": None},
+        },
+    }
+
+    source = XmlSource(
+        collection_url="https://example.com/export?resumptionToken={offset}",
+        metadata=metadata,
+        paging={"resumptionToken": True, "increment": 0},
+    )
+
+    df = source.read()
+    assert(len(df) == 2)
+    assert df.title[0] == 'First page of records'
+    assert df.title[1] == "Second page of records"

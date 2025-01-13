@@ -10,6 +10,11 @@ from lxml.html.clean import Cleaner
 from typing import List, Dict
 
 
+class MissingResumptionToken(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+
 class XmlSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "xml"
@@ -57,6 +62,10 @@ class XmlSource(intake.source.base.DataSource):
         except etree.XMLSyntaxError:
             # If the XML is malformed or empty, we stop fetching and return the records
             return records
+        except MissingResumptionToken as e:
+            # If the XML is malformed or empty, we stop fetching and return the records
+            logging.info(f"Missing resumption token: {e}")
+            return records
 
     def _get_record_elements(self, xtree):
         """Find record elements in the XML tree."""
@@ -83,7 +92,7 @@ class XmlSource(intake.source.base.DataSource):
                     _, token = resumption_token[0].text.split("=")
                     self.paging_increment = int(token)
                 else:
-                    raise Exception("Missing resumption token")
+                    raise MissingResumptionToken(f"No resumption token found after {self.paging_increment}")
 
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
