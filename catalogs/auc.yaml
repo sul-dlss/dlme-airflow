@@ -574,6 +574,147 @@ sources:
         title: object
         type: object
         repository: object
+  arabic_books:
+    description: "Arabic Books Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/general/arabic_books
+      config: auc
+      schedule: "0 02 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll19/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  arabic_manuscripts:
+    description: "Arabic Manuscripts Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/general/arabic_manuscripts
+      config: auc
+      schedule: "0 02 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll52/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  auc_news:
+    description: "AUC New Clippings"
+    driver: iiif_json
+    metadata:
+      data_path: auc/general/auc_news
+      config: auc
+      schedule: "0 04 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/aucnews/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   bina_al_watan:
     description: "Bināʼ al-Waṭan - Magazine Collection"
     driver: iiif_json
@@ -838,6 +979,25 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  egypt_artist_oral_history:
+    description: "Egypt Artist Oral Histories and Archives"
+    driver: oai_xml
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll42
+      wait: 2
+      allow_expiration: true
+      full_harvest: true
+    metadata:
+      data_path: auc/general/egypt_artist_oral_history
+      config: auc
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
   egyptian_gardens:
     description: "Egyptian Gardens & Horticulture"
     driver: iiif_json
@@ -941,6 +1101,25 @@ sources:
           path: 'sequences..resource.@id'
         thumbnail:
           path: 'thumbnail..@id'
+          optional: true
+  films_videos_historic_egypt:
+    description: "AUC Films and Videos and Historic Egypt"
+    driver: oai_xml
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll23
+      wait: 2
+      allow_expiration: true
+      full_harvest: true
+    metadata:
+      data_path: auc/general/films_videos_historic_egypt
+      config: auc
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
   historical_magazines:
     description: "Historical Magazines Collection"
@@ -1065,7 +1244,7 @@ sources:
         identifier: object
         description: object
     metadata:
-      data_path: auc/general/islamic-aa
+      data_path: auc/general/islamic_aa
       config: auc
       schedule: "30 03 01 Jan,Apr,Jul,Oct *"
       fields:
@@ -1340,6 +1519,53 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  marriage_certificates:
+    description: "Marriage Certificates Collection"
+    driver: iiif_json
+    metadata:
+      data_path: auc/general/marriage_certificates
+      config: auc
+      schedule: "0 02 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll54/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
   misr_al_hadith:
     description: "Miṣr al-Hadīthah - Magazine Collection"
     driver: iiif_json
@@ -1494,6 +1720,25 @@ sources:
         thumbnail:
           path: 'thumbnail..@id'
           optional: true
+  oral_histories_reminisnences:
+    description: "AUC Oral Histories and Reminiscences"
+    driver: oai_xml
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll17
+      wait: 2
+      allow_expiration: true
+      full_harvest: true
+    metadata:
+      data_path: auc/general/oral_histories_reminisnences
+      config: auc
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
   parker:
     description: "Richard B. Parker Nile Watercraft Photographs"
     driver: iiif_json
@@ -1589,6 +1834,25 @@ sources:
           path: 'sequences..resource.@id'
         thumbnail:
           path: 'thumbnail..@id'
+          optional: true
+  qurna_hillside:
+    description: "Qurna Hillside Oral History Project"
+    driver: oai_xml
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
+      metadata_prefix: oai_dc
+      set: p15795coll34
+      wait: 2
+      allow_expiration: true
+      full_harvest: true
+    metadata:
+      data_path: auc/general/qurna_hillside
+      config: auc
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
   rare_books:
     description: "Selections from the Rare Books and Special Collections Library"
@@ -1770,6 +2034,53 @@ sources:
       data_path: auc/serials/student_news
       config: auc
       schedule: "20 05 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  syria_reader:
+    description: "Syria Reader"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll39/p1.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+    metadata:
+      data_path: auc/general/syria_reader
+      config: auc_serials
+      schedule: "10 05 01 Jan,Apr,Jul,Oct *"
       fields:
         context:
           path: '@context'
@@ -2062,7 +2373,7 @@ sources:
     args:
       collection_url: https://cdm15795.contentdm.oclc.org/oai/oai.php
       metadata_prefix: oai_dc
-      set: p15795coll40
+      set: p15795coll51
       wait: 2
       allow_expiration: true
       full_harvest: true
@@ -2104,6 +2415,106 @@ sources:
         original-identifier: object
     metadata:
       data_path: auc/general/wassef
+      config: auc
+      schedule: "20 06 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  whos_who_egypt_directories:
+    description: "Who's Who in Egypt Directories"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll43/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        collection: object
+        location: object
+        architect: object
+        date-created: object
+        extent: object
+        medium: object
+        identifier: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        repository: object
+        format: object
+        original-identifier: object
+    metadata:
+      data_path: auc/general/whos_who_egypt_directories
+      config: auc
+      schedule: "20 06 01 Jan,Apr,Jul,Oct *"
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+  yearbooks:
+    description: "AUC Yearbooks"
+    driver: iiif_json
+    args:
+      collection_url: https://cdm15795.contentdm.oclc.org/iiif/2/p15795coll20/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        acknowledgements: object
+        collection: object
+        location: object
+        architect: object
+        date-created: object
+        extent: object
+        medium: object
+        identifier: object
+        access-rights: object
+        license: object
+        source: object
+        subject-lcsh: object
+        title: object
+        repository: object
+        format: object
+        original-identifier: object
+    metadata:
+      data_path: auc/general/yearbooks
       config: auc
       schedule: "20 06 01 Jan,Apr,Jul,Oct *"
       fields:
