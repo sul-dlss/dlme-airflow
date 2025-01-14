@@ -1,15 +1,15 @@
 metadata:
   version: 1
-  data_path: hathi
+  data_path: mcgill
   schedule: "0 15 25 Jan,Oct *"
 sources:
   manuscripts:
-    description: Michigan Manuscripts at HaithiTrust
+    description: McGill Manuscripts at HathiTrust
     driver: hathi_trust
     metadata:
-      data_path: hathi_trust/manuscripts
+      data_path: mcgill/manuscripts
       output_format: json
-      config: hathi_trust
+      config: mcgill
       catalog_url: https://catalog.hathitrust.org/Record/{id}.xml
       fields:
         id:
