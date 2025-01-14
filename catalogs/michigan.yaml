@@ -33,3 +33,19 @@ sources:
     args:
       collection_url: https://babel.hathitrust.org/cgi/mb?c=1961411403;source=hathifiles;a=download
       object_path: "ht_bib_key"
+  serials:
+    description: Michigan Serials at HathiTrust
+    driver: hathi_trust
+    metadata:
+      data_path: michigan/serials
+      output_format: json
+      config: hathi_trust
+      post_harvest: split_marc_serials
+      catalog_url: https://catalog.hathitrust.org/Record/{id}.xml
+      fields:
+        id:
+          path: "leader"
+          name_in_dataframe: "leader"
+    args:
+      collection_url: https://babel.hathitrust.org/cgi/mb?c=402355866;source=hathifiles;a=download
+      object_path: "ht_bib_key"
