@@ -67,9 +67,9 @@ sources:
     description: "Archives ouvertes de l'Institut français du Proche-Orient"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
-  goettingen:
+  gottingen:
     args:
-      path: catalogs/goettingen.yaml
+      path: catalogs/gottingen.yaml
     description: "Goettingen University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}

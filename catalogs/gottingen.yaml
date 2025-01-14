@@ -3,12 +3,12 @@ metadata:
   data_path: goettingen
   schedule: "30 13 15 Jan,Apr,Jul,Oct *"
 sources:
-  manuscripts:
-    description: "Goettingen University Manuscript Collection"
+  museum_objects:
+    description: "Gottingen University Museum Objects"
     driver: iiif_json
     metadata:
-      data_path: goettingen/manuscripts
-      config: goettingen
+      data_path: gottingen/museum_objects
+      config: gottingen
       schedule: "15 11 * * *"
       fields:
         context:
