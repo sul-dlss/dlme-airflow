@@ -59,6 +59,8 @@ ply==3.11
     # via jsonpath-ng
 propcache==0.2.0
     # via yarl
+pymarc==5.2.3
+    # via dlme-airflow (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via pandas
 python-dotenv==1.0.1

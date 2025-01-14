@@ -24,6 +24,7 @@ properties:
             - csv
             - custom_json
             - json
+            - hathi_trust
             - iiif_json
             - iiif_json_v3
             - oai_xml

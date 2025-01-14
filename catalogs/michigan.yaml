@@ -1,0 +1,20 @@
+metadata:
+  version: 1
+  data_path: michigan
+  schedule: "0 15 25 Jan,Oct *"
+sources:
+  manuscripts:
+    description: Michigan Manuscripts at HathiTrust
+    driver: hathi_trust
+    metadata:
+      data_path: michigan/manuscripts
+      output_format: json
+      config: michigan
+      catalog_url: https://catalog.hathitrust.org/Record/{id}.xml
+      fields:
+        id:
+          path: "leader"
+          name_in_dataframe: "leader"
+    args:
+      collection_url: https://babel.hathitrust.org/cgi/mb?c=466077623;source=hathifiles;a=download
+      object_path: "ht_bib_key"

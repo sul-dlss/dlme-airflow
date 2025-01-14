@@ -109,10 +109,22 @@ sources:
     description: Manchester Uninversity
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  mcgill:
+    args:
+      path: catalogs/mcgill.yaml
+    description: "McGill Manuscripts at HathiTrust"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   met:
     args:
       path: catalogs/met.yaml
     description: Met Museum
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+  michigan:
+    args:
+      path: catalogs/michigan.yaml
+    description: "Michigan Manuscripts at HathiTrust"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
   newcastle:
