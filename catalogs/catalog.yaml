@@ -69,7 +69,7 @@ sources:
     metadata: {}
   gottingen:
     args:
-      path: catalogs/goettingen.yaml
+      path: catalogs/gottingen.yaml
     description: "Goettingen University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
