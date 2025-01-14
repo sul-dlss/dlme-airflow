@@ -21,6 +21,7 @@ dependencies = [
     "numpy",
     "pandas",
     "Pillow",
+    "pymarc",
     "python-dotenv",
     "requests",
     "Sickle",

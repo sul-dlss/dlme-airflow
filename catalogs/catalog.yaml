@@ -73,6 +73,12 @@ sources:
     description: "Goettingen University"
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  hathi:
+    args:
+      path: catalogs/hathi.yaml
+    description: "HathiTrust Collections"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   harvard:
     args:
       path: catalogs/harvard.yaml
