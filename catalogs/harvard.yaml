@@ -50,3 +50,51 @@ sources:
           namespace:
             mods: "http://www.loc.gov/mods/v3"
           optional: false
+  scw:
+    driver: xml
+    args:
+      collection_url: https://api.lib.harvard.edu/v2/items?q=SCW2016.*&drsObjectId=*&limit={offset}
+      paging:
+        resumptionToken: True
+        increment: 0
+    metadata:
+      data_path: harvard/stuart_cary_welch
+      config: harvard_stuart_cary_welch
+      record_selector:
+        path: ".//item"
+      fields:
+        id:
+          path: "//header:identifier"
+          namespace:
+            header: "http://www.openarchives.org/OAI/2.0/"
+          optional: true
+        personal_name:
+          path: "//mods:name[@type = 'personal']/mods:namePart[not(@type = 'date')]"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        shown_at:
+          path: ".//mods:location/mods:url[@access = 'object in context']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        preview:
+          path: ".//mods:location/mods:url[@access = 'preview']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        raw_object:
+          path: ".//mods:location/mods:url[@access = 'raw object']"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title_alternative:
+          path: "//mods:titleInfo[@type = 'alternative']/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+        title:
+          path: "//mods:titleInfo[not(ancestor::mods:relatedItem)]/mods:title"
+          namespace:
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
