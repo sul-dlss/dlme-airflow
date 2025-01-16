@@ -90,9 +90,10 @@ class PartitionBuilder:
         data = []
         while True:
             api_endpoint = self.paging_config['pages_url'].format(offset=offset,limit=self.paging_config['limit'])
-            data += self._fetch_provider_data(api_endpoint)[self.paging_config['page_data']]
+            fetched_data = self._fetch_provider_data(api_endpoint)[self.paging_config['page_data']]
+            harvested = len(fetched_data)
+            data += fetched_data
             offset += self.paging_config["limit"]
-            harvested = len(data)
 
             if harvested < self.paging_config["limit"]:
                 break
