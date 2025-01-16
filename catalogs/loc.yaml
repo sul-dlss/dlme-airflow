@@ -266,3 +266,120 @@ sources:
           path: "title"
         type:
           path: "type"
+  wdl:
+    description: "World Digital Library"
+    driver: custom_json
+    args:
+      collection_url: https://www.loc.gov/collections/world-digital-library/?c=100&fo=json
+      paging:
+        increment: 1
+        query_param: sp
+        result_count: "pagination.total"
+        skip_first: true
+      record_selector: "content.results"
+    metadata:
+      data_path: loc/wdl
+      output_format: json
+      filters:
+        language:
+          include:
+            - arabic
+            - armenian
+            - aoptic
+            - aebrew
+            - syriac
+            - persian
+            - turkish
+            - turkish, ottoman (1500-1928)
+        part_of:
+          include:
+            - abu dhabi authority for culture and heritage
+            - adab ([kabul]) 1954-1978
+            - afghanistan
+            - al-arab (baghdad, iraq) 1917-1920
+            - al-iraq (baghdad, iraq) 1920-1922
+            - al-zaura (baghdad, iraq) 1869-1917
+            - arabic language rare materials collection
+            - arabian peninsula
+            - armenian rarities collection
+            - bible
+            - bibliotheca alexandrina
+            - da kābul kālanay ([kābol]) 1941-1952
+            - da kamkiyāno anīs ([kabul]) 1973-1999
+            - iraq
+            - iraqi national library and archives
+            - kandahār (kandahār) 1960-2003
+            - national library and archives of the islamic republic of iran
+            - persian language rare materials
+            - qatar national library
+            - shams al-nahār (kābul) 18??-18??
+        subjects:
+          include:
+            - Afghanistan
+            - Arabian Peninsula--Religion
+            - Hadith--Early works to 1800
+            - Islam and state--Qurʼanic teaching
+            - Islam--Poetry--Early works to 1800
+            - Islam--Customs and practices--Poetry--Early works to 1800
+            - Islam--Doctrines--Poetry--Early works to 1800
+            - Islam--Miscellanea
+            - Manuscripts, Turkish--Washington (D.C.)
+            - Kings and rulers--Religious aspects--Islam
+            - Manuscripts, Arabic--Washington (D.C.)
+            - Obedience--Religious aspects--Islam
+            - Qurʾan--Commentaries
+            - Qurʼan--Criticism, interpretation, etc
+            - Qurʼan--Criticism, interpretation, etc.--Early works to 1800
+            - Qurʼan--Evidences, authority, etc.--Early works to 1800
+            - Qurʼan--History--Early works to 1800
+            - Qurʼan--Recitation
+      config: loc
+      fields:
+        id:
+          path: "id"
+        call_number:
+          path: "call_number"
+        contents:
+          path: "item.contents"
+        contributor:
+          path: "item.contributors"
+        created_published:
+          path: "item.created_published"
+        description:
+          path: "description"
+        date:
+          path: "date"
+        identifier:
+          path: "shelf_id"
+        language:
+          path: "language"
+        location:
+          path: "item.location"
+        location_country:
+          path: "location_country"
+        medium:
+          path: "item.medium"
+        notes:
+          path: "item.notes"
+        number_lccn:
+          path: "number_lccn"
+        format:
+          path: "item.format"
+        online_format:
+          path: "online_format"
+        part_of:
+          path: "partof"
+        preview:
+          path: "image_url"
+        shown_at:
+          path: "url"
+        subjects:
+          path: "item.subjects"
+        summary:
+          path: "item.summary"
+        title:
+          path: "title"
+        type:
+          path: "type"
+        url:
+          path: "url"
