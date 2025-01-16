@@ -105,11 +105,8 @@ class IiifJsonSource(intake.source.base.DataSource):
                 label = data.get("label")
                 value = data.get("value")
 
-                if not value:
-                    continue
-
                 if label in output:
-                    output[label] = output[label] + value
+                    output[label].extend(value)
                 else:
                     output[label] = value
 
@@ -119,10 +116,7 @@ class IiifJsonSource(intake.source.base.DataSource):
     def _metadata_from_row(self, data: dict) -> dict:
         label = data.get("label")
         value = data.get("value")
-        if isinstance(label, str): # Indicates single, unlabeled language label
-            return [{'label': _format_label(label), 'value': _listify_if_string_or_dict(value)}]
-        elif isinstance(label, list): # Indicates multi-language labels
-            return [{'label': _format_label(lang_value.get("@value")), 'value': _listify_if_string_or_dict(value)} for lang_value in label]
+        return _flatten_list(_tag_label(_format_label(label), value))
 
     def _get_partition(self, i) -> pd.DataFrame:
         # if we are over the defined limit return an empty DataFrame right away
@@ -192,3 +186,11 @@ def _flatten_list(lst: list) -> Generator:
 
 def _format_label(label: str) -> str:
     return label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")
+
+def _tag_label(label: str, value) -> dict:
+    if isinstance(value, list):
+        return [_tag_label(label, val) for val in value]
+    if isinstance(value, dict):
+        return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
+    else:
+        return [{"label": label, "value": _listify_if_string_or_dict(value)}]

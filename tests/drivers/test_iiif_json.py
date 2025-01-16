@@ -56,10 +56,11 @@ class MockIIIFManifestResponse:
                 {"label": "Title (sub)", "value": "Subtitle 2"},
                 {"label": "Date Created", "value": ["1974"]},
                 {
-                    "label": [
-                        {"@language": "en", "@value": "Date Tagged"},
-                    ],
-                    "value": "1975",
+                    "label": "Date Tagged",
+                    "value": [
+                        {"@language": "en", "@value": "1975"},
+                        {"@language": "fr", "@value": "1977"},
+                    ]
                 },
             ],
             "sequences": [
@@ -209,7 +210,8 @@ def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
                 "title-main": ["A great title of the Middle East"],
                 "title-sub": ["Subtitle 1", "Subtitle 2"],
                 "date-created": ["1974"],
-                "date-tagged": ["1975"],
+                "date-tagged_en": ["1975"],
+                "date-tagged_fr": ["1977"],
             }
         ]
     )
