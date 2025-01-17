@@ -32,33 +32,41 @@ def main(opts):
     files = get_data(paths)
 
     # Get fields present in the input file
-    input_fields = []
+    harvested_fields = []
     for file in files:
         with open(file) as f:
             json_data = json.load(f)
             for i in json_data:
-                input_fields.extend(list(i.keys()))
+                harvested_fields.extend(list(i.keys()))
 
     # Get fields mapped in the traject config
     mapped_fields = []
+    ignored_fields = []
     for traject in trajects:
         with open(f"{os.getcwd()}/../dlme-transform/traject_configs/{traject}") as t:
             lines = t.readlines()
-            for l in lines:
-                for line in lines:
-                    if "extract_json" in line:
-                        mapped_fields.append(line.split("extract_json('")[-1].split("')")[0].split('[')[0].replace('.', ''))
+            for line in lines:
+                if "extract_json" in line:
+                    mapped_fields.append(line.split("extract_json('")[-1].split("')")[0].split('[')[0].replace('.', ''))
+                if line.startswith('##'):
+                    ignored_fields.append(line.replace('## ', ''))
+
+    missed_fields = set(ignored_fields).difference(set(harvested_fields).difference(set(mapped_fields))).difference(set(ignored_fields))
+    imaginary_fields = list(set(mapped_fields).difference(set(harvested_fields)))
 
     with open('traject-validation.txt', 'w') as out:
-        out.write('Fields present in the input files that are not mapped:\n')
-        for i in list(set(input_fields).difference(set(mapped_fields))):
+        out.write('Fields present in the harvested data that are not mapped:\n')
+        for i in missed_fields:
             out.write('    - '+i+'\n')
-        out.write('\nFields mapped in the traject config that are not present in the input data:\n')
-        for i in list(set(mapped_fields).difference(set(input_fields))):
+        out.write('\nFields mapped in the Traject config that are not present in the harvested data:\n')
+        for i in imaginary_fields:
+            out.write('    - '+i+'\n')
+        out.write('\nIntentionally ignored fields:\n')
+        for i in ignored_fields:
             out.write('    - '+i+'\n')
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Merge data from a DLME provider harvest as CSV")
+    parser = argparse.ArgumentParser(description="Merge data from a DLME provider harvest")
     parser.add_argument('data', help="The same DLME data path passed to the traject config")
     opts = parser.parse_args()
 
