@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<results xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+         xmlns:marc="http://www.loc.gov/MARC21/slim"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:HarvardDRS="http://hul.harvard.edu/ois/xml/ns/HarvardDRS"
+         xmlns="http://api.lib.harvard.edu/v2/item"
+         xmlns:sets="http://hul.harvard.edu/ois/xml/ns/sets"
+         xmlns:mods="http://www.loc.gov/mods/v3"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:librarycloud="http://hul.harvard.edu/ois/xml/ns/librarycloud"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <pagination>
+        <maxPageableSet>150</maxPageableSet>
+        <numFound>19206</numFound>
+        <query>q=SCW2016.*&amp;drsObjectId=*&amp;limit=100&amp;start=19200</query>
+        <limit>100</limit>
+        <start>0</start>
+    </pagination>
+    <items>
+        <mods:mods>
+            <mods:titleInfo>
+                <mods:title>Title 1</mods:title>
+            </mods:titleInfo>
+        </mods:mods>
+    </items>
+</results>

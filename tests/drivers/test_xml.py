@@ -184,3 +184,35 @@ def test_resumptionToken_paged_xml(requests_mock):
     assert(len(df) == 2)
     assert df.title[0] == 'First page of records'
     assert df.title[1] == "Second page of records"
+
+
+def test_pagination_paged_xml(requests_mock):
+    requests_mock.get(
+        "https://example.com/export?limit=100&start=0",
+        text=open("tests/data/xml/paged/pagination_1.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    requests_mock.get(
+        "https://example.com/export?limit=100&start=100",
+        text=open("tests/data/xml/paged/pagination_2.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    metadata = {
+        "record_selector": {"path": "/h:results/h:items/mods:mods", "namespace": {"h": "http://api.lib.harvard.edu/v2/item", "mods": "http://www.loc.gov/mods/v3"}},
+        "fields": {
+            "title": {"path": "//mods:titleInfo[not(ancestor::mods:relatedItem)]/mods:title", "namespace": {"mods": "http://www.loc.gov/mods/v3"}},
+        },
+    }
+
+    source = XmlSource(
+        collection_url="https://example.com/export?limit={offset}&start={start}",
+        metadata=metadata,
+        paging={"pagination": True, "increment": 100},
+    )
+
+    df = source.read()
+    assert(len(df) == 2)
+    assert df.title[0] == 'Title 1'
+    assert df.title[1] == "Title 2"
