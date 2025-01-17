@@ -139,6 +139,12 @@ sources:
     description: Open Islamicate Text Initiative
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+  openn:
+    args:
+      path: catalogs/openn.yaml
+    description: University of Pennsylvania and Penn Museum - Muslim World
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
   penn:
     args:
       path: catalogs/penn.yaml

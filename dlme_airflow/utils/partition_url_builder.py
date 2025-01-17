@@ -2,6 +2,8 @@ import requests
 import jsonpath_ng
 import validators
 
+from bs4 import BeautifulSoup
+
 class PartitionBuilder:
     """Determine the method used to extract or format the
     page queries when provider API requires paging.
@@ -22,6 +24,13 @@ class PartitionBuilder:
     def urls(self):
         if self.paging_config.get("pages_url"):
             return self._prefetch_page_urls()
+
+        if self.paging_config.get("link_text"):
+            link_text = self.paging_config["link_text"]
+            response = requests.get(self.collection_url)
+            soup = BeautifulSoup(response.content, "html.parser")
+            links = soup.find_all('a', string=link_text)
+            return [self.paging_config.get("base_url") + link['href'] for link in links]
 
         self.provider_data = self._fetch_provider_data(self.collection_url)
         if self.paging_config.get("increment"):
