@@ -49,21 +49,22 @@ def main(opts):
                 if "extract_json" in line:
                     mapped_fields.append(line.split("extract_json('")[-1].split("')")[0].split('[')[0].replace('.', ''))
                 if line.startswith('##'):
-                    ignored_fields.append(line.replace('## ', ''))
+                    ignored_fields.append(line.replace('## ', '').rstrip())
 
-    missed_fields = set(ignored_fields).difference(set(harvested_fields).difference(set(mapped_fields))).difference(set(ignored_fields))
+    missed_fields = set(harvested_fields).difference(set(mapped_fields))
+    missed_fields_minus_ignored = missed_fields - set(ignored_fields)
     imaginary_fields = list(set(mapped_fields).difference(set(harvested_fields)))
 
     with open('traject-validation.txt', 'w') as out:
         out.write('Fields present in the harvested data that are not mapped:\n')
-        for i in missed_fields:
+        for i in sorted(missed_fields_minus_ignored):
             out.write('    - '+i+'\n')
         out.write('\nFields mapped in the Traject config that are not present in the harvested data:\n')
-        for i in imaginary_fields:
+        for i in sorted(imaginary_fields):
             out.write('    - '+i+'\n')
         out.write('\nIntentionally ignored fields:\n')
-        for i in ignored_fields:
-            out.write('    - '+i+'\n')
+        for i in sorted(ignored_fields):
+            out.write('    ## '+i+'\n')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Merge data from a DLME provider harvest")

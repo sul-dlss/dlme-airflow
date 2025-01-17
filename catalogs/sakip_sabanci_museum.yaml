@@ -29,7 +29,7 @@ sources:
           path: 'thumbnail..@id'
           optional: true
     args:
-      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/abidindino/p1.json
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/p21044coll5/p1.json
       dtype:
         context: object
         id: object
@@ -122,6 +122,144 @@ sources:
           optional: true
     args:
       collection_url: https://cdm21044.contentdm.oclc.org/iiif/info/Kitapvehat/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  archaeological_artifacts:
+    description: "Archaeological Artifacts Collection"
+    driver: iiif_json
+    metadata:
+      data_path: sakip_sabanci_museum/archaeological_artifacts
+      config: sakip_sabanci_museum
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/p21044coll3/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  avni_lifij:
+    description: "Hüseyin Avni Lifij (1886-1927) Collection"
+    driver: iiif_json
+    metadata:
+      data_path: sakip_sabanci_museum/avni_lifij
+      config: sakip_sabanci_museum
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/p21044coll4/manifest.json
+      dtype:
+        context: object
+        id: object
+        iiif_format: object
+        profile: object
+        resource: object
+        genre: object
+        coverage: object
+        date: object
+        format: object
+        language: object
+        publisher: object
+        access: object
+        rights: object
+        source: object
+        subject: object
+        title: object
+        type: object
+        repository: object
+  koleksiyon_hakkında_furniture:
+    description: "Furniture and Decorative Works Collection"
+    driver: iiif_json
+    metadata:
+      data_path: sakip_sabanci_museum/furniture
+      config: sakip_sabanci_museum
+      fields:
+        context:
+          path: '@context'
+          optional: true
+        description_top:
+          path: 'description'
+          optional: true
+        id:
+          path: '@id'
+          optional: true
+        iiif_format:
+          path: 'sequences..format'
+        profile:
+          path: 'sequences..profile'
+        resource:
+          path: 'sequences..resource.@id'
+        thumbnail:
+          path: 'thumbnail..@id'
+          optional: true
+    args:
+      collection_url: https://cdm21044.contentdm.oclc.org/iiif/2/p21044coll1/manifest.json
       dtype:
         context: object
         id: object
