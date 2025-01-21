@@ -6,10 +6,11 @@ import sys
 import logging
 import argparse
 
-from signal import signal, SIGPIPE, SIG_DFL  
+from signal import signal, SIGPIPE, SIG_DFL
 from dlme_airflow.models.provider import Provider
 from dlme_airflow.drivers import register_drivers
 from dlme_airflow.utils.qnl import merge_records
+from dlme_airflow.utils.split_marc_serials import split_marc_serials
 
 def main(opts):
     register_drivers()
