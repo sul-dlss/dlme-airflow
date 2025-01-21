@@ -46,8 +46,19 @@ class HathiTrustSource(intake.source.base.DataSource):
 
     def _get_partition(self, i):
         marc_url = self.metadata.get("catalog_url").format(id=self.record_ids[i])
+        print(f"Url: {marc_url}")
         record = parse_xml_to_array(marc_url)[0]
-        return pd.json_normalize(json.loads(record.as_json()))
+        data = json.loads(record.as_json())
+        for field in data.get("fields"):
+            key = list(field.keys())[0] # get the marc field key
+            if key in data:
+                data[key].extend([field[key]])
+            else:
+                data[key] = [field[key]]
+
+        del data["fields"]
+
+        return pd.json_normalize(data)
 
     def read(self):
         self._load_metadata()
