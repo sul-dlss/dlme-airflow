@@ -22,6 +22,7 @@ class PartitionBuilder:
         self.data = []
 
     def urls(self):
+        partition_urls = []
         if self.paging_config.get("pages_url"):
             return self._prefetch_page_urls()
 
@@ -34,11 +35,11 @@ class PartitionBuilder:
 
         self.provider_data = self._fetch_provider_data(self.collection_url)
         if self.paging_config.get("increment"):
-            return self._calculate_partitions()
+            partition_urls = self._calculate_partitions()
         elif self.paging_config.get("urls"):
-            return self._urls_from_provider()
+            partition_urls = self._urls_from_provider()
 
-        return []
+        return partition_urls
 
     def records(self):
         if self.paging_config.get("pages_url"):
