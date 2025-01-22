@@ -15,6 +15,11 @@ class MissingResumptionToken(Exception):
         super().__init__(message)
 
 
+class EndOfMaxResultSet(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+
 class XmlSource(intake.source.base.DataSource):
     container = "dataframe"
     name = "xml"
@@ -26,6 +31,7 @@ class XmlSource(intake.source.base.DataSource):
         self.collection_url = collection_url
         self.paging_config = paging
         self.paging_increment = paging.get("increment", 1)
+        self.paging_start = paging.get("start", 0)
         self._record_selector = self._get_record_selector()
         self._path_expressions = self._get_path_expressions()
         self._records = []
@@ -45,31 +51,40 @@ class XmlSource(intake.source.base.DataSource):
         for record_elements in self._fetch_collection():
             self._process_records(record_elements)
 
-    def _get_collection_url(self, offset):
+    def _get_collection_url(self, offset, start=0):
         """Generate the collection URL with the current offset."""
-        return self.collection_url.format(offset=offset)
+        return self.collection_url.format(offset=offset, start=start)
 
     def _fetch_collection(self):
         """Fetch the content of the collection URL."""
         records = []
         try:
             while True:
-                collection_url = self._get_collection_url(self.paging_increment)
+                collection_url = self._get_collection_url(self.paging_increment, self.paging_start)
                 collection_result = requests.get(collection_url).content
                 xtree = etree.fromstring(collection_result)
                 records.append(self._get_record_elements(xtree))
                 self._set_offset(xtree)
-        except etree.XMLSyntaxError:
+        except etree.XMLSyntaxError as e:
             # If the XML is malformed or empty, we stop fetching and return the records
+            print(f"XMLSyntaxError: {e}")
             return records
         except MissingResumptionToken as e:
             # If the XML is malformed or empty, we stop fetching and return the records
             logging.info(f"Missing resumption token: {e}")
             return records
+        except EndOfMaxResultSet as e:
+            # If the XML is malformed or empty, we stop fetching and return the records
+            logging.info(f"{e}")
+            return records
+        except Exception as e:
+            print(f"Error: {e}")
+        except ValueError as e:
+            print(f"ValueError: {e}")
 
     def _get_record_elements(self, xtree):
         """Find record elements in the XML tree."""
-        return xtree.findall(
+        return xtree.xpath(
             self._record_selector["path"], namespaces=self._record_selector["namespace"]
         )
 
@@ -83,16 +98,38 @@ class XmlSource(intake.source.base.DataSource):
         """
         Sets the offset based on the current increment or presence of a resumption token.
         """
-        self.paging_increment += self.paging_config.get("increment", 0)
 
         if "resumptionToken" in self.paging_config:
-            if xtree is not None:
-                resumption_token = xtree.xpath(".//resumptionToken")
-                if resumption_token:
-                    _, token = resumption_token[0].text.split("=")
-                    self.paging_increment = int(token)
-                else:
-                    raise MissingResumptionToken(f"No resumption token found after {self.paging_increment}")
+            self._extract_resumption_token(xtree)
+            return
+
+        if "pagination" in self.paging_config:
+            self._extract_paging_metadata(xtree)
+            return
+
+        self.paging_increment += self.paging_config.get("increment", 0)
+
+    def _extract_resumption_token(self, xtree):
+        resumption_token = xtree.xpath(".//resumptionToken")
+        if resumption_token:
+            _, token = resumption_token[0].text.split("=")
+            self.paging_increment = int(token)
+        else:
+            raise MissingResumptionToken(f"No resumption token found after {self.paging_increment}")
+
+    def _extract_paging_metadata(self, xtree):
+        # Define the namespace map for XPath
+        ns_map = {
+            'h': 'http://api.lib.harvard.edu/v2/item'
+        }
+
+        maxResults = int(xtree.xpath('/h:results/h:pagination/h:maxPageableSet', namespaces=ns_map)[0].text)
+        numFound = int(xtree.xpath('/h:results/h:pagination/h:numFound', namespaces=ns_map)[0].text)
+        next_start = self.paging_start + self.paging_increment
+        if next_start > maxResults:
+            raise EndOfMaxResultSet(f"Results ({numFound} exceed max result set ({maxResults}).")
+
+        self.paging_start = next_start
 
     def _construct_fields(self, record_el: etree) -> dict:
         record: Dict[str, (str | List)] = {}
