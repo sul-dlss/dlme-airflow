@@ -8,6 +8,7 @@ from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
 
 from typing import List, Dict
+from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
 class MissingResumptionToken(Exception):
@@ -48,8 +49,17 @@ class XmlSource(intake.source.base.DataSource):
             self._records.append(record)
 
     def _open_paged_collection(self):
-        for record_elements in self._fetch_collection():
+        if self.paging_config.get("link_text"): # Indicates we're parsing links from HTML
+            urls = PartitionBuilder(self.collection_url, self.paging_config).urls()
+            record_elements = [self._fetch_provider_data(url) for url in urls]
             self._process_records(record_elements)
+        else:
+            for record_elements in self._fetch_collection():
+                self._process_records(record_elements)
+
+    def _fetch_provider_data(self, url):
+        response = requests.get(url)
+        return etree.fromstring(response.content)
 
     def _get_collection_url(self, offset, start=0):
         """Generate the collection URL with the current offset."""
@@ -67,7 +77,7 @@ class XmlSource(intake.source.base.DataSource):
                 self._set_offset(xtree)
         except etree.XMLSyntaxError as e:
             # If the XML is malformed or empty, we stop fetching and return the records
-            print(f"XMLSyntaxError: {e}")
+            logging.info(f"XMLSyntaxError: {e}")
             return records
         except MissingResumptionToken as e:
             # If the XML is malformed or empty, we stop fetching and return the records
@@ -78,9 +88,9 @@ class XmlSource(intake.source.base.DataSource):
             logging.info(f"{e}")
             return records
         except Exception as e:
-            print(f"Error: {e}")
+            logging.info(f"Error: {e}")
         except ValueError as e:
-            print(f"ValueError: {e}")
+            logging.info(f"ValueError: {e}")
 
     def _get_record_elements(self, xtree):
         """Find record elements in the XML tree."""
@@ -186,7 +196,7 @@ class XmlSource(intake.source.base.DataSource):
     def _get_record_selector(self):
         record_selector = self.metadata.get("record_selector")
         if not record_selector:
-            raise Exception("Missing record_selector")
+            return
 
         path = record_selector.get("path")
         if not path:

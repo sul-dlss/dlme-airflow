@@ -216,3 +216,40 @@ def test_pagination_paged_xml(requests_mock):
     assert(len(df) == 2)
     assert df.title[0] == 'Title 1'
     assert df.title[1] == "Title 2"
+
+
+def test_parse_record_urls_xml(requests_mock):
+    requests_mock.get(
+        "https://example.com/collection.html",
+        text=open("tests/data/xml/paged/collection.html", "r").read(),
+        headers={"Accept": "application/html"},
+    )
+
+    requests_mock.get(
+        "https://example.com/record_1.xml",
+        text=open("tests/data/xml/paged/record_1.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    requests_mock.get(
+        "https://example.com/record_2.xml",
+        text=open("tests/data/xml/paged/record_2.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    metadata = {
+        "fields": {
+            "title": {"path": "/TEI/teiHeader/fileDesc/titleStmt/title"},
+        },
+    }
+
+    source = XmlSource(
+        collection_url="https://example.com/collection.html",
+        metadata=metadata,
+        paging={"link_text": "TEI XML", "base_url": "https://example.com"},
+    )
+
+    df = source.read()
+    assert(len(df) == 2)
+    assert df.title[0] == 'Title 1'
+    assert df.title[1] == "Title 2"
