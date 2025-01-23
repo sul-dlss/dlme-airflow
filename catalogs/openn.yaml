@@ -11,6 +11,11 @@ sources:
       output_format: json
       config: openn
       fields:
+        id:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdenfitier/tei:idno'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: false
         title:
           path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title'
           namespace:
