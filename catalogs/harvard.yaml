@@ -67,10 +67,11 @@ sources:
           mods: "http://www.loc.gov/mods/v3"
       fields:
         id:
-          path: "//header:identifier"
+          path: "//mods:recordInfo/mods:recordIdentifier"
           namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
+            mods: "http://www.loc.gov/mods/v3"
+          optional: false
+          name_in_dataframe: "id"
         personal_name:
           path: "//mods:name[@type = 'personal']/mods:namePart[not(@type = 'date')]"
           namespace:
