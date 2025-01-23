@@ -13,39 +13,39 @@ sources:
         path: ".//item"
       fields:
         creation_date:
-          path: ".//field_creation_date"
+          path: ".//creation-date"
           namespace:
           optional: true
         creator:
-          path: ".//field_creator_for_page"
+          path: ".//creator"
           namespace:
           optional: true
         country_and_region:
-          path: ".//field_country_and_region"
+          path: ".//country-and-region"
           optional: true
         description:
-          path: ".//field_description"
+          path: ".//description"
           optional: true
         extent:
-          path: ".//field_extent_and_medium"
+          path: ".//extent-and-medium"
           optional: true
         id:
-          path: "@key"
+          path: ".//node_id"
           optional: false
         iiif_manifest:
-          path: ".//field_iiif_manifest"
+          path: ".//iiif-manifest"
           optional: true
         language:
-          path: ".//field_language"
+          path: ".//language"
           optional: true
         letter_recipient:
-          path: ".//field_recipient_for_page"
+          path: ".//recipient"
           optional: true
         thumbnail:
-          path: ".//field_thumbnail_image"
+          path: ".//field-thumbnail-image"
           optional: true
         shown_at:
-          path: ".//view_node"
+          path: ".//path"
           optional: true
         title:
           path: ".//title"
