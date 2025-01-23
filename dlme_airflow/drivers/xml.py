@@ -71,8 +71,8 @@ class XmlSource(intake.source.base.DataSource):
         try:
             while True:
                 collection_url = self._get_collection_url(self.paging_increment, self.paging_start)
-                collection_result = requests.get(collection_url).content
-                xtree = etree.fromstring(collection_result)
+                response = requests.get(collection_url)
+                xtree = etree.fromstring(bytes(response.text, encoding='utf-8'))
                 records.append(self._get_record_elements(xtree))
                 self._set_offset(xtree)
         except etree.XMLSyntaxError as e:
