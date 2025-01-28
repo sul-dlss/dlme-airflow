@@ -101,7 +101,11 @@ class IiifJsonSource(intake.source.base.DataSource):
     ) -> dict[str, list[str]]:
         output: dict[str, list[str]] = {}
         for row in iiif_manifest_metadata:
-            for data in self._metadata_from_row(row):
+            metadata = self._metadata_from_row(row)
+            if metadata is None:
+                continue
+
+            for data in metadata:
                 label = data.get("label")
                 value = data.get("value")
 
@@ -191,6 +195,7 @@ def _tag_label(label: str, value) -> dict:
     if isinstance(value, list):
         return [_tag_label(label, val) for val in value]
     if isinstance(value, dict):
-        return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
+        if '@language' in value.keys():
+            return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
     else:
         return [{"label": label, "value": _listify_if_string_or_dict(value)}]
