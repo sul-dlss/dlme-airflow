@@ -22,7 +22,7 @@ sources:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: false
         contributor:
-          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:resp/tei:persName'
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt[tei:resp/text() = "contributor"]/tei:persName'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
@@ -43,6 +43,16 @@ sources:
           optional: true
         provenance:
           path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:history/tei:provenance'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        summary:
+          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        former_owner:
+          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "former owner"]/tei:persName'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true

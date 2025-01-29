@@ -60,7 +60,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         )
 
         # Handles the thumbnail field provided in the collection manifest
-        record.update({"thumbnail": manifest.get("thumbnail")})
+        record.update({"thumbnail": manifest.get("thumbnail")[0].get("id")})
         return record
 
     def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
