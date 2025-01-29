@@ -46,19 +46,41 @@ class HathiTrustSource(intake.source.base.DataSource):
 
     def _get_partition(self, i):
         marc_url = self.metadata.get("catalog_url").format(id=self.record_ids[i])
-        print(f"Url: {marc_url}")
         record = parse_xml_to_array(marc_url)[0]
         data = json.loads(record.as_json())
-        for field in data.get("fields"):
-            key = list(field.keys())[0] # get the marc field key
-            if key in data:
-                data[key].extend([field[key]])
-            else:
-                data[key] = [field[key]]
+        if 'fields' in data:
+            metadata = self._metadata_from_marc_fields(data.get("fields"))
+        else:
+            return data
 
         del data["fields"]
+        data.update(metadata)
 
         return pd.json_normalize(data)
+
+    def _metadata_from_marc_fields(self, fields):
+        metadata = {}
+        for field in fields:
+            marc_field = list(field.keys())[0]
+            if isinstance(field[marc_field], str):
+                metadata.setdefault(marc_field, []).append(field[marc_field])
+
+            if isinstance(field[marc_field], dict):
+                if 'subfields' in field[marc_field]:
+                    metadata |= self._flatten_marc_subfields(marc_field, field[marc_field].get("subfields"))
+
+        return metadata
+
+    def _flatten_marc_subfields(self, marc_field, subfields):
+        metadata = {}
+        for subfield in subfields:
+            subfield_marker = next(iter(subfield))
+            value = subfield[subfield_marker]
+            if value:
+                key = f"{marc_field}_{subfield_marker}"
+                metadata.setdefault(key, []).append(value)
+
+        return metadata
 
     def read(self):
         self._load_metadata()
