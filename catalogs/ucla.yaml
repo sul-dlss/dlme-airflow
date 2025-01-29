@@ -44,26 +44,6 @@ sources:
           namespace:
             header: "http://www.openarchives.org/OAI/2.0/"
           optional: true
-  armenia_collections:
-    description: "Armenia Collections"
-    driver: oai_xml
-    args:
-      collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dpla
-      set: member_of_collection_ids_ssim:x1s7s81z-89112
-      wait: 1
-      allow_expiration: true
-      full_harvest: true
-    metadata:
-      data_path: ucla/armenian/armenia_collections
-      output_format: json
-      config: ucla_armenian
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
   armenian_massacre:
     description: "Sachtleben (William) Images of Armenian Massacre"
     driver: oai_xml
@@ -277,26 +257,6 @@ sources:
       full_harvest: true
     metadata:
       data_path: ucla/iiif/minasian_manuscript_collection
-      output_format: json
-      config: ucla_iiif
-      fields:
-        id:
-          path: "//header:identifier"
-          namespace:
-            header: "http://www.openarchives.org/OAI/2.0/"
-          optional: true
-  mena_collections:
-    description: "Middle East & North Africa Collections"
-    driver: oai_xml
-    args:
-      collection_url: https://digital.library.ucla.edu/catalog/oai
-      metadata_prefix: oai_dpla
-      set: member_of_collection_ids_ssim:xbt9fd1z-89112
-      wait: 1
-      allow_expiration: true
-      full_harvest: true
-    metadata:
-      data_path: ucla/iiif/mena
       output_format: json
       config: ucla_iiif
       fields:

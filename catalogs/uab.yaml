@@ -3,16 +3,16 @@ metadata:
   data_path: uab
   schedule: "20 9 27 Jan,Apr,Jul,Oct *"
 sources:
-  medical_manuscripts:
+  manuscripts:
     driver: oai_xml
     args:
       collection_url: https://na01.alma.exlibrisgroup.com/view/oai/01AL_UALB/request?
-      metadata_prefix: marc21
-      set: middleeastmedical
+      metadata_prefix: oai_dc
+      set: MEM
       allow_expiration: true
       full_harvest: true
     metadata:
-      data_path: uab/medical_manuscripts
+      data_path: uab/manuscripts
       config: uab
       fields:
         id:

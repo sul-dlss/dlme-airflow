@@ -7,7 +7,7 @@ sources:
     description: "Gertrude Bell Archive"
     driver: xml
     metadata:
-      data_path: newcastle
+      data_path: newcastle/gertrude-bell
       config: newcastle
       record_selector:
         path: ".//item"

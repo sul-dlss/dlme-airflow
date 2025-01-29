@@ -10,6 +10,8 @@ import logging
 import os
 import sys
 
+expected_fields = ['cho_edm_type', 'cho_has_type']
+
 def get_paths_and_trajects(provider):
     with open(f"{os.getcwd()}/../dlme-transform/config/metadata_mapping.json") as f:
         metatdata_mapping = json.load(f)
@@ -18,18 +20,21 @@ def get_paths_and_trajects(provider):
             if provider == p.split('/')[0]:
                 return i.get('paths'), i.get('trajects')
 
-def get_data(paths):
+def get_harvested_data(paths):
     files = []
     for p in paths:
         files.extend(glob.glob(f"{os.getcwd()}/working/{p}/*.json", recursive=True))
         files.extend(glob.glob(f"{os.getcwd()}/working/{p}/**/*.json", recursive=True))
     return list(set(files))
 
+def get_transformed_data(paths):
+    pass
+
 def main(opts):
     data_path = opts.data
     provider = data_path.split('/')[0]
     paths, trajects = get_paths_and_trajects(provider)
-    files = get_data(paths)
+    files = get_harvested_data(paths)
 
     # Get fields present in the input file
     harvested_fields = []
