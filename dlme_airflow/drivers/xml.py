@@ -59,7 +59,14 @@ class XmlSource(intake.source.base.DataSource):
 
     def _fetch_provider_data(self, url):
         response = requests.get(url)
-        return etree.fromstring(response.content)
+        root = etree.fromstring(response.content)
+        child = etree.Element("harvest_url")
+        child.text = url
+
+        # Append the child to the root
+        root.append(child)
+
+        return root
 
     def _get_collection_url(self, offset, start=0):
         """Generate the collection URL with the current offset."""
