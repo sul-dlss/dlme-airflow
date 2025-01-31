@@ -12,22 +12,92 @@ sources:
       config: openn
       fields:
         id:
-          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdenfitier/tei:idno'
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: false
-        title:
-          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title'
+        alternate_id:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:altIdentifier/tei:idno'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: false
-        contributor:
-          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt[tei:resp/text() = "contributor"]/tei:persName'
+        auctioneer:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "auctioneer"]/tei:persName'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
-        publisher:
-          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:publisher'
+        author:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:author/tei:persName'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: false
+        binding:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:bindingDesc/tei:binding/tei:p'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        contributor:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:respStmt[tei:resp/text() = "contributor"]/tei:persName'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        date:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:history/tei:origin/tei:p'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        decoration_note:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:decoDesc/tei:decoNote/text()'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        donor:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "donor"]/tei:persName'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        extent:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:extent'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        foliation:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        form_genre:
+          path: '/tei:TEI/tei:teiHeader/tei:profileDesc/tei:textClass/tei:keywords[@n= "form/genre"]/tei:term'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        former_owner:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "former owner"]/tei:persName'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        harvest_url:
+          path: '/tei:TEI/harvest_url'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        keywords:
+          path: '/tei:TEI/tei:teiHeader/tei:profileDesc/tei:textClass/tei:keywords[@n= "keywords"]/tei:term'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        language:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:textLang'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        layout:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:layout'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        licence:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
@@ -36,23 +106,58 @@ sources:
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
-        date:
-          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:history/tei:origin/tei:p'
+        origin_place:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:history/tei:origin/tei:origPlace'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        preview:
+          path: '/tei:TEI/tei:facsimile/*[1]/*[2]/@url'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
         provenance:
-          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:history/tei:provenance'
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:history/tei:provenance'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        publisher:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:publisher'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        repository:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        scribe:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "scribe"]/tei:persName'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        script_note:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:scriptDesc/tei:scriptNote'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: true
+        subjects:
+          path: '/tei:TEI/tei:teiHeader/tei:profileDesc/tei:textClass/tei:keywords[@n= "subjects"]/tei:term'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
         summary:
-          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary'
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:summary'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
-        former_owner:
-          path: '/tei:TEI/tei:teiHeader/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:respStmt[tei:resp/text() = "former owner"]/tei:persName'
+        title:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem/tei:title'
+          namespace:
+            tei: 'http://www.tei-c.org/ns/1.0'
+          optional: false
+        watermark:
+          path: '/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:watermark'
           namespace:
             tei: 'http://www.tei-c.org/ns/1.0'
           optional: true
