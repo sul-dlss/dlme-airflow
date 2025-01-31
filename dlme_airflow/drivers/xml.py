@@ -63,7 +63,6 @@ class XmlSource(intake.source.base.DataSource):
         child = etree.Element("harvest_url")
         child.text = url
 
-        # Append the child to the root
         root.append(child)
 
         return root
