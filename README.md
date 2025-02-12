@@ -1,10 +1,10 @@
 [![CircleCI](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main.svg?style=svg)](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/maintainability)](https://codeclimate.com/github/sul-dlss/dlme-airflow/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/test_coverage)](https://codeclimate.com/github/sul-dlss/dlme-airflow/test_coverage)
+[![codecov](https://codecov.io/gh/sul-dlss/dlme-airflow/graph/badge.svg?token=H53NPLQ7IC)](https://codecov.io/gh/sul-dlss/dlme-airflow)
 
 # dlme-airflow
 
-This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data on a shared filesystem where it is loaded by the [dlme] [Spotlight] application. 
+This repository contains an [ETL] pipeline for the [Digital Library of the Middle East] (DLME) project. The pipeline is implemented in [Apache Airflow] and uses [Intake] to manage a catalog of IIIF, OAI-PMH and CSV data sources that are hosted at participating institutions. `dlme-airflow` collects data from these sources, transforms it with [dlme-transform], and stores the resulting data on a shared filesystem where it is loaded by the [dlme] [Spotlight] application.
 
 # Running Airflow Locally
 
@@ -20,7 +20,7 @@ API_TOKEN=[GET API TOKEN FROM SERVER]
 
 The `API_ENDPOINT` identifies a [dlme](https://github.com/sul-dlss/dlme) instance that is used for indexing harvested and transformed content. You will need to get the `API_TOKEN` from the server or from a DLME developer.
 
-If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well. 
+If you would like to be able to skip report generation and delivery in your development environment (which can be time consuming) you can add `SKIP_REPORT=true` to your `.env` as well.
 
 ## Initialize local Docker infrastructure
 
@@ -280,8 +280,8 @@ open report.html # to open in your browser
 
 ### Validate a traject config file
 
-There is a utility for validating traject mappings when the input file is json. It will compare 
-all fields in the input data against all fields in the traject config and write a report listing 
+There is a utility for validating traject mappings when the input file is json. It will compare
+all fields in the input data against all fields in the traject config and write a report listing
 unmapped fields and fields the traject config attempts to map that do not exist in the input data.
 Call it with the data path used to invoke the traject transformation.
 
