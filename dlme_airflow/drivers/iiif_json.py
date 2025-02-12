@@ -106,6 +106,9 @@ class IiifJsonSource(intake.source.base.DataSource):
                 continue
 
             for data in metadata:
+                if data is None:
+                    continue
+
                 label = data.get("label")
                 value = data.get("value")
 
