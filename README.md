@@ -1,5 +1,4 @@
 [![CircleCI](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main.svg?style=svg)](https://circleci.com/gh/sul-dlss/dlme-airflow/tree/main)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a20e808e66e0a20e30ad/maintainability)](https://codeclimate.com/github/sul-dlss/dlme-airflow/maintainability)
 [![codecov](https://codecov.io/gh/sul-dlss/dlme-airflow/graph/badge.svg?token=H53NPLQ7IC)](https://codecov.io/gh/sul-dlss/dlme-airflow)
 
 # dlme-airflow
