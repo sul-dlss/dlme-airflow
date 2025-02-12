@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@2.1.1
+  codecov: codecov/codecov@5
 
 executors:
   docker-publisher:
@@ -38,19 +39,10 @@ jobs:
           command: |
              ruff check
       - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter before-build
-      - run:
           name: Run tests
           command: |
-            coverage run -m pytest
-      - run:
-          name: Report test coverage results to CodeClimate
-          command: |
-            coverage xml && ./cc-test-reporter after-build --coverage-input-type 'coverage.py' --exit-code $?
+             pytest --cov
+      - codecov/upload
   publish_to_dockerhub:
     executor: docker-publisher
     steps:
