@@ -79,8 +79,11 @@ class XmlSource(intake.source.base.DataSource):
                 collection_url = self._get_collection_url(self.paging_increment, self.paging_start)
                 response = requests.get(collection_url)
                 xtree = etree.fromstring(bytes(response.text, encoding='utf-8'))
-                records.append(self._get_record_elements(xtree))
+                records_in_page = self._get_record_elements(xtree)
+                records.append(records_in_page)
                 self._set_offset(xtree)
+                if len(records_in_page) < self.paging_config.get("increment", 0):
+                    return records
         except etree.XMLSyntaxError as e:
             # If the XML is malformed or empty, we stop fetching and return the records
             logging.info(f"XMLSyntaxError: {e}")
