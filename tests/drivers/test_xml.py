@@ -188,14 +188,20 @@ def test_resumptionToken_paged_xml(requests_mock):
 
 def test_pagination_paged_xml(requests_mock):
     requests_mock.get(
-        "https://example.com/export?limit=100&start=0",
+        "https://example.com/export?limit=1&start=0",
         text=open("tests/data/xml/paged/pagination_1.xml", "r").read(),
         headers={"Accept": "application/text+xml"},
     )
 
     requests_mock.get(
-        "https://example.com/export?limit=100&start=100",
+        "https://example.com/export?limit=1&start=1",
         text=open("tests/data/xml/paged/pagination_2.xml", "r").read(),
+        headers={"Accept": "application/text+xml"},
+    )
+
+    requests_mock.get(
+        "https://example.com/export?limit=1&start=2",
+        text="",
         headers={"Accept": "application/text+xml"},
     )
 
@@ -209,7 +215,7 @@ def test_pagination_paged_xml(requests_mock):
     source = XmlSource(
         collection_url="https://example.com/export?limit={offset}&start={start}",
         metadata=metadata,
-        paging={"pagination": True, "increment": 100},
+        paging={"pagination": True, "increment": 1},
     )
 
     df = source.read()
