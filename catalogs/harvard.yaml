@@ -57,6 +57,14 @@ sources:
       paging:
         pagination: True
         increment: 250
+        max_results:
+          path: '/h:results/h:pagination/h:maxPageableSet'
+          namespace:
+            h: 'http://api.lib.harvard.edu/v2/item'
+        num_results:
+          path: '/h:results/h:pagination/h:numFound'
+          namespace:
+            h: 'http://api.lib.harvard.edu/v2/item'
     metadata:
       data_path: harvard/stuart_cary_welch
       config: harvard_stuart_cary_welch

@@ -7,9 +7,18 @@ sources:
     description: "The Bibliothèque nationale de France"
     driver: xml
     args:
-      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29&startRecord={offset}
+      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=%28%28bibliotheque%20adj%20%22Institut%20dominicain%20d%27%C3%A9tudes%20orientales%22%29%29&startRecord={start}
       paging:
         increment: 15
+        pagination: True
+        max_results:
+          path: './/srw:numberOfRecords'
+          namespace:
+            srw: 'http://www.loc.gov/zing/srw/'
+        num_results:
+          path: './/srw:nextRecordPosition'
+          namespace:
+            srw: 'http://www.loc.gov/zing/srw/'
     metadata:
       data_path: bnf/ideo
       config: bnf

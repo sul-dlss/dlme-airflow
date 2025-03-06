@@ -49,6 +49,8 @@ def main(opts):
     else:
         df.to_json(out, orient="records", force_ascii=False)
 
+    print(f"Harvested {len(df)} records")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get data from a DLME provider collection as JSON")
     parser.add_argument('provider', help="The DLME provider (e.g. penn)")
