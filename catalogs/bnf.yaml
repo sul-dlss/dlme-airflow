@@ -82,6 +82,44 @@ sources:
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
+        link:
+          path: ".//srw:extraRecordData/link"
+          namespace:
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        provenance:
+          path: ".//srw:extraRecordData/provenance"
+          namespace:
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        publisher:
+          path: ".//srw:recordData/oai_dc:dc/dc:publisher"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        relations:
+          path: ".//srw:recordData/oai_dc:dc/dc:relation"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        rights:
+          path: ".//srw:recordData/oai_dc:dc/dc:rights"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        source:
+          path: ".//srw:recordData/oai_dc:dc/dc:source"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
         subject:
           path: ".//srw:recordData/oai_dc:dc/dc:subject"
           namespace:
@@ -90,7 +128,7 @@ sources:
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         thumbnail:
-          path: ".//srw:extraRecordData/thumbnail"
+          path: ".//srw:extraRecordData/lowres"
           namespace:
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
@@ -105,7 +143,18 @@ sources:
     description: "The Bibliothèque nationale de France"
     driver: xml
     args:
-      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=dc.source%20all%20%22Institut%20fran%C3%A7ais%20d%E2%80%99arch%C3%A9ologie%20orientale%22%20%20and%20%28provenance%20adj%20%22bnf.fr%22%29
+      collection_url: https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=dc.source%20all%20%22Institut%20fran%C3%A7ais%20d%E2%80%99arch%C3%A9ologie%20orientale%22%20%20and%20%28provenance%20adj%20%22bnf.fr%22%29&startRecord={start}
+      paging:
+        increment: 15
+        pagination: True
+        max_results:
+          path: './/srw:numberOfRecords'
+          namespace:
+            srw: 'http://www.loc.gov/zing/srw/'
+        num_results:
+          path: './/srw:nextRecordPosition'
+          namespace:
+            srw: 'http://www.loc.gov/zing/srw/'
     metadata:
       data_path: bnf/ifao
       config: bnf
@@ -116,73 +165,111 @@ sources:
         optional: false
       fields:
         id:
-          path: "srw:recordData/oai_dc:dc/dc:identifier"
+          path: ".//srw:recordData/oai_dc:dc/dc:identifier"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
         title:
-          path: "srw:recordData/oai_dc:dc/dc:title"
+          path: ".//srw:recordData/oai_dc:dc/dc:title"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
         creator:
-          path: "srw:recordData/oai_dc:dc/dc:creator"
+          path: ".//srw:recordData/oai_dc:dc/dc:creator"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         contributor:
-          path: "srw:recordData/oai_dc:dc/dc:contributor"
+          path: ".//srw:recordData/oai_dc:dc/dc:contributor"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         date:
-          path: "srw:recordData/oai_dc:dc/dc:date"
+          path: ".//srw:recordData/oai_dc:dc/dc:date"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         description:
-          path: "srw:recordData/oai_dc:dc/dc:description"
+          path: ".//srw:recordData/oai_dc:dc/dc:description"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         format:
-          path: "srw:recordData/oai_dc:dc/dc:format"
+          path: ".//srw:recordData/oai_dc:dc/dc:format"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         language:
-          path: "srw:recordData/oai_dc:dc/dc:language"
+          path: ".//srw:recordData/oai_dc:dc/dc:language"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        link:
+          path: ".//srw:extraRecordData/link"
+          namespace:
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        provenance:
+          path: ".//srw:extraRecordData/provenance"
+          namespace:
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        publisher:
+          path: ".//srw:recordData/oai_dc:dc/dc:publisher"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        relations:
+          path: ".//srw:recordData/oai_dc:dc/dc:relation"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        rights:
+          path: ".//srw:recordData/oai_dc:dc/dc:rights"
+          namespace:
+            dc: "http://purl.org/dc/elements/1.1/"
+            oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
+            srw: "http://www.loc.gov/zing/srw/"
+          optional: true
+        source:
+          path: ".//srw:recordData/oai_dc:dc/dc:source"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         subject:
-          path: "srw:recordData/oai_dc:dc/dc:subject"
+          path: ".//srw:recordData/oai_dc:dc/dc:subject"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         thumbnail:
-          path: "srw:extraRecordData/thumbnail"
+          path: ".//srw:extraRecordData/lowres"
           namespace:
             srw: "http://www.loc.gov/zing/srw/"
           optional: true
         type:
-          path: "srw:recordData/oai_dc:dc/dc:type"
+          path: ".//srw:recordData/oai_dc:dc/dc:type"
           namespace:
             dc: "http://purl.org/dc/elements/1.1/"
             oai_dc: "http://www.openarchives.org/OAI/2.0/oai_dc/"
