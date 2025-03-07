@@ -79,7 +79,8 @@ class XmlSource(intake.source.base.DataSource):
                 collection_url = self._get_collection_url(self.paging_increment, self.paging_start)
                 response = requests.get(collection_url)
                 xtree = etree.fromstring(bytes(response.text, encoding='utf-8'))
-                records.append(self._get_record_elements(xtree))
+                records_in_page = self._get_record_elements(xtree)
+                records.append(records_in_page)
                 self._set_offset(xtree)
         except etree.XMLSyntaxError as e:
             # If the XML is malformed or empty, we stop fetching and return the records
@@ -134,13 +135,12 @@ class XmlSource(intake.source.base.DataSource):
             raise MissingResumptionToken(f"No resumption token found after {self.paging_increment}")
 
     def _extract_paging_metadata(self, xtree):
-        # Define the namespace map for XPath
-        ns_map = {
-            'h': 'http://api.lib.harvard.edu/v2/item'
-        }
+        if self.paging_config.get("max_results"):
+            maxResults = int(xtree.xpath(self.paging_config.get("max_results")["path"], namespaces=self.paging_config.get("max_results")["namespace"])[0].text)
 
-        maxResults = int(xtree.xpath('/h:results/h:pagination/h:maxPageableSet', namespaces=ns_map)[0].text)
-        numFound = int(xtree.xpath('/h:results/h:pagination/h:numFound', namespaces=ns_map)[0].text)
+        if self.paging_config.get("num_results"):
+            numFound = int(xtree.xpath(self.paging_config.get("num_results")["path"], namespaces=self.paging_config.get("num_results")["namespace"])[0].text)
+
         next_start = self.paging_start + self.paging_increment
         if next_start > maxResults:
             raise EndOfMaxResultSet(f"Results ({numFound} exceed max result set ({maxResults}).")

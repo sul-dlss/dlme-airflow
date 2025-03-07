@@ -209,7 +209,12 @@ def test_pagination_paged_xml(requests_mock):
     source = XmlSource(
         collection_url="https://example.com/export?limit={offset}&start={start}",
         metadata=metadata,
-        paging={"pagination": True, "increment": 100},
+        paging={
+            "pagination": True,
+            "increment": 100,
+            "max_results": {"path": "/h:results/h:pagination/h:maxPageableSet", "namespace": {"h": "http://api.lib.harvard.edu/v2/item"}},
+            "num_results": {"path": "/h:results/h:pagination/h:numFound", "namespace": {"h": "http://api.lib.harvard.edu/v2/item"}}
+        }
     )
 
     df = source.read()
