@@ -57,12 +57,7 @@ open your browser to `http://localhost:8080`
 uv venv
 ```
 
-This will create the virtual environment at the default location of `.venv/`. `uv` automatically looks for a venv at this location when installing dependencies.
-
-3. Activate the virtual environment:
-```
-source .venv/bin/activate
-```
+This will create and activate the virtual environment at the default location of `.venv/`. `uv` automatically looks for a venv at this location when installing dependencies.
 
 ## Install dependencies
 ```
@@ -288,4 +283,3 @@ Example:
 ```
 uv run bin/validate-traject qnl
 ```
-
