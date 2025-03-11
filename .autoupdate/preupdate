@@ -3,16 +3,18 @@
 # This script is called by our weekly dependency update job in Jenkins, before updating Ruby and other deps
 
 # Without these ENV changes, python gets confused and tries to use latin1
-# encodings which breaks the poetry update below
+# encodings which breaks the updates below
 export LANG=en_US.UTF-8
 export LC_COLLATE=C.UTF-8
 
-pip3 install --upgrade --requirement requirements.txt > dlme-airflow.txt &&
-    ~/.local/bin/poetry update -n --no-ansi >> dlme-airflow.txt
+pip3 install --user pipx > dlme-airflow.txt &&
+    pipx install uv --force >> dlme-airflow.txt &&
+    ~/.local/bin/uv venv &&
+    ~/.local/bin/uv pip compile pyproject.toml -o requirements.txt --upgrade -q --no-progress --color never >> dlme-airflow.txt
 
 retVal=$?
 
-git add poetry.lock &&
+git add requirements.txt &&
     git commit -m "Update Python dependencies"
 
 if [ $retVal -ne 0 ]; then
