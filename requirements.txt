@@ -39,7 +39,7 @@ lxml==5.3.1
     #   sickle
 lxml-html-clean==0.4.1
     # via dlme-airflow (pyproject.toml)
-multidict==6.1.0
+multidict==6.2.0
     # via
     #   aiohttp
     #   yarl
@@ -53,7 +53,7 @@ pandas==2.2.3
     # via dlme-airflow (pyproject.toml)
 pillow==11.1.0
     # via dlme-airflow (pyproject.toml)
-platformdirs==4.3.6
+platformdirs==4.3.7
     # via intake
 ply==3.11
     # via jsonpath-ng
@@ -85,7 +85,7 @@ soupsieve==2.6
     # via beautifulsoup4
 typing-extensions==4.12.2
     # via beautifulsoup4
-tzdata==2025.1
+tzdata==2025.2
     # via pandas
 urllib3==2.3.0
     # via requests
