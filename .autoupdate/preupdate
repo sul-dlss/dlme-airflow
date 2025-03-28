@@ -7,11 +7,10 @@
 export LANG=en_US.UTF-8
 export LC_COLLATE=C.UTF-8
 
-# Needed to successfully run `pipx`-installed executables
+# Needed to successfully run pip-installed uv
 export PATH="$HOME/.local/bin:$PATH"
 
-pip3 install --user pipx > dlme-airflow.txt &&
-    pipx install uv --force >> dlme-airflow.txt &&
+pip3 install --upgrade uv > dlme-airflow.txt &&
     uv venv &&
     uv pip compile pyproject.toml -o requirements.txt --upgrade -q --no-progress --color never >> dlme-airflow.txt
 
