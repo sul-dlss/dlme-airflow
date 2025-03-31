@@ -22,7 +22,7 @@ frozenlist==1.5.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2025.3.0
+fsspec==2025.3.1
     # via intake
 idna==3.10
     # via
@@ -57,7 +57,7 @@ platformdirs==4.3.7
     # via intake
 ply==3.11
     # via jsonpath-ng
-propcache==0.3.0
+propcache==0.3.1
     # via
     #   aiohttp
     #   yarl
@@ -65,9 +65,9 @@ pymarc==5.2.3
     # via dlme-airflow (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via pandas
-python-dotenv==1.0.1
+python-dotenv==1.1.0
     # via dlme-airflow (pyproject.toml)
-pytz==2025.1
+pytz==2025.2
     # via pandas
 pyyaml==6.0.2
     # via intake
@@ -83,7 +83,7 @@ six==1.17.0
     # via python-dateutil
 soupsieve==2.6
     # via beautifulsoup4
-typing-extensions==4.12.2
+typing-extensions==4.13.0
     # via beautifulsoup4
 tzdata==2025.2
     # via pandas
