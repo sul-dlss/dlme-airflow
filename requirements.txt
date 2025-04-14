@@ -37,9 +37,9 @@ lxml==5.3.2
     #   dlme-airflow (pyproject.toml)
     #   lxml-html-clean
     #   sickle
-lxml-html-clean==0.4.1
+lxml-html-clean==0.4.2
     # via dlme-airflow (pyproject.toml)
-multidict==6.3.2
+multidict==6.4.3
     # via
     #   aiohttp
     #   yarl
@@ -51,7 +51,7 @@ numpy==2.2.4
     #   pandas
 pandas==2.2.3
     # via dlme-airflow (pyproject.toml)
-pillow==11.1.0
+pillow==11.2.1
     # via dlme-airflow (pyproject.toml)
 platformdirs==4.3.7
     # via intake
@@ -83,11 +83,11 @@ six==1.17.0
     # via python-dateutil
 soupsieve==2.6
     # via beautifulsoup4
-typing-extensions==4.13.1
+typing-extensions==4.13.2
     # via beautifulsoup4
 tzdata==2025.2
     # via pandas
-urllib3==2.3.0
+urllib3==2.4.0
     # via requests
 validators==0.34.0
     # via dlme-airflow (pyproject.toml)
