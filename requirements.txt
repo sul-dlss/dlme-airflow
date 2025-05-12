@@ -53,7 +53,7 @@ pandas==2.2.3
     # via dlme-airflow (pyproject.toml)
 pillow==11.2.1
     # via dlme-airflow (pyproject.toml)
-platformdirs==4.3.7
+platformdirs==4.3.8
     # via intake
 ply==3.11
     # via jsonpath-ng
