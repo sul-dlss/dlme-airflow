@@ -45,7 +45,7 @@ multidict==6.6.3
     #   yarl
 networkx==3.5
     # via intake
-numpy==2.3.1
+numpy==2.3.2
     # via
     #   dlme-airflow (pyproject.toml)
     #   pandas
