@@ -2,7 +2,7 @@
 #    uv pip compile pyproject.toml -o requirements.txt --color never
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.12.14
+aiohttp==3.12.15
     # via dlme-airflow (pyproject.toml)
 aiosignal==1.4.0
     # via aiohttp
@@ -10,7 +10,7 @@ attrs==25.3.0
     # via aiohttp
 beautifulsoup4==4.13.4
     # via dlme-airflow (pyproject.toml)
-certifi==2025.7.14
+certifi==2025.8.3
     # via requests
 charset-normalizer==3.4.2
     # via requests
