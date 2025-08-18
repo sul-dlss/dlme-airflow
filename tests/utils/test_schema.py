@@ -5,7 +5,7 @@ def test_get_schema():
     data = get_schema("https://www.penn.museum/collections/object/15390")
     assert (
         data["thumbnailUrl"]
-        == "https://www.penn.museum/collections/assets/327554_800.jpg"
+        == "https://www.penn.museum//collections/assets/032T/327k/327554_800.jpg"
     )
 
 
