@@ -2,11 +2,11 @@
 #    uv pip compile pyproject.toml -o requirements.txt --color never
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.12.15
+aiohttp==3.13.0
     # via dlme-airflow (pyproject.toml)
 aiosignal==1.4.0
     # via aiohttp
-attrs==25.3.0
+attrs==25.4.0
     # via aiohttp
 beautifulsoup4==4.14.2
     # via dlme-airflow (pyproject.toml)
@@ -24,7 +24,7 @@ frozenlist==1.8.0
     #   aiosignal
 fsspec==2025.9.0
     # via intake
-idna==3.10
+idna==3.11
     # via
     #   requests
     #   yarl
@@ -39,7 +39,7 @@ lxml==6.0.2
     #   sickle
 lxml-html-clean==0.4.3
     # via dlme-airflow (pyproject.toml)
-multidict==6.6.4
+multidict==6.7.0
     # via
     #   aiohttp
     #   yarl
@@ -53,11 +53,11 @@ pandas==2.3.3
     # via dlme-airflow (pyproject.toml)
 pillow==11.3.0
     # via dlme-airflow (pyproject.toml)
-platformdirs==4.4.0
+platformdirs==4.5.0
     # via intake
 ply==3.11
     # via jsonpath-ng
-propcache==0.4.0
+propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
@@ -91,5 +91,5 @@ urllib3==2.5.0
     # via requests
 validators==0.35.0
     # via dlme-airflow (pyproject.toml)
-yarl==1.21.0
+yarl==1.22.0
     # via aiohttp
