@@ -2,7 +2,7 @@
 #    uv pip compile pyproject.toml -o requirements.txt --color never
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.13.1
+aiohttp==3.13.2
     # via dlme-airflow (pyproject.toml)
 aiosignal==1.4.0
     # via aiohttp
@@ -22,7 +22,7 @@ frozenlist==1.8.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2025.9.0
+fsspec==2025.10.0
     # via intake
 idna==3.11
     # via
