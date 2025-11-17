@@ -10,7 +10,7 @@ attrs==25.4.0
     # via aiohttp
 beautifulsoup4==4.14.2
     # via dlme-airflow (pyproject.toml)
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 charset-normalizer==3.4.4
     # via requests
@@ -45,7 +45,7 @@ multidict==6.7.0
     #   yarl
 networkx==3.5
     # via intake
-numpy==2.3.4
+numpy==2.3.5
     # via
     #   dlme-airflow (pyproject.toml)
     #   pandas
