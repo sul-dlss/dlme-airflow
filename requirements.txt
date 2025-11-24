@@ -43,7 +43,7 @@ multidict==6.7.0
     # via
     #   aiohttp
     #   yarl
-networkx==3.5
+networkx==3.6
     # via intake
 numpy==2.3.5
     # via
