@@ -26,7 +26,7 @@ def read_datafile_with_lists(path) -> pandas.DataFrame:
     lists serialized as strings back into lists again.
     """
     df = pandas.read_json(path)
-    df = df.applymap(lambda v: v if v else None)
+    df = df.map(lambda v: v if v else None)
     return df
 
 
