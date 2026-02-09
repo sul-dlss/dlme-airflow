@@ -10,7 +10,7 @@ def test_get_schema():
 
 
 def test_no_schema():
-    data = get_schema("https://example.org")
+    data = get_schema("https://example.com")
     assert data is None
 
 
