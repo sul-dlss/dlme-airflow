@@ -3,6 +3,7 @@ pytest-cov
 python-dotenv
 pytest-mock
 ruff
+jsonschema
 apache-airflow==2.9.3
 apache-airflow-providers-docker
 requests-mock
