@@ -15,11 +15,12 @@ from dlme_airflow.models.collection import Collection
 
 def archive_collection(collection: Collection) -> dict:
     """Pass in a Collection and get back the path for an archive that was created"""
-    archive_files = {}
-    OUTPUT_FORMATS = ["csv", "json"]
+    from dlme_airflow.models.collection import OUTPUT_FORMATS
 
-    for format in OUTPUT_FORMATS:
-        src = Path(collection.datafile(format))
+    archive_files = {}
+
+    for fmt in OUTPUT_FORMATS:
+        src = Path(collection.datafile(fmt))
 
         # don't clutter up the archive with empty data files, which can happen
         # with incremental harvests of oai-pmh endpoints
@@ -28,7 +29,7 @@ def archive_collection(collection: Collection) -> dict:
             continue
 
         # don't bother archiving identical data that is already archived
-        dest = archive_path(collection, format)
+        dest = archive_path(collection, fmt)
         if not has_new_data(src, dest):
             logging.info("skipping archive for %s since it has no new data")
             continue
@@ -39,7 +40,7 @@ def archive_collection(collection: Collection) -> dict:
         logging.info("archiving %s to %s", src, dest)
         shutil.copy(src, dest)
 
-        archive_files[format] = str(dest)
+        archive_files[fmt] = str(dest)
 
     return archive_files
 
@@ -107,12 +108,9 @@ def has_new_data(src: Path, dest: Path) -> bool:
 
 def digest(path: Path) -> str:
     sha256 = hashlib.sha256()
-    fh = path.open("rb")
-    while True:
-        buff = fh.read(1024)
-        if not buff:
-            break
-        sha256.update(buff)
+    with path.open("rb") as fh:
+        while chunk := fh.read(1024):
+            sha256.update(chunk)
     return sha256.hexdigest()
 
 
@@ -123,7 +121,7 @@ def previous_archive(path: Path) -> Union[Path, None]:
 
     # sort the filenames in order of their datetime
     archive_files = sorted(path.parent.iterdir())
-    if len(archive_files) > 0:
+    if archive_files:
         return archive_files[-1]
     else:
         return None

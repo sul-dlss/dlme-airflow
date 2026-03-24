@@ -13,12 +13,12 @@ partition_access = True
 
 
 class IiifJsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url=None, manifest_urls=[], dtype=None, metadata=None, wait=None):
-        super(IiifJsonSource, self).__init__(metadata=metadata)
+    def __init__(self, collection_url=None, manifest_urls=None, dtype=None, metadata=None, wait=None):
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
         self.wait = wait
-        self._manifest_urls = list(set(manifest_urls))
+        self._manifest_urls = list(set(manifest_urls or []))
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
@@ -72,9 +72,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
             result = [match.value for match in expression.find(iiif_manifest)]
-            if (
-                len(result) < 1
-            ):  # the JSONPath expression didn't find anything in the manifest
+            if not result:  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
                     logging.debug(
                         f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
@@ -178,27 +176,31 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
     else:
         return possible_list
 
+
 def _listify_if_string_or_dict(value) -> list:
-    if isinstance(value, str) or isinstance(value, dict):
+    if isinstance(value, (str, dict)):
         return [value]
     else:
         return value
 
+
 def _flatten_list(lst: list) -> Generator:
     for item in lst:
-        if type(item) is list:
+        if isinstance(item, list):
             yield from _flatten_list(item)
         else:
             yield item
 
+
 def _format_label(label: str) -> str:
     return label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")
+
 
 def _tag_label(label: str, value) -> dict:
     if isinstance(value, list):
         return [_tag_label(label, val) for val in value]
     if isinstance(value, dict):
-        if '@language' in value.keys():
+        if '@language' in value:
             return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
     else:
         return [{"label": label, "value": _listify_if_string_or_dict(value)}]

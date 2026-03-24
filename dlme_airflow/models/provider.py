@@ -1,8 +1,10 @@
+import logging
+
 from dlme_airflow.utils.catalog import catalog_for_provider
 from dlme_airflow.models.collection import Collection
 
 
-class Provider(object):
+class Provider:
     def __init__(self, catalog):
         self.name = catalog
         self.catalog = catalog_for_provider(self.name)
@@ -11,11 +13,10 @@ class Provider(object):
     def collections(self):
         _collections = []
         try:
-            provider_collections = iter(list(self.catalog))
-            for provider_collection in provider_collections:
+            for provider_collection in self.catalog:
                 _collections.append(Collection(self, provider_collection))
         except TypeError as err:
-            print(f"ERROR Parsing collections for provider {self.name}: {err}")
+            logging.error(f"ERROR Parsing collections for provider {self.name}: {err}")
 
         return _collections
 
