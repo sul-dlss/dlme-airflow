@@ -1,7 +1,7 @@
 import pandas as pd
 
 from airflow import DAG
-from airflow.operators.python import BranchPythonOperator
+from airflow.providers.standard.operators.python import BranchPythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.dataframe import dataframe_from_file
