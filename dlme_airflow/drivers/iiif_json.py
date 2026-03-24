@@ -27,14 +27,14 @@ class IiifJsonSource(intake.source.base.DataSource):
         if self.collection_url is not None:
             logging.info(f"getting collection {self.collection_url}")
             resp = self._get(self.collection_url)
-            if resp.status_code == 200:
+            if resp.ok:
                 collection_result = resp.json()
                 if "manifests" in collection_result:  # IIIF v2
                     manifests = collection_result["manifests"]
                 elif "items" in collection_result:  # IIIF v3
                     manifests = collection_result["items"]
                 else:
-                    raise Exception(
+                    raise ValueError(
                         f"Unknown collection manifest format: {self.collection_url}"
                     )
 
@@ -44,7 +44,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                     elif "id" in manifest:
                         url = manifest["id"]  # valid in IIIF v3 only
                     else:
-                        raise Exception(f"Unknown URL in manifest: {manifest}")
+                        raise ValueError(f"Unknown URL in manifest: {manifest}")
                     self._manifest_urls.append(url)
             else:
                 logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
@@ -52,7 +52,7 @@ class IiifJsonSource(intake.source.base.DataSource):
     def _open_manifest(self, manifest_url: str) -> Optional[dict]:
         logging.info(f"getting manifest {manifest_url}")
         resp = self._get(manifest_url)
-        if resp.status_code == 200:
+        if resp.ok:
             manifest_result = resp.json()
         else:
             logging.error(
@@ -86,7 +86,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                     len(result) == 1
                 ):  # the JSONPath expression found exactly one result in the manifest
                     output[name] = _stringify_and_strip_if_list(result[0])
-                else:  # the JSONPath expression found exactly one result in the manifest
+                else:  # the JSONPath expression found multiple results in the manifest
                     if name not in output:
                         output[name] = []
 
@@ -163,7 +163,7 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:

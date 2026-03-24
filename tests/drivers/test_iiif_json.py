@@ -13,6 +13,10 @@ class MockIIIFCollectionV2Response:
     def status_code(self):
         return 200
 
+    @property
+    def ok(self):
+        return True
+
     @staticmethod
     def json():
         return {
@@ -27,6 +31,10 @@ class MockIIIFCollectionV3Response:
     def status_code(self):
         return 200
 
+    @property
+    def ok(self):
+        return True
+
     @staticmethod
     def json():
         return {
@@ -40,6 +48,10 @@ class MockIIIFManifestResponse:
     @property
     def status_code(self):
         return 200
+
+    @property
+    def ok(self):
+        return True
 
     @staticmethod
     def json():
