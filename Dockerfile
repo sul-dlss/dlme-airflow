@@ -4,7 +4,7 @@ USER root
 RUN apt-get update && apt-get install -y gcc g++ git
 # libjpeg-dev zlib1g-dev
 
-ENV PYTHONPATH "${PYTHONPATH}:/opt/airflow/"
+ENV PYTHONPATH="/opt/airflow"
 
 USER airflow
 
