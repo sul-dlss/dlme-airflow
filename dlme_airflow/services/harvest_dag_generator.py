@@ -7,7 +7,7 @@ from datetime import timedelta
 
 # Operators and utils required from airflow
 from airflow import DAG
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 from airflow.models import Variable
 
 # Our stuff
@@ -69,14 +69,14 @@ def assemble_dag(source: (Provider | Collection)):
     with DAG(
         dag_id,
         default_args=default_args,
-        schedule_interval=schedule,
+        schedule=schedule,
         start_date=start_date,
         catchup=False,
     ) as dag:
-        harvest_begin = DummyOperator(
+        harvest_begin = EmptyOperator(
             task_id="harvest_begin", trigger_rule="none_failed"
         )
-        harvest_complete = DummyOperator(
+        harvest_complete = EmptyOperator(
             task_id="harvest_complete", trigger_rule="none_failed"
         )
         if type(source) is Provider:

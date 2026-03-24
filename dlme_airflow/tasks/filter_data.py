@@ -2,7 +2,7 @@
 from airflow import DAG
 
 # Operators and utils required from airflow
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.filter_dataframe import filter_dataframe
