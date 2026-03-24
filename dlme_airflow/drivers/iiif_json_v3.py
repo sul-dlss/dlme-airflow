@@ -3,7 +3,7 @@ import intake
 import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional, Generator
+from typing import Any
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
@@ -19,7 +19,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         paging=None,
         metadata=None
     ):
-        super(IiifV3JsonSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging = paging
         self._manifests = []
@@ -41,10 +41,10 @@ class IiifV3JsonSource(intake.source.base.DataSource):
             return self.partition_builder.records()
 
 
-    def _open_manifest(self, manifest: dict) -> Optional[dict]:
+    def _open_manifest(self, manifest: dict) -> dict | None:
         manifest_url = manifest["id"]
         resp = self._get(manifest_url)
-        if resp.status_code == 200:
+        if resp.ok:
             manifest_result = resp.json()
         else:
             logging.error(
@@ -64,7 +64,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         return record
 
     def _extract_specified_fields(self, iiif_manifest: dict) -> dict:
-        output: dict [str, Any] = {}
+        output: dict[str, Any] = {}
         for name, info in self.metadata.get("fields").items():
             result = self._get_data_for_field(name, iiif_manifest)
 
@@ -134,7 +134,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
-            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            logging.warning(f"{self._manifests[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):
@@ -154,7 +154,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
 
     def read(self):
         self._load_metadata()
-        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:
@@ -175,9 +175,9 @@ def _stringify_and_strip_if_list(record) -> list[str]:
     return result_list
 
 
-def _flatten_list(lst: list) -> Generator:
+def _flatten_list(lst: list):
     for item in lst:
-        if type(item) is list:
+        if isinstance(item, list):
             yield from _flatten_list(item)
         else:
             yield item

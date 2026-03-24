@@ -16,11 +16,13 @@ class SequentialCsvSource(DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, urlpath, metadata={}, csv_kwargs={}):
-        super(SequentialCsvSource, self).__init__(metadata=metadata)
-        self.urls = urlpath if type(urlpath) is list else [urlpath]
+    def __init__(self, urlpath, metadata=None, csv_kwargs=None):
+        metadata = metadata or {}
+        csv_kwargs = csv_kwargs or {}
+        super().__init__(metadata=metadata)
+        self.urls = urlpath if isinstance(urlpath, list) else [urlpath]
         self.csv_kwargs = csv_kwargs
-        self.record_limit = self.metadata.get("record_limit", None)
+        self.record_limit = self.metadata.get("record_limit")
         self.record_count = 0
 
     def _get_schema(self):
@@ -46,7 +48,7 @@ class SequentialCsvSource(DataSource):
 
     def read(self):
         self._load_metadata()
-        df = pandas.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pandas.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:

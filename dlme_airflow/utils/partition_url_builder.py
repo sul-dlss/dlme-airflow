@@ -48,11 +48,9 @@ class PartitionBuilder:
     def _urls_from_provider(self):
         urls = [self.collection_url]
         expression = jsonpath_ng.parse(self.paging_config["urls"])
-        [
-            urls.append(page["url"])
-            for page in expression.find(self.provider_data)[0].value
-            if page["url"] is not None
-        ]
+        for page in expression.find(self.provider_data)[0].value:
+            if page["url"] is not None:
+                urls.append(page["url"])
         return urls
 
     def _calculate_partitions(self):
@@ -116,7 +114,7 @@ class PartitionBuilder:
             headers["api_key"] = self.api_key
 
         resp = requests.get(url, headers=headers)
-        if resp.status_code == 200:
+        if resp.ok:
             return resp.json()
 
     def _extract_ids(self, data):
