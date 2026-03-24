@@ -51,13 +51,24 @@ open your browser to `http://localhost:8080`
 
 ## Set-up
 
-1. Install `uv` for dependency management as described in [the uv docs](https://github.com/astral-sh/uv?tab=readme-ov-file#getting-started).
-2. Create a virtual environment:
-```
-uv venv
+### Virtual Environment Setup
+
+`apache-airflow==2.9.3` requires **Python <3.13**. The venv must be created with Python 3.12:
+
+```bash
+# If .venv doesn't exist or was created with Python 3.14+, recreate it:
+uv venv --python 3.12
+source .venv/bin/activate
+uv pip install -r requirements.txt
+uv pip install -r requirements-dev.txt
 ```
 
 This will create and activate the virtual environment at the default location of `.venv/`. `uv` automatically looks for a venv at this location when installing dependencies.
+
+For subsequent sessions, just activate:
+```bash
+source .venv/bin/activate
+```
 
 ## Install dependencies
 ```
