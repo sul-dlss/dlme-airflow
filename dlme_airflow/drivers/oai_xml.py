@@ -4,9 +4,11 @@ import intake
 import pandas as pd
 
 from lxml import etree
+from pathlib import Path
 from sickle import Sickle
 from sickle.iterator import OAIItemIterator
 from sickle.oaiexceptions import BadResumptionToken, NoRecordsMatch
+from dlme_airflow.utils.split_data import safe_filename
 
 # xml namespaces and the prefixes that are used in parsing
 
@@ -88,6 +90,15 @@ class OaiXmlSource(intake.source.base.DataSource):
                 xtree = etree.fromstring(oai_record.raw)
                 if counter % 100 == 0:
                     logging.info(counter)
+
+                if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                    self._output_dir.mkdir(parents=True, exist_ok=True)
+                    record_id = safe_filename(oai_record.header.identifier)
+                    raw = oai_record.raw
+                    (self._output_dir / f"{record_id}.xml").write_bytes(
+                        raw.encode('utf-8') if isinstance(raw, str) else raw
+                    )
+
                 record = self._construct_fields(xtree)
                 record.update(self._from_metadata(xtree))
                 self._records.append(record)
@@ -98,7 +109,7 @@ class OaiXmlSource(intake.source.base.DataSource):
                         f"truncating results because limit={self.record_limit}"
                     )
                     break
-        except BadResumptionToken as e:
+        except BadResumptionToken:
             if self.allow_expiration:
                 logging.warning(
                     "Caught invalid resumption token, returning incomplete results"
@@ -236,7 +247,9 @@ class OaiXmlSource(intake.source.base.DataSource):
 
         return metadata
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
         df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:

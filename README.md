@@ -260,6 +260,19 @@ By default `bin/get` will output json format. A csv file may be useful for check
 $ uv run bin/get yale babylonian --format csv
 ```
 
+#### Analyze mode
+
+Analyze mode bypasses field-mapping and writes each raw source record to an individual file. This is useful for inspecting exactly what a provider returns before writing or debugging a catalog entry.
+
+Use `--mode analyze` together with `--output` to specify the destination directory. Files are written to `{output}/{provider}/{collection}/{YYYYMMDDHHMM}/`, with one file per record named after the record's identifier:
+
+```
+$ uv run bin/get yale babylonian --mode analyze --output /tmp/dlme-analyze
+Analyzed 150 records — files written to /tmp/dlme-analyze/yale/babylonian/202503251430/
+```
+
+The file format matches the driver's source format — JSON drivers write `.json` files, XML and OAI-PMH drivers write `.xml` files.
+
 ### Manually run the report for a collection
 
 This method requires setting the path to the ndjson output directory on execution, this path

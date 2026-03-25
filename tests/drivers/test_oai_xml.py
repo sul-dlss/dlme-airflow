@@ -125,3 +125,28 @@ def test_invalid_resumption_token(requests_mock):
     oai = OaiXmlSource("https://example.org", "oai_dc", allow_expiration=True)
     df = oai.read()
     assert len(df) == 100
+
+
+def test_analyze_mode_writes_xml_files(requests_mock, tmp_path):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=oai_dc&verb=ListRecords",
+        text=open("tests/data/xml/oai-dc.xml").read(),
+    )
+    oai = OaiXmlSource("https://example.org", "oai_dc")
+    oai.read(mode="analyze", output_dir=tmp_path)
+
+    written = list(tmp_path.glob("*.xml"))
+    assert len(written) == 100, "one XML file written per OAI record"
+    # identifier for first record in oai-dc.xml is oai:HAL:hal-00999999v1
+    assert (tmp_path / "oai_HAL_hal-00999999v1.xml").exists()
+
+
+def test_analyze_mode_production_writes_no_files(requests_mock, tmp_path):
+    requests_mock.get(
+        "https://example.org?metadataPrefix=oai_dc&verb=ListRecords",
+        text=open("tests/data/xml/oai-dc.xml").read(),
+    )
+    oai = OaiXmlSource("https://example.org", "oai_dc")
+    oai.read(mode="production", output_dir=tmp_path)
+
+    assert list(tmp_path.glob("*.xml")) == [], "production mode writes no files"

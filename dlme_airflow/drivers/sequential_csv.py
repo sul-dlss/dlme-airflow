@@ -1,7 +1,10 @@
+import json
 import pandas
 import logging
 
+from pathlib import Path
 from intake.source.base import DataSource, Schema
+from dlme_airflow.utils.split_data import detect_id_field, safe_filename
 
 
 class SequentialCsvSource(DataSource):
@@ -44,9 +47,23 @@ class SequentialCsvSource(DataSource):
         else:
             df = pandas.read_csv(self.urls[i])
         self.record_count += len(df)
+
+        if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+            self._output_dir.mkdir(parents=True, exist_ok=True)
+            records = df.to_dict(orient='records')
+            if records:
+                id_field = detect_id_field(records)
+                for record in records:
+                    record_id = safe_filename(record.get(id_field, 'unknown'))
+                    (self._output_dir / f"{record_id}.json").write_text(
+                        json.dumps(record, ensure_ascii=False, indent=2)
+                    )
+
         return df
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
         df = pandas.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:

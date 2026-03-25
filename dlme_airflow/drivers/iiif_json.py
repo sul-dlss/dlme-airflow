@@ -1,10 +1,13 @@
+import json
 import time
 import logging
 import intake
 import requests
 import jsonpath_ng
 import pandas as pd
+from pathlib import Path
 from typing import Any, Optional, Generator
+from dlme_airflow.utils.split_data import safe_filename
 
 container = "dataframe"
 name = "iiif_json"
@@ -59,6 +62,15 @@ class IiifJsonSource(intake.source.base.DataSource):
                 f"got {resp.status_code} when fetching manifest {manifest_url}"
             )
             return None
+
+        if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+            self._output_dir.mkdir(parents=True, exist_ok=True)
+            record_id = safe_filename(
+                manifest_result.get('id') or manifest_result.get('@id') or manifest_url
+            )
+            (self._output_dir / f"{record_id}.json").write_text(
+                json.dumps(manifest_result, ensure_ascii=False, indent=2)
+            )
 
         record = self._extract_specified_fields(manifest_result)
         # Handles metadata in IIIF manifest
@@ -161,7 +173,9 @@ class IiifJsonSource(intake.source.base.DataSource):
             time.sleep(self.wait)
         return requests.get(url)
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
         df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:

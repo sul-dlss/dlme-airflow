@@ -1,11 +1,14 @@
+import json
 import time
 import logging
 import intake
 import requests
 import jsonpath_ng
 import pandas as pd
+from pathlib import Path
 from typing import Any
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
+from dlme_airflow.utils.split_data import detect_id_field, safe_filename
 
 
 class JsonSource(intake.source.base.DataSource):
@@ -53,12 +56,22 @@ class JsonSource(intake.source.base.DataSource):
         if resp.ok:
             page_result = resp.json()
             expression = jsonpath_ng.parse(self.record_selector)
-            page_result = _flatten_list(
+            page_result = list(_flatten_list(
                 [match.value for match in expression.find(page_result)]
-            )
+            ))
         else:
             logging.error(f"got {resp.status_code} when fetching manifest {page_url}")
             return None
+
+        if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+            self._output_dir.mkdir(parents=True, exist_ok=True)
+            for raw_record in page_result:
+                id_field = detect_id_field([raw_record]) if raw_record else None
+                record_id = safe_filename(raw_record.get(id_field, 'unknown')) if id_field else 'unknown'
+                (self._output_dir / f"{record_id}.json").write_text(
+                    json.dumps(raw_record, ensure_ascii=False, indent=2)
+                )
+
         records = [self._extract_specified_fields(record) for record in page_result]
         for record in records:
             record.update(self._extract_record_metadata(record.get("metadata", [])))
@@ -159,7 +172,9 @@ class JsonSource(intake.source.base.DataSource):
             time.sleep(self.wait)
         return requests.get(url, headers=headers)
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
         df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:

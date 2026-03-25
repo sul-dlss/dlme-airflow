@@ -6,8 +6,10 @@ import pandas as pd
 from lxml import etree
 from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
+from pathlib import Path
 
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
+from dlme_airflow.utils.split_data import detect_id_field, safe_filename
 
 
 class MissingResumptionToken(Exception):
@@ -46,6 +48,11 @@ class XmlSource(intake.source.base.DataSource):
 
         for record_el in record_elements:
             record = self._construct_fields(record_el)
+            if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                self._output_dir.mkdir(parents=True, exist_ok=True)
+                id_field = detect_id_field([record]) if record else None
+                record_id = safe_filename(record.get(id_field)) if id_field and record.get(id_field) else str(len(self._records))
+                (self._output_dir / f"{record_id}.xml").write_bytes(etree.tostring(record_el))
             self._records.append(record)
 
     def _open_paged_collection(self):
@@ -107,6 +114,11 @@ class XmlSource(intake.source.base.DataSource):
         """Process record elements and append to the records list."""
         for record_el in record_elements:
             record = self._construct_fields(record_el)
+            if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                self._output_dir.mkdir(parents=True, exist_ok=True)
+                id_field = detect_id_field([record]) if record else None
+                record_id = safe_filename(record.get(id_field)) if id_field and record.get(id_field) else str(len(self._records))
+                (self._output_dir / f"{record_id}.xml").write_bytes(etree.tostring(record_el))
             self._records.append(record)
 
     def _set_offset(self, xtree):
@@ -222,6 +234,8 @@ class XmlSource(intake.source.base.DataSource):
             extra_metadata={},
         )
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
         return pd.concat(self.read_partition(i) for i in range(self.npartitions))

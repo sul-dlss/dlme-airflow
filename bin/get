@@ -7,6 +7,8 @@ import sys
 import logging
 import argparse
 
+from datetime import datetime
+from pathlib import Path
 from signal import signal, SIGPIPE, SIG_DFL
 from dlme_airflow.models.provider import Provider
 from dlme_airflow.drivers import register_drivers
@@ -36,8 +38,22 @@ def main(opts):
         else:
             sys.exit(f"💥 Unable to use --id with {type(collection.catalog).name} driver")
 
+    # build analyze output directory if running in analyze mode
+    output_dir = None
+    if opts.mode == "analyze":
+        if not opts.output:
+            sys.exit("💥 --output must be provided when running in analyze mode")
+        ts = datetime.now().strftime("%Y%m%d%H%M")
+        output_dir = Path(opts.output) / opts.provider / opts.collection / ts
+        output_dir.mkdir(parents=True, exist_ok=True)
+        logging.info("Analyze mode: writing individual records to %s", output_dir)
+
     # read the data
-    df = collection.catalog.read()
+    df = collection.catalog.read(mode=opts.mode, output_dir=output_dir)
+
+    if opts.mode == "analyze":
+        print(f"Analyzed {len(df)} records — files written to {output_dir}")
+        return
 
     # select output format, defaults to JSON
     output_format = opts.format.upper()
@@ -55,11 +71,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get data from a DLME provider collection as JSON")
     parser.add_argument('provider', help="The DLME provider (e.g. penn)")
     parser.add_argument('collection', help="The provider's collection (e.g. penn_egyptian")
-    parser.add_argument("--output", help="File to write JSON output to")
+    parser.add_argument("--output", help="File to write output to (required for --mode analyze)")
     parser.add_argument("--limit", type=int, help="Limit output to number of rows")
     parser.add_argument("--id", help="ID of individual record to harvest")
     parser.add_argument("--log", default="get.log", help="A file path to write log messages")
     parser.add_argument("--format", default="JSON", help="Output file format")
+    parser.add_argument(
+        "--mode",
+        default="production",
+        choices=["production", "analyze"],
+        help="Harvest mode: production (default) or analyze (writes individual source files)",
+    )
     opts = parser.parse_args()
 
     logging.basicConfig(filename=opts.log, format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
