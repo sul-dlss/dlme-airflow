@@ -271,6 +271,38 @@ METADATA_OUTPUT_PATH=$PWD/metadata uv run bin/report aims aims > report.html
 open report.html # to open in your browser
 ```
 
+## LiteLLM Integration
+
+DLME Airflow uses [LiteLLM] to provide a unified interface to LLM providers. The default model is `claude-sonnet-4-20250514` (Anthropic Claude).
+
+### Configuration
+
+Add your Anthropic API key to `.env`:
+
+```
+ANTHROPIC_API_KEY=your_key_here
+```
+
+### Usage in tasks
+
+Note: LiteLLM reads `ANTHROPIC_API_KEY` directly from the environment when calling Anthropic models — it's the standard credential that the Anthropic SDK expects. Without it, any call to `claude-sonnet-4-20250514` at runtime would fail with an authentication error.
+
+```python
+from dlme_airflow.utils.llm import complete
+
+result = complete([{"role": "user", "content": "Describe this metadata record: ..."}])
+```
+
+To use a different model:
+
+```python
+result = complete(messages, model="gpt-4o")
+```
+
+Additional keyword arguments are forwarded directly to `litellm.completion()`.
+
+[LiteLLM]: https://github.com/BerriAI/litellm
+
 [BLK]: https://black.readthedocs.io/en/stable/index.html
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [Apache Airflow]: https://airflow.apache.org/

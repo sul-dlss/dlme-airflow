@@ -26,7 +26,8 @@ dependencies = [
     "python-dotenv",
     "requests",
     "Sickle",
-    "validators"
+    "validators",
+    "litellm"
 ]
 
 [tool.pytest.ini_options]
