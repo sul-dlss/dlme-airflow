@@ -5,6 +5,7 @@
 
 import sys
 import os
+import json
 import logging
 import argparse
 import tempfile
@@ -15,6 +16,8 @@ from pathlib import Path
 from signal import signal, SIGPIPE, SIG_DFL
 from urllib.parse import urlparse
 from dotenv import load_dotenv
+
+MAX_ROWS = 2500
 
 
 def check_env_vars():
@@ -55,6 +58,32 @@ def count_records(ndjson_path):
         return sum(1 for line in f if line.strip())
 
 
+def read_blocks(ndjson_path, max_rows):
+    """Yield lists of lines from the ndjson file in chunks of at most max_rows."""
+    with open(ndjson_path) as f:
+        block = []
+        for line in f:
+            if line.strip():
+                block.append(line)
+                if len(block) == max_rows:
+                    yield block
+                    block = []
+        if block:
+            yield block
+
+
+def post_block(api_endpoint, token, block, block_num, total_blocks):
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-type": "application/json",
+    }
+    payload = {"content": "".join(block)}
+    response = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
+    response.raise_for_status()
+    message = response.json().get("message", response.text)
+    print(f"Block {block_num}/{total_blocks}: {message}")
+
+
 def main(opts):
     load_dotenv()
     check_env_vars()
@@ -71,22 +100,16 @@ def main(opts):
         count = count_records(local_path)
         print(f"Records to index: {count}")
 
-        with open(local_path, "rb") as f:
-            content = f.read()
-
         if opts.dry_run:
             print("Response: DRY RUN")
             return
 
-        headers = {
-            "Authorization": f"Bearer {token}",
-            "Content-type": "application/json",
-        }
+        blocks = list(read_blocks(local_path, opts.max_rows))
+        total_blocks = len(blocks)
+        print(f"Sending {total_blocks} block(s) of up to {opts.max_rows} records each")
 
-        response = requests.post(api_endpoint, data=content, headers=headers)
-        response.raise_for_status()
-        message = response.json().get("message", response.text)
-        print(f"Response: {message}")
+        for i, block in enumerate(blocks, start=1):
+            post_block(api_endpoint, token, block, i, total_blocks)
     finally:
         if is_temp and not opts.dry_run:
             Path(local_path).unlink(missing_ok=True)
@@ -99,6 +122,7 @@ if __name__ == "__main__":
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("ndjson_path", nargs="?", help="Path or URL to the ndjson file to index")
     source.add_argument("--google", metavar="FILE_ID", help="Google Drive file ID to download and index")
+    parser.add_argument("--max-rows", type=int, default=MAX_ROWS, help=f"Max records per API request (default: {MAX_ROWS})")
     parser.add_argument("--dry-run", action="store_true", help="Print record count without posting to the API")
     parser.add_argument("--log", default="index.log", help="A file path to write log messages")
     opts = parser.parse_args()
