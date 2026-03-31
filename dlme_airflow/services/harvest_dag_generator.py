@@ -68,7 +68,7 @@ def assemble_dag(source: (Provider | Collection)):
     with DAG(
         dag_id,
         default_args=default_args,
-        schedule=schedule,
+        schedule_interval=schedule,
         start_date=start_date,
         catchup=False,
     ) as dag:
