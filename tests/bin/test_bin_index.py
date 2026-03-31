@@ -1,3 +1,4 @@
+import json
 import pytest
 import requests
 import gdown
@@ -65,6 +66,24 @@ def test_is_url():
     assert bin_index.is_url("data.ndjson") is False
 
 
+def test_read_blocks_single_block(tmp_path):
+    ndjson_file = tmp_path / "data.ndjson"
+    ndjson_file.write_text('{"id": 1}\n{"id": 2}\n{"id": 3}\n')
+    blocks = list(bin_index.read_blocks(str(ndjson_file), max_rows=10))
+    assert len(blocks) == 1
+    assert len(blocks[0]) == 3
+
+
+def test_read_blocks_multiple_blocks(tmp_path):
+    ndjson_file = tmp_path / "data.ndjson"
+    ndjson_file.write_text('{"id": 1}\n{"id": 2}\n{"id": 3}\n{"id": 4}\n{"id": 5}\n')
+    blocks = list(bin_index.read_blocks(str(ndjson_file), max_rows=2))
+    assert len(blocks) == 3
+    assert len(blocks[0]) == 2
+    assert len(blocks[1]) == 2
+    assert len(blocks[2]) == 1
+
+
 def test_fetch_ndjson_local_file(tmp_path):
     ndjson_file = tmp_path / "data.ndjson"
     ndjson_file.write_text('{"id": 1}\n')
@@ -111,7 +130,7 @@ def test_fetch_google_exits_on_failure():
             bin_index.fetch_google("fake-file-id")
 
 
-def test_index_posts_file_contents_and_prints_response(api_env, mock_post, tmp_path, capsys):
+def test_index_sends_single_block(api_env, tmp_path, capsys):
     ndjson_file = tmp_path / "data.ndjson"
     ndjson_file.write_text('{"id": 1}\n{"id": 2}\n')
 
@@ -119,21 +138,49 @@ def test_index_posts_file_contents_and_prints_response(api_env, mock_post, tmp_p
         ndjson_path = str(ndjson_file)
         google = None
         dry_run = False
+        max_rows = 2500
 
     with patch.object(requests, "post") as mock:
         mock.return_value.status_code = 202
-        mock.return_value.text = "Harvest successfully initiated"
+        mock.return_value.text = "ok"
         mock.return_value.json.return_value = {"message": "Harvest successfully initiated"}
         mock.return_value.raise_for_status = lambda: None
 
         bin_index.main(Opts())
 
+    assert mock.call_count == 1
+    sent = json.loads(mock.call_args.kwargs.get("data", "{}"))
+    assert '{"id": 1}' in sent["content"]
+
     captured = capsys.readouterr()
     assert "Records to index: 2" in captured.out
     assert "Harvest successfully initiated" in captured.out
 
-    call_kwargs = mock.call_args
-    assert b'{"id": 1}' in call_kwargs.kwargs.get("data", b"")
+
+def test_index_sends_multiple_blocks(api_env, tmp_path, capsys):
+    lines = "\n".join(f'{{"id": {i}}}' for i in range(5)) + "\n"
+    ndjson_file = tmp_path / "data.ndjson"
+    ndjson_file.write_text(lines)
+
+    class Opts:
+        ndjson_path = str(ndjson_file)
+        google = None
+        dry_run = False
+        max_rows = 2
+
+    with patch.object(requests, "post") as mock:
+        mock.return_value.status_code = 202
+        mock.return_value.text = "ok"
+        mock.return_value.json.return_value = {"message": "ok"}
+        mock.return_value.raise_for_status = lambda: None
+
+        bin_index.main(Opts())
+
+    assert mock.call_count == 3  # 2 + 2 + 1 records
+    captured = capsys.readouterr()
+    assert "3 block(s)" in captured.out
+    assert "Block 1/3" in captured.out
+    assert "Block 3/3" in captured.out
 
 
 def test_dry_run_skips_post_and_prints_message(api_env, tmp_path, capsys):
@@ -144,6 +191,7 @@ def test_dry_run_skips_post_and_prints_message(api_env, tmp_path, capsys):
         ndjson_path = str(ndjson_file)
         google = None
         dry_run = True
+        max_rows = 2500
 
     with patch.object(requests, "post") as mock:
         bin_index.main(Opts())
@@ -154,7 +202,7 @@ def test_dry_run_skips_post_and_prints_message(api_env, tmp_path, capsys):
     assert "Response: DRY RUN" in captured.out
 
 
-def test_dry_run_keeps_temp_file(api_env, tmp_path, capsys):
+def test_dry_run_keeps_temp_file(api_env, capsys):
     fake_content = b'{"id": 1}\n'
 
     def mock_gdown(id, output, quiet):
@@ -165,12 +213,12 @@ def test_dry_run_keeps_temp_file(api_env, tmp_path, capsys):
         ndjson_path = None
         google = "fake-file-id"
         dry_run = True
+        max_rows = 2500
 
     with patch.object(gdown, "download", side_effect=mock_gdown):
         with patch.object(requests, "post"):
             bin_index.main(Opts())
 
-    # The temp file should still exist after a dry run
     captured = capsys.readouterr()
     assert "Response: DRY RUN" in captured.out
 
@@ -194,6 +242,7 @@ def test_index_url_cleans_up_tmp_file(api_env, capsys):
                 ndjson_path = "https://example.com/data.ndjson"
                 google = None
                 dry_run = False
+                max_rows = 2500
 
             original_fetch = bin_index.fetch_ndjson
             captured_tmp = []
@@ -211,7 +260,7 @@ def test_index_url_cleans_up_tmp_file(api_env, capsys):
     assert not Path(captured_tmp[0]).exists(), "Temp file should be deleted after indexing"
 
 
-def test_google_option_uses_fetch_google(api_env, tmp_path, capsys):
+def test_google_option_uses_fetch_google(api_env, capsys):
     fake_content = b'{"id": 1}\n'
 
     def mock_gdown(id, output, quiet):
@@ -222,6 +271,7 @@ def test_google_option_uses_fetch_google(api_env, tmp_path, capsys):
         ndjson_path = None
         google = "my-drive-file-id"
         dry_run = False
+        max_rows = 2500
 
     with patch.object(gdown, "download", side_effect=mock_gdown) as mock_dl:
         with patch.object(requests, "post") as mock_api:
