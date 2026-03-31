@@ -22,10 +22,11 @@ dependencies = [
     "pandas",
     "Pillow",
     "pymarc",
+    "gdown",
     "python-dotenv",
     "requests",
     "Sickle",
-    "validators"
+    "validators",
 ]
 
 [tool.pytest.ini_options]
