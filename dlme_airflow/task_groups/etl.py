@@ -6,7 +6,7 @@ from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
-from airflow.providers.standard.operators.empty import EmptyOperator as DummyOperator
+from airflow.operators.dummy import DummyOperator
 
 from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task

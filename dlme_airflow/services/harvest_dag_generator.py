@@ -7,7 +7,7 @@ from datetime import timedelta
 
 # Operators and utils required from airflow
 from airflow import DAG
-from airflow.providers.standard.operators.empty import EmptyOperator as DummyOperator
+from airflow.operators.dummy import DummyOperator
 from airflow.models import Variable
 
 # Our stuff
@@ -69,7 +69,7 @@ def assemble_dag(source: (Provider | Collection)):
     with DAG(
         dag_id,
         default_args=default_args,
-        schedule=schedule,
+        schedule_interval=schedule,
         start_date=start_date,
         catchup=False,
     ) as dag:
