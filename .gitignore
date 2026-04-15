@@ -137,3 +137,5 @@ dmypy.json
 metadata
 archive
 /ssh
+/source_data/**/*
+/tmp/**/*

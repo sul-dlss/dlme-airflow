@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+
+# A utility for indexing a manually created ndjson file via the DLME API,
+# without requiring the full Airflow pipeline to run.
+
+import sys
+import os
+import json
+import logging
+import argparse
+import tempfile
+import requests
+import gdown
+
+from pathlib import Path
+from signal import signal, SIGPIPE, SIG_DFL
+from urllib.parse import urlparse
+from dotenv import load_dotenv
+
+MAX_ROWS = 2500
+
+
+def check_env_vars():
+    missing = [var for var in ["API_ENDPOINT", "API_TOKEN"] if not os.environ.get(var)]
+    if missing:
+        sys.exit(f"Missing required environment variables: {', '.join(missing)}")
+
+
+def is_url(path):
+    return urlparse(path).scheme in ("http", "https")
+
+
+def fetch_ndjson(ndjson_path):
+    """Return (local_path, is_temp). Caller is responsible for deleting if is_temp."""
+    if is_url(ndjson_path):
+        response = requests.get(ndjson_path)
+        response.raise_for_status()
+        tmp = tempfile.NamedTemporaryFile(mode="wb", suffix=".ndjson", delete=False)
+        tmp.write(response.content)
+        tmp.close()
+        return tmp.name, True
+    return ndjson_path, False
+
+
+def fetch_google(file_id):
+    """Download a Google Drive file by ID to tmp/FILE_ID.ndjson. Returns (local_path, is_temp)."""
+    output_path = Path("tmp") / f"{file_id}.ndjson"
+    output_path.parent.mkdir(exist_ok=True)
+    result = gdown.download(id=file_id, output=str(output_path), quiet=False)
+    if result is None:
+        output_path.unlink(missing_ok=True)
+        sys.exit(f"Failed to download Google Drive file with ID: {file_id}")
+    return str(output_path), True
+
+
+def count_records(ndjson_path):
+    with open(ndjson_path) as f:
+        return sum(1 for line in f if line.strip())
+
+
+def read_blocks(ndjson_path, max_rows):
+    """Yield lists of lines from the ndjson file in chunks of at most max_rows."""
+    with open(ndjson_path) as f:
+        block = []
+        for line in f:
+            if line.strip():
+                block.append(line)
+                if len(block) == max_rows:
+                    yield block
+                    block = []
+        if block:
+            yield block
+
+
+def post_block(api_endpoint, token, block, block_num, total_blocks):
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-type": "application/json",
+    }
+    payload = {"content": "".join(block)}
+    response = requests.post(api_endpoint, data=json.dumps(payload), headers=headers)
+    response.raise_for_status()
+    message = response.json().get("message", response.text)
+    print(f"Block {block_num}/{total_blocks}: {message}")
+
+
+def main(opts):
+    load_dotenv()
+    check_env_vars()
+
+    api_endpoint = os.environ.get("API_ENDPOINT")
+    token = os.environ.get("API_TOKEN")
+
+    if opts.google:
+        local_path, is_temp = fetch_google(opts.google)
+    else:
+        local_path, is_temp = fetch_ndjson(opts.ndjson_path)
+
+    try:
+        count = count_records(local_path)
+        print(f"Records to index: {count}")
+
+        if opts.dry_run:
+            print("Response: DRY RUN")
+            return
+
+        blocks = list(read_blocks(local_path, opts.max_rows))
+        total_blocks = len(blocks)
+        print(f"Sending {total_blocks} block(s) of up to {opts.max_rows} records each")
+
+        for i, block in enumerate(blocks, start=1):
+            post_block(api_endpoint, token, block, i, total_blocks)
+    finally:
+        if is_temp and not opts.dry_run:
+            Path(local_path).unlink(missing_ok=True)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Index an ndjson file via the DLME API"
+    )
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("ndjson_path", nargs="?", help="Path or URL to the ndjson file to index")
+    source.add_argument("--google", metavar="FILE_ID", help="Google Drive file ID to download and index")
+    parser.add_argument("--max-rows", type=int, default=MAX_ROWS, help=f"Max records per API request (default: {MAX_ROWS})")
+    parser.add_argument("--dry-run", action="store_true", help="Print record count without posting to the API")
+    parser.add_argument("--log", default="index.log", help="A file path to write log messages")
+    opts = parser.parse_args()
+
+    logging.basicConfig(
+        filename=opts.log, format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
+    )
+
+    signal(SIGPIPE, SIG_DFL)
+
+    main(opts)
