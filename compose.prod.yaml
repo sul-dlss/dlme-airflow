@@ -44,8 +44,9 @@
 #
 # Feel free to modify this file to suit your needs.
 ---
-x-airflow-common: &airflow-common
-  image: ${AIRFLOW_IMAGE_NAME:-suldlss/dlme-airflow:latest}
+x-airflow-common:
+  &airflow-common # image: ${AIRFLOW_IMAGE_NAME:-suldlss/dlme-airflow:latest}
+  build: .
   environment: &airflow-common-env
     SQLALCHEMY_SILENCE_UBER_WARNING: 1
     SQLALCHEMY_WARN_20: 1
