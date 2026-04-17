@@ -73,6 +73,7 @@ x-airflow-common:
     TRANSFORM_IMAGE: "suldlss/dlme-transform:latest"
     API_ENDPOINT: "${API_ENDPOINT}"
     API_TOKEN: "${API_TOKEN}"
+    FORCE_PULL_TRANSFORM_IMAGE: "false"
   volumes:
     - ./logs:/opt/airflow/logs
     - ./working:/opt/airflow/working

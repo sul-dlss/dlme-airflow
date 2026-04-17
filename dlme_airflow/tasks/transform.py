@@ -14,7 +14,7 @@ def build_transform_task(collection, task_group: TaskGroup, dag: DAG):
         task_id=f"transform_{collection.label()}",
         task_group=task_group,
         image=os.environ.get("TRANSFORM_IMAGE"),
-        force_pull=True,
+        force_pull=os.environ.get("FORCE_PULL_TRANSFORM_IMAGE", "True").lower() == "true",
         api_version="auto",
         auto_remove='force',
         environment={
