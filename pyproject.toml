@@ -10,6 +10,7 @@ authors = [
 license = { text = "Apache2" }
 requires-python = ">= 3.12"
 dependencies = [
+    "apache-airflow-providers-standard",
     "aiohttp",
     "beautifulsoup4",
     "dominate",
