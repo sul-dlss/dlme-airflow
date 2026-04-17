@@ -6,9 +6,10 @@ import pandas as pd
 from lxml import etree
 from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
+from pathlib import Path
 
-from typing import List, Dict
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
+from dlme_airflow.utils.split_data import detect_id_field, safe_filename
 
 
 class MissingResumptionToken(Exception):
@@ -27,14 +28,15 @@ class XmlSource(intake.source.base.DataSource):
     version = "0.0.2"
     partition_access = True
 
-    def __init__(self, collection_url, paging={}, dtype=None, metadata=None):
-        super(XmlSource, self).__init__(metadata=metadata)
+    def __init__(self, collection_url, paging=None, dtype=None, metadata=None):
+        paging = paging or {}
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging_config = paging
         self.paging_increment = paging.get("increment", 1)
         self.paging_start = paging.get("start", 0)
         self._record_selector = self._get_record_selector()
-        self._path_expressions = self._get_path_expressions()
+        self._path_expressions = dict(self.metadata.get("fields", {}))
         self._records = []
 
     def _open_collection(self):
@@ -46,6 +48,11 @@ class XmlSource(intake.source.base.DataSource):
 
         for record_el in record_elements:
             record = self._construct_fields(record_el)
+            if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                self._output_dir.mkdir(parents=True, exist_ok=True)
+                id_field = detect_id_field([record]) if record else None
+                record_id = safe_filename(record.get(id_field)) if id_field and record.get(id_field) else str(len(self._records))
+                (self._output_dir / f"{record_id}.xml").write_bytes(etree.tostring(record_el))
             self._records.append(record)
 
     def _open_paged_collection(self):
@@ -94,8 +101,6 @@ class XmlSource(intake.source.base.DataSource):
             # If the XML is malformed or empty, we stop fetching and return the records
             logging.info(f"{e}")
             return records
-        except Exception as e:
-            logging.info(f"Error: {e}")
         except ValueError as e:
             logging.info(f"ValueError: {e}")
 
@@ -109,6 +114,11 @@ class XmlSource(intake.source.base.DataSource):
         """Process record elements and append to the records list."""
         for record_el in record_elements:
             record = self._construct_fields(record_el)
+            if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                self._output_dir.mkdir(parents=True, exist_ok=True)
+                id_field = detect_id_field([record]) if record else None
+                record_id = safe_filename(record.get(id_field)) if id_field and record.get(id_field) else str(len(self._records))
+                (self._output_dir / f"{record_id}.xml").write_bytes(etree.tostring(record_el))
             self._records.append(record)
 
     def _set_offset(self, xtree):
@@ -148,7 +158,7 @@ class XmlSource(intake.source.base.DataSource):
         self.paging_start = next_start
 
     def _construct_fields(self, record_el: etree) -> dict:
-        record: Dict[str, (str | List)] = {}
+        record: dict[str, str | list] = {}
         for field in self._path_expressions:
             # look for the field in our data
             path = self._path_expressions[field]["path"]
@@ -156,11 +166,11 @@ class XmlSource(intake.source.base.DataSource):
             optional = self._path_expressions[field].get("optional", False)
             els = record_el.xpath(path, namespaces=namespace)
 
-            if len(els) == 0:
+            if not els:
                 if optional is True:
                     continue
                 else:
-                    logging.warn(f"Record missing {field}")
+                    logging.warning(f"Record missing {field}")
             else:
                 for el in els:
                     if hasattr(el, "text") and el.text is not None:
@@ -175,7 +185,7 @@ class XmlSource(intake.source.base.DataSource):
                         )
                         cleaned_el = cleaner.clean_html(field_doc)
                         value = self.sanitize_value(cleaned_el.text_content())
-                    elif issubclass(type(el), str):
+                    elif isinstance(el, str):
                         value = self.sanitize_value(el)
                     else:
                         # we likely have an empty element
@@ -184,7 +194,7 @@ class XmlSource(intake.source.base.DataSource):
                     # a record with only value for a field will get a string
                     # but records with multiple values for a field get a list
 
-                    if field in record and type(record[field]) is list:
+                    if field in record and isinstance(record[field], list):
                         record[field].append(value)  # type: ignore
                     elif field in record:
                         record[field] = [record[field], value]
@@ -206,16 +216,9 @@ class XmlSource(intake.source.base.DataSource):
 
         path = record_selector.get("path")
         if not path:
-            raise Exception("Missing path")
+            raise ValueError("Missing path")
 
         return {"path": path, "namespace": record_selector.get("namespace") or {}}
-
-    def _get_path_expressions(self):
-        paths = {}
-        for name, info in self.metadata.get("fields", {}).items():
-            paths[name] = info
-
-        return paths
 
     def _get_schema(self):
         if self.paging_config:
@@ -231,6 +234,8 @@ class XmlSource(intake.source.base.DataSource):
             extra_metadata={},
         )
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
-        return pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        return pd.concat(self.read_partition(i) for i in range(self.npartitions))

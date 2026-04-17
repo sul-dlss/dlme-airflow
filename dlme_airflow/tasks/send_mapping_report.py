@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 from airflow.utils.email import send_email
 
@@ -33,7 +33,7 @@ def send_mapping_report_tasks(provider, task_group: TaskGroup, dag: DAG):
     source = catalog_for_provider(provider)
 
     try:
-        collections = list(source).__iter__()
+        collections = iter(source)
         for collection in collections:
             send_report_task = build_send_mapping_report_task(
                 collection, task_group, dag

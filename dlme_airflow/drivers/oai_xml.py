@@ -4,10 +4,11 @@ import intake
 import pandas as pd
 
 from lxml import etree
+from pathlib import Path
 from sickle import Sickle
 from sickle.iterator import OAIItemIterator
 from sickle.oaiexceptions import BadResumptionToken, NoRecordsMatch
-from typing import Dict
+from dlme_airflow.utils.split_data import safe_filename
 
 # xml namespaces and the prefixes that are used in parsing
 
@@ -36,12 +37,12 @@ class OaiXmlSource(intake.source.base.DataSource):
         metadata=None,
         full_harvest=None,
     ):
-        super(OaiXmlSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
         self.full_harvest = full_harvest
-        self.record_limit = self.metadata.get("record_limit", None)
-        self.identifier = self.metadata.get("identifier", None)
+        self.record_limit = self.metadata.get("record_limit")
+        self.identifier = self.metadata.get("identifier")
         self.record_count = 0
         self.set = set
         self.wait = wait
@@ -50,7 +51,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         self._collection = Sickle(
             self.collection_url, iterator=make_iterator(self.wait)
         )
-        self._path_expressions = self._get_path_expressions()
+        self._path_expressions = dict(self.metadata.get("fields", {}))
         self._records = []
 
     def _open_set(self):
@@ -89,6 +90,15 @@ class OaiXmlSource(intake.source.base.DataSource):
                 xtree = etree.fromstring(oai_record.raw)
                 if counter % 100 == 0:
                     logging.info(counter)
+
+                if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+                    self._output_dir.mkdir(parents=True, exist_ok=True)
+                    record_id = safe_filename(oai_record.header.identifier)
+                    raw = oai_record.raw
+                    (self._output_dir / f"{record_id}.xml").write_bytes(
+                        raw.encode('utf-8') if isinstance(raw, str) else raw
+                    )
+
                 record = self._construct_fields(xtree)
                 record.update(self._from_metadata(xtree))
                 self._records.append(record)
@@ -99,27 +109,27 @@ class OaiXmlSource(intake.source.base.DataSource):
                         f"truncating results because limit={self.record_limit}"
                     )
                     break
-        except BadResumptionToken as e:
+        except BadResumptionToken:
             if self.allow_expiration:
                 logging.warning(
                     "Caught invalid resumption token, returning incomplete results"
                 )
             else:
-                raise e
+                raise
 
     def _construct_fields(self, manifest: etree) -> dict:
-        output: Dict[str, list] = {}
+        output: dict[str, list] = {}
         for field in self._path_expressions:
             path = self._path_expressions[field]["path"]
             namespace = self._path_expressions[field]["namespace"]
             optional = self._path_expressions[field]["optional"]
             result = manifest.xpath(path, namespaces=namespace)
-            if len(result) < 1:
+            if not result:
                 if optional is True:
                     # Skip and continue
                     continue
                 else:
-                    logging.warn(f"Manifest missing {field}")
+                    logging.warning(f"Manifest missing {field}")
             else:
                 if field not in output:
                     output[field] = []
@@ -155,22 +165,15 @@ class OaiXmlSource(intake.source.base.DataSource):
         elif self.metadata_prefix == "oai_dpla":
             oai_rec = manifest.xpath("//oai_dpla:dpla", namespaces=NS)[0]
         else:
-            raise Exception(f"Unknown metadata prefix {self.metadata_prefix}")
+            raise ValueError(f"Unknown metadata prefix {self.metadata_prefix}")
 
         return self._element_to_dict(oai_rec)
 
     def _get_partition(self, i) -> pd.DataFrame:
-        if len(self._records) > 0:
+        if self._records:
             return pd.DataFrame(self._records)
         else:
             return self._empty_dataframe()
-
-    def _get_path_expressions(self):
-        paths = {}
-        for name, info in self.metadata.get("fields", {}).items():
-            paths[name] = info
-
-        return paths
 
     def _empty_dataframe(self):
         """Return a DataFrame with the correct series in it, but with no actual values."""
@@ -186,8 +189,8 @@ class OaiXmlSource(intake.source.base.DataSource):
             if not len(sub_element):
                 continue
 
-            tag = list(sub_element.keys())[0]
-            value = list(sub_element.values())[0].strip()
+            tag = next(iter(sub_element))
+            value = next(iter(sub_element.values())).strip()
 
             if tag not in result:
                 result[tag] = [value]
@@ -244,9 +247,11 @@ class OaiXmlSource(intake.source.base.DataSource):
 
         return metadata
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
-        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:
@@ -267,7 +272,7 @@ def make_iterator(wait):
     def _next_response(self):
         logging.info(f"sleeping {wait} seconds")
         time.sleep(wait)
-        super(type(self), self)._next_response()
+        OAIItemIterator._next_response(self)
 
     # create a type SlowIterator that inherits from OAIItemIterator and
     # overrides the _next_response method

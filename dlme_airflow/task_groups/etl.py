@@ -6,7 +6,7 @@ from airflow import DAG
 
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 
 from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.post_harvest import build_post_harvest_task
@@ -51,11 +51,11 @@ def build_collection_etl_taskgroup(collection, dag: DAG) -> TaskGroup:
         index = index_task(collection, collection_etl_taskgroup, dag)
         archive = archive_task(collection, collection_etl_taskgroup, dag)
 
-        etl_complete = DummyOperator(task_id="etl_complete", trigger_rule="none_failed")
-        load_data = DummyOperator(task_id="load_data", trigger_rule="none_failed")
+        etl_complete = EmptyOperator(task_id="etl_complete", trigger_rule="none_failed")
+        load_data = EmptyOperator(task_id="load_data", trigger_rule="none_failed")
 
         if not os.getenv("SKIP_HARVEST_VALIDATION"):
-            skip_load_data = DummyOperator(
+            skip_load_data = EmptyOperator(
                 task_id="skip_load_data", trigger_rule="none_failed"
             )
             validate_harvest_task = build_validate_harvest_task(

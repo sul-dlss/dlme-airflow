@@ -13,7 +13,7 @@ from PIL import Image
 import requests
 import validators
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.catalog import catalog_for_provider
@@ -122,7 +122,7 @@ def write_file(url, filename):
             raise
 
 
-def count_fields(field, metadata):
+def count_fields(field, metadata, counts):
     """Increment counts for fields"""
     if field not in IGNORE_FIELDS:
         counts[field].update({"fields_covered": 1})
@@ -162,14 +162,10 @@ def image_size(content) -> tuple[int, int]:
 
 def validate_url(url):
     """Checks if url has valid form."""
-    if url is not None:
-        if validators.url(url):
-            return True
-        return False
-    return False
+    return url is not None and bool(validators.url(url))
 
 
-def resolve_resource_url(record):
+def resolve_resource_url(record, unresolvable_resources):
     """Check resolvability of resource URL"""
     url = record.get("agg_is_shown_at").get("wr_id")
     unresolvable_message = (
@@ -192,7 +188,7 @@ def resolve_resource_url(record):
         unresolvable_resources.append(unresolvable_message)
 
 
-def resolve_thumbnail_url(record):
+def resolve_thumbnail_url(record, thumbnail_image_urls, unresolvable_thumbnails):
     """Check resolvability of thumbnail URL"""
     if record.get("agg_preview"):
         url = record.get("agg_preview").get("wr_id")
@@ -234,18 +230,13 @@ def sample_image_sizes(thumbnail_urls) -> list[tuple[int, int]]:
     return sizes
 
 
-# Define variables for collecting data from main
-thumbnail_image_urls: list[str] = []
-thumbnail_image_sizes: list[tuple[int, int]] = []
-unresolvable_resources: list[str] = []
-unresolvable_thumbnails: list[str] = []
-counts: defaultdict = defaultdict(Counter)
-
-
 def mapping_report(**kwargs):  # input:, config:):
     """Captures all field value counts in counter object and writes report to html file."""
     record_count = 0
-    # merge all records into single counter object and write field report
+    thumbnail_image_urls: list[str] = []
+    unresolvable_resources: list[str] = []
+    unresolvable_thumbnails: list[str] = []
+    counts: defaultdict = defaultdict(Counter)
 
     provider_id = kwargs.get("provider")
     collection_id = kwargs.get("collection")
@@ -265,13 +256,11 @@ def mapping_report(**kwargs):  # input:, config:):
                 record = json.loads(line)
                 record_count += 1
                 for field, metadata in record.items():
-                    count_fields(field, metadata)
+                    count_fields(field, metadata, counts)
 
                 # Resolve resource and thumbnail urls
-                resolve_resource_url(record)
-                resolve_thumbnail_url(record)
-            else:  # if line is empty
-                continue
+                resolve_resource_url(record, unresolvable_resources)
+                resolve_thumbnail_url(record, thumbnail_image_urls, unresolvable_thumbnails)
 
     thumbnail_image_sizes = sample_image_sizes(thumbnail_image_urls)
 
@@ -358,7 +347,7 @@ def mapping_report(**kwargs):  # input:, config:):
                                 f"{counts['agg_preview']['wr_id']} of {record_count} records had valid urls to thumbnail images."
                             )
                         )
-                        if len(unresolvable_thumbnails) > 0:
+                        if unresolvable_thumbnails:
                             u_list.add(
                                 li(
                                     "The following thumbnails urls were unresolvable when testing:"
@@ -373,7 +362,7 @@ def mapping_report(**kwargs):  # input:, config:):
                                 f"{counts['agg_is_shown_at']['wr_id']} of {record_count} records had valid urls to resources."
                             )
                         )
-                        if len(unresolvable_resources) > 0:
+                        if unresolvable_resources:
                             u_list.add(
                                 li(
                                     "The following resource urls were unresolvable when testing:"

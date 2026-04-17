@@ -4,6 +4,7 @@ python-dotenv
 pytest-mock
 ruff
 jsonschema
-apache-airflow==2.9.3
+apache-airflow==3.1.8
 apache-airflow-providers-docker
 requests-mock
+litellm

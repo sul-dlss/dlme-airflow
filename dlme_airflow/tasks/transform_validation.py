@@ -2,7 +2,7 @@ import os
 import logging
 
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.models.collection import Collection
@@ -32,7 +32,7 @@ def validate_transformation(collection: Collection) -> None:
 
     transformed_record_count = get_transformed_record_count(collection)
     if df_record_count != transformed_record_count:
-        raise Exception(
+        raise ValueError(
             f"ERROR: failed to transform all harvested records: harvested record count ({df_record_count}) != transformed record count ({transformed_record_count})"  # noqa: E501
         )
     else:
@@ -61,8 +61,9 @@ def get_record_count(collection: Collection) -> int:
 def get_transformed_record_count(collection: Collection) -> int:
     output_file_path = get_transformed_path(collection)
     count = 0
-    for line in open(output_file_path, "r"):
-        count += 1
+    with open(output_file_path, "r") as f:
+        for line in f:
+            count += 1
     return count
 
 

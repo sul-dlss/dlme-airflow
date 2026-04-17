@@ -1,10 +1,10 @@
-FROM apache/airflow:2.9.3-python3.12
+FROM apache/airflow:3.1.8-python3.12
 
 USER root
 RUN apt-get update && apt-get install -y gcc g++ git
 # libjpeg-dev zlib1g-dev
 
-ENV PYTHONPATH "${PYTHONPATH}:/opt/airflow/"
+ENV PYTHONPATH="/opt/airflow"
 
 USER airflow
 

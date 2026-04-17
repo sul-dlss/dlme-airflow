@@ -11,7 +11,7 @@ def dataframe_from_file(collection, format="csv") -> pd.DataFrame:
     """
     datafile_path = collection.datafile(format)
     if not os.path.isfile(datafile_path):
-        raise Exception(f"Unable to find {format.upper()} at {datafile_path}")
+        raise FileNotFoundError(f"Unable to find {format.upper()} at {datafile_path}")
 
     if format == "json":
         return pd.read_json(datafile_path)
@@ -42,7 +42,7 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     # Ensure that the unique id is not a list or else the call to
     # drop_duplicates below will fail. If a list is the unique_id value will be
     # replaced with the first element of the list that is contained.
-    if len(source_df[unique_id]) > 0 and type(source_df[unique_id][0]) is list:
+    if not source_df[unique_id].empty and isinstance(source_df[unique_id][0], list):
         source_df[unique_id] = source_df[unique_id].apply(lambda source_record: source_record[0])
 
     source_df = source_df.drop_duplicates(subset=[unique_id], keep="first")

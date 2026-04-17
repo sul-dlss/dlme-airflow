@@ -26,8 +26,8 @@ def filter_dataframe(**kwargs):
 
     if os.path.isfile(data_file):
         df = read_datafile_with_lists(data_file)
-        for field, filters in filters.items():
-            df = filter_by_field(df, field, filters)
+        for field, field_filters in filters.items():
+            df = filter_by_field(df, field, field_filters)
 
         df.to_json(data_file, orient="records", force_ascii=False)
 

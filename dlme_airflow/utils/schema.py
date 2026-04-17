@@ -1,11 +1,10 @@
 import json
 import requests
 
-from typing import Optional
 from bs4 import BeautifulSoup
 
 
-def get_schema(url) -> Optional[dict]:
+def get_schema(url) -> dict | None:
     "Extract schema.org metadata from a URL and return the parsed JSON."
     data = None
     resp = requests.get(url)
@@ -23,7 +22,7 @@ def get_schema(url) -> Optional[dict]:
         # - look for json-ld in RDFa or schema.org?
 
         # if we found json-ld parse the first one we found as JSON
-        if len(jsonld) > 0:
+        if jsonld:
             data = json.loads(jsonld[0].get_text(), strict=False)
 
     return data

@@ -7,7 +7,7 @@ from datetime import timedelta
 
 # Operators and utils required from airflow
 from airflow import DAG
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 from airflow.models import Variable
 
 # Our stuff
@@ -57,7 +57,7 @@ def create_dags(provider) -> list[DAG]:
     return dags
 
 
-def assemble_dag(source: (Provider | Collection)):
+def assemble_dag(source: Provider | Collection):
     """Returns a DAG for either a Provider or a Collection."""
     default_args = default_dag_args()
     default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
@@ -69,22 +69,22 @@ def assemble_dag(source: (Provider | Collection)):
     with DAG(
         dag_id,
         default_args=default_args,
-        schedule_interval=schedule,
+        schedule=schedule,
         start_date=start_date,
         catchup=False,
     ) as dag:
-        harvest_begin = DummyOperator(
+        harvest_begin = EmptyOperator(
             task_id="harvest_begin", trigger_rule="none_failed"
         )
-        harvest_complete = DummyOperator(
+        harvest_complete = EmptyOperator(
             task_id="harvest_complete", trigger_rule="none_failed"
         )
-        if type(source) is Provider:
+        if isinstance(source, Provider):
             etl = build_provider_etl_taskgroup(source, dag)
-        elif type(source) is Collection:
+        elif isinstance(source, Collection):
             etl = build_collection_etl_taskgroup(source, dag)
         else:
-            raise Exception("source must be a Provider or a Collection")
+            raise TypeError("source must be a Provider or a Collection")
         harvest_begin >> etl >> harvest_complete
 
     return dag

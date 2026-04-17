@@ -1,10 +1,13 @@
+import json
 import time
 import logging
 import intake
 import requests
 import jsonpath_ng
 import pandas as pd
+from pathlib import Path
 from typing import Any, Optional, Generator
+from dlme_airflow.utils.split_data import safe_filename
 
 container = "dataframe"
 name = "iiif_json"
@@ -13,12 +16,12 @@ partition_access = True
 
 
 class IiifJsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url=None, manifest_urls=[], dtype=None, metadata=None, wait=None):
-        super(IiifJsonSource, self).__init__(metadata=metadata)
+    def __init__(self, collection_url=None, manifest_urls=None, dtype=None, metadata=None, wait=None):
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
         self.wait = wait
-        self._manifest_urls = list(set(manifest_urls))
+        self._manifest_urls = list(set(manifest_urls or []))
         self._path_expressions = {}
         self.record_count = 0
         self.record_limit = self.metadata.get("record_limit")
@@ -27,14 +30,14 @@ class IiifJsonSource(intake.source.base.DataSource):
         if self.collection_url is not None:
             logging.info(f"getting collection {self.collection_url}")
             resp = self._get(self.collection_url)
-            if resp.status_code == 200:
+            if resp.ok:
                 collection_result = resp.json()
                 if "manifests" in collection_result:  # IIIF v2
                     manifests = collection_result["manifests"]
                 elif "items" in collection_result:  # IIIF v3
                     manifests = collection_result["items"]
                 else:
-                    raise Exception(
+                    raise ValueError(
                         f"Unknown collection manifest format: {self.collection_url}"
                     )
 
@@ -44,7 +47,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                     elif "id" in manifest:
                         url = manifest["id"]  # valid in IIIF v3 only
                     else:
-                        raise Exception(f"Unknown URL in manifest: {manifest}")
+                        raise ValueError(f"Unknown URL in manifest: {manifest}")
                     self._manifest_urls.append(url)
             else:
                 logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
@@ -52,13 +55,22 @@ class IiifJsonSource(intake.source.base.DataSource):
     def _open_manifest(self, manifest_url: str) -> Optional[dict]:
         logging.info(f"getting manifest {manifest_url}")
         resp = self._get(manifest_url)
-        if resp.status_code == 200:
+        if resp.ok:
             manifest_result = resp.json()
         else:
             logging.error(
                 f"got {resp.status_code} when fetching manifest {manifest_url}"
             )
             return None
+
+        if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+            self._output_dir.mkdir(parents=True, exist_ok=True)
+            record_id = safe_filename(
+                manifest_result.get('id') or manifest_result.get('@id') or manifest_url
+            )
+            (self._output_dir / f"{record_id}.json").write_text(
+                json.dumps(manifest_result, ensure_ascii=False, indent=2)
+            )
 
         record = self._extract_specified_fields(manifest_result)
         # Handles metadata in IIIF manifest
@@ -72,9 +84,7 @@ class IiifJsonSource(intake.source.base.DataSource):
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
             result = [match.value for match in expression.find(iiif_manifest)]
-            if (
-                len(result) < 1
-            ):  # the JSONPath expression didn't find anything in the manifest
+            if not result:  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
                     logging.debug(
                         f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
@@ -88,7 +98,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                     len(result) == 1
                 ):  # the JSONPath expression found exactly one result in the manifest
                     output[name] = _stringify_and_strip_if_list(result[0])
-                else:  # the JSONPath expression found exactly one result in the manifest
+                else:  # the JSONPath expression found multiple results in the manifest
                     if name not in output:
                         output[name] = []
 
@@ -163,9 +173,11 @@ class IiifJsonSource(intake.source.base.DataSource):
             time.sleep(self.wait)
         return requests.get(url)
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
-        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:
@@ -178,27 +190,31 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
     else:
         return possible_list
 
+
 def _listify_if_string_or_dict(value) -> list:
-    if isinstance(value, str) or isinstance(value, dict):
+    if isinstance(value, (str, dict)):
         return [value]
     else:
         return value
 
+
 def _flatten_list(lst: list) -> Generator:
     for item in lst:
-        if type(item) is list:
+        if isinstance(item, list):
             yield from _flatten_list(item)
         else:
             yield item
 
+
 def _format_label(label: str) -> str:
     return label.replace(" ", "-").lower().replace("(", "").replace(")", "").replace("/", "")
+
 
 def _tag_label(label: str, value) -> dict:
     if isinstance(value, list):
         return [_tag_label(label, val) for val in value]
     if isinstance(value, dict):
-        if '@language' in value.keys():
+        if '@language' in value:
             return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
     else:
         return [{"label": label, "value": _listify_if_string_or_dict(value)}]

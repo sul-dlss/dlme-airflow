@@ -1,11 +1,14 @@
+import json
 import time
 import logging
 import intake
 import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional, Generator
+from pathlib import Path
+from typing import Any
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
+from dlme_airflow.utils.split_data import detect_id_field, safe_filename
 
 
 class JsonSource(intake.source.base.DataSource):
@@ -26,7 +29,7 @@ class JsonSource(intake.source.base.DataSource):
         wait=None,
         api_key=None,
     ):
-        super(JsonSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging = paging
         self.increment = increment
@@ -48,17 +51,27 @@ class JsonSource(intake.source.base.DataSource):
                 self.collection_url, self.paging, self.api_key
             ).urls()
 
-    def _open_page(self, page_url: str) -> Optional[list]:
+    def _open_page(self, page_url: str) -> list | None:
         resp = self._get(page_url)
-        if resp.status_code == 200:
+        if resp.ok:
             page_result = resp.json()
             expression = jsonpath_ng.parse(self.record_selector)
-            page_result = _flatten_list(
+            page_result = list(_flatten_list(
                 [match.value for match in expression.find(page_result)]
-            )
+            ))
         else:
             logging.error(f"got {resp.status_code} when fetching manifest {page_url}")
             return None
+
+        if getattr(self, '_mode', 'production') == 'analyze' and self._output_dir:
+            self._output_dir.mkdir(parents=True, exist_ok=True)
+            for raw_record in page_result:
+                id_field = detect_id_field([raw_record]) if raw_record else None
+                record_id = safe_filename(raw_record.get(id_field, 'unknown')) if id_field else 'unknown'
+                (self._output_dir / f"{record_id}.json").write_text(
+                    json.dumps(raw_record, ensure_ascii=False, indent=2)
+                )
+
         records = [self._extract_specified_fields(record) for record in page_result]
         for record in records:
             record.update(self._extract_record_metadata(record.get("metadata", [])))
@@ -69,9 +82,7 @@ class JsonSource(intake.source.base.DataSource):
         for name, info in self.metadata.get("fields").items():
             expression = self._path_expressions.get(name)
             result = [match.value for match in expression.find(json_page_result)]
-            if (
-                len(result) < 1
-            ):  # the JSONPath expression didn't find anything in the manifest
+            if not result:  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
                     logging.debug(
                         f"{json_page_result} missing optional field: '{name}'; searched path: '{expression}'"
@@ -85,7 +96,7 @@ class JsonSource(intake.source.base.DataSource):
                     len(result) == 1
                 ):  # the JSONPath expression found exactly one result in the manifest
                     output[name] = _stringify_and_strip_if_list(result[0])
-                else:  # the JSONPath expression found exactly one result in the manifest
+                else:  # the JSONPath expression found multiple results in the manifest
                     if name not in output:
                         output[name] = []
 
@@ -132,7 +143,7 @@ class JsonSource(intake.source.base.DataSource):
         # This will prevent rows with all empty values from being generated
         # For context see https://github.com/sul-dlss/dlme-airflow/issues/192
 
-        if result is not None and len(result) > 0:
+        if result:
             self.record_count = len(result)
             return pd.DataFrame(result)
         else:
@@ -161,9 +172,11 @@ class JsonSource(intake.source.base.DataSource):
             time.sleep(self.wait)
         return requests.get(url, headers=headers)
 
-    def read(self):
+    def read(self, mode="production", output_dir=None, **kwargs):
+        self._mode = mode
+        self._output_dir = Path(output_dir) if output_dir else None
         self._load_metadata()
-        df = pd.concat([self.read_partition(i) for i in range(self.npartitions)])
+        df = pd.concat(self.read_partition(i) for i in range(self.npartitions))
         if self.record_limit:
             return df.head(self.record_limit)
         else:
@@ -177,9 +190,9 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
         return possible_list
 
 
-def _flatten_list(lst: list) -> Generator:
+def _flatten_list(lst: list):
     for item in lst:
-        if type(item) is list:
+        if isinstance(item, list):
             yield from _flatten_list(item)
         else:
             yield item

@@ -154,119 +154,91 @@ def test_thumbnail_report(large_thumbnail_image):
     )
 
 
-@pytest.fixture
-def unresolvable_resources(monkeypatch):
-    unresolvable_resources = []
-    monkeypatch.setattr(
-        mapping_report, "unresolvable_resources", unresolvable_resources
-    )
-
-
-def test_resolve_good_resource_url(requests_mock, unresolvable_resources):
+def test_resolve_good_resource_url(requests_mock):
     requests_mock.head("https://example.com", status_code=200)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    mapping_report.resolve_resource_url(record)
+    unresolvable = []
+    mapping_report.resolve_resource_url(record, unresolvable)
 
-    assert len(mapping_report.unresolvable_resources) == 0
+    assert len(unresolvable) == 0
 
 
-def test_resolve_bad_resource_url(requests_mock, unresolvable_resources):
+def test_resolve_bad_resource_url(requests_mock):
     requests_mock.head("https://example.com", status_code=404)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    mapping_report.resolve_resource_url(record)
+    unresolvable = []
+    mapping_report.resolve_resource_url(record, unresolvable)
 
-    assert len(mapping_report.unresolvable_resources) == 1
-
-
-@pytest.fixture
-def thumbnail_image_urls(monkeypatch):
-    """Monkeypatch global variable"""
-    thumbnail_image_urls = []
-    monkeypatch.setattr(mapping_report, "thumbnail_image_urls", thumbnail_image_urls)
+    assert len(unresolvable) == 1
 
 
-@pytest.fixture
-def unresolvable_thumbnails(monkeypatch):
-    """Monkeypatch global variable"""
-    unresolvable_thumbnails = []
-    monkeypatch.setattr(
-        mapping_report, "unresolvable_thumbnails", unresolvable_thumbnails
-    )
-
-
-def test_resolve_good_thumbnail_url(
-    requests_mock, thumbnail_image_urls, unresolvable_thumbnails
-):
+def test_resolve_good_thumbnail_url(requests_mock):
     requests_mock.get("https://example.com/image1.jpg", status_code=200)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    mapping_report.resolve_thumbnail_url(record)
+    urls: list = []
+    unresolvable: list = []
+    mapping_report.resolve_thumbnail_url(record, urls, unresolvable)
 
-    assert len(mapping_report.unresolvable_thumbnails) == 0
-    assert len(mapping_report.thumbnail_image_urls) == 1
+    assert len(unresolvable) == 0
+    assert len(urls) == 1
 
 
-def test_resolve_bad_thumbnail_url(
-    requests_mock, thumbnail_image_urls, unresolvable_thumbnails
-):
+def test_resolve_bad_thumbnail_url(requests_mock):
     requests_mock.get("https://example.com/image1.jpg", status_code=404)
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
-    mapping_report.resolve_thumbnail_url(record)
+    urls: list = []
+    unresolvable: list = []
+    mapping_report.resolve_thumbnail_url(record, urls, unresolvable)
 
-    assert len(mapping_report.unresolvable_thumbnails) == 1
-    assert len(mapping_report.thumbnail_image_urls) == 0
+    assert len(unresolvable) == 1
+    assert len(urls) == 0
 
 
-def test_resolve_invalid_thumbnail_url(
-    requests_mock, thumbnail_image_urls, unresolvable_thumbnails
-):
+def test_resolve_invalid_thumbnail_url(requests_mock):
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
     record["agg_preview"]["wr_id"] = "not_a_url"
-    mapping_report.resolve_thumbnail_url(record)
+    urls: list = []
+    unresolvable: list = []
+    mapping_report.resolve_thumbnail_url(record, urls, unresolvable)
 
-    assert len(mapping_report.unresolvable_thumbnails) == 1
-    assert len(mapping_report.thumbnail_image_urls) == 0
+    assert len(unresolvable) == 1
+    assert len(urls) == 0
 
 
-def test_resolve_null_thumbnail_url(
-    requests_mock, thumbnail_image_urls, unresolvable_thumbnails
-):
+def test_resolve_null_thumbnail_url(requests_mock):
     record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
     record["agg_preview"]["wr_id"] = None
-    mapping_report.resolve_thumbnail_url(record)
+    urls: list = []
+    unresolvable: list = []
+    mapping_report.resolve_thumbnail_url(record, urls, unresolvable)
 
-    assert len(mapping_report.unresolvable_thumbnails) == 1
-    assert len(mapping_report.thumbnail_image_urls) == 0
-
-
-@pytest.fixture
-def counts_global(monkeypatch):
-    """Monkeypatch global variable"""
-    counts = defaultdict(Counter)
-    monkeypatch.setattr(mapping_report, "counts", counts)
+    assert len(unresolvable) == 1
+    assert len(urls) == 0
 
 
-def test_count_fields(counts_global):
+def test_count_fields():
     field = "cho_test_dict"
     metadata = {"en": ["Test item title"]}
-    mapping_report.count_fields(field, metadata)
-    assert dict(mapping_report.counts) == {
-        "cho_test_dict": {"fields_covered": 1, "en": 1}
-    }
+    counts = defaultdict(Counter)
+    mapping_report.count_fields(field, metadata, counts)
+    assert dict(counts) == {"cho_test_dict": {"fields_covered": 1, "en": 1}}
 
 
-def test_count_fields_str(counts_global):
+def test_count_fields_str():
     field = "agg_provider_collection_id"
     metadata = "abcd"
-    mapping_report.count_fields(field, metadata)
-    assert dict(mapping_report.counts) == {
+    counts = defaultdict(Counter)
+    mapping_report.count_fields(field, metadata, counts)
+    assert dict(counts) == {
         "agg_provider_collection_id": {"fields_covered": 1, "values": 1}
     }
 
 
-def test_count_fields_dict(counts_global):
+def test_count_fields_dict():
     field = "cho_test_edm"
     metadata = {"en": ["Object"], "ar-Arab": ["كائن"]}
-    mapping_report.count_fields(field, metadata)
-    assert dict(mapping_report.counts) == {
+    counts = defaultdict(Counter)
+    mapping_report.count_fields(field, metadata, counts)
+    assert dict(counts) == {
         "cho_test_edm": {"fields_covered": 1, "en": 1, "ar-Arab": 1}
     }

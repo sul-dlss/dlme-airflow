@@ -1,3 +1,4 @@
+import json
 import logging
 import pytest
 import requests
@@ -13,6 +14,10 @@ class MockIIIFCollectionV2Response:
     def status_code(self):
         return 200
 
+    @property
+    def ok(self):
+        return True
+
     @staticmethod
     def json():
         return {
@@ -27,6 +32,10 @@ class MockIIIFCollectionV3Response:
     def status_code(self):
         return 200
 
+    @property
+    def ok(self):
+        return True
+
     @staticmethod
     def json():
         return {
@@ -40,6 +49,10 @@ class MockIIIFManifestResponse:
     @property
     def status_code(self):
         return 200
+
+    @property
+    def ok(self):
+        return True
 
     @staticmethod
     def json():
@@ -243,3 +256,34 @@ def test_wait(iiif_test_v2_source):
 def test_list_encode(iiif_test_v2_source, mock_response):
     iiif_df = iiif_test_v2_source.read()
     assert iiif_df["date-created"][0] == ["1974"]
+
+
+def test_analyze_mode_writes_json_file(mock_response, tmp_path):
+    metadata = {
+        "fields": {
+            "context": {"path": "@context", "optional": True},
+        }
+    }
+    source = IiifJsonSource(
+        collection_url="http://iiif_v2_collection.json", metadata=metadata
+    )
+    source.read(mode="analyze", output_dir=tmp_path)
+
+    written = list(tmp_path.glob("*.json"))
+    assert len(written) == 1, "one JSON file written per manifest"
+    content = json.loads(written[0].read_text())
+    assert content["@id"] == "https://collection.edu/iiif/p15795coll29:28/manifest.json"
+
+
+def test_analyze_mode_production_writes_no_files(mock_response, tmp_path):
+    metadata = {
+        "fields": {
+            "context": {"path": "@context", "optional": True},
+        }
+    }
+    source = IiifJsonSource(
+        collection_url="http://iiif_v2_collection.json", metadata=metadata
+    )
+    source.read(mode="production", output_dir=tmp_path)
+
+    assert list(tmp_path.glob("*.json")) == [], "production mode writes no files"
