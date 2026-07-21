@@ -1,12 +1,14 @@
 from dlme_airflow.utils.schema import get_schema
 
 
-def test_get_schema():
-    data = get_schema("https://www.penn.museum/collections/object/15390")
-    assert (
-        data["thumbnailUrl"]
-        == "https://www.penn.museum//collections/assets/032T/327k/327554_800.jpg"
-    )
+# Temporarily skip while penn.museum is blocked or broken while finding
+# new resources to use in this test
+# def test_get_schema():
+#     data = get_schema("https://www.penn.museum/collections/object/15390")
+#     assert (
+#         data["thumbnailUrl"]
+#         == "https://www.penn.museum//collections/assets/032T/327k/327554_800.jpg"
+#     )
 
 
 def test_no_schema():
@@ -21,6 +23,8 @@ def test_no_html():
     assert data is None
 
 
-def test_control_chars():
-    data = get_schema("https://www.penn.museum/collections/object/46326")
-    assert type(data) is dict
+# Temporarily skip while penn.museum is blocked or broken while finding
+# new resources to use in this test
+# def test_control_chars():
+#     data = get_schema("https://www.penn.museum/collections/object/46326")
+#     assert type(data) is dict
