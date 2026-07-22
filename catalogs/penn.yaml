@@ -17,47 +17,42 @@ sources:
       config: penn_museum
       fields:
         id:
-          name_in_dataframe: "emuIRN"
-          path: "emuIRN"
+          name_in_dataframe: "Record URL"
+          path: "Record URL"
     args:
       urlpath:
-        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
+        - https://collections.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
       csv_kwargs:
         dtype:
-          accession_credit_line: object
           creator: object
-          culture_area: object
+          cultureArea: object
           culture: object
-          curatorial_section: object
-          date_made_early: object
-          date_made_late: object
-          date_made: object
+          curatorialSection: object
+          creditLine: object
           dateMade: object
+          depth: object
           description: object
           earlyDate: object
-          emuIRN: object
           iconography: object
           iconographySubject: object
+          identifier: object
           inscriptionMarkLanguage: object
           lateDate: object
-          manufacture_locationlocus: object
+          length: object
+          locus: object
           material: object
-          measurement_height: object
-          measurement_length: object
-          measurement_outside_diameter: object
-          measurement_tickness: object
-          measurement_unit: object
-          measurement_width: object
-          native_name: object
-          object_name: object
-          object_number: object
-          other_numbers: object
+          measurementUnit: object
+          nativeName: object
+          objectName: object
+          outsideDiameter: object
           period: object
-          provenience: object
+          placeName: object
+          Record URL: object
           siteName: object
           technique: object
+          thickness: object
           title: object
-          url: object
+          weight: object
   egyptian:
     description: University of Pennsylvania Egyptian Museum
     driver: sequential_csv
@@ -72,47 +67,42 @@ sources:
       config: penn_museum
       fields:
         id:
-          name_in_dataframe: "emuIRN"
-          path: "emuIRN"
+          name_in_dataframe: "Record URL"
+          path: "Record URL"
     args:
       urlpath:
-        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
+        - https://collections.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
       csv_kwargs:
         dtype:
-          accession_credit_line: object
           creator: object
-          culture_area: object
+          cultureArea: object
           culture: object
-          curatorial_section: object
-          date_made_early: object
-          date_made_late: object
-          date_made: object
+          curatorialSection: object
+          creditLine: object
           dateMade: object
+          depth: object
           description: object
           earlyDate: object
-          emuIRN: object
           iconography: object
           iconographySubject: object
+          identifier: object
           inscriptionMarkLanguage: object
           lateDate: object
-          manufacture_locationlocus: object
+          length: object
+          locus: object
           material: object
-          measurement_height: object
-          measurement_length: object
-          measurement_outside_diameter: object
-          measurement_tickness: object
-          measurement_unit: object
-          measurement_width: object
-          native_name: object
-          object_name: object
-          object_number: object
-          other_numbers: object
+          measurementUnit: object
+          nativeName: object
+          objectName: object
+          outsideDiameter: object
           period: object
-          provenience: object
+          placeName: object
+          Record URL: object
           siteName: object
           technique: object
+          thickness: object
           title: object
-          url: object
+          weight: object
   near_eastern:
     description: University of Pennsylvania Near Eastern Museum
     driver: sequential_csv
@@ -127,44 +117,39 @@ sources:
       config: penn_museum
       fields:
         id:
-          name_in_dataframe: "emuIRN"
-          path: "emuIRN"
+          name_in_dataframe: "Record URL"
+          path: "Record URL"
     args:
       urlpath:
-        - https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
+        - https://collections.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
       csv_kwargs:
         dtype:
-          accession_credit_line: object
           creator: object
-          culture_area: object
+          cultureArea: object
           culture: object
-          curatorial_section: object
-          date_made_early: object
-          date_made_late: object
-          date_made: object
+          curatorialSection: object
+          creditLine: object
           dateMade: object
+          depth: object
           description: object
           earlyDate: object
-          emuIRN: object
           iconography: object
           iconographySubject: object
+          identifier: object
           inscriptionMarkLanguage: object
           lateDate: object
-          manufacture_locationlocus: object
+          length: object
+          locus: object
           material: object
-          measurement_height: object
-          measurement_length: object
-          measurement_outside_diameter: object
-          measurement_tickness: object
-          measurement_unit: object
-          measurement_width: object
-          native_name: object
-          object_name: object
-          object_number: object
-          other_numbers: object
+          measurementUnit: object
+          nativeName: object
+          objectName: object
+          outsideDiameter: object
           period: object
-          provenience: object
+          placeName: object
+          Record URL: object
           siteName: object
           technique: object
+          thickness: object
           title: object
-          url: object
+          weight: object

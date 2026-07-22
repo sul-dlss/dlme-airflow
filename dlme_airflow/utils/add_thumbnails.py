@@ -22,13 +22,13 @@ def add_thumbnails(**kwargs) -> None:
 
     # add a thumbnail column and save it
     df = pandas.read_json(working_json)
-    df["thumbnail"] = df.emuIRN.apply(get_thumbnail)
+    df["thumbnail"] = df["Record URL"].apply(get_thumbnail)
     df.dropna(subset=["thumbnail"], inplace=True)
     df.to_json(working_json, orient="records")
 
 
 def get_thumbnail(id) -> Optional[str]:
-    url = f"https://www.penn.museum/collections/object/{id}"
+    url = id
     logging.info(f"getting thumbnail for {url}")
     try:
         schema = get_schema(url)
