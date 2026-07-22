@@ -23,13 +23,13 @@ def test_add_thumbnails_success(mock_collection, monkeypatch):
         return f'http://thumbnail{id}.jpg'
 
     monkeypatch.setattr('dlme_airflow.utils.add_thumbnails.get_thumbnail', mock_get_thumbnail)
-    monkeypatch.setattr('pandas.read_json', lambda file: pd.DataFrame({'emuIRN': ['1', '2', '3']}))
+    monkeypatch.setattr('pandas.read_json', lambda file: pd.DataFrame({'Record URL': ['1', '2', '3']}))
 
     add_thumbnails(collection=mock_collection)
 
     # Load the mocked DataFrame to assert
     df = pd.DataFrame({
-        'emuIRN': ['1', '2', '3'],
+        'Record URL': ['1', '2', '3'],
         'thumbnail': ['http://thumbnail1.jpg', 'http://thumbnail2.jpg', 'http://thumbnail3.jpg']
     })
 
