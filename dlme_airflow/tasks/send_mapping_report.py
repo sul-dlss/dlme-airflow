@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
-from airflow.utils.task_group import TaskGroup
 from airflow.utils.email import send_email
+from airflow.utils.task_group import TaskGroup
 
 from dlme_airflow.utils.catalog import catalog_for_provider
 

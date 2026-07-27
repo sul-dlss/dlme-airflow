@@ -1,5 +1,4 @@
 import pytest
-
 from airflow import models
 
 from dlme_airflow.services.harvest_dag_generator import (

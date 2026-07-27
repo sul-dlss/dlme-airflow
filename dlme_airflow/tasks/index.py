@@ -1,6 +1,7 @@
-import os
-import requests
 import json
+import os
+
+import requests
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG

@@ -1,13 +1,12 @@
-import time
 import logging
+import time
+
 import intake
 import pandas as pd
-
 from lxml import etree
 from sickle import Sickle
 from sickle.iterator import OAIItemIterator
 from sickle.oaiexceptions import BadResumptionToken, NoRecordsMatch
-from typing import Dict
 
 # xml namespaces and the prefixes that are used in parsing
 
@@ -36,7 +35,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         metadata=None,
         full_harvest=None,
     ):
-        super(OaiXmlSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.metadata_prefix = metadata_prefix
         self.full_harvest = full_harvest
@@ -108,7 +107,7 @@ class OaiXmlSource(intake.source.base.DataSource):
                 raise e
 
     def _construct_fields(self, manifest: etree) -> dict:
-        output: Dict[str, list] = {}
+        output: dict[str, list] = {}
         for field in self._path_expressions:
             path = self._path_expressions[field]["path"]
             namespace = self._path_expressions[field]["namespace"]
@@ -119,7 +118,7 @@ class OaiXmlSource(intake.source.base.DataSource):
                     # Skip and continue
                     continue
                 else:
-                    logging.warn(f"Manifest missing {field}")
+                    logging.warning(f"Manifest missing {field}")
             else:
                 if field not in output:
                     output[field] = []

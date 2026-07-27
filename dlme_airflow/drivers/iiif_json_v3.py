@@ -1,9 +1,12 @@
 import logging
+from collections.abc import Generator
+from typing import Any
+
 import intake
-import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional, Generator
+import requests
+
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
@@ -19,7 +22,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         paging=None,
         metadata=None
     ):
-        super(IiifV3JsonSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging = paging
         self._manifests = []
@@ -41,7 +44,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
             return self.partition_builder.records()
 
 
-    def _open_manifest(self, manifest: dict) -> Optional[dict]:
+    def _open_manifest(self, manifest: dict) -> dict | None:
         manifest_url = manifest["id"]
         resp = self._get(manifest_url)
         if resp.status_code == 200:

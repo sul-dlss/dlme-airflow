@@ -1,6 +1,6 @@
-import pandas
 import logging
 
+import pandas
 from intake.source.base import DataSource, Schema
 
 
@@ -17,7 +17,7 @@ class SequentialCsvSource(DataSource):
     partition_access = True
 
     def __init__(self, urlpath, metadata={}, csv_kwargs={}):
-        super(SequentialCsvSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.urls = urlpath if type(urlpath) is list else [urlpath]
         self.csv_kwargs = csv_kwargs
         self.record_limit = self.metadata.get("record_limit", None)

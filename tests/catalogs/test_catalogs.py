@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from jsonschema import validate
 import pytest
 import yaml
+from jsonschema import validate
 
 
 @pytest.fixture

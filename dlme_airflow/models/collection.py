@@ -3,7 +3,7 @@ import os
 from dlme_airflow.utils.catalog import catalog_for_provider
 
 
-class Collection(object):
+class Collection:
     def __init__(self, provider, collection):
         self.name = collection
         self.provider = provider

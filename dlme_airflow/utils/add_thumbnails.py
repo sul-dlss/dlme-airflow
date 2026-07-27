@@ -1,10 +1,10 @@
 # /bin/python
-import os
-import pandas
-import logging
 import json
+import logging
+import os
 
-from typing import Optional
+import pandas
+
 from dlme_airflow.utils.schema import get_schema
 
 
@@ -27,7 +27,7 @@ def add_thumbnails(**kwargs) -> None:
     df.to_json(working_json, orient="records")
 
 
-def get_thumbnail(id) -> Optional[str]:
+def get_thumbnail(id) -> str | None:
     url = id
     logging.info(f"getting thumbnail for {url}")
     try:

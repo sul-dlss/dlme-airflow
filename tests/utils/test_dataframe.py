@@ -1,8 +1,8 @@
 import pytest
 
-from dlme_airflow.utils.dataframe import dataframe_from_file
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider
+from dlme_airflow.utils.dataframe import dataframe_from_file
 
 
 # This mock prevents writing to the fixture CSV when testing

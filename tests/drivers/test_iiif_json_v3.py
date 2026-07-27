@@ -1,5 +1,6 @@
 import json
 import logging
+
 import pytest
 import requests
 
@@ -150,7 +151,7 @@ def test_IiifJsonSource_logging(iiif_test_v3_source_with_profile, mock_response,
         iiif_test_v3_source_with_profile.read()
         print(f"CAPLOG: {caplog.text}")
     assert (
-        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing required field: 'profile'; searched path: 'profile'"  # noqa: E501
+        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing required field: 'profile'; searched path: 'profile'"
         in caplog.text
     )
     assert "missing optional field" not in caplog.text
@@ -158,7 +159,7 @@ def test_IiifJsonSource_logging(iiif_test_v3_source_with_profile, mock_response,
     with caplog.at_level(logging.DEBUG):
         iiif_test_v3_source_with_profile.read()
     assert (
-        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing optional field: 'thumbnail'; searched path: 'thumbnail'"  # noqa: E501
+        "https://libraries.aub.edu.lb/iiifservices/item/ark86073b3x34b/manifest missing optional field: 'thumbnail'; searched path: 'thumbnail'"
         in caplog.text
     )
 

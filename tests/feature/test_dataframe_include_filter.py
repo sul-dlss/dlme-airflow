@@ -1,10 +1,11 @@
-import pytest
-import pandas
 import shutil
 
-from dlme_airflow.utils.filter_dataframe import filter_dataframe
-from dlme_airflow.models.provider import Provider
+import pandas
+import pytest
+
 from dlme_airflow.models.collection import Collection
+from dlme_airflow.models.provider import Provider
+from dlme_airflow.utils.filter_dataframe import filter_dataframe
 
 
 @pytest.fixture

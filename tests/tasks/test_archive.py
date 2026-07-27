@@ -1,8 +1,9 @@
-import pytest
-import shutil
 import datetime
-
+import shutil
 from pathlib import Path
+
+import pytest
+
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider
 from dlme_airflow.tasks.archive import archive_collection

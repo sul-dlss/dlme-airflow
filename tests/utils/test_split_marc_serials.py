@@ -1,11 +1,11 @@
-import pandas
-import pytest
 import shutil
 import tempfile
 
-from dlme_airflow.models.provider import Provider
-from dlme_airflow.models.collection import Collection
+import pandas
+import pytest
 
+from dlme_airflow.models.collection import Collection
+from dlme_airflow.models.provider import Provider
 from dlme_airflow.utils.split_marc_serials import (
     split_marc_serials,
 )

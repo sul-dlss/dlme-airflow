@@ -1,5 +1,6 @@
-import intake
 import os
+
+import intake
 
 
 def catalog_file():

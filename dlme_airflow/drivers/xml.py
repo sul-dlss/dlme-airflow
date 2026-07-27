@@ -1,13 +1,12 @@
-import intake
 import logging
-import requests
-import pandas as pd
 
+import intake
+import pandas as pd
+import requests
 from lxml import etree
 from lxml.html import document_fromstring
 from lxml.html.clean import Cleaner
 
-from typing import List, Dict
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
@@ -28,7 +27,7 @@ class XmlSource(intake.source.base.DataSource):
     partition_access = True
 
     def __init__(self, collection_url, paging={}, dtype=None, metadata=None):
-        super(XmlSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging_config = paging
         self.paging_increment = paging.get("increment", 1)
@@ -148,7 +147,7 @@ class XmlSource(intake.source.base.DataSource):
         self.paging_start = next_start
 
     def _construct_fields(self, record_el: etree) -> dict:
-        record: Dict[str, (str | List)] = {}
+        record: dict[str, (str | list)] = {}
         for field in self._path_expressions:
             # look for the field in our data
             path = self._path_expressions[field]["path"]
@@ -160,7 +159,7 @@ class XmlSource(intake.source.base.DataSource):
                 if optional is True:
                     continue
                 else:
-                    logging.warn(f"Record missing {field}")
+                    logging.warning(f"Record missing {field}")
             else:
                 for el in els:
                     if hasattr(el, "text") and el.text is not None:

@@ -1,12 +1,12 @@
-import pandas
-import pytest
-import shutil
 import logging
-
+import shutil
 from pathlib import Path
 
-from dlme_airflow.models.provider import Provider
+import pandas
+import pytest
+
 from dlme_airflow.models.collection import Collection
+from dlme_airflow.models.provider import Provider
 from dlme_airflow.tasks import transform_validation
 from dlme_airflow.tasks.transform_validation import validate_transformation
 
@@ -77,9 +77,8 @@ def test_validation_passes(caplog, cleanup, setup_df, setup_ndjson):
 def test_validation_fails(caplog, cleanup, setup_df_extra, setup_ndjson):
     collection = Collection(Provider("aims"), "aims")
 
-    with pytest.raises(Exception) as excinfo:
-        with caplog.at_level(logging.DEBUG):
-            validate_transformation(collection)
+    with pytest.raises(Exception) as excinfo, caplog.at_level(logging.DEBUG):
+        validate_transformation(collection)
 
     assert (
         "ERROR: failed to transform all harvested records: harvested record count (4) != transformed record count (3)"

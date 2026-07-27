@@ -1,5 +1,6 @@
-import pytest
 import os
+
+import pytest
 
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider

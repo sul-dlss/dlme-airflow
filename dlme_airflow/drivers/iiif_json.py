@@ -1,10 +1,12 @@
-import time
 import logging
+import time
+from collections.abc import Generator
+from typing import Any
+
 import intake
-import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional, Generator
+import requests
 
 container = "dataframe"
 name = "iiif_json"
@@ -14,7 +16,7 @@ partition_access = True
 
 class IiifJsonSource(intake.source.base.DataSource):
     def __init__(self, collection_url=None, manifest_urls=[], dtype=None, metadata=None, wait=None):
-        super(IiifJsonSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
         self.wait = wait
@@ -49,7 +51,7 @@ class IiifJsonSource(intake.source.base.DataSource):
             else:
                 logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
 
-    def _open_manifest(self, manifest_url: str) -> Optional[dict]:
+    def _open_manifest(self, manifest_url: str) -> dict | None:
         logging.info(f"getting manifest {manifest_url}")
         resp = self._get(manifest_url)
         if resp.status_code == 200:
