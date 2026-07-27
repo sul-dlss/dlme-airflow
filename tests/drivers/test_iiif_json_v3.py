@@ -112,7 +112,7 @@ def test_IiifJsonSource_read(iiif_test_v3_source, mock_response):
         "collection",
         "rights",
     ]
-    assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
+    assert all(a == b for a, b in zip(iiif_df.columns, test_columns))
 
 
 def test_IiifJsonSource_df(iiif_test_v3_source, mock_response):

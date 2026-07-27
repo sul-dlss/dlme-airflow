@@ -5,7 +5,8 @@ from dlme_airflow.drivers.json import JsonSource
 
 def test_happy_path_pages_from_provider(requests_mock):
     # mock the http call to return some real loc.gov data
-    loc_data = json.load(open("tests/data/json/loc.json"))
+    with open("tests/data/json/loc.json") as f:
+        loc_data = json.load(f)
     requests_mock.get(
         "https://www.loc.gov/collections/persian-language-rare-materials/?c=100&fo=json",
         json=loc_data,
@@ -44,7 +45,7 @@ def test_happy_path_pages_from_provider(requests_mock):
 
     assert len(df) == 100
     assert len(df.columns) == 3
-    assert set(df.columns) == set(["id", "title", "thumbnail"])
+    assert set(df.columns) == {"id", "title", "thumbnail"}
 
     assert df.id[0] == "http://www.loc.gov/item/2017498321/"
     assert df.title[0] == "[Majmuʻah, or, Collection]"
@@ -65,7 +66,8 @@ def test_happy_path_pages_from_provider(requests_mock):
 
 def test_happy_path_incremental_paging(requests_mock):
     # mock the http call to return some real loc.gov data
-    loc_data = json.load(open("tests/data/json/incremental_paging.json"))
+    with open("tests/data/json/incremental_paging.json") as f:
+        loc_data = json.load(f)
     requests_mock.get(
         "https://example.com/",
         json=loc_data,
@@ -103,7 +105,7 @@ def test_happy_path_incremental_paging(requests_mock):
 
     assert len(df) == 20
     assert len(df.columns) == 3
-    assert set(df.columns) == set(["id", "title", "thumbnail"])
+    assert set(df.columns) == {"id", "title", "thumbnail"}
 
     assert df.id[0] == "23.3.935"
     assert df.title[0] == "Wall casing"
@@ -122,19 +124,22 @@ def test_happy_path_incremental_paging(requests_mock):
 
 def test_happy_path_prefetch_urls(requests_mock):
     # mock the http call to return some real loc.gov data
-    object_pages = json.load(open("tests/data/json/pre_fetch_ids.json"))
+    with open("tests/data/json/pre_fetch_ids.json") as f:
+        object_pages = json.load(f)
     requests_mock.get(
         "https://example.com/collection?limit=3&offset=0",
         json=object_pages,
     )
 
-    data_for_116787 = json.load(open("tests/data/json/116787.json"))
+    with open("tests/data/json/116787.json") as f:
+        data_for_116787 = json.load(f)
     requests_mock.get(
         "https://example.com/object/116787",
         json=data_for_116787,
     )
 
-    data_for_60732 = json.load(open("tests/data/json/60732.json"))
+    with open("tests/data/json/60732.json") as f:
+        data_for_60732 = json.load(f)
     requests_mock.get(
         "https://example.com/object/60732",
         json=data_for_60732,
@@ -173,4 +178,4 @@ def test_happy_path_prefetch_urls(requests_mock):
 
     assert len(df) == 2
     assert len(df.columns) == 3
-    assert set(df.columns) == set(["id", "title", "thumbnail"])
+    assert set(df.columns) == {"id", "title", "thumbnail"}

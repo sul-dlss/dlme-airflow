@@ -10,6 +10,8 @@ import requests
 
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
+logger = logging.getLogger(__name__)
+
 
 class JsonSource(intake.source.base.DataSource):
     container = "dataframe"
@@ -60,7 +62,7 @@ class JsonSource(intake.source.base.DataSource):
                 [match.value for match in expression.find(page_result)]
             )
         else:
-            logging.error(f"got {resp.status_code} when fetching manifest {page_url}")
+            logger.error(f"got {resp.status_code} when fetching manifest {page_url}")
             return None
         records = [self._extract_specified_fields(record) for record in page_result]
         for record in records:
@@ -76,11 +78,11 @@ class JsonSource(intake.source.base.DataSource):
                 len(result) < 1
             ):  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
-                    logging.debug(
+                    logger.debug(
                         f"{json_page_result} missing optional field: '{name}'; searched path: '{expression}'"
                     )
                 else:
-                    logging.warning(
+                    logger.warning(
                         f"{json_page_result} missing required field: '{name}'; searched path: '{expression}'"
                     )
             else:
@@ -139,7 +141,7 @@ class JsonSource(intake.source.base.DataSource):
             self.record_count = len(result)
             return pd.DataFrame(result)
         else:
-            logging.warning(f"{self._page_urls[i]} resulted in empty DataFrame")
+            logger.warning(f"{self._page_urls[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):
@@ -160,7 +162,7 @@ class JsonSource(intake.source.base.DataSource):
             headers["api_key"] = self.api_key
 
         if self.wait:
-            logging.info(f"waiting {self.wait} seconds")
+            logger.info(f"waiting {self.wait} seconds")
             time.sleep(self.wait)
         return requests.get(url, headers=headers)
 

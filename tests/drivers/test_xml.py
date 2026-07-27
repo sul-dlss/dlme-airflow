@@ -2,9 +2,11 @@ from dlme_airflow.drivers.xml import XmlSource
 
 
 def test_read(requests_mock):
+    with open("tests/data/xml/aims-feed.xml") as f:
+        aims_feed_text = f.read()
     requests_mock.get(
         "https://example.com/themaghribpodcast/feed.xml",
-        text=open("tests/data/xml/aims-feed.xml", "r").read(),
+        text=aims_feed_text,
         headers={"Accept": "application/text+xml"},
     )
 
@@ -79,9 +81,11 @@ def test_read(requests_mock):
 
 
 def test_multi_field(requests_mock):
+    with open("tests/data/xml/multi.xml") as f:
+        multi_xml_text = f.read()
     requests_mock.get(
         "https://example.com/",
-        text=open("tests/data/xml/multi.xml", "r").read(),
+        text=multi_xml_text,
         headers={"Accept": "application/text+xml"},
     )
 
@@ -109,15 +113,19 @@ def test_multi_field(requests_mock):
 
 
 def test_paged_xml(requests_mock):
+    with open("tests/data/xml/paged/page_1.xml") as f:
+        page_1_text = f.read()
     requests_mock.get(
         "https://example.com/?paged=1",
-        text=open("tests/data/xml/paged/page_1.xml", "r").read(),
+        text=page_1_text,
         headers={"Accept": "application/text+xml"},
     )
 
+    with open("tests/data/xml/paged/page_2.xml") as f:
+        page_2_text = f.read()
     requests_mock.get(
         "https://example.com/?paged=2",
-        text=open("tests/data/xml/paged/page_2.xml", "r").read(),
+        text=page_2_text,
         headers={"Accept": "application/text+xml"},
     )
 
@@ -153,15 +161,19 @@ def test_paged_xml(requests_mock):
     assert df.title[3] == "Iran National Football Team"
 
 def test_resumptionToken_paged_xml(requests_mock):
+    with open("tests/data/xml/paged/resumption_token_1.xml") as f:
+        resumption_token_1_text = f.read()
     requests_mock.get(
         "https://example.com/export?resumptionToken=0",
-        text=open("tests/data/xml/paged/resumption_token_1.xml", "r").read(),
+        text=resumption_token_1_text,
         headers={"Accept": "application/text+xml"},
     )
 
+    with open("tests/data/xml/paged/resumption_token_2.xml") as f:
+        resumption_token_2_text = f.read()
     requests_mock.get(
         "https://example.com/export?resumptionToken=2",
-        text=open("tests/data/xml/paged/resumption_token_2.xml", "r").read(),
+        text=resumption_token_2_text,
         headers={"Accept": "application/text+xml"},
     )
 
@@ -187,15 +199,19 @@ def test_resumptionToken_paged_xml(requests_mock):
 
 
 def test_pagination_paged_xml(requests_mock):
+    with open("tests/data/xml/paged/pagination_1.xml") as f:
+        pagination_1_text = f.read()
     requests_mock.get(
         "https://example.com/export?limit=100&start=0",
-        text=open("tests/data/xml/paged/pagination_1.xml", "r").read(),
+        text=pagination_1_text,
         headers={"Accept": "application/text+xml"},
     )
 
+    with open("tests/data/xml/paged/pagination_2.xml") as f:
+        pagination_2_text = f.read()
     requests_mock.get(
         "https://example.com/export?limit=100&start=100",
-        text=open("tests/data/xml/paged/pagination_2.xml", "r").read(),
+        text=pagination_2_text,
         headers={"Accept": "application/text+xml"},
     )
 
@@ -224,21 +240,27 @@ def test_pagination_paged_xml(requests_mock):
 
 
 def test_parse_record_urls_xml(requests_mock):
+    with open("tests/data/xml/paged/collection.html") as f:
+        collection_html_text = f.read()
     requests_mock.get(
         "https://example.com/collection.html",
-        text=open("tests/data/xml/paged/collection.html", "r").read(),
+        text=collection_html_text,
         headers={"Accept": "application/html"},
     )
 
+    with open("tests/data/xml/paged/record_1.xml") as f:
+        record_1_text = f.read()
     requests_mock.get(
         "https://example.com/record_1.xml",
-        text=open("tests/data/xml/paged/record_1.xml", "r").read(),
+        text=record_1_text,
         headers={"Accept": "application/text+xml"},
     )
 
+    with open("tests/data/xml/paged/record_2.xml") as f:
+        record_2_text = f.read()
     requests_mock.get(
         "https://example.com/record_2.xml",
-        text=open("tests/data/xml/paged/record_2.xml", "r").read(),
+        text=record_2_text,
         headers={"Accept": "application/text+xml"},
     )
 

@@ -5,7 +5,9 @@ import logging
 import os
 import random
 from collections import Counter, defaultdict
-from datetime import date
+from datetime import UTC, datetime
+
+logger = logging.getLogger(__name__)
 
 import requests
 import validators
@@ -118,7 +120,7 @@ def write_file(url, filename):
             response.raise_for_status()
             file.write(response.content)
         except requests.exceptions.RequestException as exception:
-            logging.error(f"Could not retrieve {url}: {exception}")
+            logger.error(f"Could not retrieve {url}: {exception}")
             raise
 
 
@@ -163,9 +165,7 @@ def image_size(content) -> tuple[int, int]:
 def validate_url(url):
     """Checks if url has valid form."""
     if url is not None:
-        if validators.url(url):
-            return True
-        return False
+        return bool(validators.url(url))
     return False
 
 
@@ -303,7 +303,7 @@ def mapping_report(**kwargs):  # input:, config:):
 
     with doc:
         h1(f"DLME Metadata Report for {provider_id}")
-        h2(f"{collection_id} ({date.today()})")
+        h2(f"{collection_id} ({datetime.now(tz=UTC).date()})")
 
         with div():
             attr(cls="body")
@@ -442,49 +442,48 @@ def mapping_report(**kwargs):  # input:, config:):
                     lines = f.readlines()
                     for line in lines:
                         for field in fields:
-                            if "to_field" in line:
-                                if field in line:
-                                    to_field = line.split(",")[0].strip("to_field ")
-                                    transforms = []
-                                    from_field = None
-                                    for k, v in EXTRACT_MACROS.items():
-                                        if k in line:
-                                            from_field = EXTRACT_MACROS.get(k).get(
-                                                "from_field"
-                                            )
-                                            transforms.append(
-                                                EXTRACT_MACROS.get(k).get("transforms")
-                                            )
-                                    # if no keys found in EXTRACT_MACROS
-                                    if from_field is None:
-                                        if "literal(" in line:
-                                            from_field = (
-                                                "Assigned literal value: '{}'".format(
-                                                    line.split("literal(")[-1].split(
-                                                        "),"
-                                                    )[0]
-                                                )
-                                            )
-                                        else:
-                                            from_field = (
-                                                line.split("(")[1]
-                                                .split(")")[0]
-                                                .strip("'")
-                                            )
-                                    for k, v in MODIFY_MACROS.items():
-                                        if k in line:
-                                            transforms.append(MODIFY_MACROS.get(k))
-                                    row = tr(style="border:1px solid black")
-                                    row.add(td(from_field))
-                                    row.add(td(">>", style="padding: 0 15px;"))
-                                    row.add(td(to_field, style="padding: 0 15px;"))
-                                    row.add(td(">>", style="padding: 0 15px;"))
-                                    row.add(
-                                        td(
-                                            " ".join(transforms),
-                                            style="padding: 0 15px;",
+                            if "to_field" in line and field in line:
+                                to_field = line.split(",")[0].strip("to_field ")
+                                transforms = []
+                                from_field = None
+                                for k, v in EXTRACT_MACROS.items():
+                                    if k in line:
+                                        from_field = EXTRACT_MACROS.get(k).get(
+                                            "from_field"
                                         )
+                                        transforms.append(
+                                            EXTRACT_MACROS.get(k).get("transforms")
+                                        )
+                                # if no keys found in EXTRACT_MACROS
+                                if from_field is None:
+                                    if "literal(" in line:
+                                        from_field = (
+                                            "Assigned literal value: '{}'".format(
+                                                line.split("literal(")[-1].split(
+                                                    "),"
+                                                )[0]
+                                            )
+                                        )
+                                    else:
+                                        from_field = (
+                                            line.split("(")[1]
+                                            .split(")")[0]
+                                            .strip("'")
+                                        )
+                                for k, v in MODIFY_MACROS.items():
+                                    if k in line:
+                                        transforms.append(MODIFY_MACROS.get(k))
+                                row = tr(style="border:1px solid black")
+                                row.add(td(from_field))
+                                row.add(td(">>", style="padding: 0 15px;"))
+                                row.add(td(to_field, style="padding: 0 15px;"))
+                                row.add(td(">>", style="padding: 0 15px;"))
+                                row.add(
+                                    td(
+                                        " ".join(transforms),
+                                        style="padding: 0 15px;",
                                     )
+                                )
 
     return doc.render()
 

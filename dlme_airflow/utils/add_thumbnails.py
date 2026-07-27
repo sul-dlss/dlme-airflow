@@ -7,18 +7,20 @@ import pandas
 
 from dlme_airflow.utils.schema import get_schema
 
+logger = logging.getLogger(__name__)
+
 
 def add_thumbnails(**kwargs) -> None:
     """Add a thumbnail column based on the value in the url column"""
     coll = kwargs["collection"]
     data_path = coll.data_path()
     if data_path is None:
-        raise Exception(f"unable to find data_path for collection={coll}")
+        raise ValueError(f"unable to find data_path for collection={coll}")
 
     # ensure that the working json is present on the filesystem
     working_json = coll.datafile("json")
     if not os.path.isfile(working_json):
-        raise Exception(f"unable to locate working json data: {working_json}")
+        raise FileNotFoundError(f"unable to locate working json data: {working_json}")
 
     # add a thumbnail column and save it
     df = pandas.read_json(working_json)
@@ -29,7 +31,7 @@ def add_thumbnails(**kwargs) -> None:
 
 def get_thumbnail(id) -> str | None:
     url = id
-    logging.info(f"getting thumbnail for {url}")
+    logger.info(f"getting thumbnail for {url}")
     try:
         schema = get_schema(url)
         if schema:
@@ -37,4 +39,4 @@ def get_thumbnail(id) -> str | None:
         else:
             return None
     except json.JSONDecodeError as e:
-        logging.error(f"JSONDecodeError occurred: %s for record {url}", e)
+        logger.error(f"JSONDecodeError occurred: %s for record {url}", e)

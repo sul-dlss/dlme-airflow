@@ -6,7 +6,8 @@ from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 def test_urls_from_provider(requests_mock):
     collection_url = "https://www.example.com"
     # mock the http call to return some real loc.gov data
-    loc_data = json.load(open("tests/data/json/loc.json"))
+    with open("tests/data/json/loc.json") as f:
+        loc_data = json.load(f)
     requests_mock.get(
         collection_url,
         json=loc_data,
@@ -25,7 +26,8 @@ def test_urls_from_provider(requests_mock):
 def test_calculate_partitions(requests_mock):
     collection_url = "https://www.example.com"
     # mock the http call to return some real loc.gov data
-    page_data = json.load(open("tests/data/json/incremental_paging.json"))
+    with open("tests/data/json/incremental_paging.json") as f:
+        page_data = json.load(f)
     requests_mock.get(
         collection_url,
         json=page_data,
@@ -50,7 +52,8 @@ def test_calculate_partitions(requests_mock):
 def test_calculate_loc_partitions(requests_mock):
     collection_url = "https://www.example.com"
     # mock the http call to return some real loc.gov data
-    page_data = json.load(open("tests/data/json/loc_paging.json"))
+    with open("tests/data/json/loc_paging.json") as f:
+        page_data = json.load(f)
     requests_mock.get(
         collection_url,
         json=page_data,
@@ -77,7 +80,8 @@ def test_calculate_loc_partitions(requests_mock):
 def test_prefetch_page_urls(requests_mock):
     collection_url = "https://www.example.com/object/"
     # mock the http call to return some real loc.gov data
-    object_pages = json.load(open("tests/data/json/pre_fetch_ids.json"))
+    with open("tests/data/json/pre_fetch_ids.json") as f:
+        object_pages = json.load(f)
     requests_mock.get(
         "https://example.com/collection?limit=3&offset=0",
         json=object_pages,

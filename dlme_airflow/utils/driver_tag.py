@@ -16,7 +16,7 @@ def fetch_driver(provider):
             path = catalog["sources"][provider]["args"].get("path")
             with open(path, "r") as collection_stream:
                 collection_catalog = yaml.safe_load(collection_stream)
-                for key in collection_catalog["sources"].keys():
+                for key in collection_catalog["sources"]:
                     drivers.append(collection_catalog["sources"][key].get("driver"))
         else:
             drivers.append(catalog["sources"][provider].get("driver"))

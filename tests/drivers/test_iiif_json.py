@@ -184,7 +184,7 @@ def test_IiifJsonSource_read(iiif_test_v2_source, mock_response):
         "title-main",
         "title-sub",
     ]
-    assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
+    assert all(a == b for a, b in zip(iiif_df.columns, test_columns))
 
 
 def test_IiifJsonNoCollectionSource_read(iiif_test_v2_no_collection_source, mock_response):
@@ -197,7 +197,7 @@ def test_IiifJsonNoCollectionSource_read(iiif_test_v2_no_collection_source, mock
         "title-main",
         "title-sub",
     ]
-    assert all([a == b for a, b in zip(iiif_df.columns, test_columns)])
+    assert all(a == b for a, b in zip(iiif_df.columns, test_columns))
 
 def test_IiifJsonSource_df(iiif_test_v2_source, mock_response):
     iiif_df = iiif_test_v2_source.read()

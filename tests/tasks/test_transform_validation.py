@@ -47,13 +47,14 @@ def setup_ndjson(monkeypatch):
     ndjson = Path("test-metadata/aims/aims/output-aims-aims.ndjson")
     ndjson.parent.mkdir(parents=True)
     monkeypatch.setattr(transform_validation, "get_transformed_path", lambda _: ndjson)
-    open(ndjson, "w").writelines(
-        [
-            '{"id": 1, "title": "a"}\n',
-            '{"id": 2, "title": "b"}\n',
-            '{"id": 3, "title": "c"}\n',
-        ]
-    )
+    with open(ndjson, "w") as f:
+        f.writelines(
+            [
+                '{"id": 1, "title": "a"}\n',
+                '{"id": 2, "title": "b"}\n',
+                '{"id": 3, "title": "c"}\n',
+            ]
+        )
 
 
 def test_transform_path():

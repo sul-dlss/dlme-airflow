@@ -48,7 +48,8 @@ def test_successful_mapping_report(
     requests_mock, mock_catalog_for_provider, thumbnail_image
 ):
     # Mock the harvest output data that is input to mapping_report. It is an ndjson file.
-    testmuseum_harvest_data = open("tests/data/ndjson/output-testmuseum.ndjson").read()
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        testmuseum_harvest_data = f.read()
     requests_mock.get(
         "https://s3-us-west-2.amazonaws.com/dlme-metadata-dev/output/output-testmuseum.ndjson",
         text=testmuseum_harvest_data,
@@ -56,7 +57,8 @@ def test_successful_mapping_report(
 
     # Mock traject config request to return a test config
     # f"https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/{catalog.metadata.get('config')}.rb"
-    testmuseum_config = open("tests/data/testmuseum_config.rb").read()
+    with open("tests/data/testmuseum_config.rb") as f:
+        testmuseum_config = f.read()
     requests_mock.get(
         "https://raw.githubusercontent.com/sul-dlss/dlme-transform/main/traject_configs/testmuseum.rb",
         text=testmuseum_config,
@@ -164,7 +166,8 @@ def unresolvable_resources(monkeypatch):
 
 def test_resolve_good_resource_url(requests_mock, unresolvable_resources):
     requests_mock.head("https://example.com", status_code=200)
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     mapping_report.resolve_resource_url(record)
 
     assert len(mapping_report.unresolvable_resources) == 0
@@ -172,7 +175,8 @@ def test_resolve_good_resource_url(requests_mock, unresolvable_resources):
 
 def test_resolve_bad_resource_url(requests_mock, unresolvable_resources):
     requests_mock.head("https://example.com", status_code=404)
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     mapping_report.resolve_resource_url(record)
 
     assert len(mapping_report.unresolvable_resources) == 1
@@ -198,7 +202,8 @@ def test_resolve_good_thumbnail_url(
     requests_mock, thumbnail_image_urls, unresolvable_thumbnails
 ):
     requests_mock.get("https://example.com/image1.jpg", status_code=200)
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     mapping_report.resolve_thumbnail_url(record)
 
     assert len(mapping_report.unresolvable_thumbnails) == 0
@@ -209,7 +214,8 @@ def test_resolve_bad_thumbnail_url(
     requests_mock, thumbnail_image_urls, unresolvable_thumbnails
 ):
     requests_mock.get("https://example.com/image1.jpg", status_code=404)
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     mapping_report.resolve_thumbnail_url(record)
 
     assert len(mapping_report.unresolvable_thumbnails) == 1
@@ -219,7 +225,8 @@ def test_resolve_bad_thumbnail_url(
 def test_resolve_invalid_thumbnail_url(
     requests_mock, thumbnail_image_urls, unresolvable_thumbnails
 ):
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     record["agg_preview"]["wr_id"] = "not_a_url"
     mapping_report.resolve_thumbnail_url(record)
 
@@ -230,7 +237,8 @@ def test_resolve_invalid_thumbnail_url(
 def test_resolve_null_thumbnail_url(
     requests_mock, thumbnail_image_urls, unresolvable_thumbnails
 ):
-    record = json.loads(open("tests/data/ndjson/output-testmuseum.ndjson").readline())
+    with open("tests/data/ndjson/output-testmuseum.ndjson") as f:
+        record = json.loads(f.readline())
     record["agg_preview"]["wr_id"] = None
     mapping_report.resolve_thumbnail_url(record)
 

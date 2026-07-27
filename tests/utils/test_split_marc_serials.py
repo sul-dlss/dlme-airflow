@@ -14,11 +14,12 @@ from dlme_airflow.utils.split_marc_serials import (
 @pytest.fixture
 def mock_datafile(monkeypatch):
     # copy the test data to a temporary path since it will be written to
-    tmp = tempfile.NamedTemporaryFile()
-    shutil.copy("tests/data/hathi_trust/serials.json", tmp.name)
+    with tempfile.NamedTemporaryFile(delete=False) as tmp:
+        tmp_name = tmp.name
+    shutil.copy("tests/data/hathi_trust/serials.json", tmp_name)
 
     # mock Collection.datafile to return the path for the temp test data
-    monkeypatch.setattr(Collection, "datafile", lambda *args, **kwargs: tmp.name)
+    monkeypatch.setattr(Collection, "datafile", lambda *args, **kwargs: tmp_name)
 
 
 def test_split_marc_serials(mocker, mock_datafile):

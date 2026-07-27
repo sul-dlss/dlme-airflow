@@ -13,7 +13,9 @@ class HathiTrustSource(intake.source.base.DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, collection_url, object_path, marc_urls = [], dtype=None, metadata=None):
+    def __init__(self, collection_url, object_path, marc_urls = None, dtype=None, metadata=None):
+        if marc_urls is None:
+            marc_urls = []
         super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.object_path = object_path
@@ -24,7 +26,7 @@ class HathiTrustSource(intake.source.base.DataSource):
 
         # Ensure the request was successful
         if not collection_result.ok:
-            raise Exception(f"Failed to fetch data from URL: {self.collection_url}. Status code: {collection_result.status_code}")
+            raise RuntimeError(f"Failed to fetch data from URL: {self.collection_url}. Status code: {collection_result.status_code}")
 
         # Get each line of the collection
         content = collection_result.content.decode('utf-8').splitlines()
@@ -61,13 +63,12 @@ class HathiTrustSource(intake.source.base.DataSource):
     def _metadata_from_marc_fields(self, fields):
         metadata = {}
         for field in fields:
-            marc_field = list(field.keys())[0]
+            marc_field = next(iter(field.keys()))
             if isinstance(field[marc_field], str):
                 metadata.setdefault(marc_field, []).append(field[marc_field])
 
-            if isinstance(field[marc_field], dict):
-                if 'subfields' in field[marc_field]:
-                    metadata |= self._flatten_marc_subfields(marc_field, field[marc_field].get("subfields"))
+            if isinstance(field[marc_field], dict) and 'subfields' in field[marc_field]:
+                metadata |= self._flatten_marc_subfields(marc_field, field[marc_field].get("subfields"))
 
         return metadata
 

@@ -5,9 +5,11 @@ from dlme_airflow.drivers.oai_xml import OaiXmlSource
 
 
 def test_oai_record(requests_mock):
+    with open("tests/data/xml/record_12345.xml") as f:
+        record_12345_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=mods_no_ocr&verb=GetRecord&identifier=12345",
-        text=open("tests/data/xml/record_12345.xml").read(),
+        text=record_12345_text,
     )
     oai = OaiXmlSource(
         "https://example.org",
@@ -34,9 +36,11 @@ def test_oai_record(requests_mock):
 
 
 def test_oai_dc(requests_mock):
+    with open("tests/data/xml/oai-dc.xml") as f:
+        oai_dc_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=oai_dc&verb=ListRecords",
-        text=open("tests/data/xml/oai-dc.xml").read(),
+        text=oai_dc_text,
     )
     oai = OaiXmlSource("https://example.org", "oai_dc")
     df = oai.read()
@@ -48,9 +52,11 @@ def test_oai_dc(requests_mock):
 
 
 def test_mods(requests_mock):
+    with open("tests/data/xml/oai-mods.xml") as f:
+        oai_mods_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=mods_no_ocr&verb=ListRecords",
-        text=open("tests/data/xml/oai-mods.xml").read(),
+        text=oai_mods_text,
     )
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
@@ -61,9 +67,11 @@ def test_mods(requests_mock):
 
 
 def test_marc21(requests_mock):
+    with open("tests/data/xml/oai-marc21.xml") as f:
+        oai_marc21_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=marc21&verb=ListRecords",
-        text=open("tests/data/xml/oai-marc21.xml").read(),
+        text=oai_marc21_text,
     )
     oai = OaiXmlSource("https://example.org", "marc21")
     df = oai.read()
@@ -75,9 +83,11 @@ def test_marc21(requests_mock):
 
 
 def test_oai_dpla(requests_mock):
+    with open("tests/data/xml/oai-dpla.xml") as f:
+        oai_dpla_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=oai_dpla&verb=ListRecords",
-        text=open("tests/data/xml/oai-dpla.xml").read(),
+        text=oai_dpla_text,
     )
     oai = OaiXmlSource("https://example.org", "oai_dpla")
     df = oai.read()
@@ -88,9 +98,11 @@ def test_oai_dpla(requests_mock):
 
 
 def test_construct_fields(requests_mock):
+    with open("tests/data/xml/oai-mods.xml") as f:
+        oai_mods_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=mods_no_ocr&verb=ListRecords",
-        text=open("tests/data/xml/oai-mods.xml").read(),
+        text=oai_mods_text,
     )
     oai = OaiXmlSource("https://example.org", "mods_no_ocr")
     df = oai.read()
@@ -105,15 +117,19 @@ def test_wait():
 
 def test_invalid_resumption_token(requests_mock):
     # return a response with a resumption token for the next set of results
+    with open("tests/data/xml/oai-dc-resumption.xml") as f:
+        oai_dc_resumption_text = f.read()
     requests_mock.get(
         "https://example.org?metadataPrefix=oai_dc&verb=ListRecords",
-        text=open("tests/data/xml/oai-dc-resumption.xml").read(),
+        text=oai_dc_resumption_text,
     )
 
     # returns an invalid resumption token error
+    with open("tests/data/xml/oai-dc-resumption-error.xml") as f:
+        oai_dc_resumption_error_text = f.read()
     requests_mock.get(
         "https://example.org?resumptionToken=abc123&verb=ListRecords",
-        text=open("tests/data/xml/oai-dc-resumption-error.xml").read(),
+        text=oai_dc_resumption_error_text,
     )
 
     # this should throw an exception

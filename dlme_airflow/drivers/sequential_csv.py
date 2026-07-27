@@ -3,6 +3,8 @@ import logging
 import pandas
 from intake.source.base import DataSource, Schema
 
+logger = logging.getLogger(__name__)
+
 
 class SequentialCsvSource(DataSource):
     """Loads multiple CSV or TSV files sequentially with pandas rather than in parallel
@@ -16,7 +18,11 @@ class SequentialCsvSource(DataSource):
     version = "0.0.1"
     partition_access = True
 
-    def __init__(self, urlpath, metadata={}, csv_kwargs={}):
+    def __init__(self, urlpath, metadata=None, csv_kwargs=None):
+        if csv_kwargs is None:
+            csv_kwargs = {}
+        if metadata is None:
+            metadata = {}
         super().__init__(metadata=metadata)
         self.urls = urlpath if type(urlpath) is list else [urlpath]
         self.csv_kwargs = csv_kwargs
@@ -34,9 +40,9 @@ class SequentialCsvSource(DataSource):
 
     def _get_partition(self, i):
         if self.record_limit and self.record_count > self.record_limit:
-            logging.info(f"skipping partition because record limit {self.record_limit}")
+            logger.info(f"skipping partition because record limit {self.record_limit}")
             return pandas.DataFrame()
-        logging.info(f"reading {self.urls[i]}")
+        logger.info(f"reading {self.urls[i]}")
         if self.urls[i].endswith(".tsv"):
             df = pandas.read_csv(self.urls[i], sep="\t")
         else:

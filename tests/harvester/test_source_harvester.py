@@ -7,7 +7,7 @@ from dlme_airflow.harvester.source_harvester import data_source_harvester
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider
 
-last_harvest_start_date = datetime.datetime.now()
+last_harvest_start_date = datetime.datetime.now(tz=datetime.UTC)
 
 
 class MockTaskInstance:

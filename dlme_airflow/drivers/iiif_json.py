@@ -13,9 +13,13 @@ name = "iiif_json"
 version = "0.0.2"
 partition_access = True
 
+logger = logging.getLogger(__name__)
+
 
 class IiifJsonSource(intake.source.base.DataSource):
-    def __init__(self, collection_url=None, manifest_urls=[], dtype=None, metadata=None, wait=None):
+    def __init__(self, collection_url=None, manifest_urls=None, dtype=None, metadata=None, wait=None):
+        if manifest_urls is None:
+            manifest_urls = []
         super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.dtype = dtype
@@ -27,7 +31,7 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def _open_collection(self):
         if self.collection_url is not None:
-            logging.info(f"getting collection {self.collection_url}")
+            logger.info(f"getting collection {self.collection_url}")
             resp = self._get(self.collection_url)
             if resp.status_code == 200:
                 collection_result = resp.json()
@@ -36,7 +40,7 @@ class IiifJsonSource(intake.source.base.DataSource):
                 elif "items" in collection_result:  # IIIF v3
                     manifests = collection_result["items"]
                 else:
-                    raise Exception(
+                    raise ValueError(
                         f"Unknown collection manifest format: {self.collection_url}"
                     )
 
@@ -46,18 +50,18 @@ class IiifJsonSource(intake.source.base.DataSource):
                     elif "id" in manifest:
                         url = manifest["id"]  # valid in IIIF v3 only
                     else:
-                        raise Exception(f"Unknown URL in manifest: {manifest}")
+                        raise ValueError(f"Unknown URL in manifest: {manifest}")
                     self._manifest_urls.append(url)
             else:
-                logging.error(f"got {resp.status_code} when fetching {self.collection_url}")
+                logger.error(f"got {resp.status_code} when fetching {self.collection_url}")
 
     def _open_manifest(self, manifest_url: str) -> dict | None:
-        logging.info(f"getting manifest {manifest_url}")
+        logger.info(f"getting manifest {manifest_url}")
         resp = self._get(manifest_url)
         if resp.status_code == 200:
             manifest_result = resp.json()
         else:
-            logging.error(
+            logger.error(
                 f"got {resp.status_code} when fetching manifest {manifest_url}"
             )
             return None
@@ -78,11 +82,11 @@ class IiifJsonSource(intake.source.base.DataSource):
                 len(result) < 1
             ):  # the JSONPath expression didn't find anything in the manifest
                 if info.get("optional") is True:
-                    logging.debug(
+                    logger.debug(
                         f"{iiif_manifest.get('@id')} missing optional field: '{name}'; searched path: '{expression}'"
                     )
                 else:
-                    logging.warning(
+                    logger.warning(
                         f"{iiif_manifest.get('@id')} missing required field: '{name}'; searched path: '{expression}'"
                     )
             else:
@@ -144,7 +148,7 @@ class IiifJsonSource(intake.source.base.DataSource):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
-            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            logger.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):
@@ -161,7 +165,7 @@ class IiifJsonSource(intake.source.base.DataSource):
 
     def _get(self, url):
         if self.wait:
-            logging.info(f"waiting {self.wait} seconds")
+            logger.info(f"waiting {self.wait} seconds")
             time.sleep(self.wait)
         return requests.get(url)
 
@@ -181,7 +185,7 @@ def _stringify_and_strip_if_list(possible_list) -> list[str]:
         return possible_list
 
 def _listify_if_string_or_dict(value) -> list:
-    if isinstance(value, str) or isinstance(value, dict):
+    if isinstance(value, (str, dict)):
         return [value]
     else:
         return value
@@ -200,7 +204,7 @@ def _tag_label(label: str, value) -> dict:
     if isinstance(value, list):
         return [_tag_label(label, val) for val in value]
     if isinstance(value, dict):
-        if '@language' in value.keys():
+        if '@language' in value:
             return [{"label": f"{label}_{value['@language']}", "value": _listify_if_string_or_dict(value['@value'])}]
     else:
         return [{"label": label, "value": _listify_if_string_or_dict(value)}]

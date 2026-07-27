@@ -9,6 +9,8 @@ from lxml.html.clean import Cleaner
 
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
+logger = logging.getLogger(__name__)
+
 
 class MissingResumptionToken(Exception):
     def __init__(self, message):
@@ -26,7 +28,9 @@ class XmlSource(intake.source.base.DataSource):
     version = "0.0.2"
     partition_access = True
 
-    def __init__(self, collection_url, paging={}, dtype=None, metadata=None):
+    def __init__(self, collection_url, paging=None, dtype=None, metadata=None):
+        if paging is None:
+            paging = {}
         super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging_config = paging
@@ -83,20 +87,18 @@ class XmlSource(intake.source.base.DataSource):
                 self._set_offset(xtree)
         except etree.XMLSyntaxError as e:
             # If the XML is malformed or empty, we stop fetching and return the records
-            logging.info(f"XMLSyntaxError: {e}")
+            logger.info(f"XMLSyntaxError: {e}")
             return records
         except MissingResumptionToken as e:
             # If the XML is malformed or empty, we stop fetching and return the records
-            logging.info(f"Missing resumption token: {e}")
+            logger.info(f"Missing resumption token: {e}")
             return records
         except EndOfMaxResultSet as e:
             # If the XML is malformed or empty, we stop fetching and return the records
-            logging.info(f"{e}")
+            logger.info(f"{e}")
             return records
-        except Exception as e:
-            logging.info(f"Error: {e}")
         except ValueError as e:
-            logging.info(f"ValueError: {e}")
+            logger.info(f"ValueError: {e}")
 
     def _get_record_elements(self, xtree):
         """Find record elements in the XML tree."""
@@ -159,7 +161,7 @@ class XmlSource(intake.source.base.DataSource):
                 if optional is True:
                     continue
                 else:
-                    logging.warning(f"Record missing {field}")
+                    logger.warning(f"Record missing {field}")
             else:
                 for el in els:
                     if hasattr(el, "text") and el.text is not None:
@@ -205,7 +207,7 @@ class XmlSource(intake.source.base.DataSource):
 
         path = record_selector.get("path")
         if not path:
-            raise Exception("Missing path")
+            raise ValueError("Missing path")
 
         return {"path": path, "namespace": record_selector.get("namespace") or {}}
 
