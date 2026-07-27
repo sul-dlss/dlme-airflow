@@ -1,7 +1,7 @@
 import logging
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 # Operators and utils required from airflow
 from airflow import DAG
@@ -16,7 +16,9 @@ from dlme_airflow.task_groups.etl import (
 )
 from dlme_airflow.utils.catalog import fetch_catalog
 
-_harvest_dags: dict[str, DAG] = dict()
+logger = logging.getLogger(__name__)
+
+_harvest_dags: dict[str, DAG] = {}
 
 
 def harvest_dags():
@@ -60,7 +62,7 @@ def assemble_dag(source: (Provider | Collection)):
     default_schedule = os.getenv("DEFAULT_DAG_SCHEDULE", "@daily")
 
     schedule = source.catalog.metadata.get("schedule", default_schedule)
-    start_date = datetime(2022, 9, 6)
+    start_date = datetime(2022, 9, 6, tzinfo=UTC)
     dag_id = source.label()
 
     with DAG(
@@ -81,7 +83,7 @@ def assemble_dag(source: (Provider | Collection)):
         elif type(source) is Collection:
             etl = build_collection_etl_taskgroup(source, dag)
         else:
-            raise Exception("source must be a Provider or a Collection")
+            raise TypeError("source must be a Provider or a Collection")
         harvest_begin >> etl >> harvest_complete
 
     return dag
@@ -93,7 +95,7 @@ def create_provider_dags(module_name=None):
     """
     for provider in fetch_catalog():
         current_provider = Provider(provider)
-        logging.info(f"Creating DAG for {current_provider.name}")
+        logger.info(f"Creating DAG for {current_provider.name}")
 
         dags = create_dags(current_provider)
         for dag in dags:
@@ -103,4 +105,4 @@ def create_provider_dags(module_name=None):
                 setattr(sys.modules[module_name], dag.dag_id, dag)
             _harvest_dags[dag.dag_id] = dag
 
-    logging.info(f"_harvest_dags={_harvest_dags}")
+    logger.info(f"_harvest_dags={_harvest_dags}")

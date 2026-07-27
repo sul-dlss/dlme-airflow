@@ -13,7 +13,7 @@ test_archive = Path("test-archive")
 test_dir = test_working / "aub" / "aladab"
 test_csv = test_dir / "data.csv"
 test_json = test_dir / "data.json"
-test_now = datetime.datetime(2023, 3, 13, 18, 6, 31)
+test_now = datetime.datetime(2023, 3, 13, 18, 6, 31, tzinfo=datetime.UTC)
 
 
 @pytest.fixture

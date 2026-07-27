@@ -1,8 +1,10 @@
 import hashlib
 import logging
 import shutil
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
@@ -22,19 +24,19 @@ def archive_collection(collection: Collection) -> dict:
         # don't clutter up the archive with empty data files, which can happen
         # with incremental harvests of oai-pmh endpoints
         if not has_data(src):
-            logging.info("skipping archive for %s since it has no data")
+            logger.info("skipping archive for %s since it has no data")
             continue
 
         # don't bother archiving identical data that is already archived
         dest = archive_path(collection, format)
         if not has_new_data(src, dest):
-            logging.info("skipping archive for %s since it has no new data")
+            logger.info("skipping archive for %s since it has no new data")
             continue
 
         if not dest.parent.is_dir():
             dest.parent.mkdir(parents=True)
 
-        logging.info("archiving %s to %s", src, dest)
+        logger.info("archiving %s to %s", src, dest)
         shutil.copy(src, dest)
 
         archive_files[format] = str(dest)
@@ -58,7 +60,7 @@ def archive_task(
 
 def now() -> datetime:
     # this is here so it can be mocked easily in the test
-    return datetime.now()
+    return datetime.now(tz=UTC)
 
 
 def archive_path(collection: Collection, format: str) -> Path:
@@ -72,10 +74,7 @@ def has_data(datafile_path: Path) -> bool:
     """Returns true if the data file has data, and not just a column headers."""
     if datafile_path.exists():
         line_count = short_count(datafile_path)
-        if datafile_path.suffix == ".csv" and line_count == 2 or datafile_path.suffix == ".json" and line_count > 0:
-            return True
-        else:
-            return False
+        return bool(datafile_path.suffix == ".csv" and line_count == 2 or datafile_path.suffix == ".json" and line_count > 0)
     else:
         return False
 

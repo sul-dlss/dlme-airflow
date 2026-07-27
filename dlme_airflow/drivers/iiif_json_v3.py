@@ -9,6 +9,8 @@ import requests
 
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
+logger = logging.getLogger(__name__)
+
 
 class IiifV3JsonSource(intake.source.base.DataSource):
     container = "dataframe"
@@ -50,7 +52,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         if resp.status_code == 200:
             manifest_result = resp.json()
         else:
-            logging.error(
+            logger.error(
                 f"got {resp.status_code} when fetching manifest {manifest_url}"
             )
             return None
@@ -91,10 +93,10 @@ class IiifV3JsonSource(intake.source.base.DataSource):
 
     def _optional_field_warning(self, id, field, expression, optional):
         if optional is True:
-            logging.debug(f"{id} missing optional field: '{field}'; searched path: '{expression}'")
+            logger.debug(f"{id} missing optional field: '{field}'; searched path: '{expression}'")
             return
 
-        logging.warning(f"{id} missing required field: '{field}'; searched path: '{expression}'")
+        logger.warning(f"{id} missing required field: '{field}'; searched path: '{expression}'")
 
 
     def _extract_manifest_metadata(
@@ -112,7 +114,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
         values = []
         lang = next(iter(row.get("label")))
         label = row.get("label")[lang][0].replace(" ", "-").lower().replace("(", "").replace(")", "")
-        for key in row.get("label").keys():
+        for key in row.get("label"):
             # initialize or append to output[name] based on whether we've seen the label
             if row.get("value"):
                 values += row.get("value")[key]
@@ -137,7 +139,7 @@ class IiifV3JsonSource(intake.source.base.DataSource):
             self.record_count += 1
             return pd.DataFrame([result])
         else:
-            logging.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
+            logger.warning(f"{self._manifest_urls[i]} resulted in empty DataFrame")
             return pd.DataFrame()
 
     def _get_schema(self):

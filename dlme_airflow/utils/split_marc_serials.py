@@ -3,6 +3,8 @@ import logging
 
 import pandas as pd
 
+logger = logging.getLogger(__name__)
+
 
 def split_marc_serials(**kwargs):
     """
@@ -44,7 +46,7 @@ def read_datafile(datafile):
             data = json.load(file)
             return data
     except FileNotFoundError:
-        logging.warning(f"split_marc_serials->read_datafile: File not found: {datafile}")
+        logger.warning(f"split_marc_serials->read_datafile: File not found: {datafile}")
         return None
 
 def get_fields_from_record(fields, include_fields=None, exclude_fields=None):
@@ -58,9 +60,9 @@ def get_fields_from_record(fields, include_fields=None, exclude_fields=None):
     """
     filtered_fields = []
     for field in fields:
-        key = list(field.keys())[0]
+        key = next(iter(field.keys()))
         if exclude_fields and key in exclude_fields:
-            next
+            continue
 
         if include_fields:
             if key in include_fields:

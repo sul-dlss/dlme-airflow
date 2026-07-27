@@ -10,6 +10,8 @@ from sickle.oaiexceptions import BadResumptionToken, NoRecordsMatch
 
 # xml namespaces and the prefixes that are used in parsing
 
+logger = logging.getLogger(__name__)
+
 NS = {
     "oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
     "oai_dpla": "https://digital.library.ucla.edu/oai_dpla/",
@@ -73,38 +75,38 @@ class OaiXmlSource(intake.source.base.DataSource):
                 # need to use opts dict since "from" is a reserved word
                 opts["from"] = self.last_harvest_start_date.strftime("%Y-%m-%d")
 
-            logging.info(
+            logger.info(
                 "Harvesting %s with OAI ListRecords: %s", self.collection_url, opts
             )
 
             try:
                 oai_records = self._collection.ListRecords(**opts)
             except NoRecordsMatch:
-                logging.info("No new or updated records matching %s", opts)
+                logger.info("No new or updated records matching %s", opts)
                 oai_records = []
 
         try:
             for counter, oai_record in enumerate(oai_records, start=1):
                 xtree = etree.fromstring(oai_record.raw)
                 if counter % 100 == 0:
-                    logging.info(counter)
+                    logger.info(counter)
                 record = self._construct_fields(xtree)
                 record.update(self._from_metadata(xtree))
                 self._records.append(record)
 
                 self.record_count += 1
                 if self.record_limit and self.record_count > self.record_limit:
-                    logging.info(
+                    logger.info(
                         f"truncating results because limit={self.record_limit}"
                     )
                     break
-        except BadResumptionToken as e:
+        except BadResumptionToken:
             if self.allow_expiration:
-                logging.warning(
+                logger.warning(
                     "Caught invalid resumption token, returning incomplete results"
                 )
             else:
-                raise e
+                raise
 
     def _construct_fields(self, manifest: etree) -> dict:
         output: dict[str, list] = {}
@@ -118,7 +120,7 @@ class OaiXmlSource(intake.source.base.DataSource):
                     # Skip and continue
                     continue
                 else:
-                    logging.warning(f"Manifest missing {field}")
+                    logger.warning(f"Manifest missing {field}")
             else:
                 if field not in output:
                     output[field] = []
@@ -154,7 +156,7 @@ class OaiXmlSource(intake.source.base.DataSource):
         elif self.metadata_prefix == "oai_dpla":
             oai_rec = manifest.xpath("//oai_dpla:dpla", namespaces=NS)[0]
         else:
-            raise Exception(f"Unknown metadata prefix {self.metadata_prefix}")
+            raise ValueError(f"Unknown metadata prefix {self.metadata_prefix}")
 
         return self._element_to_dict(oai_rec)
 
@@ -174,7 +176,7 @@ class OaiXmlSource(intake.source.base.DataSource):
     def _empty_dataframe(self):
         """Return a DataFrame with the correct series in it, but with no actual values."""
         return pd.DataFrame(
-            {name: [] for name in self.metadata.get("fields", {}).keys()}
+            {name: [] for name in self.metadata.get("fields", {})}
         )
 
     def _element_to_dict(self, rec_metadata):
@@ -185,8 +187,8 @@ class OaiXmlSource(intake.source.base.DataSource):
             if not len(sub_element):
                 continue
 
-            tag = list(sub_element.keys())[0]
-            value = list(sub_element.values())[0].strip()
+            tag = next(iter(sub_element.keys()))
+            value = next(iter(sub_element.values())).strip()
 
             if tag not in result:
                 result[tag] = [value]
@@ -264,7 +266,7 @@ def make_iterator(wait):
         return OAIItemIterator
 
     def _next_response(self):
-        logging.info(f"sleeping {wait} seconds")
+        logger.info(f"sleeping {wait} seconds")
         time.sleep(wait)
         super(type(self), self)._next_response()
 

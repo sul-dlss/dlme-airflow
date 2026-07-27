@@ -12,7 +12,7 @@ def dataframe_from_file(collection, format="csv") -> pd.DataFrame:
     """
     datafile_path = collection.datafile(format)
     if not os.path.isfile(datafile_path):
-        raise Exception(f"Unable to find {format.upper()} at {datafile_path}")
+        raise FileNotFoundError(f"Unable to find {format.upper()} at {datafile_path}")
 
     if format == "json":
         return pd.read_json(datafile_path)
