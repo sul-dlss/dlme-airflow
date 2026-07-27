@@ -1,9 +1,9 @@
 import pytest
 import requests
 
-from dlme_airflow.tasks.index import index_collection
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider
+from dlme_airflow.tasks.index import index_collection
 
 
 @pytest.fixture

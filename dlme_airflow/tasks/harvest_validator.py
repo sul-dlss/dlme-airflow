@@ -1,5 +1,4 @@
 import pandas as pd
-
 from airflow import DAG
 from airflow.providers.standard.operators.python import BranchPythonOperator
 from airflow.utils.task_group import TaskGroup

@@ -1,8 +1,9 @@
-import pytest
-import pandas as pd
 import json
-
 from unittest.mock import patch
+
+import pandas as pd
+import pytest
+
 from dlme_airflow.utils.add_thumbnails import add_thumbnails, get_thumbnail
 
 

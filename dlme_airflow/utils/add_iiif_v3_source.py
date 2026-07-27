@@ -1,8 +1,9 @@
 # /bin/python
 import json
 import os
-import pandas
 import urllib.request
+
+import pandas
 
 
 def merge_dataframes(**kwargs):

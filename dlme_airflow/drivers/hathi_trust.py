@@ -1,9 +1,9 @@
-import json
-import intake
-import requests
 import csv
-import pandas as pd
+import json
 
+import intake
+import pandas as pd
+import requests
 from pymarc import parse_xml_to_array
 
 
@@ -14,7 +14,7 @@ class HathiTrustSource(intake.source.base.DataSource):
     partition_access = True
 
     def __init__(self, collection_url, object_path, marc_urls = [], dtype=None, metadata=None):
-        super(HathiTrustSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.object_path = object_path
         self.record_ids = []

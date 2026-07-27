@@ -1,7 +1,8 @@
 import logging
+
+import pandas as pd
 import pytest
 import requests
-import pandas as pd
 
 from dlme_airflow.drivers.iiif_json import IiifJsonSource
 
@@ -222,7 +223,7 @@ def test_IiifJsonSource_logging(iiif_test_v2_source, mock_response, caplog):
     with caplog.at_level(logging.WARNING):
         iiif_test_v2_source.read()
     assert (
-        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing required field: 'profile'; searched path: 'sequences..profile'"  # noqa: E501
+        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing required field: 'profile'; searched path: 'sequences..profile'"
         in caplog.text
     )
     assert "missing optional field" not in caplog.text
@@ -230,7 +231,7 @@ def test_IiifJsonSource_logging(iiif_test_v2_source, mock_response, caplog):
     with caplog.at_level(logging.DEBUG):
         iiif_test_v2_source.read()
     assert (
-        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"  # noqa: E501
+        "https://collection.edu/iiif/p15795coll29:28/manifest.json missing optional field: 'thumbnail'; searched path: 'thumbnail..@id'"
         in caplog.text
     )
 

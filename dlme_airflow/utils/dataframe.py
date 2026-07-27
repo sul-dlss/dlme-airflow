@@ -1,4 +1,5 @@
 import os
+
 import pandas as pd
 
 # TODO: should these maybe be methods on Collection?
@@ -35,7 +36,7 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     # We need to set last_harvest_start_date here since the catalog metadata comes
     # from the YAML Intake catalog file, but in some cases (oai driver currently)
     # we need the Intake driver to know about the last time the harvest ran successfully.
-    setattr(collection.catalog, "last_harvest_start_date", last_harvest_start_date)
+    collection.catalog.last_harvest_start_date = last_harvest_start_date
 
     source_df = collection.catalog.read()
 

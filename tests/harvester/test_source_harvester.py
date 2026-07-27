@@ -1,7 +1,8 @@
 import datetime
-import pandas as pd
 
+import pandas as pd
 from pytest_mock import MockerFixture
+
 from dlme_airflow.harvester.source_harvester import data_source_harvester
 from dlme_airflow.models.collection import Collection
 from dlme_airflow.models.provider import Provider

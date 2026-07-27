@@ -1,5 +1,5 @@
-import os
 import logging
+import os
 
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
@@ -33,7 +33,7 @@ def validate_transformation(collection: Collection) -> None:
     transformed_record_count = get_transformed_record_count(collection)
     if df_record_count != transformed_record_count:
         raise Exception(
-            f"ERROR: failed to transform all harvested records: harvested record count ({df_record_count}) != transformed record count ({transformed_record_count})"  # noqa: E501
+            f"ERROR: failed to transform all harvested records: harvested record count ({df_record_count}) != transformed record count ({transformed_record_count})"
         )
     else:
         logging.info(

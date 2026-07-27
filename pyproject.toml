@@ -29,6 +29,32 @@ dependencies = [
     "validators"
 ]
 
+[tool.ruff.lint]
+# Rules ignored for now; revisit and address incrementally.
+ignore = [
+    "LOG015",  # logging call on root logger
+    "SIM115",  # use a context manager for opening files
+    "TRY002",  # create your own exception
+    "B006",    # mutable argument default
+    "SIM118",  # use `key in dict` instead of `key in dict.keys()`
+    "RUF015",  # prefer `next(iter(...))` over single-element slice
+    "EXE002",  # executable file without shebang
+    "C419",    # unnecessary comprehension in `any`/`all`
+    "C405",    # unnecessary literal set
+    "B018",    # useless expression
+    "SIM103",  # return the condition directly
+    "SIM102",  # collapsible nested `if`
+    "EXE001",  # shebang present but file not executable
+    "DTZ005",  # `datetime.now()` without tz
+    "DTZ001",  # `datetime()` without tzinfo
+    "TRY201",  # use `raise` without specifying exception name
+    "SIM101",  # merge isinstance calls
+    "DTZ011",  # `date.today()` used
+    "C408",    # unnecessary `dict()` call
+    "BLE001",  # blind `except Exception`
+    "B020",    # loop variable overrides iterator
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 addopts = "-v"
@@ -39,3 +65,8 @@ packages = ["dlme_airflow"]
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.0",
+]

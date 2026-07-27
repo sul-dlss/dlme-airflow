@@ -1,6 +1,8 @@
 import json
 import logging
+
 import pandas as pd
+
 
 def split_marc_serials(**kwargs):
     """

@@ -1,10 +1,8 @@
-import shutil
 import hashlib
 import logging
-
-from typing import Union
-from pathlib import Path
+import shutil
 from datetime import datetime
+from pathlib import Path
 
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
@@ -74,9 +72,7 @@ def has_data(datafile_path: Path) -> bool:
     """Returns true if the data file has data, and not just a column headers."""
     if datafile_path.exists():
         line_count = short_count(datafile_path)
-        if datafile_path.suffix == ".csv" and line_count == 2:
-            return True
-        elif datafile_path.suffix == ".json" and line_count > 0:
+        if datafile_path.suffix == ".csv" and line_count == 2 or datafile_path.suffix == ".json" and line_count > 0:
             return True
         else:
             return False
@@ -116,7 +112,7 @@ def digest(path: Path) -> str:
     return sha256.hexdigest()
 
 
-def previous_archive(path: Path) -> Union[Path, None]:
+def previous_archive(path: Path) -> Path | None:
     # if there is no archive dir then there is no previous archive file
     if not path.parent.is_dir():
         return None

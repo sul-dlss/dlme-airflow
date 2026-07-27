@@ -1,8 +1,8 @@
-import requests
 import jsonpath_ng
+import requests
 import validators
-
 from bs4 import BeautifulSoup
+
 
 class PartitionBuilder:
     """Determine the method used to extract or format the

@@ -1,6 +1,6 @@
-from dlme_airflow.utils.dataframe import dataframe_to_file
-
 from airflow.utils.state import DagRunState
+
+from dlme_airflow.utils.dataframe import dataframe_to_file
 
 COLLECTION = "collection"
 PROVIDER = "provider"

@@ -1,10 +1,13 @@
-import time
 import logging
+import time
+from collections.abc import Generator
+from typing import Any
+
 import intake
-import requests
 import jsonpath_ng
 import pandas as pd
-from typing import Any, Optional, Generator
+import requests
+
 from dlme_airflow.utils.partition_url_builder import PartitionBuilder
 
 
@@ -26,7 +29,7 @@ class JsonSource(intake.source.base.DataSource):
         wait=None,
         api_key=None,
     ):
-        super(JsonSource, self).__init__(metadata=metadata)
+        super().__init__(metadata=metadata)
         self.collection_url = collection_url
         self.paging = paging
         self.increment = increment
@@ -48,7 +51,7 @@ class JsonSource(intake.source.base.DataSource):
                 self.collection_url, self.paging, self.api_key
             ).urls()
 
-    def _open_page(self, page_url: str) -> Optional[list]:
+    def _open_page(self, page_url: str) -> list | None:
         resp = self._get(page_url)
         if resp.status_code == 200:
             page_result = resp.json()

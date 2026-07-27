@@ -1,12 +1,12 @@
 import intake
 
+from dlme_airflow.drivers.hathi_trust import HathiTrustSource
 from dlme_airflow.drivers.iiif_json import IiifJsonSource
 from dlme_airflow.drivers.iiif_json_v3 import IiifV3JsonSource
-from dlme_airflow.drivers.hathi_trust import HathiTrustSource
-from dlme_airflow.drivers.oai_xml import OaiXmlSource
-from dlme_airflow.drivers.xml import XmlSource
-from dlme_airflow.drivers.sequential_csv import SequentialCsvSource
 from dlme_airflow.drivers.json import JsonSource
+from dlme_airflow.drivers.oai_xml import OaiXmlSource
+from dlme_airflow.drivers.sequential_csv import SequentialCsvSource
+from dlme_airflow.drivers.xml import XmlSource
 
 
 def register_drivers():

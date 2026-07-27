@@ -1,23 +1,23 @@
 #!/usr/bin/python
 import io
 import json
+import logging
 import os
+import random
 from collections import Counter, defaultdict
 from datetime import date
-import logging
-import random
 
-from dominate import document
-from dominate.tags import style, h1, h2, div, attr, p, ul, li, tr, td, b, table
-from PIL import Image
 import requests
 import validators
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
+from dominate import document
+from dominate.tags import attr, b, div, h1, h2, li, p, style, table, td, tr, ul
+from PIL import Image
 
-from dlme_airflow.utils.catalog import catalog_for_provider
 from dlme_airflow.models.provider import Provider
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 # Constants for crosswalk
 fields = [
@@ -70,7 +70,7 @@ EXTRACT_MACROS = {
         "transforms": "The script of the title was programatically determined.",
     },
     "scw_has_type": {
-        "from_field": "/*/mods:genre or /*/mods:typeOfResource or /*/mods:subject/mods:topic or /*/mods:extension/cdwalite:indexingMaterialsTechSet/"  # noqa: E501
+        "from_field": "/*/mods:genre or /*/mods:typeOfResource or /*/mods:subject/mods:topic or /*/mods:extension/cdwalite:indexingMaterialsTechSet/"
         "cdwalite:termMaterialsTech",
         "transforms": "The output value was mapped to a value in a DLME controlled vocabulary.",
     },
@@ -151,7 +151,7 @@ def thumbnail_report(image_sizes_list):
             else:
                 failed_records += 1
 
-        return f"{round((passed_records/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."  # noqa: E501
+        return f"{round((passed_records/len(image_sizes_list))*100)}% of the {len(image_sizes_list)} thumbnail images sampled had a width or height of {REC_SIZE} or greater."
 
 
 def image_size(content) -> tuple[int, int]:
@@ -396,7 +396,7 @@ def mapping_report(**kwargs):  # input:, config:):
                     u_list = ul()
                     u_list.add(
                         li(
-                            f"{counts['cho_dc_rights']['fields_covered']} of {record_count} records had a clearly expressed copyright status for the cultural heritage object."  # noqa: E501
+                            f"{counts['cho_dc_rights']['fields_covered']} of {record_count} records had a clearly expressed copyright status for the cultural heritage object."
                         )
                     )
                     if counts["agg_is_shown_at"]["wr_edm_rights"] > 0:
@@ -410,7 +410,7 @@ def mapping_report(**kwargs):  # input:, config:):
                     )
                     u_list.add(
                         li(
-                            f"{counts['agg_edm_rights']['fields_covered']} of {record_count} records had clearly expressed aggregation rights."  # noqa: E501
+                            f"{counts['agg_edm_rights']['fields_covered']} of {record_count} records had clearly expressed aggregation rights."
                         )
                     )
 

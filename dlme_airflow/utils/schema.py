@@ -1,11 +1,10 @@
 import json
-import requests
 
-from typing import Optional
+import requests
 from bs4 import BeautifulSoup
 
 
-def get_schema(url) -> Optional[dict]:
+def get_schema(url) -> dict | None:
     "Extract schema.org metadata from a URL and return the parsed JSON."
     data = None
     resp = requests.get(url)

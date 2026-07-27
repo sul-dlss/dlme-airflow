@@ -1,23 +1,20 @@
+import logging
 import os
 import sys
-import logging
-
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 # Operators and utils required from airflow
 from airflow import DAG
-from airflow.operators.empty import EmptyOperator
 from airflow.models import Variable
+from airflow.operators.empty import EmptyOperator
 
 # Our stuff
-from dlme_airflow.models.provider import Provider, Collection
-from dlme_airflow.utils.catalog import fetch_catalog
+from dlme_airflow.models.provider import Collection, Provider
 from dlme_airflow.task_groups.etl import (
-    build_provider_etl_taskgroup,
     build_collection_etl_taskgroup,
+    build_provider_etl_taskgroup,
 )
-
+from dlme_airflow.utils.catalog import fetch_catalog
 
 _harvest_dags: dict[str, DAG] = dict()
 

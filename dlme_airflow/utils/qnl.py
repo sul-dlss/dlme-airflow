@@ -1,9 +1,10 @@
 # /bin/python
 import os
-import pandas
-from dlme_airflow.utils.read_df import read_datafile_with_lists
-
 from itertools import chain
+
+import pandas
+
+from dlme_airflow.utils.read_df import read_datafile_with_lists
 
 
 def merge_records(**kwargs):

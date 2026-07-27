@@ -1,5 +1,6 @@
-import pandas
 import urllib.request
+
+import pandas
 
 from dlme_airflow.utils.add_iiif_v3_source import (
     build_key_value_df,

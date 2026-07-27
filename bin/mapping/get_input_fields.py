@@ -1,8 +1,9 @@
 #!/usr/bin/python
 import glob
 import os
-import pandas as pd
 from argparse import ArgumentParser
+
+import pandas as pd
 
 
 def main():

@@ -1,22 +1,22 @@
-import os
 import logging
+import os
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
+from airflow.operators.empty import EmptyOperator
 
 # Operators and utils required from airflow
 from airflow.utils.task_group import TaskGroup
-from airflow.operators.empty import EmptyOperator
 
-from dlme_airflow.tasks.harvest import build_harvester_task
-from dlme_airflow.tasks.post_harvest import build_post_harvest_task
-from dlme_airflow.tasks.filter_data import build_filter_data_task
-from dlme_airflow.tasks.transform import build_transform_task
-from dlme_airflow.tasks.index import index_task
 from dlme_airflow.tasks.archive import archive_task
-from dlme_airflow.tasks.mapping_report import build_mapping_report_task
+from dlme_airflow.tasks.filter_data import build_filter_data_task
+from dlme_airflow.tasks.harvest import build_harvester_task
 from dlme_airflow.tasks.harvest_validator import build_validate_harvest_task
+from dlme_airflow.tasks.index import index_task
+from dlme_airflow.tasks.mapping_report import build_mapping_report_task
+from dlme_airflow.tasks.post_harvest import build_post_harvest_task
 from dlme_airflow.tasks.send_mapping_report import build_send_mapping_report_task
+from dlme_airflow.tasks.transform import build_transform_task
 from dlme_airflow.tasks.transform_validation import build_transform_validation_task
 
 

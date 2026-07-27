@@ -1,8 +1,8 @@
-from dlme_airflow.utils.catalog import catalog_for_provider
 from dlme_airflow.models.collection import Collection
+from dlme_airflow.utils.catalog import catalog_for_provider
 
 
-class Provider(object):
+class Provider:
     def __init__(self, catalog):
         self.name = catalog
         self.catalog = catalog_for_provider(self.name)

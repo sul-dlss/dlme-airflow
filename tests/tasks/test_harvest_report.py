@@ -1,12 +1,12 @@
-from collections import Counter, defaultdict
 import io
 import json
+from collections import Counter, defaultdict
 
 import pytest
 import requests
 from PIL import Image
 
-import dlme_airflow.tasks.mapping_report as mapping_report
+from dlme_airflow.tasks import mapping_report
 
 
 @pytest.fixture
