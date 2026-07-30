@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+# Monkey-patch to fix OpenSSL 3.x compatibility by specifying RSA key type
+module Capistrano
+  module OneTimeKey
+    def self.generate_private_key!
+      `ssh-keygen -t rsa -m PEM -f #{temporary_ssh_private_key_path} -N "" -C "#{comment}"`
+      temporary_ssh_private_key_path
+    end
+  end
+end
+
 set :application, 'dlme-airflow'
 set :repo_url, 'https://github.com/sul-dlss/dlme-airflow.git'
 
