@@ -260,6 +260,33 @@ By default `bin/get` will output json format. A csv file may be useful for check
 $ uv run bin/get yale babylonian --format csv
 ```
 
+### Manually index a collection
+
+Use `bin/index` to index a manually created `.ndjson` file via the DLME API, without running the full pipeline. Requires `API_ENDPOINT` and `API_TOKEN` to be set (in `.env` or environment).
+
+There is an optional `--dry-run` parameter that will skip sending the data to the endpoint to use for debugging file download, etc.
+
+Pass a local file path:
+
+```
+uv run bin/index /path/to/output.ndjson # --dry-run
+```
+
+Or pass a URL — the file will be downloaded to a temp location and cleaned up automatically:
+
+```
+uv run bin/index https://example.com/output.ndjson # --dry-run
+```
+
+Or pass a shared Google file id - the file will be downloaded to a temp location and cleaned up automatically:
+
+```
+uv run bin/index --google {FILE_ID} # --dry-run
+```
+
+
+The script prints the number of records found in the file and the API response message.
+
 ### Manually run the report for a collection
 
 This method requires setting the path to the ndjson output directory on execution, this path

@@ -119,6 +119,8 @@ fastapi-cli==0.0.24
     # via fastapi
 feedparser==6.0.12
     # via dlme-airflow (pyproject.toml)
+filelock==3.25.2
+    # via gdown
 frozenlist==1.8.0
     # via
     #   aiohttp
