@@ -10,9 +10,14 @@ export LC_COLLATE=C.UTF-8
 # Needed to successfully run pip-installed uv
 export PATH="$HOME/.local/bin:$PATH"
 
+# --python-version must match the Python we actually run on (CI and the
+# apache/airflow base image are both 3.12). Without it uv resolves for
+# whatever Python happens to be on the Jenkins box, and dependencies with
+# version-gated markers get pinned for the wrong interpreter -- e.g. libcst
+# asks for pyyaml-ft on 3.13 only, which then fails to install on 3.12.
 pip3 install --upgrade uv > dlme-airflow.txt &&
     uv venv &&
-    uv pip compile pyproject.toml -o requirements.txt --upgrade -q --no-progress --color never >> dlme-airflow.txt
+    uv pip compile pyproject.toml -o requirements.txt --python-version 3.12 --upgrade -q --no-progress --color never >> dlme-airflow.txt
 
 retVal=$?
 

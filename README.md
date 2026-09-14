@@ -80,15 +80,19 @@ To add a dependency:
 2. Add the dependency to `pyproject.toml`.
 3. To re-generate the locked dependencies in `requirements.txt`:
 ```
-uv pip compile pyproject.toml -o requirements.txt
+uv pip compile pyproject.toml -o requirements.txt --python-version 3.12
 ```
 
 Unlike poetry, uv's dependency resolution is not platform-agnostic. If we find we need to generate a requirements.txt for linux, we can use [uv's multi-platform resolution options](https://github.com/astral-sh/uv?tab=readme-ov-file#multi-platform-resolution).
 
+Always pass `--python-version 3.12`, even if your local interpreter is newer.
+We run on Python 3.12 in CI and in the `apache/airflow` image, and uv otherwise
+resolves version-gated markers for whichever Python it finds.
+
 ## Upgrading dependencies
 To upgrade Python dependencies:
 ```
-uv pip compile pyproject.toml -o requirements.txt --upgrade
+uv pip compile pyproject.toml -o requirements.txt --python-version 3.12 --upgrade
 ```
 
 ## Running Code Formatter and Linter

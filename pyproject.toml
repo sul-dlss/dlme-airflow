@@ -10,6 +10,8 @@ authors = [
 license = { text = "Apache2" }
 requires-python = ">= 3.12"
 dependencies = [
+    # the version of Airflow needs to be the same version as what is defined in the Docker Image
+    "apache-airflow==3.1.8",                    
     "apache-airflow-providers-standard",
     "aiohttp",
     "beautifulsoup4",
