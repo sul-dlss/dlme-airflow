@@ -14,8 +14,9 @@ from dlme_airflow.utils.schema import get_schema
 
 logger = logging.getLogger(__name__)
 
-# How many pages to fetch at once; kept small to be polite to the provider
-MAX_WORKERS = 4
+# How many pages to fetch at once; kept small to be polite to the provider,
+# since a provider's collections can run their post-harvest steps in parallel
+MAX_WORKERS = 2
 
 # Seconds to wait for a connection and then for a response
 TIMEOUT = (10, 30)
