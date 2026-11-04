@@ -4,10 +4,13 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_schema(url) -> dict | None:
+def get_schema(url, session=None, timeout=None) -> dict | None:
     "Extract schema.org metadata from a URL and return the parsed JSON."
     data = None
-    resp = requests.get(url)
+    resp = (session or requests).get(url, timeout=timeout)
+
+    # raise on error responses so an error page isn't mistaken for a page without metadata
+    resp.raise_for_status()
 
     # if we've got html
     if "html" in resp.headers.get("content-type", ""):
