@@ -125,6 +125,43 @@ def test_add_thumbnails_fails_when_too_many_lookups_fail(mock_collection, monkey
     assert 'thumbnail' not in read_records(mock_collection).columns
 
 
+def mock_object_pages(requests_mock, urls, blocked):
+    page = '<script type="application/ld+json">{"thumbnailUrl": "thumbnail.jpg"}</script>'
+    for record_url in urls:
+        if record_url in blocked:
+            requests_mock.get(record_url, status_code=403, text='<html>Forbidden</html>', headers={'content-type': 'text/html'})
+        else:
+            requests_mock.get(record_url, text=page, headers={'content-type': 'text/html'})
+
+
+def test_add_thumbnails_does_not_cache_http_errors(mock_collection, requests_mock):
+    urls = [url(i) for i in range(100)]
+    mock_object_pages(requests_mock, urls, blocked={url(0)})
+    write_records(mock_collection, urls)
+
+    add_thumbnails(collection=mock_collection)
+
+    # the blocked record is dropped for now but left out of the cache so the next run retries it
+    with open(cache_path(mock_collection)) as f:
+        cache = json.load(f)
+    assert url(0) not in cache
+    assert len(cache) == 99
+    assert len(read_records(mock_collection)) == 99
+
+
+def test_add_thumbnails_fails_when_blocked(mock_collection, requests_mock):
+    urls = [url(i) for i in range(100)]
+    mock_object_pages(requests_mock, urls, blocked=set(urls[50:]))
+    write_records(mock_collection, urls)
+
+    # being blocked partway through counts toward the failure rate
+    with pytest.raises(RuntimeError, match='50 of 100 thumbnail lookups failed'):
+        add_thumbnails(collection=mock_collection)
+
+    with open(cache_path(mock_collection)) as f:
+        assert len(json.load(f)) == 50
+
+
 def test_get_thumbnail_success():
     # Mock the schema response
     with patch('dlme_airflow.utils.add_thumbnails.get_schema', return_value={"thumbnailUrl": "http://thumbnail.jpg"}):
@@ -143,13 +180,13 @@ def test_get_thumbnail_no_schema():
         assert result is None
 
 
-def test_get_thumbnail_json_decode_error():
-    # Simulate a JSON decode error
-    with patch('dlme_airflow.utils.add_thumbnails.get_schema', side_effect=json.JSONDecodeError("Expecting value", "doc", 0)):
-        result = get_thumbnail('123')
-
-        # Assertions
-        assert result is None
+def test_get_thumbnail_json_decode_error_is_raised():
+    # Broken JSON-LD is raised so add_thumbnails counts it as a failure instead of caching it
+    with (
+        patch('dlme_airflow.utils.add_thumbnails.get_schema', side_effect=json.JSONDecodeError("Expecting value", "doc", 0)),
+        pytest.raises(json.JSONDecodeError),
+    ):
+        get_thumbnail('123')
 
 
 def test_get_thumbnail_network_error_is_raised():

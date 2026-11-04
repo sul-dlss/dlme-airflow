@@ -1,3 +1,6 @@
+import pytest
+import requests
+
 from dlme_airflow.utils.schema import get_schema
 
 
@@ -14,11 +17,18 @@ def test_no_schema():
     assert data is None
 
 
-def test_no_html():
-    data = get_schema(
-        "https://upload.wikimedia.org/wikipedia/commons/2/2b/Stanford_University_Green_Library_Bing_Wing.jpg"
-    )
+def test_no_html(requests_mock):
+    url = "https://example.org/image.jpg"
+    requests_mock.get(url, content=b"\xff\xd8\xff", headers={"content-type": "image/jpeg"})
+    data = get_schema(url)
     assert data is None
+
+
+def test_http_error(requests_mock):
+    url = "https://example.org/object/1"
+    requests_mock.get(url, status_code=403, text="<html>Forbidden</html>", headers={"content-type": "text/html"})
+    with pytest.raises(requests.HTTPError):
+        get_schema(url)
 
 
 def test_control_chars():

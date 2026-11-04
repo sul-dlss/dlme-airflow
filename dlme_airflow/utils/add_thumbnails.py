@@ -92,16 +92,19 @@ def lookup_thumbnails(urls, cache, cache_path) -> list:
 
 
 def get_thumbnail(id) -> str | None:
+    """Returns the thumbnail url for a record, or None if its page has none.
+
+    HTTP errors and unparseable JSON-LD are raised rather than returned as None,
+    so they count as failed lookups and are retried on the next run instead of
+    being cached as "no thumbnail".
+    """
     url = id
     logger.debug(f"getting thumbnail for {url}")
-    try:
-        schema = get_schema(url, session=get_session(), timeout=TIMEOUT)
-        if schema:
-            return schema.get("thumbnailUrl")
-        else:
-            return None
-    except json.JSONDecodeError as e:
-        logger.error(f"JSONDecodeError occurred: %s for record {url}", e)
+    schema = get_schema(url, session=get_session(), timeout=TIMEOUT)
+    if schema:
+        return schema.get("thumbnailUrl")
+    else:
+        return None
 
 
 def get_session() -> requests.Session:
