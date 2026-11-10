@@ -25,13 +25,9 @@ def main():
         If not, capture record identifier for report."""
         bad_records = {}
         for field in REQUIRED_FIELDS:
-            if not record.get(field):
+            if (not record.get(field)) or (field in URL_FIELDS and not record.get(field).get("wr_id")):
                 bad_records[field] = []
                 bad_records[field].append(record["id"])
-            elif field in URL_FIELDS:
-                if not record.get(field).get("wr_id"):
-                    bad_records[field] = []
-                    bad_records[field].append(record["id"])
 
         return bad_records
 
