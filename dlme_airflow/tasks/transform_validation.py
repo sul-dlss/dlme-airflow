@@ -61,11 +61,24 @@ def get_record_count(collection: Collection) -> int:
 
 
 def get_transformed_record_count(collection: Collection) -> int:
+    """Counts the records in the transform output, skipping blank lines.
+
+    dlme-transform writes an empty line for every record that fails its schema
+    check, so blank lines are records that did NOT transform and must not count.
+    """
     output_file_path = get_transformed_path(collection)
     count = 0
+    blank = 0
     with open(output_file_path, "r") as f:
         for line in f:
-            count += 1
+            if line.strip():
+                count += 1
+            else:
+                blank += 1
+    if blank:
+        logger.warning(
+            f"{blank} blank line(s) in {output_file_path}: records that failed to transform; see the transform task log for their errors"
+        )
     return count
 
 

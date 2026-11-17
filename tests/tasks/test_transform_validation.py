@@ -57,6 +57,37 @@ def setup_ndjson(monkeypatch):
         )
 
 
+@pytest.fixture
+def setup_ndjson_with_failed_record(monkeypatch):
+    # dlme-transform writes a blank line for a record that fails validation
+    ndjson = Path("test-metadata/aims/aims/output-aims-aims.ndjson")
+    ndjson.parent.mkdir(parents=True)
+    monkeypatch.setattr(transform_validation, "get_transformed_path", lambda _: ndjson)
+    with open(ndjson, "w") as f:
+        f.writelines(
+            [
+                '{"id": 1, "title": "a"}\n',
+                "\n",
+                '{"id": 3, "title": "c"}\n',
+            ]
+        )
+
+
+def test_validation_fails_on_blank_lines(
+    caplog, cleanup, setup_df, setup_ndjson_with_failed_record
+):
+    collection = Collection(Provider("aims"), "aims")
+
+    with pytest.raises(ValueError) as excinfo, caplog.at_level(logging.WARNING):
+        validate_transformation(collection)
+
+    assert (
+        "harvested record count (3) != transformed record count (2)"
+        in str(excinfo.value)
+    )
+    assert "1 blank line(s)" in caplog.text
+
+
 def test_transform_path():
     collection = Collection(Provider("princeton"), "islamic_manuscripts")
     path = transform_validation.get_transformed_path(collection)
