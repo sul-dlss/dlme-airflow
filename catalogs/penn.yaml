@@ -9,6 +9,7 @@ sources:
     metadata:
       data_path: penn_museum/babylonian
       output_format: json
+      filter_on_harvest: true
       filters:
         curatorialSection:
           include:
@@ -59,6 +60,7 @@ sources:
     metadata:
       data_path: penn_museum/egyptian
       output_format: json
+      filter_on_harvest: true
       filters:
         curatorialSection:
           include:
@@ -109,6 +111,7 @@ sources:
     metadata:
       data_path: penn_museum/near_eastern
       output_format: json
+      filter_on_harvest: true
       filters:
         curatorialSection:
           include:
