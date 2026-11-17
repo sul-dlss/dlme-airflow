@@ -2,6 +2,8 @@ import os
 
 import pandas as pd
 
+from dlme_airflow.utils.filter_dataframe import filter_by_field
+
 # TODO: should these maybe be methods on Collection?
 
 
@@ -39,6 +41,16 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     collection.catalog.last_harvest_start_date = last_harvest_start_date
 
     source_df = collection.catalog.read()
+
+    # Large sources that are split into several collections by a filter (e.g. one
+    # museum-wide CSV per curatorial section) can opt in to filtering here, so the
+    # full source is never written to disk or reloaded by the filter_data task.
+    # Opt-in because filter_by_field expects scalar values, and some sources have
+    # list values until they are written and re-read as JSON.
+    if collection.catalog.metadata.get("filter_on_harvest"):
+        for field, field_filters in collection.filters().items():
+            source_df = filter_by_field(source_df, field, field_filters)
+        source_df = source_df.reset_index(drop=True)
 
     # Ensure that the unique id is not a list or else the call to
     # drop_duplicates below will fail. If a list is the unique_id value will be

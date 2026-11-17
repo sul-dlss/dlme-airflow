@@ -11,7 +11,7 @@ def filter_by_field(df, field, filters):
         df = df[df[field].isin(filters["include"])]
 
     if "exclude" in filters:
-        if isinstance(df[field][0], str):
+        if len(df) == 0 or isinstance(df[field].iloc[0], str):
             df = df[~df[field].isin(filters["exclude"])]
         else:
             df = df[~df[field].map(set(filters["exclude"]).issubset)]
