@@ -34,3 +34,16 @@ def test_http_error(requests_mock):
 def test_control_chars():
     data = get_schema("https://collections.penn.museum/collections/object/46326")
     assert type(data) is dict
+
+
+def test_stray_backslash(requests_mock):
+    url = "https://example.org/object/455157"
+    html = (
+        '<html><script type="application/ld+json">'
+        '{"description": "8661a joins 4544\\4550 \\\\5 \\"quoted\\" \\u00e9", "thumbnailUrl": "https://example.org/t.jpg"}'
+        "</script></html>"
+    )
+    requests_mock.get(url, text=html, headers={"content-type": "text/html"})
+    data = get_schema(url)
+    assert data["thumbnailUrl"] == "https://example.org/t.jpg"
+    assert data["description"] == '8661a joins 4544\\4550 \\5 "quoted" é'
