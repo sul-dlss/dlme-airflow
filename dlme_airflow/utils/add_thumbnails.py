@@ -29,8 +29,13 @@ MAX_FAILURE_RATE = 0.02
 SAVE_EVERY = 500
 
 # Lookups are cached next to the working data so later runs only fetch new records.
-# Delete this file to force every thumbnail to be looked up again.
-CACHE_FILENAME = "thumbnails.json"
+# Delete this file to force every thumbnail to be looked up again. It must not end
+# in .json: dlme-transform reads every .json file in the collection's directory,
+# and would treat the cache as a record.
+CACHE_FILENAME = "thumbnails.cache"
+
+# The name the cache had before; an existing one is renamed to CACHE_FILENAME
+LEGACY_CACHE_FILENAME = "thumbnails.json"
 
 _thread_local = threading.local()
 
@@ -49,7 +54,9 @@ def add_thumbnails(**kwargs) -> None:
 
     df = pandas.read_json(working_json)
 
-    cache_path = os.path.join(os.path.dirname(working_json), CACHE_FILENAME)
+    cache_dir = os.path.dirname(working_json)
+    cache_path = os.path.join(cache_dir, CACHE_FILENAME)
+    migrate_legacy_cache(os.path.join(cache_dir, LEGACY_CACHE_FILENAME), cache_path)
     cache = load_cache(cache_path)
     urls = [url for url in df["Record URL"].unique() if url not in cache]
     logger.info(f"{len(cache)} thumbnails cached, looking up {len(urls)}")
@@ -122,6 +129,16 @@ def get_session() -> requests.Session:
         _thread_local.session = session
 
     return _thread_local.session
+
+
+def migrate_legacy_cache(legacy_path, cache_path) -> None:
+    """Move a cache saved under the old .json name out of dlme-transform's way."""
+    if not os.path.isfile(legacy_path):
+        return
+    if os.path.isfile(cache_path):
+        os.remove(legacy_path)
+    else:
+        os.replace(legacy_path, cache_path)
 
 
 def load_cache(cache_path) -> dict:

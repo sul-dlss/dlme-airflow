@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
@@ -7,6 +8,7 @@ import requests
 
 from dlme_airflow.utils.add_thumbnails import (
     CACHE_FILENAME,
+    LEGACY_CACHE_FILENAME,
     add_thumbnails,
     get_thumbnail,
 )
@@ -40,6 +42,10 @@ def read_records(collection):
 
 def cache_path(collection):
     return collection.datafile('json').replace('data.json', CACHE_FILENAME)
+
+
+def collection_dir(collection):
+    return Path(collection.datafile('json')).parent
 
 
 def test_add_thumbnails_success(mock_collection, monkeypatch):
@@ -77,6 +83,29 @@ def test_add_thumbnails_uses_cache(mock_collection, monkeypatch):
     df = read_records(mock_collection).set_index('Record URL')
     assert df.loc[url(1), 'thumbnail'] == 'http://cached1.jpg'
     assert df.loc[url(2), 'thumbnail'] == f'{url(2)}.jpg'
+
+
+def test_cache_is_not_a_json_file():
+    # dlme-transform reads every .json file in the collection directory as records
+    assert not CACHE_FILENAME.endswith('.json')
+
+
+def test_add_thumbnails_moves_legacy_cache(mock_collection, monkeypatch):
+    legacy = collection_dir(mock_collection) / LEGACY_CACHE_FILENAME
+    legacy.write_text(json.dumps({url(1): 'http://cached1.jpg'}))
+
+    looked_up = []
+    monkeypatch.setattr(
+        'dlme_airflow.utils.add_thumbnails.get_thumbnail',
+        lambda id: looked_up.append(id) or f'{id}.jpg',
+    )
+    write_records(mock_collection, [url(1), url(2)])
+
+    add_thumbnails(collection=mock_collection)
+
+    assert looked_up == [url(2)]
+    assert not legacy.exists()
+    assert sorted(p.name for p in collection_dir(mock_collection).glob('*.json')) == ['data.json']
 
 
 def test_add_thumbnails_drops_records_without_thumbnail(mock_collection, monkeypatch):
