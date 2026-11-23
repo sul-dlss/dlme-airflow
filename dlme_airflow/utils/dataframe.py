@@ -45,8 +45,8 @@ def dataframe_to_file(collection, last_harvest_start_date=None):
     # Large sources that are split into several collections by a filter (e.g. one
     # museum-wide CSV per curatorial section) can opt in to filtering here, so the
     # full source is never written to disk or reloaded by the filter_data task.
-    # Opt-in because filter_by_field expects scalar values, and some sources have
-    # list values until they are written and re-read as JSON.
+    # Opt-in to limit the change to the collections that need it. This could become
+    # the default, but that would change how every other filtered collection runs.
     if collection.catalog.metadata.get("filter_on_harvest"):
         for field, field_filters in collection.filters().items():
             source_df = filter_by_field(source_df, field, field_filters)
