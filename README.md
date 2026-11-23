@@ -241,6 +241,19 @@ voice_of_america:
         optional: true
 ```
 
+### Filters
+
+A collection can keep or drop records by field value with `filters` in its `metadata`. Each key is a field name, with an `include` list, an `exclude` list, or both. Values are matched exactly. Filtering runs in the `filter_data` task, after harvest.
+
+```yaml
+  metadata:
+    filters:
+      curatorialSection:
+        include:
+          - Egyptian
+```
+
+Set `filter_on_harvest: true` to apply the filters during harvest instead, before the data is written to disk. Use this when several collections share one large source and each keeps only a slice of it (for example, Penn Museum's three collections), so the full source isn't held through the rest of the pipeline. It can't be used when a filtered field holds lists at harvest time (such as LOC `language`). Those collections leave it off and filter in `filter_data`.
 
 ### Getting Data
 
